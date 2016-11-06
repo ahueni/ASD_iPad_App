@@ -1,0 +1,51 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: TCPClient - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Debug/TCPClient.res" /d "_DEBUG" /d "_AFXDLL" "C:\Projects\Utilities\Documentation\TCP Server Developer's Kit\ASD C Examples\TCPClient\TCPClient.rc"" 
+Creating temporary file "C:\DOCUME~1\bryon\LOCALS~1\Temp\RSP2B8.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/TCPClient.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Projects\Utilities\Documentation\TCP Server Developer's Kit\ASD C Examples\TCPClient\LinePlot.cpp"
+"C:\Projects\Utilities\Documentation\TCP Server Developer's Kit\ASD C Examples\TCPClient\TCPClient.cpp"
+"C:\Projects\Utilities\Documentation\TCP Server Developer's Kit\ASD C Examples\TCPClient\TCPClientDlg.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\bryon\LOCALS~1\Temp\RSP2B8.tmp" 
+Creating temporary file "C:\DOCUME~1\bryon\LOCALS~1\Temp\RSP2B9.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/TCPClient.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Projects\Utilities\Documentation\TCP Server Developer's Kit\ASD C Examples\TCPClient\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\bryon\LOCALS~1\Temp\RSP2B9.tmp" 
+Creating temporary file "C:\DOCUME~1\bryon\LOCALS~1\Temp\RSP2BA.tmp" with contents
+[
+wsock32.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/TCPClient.pdb" /debug /machine:I386 /out:"Debug/TCPClient.exe" /pdbtype:sept 
+".\Debug\LinePlot.obj"
+".\Debug\StdAfx.obj"
+".\Debug\TCPClient.obj"
+".\Debug\TCPClientDlg.obj"
+".\Debug\TCPClient.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\bryon\LOCALS~1\Temp\RSP2BA.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+LinePlot.cpp
+TCPClient.cpp
+TCPClientDlg.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+TCPClient.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
