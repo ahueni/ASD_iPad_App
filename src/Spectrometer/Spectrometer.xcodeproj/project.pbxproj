@@ -33,9 +33,20 @@
 		2E91F2F01DDB5B9F003E277F /* TCPSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2DC1DDB5B9F003E277F /* TCPSocket.swift */; };
 		2E91F2F11DDB5B9F003E277F /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2DD1DDB5B9F003E277F /* Types.swift */; };
 		2E91F2F21DDB5B9F003E277F /* UDPSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2DE1DDB5B9F003E277F /* UDPSocket.swift */; };
-		2E91F2F51DDB5CB5003E277F /* ReturnTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2F41DDB5CB5003E277F /* ReturnTypes.swift */; };
 		2E91F2F71DDB5CF7003E277F /* TcpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2F61DDB5CF7003E277F /* TcpManager.swift */; };
-		2E91F2FA1DDB6161003E277F /* CommandEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2F91DDB6161003E277F /* CommandEnum.swift */; };
+		2E91F2FA1DDB6161003E277F /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2F91DDB6161003E277F /* Command.swift */; };
+		2E91F2FE1DDB7446003E277F /* SpectrumHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2FD1DDB7446003E277F /* SpectrumHeader.swift */; };
+		2E91F3001DDB745D003E277F /* SwirHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2FF1DDB745D003E277F /* SwirHeader.swift */; };
+		2E91F3021DDB7472003E277F /* VnirHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F3011DDB7472003E277F /* VnirHeader.swift */; };
+		2E91F3051DDB7827003E277F /* SpectrumParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F3041DDB7827003E277F /* SpectrumParser.swift */; };
+		2E91F3081DDB78D8003E277F /* SpectrumDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F3071DDB78D8003E277F /* SpectrumDataBase.swift */; };
+		2E91F30A1DDB7BDF003E277F /* FullRangeInterpolatedSpectrum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F3091DDB7BDF003E277F /* FullRangeInterpolatedSpectrum.swift */; };
+		2E91F30D1DDB8068003E277F /* SpectrumEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F30C1DDB8068003E277F /* SpectrumEnums.swift */; };
+		2E91F30F1DDB82C7003E277F /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F30E1DDB82C7003E277F /* Parameter.swift */; };
+		2E91F3111DDB8408003E277F /* Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F3101DDB8408003E277F /* Init.swift */; };
+		2E91F3131DDB842A003E277F /* InstrumentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F3121DDB842A003E277F /* InstrumentControl.swift */; };
+		2E91F3151DDB8440003E277F /* Optimize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F3141DDB8440003E277F /* Optimize.swift */; };
+		2E91F3171DDB848E003E277F /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F3161DDB848E003E277F /* Version.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,9 +90,20 @@
 		2E91F2DC1DDB5B9F003E277F /* TCPSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPSocket.swift; sourceTree = "<group>"; };
 		2E91F2DD1DDB5B9F003E277F /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		2E91F2DE1DDB5B9F003E277F /* UDPSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDPSocket.swift; sourceTree = "<group>"; };
-		2E91F2F41DDB5CB5003E277F /* ReturnTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReturnTypes.swift; sourceTree = "<group>"; };
 		2E91F2F61DDB5CF7003E277F /* TcpManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TcpManager.swift; sourceTree = "<group>"; };
-		2E91F2F91DDB6161003E277F /* CommandEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandEnum.swift; sourceTree = "<group>"; };
+		2E91F2F91DDB6161003E277F /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		2E91F2FD1DDB7446003E277F /* SpectrumHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumHeader.swift; sourceTree = "<group>"; };
+		2E91F2FF1DDB745D003E277F /* SwirHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwirHeader.swift; sourceTree = "<group>"; };
+		2E91F3011DDB7472003E277F /* VnirHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VnirHeader.swift; sourceTree = "<group>"; };
+		2E91F3041DDB7827003E277F /* SpectrumParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumParser.swift; sourceTree = "<group>"; };
+		2E91F3071DDB78D8003E277F /* SpectrumDataBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumDataBase.swift; sourceTree = "<group>"; };
+		2E91F3091DDB7BDF003E277F /* FullRangeInterpolatedSpectrum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullRangeInterpolatedSpectrum.swift; sourceTree = "<group>"; };
+		2E91F30C1DDB8068003E277F /* SpectrumEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumEnums.swift; sourceTree = "<group>"; };
+		2E91F30E1DDB82C7003E277F /* Parameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parameter.swift; sourceTree = "<group>"; };
+		2E91F3101DDB8408003E277F /* Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Init.swift; sourceTree = "<group>"; };
+		2E91F3121DDB842A003E277F /* InstrumentControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentControl.swift; sourceTree = "<group>"; };
+		2E91F3141DDB8440003E277F /* Optimize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Optimize.swift; sourceTree = "<group>"; };
+		2E91F3161DDB848E003E277F /* Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,8 +212,9 @@
 		2E91F2F31DDB5C8B003E277F /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				2E91F3031DDB77FC003E277F /* Parser */,
+				2E91F2FB1DDB7402003E277F /* SpectrumData */,
 				2E91F2F81DDB6137003E277F /* Helpers */,
-				2E91F2F41DDB5CB5003E277F /* ReturnTypes.swift */,
 				2E91F2F61DDB5CF7003E277F /* TcpManager.swift */,
 			);
 			name = Core;
@@ -200,9 +223,59 @@
 		2E91F2F81DDB6137003E277F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				2E91F2F91DDB6161003E277F /* CommandEnum.swift */,
+				2E91F2F91DDB6161003E277F /* Command.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		2E91F2FB1DDB7402003E277F /* SpectrumData */ = {
+			isa = PBXGroup;
+			children = (
+				2E91F30B1DDB8044003E277F /* Enums */,
+				2E91F3061DDB78AD003E277F /* Base */,
+				2E91F2FC1DDB7409003E277F /* Headers */,
+				2E91F3091DDB7BDF003E277F /* FullRangeInterpolatedSpectrum.swift */,
+				2E91F30E1DDB82C7003E277F /* Parameter.swift */,
+				2E91F3101DDB8408003E277F /* Init.swift */,
+				2E91F3121DDB842A003E277F /* InstrumentControl.swift */,
+				2E91F3141DDB8440003E277F /* Optimize.swift */,
+				2E91F3161DDB848E003E277F /* Version.swift */,
+			);
+			name = SpectrumData;
+			sourceTree = "<group>";
+		};
+		2E91F2FC1DDB7409003E277F /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				2E91F2FD1DDB7446003E277F /* SpectrumHeader.swift */,
+				2E91F2FF1DDB745D003E277F /* SwirHeader.swift */,
+				2E91F3011DDB7472003E277F /* VnirHeader.swift */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+		2E91F3031DDB77FC003E277F /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				2E91F3041DDB7827003E277F /* SpectrumParser.swift */,
+			);
+			name = Parser;
+			sourceTree = "<group>";
+		};
+		2E91F3061DDB78AD003E277F /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				2E91F3071DDB78D8003E277F /* SpectrumDataBase.swift */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		2E91F30B1DDB8044003E277F /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				2E91F30C1DDB8068003E277F /* SpectrumEnums.swift */,
+			);
+			name = Enums;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,30 +384,41 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E91F2EE1DDB5B9F003E277F /* SocketOptions+Deprecated.swift in Sources */,
+				2E91F3111DDB8408003E277F /* Init.swift in Sources */,
 				2E91F2EA1DDB5B9F003E277F /* InternetSocket.swift in Sources */,
 				2E91F2E21DDB5B9F003E277F /* TCPClient.swift in Sources */,
 				2E91F2EF1DDB5B9F003E277F /* SocketOptions.swift in Sources */,
 				2E91F2A81DDB5B76003E277F /* ViewController.swift in Sources */,
+				2E91F3081DDB78D8003E277F /* SpectrumDataBase.swift in Sources */,
 				2E91F2F71DDB5CF7003E277F /* TcpManager.swift in Sources */,
 				2E91F2EB1DDB5B9F003E277F /* Pipe.swift in Sources */,
+				2E91F2FE1DDB7446003E277F /* SpectrumHeader.swift in Sources */,
+				2E91F3171DDB848E003E277F /* Version.swift in Sources */,
+				2E91F30F1DDB82C7003E277F /* Parameter.swift in Sources */,
+				2E91F30D1DDB8068003E277F /* SpectrumEnums.swift in Sources */,
 				2E91F2E61DDB5B9F003E277F /* Bytes.swift in Sources */,
-				2E91F2FA1DDB6161003E277F /* CommandEnum.swift in Sources */,
-				2E91F2F51DDB5CB5003E277F /* ReturnTypes.swift in Sources */,
+				2E91F2FA1DDB6161003E277F /* Command.swift in Sources */,
 				2E91F2E81DDB5B9F003E277F /* Error.swift in Sources */,
+				2E91F3051DDB7827003E277F /* SpectrumParser.swift in Sources */,
 				2E91F2E31DDB5B9F003E277F /* UDPClient.swift in Sources */,
 				2E91F2F11DDB5B9F003E277F /* Types.swift in Sources */,
 				2E91F2E01DDB5B9F003E277F /* SynchronousTCPServer.swift in Sources */,
 				2E91F2E51DDB5B9F003E277F /* Address.swift in Sources */,
 				2E91F2E11DDB5B9F003E277F /* SynchronousUDPServer.swift in Sources */,
+				2E91F3151DDB8440003E277F /* Optimize.swift in Sources */,
 				2E91F2E41DDB5B9F003E277F /* Address+C.swift in Sources */,
 				2E91F2EC1DDB5B9F003E277F /* Select.swift in Sources */,
+				2E91F3021DDB7472003E277F /* VnirHeader.swift in Sources */,
 				2E91F2E91DDB5B9F003E277F /* FDSet.swift in Sources */,
+				2E91F3131DDB842A003E277F /* InstrumentControl.swift in Sources */,
 				2E91F2F01DDB5B9F003E277F /* TCPSocket.swift in Sources */,
 				2E91F2ED1DDB5B9F003E277F /* Socket.swift in Sources */,
 				2E91F2E71DDB5B9F003E277F /* Conversions.swift in Sources */,
+				2E91F3001DDB745D003E277F /* SwirHeader.swift in Sources */,
 				2E91F2F21DDB5B9F003E277F /* UDPSocket.swift in Sources */,
 				2E91F2A61DDB5B76003E277F /* AppDelegate.swift in Sources */,
 				2E91F2AE1DDB5B76003E277F /* Spectrometer.xcdatamodeld in Sources */,
+				2E91F30A1DDB7BDF003E277F /* FullRangeInterpolatedSpectrum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

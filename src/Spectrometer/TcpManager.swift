@@ -13,12 +13,14 @@ class TcpManager {
     let address:InternetAddress
     let initByteSize:Int = 60
     var client: TCPClient? = nil
+    var connectState: Bool = false
+    let parser: SpectrumParser = SpectrumParser()
     
     init(hostname: String, port: Int) {
         address = InternetAddress(hostname: hostname, port: Port(port))
     }
     
-    func connect() -> Bool {
+    func connect() -> Void {
         
         do {
             client = try TCPClient(address: address)
@@ -26,14 +28,14 @@ class TcpManager {
             while recData < initByteSize {
                 let recPart = try client?.receiveAll()
                 recData += (recPart?.count)!
-                print("Received: \n\(try recPart?.toString())")
+                print(try recPart?.toString() ?? "recieved no printable data")
             }
         } catch {
             print("Error \(error)")
-            return false
+            connectState = false
         }
         
-        return true
+        connectState = true
         
     }
     
@@ -52,6 +54,14 @@ class TcpManager {
             }
         } catch {
             print("Error \(error)")
+        }
+        
+        if command.command == .Version {
+            let version = parser.parseVersion(data: array)
+            
+            print(version.error)
+            print(version.header)
+            print(version.version)
         }
         
         var displayString = ""
