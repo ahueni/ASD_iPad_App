@@ -1,0 +1,572 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2E91F2A61DDB5B76003E277F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2A51DDB5B76003E277F /* AppDelegate.swift */; };
+		2E91F2A81DDB5B76003E277F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2A71DDB5B76003E277F /* ViewController.swift */; };
+		2E91F2AB1DDB5B76003E277F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E91F2A91DDB5B76003E277F /* Main.storyboard */; };
+		2E91F2AE1DDB5B76003E277F /* Spectrometer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2AC1DDB5B76003E277F /* Spectrometer.xcdatamodeld */; };
+		2E91F2B01DDB5B76003E277F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E91F2AF1DDB5B76003E277F /* Assets.xcassets */; };
+		2E91F2B31DDB5B76003E277F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E91F2B11DDB5B76003E277F /* LaunchScreen.storyboard */; };
+		2E91F2BE1DDB5B76003E277F /* SpectrometerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2BD1DDB5B76003E277F /* SpectrometerTests.swift */; };
+		2E91F2E01DDB5B9F003E277F /* SynchronousTCPServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2CB1DDB5B9F003E277F /* SynchronousTCPServer.swift */; };
+		2E91F2E11DDB5B9F003E277F /* SynchronousUDPServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2CC1DDB5B9F003E277F /* SynchronousUDPServer.swift */; };
+		2E91F2E21DDB5B9F003E277F /* TCPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2CD1DDB5B9F003E277F /* TCPClient.swift */; };
+		2E91F2E31DDB5B9F003E277F /* UDPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2CE1DDB5B9F003E277F /* UDPClient.swift */; };
+		2E91F2E41DDB5B9F003E277F /* Address+C.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2D01DDB5B9F003E277F /* Address+C.swift */; };
+		2E91F2E51DDB5B9F003E277F /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2D11DDB5B9F003E277F /* Address.swift */; };
+		2E91F2E61DDB5B9F003E277F /* Bytes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2D21DDB5B9F003E277F /* Bytes.swift */; };
+		2E91F2E71DDB5B9F003E277F /* Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2D31DDB5B9F003E277F /* Conversions.swift */; };
+		2E91F2E81DDB5B9F003E277F /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2D41DDB5B9F003E277F /* Error.swift */; };
+		2E91F2E91DDB5B9F003E277F /* FDSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2D51DDB5B9F003E277F /* FDSet.swift */; };
+		2E91F2EA1DDB5B9F003E277F /* InternetSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2D61DDB5B9F003E277F /* InternetSocket.swift */; };
+		2E91F2EB1DDB5B9F003E277F /* Pipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2D71DDB5B9F003E277F /* Pipe.swift */; };
+		2E91F2EC1DDB5B9F003E277F /* Select.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2D81DDB5B9F003E277F /* Select.swift */; };
+		2E91F2ED1DDB5B9F003E277F /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2D91DDB5B9F003E277F /* Socket.swift */; };
+		2E91F2EE1DDB5B9F003E277F /* SocketOptions+Deprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2DA1DDB5B9F003E277F /* SocketOptions+Deprecated.swift */; };
+		2E91F2EF1DDB5B9F003E277F /* SocketOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2DB1DDB5B9F003E277F /* SocketOptions.swift */; };
+		2E91F2F01DDB5B9F003E277F /* TCPSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2DC1DDB5B9F003E277F /* TCPSocket.swift */; };
+		2E91F2F11DDB5B9F003E277F /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2DD1DDB5B9F003E277F /* Types.swift */; };
+		2E91F2F21DDB5B9F003E277F /* UDPSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2DE1DDB5B9F003E277F /* UDPSocket.swift */; };
+		2E91F2F51DDB5CB5003E277F /* ReturnTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2F41DDB5CB5003E277F /* ReturnTypes.swift */; };
+		2E91F2F71DDB5CF7003E277F /* TcpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2F61DDB5CF7003E277F /* TcpManager.swift */; };
+		2E91F2FA1DDB6161003E277F /* CommandEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2F91DDB6161003E277F /* CommandEnum.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2E91F2BA1DDB5B76003E277F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2E91F29A1DDB5B76003E277F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2E91F2A11DDB5B76003E277F;
+			remoteInfo = Spectrometer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2E91F2A21DDB5B76003E277F /* Spectrometer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spectrometer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E91F2A51DDB5B76003E277F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2E91F2A71DDB5B76003E277F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2E91F2AA1DDB5B76003E277F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2E91F2AD1DDB5B76003E277F /* Spectrometer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spectrometer.xcdatamodel; sourceTree = "<group>"; };
+		2E91F2AF1DDB5B76003E277F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2E91F2B21DDB5B76003E277F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2E91F2B41DDB5B76003E277F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2E91F2B91DDB5B76003E277F /* SpectrometerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpectrometerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E91F2BD1DDB5B76003E277F /* SpectrometerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectrometerTests.swift; sourceTree = "<group>"; };
+		2E91F2BF1DDB5B76003E277F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2E91F2CB1DDB5B9F003E277F /* SynchronousTCPServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronousTCPServer.swift; sourceTree = "<group>"; };
+		2E91F2CC1DDB5B9F003E277F /* SynchronousUDPServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronousUDPServer.swift; sourceTree = "<group>"; };
+		2E91F2CD1DDB5B9F003E277F /* TCPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPClient.swift; sourceTree = "<group>"; };
+		2E91F2CE1DDB5B9F003E277F /* UDPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDPClient.swift; sourceTree = "<group>"; };
+		2E91F2D01DDB5B9F003E277F /* Address+C.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Address+C.swift"; sourceTree = "<group>"; };
+		2E91F2D11DDB5B9F003E277F /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		2E91F2D21DDB5B9F003E277F /* Bytes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bytes.swift; sourceTree = "<group>"; };
+		2E91F2D31DDB5B9F003E277F /* Conversions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conversions.swift; sourceTree = "<group>"; };
+		2E91F2D41DDB5B9F003E277F /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		2E91F2D51DDB5B9F003E277F /* FDSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FDSet.swift; sourceTree = "<group>"; };
+		2E91F2D61DDB5B9F003E277F /* InternetSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternetSocket.swift; sourceTree = "<group>"; };
+		2E91F2D71DDB5B9F003E277F /* Pipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pipe.swift; sourceTree = "<group>"; };
+		2E91F2D81DDB5B9F003E277F /* Select.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Select.swift; sourceTree = "<group>"; };
+		2E91F2D91DDB5B9F003E277F /* Socket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Socket.swift; sourceTree = "<group>"; };
+		2E91F2DA1DDB5B9F003E277F /* SocketOptions+Deprecated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SocketOptions+Deprecated.swift"; sourceTree = "<group>"; };
+		2E91F2DB1DDB5B9F003E277F /* SocketOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketOptions.swift; sourceTree = "<group>"; };
+		2E91F2DC1DDB5B9F003E277F /* TCPSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPSocket.swift; sourceTree = "<group>"; };
+		2E91F2DD1DDB5B9F003E277F /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
+		2E91F2DE1DDB5B9F003E277F /* UDPSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDPSocket.swift; sourceTree = "<group>"; };
+		2E91F2F41DDB5CB5003E277F /* ReturnTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReturnTypes.swift; sourceTree = "<group>"; };
+		2E91F2F61DDB5CF7003E277F /* TcpManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TcpManager.swift; sourceTree = "<group>"; };
+		2E91F2F91DDB6161003E277F /* CommandEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandEnum.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2E91F29F1DDB5B76003E277F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2E91F2B61DDB5B76003E277F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2E91F2991DDB5B76003E277F = {
+			isa = PBXGroup;
+			children = (
+				2E91F2F31DDB5C8B003E277F /* Core */,
+				2E91F2C81DDB5B7D003E277F /* Socks */,
+				2E91F2A41DDB5B76003E277F /* Spectrometer */,
+				2E91F2BC1DDB5B76003E277F /* SpectrometerTests */,
+				2E91F2A31DDB5B76003E277F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2E91F2A31DDB5B76003E277F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2E91F2A21DDB5B76003E277F /* Spectrometer.app */,
+				2E91F2B91DDB5B76003E277F /* SpectrometerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2E91F2A41DDB5B76003E277F /* Spectrometer */ = {
+			isa = PBXGroup;
+			children = (
+				2E91F2A51DDB5B76003E277F /* AppDelegate.swift */,
+				2E91F2A71DDB5B76003E277F /* ViewController.swift */,
+				2E91F2A91DDB5B76003E277F /* Main.storyboard */,
+				2E91F2AF1DDB5B76003E277F /* Assets.xcassets */,
+				2E91F2B11DDB5B76003E277F /* LaunchScreen.storyboard */,
+				2E91F2B41DDB5B76003E277F /* Info.plist */,
+				2E91F2AC1DDB5B76003E277F /* Spectrometer.xcdatamodeld */,
+			);
+			path = Spectrometer;
+			sourceTree = "<group>";
+		};
+		2E91F2BC1DDB5B76003E277F /* SpectrometerTests */ = {
+			isa = PBXGroup;
+			children = (
+				2E91F2BD1DDB5B76003E277F /* SpectrometerTests.swift */,
+				2E91F2BF1DDB5B76003E277F /* Info.plist */,
+			);
+			path = SpectrometerTests;
+			sourceTree = "<group>";
+		};
+		2E91F2C81DDB5B7D003E277F /* Socks */ = {
+			isa = PBXGroup;
+			children = (
+				2E91F2C91DDB5B9F003E277F /* Socks */,
+				2E91F2CF1DDB5B9F003E277F /* SocksCore */,
+			);
+			name = Socks;
+			sourceTree = "<group>";
+		};
+		2E91F2C91DDB5B9F003E277F /* Socks */ = {
+			isa = PBXGroup;
+			children = (
+				2E91F2CB1DDB5B9F003E277F /* SynchronousTCPServer.swift */,
+				2E91F2CC1DDB5B9F003E277F /* SynchronousUDPServer.swift */,
+				2E91F2CD1DDB5B9F003E277F /* TCPClient.swift */,
+				2E91F2CE1DDB5B9F003E277F /* UDPClient.swift */,
+			);
+			path = Socks;
+			sourceTree = "<group>";
+		};
+		2E91F2CF1DDB5B9F003E277F /* SocksCore */ = {
+			isa = PBXGroup;
+			children = (
+				2E91F2D01DDB5B9F003E277F /* Address+C.swift */,
+				2E91F2D11DDB5B9F003E277F /* Address.swift */,
+				2E91F2D21DDB5B9F003E277F /* Bytes.swift */,
+				2E91F2D31DDB5B9F003E277F /* Conversions.swift */,
+				2E91F2D41DDB5B9F003E277F /* Error.swift */,
+				2E91F2D51DDB5B9F003E277F /* FDSet.swift */,
+				2E91F2D61DDB5B9F003E277F /* InternetSocket.swift */,
+				2E91F2D71DDB5B9F003E277F /* Pipe.swift */,
+				2E91F2D81DDB5B9F003E277F /* Select.swift */,
+				2E91F2D91DDB5B9F003E277F /* Socket.swift */,
+				2E91F2DA1DDB5B9F003E277F /* SocketOptions+Deprecated.swift */,
+				2E91F2DB1DDB5B9F003E277F /* SocketOptions.swift */,
+				2E91F2DC1DDB5B9F003E277F /* TCPSocket.swift */,
+				2E91F2DD1DDB5B9F003E277F /* Types.swift */,
+				2E91F2DE1DDB5B9F003E277F /* UDPSocket.swift */,
+			);
+			path = SocksCore;
+			sourceTree = "<group>";
+		};
+		2E91F2F31DDB5C8B003E277F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				2E91F2F81DDB6137003E277F /* Helpers */,
+				2E91F2F41DDB5CB5003E277F /* ReturnTypes.swift */,
+				2E91F2F61DDB5CF7003E277F /* TcpManager.swift */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		2E91F2F81DDB6137003E277F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2E91F2F91DDB6161003E277F /* CommandEnum.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2E91F2A11DDB5B76003E277F /* Spectrometer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2E91F2C21DDB5B76003E277F /* Build configuration list for PBXNativeTarget "Spectrometer" */;
+			buildPhases = (
+				2E91F29E1DDB5B76003E277F /* Sources */,
+				2E91F29F1DDB5B76003E277F /* Frameworks */,
+				2E91F2A01DDB5B76003E277F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Spectrometer;
+			productName = Spectrometer;
+			productReference = 2E91F2A21DDB5B76003E277F /* Spectrometer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2E91F2B81DDB5B76003E277F /* SpectrometerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2E91F2C51DDB5B76003E277F /* Build configuration list for PBXNativeTarget "SpectrometerTests" */;
+			buildPhases = (
+				2E91F2B51DDB5B76003E277F /* Sources */,
+				2E91F2B61DDB5B76003E277F /* Frameworks */,
+				2E91F2B71DDB5B76003E277F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2E91F2BB1DDB5B76003E277F /* PBXTargetDependency */,
+			);
+			name = SpectrometerTests;
+			productName = SpectrometerTests;
+			productReference = 2E91F2B91DDB5B76003E277F /* SpectrometerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2E91F29A1DDB5B76003E277F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0810;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = "YARX GmbH";
+				TargetAttributes = {
+					2E91F2A11DDB5B76003E277F = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 5TV46KLX3W;
+						ProvisioningStyle = Automatic;
+					};
+					2E91F2B81DDB5B76003E277F = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 5TV46KLX3W;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 2E91F2A11DDB5B76003E277F;
+					};
+				};
+			};
+			buildConfigurationList = 2E91F29D1DDB5B76003E277F /* Build configuration list for PBXProject "Spectrometer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2E91F2991DDB5B76003E277F;
+			productRefGroup = 2E91F2A31DDB5B76003E277F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2E91F2A11DDB5B76003E277F /* Spectrometer */,
+				2E91F2B81DDB5B76003E277F /* SpectrometerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2E91F2A01DDB5B76003E277F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E91F2B31DDB5B76003E277F /* LaunchScreen.storyboard in Resources */,
+				2E91F2B01DDB5B76003E277F /* Assets.xcassets in Resources */,
+				2E91F2AB1DDB5B76003E277F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2E91F2B71DDB5B76003E277F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2E91F29E1DDB5B76003E277F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E91F2EE1DDB5B9F003E277F /* SocketOptions+Deprecated.swift in Sources */,
+				2E91F2EA1DDB5B9F003E277F /* InternetSocket.swift in Sources */,
+				2E91F2E21DDB5B9F003E277F /* TCPClient.swift in Sources */,
+				2E91F2EF1DDB5B9F003E277F /* SocketOptions.swift in Sources */,
+				2E91F2A81DDB5B76003E277F /* ViewController.swift in Sources */,
+				2E91F2F71DDB5CF7003E277F /* TcpManager.swift in Sources */,
+				2E91F2EB1DDB5B9F003E277F /* Pipe.swift in Sources */,
+				2E91F2E61DDB5B9F003E277F /* Bytes.swift in Sources */,
+				2E91F2FA1DDB6161003E277F /* CommandEnum.swift in Sources */,
+				2E91F2F51DDB5CB5003E277F /* ReturnTypes.swift in Sources */,
+				2E91F2E81DDB5B9F003E277F /* Error.swift in Sources */,
+				2E91F2E31DDB5B9F003E277F /* UDPClient.swift in Sources */,
+				2E91F2F11DDB5B9F003E277F /* Types.swift in Sources */,
+				2E91F2E01DDB5B9F003E277F /* SynchronousTCPServer.swift in Sources */,
+				2E91F2E51DDB5B9F003E277F /* Address.swift in Sources */,
+				2E91F2E11DDB5B9F003E277F /* SynchronousUDPServer.swift in Sources */,
+				2E91F2E41DDB5B9F003E277F /* Address+C.swift in Sources */,
+				2E91F2EC1DDB5B9F003E277F /* Select.swift in Sources */,
+				2E91F2E91DDB5B9F003E277F /* FDSet.swift in Sources */,
+				2E91F2F01DDB5B9F003E277F /* TCPSocket.swift in Sources */,
+				2E91F2ED1DDB5B9F003E277F /* Socket.swift in Sources */,
+				2E91F2E71DDB5B9F003E277F /* Conversions.swift in Sources */,
+				2E91F2F21DDB5B9F003E277F /* UDPSocket.swift in Sources */,
+				2E91F2A61DDB5B76003E277F /* AppDelegate.swift in Sources */,
+				2E91F2AE1DDB5B76003E277F /* Spectrometer.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2E91F2B51DDB5B76003E277F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E91F2BE1DDB5B76003E277F /* SpectrometerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2E91F2BB1DDB5B76003E277F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2E91F2A11DDB5B76003E277F /* Spectrometer */;
+			targetProxy = 2E91F2BA1DDB5B76003E277F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2E91F2A91DDB5B76003E277F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2E91F2AA1DDB5B76003E277F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2E91F2B11DDB5B76003E277F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2E91F2B21DDB5B76003E277F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2E91F2C01DDB5B76003E277F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		2E91F2C11DDB5B76003E277F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2E91F2C31DDB5B76003E277F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5TV46KLX3W;
+				INFOPLIST_FILE = Spectrometer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ch.yarx.Spectrometer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		2E91F2C41DDB5B76003E277F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5TV46KLX3W;
+				INFOPLIST_FILE = Spectrometer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ch.yarx.Spectrometer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		2E91F2C61DDB5B76003E277F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 5TV46KLX3W;
+				INFOPLIST_FILE = SpectrometerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ch.yarx.SpectrometerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Spectrometer.app/Spectrometer";
+			};
+			name = Debug;
+		};
+		2E91F2C71DDB5B76003E277F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 5TV46KLX3W;
+				INFOPLIST_FILE = SpectrometerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ch.yarx.SpectrometerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Spectrometer.app/Spectrometer";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2E91F29D1DDB5B76003E277F /* Build configuration list for PBXProject "Spectrometer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E91F2C01DDB5B76003E277F /* Debug */,
+				2E91F2C11DDB5B76003E277F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2E91F2C21DDB5B76003E277F /* Build configuration list for PBXNativeTarget "Spectrometer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E91F2C31DDB5B76003E277F /* Debug */,
+				2E91F2C41DDB5B76003E277F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2E91F2C51DDB5B76003E277F /* Build configuration list for PBXNativeTarget "SpectrometerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E91F2C61DDB5B76003E277F /* Debug */,
+				2E91F2C71DDB5B76003E277F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2E91F2AC1DDB5B76003E277F /* Spectrometer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2E91F2AD1DDB5B76003E277F /* Spectrometer.xcdatamodel */,
+			);
+			currentVersion = 2E91F2AD1DDB5B76003E277F /* Spectrometer.xcdatamodel */;
+			path = Spectrometer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 2E91F29A1DDB5B76003E277F /* Project object */;
+}
