@@ -37,6 +37,10 @@ class ViewController: UIViewController {
         let version:Version = appDelegate.tcpManager?.sendCommand(command: command) as! Version
         
         print("Header: "+version.header.rawValue.description)
+        print("Error: "+version.error.rawValue.description)
+        print("Version: "+version.version)
+        print("Version: "+version.versionNumber.description)
+        print("Type: "+version.type.rawValue.description)
         
         
     }

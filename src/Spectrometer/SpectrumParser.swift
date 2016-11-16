@@ -10,8 +10,8 @@ import Foundation
 
 class SpectrumParser {
     
-    var data: [UInt8] = []
-    var parseIndex: Int = 0
+    private var data: [UInt8] = []
+    private var parseIndex: Int = 0
     
     func parseVersion(data: [UInt8]) -> Version {
         
@@ -51,8 +51,17 @@ class SpectrumParser {
     
     private func getNextDouble() -> Double {
         
+        var byteArray: [UInt8] = []
+        
+        for i in 0...7 {
+            byteArray.append(self.data[parseIndex+i])
+        }
+        byteArray.reverse()
+        
+        let doubleValue:Double = Double(byteArray)!
+        
         parseIndex += 8
-        return 4.234
+        return doubleValue
     }
     
     private func getNextString(size: Int) -> String {
@@ -60,7 +69,7 @@ class SpectrumParser {
         var string = ""
         var count:Int = 0
         
-        while count < size {
+        while count <= size {
             let byteValue = self.data[parseIndex+count]
             let scalar = UnicodeScalar.init(byteValue)
             let char = Character.init(scalar)
@@ -72,4 +81,18 @@ class SpectrumParser {
         return string
     }
     
+}
+
+
+extension FloatingPoint {
+    
+    init?(_ bytes: [UInt8]) {
+        // print only at development memory size
+        print("Double: "+MemoryLayout<Double>.size.description)
+        print("Float: "+MemoryLayout<Float>.size.description)
+        guard bytes.count == MemoryLayout<Self>.size else { return nil }
+        self = bytes.withUnsafeBytes {
+            return $0.load(fromByteOffset: 0, as: Self.self)
+        }
+    }
 }

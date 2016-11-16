@@ -23,7 +23,7 @@ class TcpManager {
     func connect() -> Void {
         
         do {
-            client = try TCPClient(address: address, connectionTimeout: 0.5)
+            client = try TCPClient(address: address, connectionTimeout: 10)
             var recData = 0
             while recData < initByteSize {
                 let recPart = try client?.receiveAll()
@@ -57,6 +57,9 @@ class TcpManager {
         }
         
         if command.command == .Version {
+            return parser.parseVersion(data: array)
+        }
+        else if command.command == .Aquire {
             return parser.parseVersion(data: array)
         }
         
