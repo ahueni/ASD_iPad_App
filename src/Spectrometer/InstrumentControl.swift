@@ -11,6 +11,9 @@ import Foundation
 // IC
 struct InstrumentControl
 {
+    
+    static let SIZE: Int = 20
+    
     var header: Int
     var errbyte: Int
     var detector: Int

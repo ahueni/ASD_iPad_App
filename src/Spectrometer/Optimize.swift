@@ -10,6 +10,9 @@ import Foundation
 
 // OPT
 struct Optimize {
+    
+    static let SIZE: Int = 28
+    
     var header: Int
     var errbyte: Int
     var itime: Int

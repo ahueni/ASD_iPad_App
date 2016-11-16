@@ -25,14 +25,19 @@ class ViewController: UIViewController {
     @IBAction func sendCCommand(_ sender: Any) {
         
         let command:Command = Command(commandParam: CommandEnum.Aquire, params: "1,40")
-        appDelegate.tcpManager?.sendCommand(command: command)
+        let aquire:FullRangeInterpolatedSpectrum = appDelegate.tcpManager?.sendCommand(command: command) as! FullRangeInterpolatedSpectrum
+        
+        print("Header: "+aquire.spectrumHeader.header.rawValue.description)
         
     }
 
     @IBAction func sendVersionCommand(_ sender: Any) {
         
         let command:Command = Command(commandParam: CommandEnum.Version, params: "")
-        appDelegate.tcpManager?.sendCommand(command: command)
+        let version:Version = appDelegate.tcpManager?.sendCommand(command: command) as! Version
+        
+        print("Header: "+version.header.rawValue.description)
+        
         
     }
 }

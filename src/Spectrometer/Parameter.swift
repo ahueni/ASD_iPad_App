@@ -10,6 +10,9 @@ import Foundation
 
 // ABORT - INIT
 struct Parameter {
+    
+    static let SIZE: Int = 50
+    
     var header: Int
     var errbyte: Int
     var name: [String]

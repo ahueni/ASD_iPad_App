@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "SpectrumParser.getNextString(size : Int) -&gt; String:SpectrumParser.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.parseIndex">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

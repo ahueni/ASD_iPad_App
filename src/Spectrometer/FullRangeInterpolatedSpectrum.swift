@@ -10,6 +10,8 @@ import Foundation
 
 class FullRangeInterpolatedSpectrum : BaseSpectrum {
     
+    static let SIZE: Int = 11904
+    
     var spectrumHeader: SpectrumHeader
     var spectrumBuffer: [Float]
     

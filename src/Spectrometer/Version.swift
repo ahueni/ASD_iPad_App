@@ -11,14 +11,16 @@ import Foundation
 // V
 class Version: SimpleBaseSpectrum {
     
+    static let SIZE: Int = 50
+    
     let version: String
     let versionNumber: Double
-    let type: Int
+    let type: InstrumentTypes
     
     init(header: Int, error: Int, version: String, versionNumber: Double, type:Int) {
         self.version = version
         self.versionNumber = versionNumber
-        self.type = type
+        self.type = InstrumentTypes(rawValue: type)!
         super.init(header: header, error: error)
     }
     

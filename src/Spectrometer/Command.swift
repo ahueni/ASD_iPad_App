@@ -29,21 +29,21 @@ class Command {
         
         switch commandParam {
         case .Aquire:
-            size = 11904
+            size = FullRangeInterpolatedSpectrum.SIZE
         case .Abort:
-            size = 50
+            size = Parameter.SIZE
         case .InstrumentControl:
-            size = 20
+            size = InstrumentControl.SIZE
         case .Initialize:
-            size = 50
+            size = Parameter.SIZE
         case .Optimize:
-            size = 28
+            size = Optimize.SIZE
         case .Restore:
-            size = 50
+            size = Init.SIZE
         case .Save:
-            size = 50
+            size = Init.SIZE
         case .Version:
-            size = 50
+            size = Version.SIZE
         }
         
         command = commandParam

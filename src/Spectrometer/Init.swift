@@ -9,10 +9,21 @@
 import Foundation
 
 // ERASE - RESTORE - SAVE
-struct Init {
-    var header: Int
-    var errbyte: Int
-    var name: [[String]]
-    var values: [Double]
-    var count: Int
+class Init: SimpleBaseSpectrum {
+    
+    static let SIZE: Int = 50
+    
+    let name: [[String]]
+    let values: [Double]
+    let count: Int
+    
+    init(header: Int, error: Int, name: [[String]], values:[Double], count: Int) {
+        
+        self.name = name
+        self.values = values
+        self.count = count
+        
+        super.init(header: header, error: error)
+    }
+    
 }

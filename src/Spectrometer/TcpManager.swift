@@ -23,7 +23,7 @@ class TcpManager {
     func connect() -> Void {
         
         do {
-            client = try TCPClient(address: address)
+            client = try TCPClient(address: address, connectionTimeout: 0.5)
             var recData = 0
             while recData < initByteSize {
                 let recPart = try client?.receiveAll()
@@ -39,7 +39,7 @@ class TcpManager {
         
     }
     
-    func sendCommand(command: Command) -> Void {
+    func sendCommand(command: Command) -> BaseSpectrum {
         
         var array:[UInt8] = [UInt8]()
         
@@ -57,20 +57,10 @@ class TcpManager {
         }
         
         if command.command == .Version {
-            let version = parser.parseVersion(data: array)
-            
-            print(version.error)
-            print(version.header)
-            print(version.version)
+            return parser.parseVersion(data: array)
         }
         
-        var displayString = ""
-        for value in array {
-            displayString += value.description
-            displayString += " "
-        }
-        
-        print(displayString)
+        fatalError("no parser implemented for this command")
         
     }
     
