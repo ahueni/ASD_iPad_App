@@ -8,30 +8,24 @@
 
 import Foundation
 
-class SpectrumParser {
+protocol ISpectrumParser {
     
-    private var data: [UInt8] = []
-    private var parseIndex: Int = 0
+    associatedtype T
+    func parse() -> T
     
-    func parseVersion(data: [UInt8]) -> Version {
-        
-        if data.count < Version.SIZE {
-            fatalError("return data ist too small, parsing not possible")
-        }
-        
+}
+
+class BaseSpectrumParser {
+    
+    internal let data: [UInt8]
+    internal var parseIndex: Int
+    
+    init(data: [UInt8]) {
         self.data = data
-        self.parseIndex = 0
-        
-        let header: Int = getNextInt()
-        let error: Int = getNextInt()
-        let versionString: String = getNextString(size: 30)
-        let versionNumber: Double = getNextDouble()
-        let type: Int = getNextInt()
-        
-        return Version(header: header, error: error, version: versionString, versionNumber: versionNumber, type: type)
+        parseIndex = 0
     }
     
-    private func getNextInt() -> Int {
+    internal func getNextInt() -> Int {
         
         let byte1: UInt8 = self.data[parseIndex]
         let byte2: UInt8 = self.data[parseIndex+1]
@@ -49,14 +43,24 @@ class SpectrumParser {
         return Int(value)
     }
     
-    private func getNextDouble() -> Double {
+    internal func getNextFloat() -> Float {
+        var byteArray: [UInt8] = []
+        for i in 0...3 {
+            byteArray.insert(self.data[parseIndex+i], at: 0)
+        }
+        let floatValue:Float = Float(byteArray)!
+        
+        parseIndex += 4
+        return floatValue
+        
+    }
+    
+    internal func getNextDouble() -> Double {
         
         var byteArray: [UInt8] = []
-        
         for i in 0...7 {
-            byteArray.append(self.data[parseIndex+i])
+            byteArray.insert(self.data[parseIndex+i], at: 0)
         }
-        byteArray.reverse()
         
         let doubleValue:Double = Double(byteArray)!
         
@@ -64,7 +68,7 @@ class SpectrumParser {
         return doubleValue
     }
     
-    private func getNextString(size: Int) -> String {
+    internal func getNextString(size: Int) -> String {
         
         var string = ""
         var count:Int = 0
@@ -80,19 +84,6 @@ class SpectrumParser {
         self.parseIndex += size
         return string
     }
-    
-}
 
-
-extension FloatingPoint {
     
-    init?(_ bytes: [UInt8]) {
-        // print only at development memory size
-        print("Double: "+MemoryLayout<Double>.size.description)
-        print("Float: "+MemoryLayout<Float>.size.description)
-        guard bytes.count == MemoryLayout<Self>.size else { return nil }
-        self = bytes.withUnsafeBytes {
-            return $0.load(fromByteOffset: 0, as: Self.self)
-        }
-    }
 }

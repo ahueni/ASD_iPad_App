@@ -9,10 +9,11 @@
 import Foundation
 
 struct SwirHeader {
+    
     var tecStatus: TecStatus
     var tecCurrent: Int
     var maxChannel: Int
-    var minchannel: Int
+    var minChannel: Int
     var saturation: Saturation
     var AScans: Int
     var BScans: Int
@@ -22,5 +23,7 @@ struct SwirHeader {
     var scansize1: Int
     var scansize2: Int
     var darkSubtracted: DarkSubtracted
-    var reserved: [Int]
+    
+    static let reserve: Int = 3
+    
 }

@@ -38,7 +38,7 @@
 		2E91F2FE1DDB7446003E277F /* SpectrumHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2FD1DDB7446003E277F /* SpectrumHeader.swift */; };
 		2E91F3001DDB745D003E277F /* SwirHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2FF1DDB745D003E277F /* SwirHeader.swift */; };
 		2E91F3021DDB7472003E277F /* VnirHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F3011DDB7472003E277F /* VnirHeader.swift */; };
-		2E91F3051DDB7827003E277F /* SpectrumParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F3041DDB7827003E277F /* SpectrumParser.swift */; };
+		2E91F3051DDB7827003E277F /* BaseSpectrumParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F3041DDB7827003E277F /* BaseSpectrumParser.swift */; };
 		2E91F3081DDB78D8003E277F /* SpectrumDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F3071DDB78D8003E277F /* SpectrumDataBase.swift */; };
 		2E91F30A1DDB7BDF003E277F /* FullRangeInterpolatedSpectrum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F3091DDB7BDF003E277F /* FullRangeInterpolatedSpectrum.swift */; };
 		2E91F30D1DDB8068003E277F /* SpectrumEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F30C1DDB8068003E277F /* SpectrumEnums.swift */; };
@@ -47,6 +47,9 @@
 		2E91F3131DDB842A003E277F /* InstrumentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F3121DDB842A003E277F /* InstrumentControl.swift */; };
 		2E91F3151DDB8440003E277F /* Optimize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F3141DDB8440003E277F /* Optimize.swift */; };
 		2E91F3171DDB848E003E277F /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F3161DDB848E003E277F /* Version.swift */; };
+		2EB822E71DE06C0300DF732C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB822E61DE06C0300DF732C /* Extensions.swift */; };
+		2EB822E91DE06F0900DF732C /* VersionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB822E81DE06F0900DF732C /* VersionParser.swift */; };
+		2EB822EC1DE0811D00DF732C /* FullRangeInterpolatedSpectrumParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB822EB1DE0811D00DF732C /* FullRangeInterpolatedSpectrumParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,7 +98,7 @@
 		2E91F2FD1DDB7446003E277F /* SpectrumHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumHeader.swift; sourceTree = "<group>"; };
 		2E91F2FF1DDB745D003E277F /* SwirHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwirHeader.swift; sourceTree = "<group>"; };
 		2E91F3011DDB7472003E277F /* VnirHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VnirHeader.swift; sourceTree = "<group>"; };
-		2E91F3041DDB7827003E277F /* SpectrumParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumParser.swift; sourceTree = "<group>"; };
+		2E91F3041DDB7827003E277F /* BaseSpectrumParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSpectrumParser.swift; sourceTree = "<group>"; };
 		2E91F3071DDB78D8003E277F /* SpectrumDataBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumDataBase.swift; sourceTree = "<group>"; };
 		2E91F3091DDB7BDF003E277F /* FullRangeInterpolatedSpectrum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullRangeInterpolatedSpectrum.swift; sourceTree = "<group>"; };
 		2E91F30C1DDB8068003E277F /* SpectrumEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumEnums.swift; sourceTree = "<group>"; };
@@ -104,6 +107,9 @@
 		2E91F3121DDB842A003E277F /* InstrumentControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentControl.swift; sourceTree = "<group>"; };
 		2E91F3141DDB8440003E277F /* Optimize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Optimize.swift; sourceTree = "<group>"; };
 		2E91F3161DDB848E003E277F /* Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
+		2EB822E61DE06C0300DF732C /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		2EB822E81DE06F0900DF732C /* VersionParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionParser.swift; sourceTree = "<group>"; };
+		2EB822EB1DE0811D00DF732C /* FullRangeInterpolatedSpectrumParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullRangeInterpolatedSpectrumParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				2E91F2F91DDB6161003E277F /* Command.swift */,
+				2EB822E61DE06C0300DF732C /* Extensions.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -257,7 +264,9 @@
 		2E91F3031DDB77FC003E277F /* Parser */ = {
 			isa = PBXGroup;
 			children = (
-				2E91F3041DDB7827003E277F /* SpectrumParser.swift */,
+				2EB822EA1DE080A400DF732C /* Base */,
+				2EB822E81DE06F0900DF732C /* VersionParser.swift */,
+				2EB822EB1DE0811D00DF732C /* FullRangeInterpolatedSpectrumParser.swift */,
 			);
 			name = Parser;
 			sourceTree = "<group>";
@@ -276,6 +285,14 @@
 				2E91F30C1DDB8068003E277F /* SpectrumEnums.swift */,
 			);
 			name = Enums;
+			sourceTree = "<group>";
+		};
+		2EB822EA1DE080A400DF732C /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				2E91F3041DDB7827003E277F /* BaseSpectrumParser.swift */,
+			);
+			name = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -394,15 +411,18 @@
 				2E91F2EB1DDB5B9F003E277F /* Pipe.swift in Sources */,
 				2E91F2FE1DDB7446003E277F /* SpectrumHeader.swift in Sources */,
 				2E91F3171DDB848E003E277F /* Version.swift in Sources */,
+				2EB822EC1DE0811D00DF732C /* FullRangeInterpolatedSpectrumParser.swift in Sources */,
 				2E91F30F1DDB82C7003E277F /* Parameter.swift in Sources */,
 				2E91F30D1DDB8068003E277F /* SpectrumEnums.swift in Sources */,
 				2E91F2E61DDB5B9F003E277F /* Bytes.swift in Sources */,
+				2EB822E71DE06C0300DF732C /* Extensions.swift in Sources */,
 				2E91F2FA1DDB6161003E277F /* Command.swift in Sources */,
 				2E91F2E81DDB5B9F003E277F /* Error.swift in Sources */,
-				2E91F3051DDB7827003E277F /* SpectrumParser.swift in Sources */,
+				2E91F3051DDB7827003E277F /* BaseSpectrumParser.swift in Sources */,
 				2E91F2E31DDB5B9F003E277F /* UDPClient.swift in Sources */,
 				2E91F2F11DDB5B9F003E277F /* Types.swift in Sources */,
 				2E91F2E01DDB5B9F003E277F /* SynchronousTCPServer.swift in Sources */,
+				2EB822E91DE06F0900DF732C /* VersionParser.swift in Sources */,
 				2E91F2E51DDB5B9F003E277F /* Address.swift in Sources */,
 				2E91F2E11DDB5B9F003E277F /* SynchronousUDPServer.swift in Sources */,
 				2E91F3151DDB8440003E277F /* Optimize.swift in Sources */,
@@ -628,6 +648,7 @@
 				2E91F2C41DDB5B76003E277F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2E91F2C51DDB5B76003E277F /* Build configuration list for PBXNativeTarget "SpectrometerTests" */ = {
 			isa = XCConfigurationList;
@@ -636,6 +657,7 @@
 				2E91F2C71DDB5B76003E277F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -17,10 +17,10 @@ class Version: SimpleBaseSpectrum {
     let versionNumber: Double
     let type: InstrumentTypes
     
-    init(header: Int, error: Int, version: String, versionNumber: Double, type:Int) {
+    init(header: HeaderValues, error: ErrorCodes,version: String, versionNumber: Double, type: InstrumentTypes) {
         self.version = version
         self.versionNumber = versionNumber
-        self.type = InstrumentTypes(rawValue: type)!
+        self.type = type
         super.init(header: header, error: error)
     }
     

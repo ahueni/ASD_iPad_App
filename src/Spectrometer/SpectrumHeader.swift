@@ -9,11 +9,12 @@
 import Foundation
 
 struct SpectrumHeader {
+    
     var header: HeaderValues
     var error: ErrorCodes
     var sampleCount: Int
     var trigger: Int
-    var voltage: Int
+    var voltage: Float
     var current: Int
     var temperature: Int
     var motorCurrent: Int
@@ -21,8 +22,10 @@ struct SpectrumHeader {
     var instrumentMinutes: Int
     var instrumentType: Int
     var AB: Int
-    var reserved: [Int]
+    
+    static let reserve: Int = 4
+    
     var vHeader: VnirHeader
     var s1Header: SwirHeader
-    var s2Header: SwirHeader    
+    var s2Header: SwirHeader
 }

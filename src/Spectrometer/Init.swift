@@ -23,7 +23,7 @@ class Init: SimpleBaseSpectrum {
         self.values = values
         self.count = count
         
-        super.init(header: header, error: error)
+        super.init(header: HeaderValues(rawValue: header)!, error: ErrorCodes(rawValue: error)!)
     }
     
 }

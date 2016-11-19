@@ -18,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         tcpManager = TcpManager(hostname: "10.1.1.77", port: 8080)
-        tcpManager?.connect()
+        let status: Bool = (tcpManager?.connect())!
+        print(status)
         
         // Override point for customization after application launch.
         return true

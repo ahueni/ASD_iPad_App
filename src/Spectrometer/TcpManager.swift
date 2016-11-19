@@ -14,13 +14,12 @@ class TcpManager {
     let initByteSize:Int = 60
     var client: TCPClient? = nil
     var connectState: Bool = false
-    let parser: SpectrumParser = SpectrumParser()
     
     init(hostname: String, port: Int) {
         address = InternetAddress(hostname: hostname, port: Port(port))
     }
     
-    func connect() -> Void {
+    func connect() -> Bool {
         
         do {
             client = try TCPClient(address: address, connectionTimeout: 10)
@@ -33,13 +32,15 @@ class TcpManager {
         } catch {
             print("Error \(error)")
             connectState = false
+            return false
         }
         
         connectState = true
+        return true
         
     }
     
-    func sendCommand(command: Command) -> BaseSpectrum {
+    func sendCommand(command: Command) -> [UInt8] {
         
         var array:[UInt8] = [UInt8]()
         
@@ -56,14 +57,7 @@ class TcpManager {
             print("Error \(error)")
         }
         
-        if command.command == .Version {
-            return parser.parseVersion(data: array)
-        }
-        else if command.command == .Aquire {
-            return parser.parseVersion(data: array)
-        }
-        
-        fatalError("no parser implemented for this command")
+        return array
         
     }
     

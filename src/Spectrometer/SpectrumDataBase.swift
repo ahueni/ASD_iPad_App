@@ -17,9 +17,9 @@ class SimpleBaseSpectrum: BaseSpectrum {
     let header: HeaderValues
     let error: ErrorCodes
     
-    init(header: Int, error: Int) {
-        self.header = HeaderValues(rawValue: header)!
-        self.error = ErrorCodes(rawValue: error)!
+    init(header: HeaderValues, error: ErrorCodes) {
+        self.header = header
+        self.error = error
     }
     
 }

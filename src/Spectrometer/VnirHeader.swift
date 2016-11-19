@@ -9,6 +9,7 @@
 import Foundation
 
 struct VnirHeader {
+    
     var integrationTime: Int
     var scans: Int
     var maxChannel: Int
@@ -17,5 +18,7 @@ struct VnirHeader {
     var shutter: ShutterStatus
     var drift: Int
     var darkSubtracted: DarkSubtracted
-    var reserved: [Int]
+    
+    static let reserve: Int = 8
+    
 }
