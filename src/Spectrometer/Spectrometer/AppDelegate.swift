@@ -17,9 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        tcpManager = TcpManager(hostname: "10.1.1.77", port: 8080)
-        let status: Bool = (tcpManager?.connect())!
-        print(status)
+        let appearance = UITabBarItem.appearance()
+        let attributes = [NSFontAttributeName:UIFont(name: "Open Sans", size: 14)!]
+        
+        appearance.setTitleTextAttributes(attributes, for: .normal)
+        appearance.titlePositionAdjustment = UIOffsetMake(0.0, -6.0)
+        
         
         // Override point for customization after application launch.
         return true

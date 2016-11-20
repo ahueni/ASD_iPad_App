@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import FileBrowser
 
 class AddEditConnectionViewController: UIViewController {
     
@@ -19,7 +20,15 @@ class AddEditConnectionViewController: UIViewController {
     
     @IBAction func openFileBrowser(_ sender: Any) {
         
+        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        print(documentsUrl)
         
+        let fileBrowser = FileBrowser()
+        present(fileBrowser, animated: true, completion: nil)
+        
+        fileBrowser.didSelectFile = { (file: FBFile) -> Void in
+            print(file.displayName)
+        }
         
     }
     

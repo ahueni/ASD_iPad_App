@@ -11,7 +11,7 @@ import Foundation
 // ERASE - RESTORE - SAVE
 class Init: SimpleBaseSpectrum {
     
-    static let SIZE: Int = 50
+    static let SIZE: Int = 7616
     
     let name: [[String]]
     let values: [Double]
