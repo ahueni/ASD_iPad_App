@@ -24,22 +24,6 @@ class AddEditConnectionViewController: UIViewController {
         let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         print(documentsUrl)
         
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        // set content size of scrollContainer to enable scrolling
-        //scrollView.contentSize = scrollContainer.frame.size
-        print("init scroll view with sizes")
-        
-        print(scrollContainer.frame.size.debugDescription)
-        print(scrollView.contentSize.debugDescription)
-        
-        if (scrollContainer.frame.size.height > scrollView.contentSize.height) {
-            print("TRUE")
-        }
-        
         
     }
     

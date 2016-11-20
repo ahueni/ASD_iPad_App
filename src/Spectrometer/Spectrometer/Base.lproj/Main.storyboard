@@ -42,6 +42,9 @@
                                         <rect key="frame" x="20" y="15" width="66" height="20"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                                         <state key="normal" title="Abbrechen"/>
+                                        <connections>
+                                            <action selector="cancelPressed:" destination="A3h-GE-KAx" eventType="touchUpInside" id="QlB-7o-awu"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spektrometer hinzufügen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wk6-Wz-1eH">
                                         <rect key="frame" x="100" y="10" width="568" height="30"/>
@@ -69,7 +72,7 @@
                                 <rect key="frame" x="0.0" y="70" width="768" height="954"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ob1-U2-zav" userLabel="Container">
-                                        <rect key="frame" x="0.0" y="0.0" width="768" height="954"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="768" height="400"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axE-FU-TVk">
                                                 <rect key="frame" x="20" y="10" width="728" height="49.5"/>
@@ -114,6 +117,9 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                                 <state key="normal" title="Wähle LMP INI-File"/>
+                                                <connections>
+                                                    <action selector="selectLMPFile:" destination="A3h-GE-KAx" eventType="touchUpInside" id="9jY-TX-TXJ"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="03n-eu-a7a">
                                                 <rect key="frame" x="0.0" y="261" width="768" height="40"/>
@@ -123,6 +129,9 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                                 <state key="normal" title="Wähle REF INI-File"/>
+                                                <connections>
+                                                    <action selector="selectREFFile:" destination="A3h-GE-KAx" eventType="touchUpInside" id="GKT-kH-jtn"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNb-54-Zej">
                                                 <rect key="frame" x="0.0" y="311" width="768" height="40"/>
@@ -132,6 +141,9 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                                 <state key="normal" title="Wähle ILL INI-File"/>
+                                                <connections>
+                                                    <action selector="selectILLFile:" destination="A3h-GE-KAx" eventType="touchUpInside" id="gL8-uU-yce"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Benötigen Sie weitere Informationen wie Sie die initialisierungs Dateien vorgängig auf Ihr iPad kopieren können?" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5QO-2b-Q40">
                                                 <rect key="frame" x="20" y="366" width="728" height="14"/>
@@ -165,17 +177,16 @@
                                             <constraint firstItem="Iis-RT-SBS" firstAttribute="leading" secondItem="ob1-U2-zav" secondAttribute="leading" id="eiZ-9u-Gxu"/>
                                             <constraint firstItem="ZcT-7T-Vra" firstAttribute="leading" secondItem="ob1-U2-zav" secondAttribute="leading" id="h9c-bE-Gmf"/>
                                             <constraint firstItem="axE-FU-TVk" firstAttribute="leading" secondItem="ob1-U2-zav" secondAttribute="leading" constant="20" id="lc1-yB-z5x"/>
+                                            <constraint firstAttribute="height" constant="400" id="nuH-qI-eHe"/>
                                             <constraint firstItem="haN-Ml-83i" firstAttribute="leading" secondItem="ob1-U2-zav" secondAttribute="leading" constant="20" id="skC-Db-Ces"/>
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="ob1-U2-zav" firstAttribute="centerY" secondItem="6iC-y3-TaJ" secondAttribute="centerY" id="AFI-Jp-12V"/>
                                     <constraint firstAttribute="trailing" secondItem="ob1-U2-zav" secondAttribute="trailing" id="TpQ-tX-2lb"/>
                                     <constraint firstItem="ob1-U2-zav" firstAttribute="leading" secondItem="6iC-y3-TaJ" secondAttribute="leading" id="cI2-uJ-5kf"/>
                                     <constraint firstAttribute="bottom" secondItem="ob1-U2-zav" secondAttribute="bottom" id="f8M-F5-Kvv"/>
-                                    <constraint firstItem="ob1-U2-zav" firstAttribute="centerX" secondItem="6iC-y3-TaJ" secondAttribute="centerX" id="taO-l3-f9G"/>
                                     <constraint firstItem="ob1-U2-zav" firstAttribute="top" secondItem="6iC-y3-TaJ" secondAttribute="top" id="vnU-Dc-A2O"/>
                                 </constraints>
                             </scrollView>
@@ -186,6 +197,7 @@
                             <constraint firstItem="LzZ-IQ-cpN" firstAttribute="top" secondItem="6iC-y3-TaJ" secondAttribute="bottom" id="ceB-Rr-ez3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="00t-fB-ARv" secondAttribute="trailing" constant="-20" id="dlT-PK-Vhh"/>
                             <constraint firstAttribute="leadingMargin" secondItem="00t-fB-ARv" secondAttribute="leading" constant="20" id="hdG-y8-XDq"/>
+                            <constraint firstItem="ob1-U2-zav" firstAttribute="width" secondItem="xCq-cj-YBm" secondAttribute="width" id="lSB-jJ-wEL"/>
                             <constraint firstItem="6iC-y3-TaJ" firstAttribute="top" secondItem="00t-fB-ARv" secondAttribute="bottom" id="pFb-ff-naA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6iC-y3-TaJ" secondAttribute="trailing" constant="-20" id="qdL-xf-pbo"/>
                             <constraint firstItem="00t-fB-ARv" firstAttribute="top" secondItem="g3T-4g-4kn" secondAttribute="bottom" id="yfw-9R-YMg"/>
@@ -222,7 +234,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZuH-AQ-NxF">
-                                <rect key="frame" x="20" y="135" width="728" height="65.5"/>
+                                <rect key="frame" x="20" y="135" width="728" height="56"/>
                                 <string key="text">Um eine Verbindung mit dem Spektrometer herzustellen müssen die Verbindungseinstellungen zum Gerät zuerst im App erfasst werden. Sie haben die Möglichkeit hier das App mit einem Spektrometer zu verbinden oder weitere Verbindungen einzurichten.</string>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                 <nil key="textColor"/>
@@ -240,7 +252,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XgJ-hU-ctM">
-                                <rect key="frame" x="295" y="863" width="179" height="33"/>
+                                <rect key="frame" x="300" y="866" width="169" height="30"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                 <state key="normal" title="Spektrometer hinzufügen"/>
                                 <connections>
@@ -248,7 +260,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eqG-6H-HNG">
-                                <rect key="frame" x="20" y="219.5" width="728" height="612.5"/>
+                                <rect key="frame" x="20" y="210" width="728" height="625"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <sections/>
                             </tableView>
