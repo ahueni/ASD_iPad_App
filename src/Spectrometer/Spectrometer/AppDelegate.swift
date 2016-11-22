@@ -23,7 +23,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appearance.setTitleTextAttributes(attributes, for: .normal)
         appearance.titlePositionAdjustment = UIOffsetMake(0.0, -6.0)
         
+        let test = launchOptions?[UIApplicationLaunchOptionsKey.url] as? NSURL
         
+        if (test != nil) {
+            
+            let alert = UIAlertController(title: "Datei", message: test?.absoluteString, preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+            
+        }
+        
+        print("did finish launching with options")
         // Override point for customization after application launch.
         return true
     }
@@ -53,7 +63,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // MARK: - Core Data stack
-
     lazy var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
@@ -81,8 +90,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return container
     }()
 
+    
     // MARK: - Core Data Saving support
-
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {

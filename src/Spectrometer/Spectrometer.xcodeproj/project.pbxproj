@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E708A1D1DE22B04008EC78A /* SpectrometerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E708A1C1DE22B04008EC78A /* SpectrometerConfig.swift */; };
 		2E91F2A61DDB5B76003E277F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2A51DDB5B76003E277F /* AppDelegate.swift */; };
 		2E91F2A81DDB5B76003E277F /* ConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2A71DDB5B76003E277F /* ConnectionViewController.swift */; };
 		2E91F2AB1DDB5B76003E277F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E91F2A91DDB5B76003E277F /* Main.storyboard */; };
@@ -145,6 +146,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2E708A1C1DE22B04008EC78A /* SpectrometerConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrometerConfig.swift; sourceTree = "<group>"; };
 		2E91F2A21DDB5B76003E277F /* Spectrometer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spectrometer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E91F2A51DDB5B76003E277F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E91F2A71DDB5B76003E277F /* ConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionViewController.swift; sourceTree = "<group>"; };
@@ -230,6 +232,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E708A181DE22AF0008EC78A /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				2E708A1C1DE22B04008EC78A /* SpectrometerConfig.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
 		2E91F2991DDB5B76003E277F = {
 			isa = PBXGroup;
 			children = (
@@ -256,6 +266,7 @@
 		2E91F2A41DDB5B76003E277F /* Spectrometer */ = {
 			isa = PBXGroup;
 			children = (
+				2E708A181DE22AF0008EC78A /* Data */,
 				2EB823261DE0D3ED00DF732C /* ViewHelpers */,
 				2EB823231DE0CC0600DF732C /* Aquire */,
 				2EB823071DE0ACD400DF732C /* Connection */,
@@ -670,6 +681,7 @@
 			files = (
 				2E91F2EE1DDB5B9F003E277F /* SocketOptions+Deprecated.swift in Sources */,
 				2E91F3111DDB8408003E277F /* Init.swift in Sources */,
+				2E708A1D1DE22B04008EC78A /* SpectrometerConfig.swift in Sources */,
 				2E91F2EA1DDB5B9F003E277F /* InternetSocket.swift in Sources */,
 				2E91F2E21DDB5B9F003E277F /* TCPClient.swift in Sources */,
 				2E91F2EF1DDB5B9F003E277F /* SocketOptions.swift in Sources */,

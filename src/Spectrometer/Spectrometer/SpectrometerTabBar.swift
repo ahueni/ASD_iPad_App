@@ -11,6 +11,7 @@ import UIKit
 
 extension UITabBar {
     
+    
     override open func sizeThatFits(_ size: CGSize) -> CGSize {
         
         super.sizeThatFits(size)
@@ -21,13 +22,6 @@ extension UITabBar {
     }
     
 }
-
-extension UITabBarItem {
-    
-    
-    
-}
-
 
 class MyUITetField: UITextField {
     
