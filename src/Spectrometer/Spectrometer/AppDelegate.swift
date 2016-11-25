@@ -18,27 +18,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         let appearance = UITabBarItem.appearance()
-        let attributes = [NSFontAttributeName:UIFont(name: "Open Sans", size: 14)!]
+        let attributes = [NSFontAttributeName:UIFont(name: "OpenSans-Bold", size: 15)!]
+        let attributesTabBarButton = [NSFontAttributeName:UIFont(name: "OpenSans", size: 15)!]
         
         appearance.setTitleTextAttributes(attributes, for: .normal)
         appearance.titlePositionAdjustment = UIOffsetMake(0.0, -6.0)
         
-        let test = launchOptions?[UIApplicationLaunchOptionsKey.url] as? NSURL
+        UISearchBar.appearance().placeholder = "Suchen"
         
-        if (test != nil) {
-            
-            let alert = UIAlertController(title: "Datei", message: test?.absoluteString, preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-            self.window?.rootViewController?.present(alert, animated: true, completion: nil)
-            
+        let asdfasd = UILabel.appearance(whenContainedInInstancesOf: [UISearchBar.self])
+        asdfasd.font = UIFont(name: "Open Sans", size: 13)
+        
+        let cancelButtonText = UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self])
+        cancelButtonText.title = "Schliessen"
+        
+        UIBarButtonItem.appearance().setTitleTextAttributes(attributes, for: UIControlState.normal)
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).setTitleTextAttributes(attributesTabBarButton, for: .normal)
+        let blubb = UINavigationBar.appearance()
+        blubb.titleTextAttributes = attributes
+        
+        // Override point for customization after application launch.
+        return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        var rootViewController = self.window?.rootViewController
+        
+        while let next = rootViewController?.presentedViewController {
+            rootViewController = next
         }
         
-        print("did finish launching with options")
-        // Override point for customization after application launch.
+        let alert = UIAlertController(title: "Datei importiert", message: "Die Datei wurde erfolgreich Importiert. Sie können die INI-Datei nun einem Spektrometer zuweisen.", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        
+        rootViewController?.present(alert, animated: true, completion: nil)
+        
         return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
+        print("Now in Background")
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
     }
@@ -53,6 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
+        print("Wieder aktiv")
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 

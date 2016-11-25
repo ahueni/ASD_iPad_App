@@ -18,5 +18,13 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "FileListViewController.(searchController).(variable initialization expression).(closure #1):FileListViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "searchController.searchBar">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

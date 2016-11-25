@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2E708A1D1DE22B04008EC78A /* SpectrometerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E708A1C1DE22B04008EC78A /* SpectrometerConfig.swift */; };
+		2E708A231DE61A19008EC78A /* CustomizeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E708A221DE61A19008EC78A /* CustomizeExtensions.swift */; };
+		2E708A5C1DE714F0008EC78A /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E708A5B1DE714F0008EC78A /* Regex.swift */; };
 		2E91F2A61DDB5B76003E277F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2A51DDB5B76003E277F /* AppDelegate.swift */; };
 		2E91F2A81DDB5B76003E277F /* ConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2A71DDB5B76003E277F /* ConnectionViewController.swift */; };
 		2E91F2AB1DDB5B76003E277F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E91F2A91DDB5B76003E277F /* Main.storyboard */; };
@@ -147,6 +149,8 @@
 
 /* Begin PBXFileReference section */
 		2E708A1C1DE22B04008EC78A /* SpectrometerConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrometerConfig.swift; sourceTree = "<group>"; };
+		2E708A221DE61A19008EC78A /* CustomizeExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizeExtensions.swift; sourceTree = "<group>"; };
+		2E708A5B1DE714F0008EC78A /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		2E91F2A21DDB5B76003E277F /* Spectrometer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spectrometer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E91F2A51DDB5B76003E277F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E91F2A71DDB5B76003E277F /* ConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionViewController.swift; sourceTree = "<group>"; };
@@ -490,6 +494,8 @@
 			children = (
 				2EB823271DE0D40F00DF732C /* SpectrometerTabBar.swift */,
 				2EB8233B1DE113DA00DF732C /* CustomCharts.swift */,
+				2E708A221DE61A19008EC78A /* CustomizeExtensions.swift */,
+				2E708A5B1DE714F0008EC78A /* Regex.swift */,
 			);
 			name = ViewHelpers;
 			sourceTree = "<group>";
@@ -693,6 +699,7 @@
 				2E91F3171DDB848E003E277F /* Version.swift in Sources */,
 				2EB822EC1DE0811D00DF732C /* FullRangeInterpolatedSpectrumParser.swift in Sources */,
 				2E91F30F1DDB82C7003E277F /* Parameter.swift in Sources */,
+				2E708A231DE61A19008EC78A /* CustomizeExtensions.swift in Sources */,
 				2E91F30D1DDB8068003E277F /* SpectrumEnums.swift in Sources */,
 				2E91F2E61DDB5B9F003E277F /* Bytes.swift in Sources */,
 				2EB822E71DE06C0300DF732C /* Extensions.swift in Sources */,
@@ -713,6 +720,7 @@
 				2E91F3021DDB7472003E277F /* VnirHeader.swift in Sources */,
 				2E91F2E91DDB5B9F003E277F /* FDSet.swift in Sources */,
 				2E91F3131DDB842A003E277F /* InstrumentControl.swift in Sources */,
+				2E708A5C1DE714F0008EC78A /* Regex.swift in Sources */,
 				2E91F2F01DDB5B9F003E277F /* TCPSocket.swift in Sources */,
 				2E91F2ED1DDB5B9F003E277F /* Socket.swift in Sources */,
 				2EB823251DE0CC2900DF732C /* AquireViewController.swift in Sources */,

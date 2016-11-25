@@ -17,7 +17,7 @@ class SpectrumLineChartView : LineChartView {
         let font: UIFont = UIFont(name: "Open Sans", size: 14)!
         
         noDataFont = font
-        noDataText = "Es wurden noch keine Daten empfanen um im Diagramm dargestellt zu werden";
+        noDataText = "Es wurden noch keine Daten empfangen um im Diagramm dargestellt zu werden";
         
         borderColor = UIColor.black
         
