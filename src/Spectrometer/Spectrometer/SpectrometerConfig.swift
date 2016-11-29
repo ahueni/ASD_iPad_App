@@ -8,23 +8,3 @@
 
 import Foundation
 import CoreData
-
-class SpectrometerConfig : NSManagedObject {
-    
-    @NSManaged var ipAdress: String?
-    
-    func access() -> Void {
-        
-        do {
-            
-            try managedObjectContext?.save()
-            
-        } catch {
-            
-            
-            
-        }
-        
-    }
-    
-}

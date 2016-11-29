@@ -14,6 +14,9 @@ class AddEditConnectionViewController: UIViewController {
     
     let fileBrowser = FileBrowser()
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let dataViewContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     // colors
     let red = UIColor.red
     let black = UIColor.black
@@ -42,6 +45,20 @@ class AddEditConnectionViewController: UIViewController {
     
     @IBAction func cancelPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func savePressed(_ sender: Any) {
+        
+        let config = SpectrometerConfig(context: dataViewContext)
+        
+        config.name = name.text
+        config.ipAdress = ipAdress.text
+        config.port = Int16(port.text!)!
+        
+        appDelegate.saveContext()
+        
+        dismiss(animated: true, completion: nil)
+        
     }
     
     @IBAction func nameNextClick(_ sender: Any) {

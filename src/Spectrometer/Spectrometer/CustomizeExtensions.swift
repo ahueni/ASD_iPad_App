@@ -20,3 +20,12 @@ class MyUITextView : UITextView {
     
     
 }
+
+
+class SpectrometerConfigTableViewCell : UITableViewCell {
+    
+    @IBOutlet var name: UILabel!
+    @IBOutlet var ipAndPort: UILabel!
+    
+    
+}

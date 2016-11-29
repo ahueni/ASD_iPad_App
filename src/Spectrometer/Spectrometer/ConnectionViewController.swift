@@ -8,13 +8,35 @@
 
 import UIKit
 
-class ConnectionViewController: UIViewController {
+class ConnectionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let dataViewContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var configs: [SpectrometerConfig] = []
+    
+    @IBOutlet var deviceTableView: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        deviceTableView.delegate = self
+        deviceTableView.dataSource = self
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        do {
+            configs = try dataViewContext.fetch(SpectrometerConfig.fetchRequest())
+        } catch {
+            print("could not load spectrometers")
+        }
+        
+        deviceTableView.layer.cornerRadius = 15
+        deviceTableView.layer.masksToBounds = true
+        
+        deviceTableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,5 +84,44 @@ class ConnectionViewController: UIViewController {
         
         
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return configs.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let config = configs[indexPath.row]
+        
+        let cell = deviceTableView.dequeueReusableCell(withIdentifier: "Cell") as! SpectrometerConfigTableViewCell
+        
+        cell.name.text = config.name
+        cell.ipAndPort.text = "Ip: " + config.ipAdress! + " / Port: " + config.port.description
+        
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        
+        
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        var moreRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Bearbeiten", handler:{action, indexpath in
+            print("MORE•ACTION");
+        });
+        moreRowAction.backgroundColor = UIColor.lightGray
+        
+        var deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Löschen", handler:{action, indexpath in
+            print("DELETE•ACTION");
+        });
+        
+        return [deleteRowAction, moreRowAction];
+        
+    }
+    
 }
 
