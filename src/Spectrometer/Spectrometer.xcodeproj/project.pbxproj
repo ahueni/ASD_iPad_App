@@ -44,12 +44,18 @@
 		2E91F3051DDB7827003E277F /* BaseSpectrumParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F3041DDB7827003E277F /* BaseSpectrumParser.swift */; };
 		2E91F3081DDB78D8003E277F /* SpectrumDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F3071DDB78D8003E277F /* SpectrumDataBase.swift */; };
 		2E91F30A1DDB7BDF003E277F /* FullRangeInterpolatedSpectrum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F3091DDB7BDF003E277F /* FullRangeInterpolatedSpectrum.swift */; };
-		2E91F30D1DDB8068003E277F /* SpectrumEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F30C1DDB8068003E277F /* SpectrumEnums.swift */; };
+		2E91F30D1DDB8068003E277F /* SpectralDataEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F30C1DDB8068003E277F /* SpectralDataEnums.swift */; };
 		2E91F30F1DDB82C7003E277F /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F30E1DDB82C7003E277F /* Parameter.swift */; };
 		2E91F3111DDB8408003E277F /* Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F3101DDB8408003E277F /* Init.swift */; };
 		2E91F3131DDB842A003E277F /* InstrumentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F3121DDB842A003E277F /* InstrumentControl.swift */; };
 		2E91F3151DDB8440003E277F /* Optimize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F3141DDB8440003E277F /* Optimize.swift */; };
 		2E91F3171DDB848E003E277F /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F3161DDB848E003E277F /* Version.swift */; };
+		2EB362941DF1BCF900E74E39 /* SpectralFileEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB362931DF1BCF900E74E39 /* SpectralFileEnums.swift */; };
+		2EB362961DF1BD4F00E74E39 /* SpectralFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB362951DF1BD4F00E74E39 /* SpectralFile.swift */; };
+		2EB3629A1DF1D8E400E74E39 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB362991DF1D8E400E74E39 /* AppData.swift */; };
+		2EB3629C1DF1D91C00E74E39 /* GpsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3629B1DF1D91C00E74E39 /* GpsData.swift */; };
+		2EB3629E1DF1DABF00E74E39 /* ConstituentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3629D1DF1DABF00E74E39 /* ConstituentType.swift */; };
+		2EB362A01DF1DF0A00E74E39 /* CalibrationBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3629F1DF1DF0A00E74E39 /* CalibrationBuffer.swift */; };
 		2EB822E71DE06C0300DF732C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB822E61DE06C0300DF732C /* Extensions.swift */; };
 		2EB822E91DE06F0900DF732C /* VersionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB822E81DE06F0900DF732C /* VersionParser.swift */; };
 		2EB822EC1DE0811D00DF732C /* FullRangeInterpolatedSpectrumParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB822EB1DE0811D00DF732C /* FullRangeInterpolatedSpectrumParser.swift */; };
@@ -189,12 +195,18 @@
 		2E91F3041DDB7827003E277F /* BaseSpectrumParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSpectrumParser.swift; sourceTree = "<group>"; };
 		2E91F3071DDB78D8003E277F /* SpectrumDataBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumDataBase.swift; sourceTree = "<group>"; };
 		2E91F3091DDB7BDF003E277F /* FullRangeInterpolatedSpectrum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullRangeInterpolatedSpectrum.swift; sourceTree = "<group>"; };
-		2E91F30C1DDB8068003E277F /* SpectrumEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumEnums.swift; sourceTree = "<group>"; };
+		2E91F30C1DDB8068003E277F /* SpectralDataEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectralDataEnums.swift; sourceTree = "<group>"; };
 		2E91F30E1DDB82C7003E277F /* Parameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parameter.swift; sourceTree = "<group>"; };
 		2E91F3101DDB8408003E277F /* Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Init.swift; sourceTree = "<group>"; };
 		2E91F3121DDB842A003E277F /* InstrumentControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentControl.swift; sourceTree = "<group>"; };
 		2E91F3141DDB8440003E277F /* Optimize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Optimize.swift; sourceTree = "<group>"; };
 		2E91F3161DDB848E003E277F /* Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
+		2EB362931DF1BCF900E74E39 /* SpectralFileEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectralFileEnums.swift; sourceTree = "<group>"; };
+		2EB362951DF1BD4F00E74E39 /* SpectralFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectralFile.swift; sourceTree = "<group>"; };
+		2EB362991DF1D8E400E74E39 /* AppData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
+		2EB3629B1DF1D91C00E74E39 /* GpsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GpsData.swift; sourceTree = "<group>"; };
+		2EB3629D1DF1DABF00E74E39 /* ConstituentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstituentType.swift; sourceTree = "<group>"; };
+		2EB3629F1DF1DF0A00E74E39 /* CalibrationBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalibrationBuffer.swift; sourceTree = "<group>"; };
 		2EB822E61DE06C0300DF732C /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		2EB822E81DE06F0900DF732C /* VersionParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionParser.swift; sourceTree = "<group>"; };
 		2EB822EB1DE0811D00DF732C /* FullRangeInterpolatedSpectrumParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullRangeInterpolatedSpectrumParser.swift; sourceTree = "<group>"; };
@@ -338,8 +350,9 @@
 		2E91F2F31DDB5C8B003E277F /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				2EB3628C1DF0212400E74E39 /* SpectralFile */,
 				2E91F3031DDB77FC003E277F /* Parser */,
-				2E91F2FB1DDB7402003E277F /* SpectrumData */,
+				2E91F2FB1DDB7402003E277F /* SpectralData */,
 				2E91F2F81DDB6137003E277F /* Helpers */,
 				2E91F2F61DDB5CF7003E277F /* TcpManager.swift */,
 			);
@@ -355,7 +368,7 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
-		2E91F2FB1DDB7402003E277F /* SpectrumData */ = {
+		2E91F2FB1DDB7402003E277F /* SpectralData */ = {
 			isa = PBXGroup;
 			children = (
 				2E91F30B1DDB8044003E277F /* Enums */,
@@ -368,7 +381,7 @@
 				2E91F3141DDB8440003E277F /* Optimize.swift */,
 				2E91F3161DDB848E003E277F /* Version.swift */,
 			);
-			name = SpectrumData;
+			name = SpectralData;
 			sourceTree = "<group>";
 		};
 		2E91F2FC1DDB7409003E277F /* Headers */ = {
@@ -402,9 +415,38 @@
 		2E91F30B1DDB8044003E277F /* Enums */ = {
 			isa = PBXGroup;
 			children = (
-				2E91F30C1DDB8068003E277F /* SpectrumEnums.swift */,
+				2E91F30C1DDB8068003E277F /* SpectralDataEnums.swift */,
 			);
 			name = Enums;
+			sourceTree = "<group>";
+		};
+		2EB3628C1DF0212400E74E39 /* SpectralFile */ = {
+			isa = PBXGroup;
+			children = (
+				2EB362A11DF1FE9200E74E39 /* SpectralTypes */,
+				2EB362921DF1BCD700E74E39 /* Enums */,
+				2EB362951DF1BD4F00E74E39 /* SpectralFile.swift */,
+			);
+			name = SpectralFile;
+			sourceTree = "<group>";
+		};
+		2EB362921DF1BCD700E74E39 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				2EB362931DF1BCF900E74E39 /* SpectralFileEnums.swift */,
+			);
+			name = Enums;
+			sourceTree = "<group>";
+		};
+		2EB362A11DF1FE9200E74E39 /* SpectralTypes */ = {
+			isa = PBXGroup;
+			children = (
+				2EB362991DF1D8E400E74E39 /* AppData.swift */,
+				2EB3629B1DF1D91C00E74E39 /* GpsData.swift */,
+				2EB3629D1DF1DABF00E74E39 /* ConstituentType.swift */,
+				2EB3629F1DF1DF0A00E74E39 /* CalibrationBuffer.swift */,
+			);
+			name = SpectralTypes;
 			sourceTree = "<group>";
 		};
 		2EB822EA1DE080A400DF732C /* Base */ = {
@@ -693,6 +735,7 @@
 				2E91F2EF1DDB5B9F003E277F /* SocketOptions.swift in Sources */,
 				2E91F2A81DDB5B76003E277F /* ConnectionViewController.swift in Sources */,
 				2E91F3081DDB78D8003E277F /* SpectrumDataBase.swift in Sources */,
+				2EB362941DF1BCF900E74E39 /* SpectralFileEnums.swift in Sources */,
 				2E91F2F71DDB5CF7003E277F /* TcpManager.swift in Sources */,
 				2E91F2EB1DDB5B9F003E277F /* Pipe.swift in Sources */,
 				2E91F2FE1DDB7446003E277F /* SpectrumHeader.swift in Sources */,
@@ -700,8 +743,10 @@
 				2EB822EC1DE0811D00DF732C /* FullRangeInterpolatedSpectrumParser.swift in Sources */,
 				2E91F30F1DDB82C7003E277F /* Parameter.swift in Sources */,
 				2E708A231DE61A19008EC78A /* CustomizeExtensions.swift in Sources */,
-				2E91F30D1DDB8068003E277F /* SpectrumEnums.swift in Sources */,
+				2EB362961DF1BD4F00E74E39 /* SpectralFile.swift in Sources */,
+				2E91F30D1DDB8068003E277F /* SpectralDataEnums.swift in Sources */,
 				2E91F2E61DDB5B9F003E277F /* Bytes.swift in Sources */,
+				2EB3629C1DF1D91C00E74E39 /* GpsData.swift in Sources */,
 				2EB822E71DE06C0300DF732C /* Extensions.swift in Sources */,
 				2E91F2FA1DDB6161003E277F /* Command.swift in Sources */,
 				2E91F2E81DDB5B9F003E277F /* Error.swift in Sources */,
@@ -714,6 +759,7 @@
 				2EB822E91DE06F0900DF732C /* VersionParser.swift in Sources */,
 				2E91F2E51DDB5B9F003E277F /* Address.swift in Sources */,
 				2E91F2E11DDB5B9F003E277F /* SynchronousUDPServer.swift in Sources */,
+				2EB362A01DF1DF0A00E74E39 /* CalibrationBuffer.swift in Sources */,
 				2E91F3151DDB8440003E277F /* Optimize.swift in Sources */,
 				2E91F2E41DDB5B9F003E277F /* Address+C.swift in Sources */,
 				2E91F2EC1DDB5B9F003E277F /* Select.swift in Sources */,
@@ -724,10 +770,12 @@
 				2E91F2F01DDB5B9F003E277F /* TCPSocket.swift in Sources */,
 				2E91F2ED1DDB5B9F003E277F /* Socket.swift in Sources */,
 				2EB823251DE0CC2900DF732C /* AquireViewController.swift in Sources */,
+				2EB3629E1DF1DABF00E74E39 /* ConstituentType.swift in Sources */,
 				2E91F2E71DDB5B9F003E277F /* Conversions.swift in Sources */,
 				2E91F3001DDB745D003E277F /* SwirHeader.swift in Sources */,
 				2E91F2F21DDB5B9F003E277F /* UDPSocket.swift in Sources */,
 				2EB823281DE0D40F00DF732C /* SpectrometerTabBar.swift in Sources */,
+				2EB3629A1DF1D8E400E74E39 /* AppData.swift in Sources */,
 				2E91F2A61DDB5B76003E277F /* AppDelegate.swift in Sources */,
 				2E91F2AE1DDB5B76003E277F /* Spectrometer.xcdatamodeld in Sources */,
 				2E91F30A1DDB7BDF003E277F /* FullRangeInterpolatedSpectrum.swift in Sources */,

@@ -110,12 +110,12 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        var moreRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Bearbeiten", handler:{action, indexpath in
+        let moreRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Bearbeiten", handler:{action, indexpath in
             print("MORE•ACTION");
         });
         moreRowAction.backgroundColor = UIColor.lightGray
         
-        var deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Löschen", handler:{action, indexpath in
+        let deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Löschen", handler:{action, indexpath in
             print("DELETE•ACTION");
         });
         

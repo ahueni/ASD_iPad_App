@@ -41,6 +41,7 @@ class BaseSpectrumParser {
         
         parseIndex += 4
         return Int(value)
+        
     }
     
     internal func getNextFloat() -> Float {
