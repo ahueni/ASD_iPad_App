@@ -100,12 +100,36 @@ class AddEditConnectionViewController: UIViewController {
         toggleSaveButton()
     }
     
+    var selectedFile: String = ""
     @IBAction func selectLMPFile(_ sender: Any) {
         
         present(fileBrowser, animated: true, completion: nil)
         fileBrowser.didSelectFile = { (file: FBFile) -> Void in
+            let selectedFile = file.filePath.path //file.filePath.absoluteString
             self.lmpButton.setTitle(file.displayName, for: UIControlState.normal)
-            self.lmpButton.setTitleColor(self.green, for: UIControlState.normal)        }
+            self.lmpButton.setTitleColor(self.green, for: UIControlState.normal)
+        
+            var bytes = [UInt8]()
+            
+            let data = NSData(contentsOfFile: selectedFile)
+            
+            let fileManager2 = FileManager.default
+            
+            if fileManager2.fileExists(atPath: selectedFile) {
+                print(selectedFile)
+                print("File exists")
+            } else {
+                print(selectedFile)
+                print("File not found")
+            }
+            
+            let databuffer = fileManager2.contents(atPath: selectedFile)
+            
+            // Get current directory path
+            
+            
+            
+        }
         
     }
     

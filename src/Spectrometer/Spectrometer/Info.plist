@@ -12,6 +12,36 @@
 				<string>public.text</string>
 			</array>
 			<key>UTTypeIdentifier</key>
+			<string>public.ill</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<string>ill</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeDescription</key>
+			<string>INI Datei für ASD Spektrometer</string>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string></string>
+			</array>
+			<key>UTTypeIdentifier</key>
+			<string>public.ref</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<string>ref</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeDescription</key>
+			<string>INI Dateien für ASD Spektrometer</string>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.text</string>
+			</array>
+			<key>UTTypeIdentifier</key>
 			<string>public.ini</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
@@ -25,6 +55,8 @@
 		<dict>
 			<key>LSItemContentTypes</key>
 			<array>
+				<string>public.ill</string>
+				<string>public.ref</string>
 				<string>public.ini</string>
 			</array>
 			<key>CFBundleTypeName</key>
