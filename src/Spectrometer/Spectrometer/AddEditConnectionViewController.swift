@@ -13,6 +13,7 @@ import FileBrowser
 class AddEditConnectionViewController: UIViewController {
     
     let fileBrowser = FileBrowser()
+    let fileManager:FileManager = FileManager.default
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let dataViewContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -34,13 +35,12 @@ class AddEditConnectionViewController: UIViewController {
     
     @IBOutlet var saveButton: UIButton!
     
+    // refrence files
+    var lmpFile: SpectralFileBase?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        _ =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        
-        
     }
     
     @IBAction func cancelPressed(_ sender: Any) {
@@ -100,34 +100,18 @@ class AddEditConnectionViewController: UIViewController {
         toggleSaveButton()
     }
     
-    var selectedFile: String = ""
     @IBAction func selectLMPFile(_ sender: Any) {
         
         present(fileBrowser, animated: true, completion: nil)
         fileBrowser.didSelectFile = { (file: FBFile) -> Void in
-            let selectedFile = file.filePath.path //file.filePath.absoluteString
-            self.lmpButton.setTitle(file.displayName, for: UIControlState.normal)
-            self.lmpButton.setTitleColor(self.green, for: UIControlState.normal)
-        
-            var bytes = [UInt8]()
-            
-            let data = NSData(contentsOfFile: selectedFile)
-            
-            let fileManager2 = FileManager.default
-            
-            if fileManager2.fileExists(atPath: selectedFile) {
-                print(selectedFile)
-                print("File exists")
+    
+            if (!self.validateLMPFile(filePath: file.filePath.path)) {
+                self.showWarningMessage(title: "Dateifehler", message: "Diese Datei konnte nicht geöffnet und verarbeitet werden. Bitte verwenden sie eine korrekte LMP Initialiserungsdatei")
             } else {
-                print(selectedFile)
-                print("File not found")
+                self.lmpButton.setTitle(file.displayName, for: UIControlState.normal)
+                self.lmpButton.setTitleColor(self.green, for: UIControlState.normal)
+                self.toggleSaveButton()
             }
-            
-            let databuffer = fileManager2.contents(atPath: selectedFile)
-            
-            // Get current directory path
-            
-            
             
         }
         
@@ -173,6 +157,21 @@ class AddEditConnectionViewController: UIViewController {
             return false
         }
         return true
+    }
+    
+    private func validateLMPFile(filePath: String) -> Bool {
+        
+        let dataBuffer = [UInt8](self.fileManager.contents(atPath: filePath)!)
+        
+        let fileParser = SpectralFileParser(data: dataBuffer)
+        
+        let test = fileParser.parse()
+        
+        print(test.fileVersion)
+        
+        // parseSpectralFile and validate it
+        
+        return false
     }
     
     private func toggleSaveButton() -> Void {

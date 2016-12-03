@@ -56,6 +56,7 @@
 		2EB3629C1DF1D91C00E74E39 /* GpsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3629B1DF1D91C00E74E39 /* GpsData.swift */; };
 		2EB3629E1DF1DABF00E74E39 /* ConstituentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3629D1DF1DABF00E74E39 /* ConstituentType.swift */; };
 		2EB362A01DF1DF0A00E74E39 /* CalibrationBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3629F1DF1DF0A00E74E39 /* CalibrationBuffer.swift */; };
+		2EB362A51DF23DDB00E74E39 /* SpectralFileParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB362A41DF23DDB00E74E39 /* SpectralFileParser.swift */; };
 		2EB822E71DE06C0300DF732C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB822E61DE06C0300DF732C /* Extensions.swift */; };
 		2EB822E91DE06F0900DF732C /* VersionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB822E81DE06F0900DF732C /* VersionParser.swift */; };
 		2EB822EC1DE0811D00DF732C /* FullRangeInterpolatedSpectrumParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB822EB1DE0811D00DF732C /* FullRangeInterpolatedSpectrumParser.swift */; };
@@ -207,6 +208,7 @@
 		2EB3629B1DF1D91C00E74E39 /* GpsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GpsData.swift; sourceTree = "<group>"; };
 		2EB3629D1DF1DABF00E74E39 /* ConstituentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstituentType.swift; sourceTree = "<group>"; };
 		2EB3629F1DF1DF0A00E74E39 /* CalibrationBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalibrationBuffer.swift; sourceTree = "<group>"; };
+		2EB362A41DF23DDB00E74E39 /* SpectralFileParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectralFileParser.swift; sourceTree = "<group>"; };
 		2EB822E61DE06C0300DF732C /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		2EB822E81DE06F0900DF732C /* VersionParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionParser.swift; sourceTree = "<group>"; };
 		2EB822EB1DE0811D00DF732C /* FullRangeInterpolatedSpectrumParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullRangeInterpolatedSpectrumParser.swift; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 				2EB822EA1DE080A400DF732C /* Base */,
 				2EB822E81DE06F0900DF732C /* VersionParser.swift */,
 				2EB822EB1DE0811D00DF732C /* FullRangeInterpolatedSpectrumParser.swift */,
+				2EB362A41DF23DDB00E74E39 /* SpectralFileParser.swift */,
 			);
 			name = Parser;
 			sourceTree = "<group>";
@@ -767,6 +770,7 @@
 				2E91F2E91DDB5B9F003E277F /* FDSet.swift in Sources */,
 				2E91F3131DDB842A003E277F /* InstrumentControl.swift in Sources */,
 				2E708A5C1DE714F0008EC78A /* Regex.swift in Sources */,
+				2EB362A51DF23DDB00E74E39 /* SpectralFileParser.swift in Sources */,
 				2E91F2F01DDB5B9F003E277F /* TCPSocket.swift in Sources */,
 				2E91F2ED1DDB5B9F003E277F /* Socket.swift in Sources */,
 				2EB823251DE0CC2900DF732C /* AquireViewController.swift in Sources */,

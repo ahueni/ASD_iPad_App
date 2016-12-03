@@ -10,23 +10,22 @@ import Foundation
 
 class SpectralFileBase {
     
-    /*
     // MARK: Spectral File Header
-    var fileVersion: String
-    var comments: String
-    var savedAt: Date = Date()
-    var dayLightSavingFlag: Int
-    var programVersion: UInt8
-    var fileFormatVersion: UInt8
-    var dcCorrected: Bool
-    var dcTime: UInt32
-    var dataType: DataType
-    var refTime: UInt32
-    var startingWaveLength: Float
-    var waveLengthStep: Float
-    var oldDcCount: UInt8
-    var oldRefCount: UInt8
-    var oldSampleCount: UInt8
+    var fileVersion: String = ""
+    var comments: String = ""
+    var savedAt: Date = Date(timeIntervalSinceNow: TimeInterval(integerLiteral: 12))
+    var dayLightSavingFlag: Int = 0
+    var programVersion: UInt8 = 0
+    var fileFormatVersion: UInt8 = 0
+    var dcCorrected: Bool = false
+    var dcTime: UInt32 = 0
+    var dataType: DataType = DataType.AbsType
+    var refTime: UInt32 = 0
+    var startingWaveLength: Float = 0.0
+    var waveLengthStep: Float = 0.0
+    var oldDcCount: UInt8 = 0
+    var oldRefCount: UInt8 = 0
+    /*var oldSampleCount: UInt8
     var application: UInt8
     var channels: UInt16
     var appData: AppData
@@ -113,10 +112,6 @@ class SpectralFileBase {
     var fiberOpticData: [Double]
     */
     
-    init() {
-        
-    }
-    
 }
 
 class SpectralFileV7 : SpectralFileBase {
@@ -126,11 +121,6 @@ class SpectralFileV7 : SpectralFileBase {
     var WhenInMs: String // 12 bytes
     var reservedBytes: UInt8 = 20
     */
-    
-    override init() {
-        
-    }
-    
     
 }
 
@@ -148,9 +138,5 @@ class SpectralFileV8 : SpectralFileBase {
     
     // MARK: Signature
     */
-    
-    override init() {
-        
-    }
     
 }

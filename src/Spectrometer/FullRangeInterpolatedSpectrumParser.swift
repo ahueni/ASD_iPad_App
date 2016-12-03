@@ -10,8 +10,6 @@ import Foundation
 
 class FullRangeInterpolatedSpectrumParser: BaseSpectrumParser, ISpectrumParser {
     
-    typealias T = FullRangeInterpolatedSpectrum
-    
     func parse() -> FullRangeInterpolatedSpectrum {
         
         if self.data.count < FullRangeInterpolatedSpectrum.SIZE {

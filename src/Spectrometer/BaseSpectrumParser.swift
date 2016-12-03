@@ -74,15 +74,35 @@ class BaseSpectrumParser {
         var string = ""
         var count:Int = 0
         
-        while count <= size {
-            let byteValue = self.data[parseIndex+count]
+        while count < size {
+            let byteValue:UInt8 = self.data[parseIndex+count]
+            count += 1
+            if (byteValue == 0) { break }
+            
             let scalar = UnicodeScalar.init(byteValue)
             let char = Character.init(scalar)
             string.append(char)
-            count += 1;
         }
         
         self.parseIndex += size
+        return string
+    }
+    
+    internal func getNextString() -> String {
+        
+        var string = ""
+        
+        var byteValue:UInt8 = self.data[parseIndex]
+        while byteValue != 0 {
+            let scalar = UnicodeScalar.init(byteValue)
+            let char = Character.init(scalar)
+            string.append(char)
+            parseIndex += 1
+            byteValue = self.data[parseIndex]
+        }
+        
+        parseIndex += 1
+        
         return string
     }
 

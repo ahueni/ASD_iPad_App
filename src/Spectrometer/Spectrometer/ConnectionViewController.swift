@@ -49,9 +49,7 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
         let tcpManager: TcpManager = TcpManager(hostname: "10.1.1.77", port: 8080)
         
         if (!tcpManager.connect()) {
-            let alert = UIAlertController(title: "Verbindung fehlgeschlagen", message: "Es konnte keine Verbindung mit dem Spektrometer hergestellt werden. Überprüfen sie die Einstellungen und ob das Gerät mit dem Netzwerk des Spektrometers verbunden ist.", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            self.showWarningMessage(title: "Verbindung fehlgeschlagen", message: "Es konnte keine Verbindung mit dem Spektrometer hergestellt werden. Überprüfen sie die Einstellungen und ob das Gerät mit dem Netzwerk des Spektrometers verbunden ist.")
         } else {
             
             _ = tcpManager.sendCommand(command: Command(commandParam: CommandEnum.Restore, params: ""))
