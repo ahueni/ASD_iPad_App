@@ -40,6 +40,10 @@ class AddEditConnectionViewController: UIViewController {
     
     
     override func viewDidLoad() {
+        
+        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+        print(path?.absoluteString ?? "kein Pfad")
+        
         super.viewDidLoad()
     }
     

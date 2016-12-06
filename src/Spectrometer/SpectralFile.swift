@@ -17,18 +17,20 @@ class SpectralFileBase {
     var dayLightSavingFlag: Int = 0
     var programVersion: UInt8 = 0
     var fileFormatVersion: UInt8 = 0
+    var oldIntegrationTime: UInt8 = 0
     var dcCorrected: Bool = false
     var dcTime: UInt32 = 0
     var dataType: DataType = DataType.AbsType
     var refTime: UInt32 = 0
     var startingWaveLength: Float = 0.0
     var waveLengthStep: Float = 0.0
+    var spectrumDataFormat: UInt8 = 0
     var oldDcCount: UInt8 = 0
     var oldRefCount: UInt8 = 0
-    /*var oldSampleCount: UInt8
-    var application: UInt8
-    var channels: UInt16
-    var appData: AppData
+    var oldSampleCount: UInt8 = 0
+    var application: UInt8 = 0
+    var channels: UInt16 = 0
+    /*var appData: AppData
     var gpsData: GpsData
     var integrationTime: UInt32
     var fo: Int8

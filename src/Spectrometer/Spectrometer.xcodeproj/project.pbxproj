@@ -250,6 +250,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E3494ED1DF61BD80039B1B6 /* AppIcon */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = AppIcon;
+			sourceTree = "<group>";
+		};
 		2E708A181DE22AF0008EC78A /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -474,6 +481,7 @@
 		2EB822EE1DE0A1A500DF732C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2E3494ED1DF61BD80039B1B6 /* AppIcon */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -617,8 +625,8 @@
 				TargetAttributes = {
 					2E91F2A11DDB5B76003E277F = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 2L4TH8S485;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 5TV46KLX3W;
+						ProvisioningStyle = Manual;
 					};
 					2E91F2B81DDB5B76003E277F = {
 						CreatedOnToolsVersion = 8.1;
@@ -932,11 +940,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2L4TH8S485;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 5TV46KLX3W;
 				INFOPLIST_FILE = Spectrometer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ch.yarx.Spectrometer;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.yarx.Spektrometer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1b548ad1-dcbf-4c0b-9282-c0e3b65d565e";
+				PROVISIONING_PROFILE_SPECIFIER = "Spektrometer App Release";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -947,11 +958,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2L4TH8S485;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 5TV46KLX3W;
 				INFOPLIST_FILE = Spectrometer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ch.yarx.Spectrometer;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.yarx.Spektrometer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1b548ad1-dcbf-4c0b-9282-c0e3b65d565e";
+				PROVISIONING_PROFILE_SPECIFIER = "Spektrometer App Release";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

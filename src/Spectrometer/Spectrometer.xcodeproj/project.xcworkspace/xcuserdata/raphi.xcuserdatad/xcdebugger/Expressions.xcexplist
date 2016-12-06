@@ -34,5 +34,16 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "BaseSpectrumParser.getNextShortInt() -&gt; UInt16:BaseSpectrumParser.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "parseIndex">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AddEditConnectionViewController.validateLMPFile(filePath : String) -&gt; Bool:AddEditConnectionViewController.swift">
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

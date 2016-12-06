@@ -25,6 +25,35 @@ class BaseSpectrumParser {
         parseIndex = 0
     }
     
+    internal func getNextBool() -> Bool {
+        
+        let byte: UInt8 = self.data[parseIndex]
+        parseIndex += 1
+        
+        if (byte == 0) { return false }
+        return true
+    }
+    
+    internal func getNextByte() -> UInt8 {
+        
+        let byte: UInt8 = self.data[parseIndex]
+        parseIndex += 1
+        return byte
+        
+    }
+    
+    internal func getNextShortInt() -> UInt16 {
+        
+        let low: UInt16 = UInt16(self.data[parseIndex]) & 0xFFFF
+        let high: UInt16 = (UInt16(self.data[parseIndex+1]) & 0xFFFF) << 8
+        
+        parseIndex += 2
+        let value = high | low
+        print("VALUE: " + value.description)
+        return value
+        
+    }
+    
     internal func getNextInt() -> Int {
         
         let byte1: UInt8 = self.data[parseIndex]
