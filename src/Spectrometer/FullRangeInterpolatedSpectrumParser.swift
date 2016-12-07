@@ -95,8 +95,10 @@ class FullRangeInterpolatedSpectrumParser: BaseSpectrumParser, ISpectrumParser {
         // parse spectrum buffer
         var buffer: [Float] = []
         
-        while parseIndex < FullRangeInterpolatedSpectrum.SIZE {
-            buffer.append(Float(getNextInt()))
+        for i in 0...2151 {
+            let value = getNextFloat()
+            print(i.description + " / " + value.description)
+            buffer.append(value)
         }
         
         return FullRangeInterpolatedSpectrum(spectrumHeader: spectrumHeader, spectrumBuffer: buffer)

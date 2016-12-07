@@ -108,11 +108,14 @@ class AddEditConnectionViewController: UIViewController {
         
         present(fileBrowser, animated: true, completion: nil)
         fileBrowser.didSelectFile = { (file: FBFile) -> Void in
-    
-            if (!self.validateLMPFile(filePath: file.filePath.path)) {
-                self.showWarningMessage(title: "Dateifehler", message: "Diese Datei konnte nicht geöffnet und verarbeitet werden. Bitte verwenden sie eine korrekte LMP Initialiserungsdatei")
+            
+            let parseResult = self.validateLMPFile(filePath: file.filePath.path)
+            self.lmpButton.setTitle(file.displayName, for: UIControlState.normal)
+            if (!parseResult) {
+                self.lmpButton.setTitleColor(self.red, for: UIControlState.normal)
+                self.lmpFile = nil
+                self.toggleSaveButton()
             } else {
-                self.lmpButton.setTitle(file.displayName, for: UIControlState.normal)
                 self.lmpButton.setTitleColor(self.green, for: UIControlState.normal)
                 self.toggleSaveButton()
             }
@@ -166,20 +169,23 @@ class AddEditConnectionViewController: UIViewController {
     private func validateLMPFile(filePath: String) -> Bool {
         
         let dataBuffer = [UInt8](self.fileManager.contents(atPath: filePath)!)
-        
         let fileParser = SpectralFileParser(data: dataBuffer)
+
+        do {
+            self.lmpFile = try fileParser.parse()
+        } catch let error as ParsingError {
+            self.showWarningMessage(title: "Fehler", message: error.message)
+            return false
+        } catch {
+            self.showWarningMessage(title: "Fehler", message: "Beim einlesen der Datei ist ein Fehler aufgetreten. Bitte wählen Sie eine korrekte Datei aus.")
+            return false
+        }
         
-        let test = fileParser.parse()
-        
-        print(test.fileVersion)
-        
-        // parseSpectralFile and validate it
-        
-        return false
+        return true
     }
     
     private func toggleSaveButton() -> Void {
-        if (validateName() && validateIp() && validatePort()) {
+        if (validateName() && validateIp() && validatePort() && self.lmpFile != nil) {
             saveButton.isEnabled = true
         } else {
             saveButton.isEnabled = false

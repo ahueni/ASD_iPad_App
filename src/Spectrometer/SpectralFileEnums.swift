@@ -60,3 +60,14 @@ enum ClassifierType: UInt8 {
     case Infometrix = 5
     
 }
+
+struct ParsingError: Error {
+    
+    let message: String
+    
+    init(message: String) {
+        self.message = message
+    }
+    
+    
+}

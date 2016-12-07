@@ -22,7 +22,7 @@ class TcpManager {
     func connect() -> Bool {
         
         do {
-            client = try TCPClient(address: address, connectionTimeout: 10)
+            client = try TCPClient(address: address, connectionTimeout: 5)
             var recData = 0
             while recData < initByteSize {
                 let recPart = try client?.receiveAll()
@@ -38,6 +38,15 @@ class TcpManager {
         connectState = true
         return true
         
+    }
+    
+    func close() -> Void {
+        connectState = false
+        do {
+            try client?.close()
+        } catch {
+            print("Error \(error)")
+        }
     }
     
     func sendCommand(command: Command) -> [UInt8] {
