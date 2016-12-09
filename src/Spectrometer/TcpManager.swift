@@ -51,17 +51,23 @@ class TcpManager {
     
     func sendCommand(command: Command) -> [UInt8] {
         
-        var array:[UInt8] = [UInt8]()
+        print("CommandSent: '" + command.getCommandString() + "'")
+        var array:[UInt8] = []
         
         do {
             try client?.send(bytes: command.getCommandString().toBytes())
             
-            var recData = 0
-            while recData < command.size {
-                let recPart = try client?.receiveAll()
-                array += recPart!
-                recData += (recPart?.count)!
-            }
+            let data = try client?.receive(maxBytes: command.size)
+            array += data!
+            print("CommandSize: " + command.size.description + " | " + array.count.description)
+            
+            
+            //var recData = 0
+            //while recData < command.size {
+            //    let recPart: [UInt8]? = try client?.receiveAll()
+            //    array += recPart!
+            //    recData += (recPart?.count)!
+            //}
         } catch {
             print("Error \(error)")
         }

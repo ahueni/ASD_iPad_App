@@ -120,7 +120,59 @@ class BaseSpectrumParser {
         let floatValue:Float = Float(byteArray)!
         parseIndex += 4
         return floatValue
+    }
+    
+    internal func getNextFloatSpec() -> Float {
         
+        let lowNumber: UInt16 = UInt16(self.data[parseIndex]) & 0xFFFF
+        let highNumber: UInt16 = (UInt16(self.data[parseIndex+1]) & 0xFFFF) << 8
+        let number = lowNumber | highNumber
+        parseIndex += 2
+        
+        let lowDecimal: UInt16 = UInt16(self.data[parseIndex]) & 0xFFFF
+        let highDecimal: UInt16 = (UInt16(self.data[parseIndex+1]) & 0xFFFF) << 8
+        let decimal = lowDecimal | highDecimal
+        parseIndex += 2
+        
+        
+        /*
+        let byte1: UInt8 = self.data[parseIndex]
+        let byte2: UInt8 = self.data[parseIndex+1]
+        let byte3: UInt8 = self.data[parseIndex+2]
+        let byte4: UInt8 = self.data[parseIndex+3]
+        parseIndex += 4
+        let v01 = Float32([byte1, byte2, byte3, byte4])
+        let v02 = Float32([byte1, byte2, byte4, byte3])
+        let v03 = Float32([byte1, byte3, byte3, byte4])
+        let v04 = Float32([byte1, byte3, byte2, byte4])
+        let v05 = Float32([byte1, byte4, byte4, byte2])
+        let v06 = Float32([byte1, byte4, byte2, byte3])
+        
+        let v07 = Float32([byte2, byte1, byte3, byte4])
+        let v08 = Float32([byte2, byte1, byte4, byte3])
+        let v09 = Float32([byte2, byte3, byte1, byte4])
+        let v10 = Float32([byte2, byte3, byte4, byte1])
+        let v11 = Float32([byte2, byte4, byte3, byte1])
+        let v12 = Float32([byte2, byte4, byte1, byte3])
+        
+        let v13 = Float32([byte3, byte1, byte2, byte4])
+        let v14 = Float32([byte3, byte1, byte4, byte2])
+        let v15 = Float32([byte3, byte2, byte4, byte1])
+        let v16 = Float32([byte3, byte2, byte4, byte1])
+        let v17 = Float32([byte3, byte4, byte2, byte1])
+        let v18 = Float32([byte3, byte4, byte1, byte2])
+        
+        let v19 = Float32([byte4, byte1, byte3, byte2])
+        let v20 = Float32([byte4, byte1, byte2, byte3])
+        let v21 = Float32([byte4, byte2, byte3, byte1])
+        let v22 = Float32([byte4, byte2, byte1, byte3])
+        let v23 = Float32([byte4, byte3, byte1, byte2])
+        let v24 = Float32([byte4, byte3, byte2, byte1])
+        */
+ 
+        let string = number.description + "." + decimal.description
+        
+        return Float(string)!
     }
     
     internal func getNextDouble() -> Double {

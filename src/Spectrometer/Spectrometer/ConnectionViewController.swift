@@ -20,48 +20,66 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: .reloadSpectrometerConfig, object: nil)
         deviceTableView.delegate = self
         deviceTableView.dataSource = self
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        //deviceTableView.layer.cornerRadius = 15
+        deviceTableView.layer.masksToBounds = true
         
+        reloadData()
+    }
+    
+    func reloadData() -> Void {
         do {
-            configs = try dataViewContext.fetch(SpectrometerConfig.fetchRequest())
+            self.configs = try dataViewContext.fetch(SpectrometerConfig.fetchRequest())
         } catch {
             print("could not load spectrometers")
         }
-        
-        deviceTableView.layer.cornerRadius = 15
-        deviceTableView.layer.masksToBounds = true
-        
         deviceTableView.reloadData()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-    @IBAction func connectDevice(_ sender: Any) {
+    func connectDevice(sender: UIButton) -> Void {
         
-        let tcpManager: TcpManager = TcpManager(hostname: "10.1.1.77", port: 8080)
+        let alert = UIAlertController(title: nil, message: "Verbinden...", preferredStyle: .alert)
+        let acitivty = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         
-        if (!tcpManager.connect()) {
-            self.showWarningMessage(title: "Verbindung fehlgeschlagen", message: "Es konnte keine Verbindung mit dem Spektrometer hergestellt werden. Überprüfen sie die Einstellungen und ob das Gerät mit dem Netzwerk des Spektrometers verbunden ist.")
-        } else {
+        alert.view.tintColor = UIColor.black
+        let loadingIndicator: UIActivityIndicatorView = acitivty
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.startAnimating();
+        alert.view.addSubview(loadingIndicator)
+        
+        let config = self.configs[sender.tag]
+        let tcpManager: TcpManager = TcpManager(hostname: config.ipAdress!, port: Int(config.port))
+        
+        present(alert, animated: false, completion: nil)
+        
+        
+        // connect with background thread
+        DispatchQueue.global(qos: .background).async {
             
-            _ = tcpManager.sendCommand(command: Command(commandParam: CommandEnum.Restore, params: ""))
-            
-            appDelegate.tcpManager = tcpManager
-            
-            let initialViewController = self.storyboard?.instantiateViewController(withIdentifier: "SpektrometerApp") as! UITabBarController
-            
-            appDelegate.window?.rootViewController = initialViewController
-            appDelegate.window?.makeKeyAndVisible()
+            if (tcpManager.connect()) {
+                alert.dismiss(animated: true, completion: nil)
+                _ = tcpManager.sendCommand(command: Command(commandParam: CommandEnum.Restore, params: ""))
+                self.appDelegate.tcpManager = tcpManager
+                let initialViewController = self.storyboard?.instantiateViewController(withIdentifier: "SpektrometerApp") as! UITabBarController
+                self.appDelegate.window?.rootViewController = initialViewController
+                self.appDelegate.window?.makeKeyAndVisible()
+            } else {
+                alert.dismiss(animated: true, completion: {
+                    
+                    self.showWarningMessage(title: "Verbindung fehlgeschlagen", message: "Es konnte keine Verbindung mit dem Spektrometer hergestellt werden. Überprüfen sie die Einstellungen und ob das Gerät mit dem Netzwerk des Spektrometers verbunden ist.")
+                
+                })
+            }
             
         }
+        
+        
         
     }
 
@@ -95,6 +113,8 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
         
         cell.name.text = config.name
         cell.ipAndPort.text = "Ip: " + config.ipAdress! + " / Port: " + config.port.description
+        cell.connectButton.tag = indexPath.row
+        cell.connectButton.addTarget(self, action: #selector(self.connectDevice(sender:)), for: .touchUpInside)
         
         
         return cell
@@ -102,22 +122,39 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        
+        print("Commit Editing Style")
         
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        let moreRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Bearbeiten", handler:{action, indexpath in
-            print("MORE•ACTION");
+        let editRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Bearbeiten", handler:{action, indexpath in
+            let config: SpectrometerConfig = self.configs[indexpath.row]
+            //print(config.illSpectrum as! [Double])
+            
+            let modalViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddEditConnection") as! AddEditConnectionViewController
+            modalViewController.setConfigData(config: config)
+            modalViewController.modalPresentationStyle = .formSheet
+            self.present(modalViewController, animated: true, completion: nil)
+            
         });
-        moreRowAction.backgroundColor = UIColor.lightGray
+        
+        editRowAction.backgroundColor = UIColor.green
         
         let deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Löschen", handler:{action, indexpath in
-            print("DELETE•ACTION");
+            let config: SpectrometerConfig = self.configs[indexpath.row]
+            self.dataViewContext.delete(config)
+            
+            do {
+                try self.dataViewContext.save()
+            } catch {
+                print("Cant delete")
+            }
+            self.reloadData()
+            
         });
         
-        return [deleteRowAction, moreRowAction];
+        return [deleteRowAction, editRowAction];
         
     }
     

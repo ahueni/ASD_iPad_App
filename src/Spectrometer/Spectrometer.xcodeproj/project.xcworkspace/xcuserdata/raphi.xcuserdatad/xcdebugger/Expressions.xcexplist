@@ -3,18 +3,18 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "SpectrumParser.getNextString(size : Int) -&gt; String:SpectrumParser.swift">
+         contextName = "ConnectionViewController.tableView(UITableView, cellForRowAt : IndexPath) -&gt; UITableViewCell:ConnectionViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.parseIndex">
+               value = "configs">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ViewController.sendVersionCommand(Any) -&gt; ():ViewController.swift">
+         contextName = "SpectrumParser.getNextString(size : Int) -&gt; String:SpectrumParser.swift">
          <PersistentStrings>
             <PersistentString
-               value = "tcpManager">
+               value = "self.parseIndex">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -27,14 +27,6 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ConnectionViewController.tableView(UITableView, cellForRowAt : IndexPath) -&gt; UITableViewCell:ConnectionViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "configs">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "BaseSpectrumParser.getNextShortInt() -&gt; UInt16:BaseSpectrumParser.swift">
          <PersistentStrings>
             <PersistentString
@@ -43,7 +35,23 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "ConnectionViewController.connectDevice(sender : UIButton) -&gt; ():ConnectionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "config.ipAdress">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "AddEditConnectionViewController.validateLMPFile(filePath : String) -&gt; Bool:AddEditConnectionViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.sendVersionCommand(Any) -&gt; ():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "tcpManager">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
    </ContextStates>
 </VariablesViewState>

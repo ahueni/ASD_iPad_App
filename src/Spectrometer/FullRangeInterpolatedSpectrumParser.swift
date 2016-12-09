@@ -96,9 +96,9 @@ class FullRangeInterpolatedSpectrumParser: BaseSpectrumParser, ISpectrumParser {
         var buffer: [Float] = []
         
         for i in 0...2151 {
-            let value = getNextFloat()
-            print(i.description + " / " + value.description)
-            buffer.append(value)
+            let value = getNextFloatSpec()
+            //print(i.description + " / " + value.description)
+            buffer.append(Float(value))
         }
         
         return FullRangeInterpolatedSpectrum(spectrumHeader: spectrumHeader, spectrumBuffer: buffer)

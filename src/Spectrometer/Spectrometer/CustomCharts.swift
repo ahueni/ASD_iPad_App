@@ -36,11 +36,17 @@ class SpectrumLineChartView : LineChartView {
         rightAxis.spaceTop = 0
         
         rightAxis.axisLineWidth = 1
-        
         rightAxis.gridColor = UIColor.black
         
         rightAxis.labelFont = font
         leftAxis.labelFont = font
+        
+        /*
+        rightAxis.axisMinimum = 0
+        rightAxis.axisMaximum = 20
+        leftAxis.axisMinimum = 0
+        leftAxis.axisMaximum = 20
+        */
         
         legend.enabled = false
         
