@@ -9,6 +9,6 @@
         <attribute name="refSpectrum" optional="YES" attributeType="Transformable" syncable="YES"/>
     </entity>
     <elements>
-        <element name="SpectrometerConfig" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="SpectrometerConfig" positionX="-63" positionY="-18" width="128" height="133"/>
     </elements>
 </model>

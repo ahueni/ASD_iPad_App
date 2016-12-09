@@ -36,6 +36,11 @@ class AddEditConnectionViewController: UIViewController {
     @IBOutlet var refButton: UIButton!
     @IBOutlet var illButton: UIButton!
     
+    // spectras
+    var lmpSpectra: [Double]? = nil
+    var refSpectra: [Double]? = nil
+    var illSpectra: [Double]? = nil
+    
     @IBOutlet var saveButton: UIButton!
     
     override func viewDidLoad() {
@@ -49,20 +54,34 @@ class AddEditConnectionViewController: UIViewController {
             self.ipAdress.text = config?.ipAdress
             self.port.text = config?.port.description
             self.lmpButton.setTitle("LMP Datei ersetzen", for: UIControlState.normal)
+            self.lmpSpectra = config?.lmpSpectrum as? [Double]
             self.refButton.setTitle("REF Datei ersetzen", for: UIControlState.normal)
+            self.refSpectra = config?.refSpectrum as? [Double]
             self.illButton.setTitle("ILL Datei ersetzen", for: UIControlState.normal)
-        } else {
-            self.config = SpectrometerConfig(context: dataViewContext)
+            self.illSpectra = config?.illSpectrum as? [Double]
         }
         super.viewDidLoad()
     }
     
     @IBAction func cancelPressed(_ sender: Any) {
-        NotificationCenter.default.post(name: .reloadSpectrometerConfig, object: nil)
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func savePressed(_ sender: Any) {
+        print("Config Saved")
+        
+        // if its new create a new config
+        if self.config == nil {
+            self.config = SpectrometerConfig(context: dataViewContext)
+        }
+        
+        config?.name = name.text
+        config?.ipAdress = ipAdress.text
+        config?.port = Int16(port.text!)!
+        config?.lmpSpectrum = lmpSpectra as NSObject?
+        config?.refSpectrum = refSpectra as NSObject?
+        config?.illSpectrum = illSpectra as NSObject?
+        
         appDelegate.saveContext()
         NotificationCenter.default.post(name: .reloadSpectrometerConfig, object: nil)
         dismiss(animated: true, completion: nil)
@@ -76,10 +95,8 @@ class AddEditConnectionViewController: UIViewController {
     @IBAction func nameEditEnd(_ sender: Any) {
         if validateName() {
             name.textColor = black
-            self.config?.name = name.text
         } else {
             name.textColor = red
-            self.config?.name = nil
         }
         toggleSaveButton()
     }
@@ -91,10 +108,8 @@ class AddEditConnectionViewController: UIViewController {
     @IBAction func ipAdressEditEnd(_ sender: Any) {
         if validateIp() {
             ipAdress.textColor = black
-            self.config?.ipAdress = ipAdress.text
         } else {
             ipAdress.textColor = red
-            self.config?.ipAdress = nil
         }
         toggleSaveButton()
     }
@@ -106,10 +121,8 @@ class AddEditConnectionViewController: UIViewController {
     @IBAction func portEditEnd(_ sender: UITextField, forEvent event: UIEvent) {
         if validatePort() {
             port.textColor = black
-            self.config?.port = Int16(port.text!)!
         } else {
             port.textColor = red
-            self.config?.port = 0
         }
         toggleSaveButton()
     }
@@ -123,7 +136,7 @@ class AddEditConnectionViewController: UIViewController {
             self.lmpButton.setTitle(file.displayName, for: UIControlState.normal)
             if (!parseResult) {
                 self.lmpButton.setTitleColor(self.red, for: UIControlState.normal)
-                self.config?.lmpSpectrum = nil
+                self.lmpSpectra = nil
                 self.toggleSaveButton()
             } else {
                 self.lmpButton.setTitleColor(self.green, for: UIControlState.normal)
@@ -143,7 +156,7 @@ class AddEditConnectionViewController: UIViewController {
             self.refButton.setTitle(file.displayName, for: UIControlState.normal)
             if (!parseResult) {
                 self.refButton.setTitleColor(self.red, for: UIControlState.normal)
-                self.config?.refSpectrum = nil
+                self.refSpectra = nil
                 self.toggleSaveButton()
             } else {
                 self.refButton.setTitleColor(self.green, for: UIControlState.normal)
@@ -163,7 +176,7 @@ class AddEditConnectionViewController: UIViewController {
             self.illButton.setTitle(file.displayName, for: UIControlState.normal)
             if (!parseResult) {
                 self.illButton.setTitleColor(self.red, for: UIControlState.normal)
-                self.config?.illSpectrum = nil
+                self.illSpectra = nil
                 self.toggleSaveButton()
             } else {
                 self.illButton.setTitleColor(self.green, for: UIControlState.normal)
@@ -211,7 +224,7 @@ class AddEditConnectionViewController: UIViewController {
             self.showWarningMessage(title: "Dateifehler", message: "Bitte wählen Sie eine LMP Datei aus.")
             return false
         }
-        self.config?.lmpSpectrum = lmpFile?.spectrum as NSObject?
+        self.lmpSpectra = (lmpFile?.spectrum)!
         return true
     }
     
@@ -226,7 +239,7 @@ class AddEditConnectionViewController: UIViewController {
             self.showWarningMessage(title: "Dateifehler", message: "Bitte wählen Sie eine REF Datei aus.")
             return false
         }
-        self.config?.refSpectrum = refFile?.spectrum as NSObject?
+        self.refSpectra = (refFile?.spectrum)!
         return true
     }
     
@@ -241,7 +254,7 @@ class AddEditConnectionViewController: UIViewController {
             self.showWarningMessage(title: "Dateifehler", message: "Bitte wählen Sie eine ILL Datei aus.")
             return false
         }
-        self.config?.illSpectrum = illFile?.spectrum as NSObject?
+        self.illSpectra = (illFile?.spectrum)!
         return true
     }
     
@@ -266,12 +279,7 @@ class AddEditConnectionViewController: UIViewController {
     
     private func toggleSaveButton() -> Void {
         
-        if (config == nil) {
-            saveButton.isEnabled = false
-            return
-        }
-        
-        if ((self.config?.name != nil) && (self.config?.ipAdress != nil) && ((self.config?.port)! > 0) && self.config?.lmpSpectrum != nil && self.config?.illSpectrum != nil && self.config?.refSpectrum != nil) {
+        if (validateName() && validateIp() && validatePort() && self.lmpSpectra != nil && self.illSpectra != nil && self.refSpectra != nil) {
             saveButton.isEnabled = true
         } else {
             saveButton.isEnabled = false

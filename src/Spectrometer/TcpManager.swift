@@ -57,17 +57,13 @@ class TcpManager {
         do {
             try client?.send(bytes: command.getCommandString().toBytes())
             
-            let data = try client?.receive(maxBytes: command.size)
-            array += data!
-            print("CommandSize: " + command.size.description + " | " + array.count.description)
+            var recData = 0
+            while recData < command.size {
+                let recPart: [UInt8]? = try client?.receiveAll()
+                array += recPart!
+                recData += (recPart?.count)!
+            }
             
-            
-            //var recData = 0
-            //while recData < command.size {
-            //    let recPart: [UInt8]? = try client?.receiveAll()
-            //    array += recPart!
-            //    recData += (recPart?.count)!
-            //}
         } catch {
             print("Error \(error)")
         }

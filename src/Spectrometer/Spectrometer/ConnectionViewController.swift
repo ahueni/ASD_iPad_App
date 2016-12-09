@@ -38,6 +38,9 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
         } catch {
             print("could not load spectrometers")
         }
+        
+        
+        
         deviceTableView.reloadData()
     }
     
@@ -64,22 +67,29 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
             
             if (tcpManager.connect()) {
                 alert.dismiss(animated: true, completion: nil)
-                _ = tcpManager.sendCommand(command: Command(commandParam: CommandEnum.Restore, params: ""))
-                self.appDelegate.tcpManager = tcpManager
-                let initialViewController = self.storyboard?.instantiateViewController(withIdentifier: "SpektrometerApp") as! UITabBarController
-                self.appDelegate.window?.rootViewController = initialViewController
-                self.appDelegate.window?.makeKeyAndVisible()
+                self.initSpectrometer(tcpManager: tcpManager)
             } else {
                 alert.dismiss(animated: true, completion: {
-                    
                     self.showWarningMessage(title: "Verbindung fehlgeschlagen", message: "Es konnte keine Verbindung mit dem Spektrometer hergestellt werden. Überprüfen sie die Einstellungen und ob das Gerät mit dem Netzwerk des Spektrometers verbunden ist.")
-                
                 })
             }
             
         }
         
         
+        
+    }
+    
+    func initSpectrometer(tcpManager: TcpManager) -> Void {
+        
+        DispatchQueue.main.sync {
+            _ = tcpManager.sendCommand(command: Command(commandParam: CommandEnum.Restore, params: ""))
+            self.appDelegate.tcpManager = tcpManager
+            
+            let initialViewController = self.storyboard?.instantiateViewController(withIdentifier: "SpektrometerApp") as! UITabBarController
+            self.appDelegate.window?.rootViewController = initialViewController
+            self.appDelegate.window?.makeKeyAndVisible()
+        }
         
     }
 
@@ -118,12 +128,6 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
         
         
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        
-        print("Commit Editing Style")
-        
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

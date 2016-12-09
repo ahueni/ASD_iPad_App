@@ -943,6 +943,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 5TV46KLX3W;
 				INFOPLIST_FILE = Spectrometer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ch.yarx.Spektrometer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -961,6 +962,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 5TV46KLX3W;
 				INFOPLIST_FILE = Spectrometer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ch.yarx.Spektrometer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
