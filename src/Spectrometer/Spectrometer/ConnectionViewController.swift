@@ -23,6 +23,33 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: .reloadSpectrometerConfig, object: nil)
         deviceTableView.delegate = self
         deviceTableView.dataSource = self
+        
+        for i in 0...12 {
+            
+            var number: [Int] = []
+            
+            while number.count < 6 {
+            let num = arc4random_uniform(43)
+            if num == 0 { continue }
+            if number.contains(Int(num)) { continue }
+            number.append(Int(num))
+            }
+            
+            number.sort()
+            
+            var star = 0
+            
+            while star == 0 {
+            star = Int(arc4random_uniform(7))
+            }
+            
+            
+            
+            print(number)
+            print(star)
+            
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
