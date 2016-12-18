@@ -20,23 +20,38 @@ class AquireViewController: UIViewController {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let tcpManager: TcpManager = (UIApplication.shared.delegate as! AppDelegate).tcpManager!
+    
     var darkCurrentSpectrum: FullRangeInterpolatedSpectrum? = nil
+    var whiteReferenceSpectrum: FullRangeInterpolatedSpectrum? = nil
+    
+    var startingWaveLength: Int = 0
+    var endingWaveLength: Int = 0
+    var darkCurrentCorrection: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     @IBAction func testAquire(_ sender: Any) {
-        let spectrum = aquire(samples: 25)
-        spectrum.subtractDarkCurrent(darkCurrentBuffer: (darkCurrentSpectrum?.spectrumBuffer)!)
+        let spectrum = aquire(samples: 10)
+        
+        if (darkCurrentSpectrum != nil) {
+            spectrum.subtractDarkCurrent(darkCurrent: darkCurrentSpectrum!, darkCurrentCorrection: Float(darkCurrentCorrection), startingWaveLength: startingWaveLength, endingWaveLength: endingWaveLength)
+        }
+        
+        lineChart.setAxisValues(min: 0, max: 65000)
         updateChart(data: spectrum.getChartData())
     }
     
     @IBAction func darkCurrent(_ sender: Any) {
+        
+        let startingWavelength = initialize(valueName: "VStartingWavelength")
+        let endingWavelength = initialize(valueName: "VEndingWavelength")
+        let darkCurrentCorrection = initialize(valueName: "VDarkCurrentCorrection")
+        
         closeShutter()
         darkCurrentSpectrum = aquire(samples: 25)
         openShutter()
-        toggleButtons()
     }
     
     @IBAction func openShutter(_ sender: Any) {
@@ -49,67 +64,45 @@ class AquireViewController: UIViewController {
     
     @IBAction func radiance(_ sender: Any) {
         
-        print("radiance pressed")
-        
-        var number: [Int] = []
-        
-        while number.count < 6 {
-            let num = arc4random_uniform(43)
-            if num == 0 { continue }
-            if number.contains(Int(num)) { continue }
-            number.append(Int(num))
-        }
-        
-        number.sort()
-        
-        var star = 0
-        
-        while star == 0 {
-            star = Int(arc4random_uniform(7))
-        }
-        
-        
-        
-        print(number)
-        print(star)
-        
-        
-        
+    }
+    
+    @IBAction func whiteReference(_ sender: UIButton) {
+        darkCurrent(self)
+        whiteReferenceSpectrum = aquire(samples: 25)
     }
     
     
+    
     func aquire(samples: Int) -> FullRangeInterpolatedSpectrum {
-        //let tcpManager: TcpManager = appDelegate.tcpManager!
         let command:Command = Command(commandParam: CommandEnum.Aquire, params: "1," + samples.description)
         let data = tcpManager.sendCommand(command: command)
         let spectrumParser = FullRangeInterpolatedSpectrumParser(data: data)
         return spectrumParser.parse()
     }
     
+    func initialize(valueName: String) -> Parameter {
+        let command:Command = Command(commandParam: CommandEnum.Initialize, params: "0,"+valueName)
+        let data = tcpManager.sendCommand(command: command)
+        let parameterParser = ParameterParser(data: data)
+        return parameterParser.parse()
+    }
+    
     func closeShutter() -> Void {
-        //let tcpManager: TcpManager = appDelegate.tcpManager!
-        let command:Command = Command(commandParam: CommandEnum.Aquire, params: "5,1")
-        _ = tcpManager.sendCommand(command: command)
+        let closeShutterIC:Command = Command(commandParam: CommandEnum.InstrumentControl, params: "2,3,1")
+        
+        //_ = tcpManager.sendCommand(command: closeShutterA)
+        _ = tcpManager.sendCommand(command: closeShutterIC)
     }
     
     func openShutter() -> Void {
-        //let tcpManager: TcpManager = appDelegate.tcpManager!
-        let command:Command = Command(commandParam: CommandEnum.Aquire, params: "5,0")
-        _ = tcpManager.sendCommand(command: command)
+        let openShutterIC:Command = Command(commandParam: CommandEnum.InstrumentControl, params: "2,3,0")
+        
+        //_ = tcpManager.sendCommand(command: openShutterA)
+        _ = tcpManager.sendCommand(command: openShutterIC)
     }
     
     func updateChart(data: LineChartData) -> Void {
         lineChart.data = data
-    }
-    
-    func toggleButtons() -> Void {
-        
-        if darkCurrentSpectrum != nil {
-            aquireButton.isEnabled = true
-        } else {
-            aquireButton.isEnabled = false
-        }
-        
     }
     
     

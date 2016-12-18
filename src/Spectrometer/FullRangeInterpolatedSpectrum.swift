@@ -11,7 +11,7 @@ import Charts
 
 class FullRangeInterpolatedSpectrum : BaseSpectrum {
     
-    static let SIZE: Int = 11904
+    static let SIZE: Int = 8860
     
     var spectrumHeader: SpectrumHeader
     var spectrumBuffer: [Float]
@@ -21,19 +21,18 @@ class FullRangeInterpolatedSpectrum : BaseSpectrum {
         self.spectrumBuffer = spectrumBuffer
     }
     
-    func subtractDarkCurrent(darkCurrentBuffer: [Float]) -> Void {
+    func subtractDarkCurrent(darkCurrent: FullRangeInterpolatedSpectrum, darkCurrentCorrection: Float, startingWaveLength: Int, endingWaveLength: Int) -> Void {
         
-        /*
         spectrumHeader.vHeader.darkSubtracted = DarkSubtracted.Yes
         spectrumHeader.s1Header.darkSubtracted = DarkSubtracted.Yes
         spectrumHeader.s2Header.darkSubtracted = DarkSubtracted.Yes
         
-        for (i, dVal) in darkCurrentBuffer.enumerated() {
+        for (i, dVal) in darkCurrent.spectrumBuffer.enumerated() {
             let sVal = spectrumBuffer[i]
             let calculated = sVal - dVal
             spectrumBuffer[i] = calculated
         }
-        */
+        
         
     }
     

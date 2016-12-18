@@ -22,34 +22,7 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: .reloadSpectrometerConfig, object: nil)
         deviceTableView.delegate = self
-        deviceTableView.dataSource = self
-        
-        for i in 0...12 {
-            
-            var number: [Int] = []
-            
-            while number.count < 6 {
-            let num = arc4random_uniform(43)
-            if num == 0 { continue }
-            if number.contains(Int(num)) { continue }
-            number.append(Int(num))
-            }
-            
-            number.sort()
-            
-            var star = 0
-            
-            while star == 0 {
-            star = Int(arc4random_uniform(7))
-            }
-            
-            
-            
-            print(number)
-            print(star)
-            
-        }
-        
+        deviceTableView.dataSource = self        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,7 +45,7 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func connectDevice(sender: UIButton) -> Void {
-        
+             
         let alert = UIAlertController(title: nil, message: "Verbinden...", preferredStyle: .alert)
         let acitivty = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         
@@ -110,7 +83,7 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
     func initSpectrometer(tcpManager: TcpManager) -> Void {
         
         DispatchQueue.main.sync {
-            _ = tcpManager.sendCommand(command: Command(commandParam: CommandEnum.Restore, params: ""))
+            _ = tcpManager.sendCommand(command: Command(commandParam: CommandEnum.Restore, params: "1"))
             self.appDelegate.tcpManager = tcpManager
             
             let initialViewController = self.storyboard?.instantiateViewController(withIdentifier: "SpektrometerApp") as! UITabBarController

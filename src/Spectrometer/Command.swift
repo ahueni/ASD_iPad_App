@@ -9,7 +9,7 @@
 import Foundation
 
 enum CommandEnum: String {
-    case Aquire = "C"
+    case Aquire = "A"
     case Abort = "ABORT"
     case InstrumentControl = "IC"
     case Initialize = "INIT"

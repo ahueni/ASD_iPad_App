@@ -14,20 +14,25 @@ class SpectrumLineChartView : LineChartView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        let font: UIFont = UIFont(name: "Open Sans", size: 14)!
+        let font: UIFont = UIFont(name: "Open Sans", size: 12)!
         
         noDataFont = font
         noDataText = "Es wurden noch keine Daten empfangen um im Diagramm dargestellt zu werden";
         
-        borderColor = UIColor.black
+        borderColor = UIColor.lightGray
         
         self.setExtraOffsets(left: 20, top: 20, right: 20, bottom: 20)
         
         xAxis.axisLineWidth = 1
         xAxis.labelPosition = XAxis.LabelPosition.bothSided
+        
         xAxis.labelFont = font
         xAxis.drawLabelsEnabled = true
+        
         xAxis.enabled = true
+        
+        xAxis.gridColor = borderColor
+        xAxis.axisLineColor = borderColor
         
         leftAxis.spaceBottom = 0
         rightAxis.spaceBottom = 0
@@ -35,21 +40,31 @@ class SpectrumLineChartView : LineChartView {
         leftAxis.spaceTop = 0
         rightAxis.spaceTop = 0
         
+        leftAxis.axisLineWidth = 1
         rightAxis.axisLineWidth = 1
-        rightAxis.gridColor = UIColor.black
+        
+        leftAxis.gridColor = borderColor
+        rightAxis.gridColor = borderColor
+        
+        leftAxis.axisLineColor = borderColor
+        rightAxis.axisLineColor = borderColor
+        
         
         rightAxis.labelFont = font
         leftAxis.labelFont = font
         
-        /*
-        rightAxis.axisMinimum = 0
-        rightAxis.axisMaximum = 20
-        leftAxis.axisMinimum = 0
-        leftAxis.axisMaximum = 20
-        */
-        
         legend.enabled = false
+        legend.drawInside = false
         
+        chartDescription?.enabled = false
+        
+    }
+    
+    func setAxisValues(min: Int, max: Int) -> Void {
+        self.rightAxis.axisMinimum = Double(min)
+        self.rightAxis.axisMaximum = Double(max)
+        self.leftAxis.axisMinimum = Double(min)
+        self.leftAxis.axisMaximum = Double(max)
     }
     
 }
@@ -63,8 +78,8 @@ class SpectrumLineChartDataSet: LineChartDataSet {
         
         valueFont = openSansFont
         drawCirclesEnabled = drawCircles
-        lineWidth = 2
-        highlightLineWidth = 1
+        lineWidth = 3
+        //highlightLineWidth = 1
         lineCapType = CGLineCap.round
         colors = [color]
         
@@ -74,8 +89,8 @@ class SpectrumLineChartDataSet: LineChartDataSet {
         super.init(values: values, label: label)
         valueFont = openSansFont
         drawCirclesEnabled = false
-        lineWidth = 2
-        highlightLineWidth = 1
+        lineWidth = 3
+        //highlightLineWidth = 1
         lineCapType = CGLineCap.round
         colors = [UIColor.black]
         

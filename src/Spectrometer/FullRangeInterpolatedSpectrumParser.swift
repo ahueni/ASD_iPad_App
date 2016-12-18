@@ -90,12 +90,10 @@ class FullRangeInterpolatedSpectrumParser: BaseSpectrumParser, ISpectrumParser {
         
         let spectrumHeader = SpectrumHeader(header: header, error: error, sampleCount: sampleCount, trigger: trigger, voltage: voltage, current: current, temperature: temperature, motorCurrent: motorCurrent, instrumentHours: instrumentHours, instrumentMinutes: instrumentMinutes, instrumentType: instrumentType, AB: AB, vHeader: vinirHeader, s1Header: swir1Header, s2Header: swir2Header)
         
-        print("ParserIndex before buffer: " + parseIndex.description)
-        
         // parse spectrum buffer
         var buffer: [Float] = []
         
-        for i in 0...2151 {
+        for _ in 0...2150 {
             let value = getNextFloatSpec()
             //print(i.description + " / " + value.description)
             buffer.append(Float(value))

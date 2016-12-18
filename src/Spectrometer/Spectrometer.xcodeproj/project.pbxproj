@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E0324271E05600B00C52D58 /* ParameterParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0324261E05600B00C52D58 /* ParameterParser.swift */; };
 		2E2B8CE11DFEEF4400090078 /* FileBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E2B8CDE1DFEEF1600090078 /* FileBrowser.framework */; };
 		2E2B8CE21DFEEF4400090078 /* FileBrowser.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2E2B8CDE1DFEEF1600090078 /* FileBrowser.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2E2B8CE51DFEEF4B00090078 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E2B8CD31DFEEF0700090078 /* Charts.framework */; };
@@ -155,6 +156,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2E0324261E05600B00C52D58 /* ParameterParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterParser.swift; sourceTree = "<group>"; };
 		2E2B8CCC1DFEEF0700090078 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ../Frameworks/Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		2E2B8CD81DFEEF1600090078 /* FileBrowser.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FileBrowser.xcodeproj; path = ../Frameworks/FileBrowser/FileBrowser.xcodeproj; sourceTree = "<group>"; };
 		2E708A1C1DE22B04008EC78A /* SpectrometerConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrometerConfig.swift; sourceTree = "<group>"; };
@@ -429,6 +431,7 @@
 				2EB822E81DE06F0900DF732C /* VersionParser.swift */,
 				2EB822EB1DE0811D00DF732C /* FullRangeInterpolatedSpectrumParser.swift */,
 				2EB362A41DF23DDB00E74E39 /* SpectralFileParser.swift */,
+				2E0324261E05600B00C52D58 /* ParameterParser.swift */,
 			);
 			name = Parser;
 			sourceTree = "<group>";
@@ -778,6 +781,7 @@
 				2E91F2E91DDB5B9F003E277F /* FDSet.swift in Sources */,
 				2E91F3131DDB842A003E277F /* InstrumentControl.swift in Sources */,
 				2E708A5C1DE714F0008EC78A /* Regex.swift in Sources */,
+				2E0324271E05600B00C52D58 /* ParameterParser.swift in Sources */,
 				2EB362A51DF23DDB00E74E39 /* SpectralFileParser.swift in Sources */,
 				2E91F2F01DDB5B9F003E277F /* TCPSocket.swift in Sources */,
 				2E91F2ED1DDB5B9F003E277F /* Socket.swift in Sources */,
