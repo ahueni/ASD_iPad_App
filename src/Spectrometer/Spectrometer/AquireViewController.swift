@@ -26,7 +26,10 @@ class AquireViewController: UIViewController {
     
     var startingWaveLength: Int = 0
     var endingWaveLength: Int = 0
-    var darkCurrentCorrection: Int = 0
+    var vinirEndingWavelength: Int = 0
+    var vinirDarkCurrentCorrection: Float = 0
+    
+    var drift: Float = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +39,7 @@ class AquireViewController: UIViewController {
         let spectrum = aquire(samples: 10)
         
         if (darkCurrentSpectrum != nil) {
-            spectrum.subtractDarkCurrent(darkCurrent: darkCurrentSpectrum!, darkCurrentCorrection: Float(darkCurrentCorrection), startingWaveLength: startingWaveLength, endingWaveLength: endingWaveLength)
+            spectrum.subtractDarkCurrent(darkCurrent: darkCurrentSpectrum!, startingWaveLength: startingWaveLength, endingWaveLength: vinirEndingWavelength, drift: drift)
         }
         
         lineChart.setAxisValues(min: 0, max: 65000)
@@ -45,13 +48,23 @@ class AquireViewController: UIViewController {
     
     @IBAction func darkCurrent(_ sender: Any) {
         
-        let startingWavelength = initialize(valueName: "VStartingWavelength")
-        let endingWavelength = initialize(valueName: "VEndingWavelength")
-        let darkCurrentCorrection = initialize(valueName: "VDarkCurrentCorrection")
+        startingWaveLength = Int(initialize(valueName: "StartingWavelength").value)
+        //endingWaveLength = initialize(valueName: "EndingWavelength").value
+        //vinirStartingWavelength = initialize(valueName: "VStartingWavelength").value
+        vinirEndingWavelength = Int(initialize(valueName: "VEndingWavelength").value)
+        vinirDarkCurrentCorrection = Float(initialize(valueName: "VDarkCurrentCorrection").value)
         
+        optimize()
+
         closeShutter()
-        darkCurrentSpectrum = aquire(samples: 25)
+        darkCurrentSpectrum = aquire(samples: 10)
+        let darkDrift = darkCurrentSpectrum?.spectrumHeader.vHeader.drift
         openShutter()
+        
+        let aquireData = aquire(samples: 10)
+        let currentDrift = aquireData.spectrumHeader.vHeader.drift
+        
+        drift = vinirDarkCurrentCorrection + Float((currentDrift - darkDrift!))
     }
     
     @IBAction func openShutter(_ sender: Any) {
@@ -67,8 +80,29 @@ class AquireViewController: UIViewController {
     }
     
     @IBAction func whiteReference(_ sender: UIButton) {
-        darkCurrent(self)
-        whiteReferenceSpectrum = aquire(samples: 25)
+        
+        startingWaveLength = Int(initialize(valueName: "StartingWavelength").value)
+        endingWaveLength = Int(initialize(valueName: "EndingWavelength").value)
+        
+        let refrenceSpectrum = aquire(samples: 10)
+        
+        //darkCurrent(self)
+        let aquireData = aquire(samples: 10)
+        
+        // Compute Reflectance
+        for i in 0 ... ((endingWaveLength + 1) - startingWaveLength){
+            aquireData.spectrumBuffer[i] = aquireData.spectrumBuffer[i] / refrenceSpectrum.spectrumBuffer[i]
+        }
+    }
+    
+    
+    @IBAction func optimizeClicked(_ sender: Any) {
+        optimize()
+    }
+    
+    func optimize() -> Void {
+        let command:Command = Command(commandParam: CommandEnum.Optimize, params: "7")
+        let data = tcpManager.sendCommand(command: command)
     }
     
     
@@ -83,6 +117,11 @@ class AquireViewController: UIViewController {
     func initialize(valueName: String) -> Parameter {
         let command:Command = Command(commandParam: CommandEnum.Initialize, params: "0,"+valueName)
         let data = tcpManager.sendCommand(command: command)
+        let parameterParser = ParameterParser(data: data)
+        return parameterParser.parse()
+    }
+    
+    func showData(data: [UInt8])-> Void{
         let parameterParser = ParameterParser(data: data)
         return parameterParser.parse()
     }
