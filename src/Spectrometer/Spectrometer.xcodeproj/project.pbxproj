@@ -79,6 +79,8 @@
 		2EB823251DE0CC2900DF732C /* AquireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB823241DE0CC2900DF732C /* AquireViewController.swift */; };
 		2EB823281DE0D40F00DF732C /* SpectrometerTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB823271DE0D40F00DF732C /* SpectrometerTabBar.swift */; };
 		2EB8233C1DE113DA00DF732C /* CustomCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB8233B1DE113DA00DF732C /* CustomCharts.swift */; };
+		E18970A01E2914B300722E9C /* BaseWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E189709F1E2914B300722E9C /* BaseWriter.swift */; };
+		E1AC382B1E266ACD004CCBEF /* FileWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC382A1E266ACD004CCBEF /* FileWriter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -230,6 +232,8 @@
 		2EB823241DE0CC2900DF732C /* AquireViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AquireViewController.swift; sourceTree = "<group>"; };
 		2EB823271DE0D40F00DF732C /* SpectrometerTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrometerTabBar.swift; sourceTree = "<group>"; };
 		2EB8233B1DE113DA00DF732C /* CustomCharts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCharts.swift; sourceTree = "<group>"; };
+		E189709F1E2914B300722E9C /* BaseWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWriter.swift; sourceTree = "<group>"; };
+		E1AC382A1E266ACD004CCBEF /* FileWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWriter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -427,11 +431,8 @@
 		2E91F3031DDB77FC003E277F /* Parser */ = {
 			isa = PBXGroup;
 			children = (
-				2EB822EA1DE080A400DF732C /* Base */,
-				2EB822E81DE06F0900DF732C /* VersionParser.swift */,
-				2EB822EB1DE0811D00DF732C /* FullRangeInterpolatedSpectrumParser.swift */,
-				2EB362A41DF23DDB00E74E39 /* SpectralFileParser.swift */,
-				2E0324261E05600B00C52D58 /* ParameterParser.swift */,
+				E1AC38291E2665F5004CCBEF /* IndiegoParser */,
+				E1AC38251E2665E6004CCBEF /* SpectrumParser */,
 			);
 			name = Parser;
 			sourceTree = "<group>";
@@ -573,6 +574,27 @@
 				2E708A5B1DE714F0008EC78A /* Regex.swift */,
 			);
 			name = ViewHelpers;
+			sourceTree = "<group>";
+		};
+		E1AC38251E2665E6004CCBEF /* SpectrumParser */ = {
+			isa = PBXGroup;
+			children = (
+				2EB822EA1DE080A400DF732C /* Base */,
+				2EB822E81DE06F0900DF732C /* VersionParser.swift */,
+				2EB822EB1DE0811D00DF732C /* FullRangeInterpolatedSpectrumParser.swift */,
+				2EB362A41DF23DDB00E74E39 /* SpectralFileParser.swift */,
+				2E0324261E05600B00C52D58 /* ParameterParser.swift */,
+			);
+			name = SpectrumParser;
+			sourceTree = "<group>";
+		};
+		E1AC38291E2665F5004CCBEF /* IndiegoParser */ = {
+			isa = PBXGroup;
+			children = (
+				E1AC382A1E266ACD004CCBEF /* FileWriter.swift */,
+				E189709F1E2914B300722E9C /* BaseWriter.swift */,
+			);
+			name = IndiegoParser;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -776,8 +798,10 @@
 				2EB362A01DF1DF0A00E74E39 /* CalibrationBuffer.swift in Sources */,
 				2E91F3151DDB8440003E277F /* Optimize.swift in Sources */,
 				2E91F2E41DDB5B9F003E277F /* Address+C.swift in Sources */,
+				E18970A01E2914B300722E9C /* BaseWriter.swift in Sources */,
 				2E91F2EC1DDB5B9F003E277F /* Select.swift in Sources */,
 				2E91F3021DDB7472003E277F /* VnirHeader.swift in Sources */,
+				E1AC382B1E266ACD004CCBEF /* FileWriter.swift in Sources */,
 				2E91F2E91DDB5B9F003E277F /* FDSet.swift in Sources */,
 				2E91F3131DDB842A003E277F /* InstrumentControl.swift in Sources */,
 				2E708A5C1DE714F0008EC78A /* Regex.swift in Sources */,

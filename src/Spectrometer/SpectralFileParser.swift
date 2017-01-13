@@ -24,7 +24,7 @@ class SpectralFileParser: BaseSpectrumParser {
         spectralFile.dcCorrected = getNextBool()
         spectralFile.dcTime = getNextUInt32()
         spectralFile.dataType = DataType(rawValue: getNextByte())!
-        spectralFile.refTime = UInt32(getNextInt())
+        spectralFile.refTime = getNextUInt32()
         spectralFile.startingWaveLength = getNextFloat()
         spectralFile.waveLengthStep = getNextFloat()
         spectralFile.spectrumDataFormat = DataFormat(rawValue: getNextByte())!

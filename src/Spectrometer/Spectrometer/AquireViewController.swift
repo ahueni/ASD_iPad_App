@@ -9,8 +9,11 @@
 import Foundation
 import UIKit
 import Charts
+import FileBrowser
 
 class AquireViewController: UIViewController {
+    
+    let fileBrowser = FileBrowser()
     
     // buttons
     @IBOutlet var aquireButton: UIButton!
@@ -65,6 +68,8 @@ class AquireViewController: UIViewController {
         let currentDrift = aquireData.spectrumHeader.vHeader.drift
         
         drift = vinirDarkCurrentCorrection + Float((currentDrift - darkDrift!))
+        
+        testAquire(Any)
     }
     
     @IBAction func openShutter(_ sender: Any) {
@@ -76,7 +81,8 @@ class AquireViewController: UIViewController {
     }
     
     @IBAction func radiance(_ sender: Any) {
-        
+        let fw = FileWriter()
+        fw.write()
     }
     
     @IBAction func whiteReference(_ sender: UIButton) {
@@ -121,7 +127,7 @@ class AquireViewController: UIViewController {
         return parameterParser.parse()
     }
     
-    func showData(data: [UInt8])-> Void{
+    func showData(data: [UInt8])-> Parameter{
         let parameterParser = ParameterParser(data: data)
         return parameterParser.parse()
     }

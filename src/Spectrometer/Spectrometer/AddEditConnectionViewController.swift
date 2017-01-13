@@ -60,6 +60,10 @@ class AddEditConnectionViewController: UIViewController {
             self.illButton.setTitle("ILL Datei ersetzen", for: UIControlState.normal)
             self.illSpectra = config?.illSpectrum as? [Double]
         }
+        
+        let fw = FileWriter()
+        fw.write()
+        
         super.viewDidLoad()
     }
     
