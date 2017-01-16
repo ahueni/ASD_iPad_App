@@ -21,8 +21,7 @@ class BaseWriter{
         }
     }
     
-    init(){
-        let path = ("~/Documents/test.txt" as NSString).expandingTildeInPath
+    init(path : String){
         
         let fileManager = FileManager.default
         //  check if the folder already exists
@@ -66,6 +65,18 @@ class BaseWriter{
         fileHandle.write(data)
     }
     
+    func writeLong(number:Int32){
+        var mutableNumber = number
+        let data = Data(buffer: UnsafeBufferPointer(start: &mutableNumber, count: 1))
+        fileHandle.write(data)
+    }
+    
+    func writeDouble(number: Double){
+        var mutableNumber = number
+        let data = Data(buffer: UnsafeBufferPointer(start: &mutableNumber, count: 1))
+        fileHandle.write(data)
+    }
+    
     func writeString(text:String){
         let data = text.data(using: String.Encoding.utf8)
         fileHandle.write(data!)
@@ -81,9 +92,10 @@ class BaseWriter{
     }
     
     func writeVersion(number:Int, decimalNumber : Int){
-        let upperNibbleProgramVersion = UInt8(number)
-        let lowerNibbleProgramVersion = UInt8(decimalNumber) << 4
+        let upperNibbleProgramVersion = UInt8(number) << 4
+        let lowerNibbleProgramVersion = UInt8(decimalNumber)
         var programVersion =  upperNibbleProgramVersion | lowerNibbleProgramVersion
+        print(programVersion)
         let data = Data(buffer: UnsafeBufferPointer(start: &programVersion, count: 1))
         fileHandle.write(data)
     }

@@ -61,9 +61,6 @@ class AddEditConnectionViewController: UIViewController {
             self.illSpectra = config?.illSpectrum as? [Double]
         }
         
-        let fw = FileWriter()
-        fw.write()
-        
         super.viewDidLoad()
     }
     

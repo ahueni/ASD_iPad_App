@@ -80,13 +80,13 @@ class SpectralFileParser: BaseSpectrumParser {
         let channels: Int = Int(spectralFile.channels)
         switch spectralFile.spectrumDataFormat {
         case .DoubleFormat:
-            parseDoubleSpectralData(channelCount: channels)
+            spectralFile.spectrum = parseDoubleSpectralData(channelCount: channels)
             break
         case .FloatFormat:
-            parseFloatSpectralData(channelCount: channels)
+            spectralFile.spectrum = parseFloatSpectralData(channelCount: channels)
             break
         case .IntegerFormat:
-            parseIntegerSpectralData(channelCount: channels)
+            spectralFile.spectrum = parseIntegerSpectralData(channelCount: channels)
             break
         default:
             throw ParsingError(message: "Unbekanntes Datenformat der Spektraldaten.")
@@ -106,13 +106,13 @@ class SpectralFileParser: BaseSpectrumParser {
         // parse reference data
         switch spectralFile.spectrumDataFormat {
         case .DoubleFormat:
-            parseDoubleSpectralData(channelCount: channels)
+            spectralFile.reference = parseDoubleSpectralData(channelCount: channels)
             break
         case .FloatFormat:
-            parseFloatSpectralData(channelCount: channels)
+            spectralFile.reference = parseFloatSpectralData(channelCount: channels)
             break
         case .IntegerFormat:
-            parseIntegerSpectralData(channelCount: channels)
+            spectralFile.reference = parseIntegerSpectralData(channelCount: channels)
             break
         default:
             throw ParsingError(message: "Unbekanntes Datenformat der Referenzdaten.")
@@ -124,36 +124,41 @@ class SpectralFileParser: BaseSpectrumParser {
         
     }
     
-    private func parseDoubleSpectralData(channelCount: Int) -> Void {
+    private func parseDoubleSpectralData(channelCount: Int) -> [Double] {
         
+        var spectrum : [Double] = []
         for i in 0...channelCount-1 {
             let wavelength = i + Int(spectralFile.startingWaveLength)
             let value = getNextDouble()
-            spectralFile.spectrum.append(value)
+            spectrum.append(value)
             print(wavelength.description + " / " + value.description)
         }
-        
+        return spectrum
     }
     
-    private func parseFloatSpectralData(channelCount: Int) -> Void {
+    private func parseFloatSpectralData(channelCount: Int) -> [Double] {
         
+        var spectrum : [Double] = []
         for i in 0...channelCount-1 {
             let wavelength = i + Int(spectralFile.startingWaveLength)
             let value = getNextFloat()
-            spectralFile.spectrum.append(Double(value))
+            spectrum.append(Double(value))
             print(wavelength.description + " / " + value.description)
         }
+        return spectrum
         
     }
     
-    private func parseIntegerSpectralData(channelCount: Int) -> Void {
+    private func parseIntegerSpectralData(channelCount: Int) -> [Double] {
         
+        var spectrum : [Double] = []
         for i in 0...channelCount-1 {
             let wavelength = i + Int(spectralFile.startingWaveLength)
             let value = getNextInt()
-            spectralFile.spectrum.append(Double(value))
+            spectrum.append(Double(value))
             print(wavelength.description + " / " + value.description)
         }
+        return spectrum
         
     }
     

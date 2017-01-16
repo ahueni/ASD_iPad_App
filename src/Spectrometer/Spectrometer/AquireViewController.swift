@@ -47,6 +47,24 @@ class AquireViewController: UIViewController {
         
         lineChart.setAxisValues(min: 0, max: 65000)
         updateChart(data: spectrum.getChartData())
+        
+        
+        let path = ("~/Documents/test.txt" as NSString).expandingTildeInPath
+        
+        let fw = FileWriter(path: path)
+        let fileHandle :FileHandle = fw.write(spectrum: spectrum, whiteRefrenceSpectrum: spectrum)
+        
+        let dataBuffer = [UInt8](FileManager().contents(atPath: path)!)
+        let fileParser = SpectralFileParser(data: dataBuffer)
+        
+        do{
+            try fileParser.parse()
+            print("File succesfully parsed!")
+        }
+        catch{
+            
+            print("File not parsed!")
+        }
     }
     
     @IBAction func darkCurrent(_ sender: Any) {
@@ -81,8 +99,7 @@ class AquireViewController: UIViewController {
     }
     
     @IBAction func radiance(_ sender: Any) {
-        let fw = FileWriter()
-        fw.write()
+
     }
     
     @IBAction func whiteReference(_ sender: UIButton) {

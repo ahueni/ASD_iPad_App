@@ -10,10 +10,10 @@ import Foundation
 
 class FileWriter : BaseWriter {
     
-    
-    
-    
-    func write(){
+    func write(spectrum : FullRangeInterpolatedSpectrum, whiteRefrenceSpectrum : FullRangeInterpolatedSpectrum) -> FileHandle{
+        
+        // ------ Start Header ------
+        
         //FileVersion
         writeString(text: "as6")
         
@@ -54,7 +54,7 @@ class FileWriter : BaseWriter {
         writeFloat(number: Float(1))
         
         //dataFormat
-        writeByte(number: 2)
+        writeByte(number: 0)
         
         //oldDcCount
         writeByte(number: 2)
@@ -69,8 +69,7 @@ class FileWriter : BaseWriter {
         writeByte(number: 10)
         
         //channels
-        writeByte(number: 0)
-        writeByte(number: 2)
+        writeInt(number: UInt16(spectrum.spectrumBuffer.count))
         
         //appData
         for _ in 1...128{
@@ -83,7 +82,7 @@ class FileWriter : BaseWriter {
         }
         
         //integrationTime
-        writeLong(number: 10)
+        writeLong(number: UInt32(10))
         
         //fo
         writeInt(number: Int16(10))
@@ -98,13 +97,13 @@ class FileWriter : BaseWriter {
         writeInt(number: UInt16(10))
         
         //ymin
-        writeLong(number: 100)
+        writeLong(number: UInt32(100))
         //ymax
-        writeLong(number: 100)
+        writeLong(number: UInt32(100))
         //xmin
-        writeLong(number: 100)
+        writeLong(number: UInt32(100))
         //xmax
-        writeLong(number: 100)
+        writeLong(number: UInt32(100))
         
         //ip_numbits
         writeInt(number: UInt16(10))
@@ -113,10 +112,7 @@ class FileWriter : BaseWriter {
         writeByte(number: 8)
         
         //flags
-        writeLong(number: 1)
-        
-        //dc_count
-        writeInt(number: UInt16(2))
+        writeLong(number: UInt32(1))
         
         //dc_count
         writeInt(number: UInt16(2))
@@ -131,7 +127,7 @@ class FileWriter : BaseWriter {
         writeByte(number: 0)
         
         //bulb
-        writeLong(number: 0)
+        writeLong(number: UInt32(0))
         
         //swir1_gain
         writeInt(number: UInt16(2048))
@@ -161,8 +157,46 @@ class FileWriter : BaseWriter {
             writeByte(number: UInt8(0))
         }
         
+        // ------ End Header ------
+        
+        //Spectrum Data
+        for i in 0...spectrum.spectrumBuffer.count-1 //channels
+        {
+            writeFloat(number: spectrum.spectrumBuffer[i])
+        }
+        
+        // ------ Start Refrence ------
+        
+        // ReferenceFlag Write bool with 2 Bytes
+        writeByte(number: 1)
+        writeByte(number: 1)
+        
+        //ReferenceTime
+        for _ in 1...8{
+            writeByte(number: UInt8(0))
+        }
+        
+        //SpectrumTime
+        for _ in 1...8{
+            writeByte(number: UInt8(0))
+        }
+        
+        //SpectrumDescripton
+        writeString(text: "description of spectrum")
+        writeByte(number: UInt8(0)) // End the Description with zero byte
+        
+        //Refrence Spectrum Data
+        
+        for i in 0...spectrum.spectrumBuffer.count-1 //channels
+        {
+            writeFloat(number: whiteRefrenceSpectrum.spectrumBuffer[i])
+        }
+        
+        // ------ End Refrence ------
+        
+        
         print("File updated!")
         
-        
+        return fileHandle
     }
 }
