@@ -79,6 +79,7 @@
 		2EB823251DE0CC2900DF732C /* AquireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB823241DE0CC2900DF732C /* AquireViewController.swift */; };
 		2EB823281DE0D40F00DF732C /* SpectrometerTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB823271DE0D40F00DF732C /* SpectrometerTabBar.swift */; };
 		2EB8233C1DE113DA00DF732C /* CustomCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB8233B1DE113DA00DF732C /* CustomCharts.swift */; };
+		E1129D331E2FBDC700331A02 /* FinishTestSeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1129D321E2FBDC700331A02 /* FinishTestSeriesViewController.swift */; };
 		E14EC22E1E2E1889006EBD2F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */; };
 		E1807E5E1E2E576400BB205F /* ExceptionErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E5D1E2E576400BB205F /* ExceptionErrors.swift */; };
 		E1807E641E2F619B00BB205F /* TestSeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E631E2F619B00BB205F /* TestSeriesViewController.swift */; };
@@ -237,6 +238,7 @@
 		2EB823241DE0CC2900DF732C /* AquireViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AquireViewController.swift; sourceTree = "<group>"; };
 		2EB823271DE0D40F00DF732C /* SpectrometerTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrometerTabBar.swift; sourceTree = "<group>"; };
 		2EB8233B1DE113DA00DF732C /* CustomCharts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCharts.swift; sourceTree = "<group>"; };
+		E1129D321E2FBDC700331A02 /* FinishTestSeriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishTestSeriesViewController.swift; sourceTree = "<group>"; };
 		E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E1807E5D1E2E576400BB205F /* ExceptionErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExceptionErrors.swift; sourceTree = "<group>"; };
 		E1807E631E2F619B00BB205F /* TestSeriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSeriesViewController.swift; sourceTree = "<group>"; };
@@ -603,6 +605,7 @@
 				E1807E631E2F619B00BB205F /* TestSeriesViewController.swift */,
 				E1807E651E2F79AA00BB205F /* PageContentViewController.swift */,
 				E1807E671E2F7B2F00BB205F /* ParentViewController.swift */,
+				E1129D321E2FBDC700331A02 /* FinishTestSeriesViewController.swift */,
 			);
 			name = Modals;
 			sourceTree = "<group>";
@@ -840,6 +843,7 @@
 				E1807E641E2F619B00BB205F /* TestSeriesViewController.swift in Sources */,
 				2E708A5C1DE714F0008EC78A /* Regex.swift in Sources */,
 				E1807E681E2F7B2F00BB205F /* ParentViewController.swift in Sources */,
+				E1129D331E2FBDC700331A02 /* FinishTestSeriesViewController.swift in Sources */,
 				2E0324271E05600B00C52D58 /* ParameterParser.swift in Sources */,
 				2EB362A51DF23DDB00E74E39 /* SpectralFileParser.swift in Sources */,
 				2E91F2F01DDB5B9F003E277F /* TCPSocket.swift in Sources */,

@@ -9,67 +9,54 @@
 import Foundation
 import UIKit
 
-class ParentViewController : UIPageViewController, UIPageViewControllerDataSource {
+class ParentViewController : UIPageViewController {
     
     var arrPageTitle: NSArray = NSArray()
-    
+    var currentPageIndex = 0
+    var measurmentSettings : MeasurmentSettings = MeasurmentSettings()
+    var spectrums : [FullRangeInterpolatedSpectrum] =  [FullRangeInterpolatedSpectrum]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        arrPageTitle = ["This is The App Guruz", "This is Table Tennis 3D", "This is Hide Secrets"];
-        
-        //self.dataSource = self
-        //self.setViewControllers([getViewControllerAtIndex(index: 0)] as [UIViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: false, completion: nil)
-        
-        
         let firstPage = self.storyboard?.instantiateViewController(withIdentifier: "TestSeriesViewController") as! TestSeriesViewController
         firstPage.pageContainer = self
+        firstPage.measurmentSettings = measurmentSettings
         self.setViewControllers([firstPage], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
     }
     
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController?
+    func goToNextPage(spectrum : FullRangeInterpolatedSpectrum)
     {
-        /*
-        let pageContent: PageContentViewController = viewController as! PageContentViewController
-        var index = pageContent.pageIndex
-        if ((index == 0) || (index == NSNotFound))
-        {
-            return nil
-        }
-        index -= 1;
-        return getViewControllerAtIndex(index: index)
- */
-        return viewController
+        spectrums.append(spectrum)
+        goToNextPage()
     }
     
-    
-    
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController?
-    {
-        /*
-        let pageContent: PageContentViewController = viewController as! PageContentViewController
-        var index = pageContent.pageIndex
-        if (index == NSNotFound)
-        {
-            return nil;
+    func goToNextPage(){
+        currentPageIndex += 1
+        
+        //all measurements are done
+        if(currentPageIndex > (measurmentSettings.measurementCount)){
+            let finishViewController = self.storyboard?.instantiateViewController(withIdentifier: "FinishTestSeriesViewController") as! FinishTestSeriesViewController
+            setViewControllers([finishViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+            
+        } //go to next measurement
+        else{
+            let pageContentViewController = self.storyboard?.instantiateViewController(withIdentifier: "PageContentViewController") as! PageContentViewController
+            
+            pageContentViewController.pageContainer = self
+            
+            pageContentViewController.strTitle = "Messung "+currentPageIndex.description
+            setViewControllers([pageContentViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
         }
-        index += 1;
-        if (index == arrPageTitle.count)
-        {
-            return nil;
-        }
-        return getViewControllerAtIndex(index: index)
- */
-        return viewController
     }
-    
-    func getViewControllerAtIndex(index: NSInteger) -> PageContentViewController
-    {
-        // Create a new view controller and pass suitable data.
-        let pageContentViewController = self.storyboard?.instantiateViewController(withIdentifier: "PageContentViewController") as! PageContentViewController
-        pageContentViewController.strTitle = "\(arrPageTitle[index])"
-        pageContentViewController.pageIndex = index
-        return pageContentViewController
-    }
+}
+
+class MeasurmentSettings{
+    var measurementCount = 10
+    var whiteRefrenceSetting : WhiteRefrenceSettings = WhiteRefrenceSettings.TakeBeforeMesurement
+}
+
+enum WhiteRefrenceSettings{
+    case TakeOnce
+    case TakeBeforeMesurement
 }

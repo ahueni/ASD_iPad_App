@@ -13,15 +13,26 @@ class TestSeriesViewController : UIViewController {
     
     var pageIndex: Int = 0
     var strTitle: String!
-    var pageContainer : UIPageViewController? = nil
+    var pageContainer : ParentViewController? = nil
+    var measurmentSettings : MeasurmentSettings? = nil
+    
+    @IBOutlet weak var whiteRefrenceSettingsSegmentControl: UISegmentedControl!
+    @IBOutlet weak var measurementCountTextField: UITextField!
     
     @IBAction func nextButtonClicked(_ sender: UIButton) {
-        let pageContentViewController = self.storyboard?.instantiateViewController(withIdentifier: "PageContentViewController") as! PageContentViewController
+        goToNextPage()
+    }
+    
+    func goToNextPage(){
+            measurmentSettings?.measurementCount = Int(measurementCountTextField.text!)!
+            switch whiteRefrenceSettingsSegmentControl.selectedSegmentIndex {
+            case 0:
+                measurmentSettings?.whiteRefrenceSetting = WhiteRefrenceSettings.TakeOnce
+            default:
+                measurmentSettings?.whiteRefrenceSetting = WhiteRefrenceSettings.TakeBeforeMesurement
+            }
         
-        pageContentViewController.pageContainer = pageContainer
-        let test = arc4random()
-        pageContentViewController.strTitle = "Test! " + test.description
-        pageContainer?.setViewControllers([pageContentViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+        pageContainer?.goToNextPage()
     }
     
     @IBAction func CancelButtonClicked(_ sender: UIButton) {
