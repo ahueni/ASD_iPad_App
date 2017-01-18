@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11542" systemVersion="15G1211" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16C67" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="SpectrometerConfig" representedClassName="SpectrometerConfig" syncable="YES" codeGenerationType="class">
         <attribute name="illSpectrum" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="ipAdress" optional="YES" attributeType="String" syncable="YES"/>
@@ -7,8 +7,9 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="port" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="refSpectrum" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="sampleCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="SpectrometerConfig" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="SpectrometerConfig" positionX="-63" positionY="-18" width="128" height="150"/>
     </elements>
 </model>

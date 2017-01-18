@@ -79,6 +79,11 @@
 		2EB823251DE0CC2900DF732C /* AquireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB823241DE0CC2900DF732C /* AquireViewController.swift */; };
 		2EB823281DE0D40F00DF732C /* SpectrometerTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB823271DE0D40F00DF732C /* SpectrometerTabBar.swift */; };
 		2EB8233C1DE113DA00DF732C /* CustomCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB8233B1DE113DA00DF732C /* CustomCharts.swift */; };
+		E14EC22E1E2E1889006EBD2F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */; };
+		E1807E5E1E2E576400BB205F /* ExceptionErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E5D1E2E576400BB205F /* ExceptionErrors.swift */; };
+		E1807E641E2F619B00BB205F /* TestSeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E631E2F619B00BB205F /* TestSeriesViewController.swift */; };
+		E1807E661E2F79AA00BB205F /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E651E2F79AA00BB205F /* PageContentViewController.swift */; };
+		E1807E681E2F7B2F00BB205F /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E671E2F7B2F00BB205F /* ParentViewController.swift */; };
 		E18970A01E2914B300722E9C /* BaseWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E189709F1E2914B300722E9C /* BaseWriter.swift */; };
 		E1AC382B1E266ACD004CCBEF /* FileWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC382A1E266ACD004CCBEF /* FileWriter.swift */; };
 /* End PBXBuildFile section */
@@ -232,6 +237,11 @@
 		2EB823241DE0CC2900DF732C /* AquireViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AquireViewController.swift; sourceTree = "<group>"; };
 		2EB823271DE0D40F00DF732C /* SpectrometerTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrometerTabBar.swift; sourceTree = "<group>"; };
 		2EB8233B1DE113DA00DF732C /* CustomCharts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCharts.swift; sourceTree = "<group>"; };
+		E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E1807E5D1E2E576400BB205F /* ExceptionErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExceptionErrors.swift; sourceTree = "<group>"; };
+		E1807E631E2F619B00BB205F /* TestSeriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSeriesViewController.swift; sourceTree = "<group>"; };
+		E1807E651E2F79AA00BB205F /* PageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContentViewController.swift; sourceTree = "<group>"; };
+		E1807E671E2F7B2F00BB205F /* ParentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
 		E189709F1E2914B300722E9C /* BaseWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWriter.swift; sourceTree = "<group>"; };
 		E1AC382A1E266ACD004CCBEF /* FileWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWriter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -316,6 +326,7 @@
 		2E91F2A41DDB5B76003E277F /* Spectrometer */ = {
 			isa = PBXGroup;
 			children = (
+				E14EC2291E2E187B006EBD2F /* Settings */,
 				2E708A181DE22AF0008EC78A /* Data */,
 				2EB823261DE0D3ED00DF732C /* ViewHelpers */,
 				2EB823231DE0CC0600DF732C /* Aquire */,
@@ -398,6 +409,7 @@
 			children = (
 				2E91F2F91DDB6161003E277F /* Command.swift */,
 				2EB822E61DE06C0300DF732C /* Extensions.swift */,
+				E1807E5D1E2E576400BB205F /* ExceptionErrors.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -560,6 +572,7 @@
 		2EB823231DE0CC0600DF732C /* Aquire */ = {
 			isa = PBXGroup;
 			children = (
+				E1807E621E2F617900BB205F /* Modals */,
 				2EB823241DE0CC2900DF732C /* AquireViewController.swift */,
 			);
 			name = Aquire;
@@ -574,6 +587,24 @@
 				2E708A5B1DE714F0008EC78A /* Regex.swift */,
 			);
 			name = ViewHelpers;
+			sourceTree = "<group>";
+		};
+		E14EC2291E2E187B006EBD2F /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		E1807E621E2F617900BB205F /* Modals */ = {
+			isa = PBXGroup;
+			children = (
+				E1807E631E2F619B00BB205F /* TestSeriesViewController.swift */,
+				E1807E651E2F79AA00BB205F /* PageContentViewController.swift */,
+				E1807E671E2F7B2F00BB205F /* ParentViewController.swift */,
+			);
+			name = Modals;
 			sourceTree = "<group>";
 		};
 		E1AC38251E2665E6004CCBEF /* SpectrumParser */ = {
@@ -767,7 +798,9 @@
 				2E91F3111DDB8408003E277F /* Init.swift in Sources */,
 				2E708A1D1DE22B04008EC78A /* SpectrometerConfig.swift in Sources */,
 				2E91F2EA1DDB5B9F003E277F /* InternetSocket.swift in Sources */,
+				E1807E5E1E2E576400BB205F /* ExceptionErrors.swift in Sources */,
 				2E91F2E21DDB5B9F003E277F /* TCPClient.swift in Sources */,
+				E14EC22E1E2E1889006EBD2F /* SettingsViewController.swift in Sources */,
 				2E91F2EF1DDB5B9F003E277F /* SocketOptions.swift in Sources */,
 				2E91F2A81DDB5B76003E277F /* ConnectionViewController.swift in Sources */,
 				2E91F3081DDB78D8003E277F /* SpectrumDataBase.swift in Sources */,
@@ -804,7 +837,9 @@
 				E1AC382B1E266ACD004CCBEF /* FileWriter.swift in Sources */,
 				2E91F2E91DDB5B9F003E277F /* FDSet.swift in Sources */,
 				2E91F3131DDB842A003E277F /* InstrumentControl.swift in Sources */,
+				E1807E641E2F619B00BB205F /* TestSeriesViewController.swift in Sources */,
 				2E708A5C1DE714F0008EC78A /* Regex.swift in Sources */,
+				E1807E681E2F7B2F00BB205F /* ParentViewController.swift in Sources */,
 				2E0324271E05600B00C52D58 /* ParameterParser.swift in Sources */,
 				2EB362A51DF23DDB00E74E39 /* SpectralFileParser.swift in Sources */,
 				2E91F2F01DDB5B9F003E277F /* TCPSocket.swift in Sources */,
@@ -817,6 +852,7 @@
 				2EB823281DE0D40F00DF732C /* SpectrometerTabBar.swift in Sources */,
 				2EB3629A1DF1D8E400E74E39 /* AppData.swift in Sources */,
 				2E91F2A61DDB5B76003E277F /* AppDelegate.swift in Sources */,
+				E1807E661E2F79AA00BB205F /* PageContentViewController.swift in Sources */,
 				2E91F2AE1DDB5B76003E277F /* Spectrometer.xcdatamodeld in Sources */,
 				2E91F30A1DDB7BDF003E277F /* FullRangeInterpolatedSpectrum.swift in Sources */,
 			);

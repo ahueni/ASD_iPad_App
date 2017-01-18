@@ -14,6 +14,8 @@ import FileBrowser
 class AquireViewController: UIViewController {
     
     let fileBrowser = FileBrowser()
+    // used to queue requests to spectrometer. It is essential that only one request at a time is processing
+    let serialQueue = DispatchQueue(label: "spectrometerQueue")
     
     // buttons
     @IBOutlet var aquireButton: UIButton!
@@ -30,25 +32,90 @@ class AquireViewController: UIViewController {
     var startingWaveLength: Int = 0
     var endingWaveLength: Int = 0
     var vinirEndingWavelength: Int = 0
-    var vinirDarkCurrentCorrection: Float = 0
+    var vinirDarkCurrentCorrection: Double = 0
+    var aquireLoopOn = false // Indicates if a aquireLoop is running
     
-    var drift: Float = 0
+    var darkDrift: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        darkCurrent()
     }
     
-    @IBAction func testAquire(_ sender: Any) {
-        let spectrum = aquire(samples: 10)
+    @IBAction func startAquire(_ sender: UIButton) {
+        aquireLoopOn = !aquireLoopOn
         
-        if (darkCurrentSpectrum != nil) {
-            spectrum.subtractDarkCurrent(darkCurrent: darkCurrentSpectrum!, startingWaveLength: startingWaveLength, endingWaveLength: vinirEndingWavelength, drift: drift)
+        DispatchQueue(label: "test").async {
+            
+            while(self.aquireLoopOn){
+                self.aquireWithDarkCorrection()
+            }
         }
+    }
+    
+    func aquireWithDarkCorrection () {
+            // Background tasks
+            let spectrum = self.aquire(samples: (self.appDelegate.config?.sampleCount)!)
+            let currentDrift = spectrum.spectrumHeader.vHeader.drift
+            
+            if (self.darkCurrentSpectrum == nil){
+                return //throw SpectrometerErrors.noDarkCurrentFound
+            }
+            
+            let drift = Float(self.vinirDarkCurrentCorrection + Double(currentDrift - self.darkDrift))
+            print("Drift: " + drift.description)
+            
+            let darkCorrectionRange = ((self.endingWaveLength + 1) - self.startingWaveLength)
+            spectrum.subtractDarkCurrent(darkCurrent: self.darkCurrentSpectrum!, darkCorrectionRange: darkCorrectionRange, drift: drift)
+            
+            DispatchQueue.main.async {
+                //update ui
+                self.lineChart.setAxisValues(min: 0, max: 65000)
+                self.updateChart(data: spectrum.getChartData())
+            }
+    }
+    
+    @IBAction func darkCurrent(_ sender: Any) {
+        aquireLoopOn = false
+        darkCurrent()
+    }
+    
+    @IBAction func openShutter(_ sender: Any) {
+        aquireLoopOn = false
+        openShutter()
+    }
+    
+    @IBAction func closeShutter(_ sender: Any) {
+        aquireLoopOn = false
+        closeShutter()
+    }
+    
+    @IBAction func radiance(_ sender: Any) {
+        aquireLoopOn = false
+    }
+    
+    @IBAction func whiteReference(_ sender: UIButton) {
+        aquireLoopOn = false
+        aquire(samples: 10)
+    }
+    
+    func computeReflectance(){
+        startingWaveLength = Int(initialize(valueName: "StartingWavelength").value)
+        endingWaveLength = Int(initialize(valueName: "EndingWavelength").value)
         
-        lineChart.setAxisValues(min: 0, max: 65000)
-        updateChart(data: spectrum.getChartData())
+        let refrenceSpectrum = aquire(samples: 10)
         
+        //darkCurrent(self)
+        let aquireData = aquire(samples: 10)
         
+        // Compute Reflectance
+        for i in 0 ... ((endingWaveLength + 1) - startingWaveLength){
+            aquireData.spectrumBuffer[i] = aquireData.spectrumBuffer[i] / refrenceSpectrum.spectrumBuffer[i]
+        }
+    }
+    
+    func saveSpectrum(spectrum: FullRangeInterpolatedSpectrum, whiteRefrenceSpectrum: FullRangeInterpolatedSpectrum){
         let path = ("~/Documents/test.txt" as NSString).expandingTildeInPath
         
         let fw = FileWriter(path: path)
@@ -65,76 +132,42 @@ class AquireViewController: UIViewController {
             
             print("File not parsed!")
         }
+
     }
     
-    @IBAction func darkCurrent(_ sender: Any) {
-        
+    func optimize() -> Void {
+        serialQueue.sync {
+            let command:Command = Command(commandParam: CommandEnum.Optimize, params: "7")
+            tcpManager.sendCommand(command: command)
+        }
+    }
+    
+    func darkCurrent() -> Void{
         startingWaveLength = Int(initialize(valueName: "StartingWavelength").value)
         //endingWaveLength = initialize(valueName: "EndingWavelength").value
         //vinirStartingWavelength = initialize(valueName: "VStartingWavelength").value
         vinirEndingWavelength = Int(initialize(valueName: "VEndingWavelength").value)
-        vinirDarkCurrentCorrection = Float(initialize(valueName: "VDarkCurrentCorrection").value)
+        vinirDarkCurrentCorrection = initialize(valueName: "VDarkCurrentCorrection").value
         
         optimize()
-
+        
         closeShutter()
         darkCurrentSpectrum = aquire(samples: 10)
-        let darkDrift = darkCurrentSpectrum?.spectrumHeader.vHeader.drift
-        openShutter()
-        
-        let aquireData = aquire(samples: 10)
-        let currentDrift = aquireData.spectrumHeader.vHeader.drift
-        
-        drift = vinirDarkCurrentCorrection + Float((currentDrift - darkDrift!))
-        
-        testAquire(Any)
-    }
-    
-    @IBAction func openShutter(_ sender: Any) {
+        darkDrift = (darkCurrentSpectrum?.spectrumHeader.vHeader.drift)!
         openShutter()
     }
     
-    @IBAction func closeShutter(_ sender: Any) {
-        closeShutter()
-    }
-    
-    @IBAction func radiance(_ sender: Any) {
-
-    }
-    
-    @IBAction func whiteReference(_ sender: UIButton) {
-        
-        startingWaveLength = Int(initialize(valueName: "StartingWavelength").value)
-        endingWaveLength = Int(initialize(valueName: "EndingWavelength").value)
-        
-        let refrenceSpectrum = aquire(samples: 10)
-        
-        //darkCurrent(self)
-        let aquireData = aquire(samples: 10)
-        
-        // Compute Reflectance
-        for i in 0 ... ((endingWaveLength + 1) - startingWaveLength){
-            aquireData.spectrumBuffer[i] = aquireData.spectrumBuffer[i] / refrenceSpectrum.spectrumBuffer[i]
+    func aquire(samples: Int32) -> FullRangeInterpolatedSpectrum {
+        var spectrumParser :FullRangeInterpolatedSpectrumParser? = nil
+        print("queue starts")
+        serialQueue.sync {
+            let command:Command = Command(commandParam: CommandEnum.Aquire, params: "1," + samples.description)
+            let data = tcpManager.sendCommand(command: command)
+            spectrumParser = FullRangeInterpolatedSpectrumParser(data: data)
+            print("queue finished")
         }
-    }
-    
-    
-    @IBAction func optimizeClicked(_ sender: Any) {
-        optimize()
-    }
-    
-    func optimize() -> Void {
-        let command:Command = Command(commandParam: CommandEnum.Optimize, params: "7")
-        let data = tcpManager.sendCommand(command: command)
-    }
-    
-    
-    
-    func aquire(samples: Int) -> FullRangeInterpolatedSpectrum {
-        let command:Command = Command(commandParam: CommandEnum.Aquire, params: "1," + samples.description)
-        let data = tcpManager.sendCommand(command: command)
-        let spectrumParser = FullRangeInterpolatedSpectrumParser(data: data)
-        return spectrumParser.parse()
+        print("return aquire")
+        return spectrumParser!.parse()
     }
     
     func initialize(valueName: String) -> Parameter {

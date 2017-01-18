@@ -67,7 +67,7 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
             
             if (tcpManager.connect()) {
                 alert.dismiss(animated: true, completion: nil)
-                self.initSpectrometer(tcpManager: tcpManager)
+                self.initSpectrometer(tcpManager: tcpManager, config: config)
             } else {
                 alert.dismiss(animated: true, completion: {
                     self.showWarningMessage(title: "Verbindung fehlgeschlagen", message: "Es konnte keine Verbindung mit dem Spektrometer hergestellt werden. Überprüfen sie die Einstellungen und ob das Gerät mit dem Netzwerk des Spektrometers verbunden ist.")
@@ -80,11 +80,12 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
         
     }
     
-    func initSpectrometer(tcpManager: TcpManager) -> Void {
+    func initSpectrometer(tcpManager: TcpManager, config : SpectrometerConfig) -> Void {
         
         DispatchQueue.main.sync {
             _ = tcpManager.sendCommand(command: Command(commandParam: CommandEnum.Restore, params: "1"))
             self.appDelegate.tcpManager = tcpManager
+            self.appDelegate.config = config
             
             let initialViewController = self.storyboard?.instantiateViewController(withIdentifier: "SpektrometerApp") as! UITabBarController
             self.appDelegate.window?.rootViewController = initialViewController

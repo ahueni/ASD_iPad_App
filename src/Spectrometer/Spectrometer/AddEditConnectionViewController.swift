@@ -82,6 +82,7 @@ class AddEditConnectionViewController: UIViewController {
         config?.lmpSpectrum = lmpSpectra as NSObject?
         config?.refSpectrum = refSpectra as NSObject?
         config?.illSpectrum = illSpectra as NSObject?
+        config?.sampleCount = 10 //default value for sampleCount
         
         appDelegate.saveContext()
         NotificationCenter.default.post(name: .reloadSpectrometerConfig, object: nil)
