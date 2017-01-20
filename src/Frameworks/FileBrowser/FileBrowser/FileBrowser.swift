@@ -62,5 +62,4 @@ open class FileBrowser: UINavigationController {
         self.fileList = fileListViewController
         self.modalPresentationStyle = UIModalPresentationStyle.formSheet
     }
-    
 }

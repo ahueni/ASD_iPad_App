@@ -19,7 +19,6 @@ class FileListViewController: UIViewController {
     var didSelectFile: ((FBFile) -> ())?
     var files = [FBFile]()
     var initialPath: URL?
-    let parser = FileParser.sharedInstance
     let previewManager = PreviewManager()
     var sections: [[FBFile]] = []
 
@@ -53,6 +52,7 @@ class FileListViewController: UIViewController {
         let dismissButton = UIBarButtonItem(title: "Abbrechen", style: UIBarButtonItemStyle.plain, target: self, action: #selector(FileListViewController.dismiss(button:)))
         self.navigationItem.rightBarButtonItem = dismissButton
         
+        currentPath = initialPath
     }
     
     deinit{
@@ -63,9 +63,24 @@ class FileListViewController: UIViewController {
         }
     }
     
+    override func willMove(toParentViewController parent: UIViewController?) {
+        
+        if parent == nil{
+            currentPath?.deleteLastPathComponent()
+            print(currentPath?.absoluteString)
+            
+        }
+    }
+    
     //MARK: UIViewController
     
     override func viewDidLoad() {
+        
+        let buttonIndex = self.view.subviews.index{ $0 is UIButton }
+        let addFolderButton = self.view.subviews[buttonIndex!] as! UIButton
+        addFolderButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        self.view.addSubview(addFolderButton)
+        
         
         // Prepare data
         if let initialPath = initialPath {
@@ -78,6 +93,51 @@ class FileListViewController: UIViewController {
         
         // Register for 3D touch
         self.registerFor3DTouch()
+    }
+    
+    
+    func buttonAction(sender: UIButton!) {
+        print("Add Folder: ")
+        print(currentPath?.absoluteString)
+        
+        let alert = UIAlertController(title: "Neuer Ordner", message: "Wie soll der Ordner heissen?", preferredStyle: .alert)
+        
+        //2. Add the text field. You can configure it however you need.
+        alert.addTextField { (textField) in
+            textField.placeholder = "Ordner Name"
+        }
+        
+        // 3. Grab the value from the text field, and print it when the user clicks OK.
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
+            if(textField?.text == "" || self.files.filter({$0.displayName == textField?.text}).count > 0){
+                let error = UIAlertController(title: "Fehler", message: "Ordnername ist nicht korrekt oder es gibt bereits einen Ordner mit diesem Namen", preferredStyle: .alert)
+                error.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                self.present(error, animated: true, completion: nil)
+            }
+            
+            do{
+                let createFolderPath = currentPath?.appendingPathComponent(textField!.text!)
+                try parser.fileManager.createDirectory(atPath: (createFolderPath?.relativePath)!, withIntermediateDirectories: false, attributes: nil)
+                self.files = parser.filesForDirectory(currentPath!)
+                self.indexFiles()
+                DispatchQueue.main.async{
+                    self.tableView.reloadData()
+                }
+                
+            }
+            catch _
+            {
+                let error = UIAlertController(title: "Fehler", message: "Der Ordner konnte nicht erstellt werden", preferredStyle: .alert)
+                error.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                self.present(error, animated: true, completion: nil)
+            }
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: nil))
+        
+        // 4. Present the alert.
+        self.present(alert, animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {

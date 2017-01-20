@@ -8,6 +8,9 @@
 
 import Foundation
 
+
+let parser = FileParser.sharedInstance
+var currentPath : URL? = nil
 extension FileListViewController: UITableViewDataSource, UITableViewDelegate {
     
     //MARK: UITableViewDataSource, UITableViewDelegate
@@ -42,6 +45,7 @@ extension FileListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedFile = fileForIndexPath(indexPath)
+        currentPath = selectedFile.filePath
         searchController.isActive = false
         if selectedFile.isDirectory {
             let fileListViewController = FileListViewController(initialPath: selectedFile.filePath)

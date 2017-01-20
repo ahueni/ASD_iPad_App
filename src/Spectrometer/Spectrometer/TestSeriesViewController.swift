@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import FileBrowser
 
 class TestSeriesViewController : UIViewController {
     
@@ -21,6 +22,14 @@ class TestSeriesViewController : UIViewController {
     
     @IBAction func nextButtonClicked(_ sender: UIButton) {
         goToNextPage()
+    }
+    
+    @IBAction func changeFilePathButtonClicked(_ sender: UIButton) {
+        let fileBrowser = FileBrowser()
+        present(fileBrowser, animated: true, completion: nil)
+        fileBrowser.didSelectFile = { (file: FBFile) -> Void in
+            print (file.filePath)
+        }
     }
     
     func goToNextPage(){
