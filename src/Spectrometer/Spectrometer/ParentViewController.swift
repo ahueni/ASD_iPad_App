@@ -34,6 +34,12 @@ class ParentViewController : UIPageViewController {
     func goToNextPage(){
         currentPageIndex += 1
         
+        let fastMeasurementViewController = self.storyboard?.instantiateViewController(withIdentifier: "FastMeasurmentViewController") as! FastMeasurmentViewController
+        fastMeasurementViewController.pageContainer = self
+        setViewControllers([fastMeasurementViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+
+        
+        /*
         //all measurements are done
         if(currentPageIndex > (measurmentSettings.measurementCount)){
             let finishViewController = self.storyboard?.instantiateViewController(withIdentifier: "FinishTestSeriesViewController") as! FinishTestSeriesViewController
@@ -48,6 +54,7 @@ class ParentViewController : UIPageViewController {
             pageContentViewController.strTitle = "Messung "+currentPageIndex.description
             setViewControllers([pageContentViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
         }
+ */
     }
 }
 

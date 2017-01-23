@@ -81,10 +81,12 @@
 		2EB8233C1DE113DA00DF732C /* CustomCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB8233B1DE113DA00DF732C /* CustomCharts.swift */; };
 		E1129D331E2FBDC700331A02 /* FinishTestSeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1129D321E2FBDC700331A02 /* FinishTestSeriesViewController.swift */; };
 		E14EC22E1E2E1889006EBD2F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */; };
+		E165E1F71E34B5A20077A5EB /* FastMeasurmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E165E1F61E34B5A20077A5EB /* FastMeasurmentViewController.swift */; };
 		E1807E5E1E2E576400BB205F /* ExceptionErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E5D1E2E576400BB205F /* ExceptionErrors.swift */; };
 		E1807E641E2F619B00BB205F /* TestSeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E631E2F619B00BB205F /* TestSeriesViewController.swift */; };
 		E1807E661E2F79AA00BB205F /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E651E2F79AA00BB205F /* PageContentViewController.swift */; };
 		E1807E681E2F7B2F00BB205F /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E671E2F7B2F00BB205F /* ParentViewController.swift */; };
+		E186B9481E364DDF00FE43F3 /* CommandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E186B9471E364DDF00FE43F3 /* CommandManager.swift */; };
 		E18970A01E2914B300722E9C /* BaseWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E189709F1E2914B300722E9C /* BaseWriter.swift */; };
 		E1AC382B1E266ACD004CCBEF /* FileWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC382A1E266ACD004CCBEF /* FileWriter.swift */; };
 /* End PBXBuildFile section */
@@ -240,10 +242,12 @@
 		2EB8233B1DE113DA00DF732C /* CustomCharts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCharts.swift; sourceTree = "<group>"; };
 		E1129D321E2FBDC700331A02 /* FinishTestSeriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishTestSeriesViewController.swift; sourceTree = "<group>"; };
 		E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E165E1F61E34B5A20077A5EB /* FastMeasurmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FastMeasurmentViewController.swift; sourceTree = "<group>"; };
 		E1807E5D1E2E576400BB205F /* ExceptionErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExceptionErrors.swift; sourceTree = "<group>"; };
 		E1807E631E2F619B00BB205F /* TestSeriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSeriesViewController.swift; sourceTree = "<group>"; };
 		E1807E651E2F79AA00BB205F /* PageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContentViewController.swift; sourceTree = "<group>"; };
 		E1807E671E2F7B2F00BB205F /* ParentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
+		E186B9471E364DDF00FE43F3 /* CommandManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandManager.swift; sourceTree = "<group>"; };
 		E189709F1E2914B300722E9C /* BaseWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWriter.swift; sourceTree = "<group>"; };
 		E1AC382A1E266ACD004CCBEF /* FileWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWriter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -402,6 +406,7 @@
 				2E91F2FB1DDB7402003E277F /* SpectralData */,
 				2E91F2F81DDB6137003E277F /* Helpers */,
 				2E91F2F61DDB5CF7003E277F /* TcpManager.swift */,
+				E186B9471E364DDF00FE43F3 /* CommandManager.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -606,6 +611,7 @@
 				E1807E651E2F79AA00BB205F /* PageContentViewController.swift */,
 				E1807E671E2F7B2F00BB205F /* ParentViewController.swift */,
 				E1129D321E2FBDC700331A02 /* FinishTestSeriesViewController.swift */,
+				E165E1F61E34B5A20077A5EB /* FastMeasurmentViewController.swift */,
 			);
 			name = Modals;
 			sourceTree = "<group>";
@@ -799,6 +805,7 @@
 			files = (
 				2E91F2EE1DDB5B9F003E277F /* SocketOptions+Deprecated.swift in Sources */,
 				2E91F3111DDB8408003E277F /* Init.swift in Sources */,
+				E165E1F71E34B5A20077A5EB /* FastMeasurmentViewController.swift in Sources */,
 				2E708A1D1DE22B04008EC78A /* SpectrometerConfig.swift in Sources */,
 				2E91F2EA1DDB5B9F003E277F /* InternetSocket.swift in Sources */,
 				E1807E5E1E2E576400BB205F /* ExceptionErrors.swift in Sources */,
@@ -837,6 +844,7 @@
 				E18970A01E2914B300722E9C /* BaseWriter.swift in Sources */,
 				2E91F2EC1DDB5B9F003E277F /* Select.swift in Sources */,
 				2E91F3021DDB7472003E277F /* VnirHeader.swift in Sources */,
+				E186B9481E364DDF00FE43F3 /* CommandManager.swift in Sources */,
 				E1AC382B1E266ACD004CCBEF /* FileWriter.swift in Sources */,
 				2E91F2E91DDB5B9F003E277F /* FDSet.swift in Sources */,
 				2E91F3131DDB842A003E277F /* InstrumentControl.swift in Sources */,

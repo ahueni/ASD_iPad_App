@@ -14,8 +14,6 @@ import FileBrowser
 class AquireViewController: UIViewController {
     
     let fileBrowser = FileBrowser()
-    // used to queue requests to spectrometer. It is essential that only one request at a time is processing
-    let serialQueue = DispatchQueue(label: "spectrometerQueue")
     
     // buttons
     @IBOutlet var aquireButton: UIButton!
@@ -56,7 +54,7 @@ class AquireViewController: UIViewController {
     
     func aquireWithDarkCorrection () {
             // Background tasks
-            let spectrum = self.aquire(samples: (self.appDelegate.config?.sampleCount)!)
+            let spectrum = CommandManager.sharedInstance.aquire(samples: (self.appDelegate.config?.sampleCount)!)
             let currentDrift = spectrum.spectrumHeader.vHeader.drift
             
             if (self.darkCurrentSpectrum == nil){
@@ -97,17 +95,17 @@ class AquireViewController: UIViewController {
     
     @IBAction func whiteReference(_ sender: UIButton) {
         aquireLoopOn = false
-        aquire(samples: 10)
+        CommandManager.sharedInstance.aquire(samples: 10)
     }
     
     func computeReflectance(){
-        startingWaveLength = Int(initialize(valueName: "StartingWavelength").value)
-        endingWaveLength = Int(initialize(valueName: "EndingWavelength").value)
+        startingWaveLength = Int(CommandManager.sharedInstance.initialize(valueName: "StartingWavelength").value)
+        endingWaveLength = Int(CommandManager.sharedInstance.initialize(valueName: "EndingWavelength").value)
         
-        let refrenceSpectrum = aquire(samples: 10)
+        let refrenceSpectrum = CommandManager.sharedInstance.aquire(samples: 10)
         
         //darkCurrent(self)
-        let aquireData = aquire(samples: 10)
+        let aquireData = CommandManager.sharedInstance.aquire(samples: 10)
         
         // Compute Reflectance
         for i in 0 ... ((endingWaveLength + 1) - startingWaveLength){
@@ -135,46 +133,21 @@ class AquireViewController: UIViewController {
 
     }
     
-    func optimize() -> Void {
-        serialQueue.sync {
-            let command:Command = Command(commandParam: CommandEnum.Optimize, params: "7")
-            tcpManager.sendCommand(command: command)
-        }
-    }
+    
     
     func darkCurrent() -> Void{
-        startingWaveLength = Int(initialize(valueName: "StartingWavelength").value)
+        startingWaveLength = Int(CommandManager.sharedInstance.initialize(valueName: "StartingWavelength").value)
         //endingWaveLength = initialize(valueName: "EndingWavelength").value
         //vinirStartingWavelength = initialize(valueName: "VStartingWavelength").value
-        vinirEndingWavelength = Int(initialize(valueName: "VEndingWavelength").value)
-        vinirDarkCurrentCorrection = initialize(valueName: "VDarkCurrentCorrection").value
+        vinirEndingWavelength = Int(CommandManager.sharedInstance.initialize(valueName: "VEndingWavelength").value)
+        vinirDarkCurrentCorrection = CommandManager.sharedInstance.initialize(valueName: "VDarkCurrentCorrection").value
         
-        optimize()
+        CommandManager.sharedInstance.optimize()
         
         closeShutter()
-        darkCurrentSpectrum = aquire(samples: 10)
+        darkCurrentSpectrum = CommandManager.sharedInstance.aquire(samples: 10)
         darkDrift = (darkCurrentSpectrum?.spectrumHeader.vHeader.drift)!
         openShutter()
-    }
-    
-    func aquire(samples: Int32) -> FullRangeInterpolatedSpectrum {
-        var spectrumParser :FullRangeInterpolatedSpectrumParser? = nil
-        print("queue starts")
-        serialQueue.sync {
-            let command:Command = Command(commandParam: CommandEnum.Aquire, params: "1," + samples.description)
-            let data = tcpManager.sendCommand(command: command)
-            spectrumParser = FullRangeInterpolatedSpectrumParser(data: data)
-            print("queue finished")
-        }
-        print("return aquire")
-        return spectrumParser!.parse()
-    }
-    
-    func initialize(valueName: String) -> Parameter {
-        let command:Command = Command(commandParam: CommandEnum.Initialize, params: "0,"+valueName)
-        let data = tcpManager.sendCommand(command: command)
-        let parameterParser = ParameterParser(data: data)
-        return parameterParser.parse()
     }
     
     func showData(data: [UInt8])-> Parameter{
