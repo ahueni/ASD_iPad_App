@@ -15,8 +15,9 @@ class TestSeriesViewController : UIViewController {
     var pageIndex: Int = 0
     var strTitle: String!
     var pageContainer : ParentViewController? = nil
-    var measurmentSettings : MeasurmentSettings? = nil
     
+    @IBOutlet weak var filePathTextField: UITextField!
+    @IBOutlet weak var fileNameTextField: UITextField!
     @IBOutlet weak var whiteRefrenceSettingsSegmentControl: UISegmentedControl!
     @IBOutlet weak var measurementCountTextField: UITextField!
     
@@ -24,28 +25,32 @@ class TestSeriesViewController : UIViewController {
         goToNextPage()
     }
     
+    @IBAction func CancelButtonClicked(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func changeFilePathButtonClicked(_ sender: UIButton) {
         let fileBrowser = FileBrowser()
         present(fileBrowser, animated: true, completion: nil)
         fileBrowser.didSelectFile = { (file: FBFile) -> Void in
             print (file.filePath)
+            print ("Ordner: "+file.isDirectory.description)
+            self.pageContainer?.measurmentSettings.path = file.filePath
+            self.filePathTextField.text = file.filePath.relativePath
         }
     }
     
     func goToNextPage(){
-            measurmentSettings?.measurementCount = Int(measurementCountTextField.text!)!
+            pageContainer?.measurmentSettings.fileName = fileNameTextField.text!
+            pageContainer?.measurmentSettings.measurementCount = Int(measurementCountTextField.text!)!
             switch whiteRefrenceSettingsSegmentControl.selectedSegmentIndex {
             case 0:
-                measurmentSettings?.whiteRefrenceSetting = WhiteRefrenceSettings.TakeOnce
+                pageContainer?.measurmentSettings.whiteRefrenceSetting = WhiteRefrenceSettings.TakeOnce
             default:
-                measurmentSettings?.whiteRefrenceSetting = WhiteRefrenceSettings.TakeBeforeMesurement
+                pageContainer?.measurmentSettings.whiteRefrenceSetting = WhiteRefrenceSettings.TakeBeforeMesurement
             }
         
         pageContainer?.goToNextPage()
-    }
-    
-    @IBAction func CancelButtonClicked(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
     }
     
 }

@@ -194,7 +194,7 @@ class FileWriter : BaseWriter {
         
         // ------ End Refrence ------
         
-        
+        fileHandle.closeFile()
         print("File updated!")
         
         return fileHandle

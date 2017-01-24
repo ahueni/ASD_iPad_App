@@ -18,6 +18,7 @@ class FastMeasurmentViewController : TestSeriesViewController
     @IBOutlet weak var MesureCountLabel: UILabel!
     @IBOutlet weak var CountDownLabel: UILabel!
     @IBOutlet weak var MeasurementLineChart: SpectrumLineChartView!
+    var whiteRefrenceSpectrum :FullRangeInterpolatedSpectrum? = nil
     
     override func viewDidLoad() {
         let whiteRefrence = UIAlertController(title: "WhiteRefrence", message: "Es wird ein WhiteRefrence gestartet.", preferredStyle: .alert)
@@ -28,6 +29,7 @@ class FastMeasurmentViewController : TestSeriesViewController
     
     func whiteRefrenceHandler(action : UIAlertAction){
         let spectrum = CommandManager.sharedInstance.aquire(samples: 10)
+        whiteRefrenceSpectrum = spectrum
         updateLineChart(spectrum: spectrum)
         
         let measureAlert = UIAlertController(title: "Messreihe", message: "Eine Messreihe startet.", preferredStyle: .alert)
@@ -41,9 +43,14 @@ class FastMeasurmentViewController : TestSeriesViewController
             for i in 0...(self.pageContainer?.measurmentSettings.measurementCount)!-1
             {
                 self.updateMesurmentLabels(measurmentCount: i+1)
+                self.updateStateLabel(state: "Messe...")
                 let spectrum = CommandManager.sharedInstance.aquire(samples: 10)
+                self.pageContainer?.spectrums.append((self.whiteRefrenceSpectrum!, spectrum))
                 self.updateLineChart(spectrum: spectrum)
-                sleep(3) //Wait one second before starting the next measurment
+                self.updateStateLabel(state: "Messung beendet")
+                sleep(2) //Wait two second
+                self.updateStateLabel(state: "Bereite nächste Messung vor")
+                sleep(2) //Wait two second before starting the next measurment
             }
         }
     }
@@ -56,12 +63,23 @@ class FastMeasurmentViewController : TestSeriesViewController
         }
     }
     
+    func updateStateLabel(state : String){
+        DispatchQueue.main.async {
+            //update ui
+            self.CountDownLabel.text = state
+        }
+    }
+    
     func updateLineChart(spectrum : FullRangeInterpolatedSpectrum){
         DispatchQueue.main.async {
             //update ui
             self.MeasurementLineChart.setAxisValues(min: 0, max: 65000)
             self.MeasurementLineChart.data = spectrum.getChartData()
         }
+    }
+    
+    override func goToNextPage() {
+        pageContainer?.goToNextPage()
     }
     
 }

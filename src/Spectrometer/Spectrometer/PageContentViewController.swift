@@ -17,6 +17,7 @@ class PageContentViewController : TestSeriesViewController{
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let tcpManager: TcpManager = (UIApplication.shared.delegate as! AppDelegate).tcpManager!
+    var whiteRefrenceSpectrum :FullRangeInterpolatedSpectrum? = nil
     var spectrum :FullRangeInterpolatedSpectrum? = nil
     
     override func viewDidLoad()
@@ -50,6 +51,6 @@ class PageContentViewController : TestSeriesViewController{
     }
     
     override func goToNextPage() {
-        pageContainer?.goToNextPage(spectrum: spectrum!)
+        pageContainer?.goToNextPage(spectrum: (whiteRefrenceSpectrum!, spectrum!))
     }
 }

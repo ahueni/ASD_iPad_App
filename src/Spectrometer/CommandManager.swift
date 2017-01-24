@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 
-private let _sharedInstance = CommandManager()
-
 class CommandManager{
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -18,9 +16,10 @@ class CommandManager{
     // used to queue requests to spectrometer. It is essential that only one request at a time is processing
     let serialQueue = DispatchQueue(label: "spectrometerQueue")
     
+    static let sharedInstance = CommandManager()
     
-    class var sharedInstance: CommandManager {
-        return _sharedInstance
+    // prevent other instances of this class
+    private init() {
     }
     
     func aquire(samples: Int32) -> FullRangeInterpolatedSpectrum {

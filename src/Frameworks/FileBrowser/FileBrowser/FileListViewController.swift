@@ -78,9 +78,11 @@ class FileListViewController: UIViewController {
         
         let buttonIndex = self.view.subviews.index{ $0 is UIButton }
         let addFolderButton = self.view.subviews[buttonIndex!] as! UIButton
-        addFolderButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        self.view.addSubview(addFolderButton)
+        addFolderButton.addTarget(self, action: #selector(buttonAddFolderAction), for: .touchUpInside)
         
+        let buttonChooseIndex = self.view.subviews.reversed().index{ $0 is UIButton }
+        let chooseButton = self.view.subviews.reversed()[buttonChooseIndex!] as! UIButton
+        chooseButton.addTarget(self, action: #selector(buttonChooseAction), for: .touchUpInside)
         
         // Prepare data
         if let initialPath = initialPath {
@@ -95,8 +97,13 @@ class FileListViewController: UIViewController {
         self.registerFor3DTouch()
     }
     
+    func buttonChooseAction(sender: UIButton!){
+        let selectedFolder = FBFile(filePath: (currentPath?.absoluteURL)!)
+        didSelectFile!(selectedFolder)
+        self.dismiss()
+    }
     
-    func buttonAction(sender: UIButton!) {
+    func buttonAddFolderAction(sender: UIButton!) {
         print("Add Folder: ")
         print(currentPath?.absoluteString)
         
