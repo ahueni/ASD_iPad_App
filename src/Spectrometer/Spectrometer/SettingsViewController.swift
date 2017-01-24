@@ -15,6 +15,12 @@ class SettingsViewController : UIViewController{
     
     @IBOutlet weak var TextFieldSampleCount: UITextField!
     
+    @IBAction func saveButtonClicked(_ sender: UIButton) {
+        
+        appDelegate.config?.sampleCount = Int32(TextFieldSampleCount.text!)!
+        appDelegate.saveContext()
+        
+    }
     
     override func viewDidLoad() {
         TextFieldSampleCount.text = appDelegate.config?.sampleCount.description

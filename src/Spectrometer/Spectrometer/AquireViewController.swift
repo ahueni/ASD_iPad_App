@@ -52,6 +52,7 @@ class AquireViewController: UIViewController {
         }
     }
     @IBAction func optimizeButtonClicked(_ sender: UIButton) {
+        aquireLoopOn = false
         CommandManager.sharedInstance.optimize()
     }
     
