@@ -15,7 +15,7 @@ class FinishTestSeriesViewController : TestSeriesViewController{
     @IBAction func finishButtonClicked(_ sender: UIButton) {
         
         for i in 0...(pageContainer?.spectrums)!.count-1{
-            var spectrumTuple = pageContainer?.spectrums[i]
+            let spectrumTuple = pageContainer?.spectrums[i]
             var fileName = pageContainer?.measurmentSettings.fileName
             fileName?.insert(contentsOf: i.description.characters, at: (fileName?.characters.index(of: "."))!)
             let relativeFilePath = pageContainer?.measurmentSettings.path?.appendingPathComponent(fileName!).relativePath

@@ -8,9 +8,11 @@
 
 import Foundation
 
-class FileParser {
+public class FileParser {
     
-    static let sharedInstance = FileParser()
+    public static let sharedInstance = FileParser()
+    
+    private init(){}
     
     var _excludesFileExtensions = [String]()
     
@@ -30,11 +32,11 @@ class FileParser {
     
     let fileManager = FileManager.default
     
-    func documentsURL() -> URL {
+    public func documentsURL() -> URL {
         return fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0] as URL
     }
     
-    func filesForDirectory(_ directoryPath: URL) -> [FBFile]  {
+    public func filesForDirectory(_ directoryPath: URL) -> [FBFile]  {
         var files = [FBFile]()
         var filePaths = [URL]()
         // Get contents

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Charts
 
 class SpectralFileBase {
     
@@ -115,6 +116,15 @@ class SpectralFileBase {
     var fiberOpticData: [Double]
     */
     
+    func getChartData() -> LineChartData {
+        var values: [ChartDataEntry] = []
+        for i in 0...self.spectrum.count-1 {
+            //print(spectrumBuffer[i])
+            values.append(ChartDataEntry(x: Double(i+350), y: Double(spectrum[i])))
+        }
+        let lineChartDataSet = SpectrumLineChartDataSet(values: values, label: "-")
+        return LineChartData(dataSet: lineChartDataSet)
+    }
 }
 
 class SpectralFileV7 : SpectralFileBase {

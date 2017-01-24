@@ -51,6 +51,9 @@ class AquireViewController: UIViewController {
             }
         }
     }
+    @IBAction func optimizeButtonClicked(_ sender: UIButton) {
+        CommandManager.sharedInstance.optimize()
+    }
     
     func aquireWithDarkCorrection () {
             // Background tasks

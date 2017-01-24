@@ -30,7 +30,7 @@ open class FBFile: NSObject {
      
      - returns: FBFile object.
      */
-    init(filePath: URL) {
+    public init(filePath: URL) {
         self.filePath = filePath
         let isDirectory = checkDirectory(filePath)
         self.isDirectory = isDirectory

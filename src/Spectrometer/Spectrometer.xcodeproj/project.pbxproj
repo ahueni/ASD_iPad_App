@@ -88,6 +88,8 @@
 		E1807E681E2F7B2F00BB205F /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E671E2F7B2F00BB205F /* ParentViewController.swift */; };
 		E186B9481E364DDF00FE43F3 /* CommandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E186B9471E364DDF00FE43F3 /* CommandManager.swift */; };
 		E18970A01E2914B300722E9C /* BaseWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E189709F1E2914B300722E9C /* BaseWriter.swift */; };
+		E18DAE9D1E375D46005F6753 /* MeasurmentMasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18DAE9C1E375D46005F6753 /* MeasurmentMasterTableViewController.swift */; };
+		E18DAE9F1E375E43005F6753 /* MeasurmentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18DAE9E1E375E43005F6753 /* MeasurmentDetailViewController.swift */; };
 		E1AC382B1E266ACD004CCBEF /* FileWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC382A1E266ACD004CCBEF /* FileWriter.swift */; };
 /* End PBXBuildFile section */
 
@@ -249,6 +251,8 @@
 		E1807E671E2F7B2F00BB205F /* ParentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
 		E186B9471E364DDF00FE43F3 /* CommandManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandManager.swift; sourceTree = "<group>"; };
 		E189709F1E2914B300722E9C /* BaseWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWriter.swift; sourceTree = "<group>"; };
+		E18DAE9C1E375D46005F6753 /* MeasurmentMasterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurmentMasterTableViewController.swift; sourceTree = "<group>"; };
+		E18DAE9E1E375E43005F6753 /* MeasurmentDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurmentDetailViewController.swift; sourceTree = "<group>"; };
 		E1AC382A1E266ACD004CCBEF /* FileWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWriter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -332,6 +336,7 @@
 		2E91F2A41DDB5B76003E277F /* Spectrometer */ = {
 			isa = PBXGroup;
 			children = (
+				E18DAE981E375CDB005F6753 /* Measurement */,
 				E14EC2291E2E187B006EBD2F /* Settings */,
 				2E708A181DE22AF0008EC78A /* Data */,
 				2EB823261DE0D3ED00DF732C /* ViewHelpers */,
@@ -616,6 +621,15 @@
 			name = Modals;
 			sourceTree = "<group>";
 		};
+		E18DAE981E375CDB005F6753 /* Measurement */ = {
+			isa = PBXGroup;
+			children = (
+				E18DAE9C1E375D46005F6753 /* MeasurmentMasterTableViewController.swift */,
+				E18DAE9E1E375E43005F6753 /* MeasurmentDetailViewController.swift */,
+			);
+			name = Measurement;
+			sourceTree = "<group>";
+		};
 		E1AC38251E2665E6004CCBEF /* SpectrumParser */ = {
 			isa = PBXGroup;
 			children = (
@@ -808,6 +822,7 @@
 				E165E1F71E34B5A20077A5EB /* FastMeasurmentViewController.swift in Sources */,
 				2E708A1D1DE22B04008EC78A /* SpectrometerConfig.swift in Sources */,
 				2E91F2EA1DDB5B9F003E277F /* InternetSocket.swift in Sources */,
+				E18DAE9D1E375D46005F6753 /* MeasurmentMasterTableViewController.swift in Sources */,
 				E1807E5E1E2E576400BB205F /* ExceptionErrors.swift in Sources */,
 				2E91F2E21DDB5B9F003E277F /* TCPClient.swift in Sources */,
 				E14EC22E1E2E1889006EBD2F /* SettingsViewController.swift in Sources */,
@@ -824,6 +839,7 @@
 				2E708A231DE61A19008EC78A /* CustomizeExtensions.swift in Sources */,
 				2EB362961DF1BD4F00E74E39 /* SpectralFile.swift in Sources */,
 				2E91F30D1DDB8068003E277F /* SpectralDataEnums.swift in Sources */,
+				E18DAE9F1E375E43005F6753 /* MeasurmentDetailViewController.swift in Sources */,
 				2E91F2E61DDB5B9F003E277F /* Bytes.swift in Sources */,
 				2EB3629C1DF1D91C00E74E39 /* GpsData.swift in Sources */,
 				2EB822E71DE06C0300DF732C /* Extensions.swift in Sources */,
