@@ -12,7 +12,6 @@
 		2E2B8CE21DFEEF4400090078 /* FileBrowser.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2E2B8CDE1DFEEF1600090078 /* FileBrowser.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2E2B8CE51DFEEF4B00090078 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E2B8CD31DFEEF0700090078 /* Charts.framework */; };
 		2E2B8CE61DFEEF4B00090078 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2E2B8CD31DFEEF0700090078 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		2E708A1D1DE22B04008EC78A /* SpectrometerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E708A1C1DE22B04008EC78A /* SpectrometerConfig.swift */; };
 		2E708A231DE61A19008EC78A /* CustomizeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E708A221DE61A19008EC78A /* CustomizeExtensions.swift */; };
 		2E708A5C1DE714F0008EC78A /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E708A5B1DE714F0008EC78A /* Regex.swift */; };
 		2E91F2A61DDB5B76003E277F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2A51DDB5B76003E277F /* AppDelegate.swift */; };
@@ -171,7 +170,6 @@
 		2E0324261E05600B00C52D58 /* ParameterParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterParser.swift; sourceTree = "<group>"; };
 		2E2B8CCC1DFEEF0700090078 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ../Frameworks/Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		2E2B8CD81DFEEF1600090078 /* FileBrowser.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FileBrowser.xcodeproj; path = ../Frameworks/FileBrowser/FileBrowser.xcodeproj; sourceTree = "<group>"; };
-		2E708A1C1DE22B04008EC78A /* SpectrometerConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrometerConfig.swift; sourceTree = "<group>"; };
 		2E708A221DE61A19008EC78A /* CustomizeExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizeExtensions.swift; sourceTree = "<group>"; };
 		2E708A5B1DE714F0008EC78A /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		2E91F2A21DDB5B76003E277F /* Spectrometer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spectrometer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -302,14 +300,6 @@
 			name = AppIcon;
 			sourceTree = "<group>";
 		};
-		2E708A181DE22AF0008EC78A /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				2E708A1C1DE22B04008EC78A /* SpectrometerConfig.swift */,
-			);
-			name = Data;
-			sourceTree = "<group>";
-		};
 		2E91F2991DDB5B76003E277F = {
 			isa = PBXGroup;
 			children = (
@@ -338,7 +328,6 @@
 			children = (
 				E18DAE981E375CDB005F6753 /* Measurement */,
 				E14EC2291E2E187B006EBD2F /* Settings */,
-				2E708A181DE22AF0008EC78A /* Data */,
 				2EB823261DE0D3ED00DF732C /* ViewHelpers */,
 				2EB823231DE0CC0600DF732C /* Aquire */,
 				2EB823071DE0ACD400DF732C /* Connection */,
@@ -820,7 +809,6 @@
 				2E91F2EE1DDB5B9F003E277F /* SocketOptions+Deprecated.swift in Sources */,
 				2E91F3111DDB8408003E277F /* Init.swift in Sources */,
 				E165E1F71E34B5A20077A5EB /* FastMeasurmentViewController.swift in Sources */,
-				2E708A1D1DE22B04008EC78A /* SpectrometerConfig.swift in Sources */,
 				2E91F2EA1DDB5B9F003E277F /* InternetSocket.swift in Sources */,
 				E18DAE9D1E375D46005F6753 /* MeasurmentMasterTableViewController.swift in Sources */,
 				E1807E5E1E2E576400BB205F /* ExceptionErrors.swift in Sources */,

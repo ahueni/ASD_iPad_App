@@ -65,6 +65,13 @@ class MeasurmentMasterTableViewController: UITableViewController {
     //MARK: UIViewController
     
     override func viewDidLoad() {
+        
+    }
+    
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         // Prepare data
         if let initialPath = initialPath {
             files = parser.filesForDirectory(initialPath)
@@ -76,11 +83,6 @@ class MeasurmentMasterTableViewController: UITableViewController {
             files = parser.filesForDirectory(initialPath!)
             indexFiles()
         }
-    }
-    
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
         // Scroll to hide search bar
         self.tableView.contentOffset = CGPoint(x: 0, y: searchController.searchBar.frame.size.height)

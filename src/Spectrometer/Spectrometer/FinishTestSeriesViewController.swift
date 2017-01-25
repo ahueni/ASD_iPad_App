@@ -16,9 +16,8 @@ class FinishTestSeriesViewController : TestSeriesViewController{
         
         for i in 0...(pageContainer?.spectrums)!.count-1{
             let spectrumTuple = pageContainer?.spectrums[i]
-            var fileName = pageContainer?.measurmentSettings.fileName
-            fileName?.insert(contentsOf: i.description.characters, at: (fileName?.characters.index(of: "."))!)
-            let relativeFilePath = pageContainer?.measurmentSettings.path?.appendingPathComponent(fileName!).relativePath
+            let fileName = (pageContainer?.measurmentSettings.fileName)! + i.description + ".asd"
+            let relativeFilePath = pageContainer?.measurmentSettings.path?.appendingPathComponent(fileName).relativePath
             let fileWriter = FileWriter(path: relativeFilePath!)
             fileWriter.write(spectrum: (spectrumTuple?.spectrum)!, whiteRefrenceSpectrum: (spectrumTuple?.whiteRefrenceSpectrum)!)
         }

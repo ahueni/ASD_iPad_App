@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -120,13 +120,13 @@
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initialisierungs Dateien" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="haN-Ml-83i">
-                                                <rect key="frame" x="20" y="234.5" width="728" height="16.5"/>
+                                                <rect key="frame" x="20" y="234.5" width="728" height="17"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YEI-at-1sx">
-                                                <rect key="frame" x="0.0" y="261" width="768" height="40"/>
+                                                <rect key="frame" x="0.0" y="261.5" width="768" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="kBz-fi-ICm"/>
@@ -138,7 +138,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="03n-eu-a7a">
-                                                <rect key="frame" x="0.0" y="311" width="768" height="40"/>
+                                                <rect key="frame" x="0.0" y="311.5" width="768" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="lUp-8O-4TH"/>
@@ -150,7 +150,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNb-54-Zej">
-                                                <rect key="frame" x="0.0" y="361" width="768" height="40"/>
+                                                <rect key="frame" x="0.0" y="361.5" width="768" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="EhH-3s-85u"/>
@@ -162,7 +162,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Benötigen Sie weitere Informationen wie Sie die initialisierungs Dateien vorgängig auf Ihr iPad kopieren können?" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5QO-2b-Q40">
-                                                <rect key="frame" x="20" y="416" width="728" height="14"/>
+                                                <rect key="frame" x="20" y="416.5" width="728" height="14"/>
                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="10"/>
                                                 <color key="textColor" red="0.074509803920000006" green="0.41568627450000001" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -279,7 +279,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XgJ-hU-ctM">
-                                <rect key="frame" x="294.5" y="971" width="179" height="33"/>
+                                <rect key="frame" x="295" y="971" width="179" height="33"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                 <state key="normal" title="Spektrometer hinzufügen"/>
                                 <connections>
@@ -703,7 +703,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Test.asd" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nyp-6i-B70">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Test" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nyp-6i-B70">
                                 <rect key="frame" x="194" y="81" width="143" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -1101,7 +1101,7 @@
         <image name="done" width="448" height="455"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ovN-k4-c27"/>
         <segue reference="e4I-j2-2fd"/>
+        <segue reference="ovN-k4-c27"/>
     </inferredMetricsTieBreakers>
 </document>
