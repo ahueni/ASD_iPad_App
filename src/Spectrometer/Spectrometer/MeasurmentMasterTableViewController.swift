@@ -9,10 +9,9 @@
 import UIKit
 import FileBrowser
 
-let parser = FileParser.sharedInstance
 class MeasurmentMasterTableViewController: UITableViewController {
     
-    
+    let parser = FileParser.sharedInstance
     var currentPath : URL? = nil
     let collation = UILocalizedIndexedCollation.current()
     
@@ -22,50 +21,17 @@ class MeasurmentMasterTableViewController: UITableViewController {
     var initialPath: URL?
     var sections: [[FBFile]] = []
     
-    // Search controller
-    var filteredFiles = [FBFile]()
-    let searchController: UISearchController = {
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchBar.searchBarStyle = .minimal
-        searchController.searchBar.backgroundColor = UIColor.white
-        searchController.dimsBackgroundDuringPresentation = true
-        return searchController
-    }()
-    
-    
     //MARK: Lifecycle
-    
     convenience init (initialPath: URL) {
         self.init(nibName: nil, bundle: Bundle.main)
         self.edgesForExtendedLayout = UIRectEdge()
-        
-        // Set initial path
+        setInitialPath(initialPath: initialPath)
+    }
+    
+    func setInitialPath(initialPath: URL){
         self.initialPath = initialPath
         self.title = initialPath.lastPathComponent
-        
         currentPath = initialPath
-    }
-    
-    func test(initialPath: URL){
-        // Set initial path
-        self.initialPath = initialPath
-        self.title = initialPath.lastPathComponent
-        
-        currentPath = initialPath
-    }
-    
-    deinit{
-        if #available(iOS 9.0, *) {
-            searchController.loadViewIfNeeded()
-        } else {
-            searchController.loadView()
-        }
-    }
-    
-    //MARK: UIViewController
-    
-    override func viewDidLoad() {
-        
     }
     
 
@@ -78,14 +44,10 @@ class MeasurmentMasterTableViewController: UITableViewController {
             indexFiles()
         }
         else{
-            
             initialPath = parser.documentsURL()
             files = parser.filesForDirectory(initialPath!)
             indexFiles()
         }
-        
-        // Scroll to hide search bar
-        self.tableView.contentOffset = CGPoint(x: 0, y: searchController.searchBar.frame.size.height)
         
         // Make sure navigation bar is visible
         self.navigationController?.isNavigationBarHidden = false
@@ -109,41 +71,15 @@ class MeasurmentMasterTableViewController: UITableViewController {
     }
     
     func fileForIndexPath(_ indexPath: IndexPath) -> FBFile {
-        var file: FBFile
-        if searchController.isActive {
-            file = filteredFiles[(indexPath as NSIndexPath).row]
-        }
-        else {
-            file = sections[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
-        }
+        let file = sections[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
         return file
     }
     
-    func filterContentForSearchText(_ searchText: String) {
-        filteredFiles = files.filter({ (file: FBFile) -> Bool in
-            return file.displayName.lowercased().contains(searchText.lowercased())
-        })
-        tableView.reloadData()
-    }
-
-    
-    
-    
-    
-    
-    
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        if searchController.isActive {
-            return 1
-        }
         return sections.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchController.isActive {
-            return filteredFiles.count
-        }
         return sections[section].count
     }
     
@@ -164,17 +100,11 @@ class MeasurmentMasterTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedFile = fileForIndexPath(indexPath)
         currentPath = selectedFile.filePath
-        searchController.isActive = false
         if selectedFile.isDirectory {
-            
             let measurmentMasterTableViewController = self.storyboard?.instantiateViewController(withIdentifier: "MeasurmentMasterTableViewController") as! MeasurmentMasterTableViewController
-            measurmentMasterTableViewController.test(initialPath: selectedFile.filePath)
+            //setInitialPath is called cause init(initialpath) will not be called from storyboard
+            measurmentMasterTableViewController.setInitialPath(initialPath: selectedFile.filePath)
             navigationController?.pushViewController(measurmentMasterTableViewController, animated: true)
-            
-            /*
-            let fileListViewController = MeasurmentMasterTableViewController(initialPath: selectedFile.filePath)
-            fileListViewController.didSelectFile = didSelectFile
-            self.navigationController?.pushViewController(fileListViewController, animated: true)*/
         }
         else {
             let measurmentDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "MeasurmentDetailViewController") as! MeasurmentDetailViewController
@@ -188,11 +118,7 @@ class MeasurmentMasterTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if searchController.isActive {
-            return nil
-        }
         if sections[section].count > 0 {
             return collation.sectionTitles[section]
         }

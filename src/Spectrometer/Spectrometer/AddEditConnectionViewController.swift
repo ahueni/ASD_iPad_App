@@ -11,8 +11,6 @@ import UIKit
 import FileBrowser
 
 class AddEditConnectionViewController: UIViewController {
-    
-    let fileBrowser = FileBrowser()
     let fileManager:FileManager = FileManager.default
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -131,6 +129,7 @@ class AddEditConnectionViewController: UIViewController {
     
     @IBAction func selectLMPFile(_ sender: Any) {
         
+        let fileBrowser = FileBrowser()
         present(fileBrowser, animated: true, completion: nil)
         fileBrowser.didSelectFile = { (file: FBFile) -> Void in
             
@@ -151,6 +150,7 @@ class AddEditConnectionViewController: UIViewController {
     
     @IBAction func selectREFFile(_ sender: Any) {
         
+        let fileBrowser = FileBrowser()
         present(fileBrowser, animated: true, completion: nil)
         fileBrowser.didSelectFile = { (file: FBFile) -> Void in
             
@@ -171,6 +171,7 @@ class AddEditConnectionViewController: UIViewController {
     
     @IBAction func selectILLFile(_ sender: Any) {
         
+        let fileBrowser = FileBrowser()
         present(fileBrowser, animated: true, completion: nil)
         fileBrowser.didSelectFile = { (file: FBFile) -> Void in
             

@@ -10,8 +10,6 @@ import Foundation
 import UIKit
 
 class ParentViewController : UIPageViewController {
-    
-    var arrPageTitle: NSArray = NSArray()
     var currentPageIndex = 0
     var measurmentSettings : MeasurmentSettings = MeasurmentSettings()
     var spectrums: [(whiteRefrenceSpectrum :FullRangeInterpolatedSpectrum, spectrum: FullRangeInterpolatedSpectrum)] = [(FullRangeInterpolatedSpectrum,FullRangeInterpolatedSpectrum)]()
@@ -41,7 +39,7 @@ class ParentViewController : UIPageViewController {
             {
                 showFinishScreen()
             }
-                //go to next measurement page
+            //go to next measurement page
             else{
             let fastMeasurementViewController = self.storyboard?.instantiateViewController(withIdentifier: "FastMeasurmentViewController") as! FastMeasurmentViewController
             fastMeasurementViewController.pageContainer = self

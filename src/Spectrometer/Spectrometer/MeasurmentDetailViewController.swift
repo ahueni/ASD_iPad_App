@@ -11,8 +11,7 @@ import UIKit
 
 class MeasurmentDetailViewController: UIViewController {
     
-    @IBOutlet weak var MeasurementLineChart: SpectrumLineChartView!
-    @IBOutlet weak var testLabel: UILabel!
+    @IBOutlet var MeasurementLineChart: SpectrumLineChartView!
     var url : URL? = nil
     
     override func viewDidLoad() {
@@ -22,11 +21,7 @@ class MeasurmentDetailViewController: UIViewController {
         {
             return
         }
-        // Do any additional setup after loading the view.
-        testLabel.text = url?.absoluteString
-        
-        
-        var spectrum = parseSpectralFile(filePath: (url?.relativePath)!)
+        let spectrum = parseSpectralFile(filePath: (url?.relativePath)!)
         spectrum?.spectrum
         
         self.MeasurementLineChart.setAxisValues(min: 0, max: 65000)
@@ -35,7 +30,7 @@ class MeasurmentDetailViewController: UIViewController {
     
     private func parseSpectralFile(filePath: String) -> SpectralFileBase? {
         
-        var fileManager = FileManager()
+        let fileManager = FileManager()
         let dataBuffer = [UInt8](fileManager.contents(atPath: filePath)!)
         let fileParser = SpectralFileParser(data: dataBuffer)
         var file: SpectralFileBase
@@ -57,16 +52,5 @@ class MeasurmentDetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
