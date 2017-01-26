@@ -10,13 +10,13 @@ import Foundation
 import UIKit
 import FileBrowser
 
-class TestSeriesViewController : UIViewController {
+class TestSeriesViewController : UITableViewController {
     
     var pageIndex: Int = 0
     var strTitle: String!
     var pageContainer : ParentViewController? = nil
     
-    @IBOutlet weak var filePathTextField: UITextField!
+    @IBOutlet weak var filePathTextField: UIButton!
     @IBOutlet weak var fileNameTextField: UITextField!
     @IBOutlet weak var whiteRefrenceSettingsSegmentControl: UISegmentedControl!
     @IBOutlet weak var measurementCountTextField: UITextField!
@@ -29,6 +29,8 @@ class TestSeriesViewController : UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    
+    
     @IBAction func changeFilePathButtonClicked(_ sender: UIButton) {
         let fileBrowser = FileBrowser()
         present(fileBrowser, animated: true, completion: nil)
@@ -36,7 +38,7 @@ class TestSeriesViewController : UIViewController {
             print (file.filePath)
             print ("Ordner: "+file.isDirectory.description)
             self.pageContainer?.measurmentSettings.path = file.filePath
-            self.filePathTextField.text = file.filePath.relativePath
+            self.filePathTextField.titleLabel?.text = file.filePath.relativePath
         }
     }
     
