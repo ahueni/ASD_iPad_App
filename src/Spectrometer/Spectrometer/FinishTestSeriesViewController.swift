@@ -9,17 +9,17 @@
 import Foundation
 import UIKit
 
-class FinishTestSeriesViewController : TestSeriesViewController{
+class FinishTestSeriesViewController : BaseMeasurementModal{
     
     
     @IBAction func finishButtonClicked(_ sender: UIButton) {
         
-        for i in 0...(pageContainer?.spectrums)!.count-1{
-            let spectrumTuple = pageContainer?.spectrums[i]
-            let fileName = (pageContainer?.measurmentSettings.fileName)! + i.description + ".asd"
-            let relativeFilePath = pageContainer?.measurmentSettings.path?.appendingPathComponent(fileName).relativePath
-            let fileWriter = FileWriter(path: relativeFilePath!)
-            fileWriter.write(spectrum: (spectrumTuple?.spectrum)!, whiteRefrenceSpectrum: (spectrumTuple?.whiteRefrenceSpectrum)!)
+        for i in 0...(pageContainer!.spectrumDataList).count-1{
+            let spectrumData = pageContainer!.spectrumDataList[i]
+            let fileName = pageContainer!.measurmentSettings!.fileName + i.description + ".asd"
+            let relativeFilePath = pageContainer!.measurmentSettings!.path.appendingPathComponent(fileName).relativePath
+            let fileWriter = FileWriter(path: relativeFilePath)
+            fileWriter.write(spectrum: spectrumData.spectrum, whiteRefrenceSpectrum: spectrumData.whiteRefrence!)
         }
         
         dismiss(animated: true, completion: nil)

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class FastMeasurmentViewController : TestSeriesViewController
+class FastMeasurmentViewController : BaseMeasurementModal
 {
     var timer :Timer? = nil
     var count = 10
@@ -17,40 +17,26 @@ class FastMeasurmentViewController : TestSeriesViewController
     
     @IBOutlet weak var MesureCountLabel: UILabel!
     @IBOutlet weak var CountDownLabel: UILabel!
-    @IBOutlet weak var MeasurementLineChart: SpectrumLineChartView!
     var whiteRefrenceSpectrum :FullRangeInterpolatedSpectrum? = nil
     
-    override func viewDidLoad() {
-        let whiteRefrence = UIAlertController(title: "WhiteRefrence", message: "Es wird ein WhiteRefrence gestartet.", preferredStyle: .alert)
-        whiteRefrence.addAction(UIAlertAction(title: "OK", style: .cancel, handler: whiteRefrenceHandler))
-        self.present(whiteRefrence, animated: true, completion: nil)
-        
+    @IBAction func StartMeasurmentsButtonClicked(_ sender: UIButton) {
+        startMeasureLoop()
     }
     
-    func whiteRefrenceHandler(action : UIAlertAction){
-        let spectrum = CommandManager.sharedInstance.aquire(samples: 10)
-        whiteRefrenceSpectrum = spectrum
-        updateLineChart(spectrum: spectrum)
-        
-        let measureAlert = UIAlertController(title: "Messreihe", message: "Eine Messreihe startet.", preferredStyle: .alert)
-        measureAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: startMeasureLoop))
-        self.present(measureAlert, animated: true, completion: nil)
-    }
-    
-    func startMeasureLoop(action : UIAlertAction)
+    func startMeasureLoop()
     {
         DispatchQueue(label: "test").async {
-            for i in 0...(self.pageContainer?.measurmentSettings.measurementCount)!-1
+            for i in 0...(self.pageContainer!.measurmentSettings!.measurementCount)-1
             {
+                self.updateStateLabel(state: "Bereite nächste Messung vor")
+                sleep(2) //Wait two second before starting the next measurment
                 self.updateMesurmentLabels(measurmentCount: i+1)
                 self.updateStateLabel(state: "Messe...")
                 let spectrum = CommandManager.sharedInstance.aquire(samples: 10)
-                self.pageContainer?.spectrums.append((self.whiteRefrenceSpectrum!, spectrum))
+                self.pageContainer!.spectrumDataList.append(SpectrumData(spectrum: spectrum))
                 self.updateLineChart(spectrum: spectrum)
                 self.updateStateLabel(state: "Messung beendet")
                 sleep(2) //Wait two second
-                self.updateStateLabel(state: "Bereite nächste Messung vor")
-                sleep(2) //Wait two second before starting the next measurment
             }
         }
     }
@@ -68,18 +54,6 @@ class FastMeasurmentViewController : TestSeriesViewController
             //update ui
             self.CountDownLabel.text = state
         }
-    }
-    
-    func updateLineChart(spectrum : FullRangeInterpolatedSpectrum){
-        DispatchQueue.main.async {
-            //update ui
-            self.MeasurementLineChart.setAxisValues(min: 0, max: 65000)
-            self.MeasurementLineChart.data = spectrum.getChartData()
-        }
-    }
-    
-    override func goToNextPage() {
-        pageContainer?.goToNextPage()
     }
     
 }

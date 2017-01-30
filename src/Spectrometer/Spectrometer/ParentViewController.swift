@@ -10,73 +10,139 @@ import Foundation
 import UIKit
 
 class ParentViewController : UIPageViewController {
-    var currentPageIndex = 0
-    var measurmentSettings : MeasurmentSettings = MeasurmentSettings()
-    var spectrums: [(whiteRefrenceSpectrum :FullRangeInterpolatedSpectrum, spectrum: FullRangeInterpolatedSpectrum)] = [(FullRangeInterpolatedSpectrum,FullRangeInterpolatedSpectrum)]()
+    var measurmentSettings : MeasurmentSettings?
+    var spectrumDataList : [SpectrumData] = [SpectrumData]()
+    var whiteRefrenceBefore : FullRangeInterpolatedSpectrum?
+    var whiteRefrenceAfter : FullRangeInterpolatedSpectrum?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let firstPage = self.storyboard?.instantiateViewController(withIdentifier: "TestSeriesViewController") as! TestSeriesViewController
+        let firstPage = self.storyboard!.instantiateViewController(withIdentifier: "StartTestSeriesViewController") as! StartTestSeriesViewController
         firstPage.pageContainer = self
         self.setViewControllers([firstPage], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
     }
     
-    func goToNextPage(spectrum : (FullRangeInterpolatedSpectrum, FullRangeInterpolatedSpectrum))
+    func goToNextPage(spectrum : FullRangeInterpolatedSpectrum, whiteRefrenceSpectrum : FullRangeInterpolatedSpectrum)
     {
-        spectrums.append(spectrum)
+        spectrumDataList.append(SpectrumData(spectrum: spectrum, whiteRefrence: whiteRefrenceSpectrum))
+        goToNextPage()
+    }
+    
+    func goToNextPage(spectrum : FullRangeInterpolatedSpectrum)
+    {
+        spectrumDataList.append(SpectrumData(spectrum: spectrum))
         goToNextPage()
     }
     
     func goToNextPage()
     {
-        currentPageIndex += 1
-        
-        //all measurements are done
-        if(measurmentSettings.whiteRefrenceSetting.hashValue == 0)
-        {
-            if(currentPageIndex > 1)
-            {
-                showFinishScreen()
-            }
-            //go to next measurement page
-            else{
-            let fastMeasurementViewController = self.storyboard?.instantiateViewController(withIdentifier: "FastMeasurmentViewController") as! FastMeasurmentViewController
-            fastMeasurementViewController.pageContainer = self
-            setViewControllers([fastMeasurementViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
-            }
+        if(measurmentFinished()){
+            addWhiteRefrenceToSpectrumArray()
+            showViewControllerWithIdentifier(identifier: "FinishTestSeriesViewController")
+            return
         }
-        else
-        {
-            //all measurements are done
-            if(currentPageIndex > (measurmentSettings.measurementCount)){
-                showFinishScreen()
-            } //go to next measurement
-            else{
-                let pageContentViewController = self.storyboard?.instantiateViewController(withIdentifier: "PageContentViewController") as! PageContentViewController
-                
-                pageContentViewController.pageContainer = self
-                pageContentViewController.strTitle = "Messung "+currentPageIndex.description
-                setViewControllers([pageContentViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+        
+        switch(measurmentSettings!.whiteRefrenceSetting){
+        case .TakeBefore:
+            if(whiteRefrenceBefore == nil)
+            {
+                showViewControllerWithIdentifier(identifier: "WhiteRefrenceViewController")
+            }
+            else
+            {
+                showViewControllerWithIdentifier(identifier: "FastMeasurmentViewController")
+            }
+        case .TakeBeforeAndAfter:
+            if(whiteRefrenceBefore == nil || spectrumDataList.count >= measurmentSettings!.measurementCount)
+            {
+                showViewControllerWithIdentifier(identifier: "WhiteRefrenceViewController")
+            }
+            else
+            {
+                showViewControllerWithIdentifier(identifier: "FastMeasurmentViewController")
+            }
+        case .TakeAfter:
+            if(spectrumDataList.count < measurmentSettings!.measurementCount)
+            {
+                showViewControllerWithIdentifier(identifier: "FastMeasurmentViewController")
+            }
+            else
+            {
+                showViewControllerWithIdentifier(identifier: "WhiteRefrenceViewController")
             }
         }
     }
     
-    func showFinishScreen(){
-        let finishViewController = self.storyboard?.instantiateViewController(withIdentifier: "FinishTestSeriesViewController") as! FinishTestSeriesViewController
-        finishViewController.pageContainer = self
-        setViewControllers([finishViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+    func addWhiteRefrenceToSpectrumArray()
+    {
+        switch measurmentSettings!.whiteRefrenceSetting {
+        case .TakeBefore:
+            for spetrumData in spectrumDataList
+            {
+                spetrumData.whiteRefrence = whiteRefrenceBefore
+            }
+        case .TakeBeforeAndAfter:
+            for spetrumData in spectrumDataList
+            {
+                //todo: take average of before and after wr
+                spetrumData.whiteRefrence = whiteRefrenceBefore
+            }
+        case .TakeAfter:
+            for spetrumData in spectrumDataList
+            {
+                spetrumData.whiteRefrence = whiteRefrenceAfter
+            }
+        }
+    }
+    
+    func showViewControllerWithIdentifier(identifier : String){
+        print("show: "+identifier)
+        let nextModal = self.storyboard!.instantiateViewController(withIdentifier: identifier) as! BaseMeasurementModal
+        nextModal.pageContainer = self
+        setViewControllers([nextModal], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+    }
+    
+    func measurmentFinished() -> Bool{
+        switch(measurmentSettings!.whiteRefrenceSetting){
+        case .TakeBefore:
+            return spectrumDataList.count >= measurmentSettings!.measurementCount
+        default:
+            return spectrumDataList.count >= measurmentSettings!.measurementCount && whiteRefrenceAfter != nil
+        }
     }
 }
 
 class MeasurmentSettings{
-    var measurementCount = 10
-    var whiteRefrenceSetting : WhiteRefrenceSettings = WhiteRefrenceSettings.TakeBeforeMesurement
-    var path :URL? = nil
-    var fileName = ""
+    var measurementCount : Int
+    var whiteRefrenceSetting : WhiteRefrenceSettings
+    var path :URL
+    var fileName : String
+    
+    init(measurementCount : Int, whiteRefrenceSetting : WhiteRefrenceSettings, path : URL, fileName : String){
+        self.measurementCount = measurementCount
+        self.whiteRefrenceSetting = whiteRefrenceSetting
+        self.path = path
+        self.fileName = fileName
+    }
+}
+
+class SpectrumData{
+    var spectrum : FullRangeInterpolatedSpectrum
+    var whiteRefrence : FullRangeInterpolatedSpectrum?
+    
+    init(spectrum : FullRangeInterpolatedSpectrum){
+        self.spectrum = spectrum
+    }
+    
+    init(spectrum : FullRangeInterpolatedSpectrum, whiteRefrence : FullRangeInterpolatedSpectrum){
+        self.spectrum = spectrum
+        self.whiteRefrence = whiteRefrence
+    }
 }
 
 enum WhiteRefrenceSettings{
-    case TakeOnce
-    case TakeBeforeMesurement
+    case TakeBefore
+    case TakeBeforeAndAfter
+    case TakeAfter
 }

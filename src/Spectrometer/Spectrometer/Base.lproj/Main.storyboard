@@ -940,7 +940,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="TestSeriesViewController" id="Gq3-ah-qV7" customClass="TestSeriesViewController" customModule="Spectrometer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="nsg-kt-XTV">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <gestureRecognizers/>
@@ -948,14 +948,14 @@
                             <tableViewSection headerTitle="Name" id="kGm-Cy-pBN">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="P31-6O-6FA">
-                                        <rect key="frame" x="0.0" y="56" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="540" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P31-6O-6FA" id="ZGY-Bo-Fkp">
-                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="540" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mOD-ae-kW2">
-                                                    <rect key="frame" x="18" y="0.0" width="732" height="43"/>
+                                                    <rect key="frame" x="18" y="0.0" width="504" height="43"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -974,21 +974,18 @@
                             <tableViewSection headerTitle="Speicherort" id="VfJ-Xl-gCf">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" id="oju-tf-H2r">
-                                        <rect key="frame" x="0.0" y="157" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="157" width="540" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oju-tf-H2r" id="RgL-fc-HEN">
-                                            <rect key="frame" x="0.0" y="0.0" width="702" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="507" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rc8-bL-Yl7">
-                                                    <rect key="frame" x="18" y="0.0" width="699" height="43"/>
+                                                    <rect key="frame" x="18" y="0.0" width="471" height="43"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                                     <state key="normal">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <connections>
-                                                        <action selector="changeFilePathButtonClicked:" destination="Gq3-ah-qV7" eventType="touchUpInside" id="D3D-9y-2ef"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <gestureRecognizers/>
@@ -1005,14 +1002,14 @@
                             <tableViewSection headerTitle="Anzahl Messungen" id="8bE-xo-ktW">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Fic-Px-VUb">
-                                        <rect key="frame" x="0.0" y="258" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="258" width="540" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fic-Px-VUb" id="4Ti-XR-lMa">
-                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="540" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Anzahl Messungen" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xdt-f5-qg2">
-                                                    <rect key="frame" x="18" y="0.0" width="732" height="43"/>
+                                                    <rect key="frame" x="18" y="0.0" width="504" height="43"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -1031,14 +1028,14 @@
                             <tableViewSection headerTitle="White Reference" footerTitle="Wählen Sie zu welchem Zeitpunkt der Messreihe eine White Reference Messung durchgeführt wird." id="Ofh-lu-KYx">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="aWn-Ld-4jL">
-                                        <rect key="frame" x="0.0" y="366" width="768" height="60"/>
+                                        <rect key="frame" x="0.0" y="366" width="540" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aWn-Ld-4jL" id="w8R-RI-I4y">
-                                            <rect key="frame" x="0.0" y="0.0" width="768" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="540" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gRw-lG-7Up">
-                                                    <rect key="frame" x="13" y="15" width="742" height="29"/>
+                                                    <rect key="frame" x="13" y="15" width="514" height="29"/>
                                                     <segments>
                                                         <segment title="Bevor"/>
                                                         <segment title="Bevor und Danach"/>
@@ -1059,27 +1056,21 @@
                             <tableViewSection id="u0a-5n-e4I">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="Cfj-iR-2KC">
-                                        <rect key="frame" x="0.0" y="474" width="768" height="80"/>
+                                        <rect key="frame" x="0.0" y="490" width="540" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cfj-iR-2KC" id="34f-Ag-Wbp">
-                                            <rect key="frame" x="0.0" y="0.0" width="768" height="79"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="540" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ox-li-CI7">
-                                                    <rect key="frame" x="384" y="0.0" width="376" height="79"/>
+                                                    <rect key="frame" x="270" y="0.0" width="262" height="79"/>
                                                     <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
                                                     <state key="normal" title="Start"/>
-                                                    <connections>
-                                                        <action selector="nextButtonClicked:" destination="Gq3-ah-qV7" eventType="touchUpInside" id="lLm-xE-x6V"/>
-                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7l-IP-sxB">
-                                                    <rect key="frame" x="8" y="0.0" width="376" height="79"/>
+                                                    <rect key="frame" x="8" y="0.0" width="262" height="79"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
                                                     <state key="normal" title="Abbrechen"/>
-                                                    <connections>
-                                                        <action selector="CancelButtonClicked:" destination="Gq3-ah-qV7" eventType="touchUpInside" id="FZi-as-S8g"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -1105,18 +1096,19 @@
                     <navigationItem key="navigationItem" title="Messung starten" id="ww3-ie-Acp">
                         <barButtonItem key="backBarButtonItem" title="Messung" id="1Nq-bU-QJT"/>
                     </navigationItem>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="768" height="1024"/>
+                    <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="fileNameTextField" destination="mOD-ae-kW2" id="iyW-rt-Q1H"/>
-                        <outlet property="filePathTextField" destination="Rc8-bL-Yl7" id="r2p-Rf-6h4"/>
-                        <outlet property="measurementCountTextField" destination="xdt-f5-qg2" id="CwL-VZ-5Rl"/>
-                        <outlet property="whiteRefrenceSettingsSegmentControl" destination="gRw-lG-7Up" id="S7z-yz-Do6"/>
+                        <outlet property="CancelButton" destination="l7l-IP-sxB" id="kFb-3J-YiC"/>
+                        <outlet property="StartButton" destination="8ox-li-CI7" id="oFy-uh-Tyf"/>
+                        <outlet property="fileNameTextField" destination="mOD-ae-kW2" id="UGU-kV-c9V"/>
+                        <outlet property="filePathButton" destination="Rc8-bL-Yl7" id="AAB-SD-Y51"/>
+                        <outlet property="measurementCountTextField" destination="xdt-f5-qg2" id="SeP-Sk-Mci"/>
+                        <outlet property="whiteRefrenceSettingsSegmentControl" destination="gRw-lG-7Up" id="PQu-Vk-bhW"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pto-nC-eD3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7102" y="-734"/>
+            <point key="canvasLocation" x="5768" y="-1664"/>
         </scene>
         <!--Finish Test Series View Controller-->
         <scene sceneID="TXN-aY-4Bf">
@@ -1164,7 +1156,40 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qbU-OH-p3X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5131" y="-1664"/>
+            <point key="canvasLocation" x="4880" y="-1174"/>
+        </scene>
+        <!--Start Test Series View Controller-->
+        <scene sceneID="5NY-ZZ-gqc">
+            <objects>
+                <viewController storyboardIdentifier="StartTestSeriesViewController" id="WuG-w8-vhb" customClass="StartTestSeriesViewController" customModule="Spectrometer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="W8c-A3-tMh"/>
+                        <viewControllerLayoutGuide type="bottom" id="WcU-MT-5gb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="USS-VR-iIR">
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t0i-hH-CuR">
+                                <rect key="frame" x="0.0" y="20" width="540" height="600"/>
+                                <connections>
+                                    <segue destination="Gq3-ah-qV7" kind="embed" identifier="StartTestSeriesTableViewSegue" id="Jpa-z1-hrR"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="t0i-hH-CuR" secondAttribute="bottom" id="0ys-0c-2SJ"/>
+                            <constraint firstItem="t0i-hH-CuR" firstAttribute="leading" secondItem="USS-VR-iIR" secondAttribute="leading" id="LvZ-Z3-flx"/>
+                            <constraint firstItem="t0i-hH-CuR" firstAttribute="top" secondItem="W8c-A3-tMh" secondAttribute="bottom" id="ac5-eA-hSl"/>
+                            <constraint firstAttribute="trailing" secondItem="t0i-hH-CuR" secondAttribute="trailing" id="d2K-Uh-sGk"/>
+                        </constraints>
+                    </view>
+                    <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hnO-oG-Wv2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5179.6875" y="-1664.0625"/>
         </scene>
         <!--Measurment Detail View Controller-->
         <scene sceneID="Qv9-BY-rtY">
@@ -1278,7 +1303,67 @@
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q8y-mg-Z25" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4209" y="-948"/>
+            <point key="canvasLocation" x="3830" y="-949"/>
+        </scene>
+        <!--White Refrence View Controller-->
+        <scene sceneID="wIc-mQ-prA">
+            <objects>
+                <viewController storyboardIdentifier="WhiteRefrenceViewController" id="TmL-uw-0eO" customClass="WhiteRefrenceViewController" customModule="Spectrometer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2ZK-eI-q9Z"/>
+                        <viewControllerLayoutGuide type="bottom" id="cyf-xC-dFr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NlO-Wl-RBa">
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fMF-am-tU8" customClass="SpectrumLineChartView" customModule="Spectrometer" customModuleProvider="target">
+                                <rect key="frame" x="74" y="86" width="391" height="293"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yzv-tf-mbY">
+                                <rect key="frame" x="74" y="541" width="76" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Abbrechen"/>
+                                <connections>
+                                    <action selector="CancelButtonClicked:" destination="TmL-uw-0eO" eventType="touchUpInside" id="CLc-gY-oeE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qrc-TU-L4l">
+                                <rect key="frame" x="420" y="541" width="45" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Weiter"/>
+                                <connections>
+                                    <action selector="nextButtonClicked:" destination="TmL-uw-0eO" eventType="touchUpInside" id="oFp-zv-ubg"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="White Refrence" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vch-8i-cdU">
+                                <rect key="frame" x="211" y="28" width="118" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cVE-O2-fAY">
+                                <rect key="frame" x="240" y="541" width="60" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Take WR"/>
+                                <connections>
+                                    <action selector="TakeWhiteRefrenceButtonClicked:" destination="TmL-uw-0eO" eventType="touchUpInside" id="Qak-cw-Oic"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="MeasurementLineChart" destination="fMF-am-tU8" id="vfJ-uh-7tS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="04e-qK-J2q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4377.34375" y="-2108.203125"/>
         </scene>
         <!--Page Content View Controller-->
         <scene sceneID="BVS-Y9-TEd">
@@ -1304,7 +1389,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Abbrechen"/>
                                 <connections>
-                                    <action selector="CancelButtonClicked:" destination="7Hs-rl-gTM" eventType="touchUpInside" id="kQ5-kX-V2K"/>
+                                    <action selector="CancelButtonClicked:" destination="7Hs-rl-gTM" eventType="touchUpInside" id="Ma0-vf-0ba"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qBm-22-d7c">
@@ -1312,7 +1397,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Weiter"/>
                                 <connections>
-                                    <action selector="nextButtonClicked:" destination="7Hs-rl-gTM" eventType="touchUpInside" id="R0n-nC-238"/>
+                                    <action selector="nextButtonClicked:" destination="7Hs-rl-gTM" eventType="touchUpInside" id="EG2-Ku-gQT"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TSH-GF-CxY" customClass="SpectrumLineChartView" customModule="Spectrometer" customModuleProvider="target">
@@ -1339,7 +1424,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="buG-zb-F0T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3688" y="-1664"/>
+            <point key="canvasLocation" x="4134" y="-1664"/>
         </scene>
         <!--Fast Measurment View Controller-->
         <scene sceneID="tOg-pH-r4C">
@@ -1377,7 +1462,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Abbrechen"/>
                                 <connections>
-                                    <action selector="CancelButtonClicked:" destination="rIH-yb-C7q" eventType="touchUpInside" id="X4g-7s-EyS"/>
+                                    <action selector="CancelButtonClicked:" destination="rIH-yb-C7q" eventType="touchUpInside" id="C3S-gZ-CcO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42R-k2-ypg">
@@ -1385,7 +1470,15 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Weiter"/>
                                 <connections>
-                                    <action selector="nextButtonClicked:" destination="rIH-yb-C7q" eventType="touchUpInside" id="NW1-6B-7OC"/>
+                                    <action selector="nextButtonClicked:" destination="rIH-yb-C7q" eventType="touchUpInside" id="XeJ-i1-egx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTb-PZ-aD5">
+                                <rect key="frame" x="253" y="556" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="StartMeasurmentsButtonClicked:" destination="rIH-yb-C7q" eventType="touchUpInside" id="Ekd-bn-cGy"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1400,7 +1493,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jif-e2-JCH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4188" y="-1664"/>
+            <point key="canvasLocation" x="4677" y="-1664"/>
         </scene>
         <!--SpektrometerApp-->
         <scene sceneID="Wyc-9f-agC">
