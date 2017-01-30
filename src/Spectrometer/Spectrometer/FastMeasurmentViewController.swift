@@ -13,7 +13,6 @@ class FastMeasurmentViewController : BaseMeasurementModal
 {
     var timer :Timer? = nil
     var count = 10
-    var measurementsDone = 0
     
     @IBOutlet weak var MesureCountLabel: UILabel!
     @IBOutlet weak var CountDownLabel: UILabel!
@@ -32,7 +31,7 @@ class FastMeasurmentViewController : BaseMeasurementModal
                 sleep(2) //Wait two second before starting the next measurment
                 self.updateMesurmentLabels(measurmentCount: i+1)
                 self.updateStateLabel(state: "Messe...")
-                let spectrum = CommandManager.sharedInstance.aquire(samples: 10)
+                let spectrum = CommandManager.sharedInstance.aquire(samples: self.appDelegate.config!.sampleCount)
                 self.pageContainer!.spectrumDataList.append(SpectrumData(spectrum: spectrum))
                 self.updateLineChart(spectrum: spectrum)
                 self.updateStateLabel(state: "Messung beendet")

@@ -81,6 +81,8 @@ class AddEditConnectionViewController: UIViewController {
         config?.refSpectrum = refSpectra as NSObject?
         config?.illSpectrum = illSpectra as NSObject?
         config?.sampleCount = 10 //default value for sampleCount
+        config?.sampleCountDarkCurrent = 10 //default value for sampleCount
+        config?.sampleCountWhiteRefrence = 10 //default value for sampleCount
         
         appDelegate.saveContext()
         NotificationCenter.default.post(name: .reloadSpectrometerConfig, object: nil)

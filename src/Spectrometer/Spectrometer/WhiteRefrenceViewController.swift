@@ -11,21 +11,21 @@ import UIKit
 
 class WhiteRefrenceViewController : BaseMeasurementModal{
     @IBAction func TakeWhiteRefrenceButtonClicked(_ sender: UIButton) {
-        let spectrum = CommandManager.sharedInstance.aquire(samples: 10)
+        let spectrum = CommandManager.sharedInstance.aquire(samples: appDelegate.config!.sampleCountWhiteRefrence)
         
         switch(pageContainer!.measurmentSettings!.whiteRefrenceSetting){
         case .TakeBefore:
-            pageContainer?.whiteRefrenceBefore = spectrum
+            pageContainer!.whiteRefrenceBefore = spectrum
         case .TakeBeforeAndAfter:
-            if(pageContainer?.whiteRefrenceBefore == nil)
+            if(pageContainer!.whiteRefrenceBefore == nil)
             {
-                pageContainer?.whiteRefrenceBefore = spectrum
+                pageContainer!.whiteRefrenceBefore = spectrum
             }
             else{
-                pageContainer?.whiteRefrenceAfter = spectrum
+                pageContainer!.whiteRefrenceAfter = spectrum
             }
         case .TakeAfter:
-            pageContainer?.whiteRefrenceAfter = spectrum
+            pageContainer!.whiteRefrenceAfter = spectrum
         }
         
         

@@ -22,7 +22,6 @@ class MeasurmentDetailViewController: UIViewController {
             return
         }
         let spectrum = parseSpectralFile(filePath: (url?.relativePath)!)
-        spectrum?.spectrum
         
         self.MeasurementLineChart.setAxisValues(min: 0, max: 65000)
         self.MeasurementLineChart.data = spectrum?.getChartData()
