@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2E0324271E05600B00C52D58 /* ParameterParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0324261E05600B00C52D58 /* ParameterParser.swift */; };
-		2E2B8CE11DFEEF4400090078 /* FileBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E2B8CDE1DFEEF1600090078 /* FileBrowser.framework */; };
-		2E2B8CE21DFEEF4400090078 /* FileBrowser.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2E2B8CDE1DFEEF1600090078 /* FileBrowser.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2E2B8CE51DFEEF4B00090078 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E2B8CD31DFEEF0700090078 /* Charts.framework */; };
 		2E2B8CE61DFEEF4B00090078 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2E2B8CD31DFEEF0700090078 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2E708A231DE61A19008EC78A /* CustomizeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E708A221DE61A19008EC78A /* CustomizeExtensions.swift */; };
@@ -126,27 +124,6 @@
 			remoteGlobalIDString = 06165F2E1D8110E600722320;
 			remoteInfo = ChartsTests;
 		};
-		2E2B8CDD1DFEEF1600090078 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2E2B8CD81DFEEF1600090078 /* FileBrowser.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 344169541C67812400B93D28;
-			remoteInfo = FileBrowser;
-		};
-		2E2B8CDF1DFEEF1600090078 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2E2B8CD81DFEEF1600090078 /* FileBrowser.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3441695E1C67812400B93D28;
-			remoteInfo = FileBrowserTests;
-		};
-		2E2B8CE31DFEEF4400090078 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2E2B8CD81DFEEF1600090078 /* FileBrowser.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 344169531C67812400B93D28;
-			remoteInfo = FileBrowser;
-		};
 		2E2B8CE71DFEEF4B00090078 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2E2B8CCC1DFEEF0700090078 /* Charts.xcodeproj */;
@@ -170,7 +147,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2E2B8CE21DFEEF4400090078 /* FileBrowser.framework in Embed Frameworks */,
 				2E2B8CE61DFEEF4B00090078 /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -181,7 +157,6 @@
 /* Begin PBXFileReference section */
 		2E0324261E05600B00C52D58 /* ParameterParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterParser.swift; sourceTree = "<group>"; };
 		2E2B8CCC1DFEEF0700090078 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ../Frameworks/Charts/Charts.xcodeproj; sourceTree = "<group>"; };
-		2E2B8CD81DFEEF1600090078 /* FileBrowser.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FileBrowser.xcodeproj; path = ../Frameworks/FileBrowser/FileBrowser.xcodeproj; sourceTree = "<group>"; };
 		2E708A221DE61A19008EC78A /* CustomizeExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizeExtensions.swift; sourceTree = "<group>"; };
 		2E708A5B1DE714F0008EC78A /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		2E91F2A21DDB5B76003E277F /* Spectrometer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spectrometer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -283,7 +258,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E2B8CE11DFEEF4400090078 /* FileBrowser.framework in Frameworks */,
 				2E2B8CE51DFEEF4B00090078 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,15 +282,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2E2B8CD91DFEEF1600090078 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				2E2B8CDE1DFEEF1600090078 /* FileBrowser.framework */,
-				2E2B8CE01DFEEF1600090078 /* FileBrowserTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		2E3494ED1DF61BD80039B1B6 /* AppIcon */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,7 +292,6 @@
 		2E91F2991DDB5B76003E277F = {
 			isa = PBXGroup;
 			children = (
-				2E2B8CD81DFEEF1600090078 /* FileBrowser.xcodeproj */,
 				2E2B8CCC1DFEEF0700090078 /* Charts.xcodeproj */,
 				2EB822ED1DE0A19000DF732C /* Ressources */,
 				2E91F2F31DDB5C8B003E277F /* Core */,
@@ -707,7 +671,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				2E2B8CE41DFEEF4400090078 /* PBXTargetDependency */,
 				2E2B8CE81DFEEF4B00090078 /* PBXTargetDependency */,
 			);
 			name = Spectrometer;
@@ -772,10 +735,6 @@
 					ProductGroup = 2E2B8CCD1DFEEF0700090078 /* Products */;
 					ProjectRef = 2E2B8CCC1DFEEF0700090078 /* Charts.xcodeproj */;
 				},
-				{
-					ProductGroup = 2E2B8CD91DFEEF1600090078 /* Products */;
-					ProjectRef = 2E2B8CD81DFEEF1600090078 /* FileBrowser.xcodeproj */;
-				},
 			);
 			projectRoot = "";
 			targets = (
@@ -805,20 +764,6 @@
 			fileType = wrapper.cfbundle;
 			path = ChartsTests.xctest;
 			remoteRef = 2E2B8CD61DFEEF0700090078 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2E2B8CDE1DFEEF1600090078 /* FileBrowser.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = FileBrowser.framework;
-			remoteRef = 2E2B8CDD1DFEEF1600090078 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2E2B8CE01DFEEF1600090078 /* FileBrowserTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = FileBrowserTests.xctest;
-			remoteRef = 2E2B8CDF1DFEEF1600090078 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -949,11 +894,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2E2B8CE41DFEEF4400090078 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = FileBrowser;
-			targetProxy = 2E2B8CE31DFEEF4400090078 /* PBXContainerItemProxy */;
-		};
 		2E2B8CE81DFEEF4B00090078 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Charts;
