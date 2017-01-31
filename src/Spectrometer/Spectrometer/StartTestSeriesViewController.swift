@@ -8,13 +8,13 @@
 
 import Foundation
 import UIKit
-import FileBrowser
 
 class StartTestSeriesViewController : BaseMeasurementModal{
     
     // this vc is embeded with a container view
     var containerViewController: TestSeriesViewController?
     let containerSegueName = "StartTestSeriesTableViewSegue"
+    
     var selectedPath : URL? = nil
     
     override func viewDidLoad() {
@@ -32,14 +32,20 @@ class StartTestSeriesViewController : BaseMeasurementModal{
     }
     
     @IBAction func changeFilePathButtonClicked(_ sender: UIButton) {
-        let fileBrowser = FileBrowser()
-        present(fileBrowser, animated: true, completion: nil)
-        fileBrowser.didSelectFile = { (file: FBFile) -> Void in
+        
+        let directoryBrowserContainerViewController = self.storyboard!.instantiateViewController(withIdentifier: "DirectoryBrowserContainerViewController") as! DirectoryBrowserContainerViewController
+        
+        let navigationController = UINavigationController(rootViewController: directoryBrowserContainerViewController)
+        navigationController.modalPresentationStyle = .formSheet
+        
+        // Hook up the select event
+        directoryBrowserContainerViewController.didSelectFile = {(file: DiskFile) -> Void in
             print (file.filePath)
             print ("Ordner: "+file.isDirectory.description)
             self.selectedPath = file.filePath
             self.containerViewController!.filePathButton.setTitle(file.filePath.relativePath, for: .normal)
         }
+        present(navigationController, animated: true, completion: nil)
     }
     
     override func goToNextPage(){

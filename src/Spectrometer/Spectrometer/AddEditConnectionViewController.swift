@@ -131,10 +131,12 @@ class AddEditConnectionViewController: UIViewController {
     
     @IBAction func selectLMPFile(_ sender: Any) {
         
-        let fileBrowser = FileBrowser()
-        present(fileBrowser, animated: true, completion: nil)
-        fileBrowser.didSelectFile = { (file: FBFile) -> Void in
-            
+        let fileBrowserContainerViewController = self.storyboard!.instantiateViewController(withIdentifier: "FileBrowserContainerViewController") as! FileBrowserContainerViewController
+        let navigationController = UINavigationController(rootViewController: fileBrowserContainerViewController)
+        navigationController.modalPresentationStyle = .formSheet
+        
+        // Hook up the select event
+        fileBrowserContainerViewController.didSelectFile = {(file: DiskFile) -> Void in
             let parseResult = self.validateLMPFile(filePath: file.filePath.path)
             self.lmpButton.setTitle(file.displayName, for: UIControlState.normal)
             if (!parseResult) {
@@ -145,9 +147,9 @@ class AddEditConnectionViewController: UIViewController {
                 self.lmpButton.setTitleColor(self.green, for: UIControlState.normal)
                 self.toggleSaveButton()
             }
-            
+
         }
-        
+        present(navigationController, animated: true, completion: nil)
     }
     
     @IBAction func selectREFFile(_ sender: Any) {
@@ -278,7 +280,6 @@ class AddEditConnectionViewController: UIViewController {
             self.showWarningMessage(title: "Dateifehler", message: "Die Datei konnte nicht gelesen werden.")
             return nil
         }
-        
         return file
     }
     
