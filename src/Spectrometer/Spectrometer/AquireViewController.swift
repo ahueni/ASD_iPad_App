@@ -9,11 +9,8 @@
 import Foundation
 import UIKit
 import Charts
-import FileBrowser
 
 class AquireViewController: UIViewController {
-    
-    let fileBrowser = FileBrowser()
     
     // buttons
     @IBOutlet var aquireButton: UIButton!

@@ -11,7 +11,6 @@ import UIKit
 
 class DirectoryBrowserContainerViewController : FileBrowserContainerViewController
 {
-    
     @IBAction func AddDirectoryButtonClicked(_ sender: UIButton) {
         let path : URL = selectedPath == nil ? documentsURL() : selectedPath!
         print("Add Folder: ")

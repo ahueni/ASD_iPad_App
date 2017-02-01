@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import FileBrowser
 
 class TestSeriesViewController : UITableViewController {
     var pageContainer : ParentViewController? = nil

@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import FileBrowser
 
 class AddEditConnectionViewController: UIViewController {
     let fileManager:FileManager = FileManager.default
@@ -154,10 +153,13 @@ class AddEditConnectionViewController: UIViewController {
     
     @IBAction func selectREFFile(_ sender: Any) {
         
-        let fileBrowser = FileBrowser()
-        present(fileBrowser, animated: true, completion: nil)
-        fileBrowser.didSelectFile = { (file: FBFile) -> Void in
-            
+        
+        let fileBrowserContainerViewController = self.storyboard!.instantiateViewController(withIdentifier: "FileBrowserContainerViewController") as! FileBrowserContainerViewController
+        let navigationController = UINavigationController(rootViewController: fileBrowserContainerViewController)
+        navigationController.modalPresentationStyle = .formSheet
+        
+        // Hook up the select event
+        fileBrowserContainerViewController.didSelectFile = {(file: DiskFile) -> Void in
             let parseResult = self.validateREFFile(filePath: file.filePath.path)
             self.refButton.setTitle(file.displayName, for: UIControlState.normal)
             if (!parseResult) {
@@ -168,17 +170,19 @@ class AddEditConnectionViewController: UIViewController {
                 self.refButton.setTitleColor(self.green, for: UIControlState.normal)
                 self.toggleSaveButton()
             }
-            
         }
+        present(navigationController, animated: true, completion: nil)
         
     }
     
     @IBAction func selectILLFile(_ sender: Any) {
         
-        let fileBrowser = FileBrowser()
-        present(fileBrowser, animated: true, completion: nil)
-        fileBrowser.didSelectFile = { (file: FBFile) -> Void in
-            
+        let fileBrowserContainerViewController = self.storyboard!.instantiateViewController(withIdentifier: "FileBrowserContainerViewController") as! FileBrowserContainerViewController
+        let navigationController = UINavigationController(rootViewController: fileBrowserContainerViewController)
+        navigationController.modalPresentationStyle = .formSheet
+        
+        // Hook up the select event
+        fileBrowserContainerViewController.didSelectFile = {(file: DiskFile) -> Void in
             let parseResult = self.validateILLFile(filePath: file.filePath.path)
             self.illButton.setTitle(file.displayName, for: UIControlState.normal)
             if (!parseResult) {
@@ -189,8 +193,8 @@ class AddEditConnectionViewController: UIViewController {
                 self.illButton.setTitleColor(self.green, for: UIControlState.normal)
                 self.toggleSaveButton()
             }
-            
         }
+        present(navigationController, animated: true, completion: nil)
         
     }
     

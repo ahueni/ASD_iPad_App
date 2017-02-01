@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2E0324271E05600B00C52D58 /* ParameterParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0324261E05600B00C52D58 /* ParameterParser.swift */; };
-		2E2B8CE51DFEEF4B00090078 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E2B8CD31DFEEF0700090078 /* Charts.framework */; };
-		2E2B8CE61DFEEF4B00090078 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2E2B8CD31DFEEF0700090078 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2E708A231DE61A19008EC78A /* CustomizeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E708A221DE61A19008EC78A /* CustomizeExtensions.swift */; };
 		2E708A5C1DE714F0008EC78A /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E708A5B1DE714F0008EC78A /* Regex.swift */; };
 		2E91F2A61DDB5B76003E277F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2A51DDB5B76003E277F /* AppDelegate.swift */; };
@@ -76,6 +74,8 @@
 		2EB823251DE0CC2900DF732C /* AquireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB823241DE0CC2900DF732C /* AquireViewController.swift */; };
 		2EB823281DE0D40F00DF732C /* SpectrometerTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB823271DE0D40F00DF732C /* SpectrometerTabBar.swift */; };
 		2EB8233C1DE113DA00DF732C /* CustomCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB8233B1DE113DA00DF732C /* CustomCharts.swift */; };
+		487AEF15B040FDD03F64BD2B /* Pods_Spectrometer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F75F11DB25150E0C51143 /* Pods_Spectrometer.framework */; };
+		58EF26FA8A188D74341FE34B /* Pods_SpectrometerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F91CDAE87D559C5A7FFD5EB6 /* Pods_SpectrometerTests.framework */; };
 		E108F2141E3B8B670097B7EE /* BaseMeasurementModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E108F2131E3B8B670097B7EE /* BaseMeasurementModal.swift */; };
 		E108F2191E3B960D0097B7EE /* StartTestSeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E108F2181E3B960D0097B7EE /* StartTestSeriesViewController.swift */; };
 		E108F21B1E3F367C0097B7EE /* WhiteRefrenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E108F21A1E3F367C0097B7EE /* WhiteRefrenceViewController.swift */; };
@@ -103,34 +103,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2E2B8CD21DFEEF0700090078 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2E2B8CCC1DFEEF0700090078 /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 06165F241D8110E600722320;
-			remoteInfo = Charts;
-		};
-		2E2B8CD41DFEEF0700090078 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2E2B8CCC1DFEEF0700090078 /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 06B120D51D811E6200D14B02;
-			remoteInfo = ChartsRealm;
-		};
-		2E2B8CD61DFEEF0700090078 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2E2B8CCC1DFEEF0700090078 /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 06165F2E1D8110E600722320;
-			remoteInfo = ChartsTests;
-		};
-		2E2B8CE71DFEEF4B00090078 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2E2B8CCC1DFEEF0700090078 /* Charts.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 06165F231D8110E600722320;
-			remoteInfo = Charts;
-		};
 		2E91F2BA1DDB5B76003E277F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2E91F29A1DDB5B76003E277F /* Project object */;
@@ -140,23 +112,9 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		2EB8233A1DE0EE8000DF732C /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				2E2B8CE61DFEEF4B00090078 /* Charts.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
+		13FDA880A9F4A37458167799 /* Pods-SpectrometerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpectrometerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpectrometerTests/Pods-SpectrometerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2E0324261E05600B00C52D58 /* ParameterParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterParser.swift; sourceTree = "<group>"; };
-		2E2B8CCC1DFEEF0700090078 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ../Frameworks/Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		2E708A221DE61A19008EC78A /* CustomizeExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizeExtensions.swift; sourceTree = "<group>"; };
 		2E708A5B1DE714F0008EC78A /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		2E91F2A21DDB5B76003E277F /* Spectrometer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spectrometer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -227,6 +185,8 @@
 		2EB823241DE0CC2900DF732C /* AquireViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AquireViewController.swift; sourceTree = "<group>"; };
 		2EB823271DE0D40F00DF732C /* SpectrometerTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrometerTabBar.swift; sourceTree = "<group>"; };
 		2EB8233B1DE113DA00DF732C /* CustomCharts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCharts.swift; sourceTree = "<group>"; };
+		40DCB724B196BBCD581A0791 /* Pods-SpectrometerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpectrometerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpectrometerTests/Pods-SpectrometerTests.release.xcconfig"; sourceTree = "<group>"; };
+		4D2A88B32C5C94ADBC30F188 /* Pods-Spectrometer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spectrometer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Spectrometer/Pods-Spectrometer.release.xcconfig"; sourceTree = "<group>"; };
 		E108F2131E3B8B670097B7EE /* BaseMeasurementModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMeasurementModal.swift; sourceTree = "<group>"; };
 		E108F2181E3B960D0097B7EE /* StartTestSeriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartTestSeriesViewController.swift; sourceTree = "<group>"; };
 		E108F21A1E3F367C0097B7EE /* WhiteRefrenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhiteRefrenceViewController.swift; sourceTree = "<group>"; };
@@ -251,6 +211,9 @@
 		E1A40C2A1E409C8E0019F467 /* DirectoryBrowserContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryBrowserContainerViewController.swift; sourceTree = "<group>"; };
 		E1A40C2D1E40A2D60019F467 /* DirectoryBrowserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryBrowserTableViewController.swift; sourceTree = "<group>"; };
 		E1AC382A1E266ACD004CCBEF /* FileWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWriter.swift; sourceTree = "<group>"; };
+		F30C2C6661380C931C0A5C15 /* Pods-Spectrometer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spectrometer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Spectrometer/Pods-Spectrometer.debug.xcconfig"; sourceTree = "<group>"; };
+		F91CDAE87D559C5A7FFD5EB6 /* Pods_SpectrometerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpectrometerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB0F75F11DB25150E0C51143 /* Pods_Spectrometer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spectrometer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,7 +221,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E2B8CE51DFEEF4B00090078 /* Charts.framework in Frameworks */,
+				487AEF15B040FDD03F64BD2B /* Pods_Spectrometer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,20 +229,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58EF26FA8A188D74341FE34B /* Pods_SpectrometerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2E2B8CCD1DFEEF0700090078 /* Products */ = {
+		17FEEECB9AEF0C0E859DAA02 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2E2B8CD31DFEEF0700090078 /* Charts.framework */,
-				2E2B8CD51DFEEF0700090078 /* ChartsRealm.framework */,
-				2E2B8CD71DFEEF0700090078 /* ChartsTests.xctest */,
+				F30C2C6661380C931C0A5C15 /* Pods-Spectrometer.debug.xcconfig */,
+				4D2A88B32C5C94ADBC30F188 /* Pods-Spectrometer.release.xcconfig */,
+				13FDA880A9F4A37458167799 /* Pods-SpectrometerTests.debug.xcconfig */,
+				40DCB724B196BBCD581A0791 /* Pods-SpectrometerTests.release.xcconfig */,
 			);
-			name = Products;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		2E3494ED1DF61BD80039B1B6 /* AppIcon */ = {
@@ -292,13 +257,14 @@
 		2E91F2991DDB5B76003E277F = {
 			isa = PBXGroup;
 			children = (
-				2E2B8CCC1DFEEF0700090078 /* Charts.xcodeproj */,
 				2EB822ED1DE0A19000DF732C /* Ressources */,
 				2E91F2F31DDB5C8B003E277F /* Core */,
 				2E91F2C81DDB5B7D003E277F /* Socks */,
 				2E91F2A41DDB5B76003E277F /* Spectrometer */,
 				2E91F2BC1DDB5B76003E277F /* SpectrometerTests */,
 				2E91F2A31DDB5B76003E277F /* Products */,
+				17FEEECB9AEF0C0E859DAA02 /* Pods */,
+				A7B7970FA11BC9ECE649EE47 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -580,6 +546,15 @@
 			name = ViewHelpers;
 			sourceTree = "<group>";
 		};
+		A7B7970FA11BC9ECE649EE47 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FB0F75F11DB25150E0C51143 /* Pods_Spectrometer.framework */,
+				F91CDAE87D559C5A7FFD5EB6 /* Pods_SpectrometerTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E14EC2291E2E187B006EBD2F /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -663,15 +638,16 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2E91F2C21DDB5B76003E277F /* Build configuration list for PBXNativeTarget "Spectrometer" */;
 			buildPhases = (
+				A34942177665F406A38E8AEA /* [CP] Check Pods Manifest.lock */,
 				2E91F29E1DDB5B76003E277F /* Sources */,
 				2E91F29F1DDB5B76003E277F /* Frameworks */,
 				2E91F2A01DDB5B76003E277F /* Resources */,
-				2EB8233A1DE0EE8000DF732C /* Embed Frameworks */,
+				E28813D51D00AAAD1FE533CC /* [CP] Embed Pods Frameworks */,
+				841FCAEEBBC9FE711EA0C7BF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				2E2B8CE81DFEEF4B00090078 /* PBXTargetDependency */,
 			);
 			name = Spectrometer;
 			productName = Spectrometer;
@@ -682,9 +658,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2E91F2C51DDB5B76003E277F /* Build configuration list for PBXNativeTarget "SpectrometerTests" */;
 			buildPhases = (
+				B8C36E0EF142F0552EBF3EE0 /* [CP] Check Pods Manifest.lock */,
 				2E91F2B51DDB5B76003E277F /* Sources */,
 				2E91F2B61DDB5B76003E277F /* Frameworks */,
 				2E91F2B71DDB5B76003E277F /* Resources */,
+				30229E0EC9A6619ADA8DBA4B /* [CP] Embed Pods Frameworks */,
+				635F7DD3735A2BD5AC1599D7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -730,12 +709,6 @@
 			mainGroup = 2E91F2991DDB5B76003E277F;
 			productRefGroup = 2E91F2A31DDB5B76003E277F /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 2E2B8CCD1DFEEF0700090078 /* Products */;
-					ProjectRef = 2E2B8CCC1DFEEF0700090078 /* Charts.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				2E91F2A11DDB5B76003E277F /* Spectrometer */,
@@ -743,30 +716,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		2E2B8CD31DFEEF0700090078 /* Charts.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Charts.framework;
-			remoteRef = 2E2B8CD21DFEEF0700090078 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2E2B8CD51DFEEF0700090078 /* ChartsRealm.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ChartsRealm.framework;
-			remoteRef = 2E2B8CD41DFEEF0700090078 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2E2B8CD71DFEEF0700090078 /* ChartsTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ChartsTests.xctest;
-			remoteRef = 2E2B8CD61DFEEF0700090078 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2E91F2A01DDB5B76003E277F /* Resources */ = {
@@ -801,6 +750,99 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		30229E0EC9A6619ADA8DBA4B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpectrometerTests/Pods-SpectrometerTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		635F7DD3735A2BD5AC1599D7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpectrometerTests/Pods-SpectrometerTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		841FCAEEBBC9FE711EA0C7BF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Spectrometer/Pods-Spectrometer-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A34942177665F406A38E8AEA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B8C36E0EF142F0552EBF3EE0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E28813D51D00AAAD1FE533CC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Spectrometer/Pods-Spectrometer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2E91F29E1DDB5B76003E277F /* Sources */ = {
@@ -894,11 +936,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2E2B8CE81DFEEF4B00090078 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Charts;
-			targetProxy = 2E2B8CE71DFEEF4B00090078 /* PBXContainerItemProxy */;
-		};
 		2E91F2BB1DDB5B76003E277F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2E91F2A11DDB5B76003E277F /* Spectrometer */;
@@ -1021,8 +1058,8 @@
 		};
 		2E91F2C31DDB5B76003E277F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F30C2C6661380C931C0A5C15 /* Pods-Spectrometer.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 5TV46KLX3W;
@@ -1040,8 +1077,8 @@
 		};
 		2E91F2C41DDB5B76003E277F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D2A88B32C5C94ADBC30F188 /* Pods-Spectrometer.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 5TV46KLX3W;
@@ -1059,6 +1096,7 @@
 		};
 		2E91F2C61DDB5B76003E277F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13FDA880A9F4A37458167799 /* Pods-SpectrometerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1074,6 +1112,7 @@
 		};
 		2E91F2C71DDB5B76003E277F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 40DCB724B196BBCD581A0791 /* Pods-SpectrometerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
