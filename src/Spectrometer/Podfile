@@ -7,6 +7,7 @@ target 'Spectrometer' do
 
   # Pods for Spectrometer
     pod 'Charts/Realm'
+    pod 'Zip'
 
   target 'SpectrometerTests' do
     inherit! :search_paths

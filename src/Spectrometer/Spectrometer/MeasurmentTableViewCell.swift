@@ -19,17 +19,25 @@ class MeasurmentTableViewCell : UITableViewCell {
     var viewController: UIViewController? = nil
     
     @IBAction func export(_ sender: UIButton) {
-        let textToShare = "Swift is awesome!  Check out this website about it!"
+        
+        
         
         if selectedFile?.filePath != nil {
-            let objectsToShare = [textToShare, selectedFile?.filePath] as [Any]
+            
+            let textToShare = "Sie können die Datei " + (selectedFile?.displayName)! + " nun exportieren."
+            
+            let objectsToShare = [(selectedFile?.filePath)!] as [URL]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             
             //New Excluded Activities Code
             activityVC.excludedActivityTypes = [UIActivityType.postToFacebook, UIActivityType.postToTwitter, UIActivityType.assignToContact, UIActivityType.addToReadingList, UIActivityType.openInIBooks, UIActivityType.saveToCameraRoll]
         
             
-            activityVC.popoverPresentationController?.sourceView = sender
+            activityVC.popoverPresentationController?.sourceView = sender as UIView
+            activityVC.popoverPresentationController?.sourceRect = sender.bounds
+            
+            activityVC.popoverPresentationController?.canOverlapSourceViewRect = false
+            activityVC.popoverPresentationController?.permittedArrowDirections = [UIPopoverArrowDirection.left]
             viewController?.present(activityVC, animated: true, completion: nil)
         }
         
