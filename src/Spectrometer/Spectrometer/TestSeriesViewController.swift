@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class TestSeriesViewController : UITableViewController {
+class StartTestSeriesTableViewController : UITableViewController {
     var pageContainer : ParentViewController? = nil
     
     @IBOutlet weak var fileNameTextField: UITextField!
@@ -18,4 +18,15 @@ class TestSeriesViewController : UITableViewController {
     @IBOutlet weak var whiteRefrenceSettingsSegmentControl: UISegmentedControl!
     @IBOutlet weak var CancelButton: UIButton!
     @IBOutlet weak var StartButton: UIButton!
+    @IBAction func NameTextFieldEditingChanged(_ sender: Any) {
+        validate()
+    }
+    @IBAction func measurmentCountTextFieldEditingChanged(_ sender: Any) {
+        validate()
+    }
+    
+    func validate()
+    {
+        StartButton.isEnabled = ValidationManager.sharedInstance.validateSubViews(view: view)
+    }
 }

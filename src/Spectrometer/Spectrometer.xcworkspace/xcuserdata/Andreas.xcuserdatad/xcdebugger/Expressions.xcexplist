@@ -3,6 +3,44 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "PortTextField.validate() -&gt; ():PortTextField.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "isValid">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AddEditConnectionViewController.validateSubViews(view : UIView, valid : Bool) -&gt; Bool:AddEditConnectionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "(subView as! PortTextField)">
+            </PersistentString>
+            <PersistentString
+               value = "(port as! PortTextField)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "PortTextField.validate() -&gt; Bool:PortTextField.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AddEditConnectionViewController.toggleSaveButton() -&gt; ():AddEditConnectionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "view.subviews">
+            </PersistentString>
+            <PersistentString
+               value = "saveButton.isEnabled">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "DirectoryBrowserContainerViewController.(AddDirectoryButtonClicked(UIButton) -&gt; ()).(closure #2):DirectoryBrowserContainerViewController.swift">
          <PersistentStrings>
             <PersistentString

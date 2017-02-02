@@ -94,11 +94,6 @@ class AddEditConnectionViewController: UIViewController {
     }
     
     @IBAction func nameEditEnd(_ sender: Any) {
-        if validateName() {
-            name.textColor = black
-        } else {
-            name.textColor = red
-        }
         toggleSaveButton()
     }
     
@@ -107,11 +102,6 @@ class AddEditConnectionViewController: UIViewController {
     }
     
     @IBAction func ipAdressEditEnd(_ sender: Any) {
-        if validateIp() {
-            ipAdress.textColor = black
-        } else {
-            ipAdress.textColor = red
-        }
         toggleSaveButton()
     }
     
@@ -120,11 +110,6 @@ class AddEditConnectionViewController: UIViewController {
     }
     
     @IBAction func portEditEnd(_ sender: UITextField, forEvent event: UIEvent) {
-        if validatePort() {
-            port.textColor = black
-        } else {
-            port.textColor = red
-        }
         toggleSaveButton()
     }
     
@@ -202,28 +187,6 @@ class AddEditConnectionViewController: UIViewController {
         self.config = config
     }
     
-    private func validateName() -> Bool {
-        if (name.text == nil || name.text == "") {
-            return false
-        }
-        return true
-    }
-    
-    private func validateIp() -> Bool {
-        if !Regex.valideIp(ip: ipAdress.text) {
-            return false
-        }
-        return true
-    }
-    
-    private func validatePort() -> Bool {
-        let portNumber = Int(port.text!)
-        if (portNumber == nil || (portNumber! < 1 || portNumber! > 65535)) {
-            return false
-        }
-        return true
-    }
-    
     private func validateLMPFile(filePath: String) -> Bool {
         
         let lmpFile = parseSpectralFile(filePath: filePath)
@@ -288,12 +251,7 @@ class AddEditConnectionViewController: UIViewController {
     }
     
     private func toggleSaveButton() -> Void {
-        
-        if (validateName() && validateIp() && validatePort() && self.lmpSpectra != nil && self.illSpectra != nil && self.refSpectra != nil) {
-            saveButton.isEnabled = true
-        } else {
-            saveButton.isEnabled = false
-        }
+        saveButton.isEnabled = ValidationManager.sharedInstance.validateSubViews(view: view)
     }
     
     

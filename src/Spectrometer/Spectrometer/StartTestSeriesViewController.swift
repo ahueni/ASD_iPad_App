@@ -12,7 +12,7 @@ import UIKit
 class StartTestSeriesViewController : BaseMeasurementModal{
     
     // this vc is embeded with a container view
-    var containerViewController: TestSeriesViewController?
+    var containerViewController: StartTestSeriesTableViewController?
     let containerSegueName = "StartTestSeriesTableViewSegue"
     
     var selectedPath : URL? = nil
@@ -26,7 +26,7 @@ class StartTestSeriesViewController : BaseMeasurementModal{
     // prepare is called before viewDidLoad => set the embeded vc variable
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == containerSegueName {
-            containerViewController = segue.destination as! TestSeriesViewController
+            containerViewController = segue.destination as! StartTestSeriesTableViewController
             containerViewController!.pageContainer = pageContainer
         }
     }
@@ -40,10 +40,8 @@ class StartTestSeriesViewController : BaseMeasurementModal{
         
         // Hook up the select event
         directoryBrowserContainerViewController.didSelectFile = {(file: DiskFile) -> Void in
-            print (file.filePath)
-            print ("Ordner: "+file.isDirectory.description)
             self.selectedPath = file.filePath
-            self.containerViewController!.filePathButton.setTitle(file.filePath.relativePath, for: .normal)
+            self.containerViewController!.filePathButton.setTitle(file.filePath.lastPathComponent, for: .normal)
         }
         present(navigationController, animated: true, completion: nil)
     }
