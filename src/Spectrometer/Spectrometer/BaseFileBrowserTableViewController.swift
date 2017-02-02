@@ -53,7 +53,8 @@ class BaseFileBrowserTableViewController : UITableViewController{
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return diskFiles.filter{$0.isDirectory}.count > 0 ? 2 : 1
+        // Count of Filetypes => Currently Files or Folders => 2
+        return 2
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
