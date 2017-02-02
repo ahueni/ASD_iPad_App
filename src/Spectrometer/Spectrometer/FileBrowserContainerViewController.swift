@@ -27,7 +27,7 @@ class FileBrowserContainerViewController : UIViewController{
     // prepare is called before viewDidLoad => set the embeded vc variable
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == containerFileSegueName {
-            containerViewController = segue.destination as! FileBrowserTableViewController
+            containerViewController = segue.destination as? FileBrowserTableViewController
         }
         
         if segue.identifier == containerDirectorrySegueName {

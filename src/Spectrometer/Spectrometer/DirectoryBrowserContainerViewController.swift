@@ -11,7 +11,7 @@ import UIKit
 
 class DirectoryBrowserContainerViewController : FileBrowserContainerViewController
 {
-    @IBAction func AddDirectoryButtonClicked(_ sender: UIButton) {
+    @IBAction func AddDirectoryButtonClicked(_ sender: UIBarButtonItem) {
         let path : URL = selectedPath == nil ? documentsURL() : selectedPath!
         print("Add Folder: ")
         print(path)
@@ -49,11 +49,12 @@ class DirectoryBrowserContainerViewController : FileBrowserContainerViewControll
         self.present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func ChooseDirectoryButtonClicked(_ sender: UIButton) {
+    @IBAction func ChooseDirectoryButtonClicked(_ sender: UIBarButtonItem) {
         let selectedFolder = DiskFile(url: selectedPath == nil ? documentsURL() : selectedPath!)
         didSelectFile!(selectedFolder)
         dismiss(animated: true, completion: nil)
     }
+    
     
     public func documentsURL() -> URL {
         return fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0] as URL

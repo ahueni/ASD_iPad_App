@@ -70,6 +70,8 @@
 			<string>public.asd</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
+				<key>public.mime-type</key>
+				<string>application/spectrometer</string>
 				<key>public.filename-extension</key>
 				<string>asd</string>
 			</dict>

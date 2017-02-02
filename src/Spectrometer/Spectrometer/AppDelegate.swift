@@ -36,6 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UIBarButtonItem.appearance().setTitleTextAttributes(attributes, for: UIControlState.normal)
         UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).setTitleTextAttributes(attributesTabBarButton, for: .normal)
+        
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UIToolbar.self]).setTitleTextAttributes(attributesTabBarButton, for: UIControlState.normal)
+        
         let blubb = UINavigationBar.appearance()
         blubb.titleTextAttributes = attributes
         

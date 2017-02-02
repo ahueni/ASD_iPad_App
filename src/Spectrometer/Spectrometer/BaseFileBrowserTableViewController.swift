@@ -71,7 +71,7 @@ class BaseFileBrowserTableViewController : UITableViewController{
         }
         cell.selectionStyle = .blue
         let selectedFile = getFileForIndexPath(indexPath: indexPath)
-        cell.textLabel?.font = UIFont(name: "Open Sans", size: 30)
+        cell.textLabel?.font = UIFont(name: "Open Sans", size: 18)
         cell.textLabel?.text = selectedFile.displayName
         cell.imageView?.image = selectedFile.image()
         return cell

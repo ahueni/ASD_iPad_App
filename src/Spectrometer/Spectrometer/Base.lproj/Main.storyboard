@@ -262,7 +262,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NJu-OU-Fzt">
-                                <rect key="frame" x="20" y="20" width="500" height="600"/>
+                                <rect key="frame" x="0.0" y="20" width="540" height="600"/>
                                 <connections>
                                     <segue destination="009-1F-VsD" kind="embed" identifier="FileBrowserTableViewControllerSegue" id="jDl-xG-2PZ"/>
                                 </connections>
@@ -270,18 +270,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="NJu-OU-Fzt" firstAttribute="leading" secondItem="mAd-y0-AeU" secondAttribute="leadingMargin" id="QLt-xH-RRb"/>
-                            <constraint firstItem="NJu-OU-Fzt" firstAttribute="trailing" secondItem="mAd-y0-AeU" secondAttribute="trailingMargin" id="UU5-an-Z4b"/>
+                            <constraint firstItem="NJu-OU-Fzt" firstAttribute="leading" secondItem="mAd-y0-AeU" secondAttribute="leadingMargin" constant="-20" id="QLt-xH-RRb"/>
+                            <constraint firstItem="NJu-OU-Fzt" firstAttribute="trailing" secondItem="mAd-y0-AeU" secondAttribute="trailingMargin" constant="20" id="UU5-an-Z4b"/>
                             <constraint firstItem="NJu-OU-Fzt" firstAttribute="top" secondItem="5Hw-hp-cLb" secondAttribute="bottom" id="YIm-8o-6eG"/>
                             <constraint firstItem="OXn-Iy-lQb" firstAttribute="top" secondItem="NJu-OU-Fzt" secondAttribute="bottom" id="bjh-Ks-5kP"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="MAY-cU-tZX"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="epO-Cv-BCG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2577" y="1392"/>
+            <point key="canvasLocation" x="2576.5625" y="1391.6015625"/>
         </scene>
         <!--Directory Browser Container View Controller-->
         <scene sceneID="NKR-GA-V6t">
@@ -295,32 +298,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qOr-If-n5p">
-                                <rect key="frame" x="20" y="28" width="500" height="534"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qOr-If-n5p">
+                                <rect key="frame" x="0.0" y="20" width="540" height="556"/>
                                 <connections>
                                     <segue destination="zl9-cl-1b1" kind="embed" identifier="DirectoryBrowserTableViewControllerSegue" id="eTw-zi-awD"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E16-EH-9rw">
-                                <rect key="frame" x="20" y="570" width="94" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Neuer Ordner"/>
-                                <connections>
-                                    <action selector="AddDirectoryButtonClicked:" destination="UIA-Zh-fKE" eventType="touchUpInside" id="RNI-2Y-CQe"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndZ-G8-s8w">
-                                <rect key="frame" x="446" y="570" width="74" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Auswählen"/>
-                                <connections>
-                                    <action selector="ChooseDirectoryButtonClicked:" destination="UIA-Zh-fKE" eventType="touchUpInside" id="dPB-Nw-QM3"/>
-                                </connections>
-                            </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3T3-6H-JHc">
+                                <rect key="frame" x="0.0" y="576" width="540" height="44"/>
+                                <items>
+                                    <barButtonItem title="Neuer Ordner" id="jyE-i3-CRe">
+                                        <connections>
+                                            <action selector="AddDirectoryButtonClicked:" destination="UIA-Zh-fKE" id="SSf-xu-jeh"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="4Vy-9G-O0d"/>
+                                    <barButtonItem title="Auswählen" style="done" id="Igy-f0-5TJ">
+                                        <connections>
+                                            <action selector="ChooseDirectoryButtonClicked:" destination="UIA-Zh-fKE" id="dg5-Uy-M9u"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3m6-ZS-Ocy" firstAttribute="top" secondItem="3T3-6H-JHc" secondAttribute="bottom" id="A2n-9d-sPF"/>
+                            <constraint firstItem="3T3-6H-JHc" firstAttribute="top" secondItem="qOr-If-n5p" secondAttribute="bottom" id="JgO-WW-3KA"/>
+                            <constraint firstItem="3T3-6H-JHc" firstAttribute="leading" secondItem="nG9-Zw-vkc" secondAttribute="leadingMargin" constant="-20" id="MqS-PN-Esj"/>
+                            <constraint firstItem="qOr-If-n5p" firstAttribute="top" secondItem="G2f-dt-S9Q" secondAttribute="bottom" id="Wbf-Vq-cpC"/>
+                            <constraint firstItem="qOr-If-n5p" firstAttribute="leading" secondItem="nG9-Zw-vkc" secondAttribute="leadingMargin" constant="-20" id="cPI-6B-bHe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3T3-6H-JHc" secondAttribute="trailing" constant="-20" id="fd7-9V-u5M"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qOr-If-n5p" secondAttribute="trailing" constant="-20" id="hKK-RR-tiC"/>
+                        </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bb7-v8-3mC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -335,16 +349,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3vO-bu-a2K">
-                                <rect key="frame" x="0.0" y="28" width="540" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3vO-bu-a2K" id="o9R-jX-hQS">
-                                    <rect key="frame" x="0.0" y="0.0" width="540" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="zl9-cl-1b1" id="HRJ-O7-qst"/>
                             <outlet property="delegate" destination="zl9-cl-1b1" id="z9q-BN-Oi9"/>
@@ -354,7 +358,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XWk-tU-F1i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3136" y="1815"/>
+            <point key="canvasLocation" x="3128" y="1815"/>
         </scene>
         <!--File Browser Table View Controller-->
         <scene sceneID="OXa-i3-Quk">
@@ -364,16 +368,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="0CV-DO-cyW">
-                                <rect key="frame" x="0.0" y="28" width="540" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0CV-DO-cyW" id="G9O-Lm-SoY">
-                                    <rect key="frame" x="0.0" y="0.0" width="540" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="009-1F-VsD" id="aWF-9c-ifD"/>
                             <outlet property="delegate" destination="009-1F-VsD" id="gd3-8U-VaH"/>
@@ -1128,7 +1122,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="507" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rc8-bL-Yl7" customClass="TextRequiredButton" customModule="Spectrometer" customModuleProvider="target">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rc8-bL-Yl7">
                                                     <rect key="frame" x="18" y="0.0" width="471" height="43"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                                     <state key="normal">
@@ -1355,7 +1349,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rQd-FZ-Sgn" customClass="SpectrumLineChartView" customModule="Spectrometer" customModuleProvider="target">
-                                <rect key="frame" x="20" y="20" width="728" height="1004"/>
+                                <rect key="frame" x="20" y="20" width="728" height="955"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -1379,32 +1373,10 @@
         <scene sceneID="Urh-yl-JRP">
             <objects>
                 <tableViewController storyboardIdentifier="MeasurmentMasterTableViewController" extendedLayoutIncludesOpaqueBars="YES" clearsSelectionOnViewWillAppear="NO" id="SSw-ZL-qrx" customClass="MeasurmentMasterTableViewController" customModule="Spectrometer" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="81y-Qp-Ioh">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="81y-Qp-Ioh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="hx1-F1-eY3" style="IBUITableViewCellStyleDefault" id="AAi-JM-aYt">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AAi-JM-aYt" id="7uN-Bw-d1G">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hx1-F1-eY3">
-                                            <rect key="frame" x="15" y="0.0" width="290" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="3qF-CH-WrA" kind="showDetail" identifier="next" id="ssZ-sH-obO"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="SSw-ZL-qrx" id="uGh-xD-GHZ"/>
                             <outlet property="delegate" destination="SSw-ZL-qrx" id="0S4-Pe-Apx"/>
@@ -1730,8 +1702,7 @@
         <image name="done" width="448" height="455"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Rnf-3V-6Sk"/>
         <segue reference="t41-HF-zAw"/>
-        <segue reference="ssZ-sH-obO"/>
+        <segue reference="Rnf-3V-6Sk"/>
     </inferredMetricsTieBreakers>
 </document>

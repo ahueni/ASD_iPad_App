@@ -10,6 +10,8 @@
 		2E0324271E05600B00C52D58 /* ParameterParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0324261E05600B00C52D58 /* ParameterParser.swift */; };
 		2E708A231DE61A19008EC78A /* CustomizeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E708A221DE61A19008EC78A /* CustomizeExtensions.swift */; };
 		2E708A5C1DE714F0008EC78A /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E708A5B1DE714F0008EC78A /* Regex.swift */; };
+		2E77537D1E4329530081249C /* MeasurmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E77537C1E4329530081249C /* MeasurmentTableViewCell.swift */; };
+		2E77537F1E432A860081249C /* MeasurmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E77537E1E432A860081249C /* MeasurmentTableViewCell.xib */; };
 		2E91F2A61DDB5B76003E277F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2A51DDB5B76003E277F /* AppDelegate.swift */; };
 		2E91F2A81DDB5B76003E277F /* ConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2A71DDB5B76003E277F /* ConnectionViewController.swift */; };
 		2E91F2AB1DDB5B76003E277F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E91F2A91DDB5B76003E277F /* Main.storyboard */; };
@@ -126,6 +128,8 @@
 		2E0324261E05600B00C52D58 /* ParameterParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterParser.swift; sourceTree = "<group>"; };
 		2E708A221DE61A19008EC78A /* CustomizeExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizeExtensions.swift; sourceTree = "<group>"; };
 		2E708A5B1DE714F0008EC78A /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
+		2E77537C1E4329530081249C /* MeasurmentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurmentTableViewCell.swift; sourceTree = "<group>"; };
+		2E77537E1E432A860081249C /* MeasurmentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeasurmentTableViewCell.xib; sourceTree = "<group>"; };
 		2E91F2A21DDB5B76003E277F /* Spectrometer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spectrometer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E91F2A51DDB5B76003E277F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E91F2A71DDB5B76003E277F /* ConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionViewController.swift; sourceTree = "<group>"; };
@@ -312,6 +316,7 @@
 				2E91F2B11DDB5B76003E277F /* LaunchScreen.storyboard */,
 				2E91F2B41DDB5B76003E277F /* Info.plist */,
 				2E91F2AC1DDB5B76003E277F /* Spectrometer.xcdatamodeld */,
+				2E77537E1E432A860081249C /* MeasurmentTableViewCell.xib */,
 			);
 			path = Spectrometer;
 			sourceTree = "<group>";
@@ -600,6 +605,7 @@
 		E18DAE981E375CDB005F6753 /* Measurement */ = {
 			isa = PBXGroup;
 			children = (
+				2E77537C1E4329530081249C /* MeasurmentTableViewCell.swift */,
 				E18DAE9C1E375D46005F6753 /* MeasurmentMasterTableViewController.swift */,
 				E18DAE9E1E375E43005F6753 /* MeasurmentDetailViewController.swift */,
 			);
@@ -775,6 +781,7 @@
 			files = (
 				2EB823051DE0A2D100DF732C /* OpenSans-Semibold.ttf in Resources */,
 				2EB823061DE0A2D100DF732C /* OpenSans-SemiboldItalic.ttf in Resources */,
+				2E77537F1E432A860081249C /* MeasurmentTableViewCell.xib in Resources */,
 				2E91F2B31DDB5B76003E277F /* LaunchScreen.storyboard in Resources */,
 				2EB823041DE0A2D100DF732C /* OpenSans-Regular.ttf in Resources */,
 				2EB823011DE0A2D100DF732C /* OpenSans-Italic.ttf in Resources */,
@@ -950,6 +957,7 @@
 				2E91F2E11DDB5B9F003E277F /* SynchronousUDPServer.swift in Sources */,
 				2EB362A01DF1DF0A00E74E39 /* CalibrationBuffer.swift in Sources */,
 				2E91F3151DDB8440003E277F /* Optimize.swift in Sources */,
+				2E77537D1E4329530081249C /* MeasurmentTableViewCell.swift in Sources */,
 				2E91F2E41DDB5B9F003E277F /* Address+C.swift in Sources */,
 				E18970A01E2914B300722E9C /* BaseWriter.swift in Sources */,
 				2E91F2EC1DDB5B9F003E277F /* Select.swift in Sources */,

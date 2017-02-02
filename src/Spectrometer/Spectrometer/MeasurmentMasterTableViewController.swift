@@ -10,6 +10,14 @@ import UIKit
 
 class MeasurmentMasterTableViewController: BaseFileBrowserTableViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Create own cell
+        self.tableView.register(UINib(nibName: "MeasurmentTableViewCell", bundle: nil), forCellReuseIdentifier: "MeasurmentTableViewCell")
+        
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedFile = getFileForIndexPath(indexPath: indexPath)
         
@@ -27,4 +35,15 @@ class MeasurmentMasterTableViewController: BaseFileBrowserTableViewController {
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MeasurmentTableViewCell", for: indexPath) as! MeasurmentTableViewCell
+        let selectedFile = getFileForIndexPath(indexPath: indexPath)
+        cell.setInfo(selectedFile: selectedFile, viewController: self)
+        
+        return cell
+        
+    }
+    
 }
