@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class BaseFileBrowserTableViewController : UITableViewController{
+class BaseFileBrowserTableViewController : UITableViewController {
     var diskFiles = [DiskFile]()
     var currentPath : URL?
     let fileManager = FileManager.default
@@ -22,6 +22,12 @@ class BaseFileBrowserTableViewController : UITableViewController{
         
         // Make sure navigation bar is visible
         self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+        print("-- RELOADED TABLE DATA -- ")
     }
     
     func getAllDiskFiles(url: URL) -> [DiskFile]
@@ -93,6 +99,12 @@ class BaseFileBrowserTableViewController : UITableViewController{
         tableView!.insertRows(at: [IndexPath(row: index, section: 1)], with: .automatic)
         tableView!.endUpdates()
     }
+    
+    func updateTableData() {
+        diskFiles = getAllDiskFiles(url: currentPath == nil ? documentsURL() : currentPath!)
+        print("-- UPDATED TABLE DATA --")
+    }
+    
 }
 
 

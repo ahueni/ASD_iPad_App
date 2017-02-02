@@ -358,7 +358,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XWk-tU-F1i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3128" y="1815"/>
+            <point key="canvasLocation" x="3118" y="1815"/>
         </scene>
         <!--File Browser Table View Controller-->
         <scene sceneID="OXa-i3-Quk">
@@ -435,7 +435,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IP: 10.1.1.77 / Port: 8080" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aF7-2C-20b">
-                                                    <rect key="frame" x="8" y="41" width="574" height="17"/>
+                                                    <rect key="frame" x="8" y="41" width="574" height="16.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1382,11 +1382,17 @@
                             <outlet property="delegate" destination="SSw-ZL-qrx" id="0S4-Pe-Apx"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Messungen" id="ETq-9P-VE9"/>
+                    <navigationItem key="navigationItem" title="Messungen" id="ETq-9P-VE9">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="yKk-2M-ZcB">
+                            <connections>
+                                <action selector="moreItemClicked:" destination="SSw-ZL-qrx" id="PRe-AH-cMK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BJy-F7-uDB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4989" y="-50"/>
+            <point key="canvasLocation" x="5046" y="-56"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="V4F-PX-90G">

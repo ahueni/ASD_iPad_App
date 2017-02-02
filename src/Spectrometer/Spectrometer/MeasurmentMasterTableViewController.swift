@@ -45,5 +45,36 @@ class MeasurmentMasterTableViewController: BaseFileBrowserTableViewController {
         return cell
         
     }
+
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Löschen", handler:{action, indexpath in
+            
+            let file:DiskFile = self.getFileForIndexPath(indexPath: indexPath)
+            
+            do {
+                try FileManager.default.removeItem(at: file.filePath)
+            } catch {
+                self.showWarningMessage(title: "Fehler", message: file.displayName + " konnte nicht gelöscht werden.")
+            }
+            
+            // update table data and then delete the row
+            self.updateTableData()
+            self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+            
+        });
+        
+        return [deleteRowAction];
+        
+        
+    }
+    
+    @IBAction func moreItemClicked(_ sender: UIBarButtonItem) {
+        
+        let tableViewController = UITableViewController()
+        
+        
+    }
     
 }

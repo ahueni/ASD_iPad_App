@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Zip
 
 class MeasurmentTableViewCell : UITableViewCell {
     
@@ -20,14 +21,27 @@ class MeasurmentTableViewCell : UITableViewCell {
     
     @IBAction func export(_ sender: UIButton) {
         
-        
-        
-        if selectedFile?.filePath != nil {
+        if let file = selectedFile {
             
-            let textToShare = "Sie können die Datei " + (selectedFile?.displayName)! + " nun exportieren."
+            var fileToExport:URL = file.filePath
             
-            let objectsToShare = [(selectedFile?.filePath)!] as [URL]
-            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            // if a directory is selected create a zip to export
+            if (file.isDirectory) {
+                
+                do {
+                    let tempDirecotry:URL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(file.displayName + ".zip")
+                    try Zip.zipFiles(paths: [fileToExport], zipFilePath: tempDirecotry, password: nil, progress: { (progress) -> () in
+                        print(progress)
+                    })
+                    fileToExport = tempDirecotry
+                    print("Temp Path: " + fileToExport.relativePath)
+                }
+                catch {
+                    viewController?.showWarningMessage(title: "Fehler", message: "Der Ordner kann nicht exportiert werden.")
+                }
+            }
+            
+            let activityVC = UIActivityViewController(activityItems: [fileToExport], applicationActivities: nil)
             
             //New Excluded Activities Code
             activityVC.excludedActivityTypes = [UIActivityType.postToFacebook, UIActivityType.postToTwitter, UIActivityType.assignToContact, UIActivityType.addToReadingList, UIActivityType.openInIBooks, UIActivityType.saveToCameraRoll]
@@ -39,10 +53,24 @@ class MeasurmentTableViewCell : UITableViewCell {
             activityVC.popoverPresentationController?.canOverlapSourceViewRect = false
             activityVC.popoverPresentationController?.permittedArrowDirections = [UIPopoverArrowDirection.left]
             viewController?.present(activityVC, animated: true, completion: nil)
+            
+            activityVC.completionWithItemsHandler = { acivity, success, items, err in
+                print("finished: " + success.description)
+            }
+                
+            
         }
         
         
     }
+    
+    
+    func finishedExport() -> Void {
+        
+        
+        
+    }
+    
     
     func setInfo(selectedFile : DiskFile, viewController: UIViewController){
         
