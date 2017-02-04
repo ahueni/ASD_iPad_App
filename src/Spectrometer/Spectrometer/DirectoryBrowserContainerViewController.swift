@@ -11,18 +11,20 @@ import UIKit
 
 class DirectoryBrowserContainerViewController : FileBrowserContainerViewController
 {
+    let measurementPath:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Messungen", isDirectory: true)
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.selectedPath = measurementPath
+    }
+    
     @IBAction func AddDirectoryButtonClicked(_ sender: UIBarButtonItem) {
         self.containerViewController?.createFolder()
     }
     
     @IBAction func ChooseDirectoryButtonClicked(_ sender: UIBarButtonItem) {
-        let selectedFolder = DiskFile(url: selectedPath == nil ? documentsURL() : selectedPath!)
-        didSelectFile!(selectedFolder)
+        didSelectFile!(DiskFile(url: selectedPath))
         dismiss(animated: true, completion: nil)
-    }
-    
-    public func documentsURL() -> URL {
-        return fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0] as URL
     }
 
 }

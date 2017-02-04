@@ -14,7 +14,9 @@ class FileBrowserTableViewController: BaseFileBrowserTableViewController {
     var didSelectFile: ((DiskFile) -> ())?
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let selectedFile = getFileForIndexPath(indexPath: indexPath)
+        
         if(selectedFile.isDirectory)
         {
             let fileBrowserContainerViewController = self.storyboard?.instantiateViewController(withIdentifier: "FileBrowserContainerViewController") as! FileBrowserContainerViewController

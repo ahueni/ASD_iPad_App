@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class ValidationManager{
+    
     static let sharedInstance = ValidationManager()
     
     // prevent other instances of this class

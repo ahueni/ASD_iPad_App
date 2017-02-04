@@ -11,13 +11,22 @@ import UIKit
 
 class FileBrowserContainerViewController : UIViewController{    
     
+    let inboxPath:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Inbox", isDirectory: true)
+    
     // this vc is embeded with a container view
     var containerViewController: FileBrowserTableViewController?
     let containerFileSegueName = "FileBrowserTableViewControllerSegue"
     let containerDirectorrySegueName = "DirectoryBrowserTableViewControllerSegue"
     
-    var selectedPath : URL?
     let fileManager = FileManager.default
+    
+    var selectedPath:URL
+    
+    required init?(coder aDecoder: NSCoder) {
+        selectedPath = inboxPath
+        super.init(coder: aDecoder)
+    }
+    
     
     open var didSelectFile: ((DiskFile) -> ())? {
         didSet {
@@ -29,16 +38,16 @@ class FileBrowserContainerViewController : UIViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == containerFileSegueName {
             containerViewController = segue.destination as? FileBrowserTableViewController
-            containerViewController?.initializeTableData(startFolder: selectedPath!)
+            containerViewController?.initializeTableData(startFolder: selectedPath)
         }
         
         if segue.identifier == containerDirectorrySegueName {
             containerViewController = segue.destination as! DirectoryBrowserTableViewController
-            containerViewController!.initializeTableData(startFolder: selectedPath!)
+            containerViewController!.initializeTableData(startFolder: selectedPath)
         }
         
         containerViewController!.didSelectFile = didSelectFile
-        title = selectedPath == nil ? "Dokumente" : selectedPath!.lastPathComponent
+        title = selectedPath.lastPathComponent
     }
     
     override func viewDidLoad() {

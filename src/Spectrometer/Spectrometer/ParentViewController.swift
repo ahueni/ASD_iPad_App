@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class ParentViewController : UIPageViewController {
+    
     var measurmentSettings : MeasurmentSettings?
     var spectrumDataList : [SpectrumData] = [SpectrumData]()
     var whiteRefrenceBefore : FullRangeInterpolatedSpectrum?

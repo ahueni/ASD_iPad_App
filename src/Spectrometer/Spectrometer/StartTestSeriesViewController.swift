@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class StartTestSeriesViewController : BaseMeasurementModal{
+class StartTestSeriesViewController : BaseMeasurementModal {
     
     // this vc is embeded with a container view
     var containerViewController: StartTestSeriesTableViewController?
@@ -26,7 +26,7 @@ class StartTestSeriesViewController : BaseMeasurementModal{
     // prepare is called before viewDidLoad => set the embeded vc variable
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == containerSegueName {
-            containerViewController = segue.destination as! StartTestSeriesTableViewController
+            containerViewController = segue.destination as? StartTestSeriesTableViewController
             containerViewController!.pageContainer = pageContainer
         }
     }
@@ -43,6 +43,7 @@ class StartTestSeriesViewController : BaseMeasurementModal{
             self.selectedPath = file.filePath
             self.containerViewController!.filePathButton.setTitle(file.filePath.lastPathComponent, for: .normal)
         }
+        
         present(navigationController, animated: true, completion: nil)
     }
     

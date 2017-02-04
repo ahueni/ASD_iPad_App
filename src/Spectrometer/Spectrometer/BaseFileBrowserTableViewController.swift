@@ -13,10 +13,14 @@ class BaseFileBrowserTableViewController : UITableViewController {
     
     var diskFiles = [DiskFile]()
     let fileManager = FileManager.default
+    let measurementPath:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Messungen", isDirectory: true)
     
-    private var _currentPath:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as URL
+    var currentPath:URL
     
-    var currentPath:URL { return _currentPath }
+    required init?(coder aDecoder: NSCoder) {
+        currentPath = measurementPath
+        super.init(coder: aDecoder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,13 +30,14 @@ class BaseFileBrowserTableViewController : UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.updateTableData()
         self.tableView.reloadData()
         print("-- RELOADED TABLE DATA -- ")
     }
     
     func initializeTableData(startFolder: URL) {
         // set path for table data
-        _currentPath = startFolder
+        currentPath = startFolder
         self.title = startFolder.lastPathComponent
         // load data to model
         diskFiles = getAllDiskFiles(url: currentPath)
