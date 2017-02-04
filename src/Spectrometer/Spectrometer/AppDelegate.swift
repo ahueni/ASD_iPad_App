@@ -42,6 +42,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let blubb = UINavigationBar.appearance()
         blubb.titleTextAttributes = attributes
         
+        // create Measurement folder if not exists
+        let fileManager:FileManager = FileManager.default
+        let documentsPath:URL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0] as URL
+        let measurementPath:URL = documentsPath.appendingPathComponent("Messungen", isDirectory: true)
+        
+        var isDirectory: ObjCBool = false
+        let exists:Bool = fileManager.fileExists(atPath: measurementPath.relativePath, isDirectory: &isDirectory)
+        
+        if (!exists) {
+            do {
+                try fileManager.createDirectory(at: measurementPath, withIntermediateDirectories: false, attributes: nil)
+            } catch { /* do nothing */ }
+        }
+        
+        
         // Override point for customization after application launch.
         return true
     }

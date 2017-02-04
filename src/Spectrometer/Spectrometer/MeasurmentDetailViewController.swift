@@ -23,6 +23,7 @@ class MeasurmentDetailViewController: UIViewController {
         }
         let spectrum = parseSpectralFile(filePath: (url?.relativePath)!)
         
+        self.MeasurementLineChart.noDataText = "Es wurden noch keine Datei ausgewählt um im Diagramm dargestellt zu werden. Wählen Sie in der Ordnerstruktur eine Datei aus um diese als Diagramm anzuzeigen."
         self.MeasurementLineChart.setAxisValues(min: 0, max: 65000)
         self.MeasurementLineChart.data = spectrum?.getChartData()
     }

@@ -12,6 +12,8 @@ import UIKit
 class AddEditConnectionViewController: UIViewController {
     let fileManager:FileManager = FileManager.default
     
+    let iboxPath:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Inbox", isDirectory: true)
+    
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let dataViewContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -116,6 +118,7 @@ class AddEditConnectionViewController: UIViewController {
     @IBAction func selectLMPFile(_ sender: Any) {
         
         let fileBrowserContainerViewController = self.storyboard!.instantiateViewController(withIdentifier: "FileBrowserContainerViewController") as! FileBrowserContainerViewController
+        fileBrowserContainerViewController.selectedPath = iboxPath
         let navigationController = UINavigationController(rootViewController: fileBrowserContainerViewController)
         navigationController.modalPresentationStyle = .formSheet
         
@@ -140,6 +143,7 @@ class AddEditConnectionViewController: UIViewController {
         
         
         let fileBrowserContainerViewController = self.storyboard!.instantiateViewController(withIdentifier: "FileBrowserContainerViewController") as! FileBrowserContainerViewController
+        fileBrowserContainerViewController.selectedPath = iboxPath
         let navigationController = UINavigationController(rootViewController: fileBrowserContainerViewController)
         navigationController.modalPresentationStyle = .formSheet
         
@@ -163,6 +167,7 @@ class AddEditConnectionViewController: UIViewController {
     @IBAction func selectILLFile(_ sender: Any) {
         
         let fileBrowserContainerViewController = self.storyboard!.instantiateViewController(withIdentifier: "FileBrowserContainerViewController") as! FileBrowserContainerViewController
+        fileBrowserContainerViewController.selectedPath = iboxPath
         let navigationController = UINavigationController(rootViewController: fileBrowserContainerViewController)
         navigationController.modalPresentationStyle = .formSheet
         

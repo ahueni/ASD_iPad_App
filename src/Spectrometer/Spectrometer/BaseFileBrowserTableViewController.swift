@@ -10,16 +10,16 @@ import Foundation
 import UIKit
 
 class BaseFileBrowserTableViewController : UITableViewController {
+    
     var diskFiles = [DiskFile]()
-    var currentPath : URL?
     let fileManager = FileManager.default
+    
+    private var _currentPath:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as URL
+    
+    var currentPath:URL { return _currentPath }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Prepare data
-        diskFiles = getAllDiskFiles(url: currentPath == nil ? documentsURL() : currentPath!)
-        
         // Make sure navigation bar is visible
         self.navigationController?.isNavigationBarHidden = false
     }
@@ -28,6 +28,14 @@ class BaseFileBrowserTableViewController : UITableViewController {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
         print("-- RELOADED TABLE DATA -- ")
+    }
+    
+    func initializeTableData(startFolder: URL) {
+        // set path for table data
+        _currentPath = startFolder
+        self.title = startFolder.lastPathComponent
+        // load data to model
+        diskFiles = getAllDiskFiles(url: currentPath)
     }
     
     func getAllDiskFiles(url: URL) -> [DiskFile]
@@ -52,10 +60,6 @@ class BaseFileBrowserTableViewController : UITableViewController {
     
     func getFiles() -> [DiskFile]{
         return diskFiles.filter{$0.isDirectory == false}
-    }
-    
-    public func documentsURL() -> URL {
-        return fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0] as URL
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -101,14 +105,58 @@ class BaseFileBrowserTableViewController : UITableViewController {
     }
     
     func updateTableData() {
-        diskFiles = getAllDiskFiles(url: currentPath == nil ? documentsURL() : currentPath!)
-        print("-- UPDATED TABLE DATA --")
+        diskFiles = getAllDiskFiles(url: currentPath)
+    }
+    
+    internal func createFolder() {
+        
+        let alert = UIAlertController(title: "Neuer Ordner", message: "Wie soll der Ordner heissen?", preferredStyle: .alert)
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = "Ordner Name"
+        }
+        
+        alert.addAction(UIAlertAction(title: "Erstellen", style: .default, handler: { [weak alert] (_) in
+            
+            let newFolderString:String = (alert?.textFields![0].text)! // Force unwrapping because we know it exists.
+            
+            // check for correct folder name
+            // TODO: add a check for illegal folder characters -> ":","/"
+            if(newFolderString == ""){
+                self.showWarningMessage(title: "Fehler", message: "Bitte geben Sie einen Ordnername ein.")
+                return
+            } else if (self.diskFiles.filter({$0.displayName == newFolderString}).count > 0) {
+                self.showWarningMessage(title: "Fehler", message: "Es besteht bereits ein Ordner mit diesem Namen.")
+                return
+            } else if (newFolderString[newFolderString.startIndex] == " ") {
+                self.showWarningMessage(title: "Fehler", message: "Ein Ordner darf nicht mit einem Leerzeichen beginnen.")
+                return
+            }
+            
+            do{
+                let createFolderPath = self.currentPath.appendingPathComponent(newFolderString)
+                try self.fileManager.createDirectory(atPath: createFolderPath.relativePath, withIntermediateDirectories: false, attributes: nil)
+                self.insertDiskFile(url: createFolderPath)
+            }
+            catch _
+            {
+                let error = UIAlertController(title: "Fehler", message: "Der Ordner konnte nicht erstellt werden", preferredStyle: .alert)
+                error.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                self.present(error, animated: true, completion: nil)
+            }
+            
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
 }
 
 
 class DiskFile{
+    
     let displayName: String
     let isDirectory: Bool
     let fileType : DiskFileType

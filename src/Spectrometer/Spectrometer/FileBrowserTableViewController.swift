@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class FileBrowserTableViewController: BaseFileBrowserTableViewController {
+    
     var didSelectFile: ((DiskFile) -> ())?
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

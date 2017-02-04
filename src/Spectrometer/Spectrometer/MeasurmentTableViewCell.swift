@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import Zip
 
 class MeasurmentTableViewCell : UITableViewCell {
     
@@ -23,39 +22,30 @@ class MeasurmentTableViewCell : UITableViewCell {
         
         if let file = selectedFile {
             
-            var fileToExport:URL = file.filePath
+            let exportItem = DiskFileActivityItem(selectedFile: file)
+            let activityVC = UIActivityViewController(activityItems: [exportItem], applicationActivities: nil)
             
-            // if a directory is selected create a zip to export
-            if (file.isDirectory) {
-                
-                do {
-                    let tempDirecotry:URL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(file.displayName + ".zip")
-                    try Zip.zipFiles(paths: [fileToExport], zipFilePath: tempDirecotry, password: nil, progress: { (progress) -> () in
-                        print(progress)
-                    })
-                    fileToExport = tempDirecotry
-                    print("Temp Path: " + fileToExport.relativePath)
-                }
-                catch {
-                    viewController?.showWarningMessage(title: "Fehler", message: "Der Ordner kann nicht exportiert werden.")
-                }
-            }
-            
-            let activityVC = UIActivityViewController(activityItems: [fileToExport], applicationActivities: nil)
-            
-            //New Excluded Activities Code
+            // excluded activities like facebook, twitter etc.
             activityVC.excludedActivityTypes = [UIActivityType.postToFacebook, UIActivityType.postToTwitter, UIActivityType.assignToContact, UIActivityType.addToReadingList, UIActivityType.openInIBooks, UIActivityType.saveToCameraRoll]
-        
             
             activityVC.popoverPresentationController?.sourceView = sender as UIView
             activityVC.popoverPresentationController?.sourceRect = sender.bounds
             
-            activityVC.popoverPresentationController?.canOverlapSourceViewRect = false
             activityVC.popoverPresentationController?.permittedArrowDirections = [UIPopoverArrowDirection.left]
             viewController?.present(activityVC, animated: true, completion: nil)
             
+            // delete temp file if it was a directory
             activityVC.completionWithItemsHandler = { acivity, success, items, err in
-                print("finished: " + success.description)
+                
+                if (exportItem.file.isDirectory) {
+                    do {
+                        try FileManager.default.removeItem(at: exportItem.exportUrl)
+                        print("-- DELETED TEMP FILE --")
+                    } catch {
+                        print("-- TEMP FILE COULD NOT BE DELETED --")
+                    }
+                }
+                
             }
                 
             
@@ -64,22 +54,13 @@ class MeasurmentTableViewCell : UITableViewCell {
         
     }
     
-    
-    func finishedExport() -> Void {
-        
-        
-        
-    }
-    
-    
+    // initialize table view cell with data
     func setInfo(selectedFile : DiskFile, viewController: UIViewController){
-        
         titelLabel.text = selectedFile.displayName
         pathLabel.text = selectedFile.filePath.relativePath
         myImageView.image = selectedFile.image()
         self.viewController = viewController
         self.selectedFile = selectedFile
-    
     }
     
 }

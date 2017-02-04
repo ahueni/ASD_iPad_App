@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class FileBrowserContainerViewController : UIViewController{    
+    
     // this vc is embeded with a container view
     var containerViewController: FileBrowserTableViewController?
     let containerFileSegueName = "FileBrowserTableViewControllerSegue"
@@ -28,24 +29,25 @@ class FileBrowserContainerViewController : UIViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == containerFileSegueName {
             containerViewController = segue.destination as? FileBrowserTableViewController
+            containerViewController?.initializeTableData(startFolder: selectedPath!)
         }
         
         if segue.identifier == containerDirectorrySegueName {
             containerViewController = segue.destination as! DirectoryBrowserTableViewController
+            containerViewController!.initializeTableData(startFolder: selectedPath!)
         }
         
-        containerViewController!.currentPath = selectedPath
         containerViewController!.didSelectFile = didSelectFile
         title = selectedPath == nil ? "Dokumente" : selectedPath!.lastPathComponent
-    }
-    
-    func cancelClicked(sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
         // Add dismiss button
         let dismissButton = UIBarButtonItem(title: "Abbrechen", style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelClicked(sender:)))
         self.navigationItem.rightBarButtonItem = dismissButton
+    }
+    
+    func cancelClicked(sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
     }
 }

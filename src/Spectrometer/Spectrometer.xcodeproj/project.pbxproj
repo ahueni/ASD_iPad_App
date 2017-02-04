@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2E0324271E05600B00C52D58 /* ParameterParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0324261E05600B00C52D58 /* ParameterParser.swift */; };
+		2E30A8501E44A075001236C5 /* DiskFileActivityItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E30A84F1E44A075001236C5 /* DiskFileActivityItem.swift */; };
 		2E708A231DE61A19008EC78A /* CustomizeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E708A221DE61A19008EC78A /* CustomizeExtensions.swift */; };
 		2E708A5C1DE714F0008EC78A /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E708A5B1DE714F0008EC78A /* Regex.swift */; };
 		2E77537D1E4329530081249C /* MeasurmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E77537C1E4329530081249C /* MeasurmentTableViewCell.swift */; };
@@ -126,6 +127,7 @@
 /* Begin PBXFileReference section */
 		13FDA880A9F4A37458167799 /* Pods-SpectrometerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpectrometerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpectrometerTests/Pods-SpectrometerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2E0324261E05600B00C52D58 /* ParameterParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterParser.swift; sourceTree = "<group>"; };
+		2E30A84F1E44A075001236C5 /* DiskFileActivityItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskFileActivityItem.swift; sourceTree = "<group>"; };
 		2E708A221DE61A19008EC78A /* CustomizeExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizeExtensions.swift; sourceTree = "<group>"; };
 		2E708A5B1DE714F0008EC78A /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		2E77537C1E4329530081249C /* MeasurmentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurmentTableViewCell.swift; sourceTree = "<group>"; };
@@ -608,6 +610,7 @@
 				2E77537C1E4329530081249C /* MeasurmentTableViewCell.swift */,
 				E18DAE9C1E375D46005F6753 /* MeasurmentMasterTableViewController.swift */,
 				E18DAE9E1E375E43005F6753 /* MeasurmentDetailViewController.swift */,
+				2E30A84F1E44A075001236C5 /* DiskFileActivityItem.swift */,
 			);
 			name = Measurement;
 			sourceTree = "<group>";
@@ -915,6 +918,7 @@
 				2E91F2EA1DDB5B9F003E277F /* InternetSocket.swift in Sources */,
 				E18DAE9D1E375D46005F6753 /* MeasurmentMasterTableViewController.swift in Sources */,
 				E1807E5E1E2E576400BB205F /* ExceptionErrors.swift in Sources */,
+				2E30A8501E44A075001236C5 /* DiskFileActivityItem.swift in Sources */,
 				2E91F2E21DDB5B9F003E277F /* TCPClient.swift in Sources */,
 				E14EC22E1E2E1889006EBD2F /* SettingsViewController.swift in Sources */,
 				2E91F2EF1DDB5B9F003E277F /* SocketOptions.swift in Sources */,
