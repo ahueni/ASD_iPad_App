@@ -13,6 +13,12 @@
 		2E708A5C1DE714F0008EC78A /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E708A5B1DE714F0008EC78A /* Regex.swift */; };
 		2E77537D1E4329530081249C /* MeasurmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E77537C1E4329530081249C /* MeasurmentTableViewCell.swift */; };
 		2E77537F1E432A860081249C /* MeasurmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E77537E1E432A860081249C /* MeasurmentTableViewCell.xib */; };
+		2E8F76711E45F63F00D54ABF /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8F76701E45F63F00D54ABF /* LoadingButton.swift */; };
+		2E8F76731E460CB800D54ABF /* MeasurementProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8F76721E460CB800D54ABF /* MeasurementProgressBar.swift */; };
+		2E8F76751E472A6900D54ABF /* ColorButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8F76741E472A6900D54ABF /* ColorButtons.swift */; };
+		2E8F76781E4754B900D54ABF /* UIBlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8F76771E4754B900D54ABF /* UIBlueButton.swift */; };
+		2E8F767A1E4754CF00D54ABF /* UIGreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8F76791E4754CF00D54ABF /* UIGreenButton.swift */; };
+		2E8F767D1E4754ED00D54ABF /* UILightGrayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8F767C1E4754ED00D54ABF /* UILightGrayButton.swift */; };
 		2E91F2A61DDB5B76003E277F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2A51DDB5B76003E277F /* AppDelegate.swift */; };
 		2E91F2A81DDB5B76003E277F /* ConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2A71DDB5B76003E277F /* ConnectionViewController.swift */; };
 		2E91F2AB1DDB5B76003E277F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E91F2A91DDB5B76003E277F /* Main.storyboard */; };
@@ -87,7 +93,6 @@
 		E165E1F71E34B5A20077A5EB /* FastMeasurmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E165E1F61E34B5A20077A5EB /* FastMeasurmentViewController.swift */; };
 		E1807E5E1E2E576400BB205F /* ExceptionErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E5D1E2E576400BB205F /* ExceptionErrors.swift */; };
 		E1807E641E2F619B00BB205F /* TestSeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E631E2F619B00BB205F /* TestSeriesViewController.swift */; };
-		E1807E661E2F79AA00BB205F /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E651E2F79AA00BB205F /* PageContentViewController.swift */; };
 		E1807E681E2F7B2F00BB205F /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E671E2F7B2F00BB205F /* ParentViewController.swift */; };
 		E186B9481E364DDF00FE43F3 /* CommandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E186B9471E364DDF00FE43F3 /* CommandManager.swift */; };
 		E18970A01E2914B300722E9C /* BaseWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E189709F1E2914B300722E9C /* BaseWriter.swift */; };
@@ -132,6 +137,12 @@
 		2E708A5B1DE714F0008EC78A /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		2E77537C1E4329530081249C /* MeasurmentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurmentTableViewCell.swift; sourceTree = "<group>"; };
 		2E77537E1E432A860081249C /* MeasurmentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeasurmentTableViewCell.xib; sourceTree = "<group>"; };
+		2E8F76701E45F63F00D54ABF /* LoadingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
+		2E8F76721E460CB800D54ABF /* MeasurementProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurementProgressBar.swift; sourceTree = "<group>"; };
+		2E8F76741E472A6900D54ABF /* ColorButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorButtons.swift; sourceTree = "<group>"; };
+		2E8F76771E4754B900D54ABF /* UIBlueButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBlueButton.swift; sourceTree = "<group>"; };
+		2E8F76791E4754CF00D54ABF /* UIGreenButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIGreenButton.swift; sourceTree = "<group>"; };
+		2E8F767C1E4754ED00D54ABF /* UILightGrayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILightGrayButton.swift; sourceTree = "<group>"; };
 		2E91F2A21DDB5B76003E277F /* Spectrometer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spectrometer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E91F2A51DDB5B76003E277F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E91F2A71DDB5B76003E277F /* ConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionViewController.swift; sourceTree = "<group>"; };
@@ -210,7 +221,6 @@
 		E165E1F61E34B5A20077A5EB /* FastMeasurmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FastMeasurmentViewController.swift; sourceTree = "<group>"; };
 		E1807E5D1E2E576400BB205F /* ExceptionErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExceptionErrors.swift; sourceTree = "<group>"; };
 		E1807E631E2F619B00BB205F /* TestSeriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSeriesViewController.swift; sourceTree = "<group>"; };
-		E1807E651E2F79AA00BB205F /* PageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContentViewController.swift; sourceTree = "<group>"; };
 		E1807E671E2F7B2F00BB205F /* ParentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
 		E186B9471E364DDF00FE43F3 /* CommandManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandManager.swift; sourceTree = "<group>"; };
 		E189709F1E2914B300722E9C /* BaseWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWriter.swift; sourceTree = "<group>"; };
@@ -276,6 +286,16 @@
 			children = (
 			);
 			name = AppIcon;
+			sourceTree = "<group>";
+		};
+		2E8F76761E4754A500D54ABF /* ColorButtons */ = {
+			isa = PBXGroup;
+			children = (
+				2E8F76771E4754B900D54ABF /* UIBlueButton.swift */,
+				2E8F76791E4754CF00D54ABF /* UIGreenButton.swift */,
+				2E8F767C1E4754ED00D54ABF /* UILightGrayButton.swift */,
+			);
+			name = ColorButtons;
 			sourceTree = "<group>";
 		};
 		2E91F2991DDB5B76003E277F = {
@@ -564,10 +584,14 @@
 		2EB823261DE0D3ED00DF732C /* ViewHelpers */ = {
 			isa = PBXGroup;
 			children = (
+				2E8F76761E4754A500D54ABF /* ColorButtons */,
 				2EB823271DE0D40F00DF732C /* SpectrometerTabBar.swift */,
 				2EB8233B1DE113DA00DF732C /* CustomCharts.swift */,
 				2E708A221DE61A19008EC78A /* CustomizeExtensions.swift */,
 				2E708A5B1DE714F0008EC78A /* Regex.swift */,
+				2E8F76701E45F63F00D54ABF /* LoadingButton.swift */,
+				2E8F76721E460CB800D54ABF /* MeasurementProgressBar.swift */,
+				2E8F76741E472A6900D54ABF /* ColorButtons.swift */,
 			);
 			name = ViewHelpers;
 			sourceTree = "<group>";
@@ -593,7 +617,6 @@
 			isa = PBXGroup;
 			children = (
 				E1807E631E2F619B00BB205F /* TestSeriesViewController.swift */,
-				E1807E651E2F79AA00BB205F /* PageContentViewController.swift */,
 				E1807E671E2F7B2F00BB205F /* ParentViewController.swift */,
 				E1129D321E2FBDC700331A02 /* FinishTestSeriesViewController.swift */,
 				E165E1F61E34B5A20077A5EB /* FastMeasurmentViewController.swift */,
@@ -937,6 +960,7 @@
 				2E708A231DE61A19008EC78A /* CustomizeExtensions.swift in Sources */,
 				2EB362961DF1BD4F00E74E39 /* SpectralFile.swift in Sources */,
 				2E91F30D1DDB8068003E277F /* SpectralDataEnums.swift in Sources */,
+				2E8F76751E472A6900D54ABF /* ColorButtons.swift in Sources */,
 				E18DAE9F1E375E43005F6753 /* MeasurmentDetailViewController.swift in Sources */,
 				2E91F2E61DDB5B9F003E277F /* Bytes.swift in Sources */,
 				2EB3629C1DF1D91C00E74E39 /* GpsData.swift in Sources */,
@@ -946,9 +970,11 @@
 				E108F2141E3B8B670097B7EE /* BaseMeasurementModal.swift in Sources */,
 				2E91F2FA1DDB6161003E277F /* Command.swift in Sources */,
 				2E91F2E81DDB5B9F003E277F /* Error.swift in Sources */,
+				2E8F76711E45F63F00D54ABF /* LoadingButton.swift in Sources */,
 				2EB8233C1DE113DA00DF732C /* CustomCharts.swift in Sources */,
 				E108F2191E3B960D0097B7EE /* StartTestSeriesViewController.swift in Sources */,
 				2E91F3051DDB7827003E277F /* BaseSpectrumParser.swift in Sources */,
+				2E8F76781E4754B900D54ABF /* UIBlueButton.swift in Sources */,
 				2E91F2E31DDB5B9F003E277F /* UDPClient.swift in Sources */,
 				2E91F2F11DDB5B9F003E277F /* Types.swift in Sources */,
 				E1C936C51E42208C00EF51BB /* BaseButton.swift in Sources */,
@@ -964,6 +990,7 @@
 				2E77537D1E4329530081249C /* MeasurmentTableViewCell.swift in Sources */,
 				2E91F2E41DDB5B9F003E277F /* Address+C.swift in Sources */,
 				E18970A01E2914B300722E9C /* BaseWriter.swift in Sources */,
+				2E8F767A1E4754CF00D54ABF /* UIGreenButton.swift in Sources */,
 				2E91F2EC1DDB5B9F003E277F /* Select.swift in Sources */,
 				2E91F3021DDB7472003E277F /* VnirHeader.swift in Sources */,
 				E186B9481E364DDF00FE43F3 /* CommandManager.swift in Sources */,
@@ -973,6 +1000,7 @@
 				E1807E641E2F619B00BB205F /* TestSeriesViewController.swift in Sources */,
 				2E708A5C1DE714F0008EC78A /* Regex.swift in Sources */,
 				E1807E681E2F7B2F00BB205F /* ParentViewController.swift in Sources */,
+				2E8F767D1E4754ED00D54ABF /* UILightGrayButton.swift in Sources */,
 				E1129D331E2FBDC700331A02 /* FinishTestSeriesViewController.swift in Sources */,
 				2E0324271E05600B00C52D58 /* ParameterParser.swift in Sources */,
 				2EB362A51DF23DDB00E74E39 /* SpectralFileParser.swift in Sources */,
@@ -991,7 +1019,7 @@
 				2EB3629A1DF1D8E400E74E39 /* AppData.swift in Sources */,
 				2E91F2A61DDB5B76003E277F /* AppDelegate.swift in Sources */,
 				E1C936B91E41D8B700EF51BB /* PortTextField.swift in Sources */,
-				E1807E661E2F79AA00BB205F /* PageContentViewController.swift in Sources */,
+				2E8F76731E460CB800D54ABF /* MeasurementProgressBar.swift in Sources */,
 				2E91F2AE1DDB5B76003E277F /* Spectrometer.xcdatamodeld in Sources */,
 				2E91F30A1DDB7BDF003E277F /* FullRangeInterpolatedSpectrum.swift in Sources */,
 			);

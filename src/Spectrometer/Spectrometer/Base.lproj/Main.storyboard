@@ -119,13 +119,13 @@
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initialisierungs Dateien" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="haN-Ml-83i">
-                                                <rect key="frame" x="20" y="234.5" width="728" height="16.5"/>
+                                                <rect key="frame" x="20" y="234.5" width="728" height="17"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YEI-at-1sx">
-                                                <rect key="frame" x="0.0" y="261" width="768" height="40"/>
+                                                <rect key="frame" x="0.0" y="261.5" width="768" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="kBz-fi-ICm"/>
@@ -137,7 +137,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="03n-eu-a7a">
-                                                <rect key="frame" x="0.0" y="311" width="768" height="40"/>
+                                                <rect key="frame" x="0.0" y="311.5" width="768" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="lUp-8O-4TH"/>
@@ -149,7 +149,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNb-54-Zej">
-                                                <rect key="frame" x="0.0" y="361" width="768" height="40"/>
+                                                <rect key="frame" x="0.0" y="361.5" width="768" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="EhH-3s-85u"/>
@@ -161,7 +161,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Benötigen Sie weitere Informationen wie Sie die initialisierungs Dateien vorgängig auf Ihr iPad kopieren können?" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5QO-2b-Q40">
-                                                <rect key="frame" x="20" y="416" width="728" height="14"/>
+                                                <rect key="frame" x="20" y="416.5" width="728" height="14"/>
                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="10"/>
                                                 <color key="textColor" red="0.074509803920000006" green="0.41568627450000001" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -409,7 +409,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XgJ-hU-ctM">
-                                <rect key="frame" x="295" y="922" width="179" height="33"/>
+                                <rect key="frame" x="294.5" y="922" width="179" height="33"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                 <state key="normal" title="Spektrometer hinzufügen"/>
                                 <connections>
@@ -435,7 +435,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IP: 10.1.1.77 / Port: 8080" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aF7-2C-20b">
-                                                    <rect key="frame" x="8" y="41" width="574" height="16.5"/>
+                                                    <rect key="frame" x="8" y="41" width="574" height="17"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1079,29 +1079,17 @@
         <!--Messung starten-->
         <scene sceneID="gzj-of-ZK2">
             <objects>
-                <tableViewController storyboardIdentifier="StartTestSeriesTableViewController" id="Gq3-ah-qV7" customClass="StartTestSeriesTableViewController" customModule="Spectrometer" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="StartTestSeriesTableViewController" automaticallyAdjustsScrollViewInsets="NO" id="Gq3-ah-qV7" customClass="StartTestSeriesTableViewController" customModule="Spectrometer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="nsg-kt-XTV">
                         <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <gestureRecognizers/>
                         <sections>
-                            <tableViewSection id="KJi-Kn-JCa" userLabel="Header">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" showsReorderControl="YES" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="53" id="cKk-un-D22">
-                                        <rect key="frame" x="0.0" y="35" width="540" height="53"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cKk-un-D22" id="p3R-Ex-D7g">
-                                            <rect key="frame" x="0.0" y="0.0" width="540" height="52"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                             <tableViewSection headerTitle="Name" id="kGm-Cy-pBN">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="P31-6O-6FA">
-                                        <rect key="frame" x="0.0" y="145" width="540" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="540" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P31-6O-6FA" id="ZGY-Bo-Fkp">
                                             <rect key="frame" x="0.0" y="0.0" width="540" height="43"/>
@@ -1130,7 +1118,7 @@
                             <tableViewSection headerTitle="Speicherort" id="VfJ-Xl-gCf">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" id="oju-tf-H2r">
-                                        <rect key="frame" x="0.0" y="246" width="540" height="44"/>
+                                        <rect key="frame" x="0.0" y="157" width="540" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oju-tf-H2r" id="RgL-fc-HEN">
                                             <rect key="frame" x="0.0" y="0.0" width="507" height="43"/>
@@ -1158,7 +1146,7 @@
                             <tableViewSection headerTitle="Anzahl Messungen" id="8bE-xo-ktW">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Fic-Px-VUb">
-                                        <rect key="frame" x="0.0" y="347" width="540" height="44"/>
+                                        <rect key="frame" x="0.0" y="258" width="540" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fic-Px-VUb" id="4Ti-XR-lMa">
                                             <rect key="frame" x="0.0" y="0.0" width="540" height="43"/>
@@ -1187,7 +1175,7 @@
                             <tableViewSection headerTitle="White Reference" footerTitle="Wählen Sie zu welchem Zeitpunkt der Messreihe eine White Reference Messung durchgeführt wird." id="Ofh-lu-KYx">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="aWn-Ld-4jL">
-                                        <rect key="frame" x="0.0" y="455" width="540" height="60"/>
+                                        <rect key="frame" x="0.0" y="366" width="540" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aWn-Ld-4jL" id="w8R-RI-I4y">
                                             <rect key="frame" x="0.0" y="0.0" width="540" height="59"/>
@@ -1215,7 +1203,7 @@
                             <tableViewSection id="u0a-5n-e4I" userLabel="Start Measurement">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="Cfj-iR-2KC">
-                                        <rect key="frame" x="0.0" y="579" width="540" height="80"/>
+                                        <rect key="frame" x="0.0" y="490" width="540" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cfj-iR-2KC" id="34f-Ag-Wbp">
                                             <rect key="frame" x="0.0" y="0.0" width="540" height="79"/>
@@ -1252,6 +1240,7 @@
                             <outlet property="delegate" destination="Gq3-ah-qV7" id="WT1-BO-X6d"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Messung starten" id="ww3-ie-Acp">
                         <barButtonItem key="backBarButtonItem" title="Messung" id="1Nq-bU-QJT"/>
                     </navigationItem>
@@ -1267,7 +1256,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pto-nC-eD3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5768" y="-1664"/>
+            <point key="canvasLocation" x="3733" y="-2200"/>
         </scene>
         <!--Finish Test Series View Controller-->
         <scene sceneID="TXN-aY-4Bf">
@@ -1281,41 +1270,90 @@
                         <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLb-7b-oJD">
-                                <rect key="frame" x="182" y="495" width="176" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Speichern und schliessen"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Messungen abspeichern" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="war-x9-xc7">
+                                <rect key="frame" x="20" y="40" width="500" height="30"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alle Messungen wurden erfolgreich durchgeführt und werden nun abgespeichert." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7M-uM-Rys">
+                                <rect key="frame" x="20" y="80" width="500" height="17"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Die Messungen werden gespeichert ..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSU-MD-mc2">
+                                <rect key="frame" x="20" y="275" width="500" height="17"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="coN-Hk-epy" customClass="UIBlueButton" customModule="Spectrometer" customModuleProvider="target">
+                                <rect key="frame" x="20" y="550" width="500" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="vOr-7q-a3b"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
+                                <state key="normal" title="Abschliessen">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
-                                    <action selector="finishButtonClicked:" destination="Qx0-FM-y75" eventType="touchUpInside" id="EK6-ee-NWg"/>
+                                    <action selector="CancelButtonClicked:" destination="Qx0-FM-y75" eventType="touchUpInside" id="VtD-Y3-vfy"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="done" translatesAutoresizingMaskIntoConstraints="NO" id="2j8-qv-aTX">
-                                <rect key="frame" x="162" y="121" width="217" height="217"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="m7w-Jk-qTc">
+                                <rect key="frame" x="260" y="300" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="done" translatesAutoresizingMaskIntoConstraints="NO" id="2j8-qv-aTX">
+                                <rect key="frame" x="130" y="170" width="280" height="280"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="9Sw-7o-e7s"/>
+                                    <constraint firstAttribute="height" constant="280" id="fL8-5Q-gG6"/>
+                                </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Byw-Mg-KA8">
-                                <rect key="frame" x="232" y="457" width="76" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Abbrechen"/>
-                                <connections>
-                                    <action selector="CancelButtonClicked:" destination="Qx0-FM-y75" eventType="touchUpInside" id="KDe-op-oOq"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Alle Messungen wurden durchgeführt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocn-cM-vq4">
-                                <rect key="frame" x="126" y="346" width="288" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Die Messungen wurden erfolgreich abgespeichert. Sie können alle Messungen im Tab &quot;Messungen&quot; einsehen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPK-w9-25L">
+                                <rect key="frame" x="40" y="458" width="460" height="33"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2j8-qv-aTX" firstAttribute="centerX" secondItem="GI4-vx-Acv" secondAttribute="centerX" id="0MG-Mh-zmM"/>
+                            <constraint firstItem="N3r-Wt-Fwg" firstAttribute="top" secondItem="coN-Hk-epy" secondAttribute="bottom" constant="20" id="4YR-tX-HOV"/>
+                            <constraint firstItem="p7M-uM-Rys" firstAttribute="top" secondItem="war-x9-xc7" secondAttribute="bottom" constant="10" id="6WC-wH-FNO"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="coN-Hk-epy" secondAttribute="leading" id="74F-XX-dBg"/>
+                            <constraint firstItem="dPK-w9-25L" firstAttribute="leading" secondItem="GI4-vx-Acv" secondAttribute="leadingMargin" constant="20" id="BVy-Lu-eWn"/>
+                            <constraint firstItem="dPK-w9-25L" firstAttribute="top" secondItem="2j8-qv-aTX" secondAttribute="bottom" constant="8" id="DfE-RC-r4e"/>
+                            <constraint firstItem="m7w-Jk-qTc" firstAttribute="top" secondItem="ZSU-MD-mc2" secondAttribute="bottom" constant="8" id="EVJ-op-2hC"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="ZSU-MD-mc2" secondAttribute="leading" id="Gh8-Hd-Fwt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="p7M-uM-Rys" secondAttribute="trailing" id="Ia6-lG-Es1"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="war-x9-xc7" secondAttribute="leading" id="Pv3-rn-MKK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ZSU-MD-mc2" secondAttribute="trailing" id="STr-zg-t4v"/>
+                            <constraint firstItem="2j8-qv-aTX" firstAttribute="centerY" secondItem="GI4-vx-Acv" secondAttribute="centerY" id="Sb1-Q6-BIH"/>
+                            <constraint firstItem="m7w-Jk-qTc" firstAttribute="centerY" secondItem="GI4-vx-Acv" secondAttribute="centerY" id="ao2-5c-0iX"/>
+                            <constraint firstItem="war-x9-xc7" firstAttribute="top" secondItem="1Cc-yX-Fd7" secondAttribute="bottom" constant="20" id="dO5-ZP-QzZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="war-x9-xc7" secondAttribute="trailing" id="eRb-rx-ESp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="coN-Hk-epy" secondAttribute="trailing" id="kYT-yB-xP1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dPK-w9-25L" secondAttribute="trailing" constant="20" id="mzJ-Ot-FXD"/>
+                            <constraint firstItem="m7w-Jk-qTc" firstAttribute="centerX" secondItem="GI4-vx-Acv" secondAttribute="centerX" id="o1k-t1-o57"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="p7M-uM-Rys" secondAttribute="leading" id="t0A-ot-DT4"/>
+                        </constraints>
                     </view>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="checkMarkImage" destination="2j8-qv-aTX" id="llj-9o-6Ag"/>
+                        <outlet property="finishButton" destination="coN-Hk-epy" id="ivR-cz-U3p"/>
+                        <outlet property="savingLabel" destination="ZSU-MD-mc2" id="Ssw-Rx-qZZ"/>
+                        <outlet property="savingSpinner" destination="m7w-Jk-qTc" id="x3U-bh-e3L"/>
+                        <outlet property="successSavingLabel" destination="dPK-w9-25L" id="EaE-u1-Gjr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qbU-OH-p3X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4880" y="-1174"/>
+            <point key="canvasLocation" x="5096.09375" y="-2201.3671875"/>
         </scene>
         <!--Start Test Series View Controller-->
         <scene sceneID="5NY-ZZ-gqc">
@@ -1348,7 +1386,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hnO-oG-Wv2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5179.6875" y="-1664.0625"/>
+            <point key="canvasLocation" x="3258.59375" y="-2198.4375"/>
         </scene>
         <!--Measurment Detail View Controller-->
         <scene sceneID="Qv9-BY-rtY">
@@ -1473,114 +1511,100 @@
                         <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fMF-am-tU8" customClass="SpectrumLineChartView" customModule="Spectrometer" customModuleProvider="target">
-                                <rect key="frame" x="74" y="86" width="391" height="293"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMF-am-tU8" customClass="SpectrumLineChartView" customModule="Spectrometer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="198.5" width="540" height="331.5"/>
+                                <color key="backgroundColor" white="0.98066645408163267" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yzv-tf-mbY">
-                                <rect key="frame" x="74" y="541" width="76" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Abbrechen"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yzv-tf-mbY" customClass="UILightGrayButton" customModule="Spectrometer" customModuleProvider="target">
+                                <rect key="frame" x="20" y="550" width="240" height="50"/>
+                                <color key="backgroundColor" white="0.95720238099999999" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="6H9-NP-otR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <state key="normal" title="Abbrechen">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="CancelButtonClicked:" destination="TmL-uw-0eO" eventType="touchUpInside" id="CLc-gY-oeE"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qrc-TU-L4l">
-                                <rect key="frame" x="420" y="541" width="45" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Weiter"/>
-                                <connections>
-                                    <action selector="nextButtonClicked:" destination="TmL-uw-0eO" eventType="touchUpInside" id="oFp-zv-ubg"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="White Refrence" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vch-8i-cdU">
-                                <rect key="frame" x="211" y="28" width="118" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="White Reference" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vch-8i-cdU">
+                                <rect key="frame" x="20" y="40" width="500" height="30"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cVE-O2-fAY">
-                                <rect key="frame" x="240" y="541" width="60" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Take WR"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cVE-O2-fAY" customClass="LoadingButton" customModule="Spectrometer" customModuleProvider="target">
+                                <rect key="frame" x="20" y="141.5" width="500" height="45"/>
+                                <color key="backgroundColor" red="0.12549019607843137" green="0.75686274509803919" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="8Iz-hh-x1Z"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="White Reference ausführen">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="TakeWhiteRefrenceButtonClicked:" destination="TmL-uw-0eO" eventType="touchUpInside" id="Qak-cw-Oic"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJP-XB-O95">
+                                <rect key="frame" x="20" y="80" width="500" height="49.5"/>
+                                <string key="text">Erfassen Sie eine White Reference diese wird jeweils vor- und/oder nach einer Messreihe durchgeführt. Sie können erst weiterfahren wenn die White Reference erfolgreich erfasst wurde.</string>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KH7-uB-s4N" customClass="UIBlueButton" customModule="Spectrometer" customModuleProvider="target">
+                                <rect key="frame" x="280" y="550" width="240" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="4Qp-wr-3T5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
+                                <state key="normal" title="Weiter">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextButtonClicked:" destination="TmL-uw-0eO" eventType="touchUpInside" id="NER-Ce-MJa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="Vch-8i-cdU" secondAttribute="leading" id="0SB-li-9y4"/>
+                            <constraint firstItem="cVE-O2-fAY" firstAttribute="top" secondItem="QJP-XB-O95" secondAttribute="bottom" constant="12" id="6g0-29-HgB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QJP-XB-O95" secondAttribute="trailing" id="82K-wx-Wwd"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="QJP-XB-O95" secondAttribute="leading" id="8yl-jG-ZYe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Vch-8i-cdU" secondAttribute="trailing" id="CNw-No-DBa"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="cVE-O2-fAY" secondAttribute="leading" id="Djt-75-N0R"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fMF-am-tU8" secondAttribute="trailing" constant="-20" id="EEc-su-FVo"/>
+                            <constraint firstItem="Vch-8i-cdU" firstAttribute="top" secondItem="2ZK-eI-q9Z" secondAttribute="bottom" constant="20" id="Ie8-YR-Wq2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cVE-O2-fAY" secondAttribute="trailing" id="Ijh-zQ-BCN"/>
+                            <constraint firstItem="KH7-uB-s4N" firstAttribute="leading" secondItem="Yzv-tf-mbY" secondAttribute="trailing" constant="20" id="Oex-AD-U4q"/>
+                            <constraint firstItem="cyf-xC-dFr" firstAttribute="top" secondItem="KH7-uB-s4N" secondAttribute="bottom" constant="20" id="OgX-Cr-P7S"/>
+                            <constraint firstItem="cyf-xC-dFr" firstAttribute="top" secondItem="Yzv-tf-mbY" secondAttribute="bottom" constant="20" id="QhY-tq-eGm"/>
+                            <constraint firstItem="Yzv-tf-mbY" firstAttribute="top" secondItem="fMF-am-tU8" secondAttribute="bottom" constant="20" id="VR9-6U-j2V"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Yzv-tf-mbY" secondAttribute="leading" id="Xgm-8K-EAQ"/>
+                            <constraint firstItem="QJP-XB-O95" firstAttribute="top" secondItem="Vch-8i-cdU" secondAttribute="bottom" constant="10" id="Zjq-ej-MsC"/>
+                            <constraint firstItem="fMF-am-tU8" firstAttribute="top" secondItem="cVE-O2-fAY" secondAttribute="bottom" constant="12" id="ZyG-sW-o7i"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KH7-uB-s4N" secondAttribute="trailing" id="gKh-dj-IXg"/>
+                            <constraint firstItem="KH7-uB-s4N" firstAttribute="width" secondItem="Yzv-tf-mbY" secondAttribute="width" id="nu2-nL-wuf"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="fMF-am-tU8" secondAttribute="leading" constant="20" id="xEw-Rf-CqJ"/>
+                        </constraints>
                     </view>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="MeasurementLineChart" destination="fMF-am-tU8" id="vfJ-uh-7tS"/>
+                        <outlet property="nextButton" destination="KH7-uB-s4N" id="gK5-Mm-6lf"/>
+                        <outlet property="whiteReferenceButton" destination="cVE-O2-fAY" id="Ec0-7x-TGY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="04e-qK-J2q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4377.34375" y="-2108.203125"/>
-        </scene>
-        <!--Page Content View Controller-->
-        <scene sceneID="BVS-Y9-TEd">
-            <objects>
-                <viewController storyboardIdentifier="PageContentViewController" modalTransitionStyle="flipHorizontal" modalPresentationStyle="formSheet" id="7Hs-rl-gTM" customClass="PageContentViewController" customModule="Spectrometer" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="uC6-i3-gJ6"/>
-                        <viewControllerLayoutGuide type="bottom" id="xO2-Lw-FAn"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="5Xe-dO-zta">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Page 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SlK-VH-Kg8">
-                                <rect key="frame" x="97" y="52" width="162" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E8w-sL-fYC">
-                                <rect key="frame" x="140" y="562" width="76" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Abbrechen"/>
-                                <connections>
-                                    <action selector="CancelButtonClicked:" destination="7Hs-rl-gTM" eventType="touchUpInside" id="Ma0-vf-0ba"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qBm-22-d7c">
-                                <rect key="frame" x="294" y="562" width="45" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Weiter"/>
-                                <connections>
-                                    <action selector="nextButtonClicked:" destination="7Hs-rl-gTM" eventType="touchUpInside" id="EG2-Ku-gQT"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TSH-GF-CxY" customClass="SpectrumLineChartView" customModule="Spectrometer" customModuleProvider="target">
-                                <rect key="frame" x="58" y="113" width="421" height="312"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P9e-cc-v6Z">
-                                <rect key="frame" x="193" y="512" width="117" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Messung Starten"/>
-                                <connections>
-                                    <action selector="startMeasurementClicked:" destination="7Hs-rl-gTM" eventType="touchUpInside" id="vBM-hG-2jx"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <connections>
-                        <outlet property="MeasurementLineChart" destination="TSH-GF-CxY" id="agW-nW-CZf"/>
-                        <outlet property="PageLabel" destination="SlK-VH-Kg8" id="HEN-uo-WGD"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="buG-zb-F0T" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4134" y="-1664"/>
+            <point key="canvasLocation" x="4183.59375" y="-2200.1953125"/>
         </scene>
         <!--Fast Measurment View Controller-->
         <scene sceneID="tOg-pH-r4C">
@@ -1594,62 +1618,148 @@
                         <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Lb-bi-oeI" customClass="SpectrumLineChartView" customModule="Spectrometer" customModuleProvider="target">
-                                <rect key="frame" x="36" y="103" width="473" height="319"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1BP-4H-GCA">
-                                <rect key="frame" x="86" y="28" width="318" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zLY-se-KNd">
-                                <rect key="frame" x="86" y="443" width="340" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sSo-WX-azE">
-                                <rect key="frame" x="86" y="556" width="76" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Abbrechen"/>
-                                <connections>
-                                    <action selector="CancelButtonClicked:" destination="rIH-yb-C7q" eventType="touchUpInside" id="C3S-gZ-CcO"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42R-k2-ypg">
-                                <rect key="frame" x="381" y="556" width="45" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Weiter"/>
-                                <connections>
-                                    <action selector="nextButtonClicked:" destination="rIH-yb-C7q" eventType="touchUpInside" id="XeJ-i1-egx"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTb-PZ-aD5">
-                                <rect key="frame" x="253" y="556" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Start"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTb-PZ-aD5" customClass="LoadingButton" customModule="Spectrometer" customModuleProvider="target">
+                                <rect key="frame" x="20" y="125" width="500" height="45"/>
+                                <color key="backgroundColor" red="0.086274509803921567" green="0.78570890426635742" blue="0.31985777616500854" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="HZf-5x-klg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Messungen ausführen"/>
                                 <connections>
                                     <action selector="StartMeasurmentsButtonClicked:" destination="rIH-yb-C7q" eventType="touchUpInside" id="Ekd-bn-cGy"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sSo-WX-azE" customClass="UILightGrayButton" customModule="Spectrometer" customModuleProvider="target">
+                                <rect key="frame" x="20" y="550" width="240" height="50"/>
+                                <color key="backgroundColor" white="0.95720238095238097" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="g6M-1z-Gam"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <state key="normal" title="Abbrechen">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="CancelButtonClicked:" destination="rIH-yb-C7q" eventType="touchUpInside" id="C3S-gZ-CcO"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Messungen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gWQ-4k-dX2">
+                                <rect key="frame" x="20" y="40" width="500" height="30"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Die Messungen werden nach dem Start automatisch durchgeführt. Im Diagramm sehen Sie jeweils die zuletzt durchgeführt Messung." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvR-YA-oXR">
+                                <rect key="frame" x="20" y="80" width="500" height="33"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r1e-zh-bnW" customClass="MeasurementProgressBar" customModule="Spectrometer" customModuleProvider="target">
+                                <rect key="frame" x="20" y="178" width="500" height="21"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UZW-9y-QY9" userLabel="ProgressView">
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="21"/>
+                                        <color key="backgroundColor" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" id="VIG-Hx-QA5"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StatusLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="564-aS-tQ2" userLabel="StateLabel">
+                                        <rect key="frame" x="8" y="0.0" width="417" height="21"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="10"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000 / 1000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tog-NV-7XG" userLabel="CountLabel">
+                                        <rect key="frame" x="425" y="0.0" width="65" height="21"/>
+                                        <color key="tintColor" white="0.97997555270000003" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="65" id="V3f-Vx-8d5"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="10"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="highlightedColor" white="0.97997555270000003" alpha="1" colorSpace="calibratedWhite"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.6470588235294118" blue="0.93333333333333335" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="UZW-9y-QY9" firstAttribute="top" secondItem="r1e-zh-bnW" secondAttribute="top" id="3aO-xV-cXN"/>
+                                    <constraint firstItem="564-aS-tQ2" firstAttribute="leading" secondItem="r1e-zh-bnW" secondAttribute="leading" constant="8" id="4q8-EQ-OGI"/>
+                                    <constraint firstAttribute="bottom" secondItem="UZW-9y-QY9" secondAttribute="bottom" id="DGl-hL-apE"/>
+                                    <constraint firstItem="564-aS-tQ2" firstAttribute="top" secondItem="r1e-zh-bnW" secondAttribute="top" id="Ked-6f-Rdw"/>
+                                    <constraint firstAttribute="trailing" secondItem="Tog-NV-7XG" secondAttribute="trailing" constant="10" id="MG3-K1-bLF"/>
+                                    <constraint firstItem="Tog-NV-7XG" firstAttribute="leading" secondItem="564-aS-tQ2" secondAttribute="trailing" id="O8k-tk-FKe"/>
+                                    <constraint firstAttribute="bottom" secondItem="564-aS-tQ2" secondAttribute="bottom" id="Xee-OP-UIP"/>
+                                    <constraint firstItem="UZW-9y-QY9" firstAttribute="leading" secondItem="r1e-zh-bnW" secondAttribute="leading" id="d8T-20-vdo"/>
+                                    <constraint firstItem="Tog-NV-7XG" firstAttribute="top" secondItem="r1e-zh-bnW" secondAttribute="top" id="djL-M1-o7y"/>
+                                    <constraint firstAttribute="bottom" secondItem="Tog-NV-7XG" secondAttribute="bottom" id="eQa-WH-ONQ"/>
+                                    <constraint firstAttribute="height" constant="21" id="gnX-Ji-BxI"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="countLabel" destination="Tog-NV-7XG" id="fLJ-Id-xoJ"/>
+                                    <outlet property="progressView" destination="UZW-9y-QY9" id="uGq-17-GhQ"/>
+                                    <outlet property="stateLabel" destination="564-aS-tQ2" id="tug-x6-e8m"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Lb-bi-oeI" customClass="SpectrumLineChartView" customModule="Spectrometer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="207" width="540" height="323"/>
+                                <color key="backgroundColor" white="0.97997555272108849" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xvn-iL-Iih" customClass="UIBlueButton" customModule="Spectrometer" customModuleProvider="target">
+                                <rect key="frame" x="280" y="550" width="240" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="hcg-bT-Nhf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
+                                <state key="normal" title="Weiter">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextButtonClicked:" destination="rIH-yb-C7q" eventType="touchUpInside" id="rb5-Xi-M41"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="gWQ-4k-dX2" secondAttribute="trailing" id="7uS-pn-JcV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5Lb-bi-oeI" secondAttribute="trailing" constant="-20" id="9PM-yz-ExG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OTb-PZ-aD5" secondAttribute="trailing" id="9oq-o2-zOp"/>
+                            <constraint firstItem="xvn-iL-Iih" firstAttribute="width" secondItem="sSo-WX-azE" secondAttribute="width" id="AdE-JE-hWE"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="r1e-zh-bnW" secondAttribute="leading" id="FVH-8r-lhN"/>
+                            <constraint firstItem="gWQ-4k-dX2" firstAttribute="top" secondItem="EfF-xw-wwu" secondAttribute="bottom" constant="20" id="Kqy-bc-spP"/>
+                            <constraint firstItem="r1e-zh-bnW" firstAttribute="top" secondItem="OTb-PZ-aD5" secondAttribute="bottom" constant="8" id="Og6-Jy-zwB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="r1e-zh-bnW" secondAttribute="trailing" id="Phz-AS-3dI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xvn-iL-Iih" secondAttribute="trailing" id="S0U-AR-odL"/>
+                            <constraint firstItem="OTb-PZ-aD5" firstAttribute="top" secondItem="xvR-YA-oXR" secondAttribute="bottom" constant="12" id="SMi-Wa-i8o"/>
+                            <constraint firstItem="vfX-rd-0sP" firstAttribute="top" secondItem="sSo-WX-azE" secondAttribute="bottom" constant="20" id="VHV-Hw-IZE"/>
+                            <constraint firstItem="xvR-YA-oXR" firstAttribute="leading" secondItem="dbR-7f-jBl" secondAttribute="leadingMargin" id="Vr3-kU-qo4"/>
+                            <constraint firstItem="5Lb-bi-oeI" firstAttribute="top" secondItem="r1e-zh-bnW" secondAttribute="bottom" constant="8" id="Yiy-fx-lqV"/>
+                            <constraint firstItem="vfX-rd-0sP" firstAttribute="top" secondItem="xvn-iL-Iih" secondAttribute="bottom" constant="20" id="Zlh-Z0-aqL"/>
+                            <constraint firstItem="xvR-YA-oXR" firstAttribute="top" secondItem="gWQ-4k-dX2" secondAttribute="bottom" constant="10" id="ZmH-RE-rvA"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="OTb-PZ-aD5" secondAttribute="leading" id="cDV-XT-gXU"/>
+                            <constraint firstItem="xvn-iL-Iih" firstAttribute="leading" secondItem="sSo-WX-azE" secondAttribute="trailing" constant="20" id="dYZ-gp-3ZU"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="sSo-WX-azE" secondAttribute="leading" id="nR7-4x-YWM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xvR-YA-oXR" secondAttribute="trailing" id="rBd-cH-4YE"/>
+                            <constraint firstItem="5Lb-bi-oeI" firstAttribute="leading" secondItem="dbR-7f-jBl" secondAttribute="leadingMargin" constant="-20" id="uWR-zu-OZp"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="gWQ-4k-dX2" secondAttribute="leading" id="xmz-ym-E8W"/>
+                            <constraint firstItem="sSo-WX-azE" firstAttribute="top" secondItem="5Lb-bi-oeI" secondAttribute="bottom" constant="20" id="y9W-Q7-Pr5"/>
+                        </constraints>
                     </view>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="CountDownLabel" destination="zLY-se-KNd" id="h8R-FG-WpR"/>
+                        <outlet property="MeasureProgressBar" destination="r1e-zh-bnW" id="7Ql-RF-Z2q"/>
                         <outlet property="MeasurementLineChart" destination="5Lb-bi-oeI" id="rPh-A1-rjn"/>
-                        <outlet property="MesureCountLabel" destination="1BP-4H-GCA" id="GgI-p1-TvA"/>
+                        <outlet property="nextButton" destination="xvn-iL-Iih" id="cgk-tZ-P0T"/>
+                        <outlet property="startMeasurementButton" destination="OTb-PZ-aD5" id="ePt-FY-L7A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jif-e2-JCH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4677" y="-1664"/>
+            <point key="canvasLocation" x="4644.53125" y="-2200.1953125"/>
         </scene>
         <!--SpektrometerApp-->
         <scene sceneID="Wyc-9f-agC">
@@ -1695,7 +1805,7 @@
             <objects>
                 <navigationController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="VHF-2Q-iXW" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="oEq-7H-IhW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oEq-7H-IhW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1717,7 +1827,7 @@
             <objects>
                 <navigationController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="Kb8-rZ-0mW" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="BtY-te-dYt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BtY-te-dYt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

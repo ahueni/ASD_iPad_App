@@ -29,10 +29,12 @@ class BaseMeasurementModal : UIViewController
     }
     
     func updateLineChart(spectrum : FullRangeInterpolatedSpectrum){
+        
         DispatchQueue.main.async {
             //update ui
             self.MeasurementLineChart.setAxisValues(min: 0, max: 65000)
             self.MeasurementLineChart.data = spectrum.getChartData()
         }
+        
     }
 }

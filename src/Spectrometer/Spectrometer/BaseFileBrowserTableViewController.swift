@@ -74,9 +74,9 @@ class BaseFileBrowserTableViewController : UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
-            return getFiles().count
+            return getDictionaries().count
         }
-        return getDictionaries().count
+        return getFiles().count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -95,7 +95,7 @@ class BaseFileBrowserTableViewController : UITableViewController {
     
     func getFileForIndexPath(indexPath : IndexPath) -> DiskFile
     {
-        var files = indexPath.section == 0 ? getFiles() : getDictionaries()
+        var files = indexPath.section == 1 ? getFiles() : getDictionaries()
         return files[indexPath.row]
     }
     
@@ -105,38 +105,30 @@ class BaseFileBrowserTableViewController : UITableViewController {
         diskFiles.insert(newDirectoryDiskFile, at: diskFiles.count)
         tableView!.beginUpdates()
         let index = diskFiles.filter{$0.isDirectory}.count-1
-        tableView!.insertRows(at: [IndexPath(row: index, section: 1)], with: .automatic)
+        tableView!.insertRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
         tableView!.endUpdates()
     }
     
     func updateTableData() {
         diskFiles = getAllDiskFiles(url: currentPath)
+        diskFiles.sort() { $0.displayName < $1.displayName }
     }
+    
+    weak var createFolderAction:UIAlertAction?
     
     internal func createFolder() {
         
-        let alert = UIAlertController(title: "Neuer Ordner", message: "Wie soll der Ordner heissen?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Neuer Ordner", message: "Geben Sie einen Namen für diesen Ordner ein.", preferredStyle: .alert)
         
         alert.addTextField { (textField) in
-            textField.placeholder = "Ordner Name"
+            textField.placeholder = "Ordnername"
+            textField.clearButtonMode = .whileEditing
+            textField.addTarget(self, action: #selector(self.validateFolderPath(_:)), for: .editingChanged)
         }
         
-        alert.addAction(UIAlertAction(title: "Erstellen", style: .default, handler: { [weak alert] (_) in
+        createFolderAction = UIAlertAction(title: "Erstellen", style: .default, handler: { [weak alert] (_) in
             
             let newFolderString:String = (alert?.textFields![0].text)! // Force unwrapping because we know it exists.
-            
-            // check for correct folder name
-            // TODO: add a check for illegal folder characters -> ":","/"
-            if(newFolderString == ""){
-                self.showWarningMessage(title: "Fehler", message: "Bitte geben Sie einen Ordnername ein.")
-                return
-            } else if (self.diskFiles.filter({$0.displayName == newFolderString}).count > 0) {
-                self.showWarningMessage(title: "Fehler", message: "Es besteht bereits ein Ordner mit diesem Namen.")
-                return
-            } else if (newFolderString[newFolderString.startIndex] == " ") {
-                self.showWarningMessage(title: "Fehler", message: "Ein Ordner darf nicht mit einem Leerzeichen beginnen.")
-                return
-            }
             
             do{
                 let createFolderPath = self.currentPath.appendingPathComponent(newFolderString)
@@ -150,10 +142,31 @@ class BaseFileBrowserTableViewController : UITableViewController {
                 self.present(error, animated: true, completion: nil)
             }
             
-        }))
+        })
         
-        alert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Abbrechen", style: .default, handler: nil))
+        createFolderAction?.isEnabled = false
+        alert.addAction(createFolderAction!)
+        
         self.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    func validateFolderPath(_ sender: UITextView) {
+        
+        let newFolderString = sender.text!
+        
+        // check for correct folder name
+        // TODO: add a check for illegal folder characters -> ":","/"
+        if(newFolderString == ""){
+            createFolderAction!.isEnabled = false
+        } else if (self.diskFiles.filter({$0.displayName == newFolderString}).count > 0) {
+            createFolderAction!.isEnabled = false
+        } else if (newFolderString[newFolderString.startIndex] == " ") {
+            createFolderAction!.isEnabled = false
+        }
+        
+        createFolderAction!.isEnabled = true
         
     }
     
