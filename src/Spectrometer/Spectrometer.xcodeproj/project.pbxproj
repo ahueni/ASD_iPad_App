@@ -15,7 +15,6 @@
 		2E77537F1E432A860081249C /* MeasurmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E77537E1E432A860081249C /* MeasurmentTableViewCell.xib */; };
 		2E8F76711E45F63F00D54ABF /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8F76701E45F63F00D54ABF /* LoadingButton.swift */; };
 		2E8F76731E460CB800D54ABF /* MeasurementProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8F76721E460CB800D54ABF /* MeasurementProgressBar.swift */; };
-		2E8F76751E472A6900D54ABF /* ColorButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8F76741E472A6900D54ABF /* ColorButtons.swift */; };
 		2E8F76781E4754B900D54ABF /* UIBlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8F76771E4754B900D54ABF /* UIBlueButton.swift */; };
 		2E8F767A1E4754CF00D54ABF /* UIGreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8F76791E4754CF00D54ABF /* UIGreenButton.swift */; };
 		2E8F767D1E4754ED00D54ABF /* UILightGrayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8F767C1E4754ED00D54ABF /* UILightGrayButton.swift */; };
@@ -139,7 +138,6 @@
 		2E77537E1E432A860081249C /* MeasurmentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeasurmentTableViewCell.xib; sourceTree = "<group>"; };
 		2E8F76701E45F63F00D54ABF /* LoadingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
 		2E8F76721E460CB800D54ABF /* MeasurementProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurementProgressBar.swift; sourceTree = "<group>"; };
-		2E8F76741E472A6900D54ABF /* ColorButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorButtons.swift; sourceTree = "<group>"; };
 		2E8F76771E4754B900D54ABF /* UIBlueButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBlueButton.swift; sourceTree = "<group>"; };
 		2E8F76791E4754CF00D54ABF /* UIGreenButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIGreenButton.swift; sourceTree = "<group>"; };
 		2E8F767C1E4754ED00D54ABF /* UILightGrayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILightGrayButton.swift; sourceTree = "<group>"; };
@@ -591,7 +589,6 @@
 				2E708A5B1DE714F0008EC78A /* Regex.swift */,
 				2E8F76701E45F63F00D54ABF /* LoadingButton.swift */,
 				2E8F76721E460CB800D54ABF /* MeasurementProgressBar.swift */,
-				2E8F76741E472A6900D54ABF /* ColorButtons.swift */,
 			);
 			name = ViewHelpers;
 			sourceTree = "<group>";
@@ -960,7 +957,6 @@
 				2E708A231DE61A19008EC78A /* CustomizeExtensions.swift in Sources */,
 				2EB362961DF1BD4F00E74E39 /* SpectralFile.swift in Sources */,
 				2E91F30D1DDB8068003E277F /* SpectralDataEnums.swift in Sources */,
-				2E8F76751E472A6900D54ABF /* ColorButtons.swift in Sources */,
 				E18DAE9F1E375E43005F6753 /* MeasurmentDetailViewController.swift in Sources */,
 				2E91F2E61DDB5B9F003E277F /* Bytes.swift in Sources */,
 				2EB3629C1DF1D91C00E74E39 /* GpsData.swift in Sources */,
