@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BC32BA8A6612BD30CE748BC83A735CB5"
+               BlueprintIdentifier = "9C636C0D4DFDF6FB0235356067DB750B"
                BuildableName = "Pods_Spectrometer.framework"
                BlueprintName = "Pods-Spectrometer"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BC32BA8A6612BD30CE748BC83A735CB5"
+            BlueprintIdentifier = "9C636C0D4DFDF6FB0235356067DB750B"
             BuildableName = "Pods_Spectrometer.framework"
             BlueprintName = "Pods-Spectrometer"
             ReferencedContainer = "container:Pods.xcodeproj">

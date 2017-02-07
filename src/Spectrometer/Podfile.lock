@@ -3,6 +3,8 @@ PODS:
   - Charts/Realm (3.0.1):
     - Charts/Core
     - RealmSwift (~> 1.1)
+  - PlainPing (0.3.1)
+  - Pulsator (0.3.0)
   - Realm (1.1.0):
     - Realm/Headers (= 1.1.0)
   - Realm/Headers (1.1.0)
@@ -12,14 +14,18 @@ PODS:
 
 DEPENDENCIES:
   - Charts/Realm
+  - PlainPing
+  - Pulsator
   - Zip
 
 SPEC CHECKSUMS:
   Charts: 0e84f4418e87dad6a9edde221fba37ebb51d3ba7
+  PlainPing: 3b740d74bc694f4593045b5c5b17ea1275d1920f
+  Pulsator: 0191f14f7ab82d6dbde6fdbde42036f07a4450e3
   Realm: ceecf1a4540c4ce9efe196fe73fa9855bce05bd8
   RealmSwift: 838058b2db95b12cb86bd0cf209df642c33fb60a
   Zip: 805fc2fa9d2f05bbb7762d982d7a42ccdcc51f42
 
-PODFILE CHECKSUM: 78fa669cd4c6440d6c31cd55bf2300d241df40f8
+PODFILE CHECKSUM: a8ef3f03b5deeeab9fc16c71bfb6984de6175bc8
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.1.1

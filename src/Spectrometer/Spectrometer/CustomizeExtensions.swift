@@ -25,14 +25,6 @@ extension Notification.Name {
     static let reloadSpectrometerConfig = Notification.Name("reloadSpectrometerConfig")
 }
 
-class SpectrometerConfigTableViewCell : UITableViewCell {
-    
-    @IBOutlet var name: UILabel!
-    @IBOutlet var ipAndPort: UILabel!
-    @IBOutlet var connectButton: UIButton!
-    
-}
-
 
 extension UIViewController {
     

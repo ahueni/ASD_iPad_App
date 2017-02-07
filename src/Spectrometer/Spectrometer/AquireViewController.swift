@@ -99,6 +99,12 @@ class AquireViewController: UIViewController {
         CommandManager.sharedInstance.aquire(samples: 10)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "StartTestSeriesSegue"{
+            aquireLoopOn = false
+        }
+    }
+    
     func computeReflectance(){
         startingWaveLength = Int(CommandManager.sharedInstance.initialize(valueName: "StartingWavelength").value)
         endingWaveLength = Int(CommandManager.sharedInstance.initialize(valueName: "EndingWavelength").value)

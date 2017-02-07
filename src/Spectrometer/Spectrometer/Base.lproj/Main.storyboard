@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -409,7 +411,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XgJ-hU-ctM">
-                                <rect key="frame" x="294.5" y="922" width="179" height="33"/>
+                                <rect key="frame" x="295" y="922" width="179" height="33"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                 <state key="normal" title="Spektrometer hinzufügen"/>
                                 <connections>
@@ -421,44 +423,55 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" editingAccessoryType="detailButton" rowHeight="70" id="mmm-tZ-Xs7" customClass="SpectrometerConfigTableViewCell" customModule="Spectrometer" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="728" height="70"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" editingAccessoryType="detailButton" rowHeight="100" id="mmm-tZ-Xs7" customClass="SpectrometerConfigTableViewCell" customModule="Spectrometer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="728" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mmm-tZ-Xs7" id="yjQ-yq-CaX">
-                                            <rect key="frame" x="0.0" y="0.0" width="728" height="69"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="728" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spectrometer Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ec6-mm-Psg">
-                                                    <rect key="frame" x="8" y="8" width="574" height="25"/>
+                                                    <rect key="frame" x="183" y="9" width="399" height="52"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IP: 10.1.1.77 / Port: 8080" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aF7-2C-20b">
-                                                    <rect key="frame" x="8" y="41" width="574" height="17"/>
-                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wDv-BE-3lp">
-                                                    <rect key="frame" x="590" y="8" width="130" height="50"/>
+                                                    <rect key="frame" x="590" y="8" width="130" height="81"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="130" id="mgl-yn-tK4"/>
+                                                        <constraint firstAttribute="width" constant="130" id="aXz-CL-EWk"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                                     <state key="normal" title="Verbinden"/>
                                                 </button>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SpektrometerAppIcon180" translatesAutoresizingMaskIntoConstraints="NO" id="IrZ-k0-RPb">
+                                                    <rect key="frame" x="8" y="17" width="80" height="66"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="w01-bY-dHd"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IP: 10.1.1.77 / Port: 8080" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aF7-2C-20b">
+                                                    <rect key="frame" x="183" y="66" width="399" height="17"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="leadingMargin" secondItem="aF7-2C-20b" secondAttribute="leading" id="2DP-6A-898"/>
-                                                <constraint firstItem="wDv-BE-3lp" firstAttribute="leading" secondItem="ec6-mm-Psg" secondAttribute="trailing" constant="8" id="DPc-Sr-mUw"/>
-                                                <constraint firstAttribute="topMargin" secondItem="ec6-mm-Psg" secondAttribute="top" id="Oug-67-oO7"/>
-                                                <constraint firstItem="aF7-2C-20b" firstAttribute="top" secondItem="ec6-mm-Psg" secondAttribute="bottom" constant="8" id="Qh1-0P-qQ1"/>
-                                                <constraint firstAttribute="topMargin" secondItem="wDv-BE-3lp" secondAttribute="top" id="VXD-os-qN2"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="wDv-BE-3lp" secondAttribute="bottom" constant="3" id="cEb-FZ-C9c"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="wDv-BE-3lp" secondAttribute="trailing" id="ihd-s0-h3p"/>
-                                                <constraint firstAttribute="leadingMargin" secondItem="ec6-mm-Psg" secondAttribute="leading" id="uBb-3H-Cer"/>
-                                                <constraint firstItem="wDv-BE-3lp" firstAttribute="leading" secondItem="aF7-2C-20b" secondAttribute="trailing" constant="8" id="woh-BK-9iH"/>
+                                                <constraint firstItem="wDv-BE-3lp" firstAttribute="trailing" secondItem="yjQ-yq-CaX" secondAttribute="trailingMargin" id="2gr-PP-o6y"/>
+                                                <constraint firstItem="wDv-BE-3lp" firstAttribute="leading" secondItem="ec6-mm-Psg" secondAttribute="trailing" constant="8" symbolic="YES" id="5QJ-uW-96i"/>
+                                                <constraint firstItem="wDv-BE-3lp" firstAttribute="leading" secondItem="aF7-2C-20b" secondAttribute="trailing" constant="8" symbolic="YES" id="FqG-th-a8O"/>
+                                                <constraint firstItem="ec6-mm-Psg" firstAttribute="leading" secondItem="aF7-2C-20b" secondAttribute="leading" id="PD1-6D-Y5B"/>
+                                                <constraint firstItem="IrZ-k0-RPb" firstAttribute="bottom" secondItem="aF7-2C-20b" secondAttribute="bottom" id="QUm-md-6mb"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="wDv-BE-3lp" secondAttribute="bottom" constant="2" id="U6S-uC-9li"/>
+                                                <constraint firstItem="ec6-mm-Psg" firstAttribute="baseline" secondItem="wDv-BE-3lp" secondAttribute="firstBaseline" id="Xf5-Ng-vnl"/>
+                                                <constraint firstItem="ec6-mm-Psg" firstAttribute="leading" secondItem="IrZ-k0-RPb" secondAttribute="trailing" constant="95" id="ah0-GJ-G0b"/>
+                                                <constraint firstItem="ec6-mm-Psg" firstAttribute="baseline" secondItem="wDv-BE-3lp" secondAttribute="baseline" id="bWf-0a-DsW"/>
+                                                <constraint firstItem="IrZ-k0-RPb" firstAttribute="top" secondItem="yjQ-yq-CaX" secondAttribute="topMargin" constant="9" id="dDh-Lo-yfA"/>
+                                                <constraint firstItem="IrZ-k0-RPb" firstAttribute="leading" secondItem="yjQ-yq-CaX" secondAttribute="leadingMargin" id="f5e-OA-lLm"/>
+                                                <constraint firstItem="IrZ-k0-RPb" firstAttribute="centerY" secondItem="yjQ-yq-CaX" secondAttribute="centerY" id="ufx-QB-18F"/>
+                                                <constraint firstItem="wDv-BE-3lp" firstAttribute="top" secondItem="yjQ-yq-CaX" secondAttribute="topMargin" id="v5w-UE-nM2"/>
+                                                <constraint firstItem="ec6-mm-Psg" firstAttribute="top" secondItem="yjQ-yq-CaX" secondAttribute="topMargin" constant="1" id="zfF-9I-Vfe"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -466,6 +479,7 @@
                                             <outlet property="connectButton" destination="wDv-BE-3lp" id="pV4-Gp-eb9"/>
                                             <outlet property="ipAndPort" destination="aF7-2C-20b" id="XHH-6o-dzl"/>
                                             <outlet property="name" destination="ec6-mm-Psg" id="BFC-fw-dH2"/>
+                                            <outlet property="spectrometerImageView" destination="IrZ-k0-RPb" id="NWh-WO-2WQ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -498,7 +512,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1156" y="746"/>
+            <point key="canvasLocation" x="1155.46875" y="745.8984375"/>
         </scene>
         <!--Einstellungen-->
         <scene sceneID="Kcu-5u-Lcv">
@@ -1019,7 +1033,7 @@
                                 <rect key="frame" x="340" y="20" width="109" height="30"/>
                                 <state key="normal" title="Start Messreihe"/>
                                 <connections>
-                                    <segue destination="HXw-qQ-t8O" kind="presentation" id="DfN-yu-tho"/>
+                                    <segue destination="HXw-qQ-t8O" kind="presentation" identifier="StartTestSeriesSegue" id="DfN-yu-tho"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXc-0k-vyf">
@@ -1805,7 +1819,7 @@
             <objects>
                 <navigationController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="VHF-2Q-iXW" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oEq-7H-IhW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="oEq-7H-IhW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1827,7 +1841,7 @@
             <objects>
                 <navigationController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="Kb8-rZ-0mW" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BtY-te-dYt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="BtY-te-dYt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1842,6 +1856,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="SpektrometerAppIcon180" width="180" height="180"/>
         <image name="done" width="448" height="455"/>
         <image name="folder.png" width="36" height="36"/>
     </resources>

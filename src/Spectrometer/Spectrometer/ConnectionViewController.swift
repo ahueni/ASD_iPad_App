@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import PlainPing
+import Pulsator
 
 class ConnectionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -127,6 +129,22 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
         cell.connectButton.tag = indexPath.row
         cell.connectButton.addTarget(self, action: #selector(self.connectDevice(sender:)), for: .touchUpInside)
         
+        PlainPing.ping(config.ipAdress!, withTimeout: 1.0, completionBlock: { (timeElapsed:Double?, error:Error?) in
+            if let latency = timeElapsed {
+                cell.name.textColor = .blue
+                
+                let pulsator = Pulsator()
+                pulsator.numPulse = 4
+                pulsator.radius = 45
+                pulsator.position = cell.spectrometerImageView.center
+                cell.contentView.layer.insertSublayer(pulsator, at: 0)
+                pulsator.start()
+            }
+            
+            if let error = error {
+                print("ping failed for "+config.ipAdress!)
+            }
+        })
         
         return cell
     }
