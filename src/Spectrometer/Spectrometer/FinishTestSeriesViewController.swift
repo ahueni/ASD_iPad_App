@@ -35,8 +35,8 @@ class FinishTestSeriesViewController : BaseMeasurementModal {
                 let spectrumData = self.pageContainer!.spectrumDataList[i]
                 let fileName = self.pageContainer!.measurmentSettings!.fileName + i.description + ".asd"
                 let relativeFilePath = self.pageContainer!.measurmentSettings!.path.appendingPathComponent(fileName).relativePath
-                
                 let fileWriter = FileWriter(path: relativeFilePath)
+                
                 fileWriter.write(spectrum: spectrumData.spectrum, whiteRefrenceSpectrum: spectrumData.whiteRefrence!)
             }
             

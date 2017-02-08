@@ -41,12 +41,12 @@ class AquireViewController: UIViewController {
     @IBAction func startAquire(_ sender: UIButton) {
         aquireLoopOn = !aquireLoopOn
         
-        DispatchQueue(label: "test").async {
-            
+        DispatchQueue.global().async {
             while(self.aquireLoopOn){
                 self.aquireWithDarkCorrection()
             }
         }
+        
     }
     @IBAction func optimizeButtonClicked(_ sender: UIButton) {
         aquireLoopOn = false
@@ -96,7 +96,7 @@ class AquireViewController: UIViewController {
     
     @IBAction func whiteReference(_ sender: UIButton) {
         aquireLoopOn = false
-        CommandManager.sharedInstance.aquire(samples: 10)
+        //CommandManager.sharedInstance.aquire(samples: 10)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -120,11 +120,12 @@ class AquireViewController: UIViewController {
         }
     }
     
+    /*
     func saveSpectrum(spectrum: FullRangeInterpolatedSpectrum, whiteRefrenceSpectrum: FullRangeInterpolatedSpectrum){
         let path = ("~/Documents/test.txt" as NSString).expandingTildeInPath
         
         let fw = FileWriter(path: path)
-        let fileHandle :FileHandle = fw.write(spectrum: spectrum, whiteRefrenceSpectrum: spectrum)
+        let fileHandle:FileHandle = fw.write(spectrum: spectrum, whiteRefrenceSpectrum: spectrum)
         
         let dataBuffer = [UInt8](FileManager().contents(atPath: path)!)
         let fileParser = SpectralFileParser(data: dataBuffer)
@@ -138,7 +139,7 @@ class AquireViewController: UIViewController {
             print("File not parsed!")
         }
 
-    }
+    }*/
     
     
     

@@ -130,6 +130,7 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
         cell.connectButton.addTarget(self, action: #selector(self.connectDevice(sender:)), for: .touchUpInside)
         
         PlainPing.ping(config.ipAdress!, withTimeout: 1.0, completionBlock: { (timeElapsed:Double?, error:Error?) in
+            
             if let latency = timeElapsed {
                 cell.name.textColor = .blue
                 

@@ -11,6 +11,11 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>PlainPing.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
 		<key>Pods-Spectrometer.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -24,6 +29,11 @@
 			<false/>
 			<key>orderHint</key>
 			<integer>3</integer>
+		</dict>
+		<key>Pulsator.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
 		<key>Realm.xcscheme</key>
 		<dict>
@@ -47,6 +57,16 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>023BB51B67E79B809B507D24455C2C05</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>131A0613B997D56402BFAE14D6A68201</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>24712DEB79F57D28F03EA1359679BACF</key>
 		<dict>
 			<key>primary</key>
@@ -68,6 +88,16 @@
 			<true/>
 		</dict>
 		<key>74EB08B1CCA256BA1A56E1F343E6C1F7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>75E4A8A19E3E981997F5DF1A798677CB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9C636C0D4DFDF6FB0235356067DB750B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
