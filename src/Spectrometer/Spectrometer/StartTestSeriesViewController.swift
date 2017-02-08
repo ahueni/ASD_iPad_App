@@ -21,6 +21,17 @@ class StartTestSeriesViewController : BaseMeasurementModal {
         containerViewController!.StartButton.addTarget(self, action:#selector(self.nextButtonClicked(_:)), for: .touchUpInside)
         containerViewController!.CancelButton.addTarget(self, action:#selector(self.CancelButtonClicked(_:)), for: .touchUpInside)
         containerViewController!.filePathButton.addTarget(self, action:#selector(self.changeFilePathButtonClicked(_:)), for: .touchUpInside)
+        
+        containerViewController?.MeasurmentCountStepper.value = Double((appDelegate.config?.measurmentCount)!)
+        containerViewController?.MeasurementCountStepperValueChanged((containerViewController?.MeasurmentCountStepper)!)
+        
+        //Initialize tap gesture to hide keyboard when clicked on view
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    func hideKeyboard() {
+        view.endEditing(true)
     }
     
     // prepare is called before viewDidLoad => set the embeded vc variable
@@ -59,7 +70,13 @@ class StartTestSeriesViewController : BaseMeasurementModal {
         default:
             whiteRefrenceSettings = WhiteRefrenceSettings.TakeBeforeAndAfter
         }
-        pageContainer!.measurmentSettings = MeasurmentSettings(measurementCount: Int(containerViewController!.measurementCountTextField.text!)!, whiteRefrenceSetting: whiteRefrenceSettings!, path: selectedPath!, fileName: (containerViewController?.fileNameTextField.text)!)
+        
+        //save measurmentCount to config
+        let measurmentCount = Int32(containerViewController!.MeasurmentCountStepper.value)
+        appDelegate.config?.measurmentCount = measurmentCount
+        appDelegate.saveContext()
+        
+        pageContainer!.measurmentSettings = MeasurmentSettings(measurementCount: Int(measurmentCount), whiteRefrenceSetting: whiteRefrenceSettings!, path: selectedPath!, fileName: (containerViewController?.fileNameTextField.text)!)
         
         pageContainer?.goToNextPage()
     }

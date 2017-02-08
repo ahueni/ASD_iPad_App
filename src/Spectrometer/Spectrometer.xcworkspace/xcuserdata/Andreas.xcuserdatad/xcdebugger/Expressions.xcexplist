@@ -3,13 +3,21 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "DirectoryBrowserContainerViewController.(AddDirectoryButtonClicked(UIButton) -&gt; ()).(closure #2):DirectoryBrowserContainerViewController.swift">
+         contextName = "AddEditConnectionViewController.validateSubViews(view : UIView, valid : Bool) -&gt; Bool:AddEditConnectionViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "textField?.text">
+               value = "(subView as! PortTextField)">
             </PersistentString>
             <PersistentString
-               value = "containerViewController">
+               value = "(port as! PortTextField)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "PortTextField.validate() -&gt; ():PortTextField.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "isValid">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -22,13 +30,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "AddEditConnectionViewController.validateSubViews(view : UIView, valid : Bool) -&gt; Bool:AddEditConnectionViewController.swift">
+         contextName = "StartTestSeriesViewController.viewDidLoad() -&gt; ():StartTestSeriesViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "(subView as! PortTextField)">
-            </PersistentString>
-            <PersistentString
-               value = "(port as! PortTextField)">
+               value = "appDelegate.config?.measurmentCount">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -52,10 +57,13 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "PortTextField.validate() -&gt; ():PortTextField.swift">
+         contextName = "DirectoryBrowserContainerViewController.(AddDirectoryButtonClicked(UIButton) -&gt; ()).(closure #2):DirectoryBrowserContainerViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "isValid">
+               value = "textField?.text">
+            </PersistentString>
+            <PersistentString
+               value = "containerViewController">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

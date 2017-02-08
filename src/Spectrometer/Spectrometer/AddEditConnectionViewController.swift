@@ -81,6 +81,7 @@ class AddEditConnectionViewController: UIViewController {
         config?.sampleCount = 10 //default value for sampleCount
         config?.sampleCountDarkCurrent = 10 //default value for sampleCount
         config?.sampleCountWhiteRefrence = 10 //default value for sampleCount
+        config?.measurmentCount = 10 //default value for measurmentCount
         
         appDelegate.saveContext()
         NotificationCenter.default.post(name: .reloadSpectrometerConfig, object: nil)

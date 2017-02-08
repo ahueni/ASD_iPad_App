@@ -91,7 +91,7 @@
 		E14EC22E1E2E1889006EBD2F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */; };
 		E165E1F71E34B5A20077A5EB /* FastMeasurmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E165E1F61E34B5A20077A5EB /* FastMeasurmentViewController.swift */; };
 		E1807E5E1E2E576400BB205F /* ExceptionErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E5D1E2E576400BB205F /* ExceptionErrors.swift */; };
-		E1807E641E2F619B00BB205F /* TestSeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E631E2F619B00BB205F /* TestSeriesViewController.swift */; };
+		E1807E641E2F619B00BB205F /* StartTestSeriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E631E2F619B00BB205F /* StartTestSeriesTableViewController.swift */; };
 		E1807E681E2F7B2F00BB205F /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E671E2F7B2F00BB205F /* ParentViewController.swift */; };
 		E186B9481E364DDF00FE43F3 /* CommandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E186B9471E364DDF00FE43F3 /* CommandManager.swift */; };
 		E18970A01E2914B300722E9C /* BaseWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E189709F1E2914B300722E9C /* BaseWriter.swift */; };
@@ -219,7 +219,7 @@
 		E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E165E1F61E34B5A20077A5EB /* FastMeasurmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FastMeasurmentViewController.swift; sourceTree = "<group>"; };
 		E1807E5D1E2E576400BB205F /* ExceptionErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExceptionErrors.swift; sourceTree = "<group>"; };
-		E1807E631E2F619B00BB205F /* TestSeriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSeriesViewController.swift; sourceTree = "<group>"; };
+		E1807E631E2F619B00BB205F /* StartTestSeriesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartTestSeriesTableViewController.swift; sourceTree = "<group>"; };
 		E1807E671E2F7B2F00BB205F /* ParentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
 		E186B9471E364DDF00FE43F3 /* CommandManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandManager.swift; sourceTree = "<group>"; };
 		E189709F1E2914B300722E9C /* BaseWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWriter.swift; sourceTree = "<group>"; };
@@ -616,7 +616,7 @@
 		E1807E621E2F617900BB205F /* Modals */ = {
 			isa = PBXGroup;
 			children = (
-				E1807E631E2F619B00BB205F /* TestSeriesViewController.swift */,
+				E1807E631E2F619B00BB205F /* StartTestSeriesTableViewController.swift */,
 				E1807E671E2F7B2F00BB205F /* ParentViewController.swift */,
 				E1129D321E2FBDC700331A02 /* FinishTestSeriesViewController.swift */,
 				E165E1F61E34B5A20077A5EB /* FastMeasurmentViewController.swift */,
@@ -996,7 +996,7 @@
 				E1AC382B1E266ACD004CCBEF /* FileWriter.swift in Sources */,
 				2E91F2E91DDB5B9F003E277F /* FDSet.swift in Sources */,
 				2E91F3131DDB842A003E277F /* InstrumentControl.swift in Sources */,
-				E1807E641E2F619B00BB205F /* TestSeriesViewController.swift in Sources */,
+				E1807E641E2F619B00BB205F /* StartTestSeriesTableViewController.swift in Sources */,
 				2E708A5C1DE714F0008EC78A /* Regex.swift in Sources */,
 				E1807E681E2F7B2F00BB205F /* ParentViewController.swift in Sources */,
 				2E8F767D1E4754ED00D54ABF /* UILightGrayButton.swift in Sources */,
