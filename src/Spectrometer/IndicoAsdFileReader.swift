@@ -71,6 +71,10 @@ class IndicoAsdFileReader : IndicoIniFileReader  {
         spectralFileV8.DependentVariableLabels = getNextString()
         spectralFileV8.DependentVariables = getNextFloat()
         
+        
+        // Correct INDEX
+        parseIndex = 34974
+        
         // MARK: Calibration Header
         spectralFileV8.calibrationCount = getNextByte()
         
