@@ -21,7 +21,7 @@ class BaseWriter{
         }
     }
     
-    init(path : String){
+    init(path : String) {
         
         let fileManager = FileManager.default
         //  check if the folder already exists
@@ -36,9 +36,16 @@ class BaseWriter{
         }
         
         fileManager.createFile(atPath: path, contents: nil)
-
+        if(!(fileManager.fileExists(atPath: path)))
+        {
+            print("File not created, use relativepath instead of absolut")
+        }
         fileHandle = FileHandle(forWritingAtPath: path)!
         
+    }
+    
+    enum FileError : Error {
+        case fileNotCreatedError(message : String)
     }
     
     func writeByte(number:UInt8){

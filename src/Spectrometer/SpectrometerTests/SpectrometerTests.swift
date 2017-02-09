@@ -26,13 +26,31 @@ class SpectrometerTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
         let bundle = Bundle(for: type(of: self))
-        let path = bundle.path(forResource: "spectrum", ofType: "test")!
+        let spectrumPath = bundle.path(forResource: "spectrum", ofType: "test")!
+        let spectrumDataBuffer = [UInt8](FileManager().contents(atPath: spectrumPath)!)
         
-        let dataBuffer = [UInt8](FileManager().contents(atPath: path)!)
         
-        let fileParser = FullRangeInterpolatedSpectrumParser(data: dataBuffer)
+        let whiteRefrencePath = bundle.path(forResource: "whiteRefrence", ofType: "test")!
+        let whiteRefrenceDataBuffer = [UInt8](FileManager().contents(atPath: whiteRefrencePath)!)
+        
+        let spectrumFileParser = FullRangeInterpolatedSpectrumParser(data: spectrumDataBuffer)
+        let whiteRefrenceFileParser = FullRangeInterpolatedSpectrumParser(data: whiteRefrenceDataBuffer)
         do{
-        var test = try fileParser.parse();
+            
+            var fullRangeSpectrum = try spectrumFileParser.parse();
+            var whiteRefrenceSpectrum = try whiteRefrenceFileParser.parse();
+            
+            let dirPath = NSTemporaryDirectory()
+            let testFileURL = URL(fileURLWithPath: dirPath).appendingPathComponent("write.test")
+            let canCreate = FileManager.default.isWritableFile(atPath: dirPath)
+            let writer = IndicoWriter(path: testFileURL.relativePath)
+            let fileHandle = writer.write(spectrum: fullRangeSpectrum, whiteRefrenceSpectrum: whiteRefrenceSpectrum)
+            
+            let testFileDataBuffer = [UInt8](FileManager().contents(atPath: testFileURL.relativePath)!)
+            let testFileReader = IndicoAsdFileReader(data: testFileDataBuffer)
+            let parsedAsdTestFile = try testFileReader.parse()
+            
+            print("test")
         }
         catch{
             

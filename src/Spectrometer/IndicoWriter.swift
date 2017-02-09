@@ -27,30 +27,35 @@ class IndicoWriter : BaseWriter {
         fileHandle.write(data!)
         
         //ProgramVersion
+        //???
         writeVersion(number: 6,decimalNumber: 0)
         
         //FileVersion
         writeVersion(number: 8,decimalNumber: 0)
         
-        //itTime
+        //itTime - not used after V2.00
         writeByte(number: 0)
         
         //dcCorr
+        // in our case always corrected right?
         writeByte(number: 1)
         
         //dcTime
         writeLong(number: UInt32(Date().timeIntervalSince1970))
         
         //dataType
-        writeByte(number: 7)
+        // which type should we use?
+        writeByte(number: 0)
         
         //refTime
         writeLong(number: UInt32(Date().timeIntervalSince1970))
         
         //waveLength
+        // ???
         writeFloat(number: Float(350))
         
         //waveLengthStep
+        // ???
         writeFloat(number: Float(1))
         
         //dataFormat
@@ -124,7 +129,8 @@ class IndicoWriter : BaseWriter {
         writeInt(number: UInt16(2))
         
         //instrument type
-        writeByte(number: UInt8(spectrum.spectrumHeader.instrumentType))
+        // Zwei unterschiedliche InstrumentType Tabellen in den Spezifikationen????
+        writeByte(number: UInt8(//spectrum.spectrumHeader.instrumentType))
         
         //bulb
         writeLong(number: UInt32(0))
