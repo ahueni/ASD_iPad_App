@@ -112,9 +112,9 @@ class SpectralFileV8 : SpectralFileBase {
      var sReserved2: String = ""
      var sReserved3: String = ""
      var sReserved4: String = ""
-     var constituentCount: UInt16 = 0
     
-     var actConstituent: ConstituentType = ConstituentType()
+     var constituentCount: UInt16 = 0
+     var actConstituent: [ConstituentType] = []
     
      // MARK: Dependent Variables
      var SaveDependentVariables: Bool = false
@@ -124,7 +124,7 @@ class SpectralFileV8 : SpectralFileBase {
      
      // MARK: Calibration Header
      var calibrationCount: UInt8 = 0
-     var calibrationBuffer: CalibrationBuffer = CalibrationBuffer()
+     var calibrationBuffer:[CalibrationBuffer] = []
      
      // MARK: Base Calibration Data
      var baseCalibrationData: [Double] = []

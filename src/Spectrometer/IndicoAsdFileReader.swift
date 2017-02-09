@@ -44,21 +44,25 @@ class IndicoAsdFileReader : IndicoIniFileReader  {
         spectralFileV8.sReserved4 = getNextString()
         spectralFileV8.constituentCount = getNextUInt16()
         
-        spectralFileV8.actConstituent.Name = getNextString()
-        spectralFileV8.actConstituent.PassFail = getNextString()
-        spectralFileV8.actConstituent.mDistance = getNextDouble()
-        spectralFileV8.actConstituent.mDistanceLimit = getNextDouble()
-        spectralFileV8.actConstituent.Concentration = getNextDouble()
-        spectralFileV8.actConstituent.ConcentrationLimit = getNextDouble()
-        spectralFileV8.actConstituent.fRatio = getNextDouble()
-        spectralFileV8.actConstituent.Residual = getNextDouble()
-        spectralFileV8.actConstituent.ResidualLimit = getNextDouble()
-        spectralFileV8.actConstituent.Scores = getNextDouble()
-        spectralFileV8.actConstituent.ScoresLimit = getNextDouble()
-        spectralFileV8.actConstituent.ModelType = Int32(getNextInt())
-        
-        // jump over reserved bytes
-        parseIndex += 16
+        for _ in 0...spectralFileV8.constituentCount {
+            let const:ConstituentType = ConstituentType()
+            const.Name = getNextString()
+            const.PassFail = getNextString()
+            const.mDistance = getNextDouble()
+            const.mDistanceLimit = getNextDouble()
+            const.Concentration = getNextDouble()
+            const.ConcentrationLimit = getNextDouble()
+            const.fRatio = getNextDouble()
+            const.Residual = getNextDouble()
+            const.ResidualLimit = getNextDouble()
+            const.Scores = getNextDouble()
+            const.ScoresLimit = getNextDouble()
+            const.ModelType = Int32(getNextInt())
+            spectralFileV8.actConstituent.append(const)
+            
+            // jump over reserved bytes
+            parseIndex += 16
+        }
         
         // MARK: Dependent Variables
         spectralFileV8.SaveDependentVariables = getNextBool()
@@ -66,7 +70,25 @@ class IndicoAsdFileReader : IndicoIniFileReader  {
         spectralFileV8.DependentVariableLabels = getNextString()
         spectralFileV8.DependentVariables = getNextFloat()
         
-        //....
+        // MARK: Calibration Header
+        spectralFileV8.calibrationCount = getNextByte()
+        
+        for _ in 0...spectralFileV8.calibrationCount {
+            
+            parseIndex += 29
+            
+        }
+        
+        // MARK: Base Calibration Data
+        spectralFileV8.baseCalibrationData = parseDoubleSpectralData(channelCount: Int(spectralFileV8.channels))
+        
+        
+        // MARK: Lamp Calibration Data
+        spectralFileV8.lampCalibrationData = parseDoubleSpectralData(channelCount: Int(spectralFileV8.channels))
+        
+        // MARK: Fiber Optic Data
+        spectralFileV8.fiberOpticData = parseDoubleSpectralData(channelCount: Int(spectralFileV8.channels))
+        
         return spectralFileV8
     }
 }

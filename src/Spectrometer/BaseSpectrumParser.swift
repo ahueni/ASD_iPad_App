@@ -185,6 +185,38 @@ class BaseSpectrumParser {
         
         return string
     }
+    
+    internal func parseDoubleSpectralData(channelCount: Int) -> [Double] {
+        
+        var spectrum : [Double] = []
+        for _ in 0...channelCount-1 {
+            let value = getNextDouble()
+            spectrum.append(value)
+        }
+        return spectrum
+    }
+    
+    internal func parseFloatSpectralData(channelCount: Int) -> [Double] {
+        
+        var spectrum : [Double] = []
+        for _ in 0...channelCount-1 {
+            let value = getNextFloat()
+            spectrum.append(Double(value))
+        }
+        return spectrum
+        
+    }
+    
+    internal func parseIntegerSpectralData(channelCount: Int) -> [Double] {
+        
+        var spectrum : [Double] = []
+        for _ in 0...channelCount-1 {
+            let value = getNextInt()
+            spectrum.append(Double(value))
+        }
+        return spectrum
+        
+    }
 
     
 }

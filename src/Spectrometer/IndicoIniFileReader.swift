@@ -77,6 +77,7 @@ class IndicoIniFileReader: BaseSpectrumParser {
         // parse spectral data
         // the type of spectral data is defined in 'spectralFile.dataType' and the format in 'spectralFile.spectrumDataFormat'
         let channels: Int = Int(spectralFile.channels)
+        
         switch spectralFile.spectrumDataFormat {
         case .DoubleFormat:
             spectralFile.spectrum = parseDoubleSpectralData(channelCount: channels)
@@ -118,38 +119,6 @@ class IndicoIniFileReader: BaseSpectrumParser {
         }
         
         return spectralFile
-    }
-    
-    private func parseDoubleSpectralData(channelCount: Int) -> [Double] {
-        
-        var spectrum : [Double] = []
-        for _ in 0...channelCount-1 {
-            let value = getNextDouble()
-            spectrum.append(value)
-        }
-        return spectrum
-    }
-    
-    private func parseFloatSpectralData(channelCount: Int) -> [Double] {
-        
-        var spectrum : [Double] = []
-        for _ in 0...channelCount-1 {
-            let value = getNextFloat()
-            spectrum.append(Double(value))
-        }
-        return spectrum
-        
-    }
-    
-    private func parseIntegerSpectralData(channelCount: Int) -> [Double] {
-        
-        var spectrum : [Double] = []
-        for _ in 0...channelCount-1 {
-            let value = getNextInt()
-            spectrum.append(Double(value))
-        }
-        return spectrum
-        
     }
     
 }
