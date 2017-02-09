@@ -42,9 +42,10 @@ class IndicoAsdFileReader : IndicoIniFileReader  {
         spectralFileV8.sReserved2 = getNextString()
         spectralFileV8.sReserved3 = getNextString()
         spectralFileV8.sReserved4 = getNextString()
+        
         spectralFileV8.constituentCount = getNextUInt16()
         
-        for _ in 0...spectralFileV8.constituentCount {
+        for _ in 0..<spectralFileV8.constituentCount {
             let const:ConstituentType = ConstituentType()
             const.Name = getNextString()
             const.PassFail = getNextString()
@@ -73,10 +74,8 @@ class IndicoAsdFileReader : IndicoIniFileReader  {
         // MARK: Calibration Header
         spectralFileV8.calibrationCount = getNextByte()
         
-        for _ in 0...spectralFileV8.calibrationCount {
-            
+        for _ in 0..<spectralFileV8.calibrationCount {
             parseIndex += 29
-            
         }
         
         // MARK: Base Calibration Data

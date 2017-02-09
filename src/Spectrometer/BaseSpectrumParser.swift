@@ -173,6 +173,7 @@ class BaseSpectrumParser {
         var string = ""
         
         var byteValue:UInt8 = self.data[parseIndex]
+        
         while byteValue != 0 {
             let scalar = UnicodeScalar.init(byteValue)
             let char = Character.init(scalar)
@@ -189,7 +190,7 @@ class BaseSpectrumParser {
     internal func parseDoubleSpectralData(channelCount: Int) -> [Double] {
         
         var spectrum : [Double] = []
-        for _ in 0...channelCount-1 {
+        for _ in 0..<channelCount {
             let value = getNextDouble()
             spectrum.append(value)
         }
@@ -199,7 +200,7 @@ class BaseSpectrumParser {
     internal func parseFloatSpectralData(channelCount: Int) -> [Double] {
         
         var spectrum : [Double] = []
-        for _ in 0...channelCount-1 {
+        for _ in 0..<channelCount {
             let value = getNextFloat()
             spectrum.append(Double(value))
         }
@@ -210,7 +211,7 @@ class BaseSpectrumParser {
     internal func parseIntegerSpectralData(channelCount: Int) -> [Double] {
         
         var spectrum : [Double] = []
-        for _ in 0...channelCount-1 {
+        for _ in 0..<channelCount {
             let value = getNextInt()
             spectrum.append(Double(value))
         }

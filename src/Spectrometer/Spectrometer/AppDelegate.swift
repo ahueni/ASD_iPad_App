@@ -47,6 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let documentsPath:URL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0] as URL
         let measurementPath:URL = documentsPath.appendingPathComponent("Messungen", isDirectory: true)
         
+        print("Documents Folder: " + documentsPath.absoluteString)
+        
         var isDirectory: ObjCBool = false
         let exists:Bool = fileManager.fileExists(atPath: measurementPath.relativePath, isDirectory: &isDirectory)
         
