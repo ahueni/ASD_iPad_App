@@ -88,7 +88,7 @@ class FullRangeInterpolatedSpectrumParser: BaseSpectrumParser, ISpectrumParser {
         
         let swir2Header: SwirHeader = SwirHeader(tecStatus: s2tecStatus, tecCurrent: s2tecCurrent, maxChannel: s2maxChannel, minChannel: s2minChannel, saturation: s2saturation, AScans: s2AScans, BScans: s2BScans, darkCurrent: s2darkCurrent, gain: s2gain, offset: s2offset, scansize1: s2scansize1, scansize2: s2scansize2, darkSubtracted: s2darkSubtracted)
         
-        let spectrumHeader = SpectrumHeader(header: header, error: error, sampleCount: sampleCount, trigger: trigger, voltage: voltage, current: current, temperature: temperature, motorCurrent: motorCurrent, instrumentHours: instrumentHours, instrumentMinutes: instrumentMinutes, instrumentType: instrumentType, AB: AB, vHeader: vinirHeader, s1Header: swir1Header, s2Header: swir2Header)
+        let spectrumHeader = SpectrumHeader(header: header, error: error, sampleCount: sampleCount, trigger: trigger, voltage: voltage, current: current, temperature: temperature, motorCurrent: motorCurrent, instrumentHours: instrumentHours, instrumentMinutes: instrumentMinutes, instrumentType: instrumentType, AB: AB, vinirHeader: vinirHeader, swir1Header: swir1Header, swir2Header: swir2Header)
         
         // parse spectrum buffer
         var buffer: [Float] = []

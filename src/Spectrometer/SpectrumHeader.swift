@@ -25,7 +25,7 @@ struct SpectrumHeader {
     
     static let reserve: Int = 4
     
-    var vHeader: VnirHeader
-    var s1Header: SwirHeader
-    var s2Header: SwirHeader
+    var vinirHeader: VnirHeader
+    var swir1Header: SwirHeader
+    var swir2Header: SwirHeader
 }

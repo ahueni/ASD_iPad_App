@@ -56,7 +56,7 @@ class AquireViewController: UIViewController {
     func aquireWithDarkCorrection () {
             // Background tasks
             let spectrum = CommandManager.sharedInstance.aquire(samples: (self.appDelegate.config?.sampleCount)!)
-            let currentDrift = spectrum.spectrumHeader.vHeader.drift
+            let currentDrift = spectrum.spectrumHeader.vinirHeader.drift
             
             if (self.darkCurrentSpectrum == nil){
                 return //throw SpectrometerErrors.noDarkCurrentFound
@@ -154,7 +154,7 @@ class AquireViewController: UIViewController {
         
         closeShutter()
         darkCurrentSpectrum = CommandManager.sharedInstance.aquire(samples: 10)
-        darkDrift = (darkCurrentSpectrum?.spectrumHeader.vHeader.drift)!
+        darkDrift = (darkCurrentSpectrum?.spectrumHeader.vinirHeader.drift)!
         openShutter()
     }
     
