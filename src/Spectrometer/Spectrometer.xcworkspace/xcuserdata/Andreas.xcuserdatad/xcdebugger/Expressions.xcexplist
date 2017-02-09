@@ -38,6 +38,17 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "DirectoryBrowserContainerViewController.(AddDirectoryButtonClicked(UIButton) -&gt; ()).(closure #2):DirectoryBrowserContainerViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "textField?.text">
+            </PersistentString>
+            <PersistentString
+               value = "containerViewController">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "PortTextField.validate() -&gt; Bool:PortTextField.swift">
          <PersistentStrings>
             <PersistentString
@@ -57,13 +68,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "DirectoryBrowserContainerViewController.(AddDirectoryButtonClicked(UIButton) -&gt; ()).(closure #2):DirectoryBrowserContainerViewController.swift">
+         contextName = "SpectrometerTests.testExample() -&gt; ():SpectrometerTests.swift">
          <PersistentStrings>
             <PersistentString
-               value = "textField?.text">
-            </PersistentString>
-            <PersistentString
-               value = "containerViewController">
+               value = "fileUrl.isFileURL">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

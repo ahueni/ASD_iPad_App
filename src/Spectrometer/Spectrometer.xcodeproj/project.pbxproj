@@ -90,6 +90,8 @@
 		E1129D331E2FBDC700331A02 /* FinishTestSeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1129D321E2FBDC700331A02 /* FinishTestSeriesViewController.swift */; };
 		E12F66D41E4C54DB00B71AA0 /* IndicoAsdFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F66D31E4C54DB00B71AA0 /* IndicoAsdFileReader.swift */; };
 		E14EC22E1E2E1889006EBD2F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */; };
+		E15C06AA1E4C66E300965868 /* spectrum.test in Resources */ = {isa = PBXBuildFile; fileRef = E15C06A81E4C66E300965868 /* spectrum.test */; };
+		E15C06AB1E4C66E300965868 /* whiteRefrence.test in Resources */ = {isa = PBXBuildFile; fileRef = E15C06A91E4C66E300965868 /* whiteRefrence.test */; };
 		E165E1F71E34B5A20077A5EB /* FastMeasurmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E165E1F61E34B5A20077A5EB /* FastMeasurmentViewController.swift */; };
 		E1807E5E1E2E576400BB205F /* ExceptionErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E5D1E2E576400BB205F /* ExceptionErrors.swift */; };
 		E1807E641E2F619B00BB205F /* StartTestSeriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E631E2F619B00BB205F /* StartTestSeriesTableViewController.swift */; };
@@ -219,6 +221,8 @@
 		E1129D321E2FBDC700331A02 /* FinishTestSeriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishTestSeriesViewController.swift; sourceTree = "<group>"; };
 		E12F66D31E4C54DB00B71AA0 /* IndicoAsdFileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicoAsdFileReader.swift; sourceTree = "<group>"; };
 		E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E15C06A81E4C66E300965868 /* spectrum.test */ = {isa = PBXFileReference; lastKnownFileType = file; path = spectrum.test; sourceTree = "<group>"; };
+		E15C06A91E4C66E300965868 /* whiteRefrence.test */ = {isa = PBXFileReference; lastKnownFileType = file; path = whiteRefrence.test; sourceTree = "<group>"; };
 		E165E1F61E34B5A20077A5EB /* FastMeasurmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FastMeasurmentViewController.swift; sourceTree = "<group>"; };
 		E1807E5D1E2E576400BB205F /* ExceptionErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExceptionErrors.swift; sourceTree = "<group>"; };
 		E1807E631E2F619B00BB205F /* StartTestSeriesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartTestSeriesTableViewController.swift; sourceTree = "<group>"; };
@@ -348,6 +352,7 @@
 		2E91F2BC1DDB5B76003E277F /* SpectrometerTests */ = {
 			isa = PBXGroup;
 			children = (
+				E15C06A71E4C66D300965868 /* TestResources */,
 				2E91F2BD1DDB5B76003E277F /* SpectrometerTests.swift */,
 				2E91F2BF1DDB5B76003E277F /* Info.plist */,
 			);
@@ -634,6 +639,15 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
+		E15C06A71E4C66D300965868 /* TestResources */ = {
+			isa = PBXGroup;
+			children = (
+				E15C06A81E4C66E300965868 /* spectrum.test */,
+				E15C06A91E4C66E300965868 /* whiteRefrence.test */,
+			);
+			name = TestResources;
+			sourceTree = "<group>";
+		};
 		E1807E621E2F617900BB205F /* Modals */ = {
 			isa = PBXGroup;
 			children = (
@@ -849,6 +863,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E15C06AA1E4C66E300965868 /* spectrum.test in Resources */,
+				E15C06AB1E4C66E300965868 /* whiteRefrence.test in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

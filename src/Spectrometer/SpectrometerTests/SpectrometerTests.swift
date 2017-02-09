@@ -24,6 +24,29 @@ class SpectrometerTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        let bundle = Bundle(for: type(of: self))
+        let path = bundle.path(forResource: "spectrum", ofType: "test")!
+        
+        let dataBuffer = [UInt8](FileManager().contents(atPath: path)!)
+        
+        let fileParser = FullRangeInterpolatedSpectrumParser(data: dataBuffer)
+        do{
+        var test = try fileParser.parse();
+        }
+        catch{
+            
+        }
+        
+        /*
+        let fileUrl = URL(fileURLWithPath: "TestResources/spectrum.test")
+        
+        let filePath = fileUrl.absoluteString
+        let dataBuffer = [UInt8](FileManager().contents(atPath: filePath)!)
+        let fileParser = IndicoIniFileReader(data: dataBuffer)
+ */
+ 
+        XCTAssert(true)
     }
     
     func testPerformanceExample() {
