@@ -235,7 +235,7 @@ class AddEditConnectionViewController: UIViewController {
     private func parseSpectralFile(filePath: String) -> SpectralFileBase? {
         
         let dataBuffer = [UInt8](self.fileManager.contents(atPath: filePath)!)
-        let fileParser = SpectralFileParser(data: dataBuffer)
+        let fileParser = IndicoIniFileReader(data: dataBuffer)
         var file: SpectralFileBase
         
         do {

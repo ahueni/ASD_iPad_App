@@ -32,7 +32,8 @@ class MeasurmentDetailViewController: UIViewController {
         
         let fileManager = FileManager()
         let dataBuffer = [UInt8](fileManager.contents(atPath: filePath)!)
-        let fileParser = SpectralFileParser(data: dataBuffer)
+        let fileParser = IndicoAsdFileReader(data: dataBuffer)
+        
         var file: SpectralFileBase
         
         do {

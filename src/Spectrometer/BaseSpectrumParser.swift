@@ -17,12 +17,15 @@ protocol ISpectrumParser {
 
 class BaseSpectrumParser {
     
+    var spectralFile : SpectralFileBase
+    
     internal let data: [UInt8]
     internal var parseIndex: Int
     
     init(data: [UInt8]) {
         self.data = data
         parseIndex = 0
+        spectralFile = SpectralFileBase()
     }
     
     internal func getNextBool() -> Bool {

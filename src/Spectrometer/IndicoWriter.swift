@@ -8,7 +8,7 @@
 
 import Foundation
 
-class FileWriter : BaseWriter {
+class IndicoWriter : BaseWriter {
     
     func write(spectrum : FullRangeInterpolatedSpectrum, whiteRefrenceSpectrum : FullRangeInterpolatedSpectrum) -> FileHandle{
         
@@ -123,8 +123,8 @@ class FileWriter : BaseWriter {
         //sample_count
         writeInt(number: UInt16(2))
         
-        //instrument
-        writeByte(number: 0)
+        //instrument type
+        writeByte(number: UInt8(spectrum.spectrumHeader.instrumentType))
         
         //bulb
         writeLong(number: UInt32(0))

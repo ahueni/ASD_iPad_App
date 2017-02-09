@@ -69,52 +69,6 @@ class SpectralFileBase {
     // MARK: Reference Spectral Data
     var reference: [Double] = []
     
-    /*
-    // MARK: Classifier Data
-    var yCode: ClassifierType
-    var yModelType: UInt8
-    var sTitle: String
-    var sSubTitle: String
-    var sProductName: String
-    var sVendor: String
-    var sLotNumber: String
-    var sSample: String
-    var sModelName: String
-    var sOperator: String
-    var sDateTime: String
-    var sInstrument: String
-    var sSerialNumber: String
-    var sDisplayMode: String
-    var sComments: String
-    var sUnits: String
-    var sFilename: String
-    var sUserName: String
-    var sReserved1: String
-    var sReserved2: String
-    var sReserved3: String
-    var sReserved4: String
-    var constituentCount: UInt16
-    var actConstituent: ConstituentType
-    
-    // MARK: Dependent Variables
-    var SaveDependentVariables: Bool
-    var DependentVariableCount: UInt16
-    var DependentVariableLabels: String
-    var DependentVariables: Float
-    
-    // MARK: Calibration Header
-    var calibrationCount: UInt8
-    var calibrationBuffer: CalibrationBuffer
-    
-    // MARK: Base Calibration Data
-    var baseCalibrationData: [Double]
-    
-    // MARK: Lamp Calibration Data
-    var lampCalibrationData: [Double]
-    
-    // MARK: Fiber Optic Data
-    var fiberOpticData: [Double]
-    */
     
     func getChartData() -> LineChartData {
         var values: [ChartDataEntry] = []
@@ -127,18 +81,55 @@ class SpectralFileBase {
     }
 }
 
-class SpectralFileV7 : SpectralFileBase {
-    
-    /*
-    // MARK: Spectral File Header V7
-    var WhenInMs: String // 12 bytes
-    var reservedBytes: UInt8 = 20
-    */
-    
-}
-
-
 class SpectralFileV8 : SpectralFileBase {
+    
+     // MARK: Classifier Data
+     var yCode: ClassifierType = .Camoclassify
+     var yModelType: UInt8 = 0
+     var sTitle: String = ""
+     var sSubTitle: String = ""
+     var sProductName: String = ""
+     var sVendor: String = ""
+     var sLotNumber: String = ""
+     var sSample: String = ""
+     var sModelName: String = ""
+     var sOperator: String = ""
+     var sDateTime: String = ""
+     var sInstrument: String = ""
+     var sSerialNumber: String = ""
+     var sDisplayMode: String = ""
+     var sComments: String = ""
+     var sUnits: String = ""
+     var sFilename: String = ""
+     var sUserName: String = ""
+     var sReserved1: String = ""
+     var sReserved2: String = ""
+     var sReserved3: String = ""
+     var sReserved4: String = ""
+     var constituentCount: UInt16 = 0
+     var actConstituent: ConstituentType? = nil
+     
+     // MARK: Dependent Variables
+     var SaveDependentVariables: Bool = false
+     var DependentVariableCount: UInt16 = 0
+     var DependentVariableLabels: String = ""
+     var DependentVariables: Float = 0
+     
+     // MARK: Calibration Header
+     var calibrationCount: UInt8 = 0
+     var calibrationBuffer: CalibrationBuffer? = nil
+     
+     // MARK: Base Calibration Data
+     var baseCalibrationData: [Double] = []
+     
+     // MARK: Lamp Calibration Data
+     var lampCalibrationData: [Double] = []
+     
+     // MARK: Fiber Optic Data
+     var fiberOpticData: [Double] = []
+    
+
+    
     
     /*
     // MARK: Spectral File Header V8

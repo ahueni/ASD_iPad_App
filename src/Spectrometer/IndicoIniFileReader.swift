@@ -8,9 +8,8 @@
 
 import Foundation
 
-class SpectralFileParser: BaseSpectrumParser {
+class IndicoIniFileReader: BaseSpectrumParser {
     
-    let spectralFile = SpectralFileV8()
     
     func parse() throws -> SpectralFileBase {
         

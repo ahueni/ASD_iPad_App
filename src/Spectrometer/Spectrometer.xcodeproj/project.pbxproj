@@ -64,7 +64,7 @@
 		2EB3629C1DF1D91C00E74E39 /* GpsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3629B1DF1D91C00E74E39 /* GpsData.swift */; };
 		2EB3629E1DF1DABF00E74E39 /* ConstituentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3629D1DF1DABF00E74E39 /* ConstituentType.swift */; };
 		2EB362A01DF1DF0A00E74E39 /* CalibrationBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3629F1DF1DF0A00E74E39 /* CalibrationBuffer.swift */; };
-		2EB362A51DF23DDB00E74E39 /* SpectralFileParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB362A41DF23DDB00E74E39 /* SpectralFileParser.swift */; };
+		2EB362A51DF23DDB00E74E39 /* IndicoIniFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB362A41DF23DDB00E74E39 /* IndicoIniFileReader.swift */; };
 		2EB822E71DE06C0300DF732C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB822E61DE06C0300DF732C /* Extensions.swift */; };
 		2EB822E91DE06F0900DF732C /* VersionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB822E81DE06F0900DF732C /* VersionParser.swift */; };
 		2EB822EC1DE0811D00DF732C /* FullRangeInterpolatedSpectrumParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB822EB1DE0811D00DF732C /* FullRangeInterpolatedSpectrumParser.swift */; };
@@ -88,6 +88,7 @@
 		E108F2191E3B960D0097B7EE /* StartTestSeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E108F2181E3B960D0097B7EE /* StartTestSeriesViewController.swift */; };
 		E108F21B1E3F367C0097B7EE /* WhiteRefrenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E108F21A1E3F367C0097B7EE /* WhiteRefrenceViewController.swift */; };
 		E1129D331E2FBDC700331A02 /* FinishTestSeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1129D321E2FBDC700331A02 /* FinishTestSeriesViewController.swift */; };
+		E12F66D41E4C54DB00B71AA0 /* IndicoAsdFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F66D31E4C54DB00B71AA0 /* IndicoAsdFileReader.swift */; };
 		E14EC22E1E2E1889006EBD2F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */; };
 		E165E1F71E34B5A20077A5EB /* FastMeasurmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E165E1F61E34B5A20077A5EB /* FastMeasurmentViewController.swift */; };
 		E1807E5E1E2E576400BB205F /* ExceptionErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E5D1E2E576400BB205F /* ExceptionErrors.swift */; };
@@ -106,7 +107,7 @@
 		E1A40C251E40797E0019F467 /* FileBrowserContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A40C241E40797E0019F467 /* FileBrowserContainerViewController.swift */; };
 		E1A40C2B1E409C8E0019F467 /* DirectoryBrowserContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A40C2A1E409C8E0019F467 /* DirectoryBrowserContainerViewController.swift */; };
 		E1A40C2E1E40A2D60019F467 /* DirectoryBrowserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A40C2D1E40A2D60019F467 /* DirectoryBrowserTableViewController.swift */; };
-		E1AC382B1E266ACD004CCBEF /* FileWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC382A1E266ACD004CCBEF /* FileWriter.swift */; };
+		E1AC382B1E266ACD004CCBEF /* IndicoWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC382A1E266ACD004CCBEF /* IndicoWriter.swift */; };
 		E1C936B51E41D61800EF51BB /* BaseValidationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C936B41E41D61800EF51BB /* BaseValidationControl.swift */; };
 		E1C936B71E41D64A00EF51BB /* NumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C936B61E41D64A00EF51BB /* NumberTextField.swift */; };
 		E1C936B91E41D8B700EF51BB /* PortTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C936B81E41D8B700EF51BB /* PortTextField.swift */; };
@@ -192,7 +193,7 @@
 		2EB3629B1DF1D91C00E74E39 /* GpsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GpsData.swift; sourceTree = "<group>"; };
 		2EB3629D1DF1DABF00E74E39 /* ConstituentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstituentType.swift; sourceTree = "<group>"; };
 		2EB3629F1DF1DF0A00E74E39 /* CalibrationBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalibrationBuffer.swift; sourceTree = "<group>"; };
-		2EB362A41DF23DDB00E74E39 /* SpectralFileParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectralFileParser.swift; sourceTree = "<group>"; };
+		2EB362A41DF23DDB00E74E39 /* IndicoIniFileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicoIniFileReader.swift; sourceTree = "<group>"; };
 		2EB822E61DE06C0300DF732C /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		2EB822E81DE06F0900DF732C /* VersionParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionParser.swift; sourceTree = "<group>"; };
 		2EB822EB1DE0811D00DF732C /* FullRangeInterpolatedSpectrumParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullRangeInterpolatedSpectrumParser.swift; sourceTree = "<group>"; };
@@ -216,6 +217,7 @@
 		E108F2181E3B960D0097B7EE /* StartTestSeriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartTestSeriesViewController.swift; sourceTree = "<group>"; };
 		E108F21A1E3F367C0097B7EE /* WhiteRefrenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhiteRefrenceViewController.swift; sourceTree = "<group>"; };
 		E1129D321E2FBDC700331A02 /* FinishTestSeriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishTestSeriesViewController.swift; sourceTree = "<group>"; };
+		E12F66D31E4C54DB00B71AA0 /* IndicoAsdFileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicoAsdFileReader.swift; sourceTree = "<group>"; };
 		E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E165E1F61E34B5A20077A5EB /* FastMeasurmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FastMeasurmentViewController.swift; sourceTree = "<group>"; };
 		E1807E5D1E2E576400BB205F /* ExceptionErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExceptionErrors.swift; sourceTree = "<group>"; };
@@ -234,7 +236,7 @@
 		E1A40C241E40797E0019F467 /* FileBrowserContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileBrowserContainerViewController.swift; sourceTree = "<group>"; };
 		E1A40C2A1E409C8E0019F467 /* DirectoryBrowserContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryBrowserContainerViewController.swift; sourceTree = "<group>"; };
 		E1A40C2D1E40A2D60019F467 /* DirectoryBrowserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryBrowserTableViewController.swift; sourceTree = "<group>"; };
-		E1AC382A1E266ACD004CCBEF /* FileWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWriter.swift; sourceTree = "<group>"; };
+		E1AC382A1E266ACD004CCBEF /* IndicoWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicoWriter.swift; sourceTree = "<group>"; };
 		E1C936B41E41D61800EF51BB /* BaseValidationControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseValidationControl.swift; sourceTree = "<group>"; };
 		E1C936B61E41D64A00EF51BB /* NumberTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberTextField.swift; sourceTree = "<group>"; };
 		E1C936B81E41D8B700EF51BB /* PortTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortTextField.swift; sourceTree = "<group>"; };
@@ -398,7 +400,7 @@
 			isa = PBXGroup;
 			children = (
 				2EB3628C1DF0212400E74E39 /* SpectralFile */,
-				2E91F3031DDB77FC003E277F /* Parser */,
+				2E91F3031DDB77FC003E277F /* IO */,
 				2E91F2FB1DDB7402003E277F /* SpectralData */,
 				2E91F2F81DDB6137003E277F /* Helpers */,
 				2E91F2F61DDB5CF7003E277F /* TcpManager.swift */,
@@ -443,13 +445,13 @@
 			name = Headers;
 			sourceTree = "<group>";
 		};
-		2E91F3031DDB77FC003E277F /* Parser */ = {
+		2E91F3031DDB77FC003E277F /* IO */ = {
 			isa = PBXGroup;
 			children = (
-				E1AC38291E2665F5004CCBEF /* IndiegoParser */,
-				E1AC38251E2665E6004CCBEF /* SpectrumParser */,
+				E1AC38291E2665F5004CCBEF /* FileWriter */,
+				E1AC38251E2665E6004CCBEF /* Parser */,
 			);
-			name = Parser;
+			name = IO;
 			sourceTree = "<group>";
 		};
 		2E91F3061DDB78AD003E277F /* Base */ = {
@@ -605,6 +607,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E12F66D11E4C544B00B71AA0 /* SpectrometerParser */ = {
+			isa = PBXGroup;
+			children = (
+				2EB822E81DE06F0900DF732C /* VersionParser.swift */,
+				2E0324261E05600B00C52D58 /* ParameterParser.swift */,
+				2EB822EB1DE0811D00DF732C /* FullRangeInterpolatedSpectrumParser.swift */,
+			);
+			name = SpectrometerParser;
+			sourceTree = "<group>";
+		};
+		E12F66D21E4C545B00B71AA0 /* FileParser */ = {
+			isa = PBXGroup;
+			children = (
+				2EB362A41DF23DDB00E74E39 /* IndicoIniFileReader.swift */,
+				E12F66D31E4C54DB00B71AA0 /* IndicoAsdFileReader.swift */,
+			);
+			name = FileParser;
+			sourceTree = "<group>";
+		};
 		E14EC2291E2E187B006EBD2F /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -661,25 +682,23 @@
 			name = FileBrowser;
 			sourceTree = "<group>";
 		};
-		E1AC38251E2665E6004CCBEF /* SpectrumParser */ = {
+		E1AC38251E2665E6004CCBEF /* Parser */ = {
 			isa = PBXGroup;
 			children = (
+				E12F66D21E4C545B00B71AA0 /* FileParser */,
+				E12F66D11E4C544B00B71AA0 /* SpectrometerParser */,
 				2EB822EA1DE080A400DF732C /* Base */,
-				2EB822E81DE06F0900DF732C /* VersionParser.swift */,
-				2EB822EB1DE0811D00DF732C /* FullRangeInterpolatedSpectrumParser.swift */,
-				2EB362A41DF23DDB00E74E39 /* SpectralFileParser.swift */,
-				2E0324261E05600B00C52D58 /* ParameterParser.swift */,
 			);
-			name = SpectrumParser;
+			name = Parser;
 			sourceTree = "<group>";
 		};
-		E1AC38291E2665F5004CCBEF /* IndiegoParser */ = {
+		E1AC38291E2665F5004CCBEF /* FileWriter */ = {
 			isa = PBXGroup;
 			children = (
-				E1AC382A1E266ACD004CCBEF /* FileWriter.swift */,
+				E1AC382A1E266ACD004CCBEF /* IndicoWriter.swift */,
 				E189709F1E2914B300722E9C /* BaseWriter.swift */,
 			);
-			name = IndiegoParser;
+			name = FileWriter;
 			sourceTree = "<group>";
 		};
 		E1C936B31E41D60000EF51BB /* Validation */ = {
@@ -950,6 +969,7 @@
 				2E91F3081DDB78D8003E277F /* SpectrumDataBase.swift in Sources */,
 				2EB362941DF1BCF900E74E39 /* SpectralFileEnums.swift in Sources */,
 				E1A40C2E1E40A2D60019F467 /* DirectoryBrowserTableViewController.swift in Sources */,
+				E12F66D41E4C54DB00B71AA0 /* IndicoAsdFileReader.swift in Sources */,
 				2E91F2F71DDB5CF7003E277F /* TcpManager.swift in Sources */,
 				E1A40C231E4077660019F467 /* FileBrowserTableViewController.swift in Sources */,
 				2E91F2EB1DDB5B9F003E277F /* Pipe.swift in Sources */,
@@ -993,7 +1013,7 @@
 				2E91F2EC1DDB5B9F003E277F /* Select.swift in Sources */,
 				2E91F3021DDB7472003E277F /* VnirHeader.swift in Sources */,
 				E186B9481E364DDF00FE43F3 /* CommandManager.swift in Sources */,
-				E1AC382B1E266ACD004CCBEF /* FileWriter.swift in Sources */,
+				E1AC382B1E266ACD004CCBEF /* IndicoWriter.swift in Sources */,
 				2E91F2E91DDB5B9F003E277F /* FDSet.swift in Sources */,
 				2E91F3131DDB842A003E277F /* InstrumentControl.swift in Sources */,
 				E1807E641E2F619B00BB205F /* StartTestSeriesTableViewController.swift in Sources */,
@@ -1002,7 +1022,7 @@
 				2E8F767D1E4754ED00D54ABF /* UILightGrayButton.swift in Sources */,
 				E1129D331E2FBDC700331A02 /* FinishTestSeriesViewController.swift in Sources */,
 				2E0324271E05600B00C52D58 /* ParameterParser.swift in Sources */,
-				2EB362A51DF23DDB00E74E39 /* SpectralFileParser.swift in Sources */,
+				2EB362A51DF23DDB00E74E39 /* IndicoIniFileReader.swift in Sources */,
 				2E91F2F01DDB5B9F003E277F /* TCPSocket.swift in Sources */,
 				E1F052AD1E49C3AD0084CFBC /* SpectrometerConfigTableViewCell.swift in Sources */,
 				E1A40C001E3F9B800019F467 /* BaseFileBrowserTableViewController.swift in Sources */,
