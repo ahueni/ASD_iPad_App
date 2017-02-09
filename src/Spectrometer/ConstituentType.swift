@@ -8,20 +8,20 @@
 
 import Foundation
 
-struct ConstituentType {
+class ConstituentType {
     
-    var Name: String
-    var PassFail: String
-    var mDistance: Double
-    var mDistanceLimit: Double
-    var Concentration: Double
-    var ConcentrationLimit: Double
-    var fRatio: Double
-    var Residual: Double
-    var ResidualLimit: Double
-    var Scores: Double
-    var ScoresLimit: Double
-    var ModelType: Int32
+    var Name: String = ""
+    var PassFail: String = ""
+    var mDistance: Double = 0
+    var mDistanceLimit: Double = 0
+    var Concentration: Double = 0
+    var ConcentrationLimit: Double = 0
+    var fRatio: Double = 0
+    var Residual: Double = 0
+    var ResidualLimit: Double = 0
+    var Scores: Double = 0
+    var ScoresLimit: Double = 0
+    var ModelType: Int32 = 0
     
     var reservedBytes: UInt8 = 16
     

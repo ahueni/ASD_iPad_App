@@ -117,20 +117,15 @@ class IndicoIniFileReader: BaseSpectrumParser {
             throw ParsingError(message: "Unbekanntes Datenformat der Referenzdaten.")
         }
         
-        // TODO: Parsing rest of file -> is it necessary for our project?
-        
         return spectralFile
-        
     }
     
     private func parseDoubleSpectralData(channelCount: Int) -> [Double] {
         
         var spectrum : [Double] = []
-        for i in 0...channelCount-1 {
-            let wavelength = i + Int(spectralFile.startingWaveLength)
+        for _ in 0...channelCount-1 {
             let value = getNextDouble()
             spectrum.append(value)
-            print(wavelength.description + " / " + value.description)
         }
         return spectrum
     }
@@ -138,11 +133,9 @@ class IndicoIniFileReader: BaseSpectrumParser {
     private func parseFloatSpectralData(channelCount: Int) -> [Double] {
         
         var spectrum : [Double] = []
-        for i in 0...channelCount-1 {
-            let wavelength = i + Int(spectralFile.startingWaveLength)
+        for _ in 0...channelCount-1 {
             let value = getNextFloat()
             spectrum.append(Double(value))
-            print(wavelength.description + " / " + value.description)
         }
         return spectrum
         
@@ -151,11 +144,9 @@ class IndicoIniFileReader: BaseSpectrumParser {
     private func parseIntegerSpectralData(channelCount: Int) -> [Double] {
         
         var spectrum : [Double] = []
-        for i in 0...channelCount-1 {
-            let wavelength = i + Int(spectralFile.startingWaveLength)
+        for _ in 0...channelCount-1 {
             let value = getNextInt()
             spectrum.append(Double(value))
-            print(wavelength.description + " / " + value.description)
         }
         return spectrum
         

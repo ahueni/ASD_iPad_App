@@ -69,7 +69,6 @@ class SpectralFileBase {
     // MARK: Reference Spectral Data
     var reference: [Double] = []
     
-    
     func getChartData() -> LineChartData {
         var values: [ChartDataEntry] = []
         for i in 0...self.spectrum.count-1 {
@@ -82,7 +81,14 @@ class SpectralFileBase {
 }
 
 class SpectralFileV8 : SpectralFileBase {
-    
+
+     /*
+     // MARK: Spectral File Header V8 -> special only for V8 files
+     var smartDetectorType: Float // 27bytes ?!?
+     var reservedBytes: UInt8 = 5
+     */
+ 
+ 
      // MARK: Classifier Data
      var yCode: ClassifierType = .Camoclassify
      var yModelType: UInt8 = 0
@@ -107,8 +113,9 @@ class SpectralFileV8 : SpectralFileBase {
      var sReserved3: String = ""
      var sReserved4: String = ""
      var constituentCount: UInt16 = 0
-     var actConstituent: ConstituentType? = nil
-     
+    
+     var actConstituent: ConstituentType = ConstituentType()
+    
      // MARK: Dependent Variables
      var SaveDependentVariables: Bool = false
      var DependentVariableCount: UInt16 = 0
@@ -117,7 +124,7 @@ class SpectralFileV8 : SpectralFileBase {
      
      // MARK: Calibration Header
      var calibrationCount: UInt8 = 0
-     var calibrationBuffer: CalibrationBuffer? = nil
+     var calibrationBuffer: CalibrationBuffer = CalibrationBuffer()
      
      // MARK: Base Calibration Data
      var baseCalibrationData: [Double] = []
@@ -129,12 +136,7 @@ class SpectralFileV8 : SpectralFileBase {
      var fiberOpticData: [Double] = []
     
 
-    
-    
     /*
-    // MARK: Spectral File Header V8
-    var smartDetectorType: Float // 27bytes ?!?
-    var reservedBytes: UInt8 = 5
     
     // MARK: Audit Log
     var auditCount: UInt32

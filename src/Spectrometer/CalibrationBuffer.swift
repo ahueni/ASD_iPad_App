@@ -8,13 +8,13 @@
 
 import Foundation
 
-struct CalibrationBuffer {
+class CalibrationBuffer {
     
-    var calibrationType: CalibrationType
-    var fileName: String // 20 bytes
-    var integrationTime: UInt32
-    var swir1Gain: UInt16
-    var swir2Gain: UInt16
+    var calibrationType: CalibrationType = .UnknownFile
+    var fileName: String = "" // 20 bytes
+    var integrationTime: UInt32 = 0
+    var swir1Gain: UInt16 = 0
+    var swir2Gain: UInt16 = 0
     
 }
 
@@ -24,5 +24,6 @@ enum CalibrationType: UInt8 {
     case BaseFile = 1
     case LampFile = 2
     case FiberOpticFile = 3
+    case UnknownFile = 9
     
 }
