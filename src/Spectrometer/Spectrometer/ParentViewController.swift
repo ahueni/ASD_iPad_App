@@ -16,6 +16,8 @@ class ParentViewController : UIPageViewController {
     var whiteRefrenceBefore : FullRangeInterpolatedSpectrum?
     var whiteRefrenceAfter : FullRangeInterpolatedSpectrum?
     
+    var settings : RawSettings?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

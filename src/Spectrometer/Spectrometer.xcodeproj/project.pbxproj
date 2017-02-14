@@ -89,6 +89,9 @@
 		E108F21B1E3F367C0097B7EE /* ReflectanceWhiteRefrenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E108F21A1E3F367C0097B7EE /* ReflectanceWhiteRefrenceViewController.swift */; };
 		E1129D331E2FBDC700331A02 /* FinishTestSeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1129D321E2FBDC700331A02 /* FinishTestSeriesViewController.swift */; };
 		E118A4CA1E51C77600F13053 /* RadianceWhiteRefrenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E118A4C91E51C77600F13053 /* RadianceWhiteRefrenceViewController.swift */; };
+		E12547D71E5382050004B2A8 /* ReflectanceSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12547D61E5382050004B2A8 /* ReflectanceSettings.swift */; };
+		E12547D91E5382750004B2A8 /* RawSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12547D81E5382750004B2A8 /* RawSettings.swift */; };
+		E12547DB1E5382C40004B2A8 /* RadianceSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12547DA1E5382C40004B2A8 /* RadianceSettings.swift */; };
 		E12F66D41E4C54DB00B71AA0 /* IndicoAsdFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F66D31E4C54DB00B71AA0 /* IndicoAsdFileReader.swift */; };
 		E13176631E53129B002F0958 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13176621E53129B002F0958 /* RadioButton.swift */; };
 		E13176671E532179002F0958 /* RadianceSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13176661E532179002F0958 /* RadianceSettingsViewController.swift */; };
@@ -223,6 +226,9 @@
 		E108F21A1E3F367C0097B7EE /* ReflectanceWhiteRefrenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflectanceWhiteRefrenceViewController.swift; sourceTree = "<group>"; };
 		E1129D321E2FBDC700331A02 /* FinishTestSeriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishTestSeriesViewController.swift; sourceTree = "<group>"; };
 		E118A4C91E51C77600F13053 /* RadianceWhiteRefrenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadianceWhiteRefrenceViewController.swift; sourceTree = "<group>"; };
+		E12547D61E5382050004B2A8 /* ReflectanceSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflectanceSettings.swift; sourceTree = "<group>"; };
+		E12547D81E5382750004B2A8 /* RawSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawSettings.swift; sourceTree = "<group>"; };
+		E12547DA1E5382C40004B2A8 /* RadianceSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadianceSettings.swift; sourceTree = "<group>"; };
 		E12F66D31E4C54DB00B71AA0 /* IndicoAsdFileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicoAsdFileReader.swift; sourceTree = "<group>"; };
 		E13176621E53129B002F0958 /* RadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		E13176661E532179002F0958 /* RadianceSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadianceSettingsViewController.swift; sourceTree = "<group>"; };
@@ -410,6 +416,7 @@
 		2E91F2F31DDB5C8B003E277F /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				E12547D51E5381D30004B2A8 /* SettingsModels */,
 				2EB3628C1DF0212400E74E39 /* SpectralFile */,
 				2E91F3031DDB77FC003E277F /* IO */,
 				2E91F2FB1DDB7402003E277F /* SpectralData */,
@@ -617,6 +624,16 @@
 				F91CDAE87D559C5A7FFD5EB6 /* Pods_SpectrometerTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E12547D51E5381D30004B2A8 /* SettingsModels */ = {
+			isa = PBXGroup;
+			children = (
+				E12547D61E5382050004B2A8 /* ReflectanceSettings.swift */,
+				E12547D81E5382750004B2A8 /* RawSettings.swift */,
+				E12547DA1E5382C40004B2A8 /* RadianceSettings.swift */,
+			);
+			name = SettingsModels;
 			sourceTree = "<group>";
 		};
 		E12F66D11E4C544B00B71AA0 /* SpectrometerParser */ = {
@@ -988,12 +1005,14 @@
 				2E30A8501E44A075001236C5 /* DiskFileActivityItem.swift in Sources */,
 				2E91F2E21DDB5B9F003E277F /* TCPClient.swift in Sources */,
 				E14EC22E1E2E1889006EBD2F /* SettingsViewController.swift in Sources */,
+				E12547D91E5382750004B2A8 /* RawSettings.swift in Sources */,
 				2E91F2EF1DDB5B9F003E277F /* SocketOptions.swift in Sources */,
 				2E91F2A81DDB5B76003E277F /* ConnectionViewController.swift in Sources */,
 				E108F21B1E3F367C0097B7EE /* ReflectanceWhiteRefrenceViewController.swift in Sources */,
 				2E91F3081DDB78D8003E277F /* SpectrumDataBase.swift in Sources */,
 				2EB362941DF1BCF900E74E39 /* SpectralFileEnums.swift in Sources */,
 				E1A40C2E1E40A2D60019F467 /* DirectoryBrowserTableViewController.swift in Sources */,
+				E12547D71E5382050004B2A8 /* ReflectanceSettings.swift in Sources */,
 				E12F66D41E4C54DB00B71AA0 /* IndicoAsdFileReader.swift in Sources */,
 				2E91F2F71DDB5CF7003E277F /* TcpManager.swift in Sources */,
 				E1A40C231E4077660019F467 /* FileBrowserTableViewController.swift in Sources */,
@@ -1032,6 +1051,7 @@
 				2E91F2E11DDB5B9F003E277F /* SynchronousUDPServer.swift in Sources */,
 				2EB362A01DF1DF0A00E74E39 /* CalibrationBuffer.swift in Sources */,
 				2E91F3151DDB8440003E277F /* Optimize.swift in Sources */,
+				E12547DB1E5382C40004B2A8 /* RadianceSettings.swift in Sources */,
 				2E77537D1E4329530081249C /* MeasurmentTableViewCell.swift in Sources */,
 				2E91F2E41DDB5B9F003E277F /* Address+C.swift in Sources */,
 				E18970A01E2914B300722E9C /* BaseWriter.swift in Sources */,
