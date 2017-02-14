@@ -82,6 +82,7 @@
 		2EB823251DE0CC2900DF732C /* AquireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB823241DE0CC2900DF732C /* AquireViewController.swift */; };
 		2EB823281DE0D40F00DF732C /* SpectrometerTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB823271DE0D40F00DF732C /* SpectrometerTabBar.swift */; };
 		2EB8233C1DE113DA00DF732C /* CustomCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB8233B1DE113DA00DF732C /* CustomCharts.swift */; };
+		2ECC63441E5337B600C3AACB /* ReflectanceSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECC63431E5337B600C3AACB /* ReflectanceSettingsViewController.swift */; };
 		487AEF15B040FDD03F64BD2B /* Pods_Spectrometer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F75F11DB25150E0C51143 /* Pods_Spectrometer.framework */; };
 		58EF26FA8A188D74341FE34B /* Pods_SpectrometerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F91CDAE87D559C5A7FFD5EB6 /* Pods_SpectrometerTests.framework */; };
 		E108F2141E3B8B670097B7EE /* BaseMeasurementModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E108F2131E3B8B670097B7EE /* BaseMeasurementModal.swift */; };
@@ -215,6 +216,7 @@
 		2EB823241DE0CC2900DF732C /* AquireViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AquireViewController.swift; sourceTree = "<group>"; };
 		2EB823271DE0D40F00DF732C /* SpectrometerTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrometerTabBar.swift; sourceTree = "<group>"; };
 		2EB8233B1DE113DA00DF732C /* CustomCharts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCharts.swift; sourceTree = "<group>"; };
+		2ECC63431E5337B600C3AACB /* ReflectanceSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflectanceSettingsViewController.swift; sourceTree = "<group>"; };
 		40DCB724B196BBCD581A0791 /* Pods-SpectrometerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpectrometerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpectrometerTests/Pods-SpectrometerTests.release.xcconfig"; sourceTree = "<group>"; };
 		4D2A88B32C5C94ADBC30F188 /* Pods-Spectrometer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spectrometer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Spectrometer/Pods-Spectrometer.release.xcconfig"; sourceTree = "<group>"; };
 		E108F2131E3B8B670097B7EE /* BaseMeasurementModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMeasurementModal.swift; sourceTree = "<group>"; };
@@ -664,6 +666,7 @@
 				E108F21A1E3F367C0097B7EE /* ReflectanceWhiteRefrenceViewController.swift */,
 				E118A4C91E51C77600F13053 /* RadianceWhiteRefrenceViewController.swift */,
 				E13176661E532179002F0958 /* RadianceSettingsViewController.swift */,
+				2ECC63431E5337B600C3AACB /* ReflectanceSettingsViewController.swift */,
 			);
 			name = Modals;
 			sourceTree = "<group>";
@@ -1041,6 +1044,7 @@
 				2E91F2E91DDB5B9F003E277F /* FDSet.swift in Sources */,
 				2E91F3131DDB842A003E277F /* InstrumentControl.swift in Sources */,
 				E1807E641E2F619B00BB205F /* StartTestSeriesViewController.swift in Sources */,
+				2ECC63441E5337B600C3AACB /* ReflectanceSettingsViewController.swift in Sources */,
 				2E708A5C1DE714F0008EC78A /* Regex.swift in Sources */,
 				E1807E681E2F7B2F00BB205F /* ParentViewController.swift in Sources */,
 				2E8F767D1E4754ED00D54ABF /* UILightGrayButton.swift in Sources */,
