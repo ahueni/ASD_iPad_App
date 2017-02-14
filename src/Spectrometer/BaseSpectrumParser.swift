@@ -149,31 +149,10 @@ class BaseSpectrumParser {
         return doubleValue
     }
     
-    internal func getNextString(size: Int) -> String {
-        
-        var string = ""
-        var count:Int = 0
-        
-        while count < size {
-            let byteValue:UInt8 = self.data[parseIndex+count]
-            count += 1
-            if (byteValue == 0) { break }
-            
-            let scalar = UnicodeScalar.init(byteValue)
-            let char = Character.init(scalar)
-            string.append(char)
-        }
-        
-        self.parseIndex += size
-        return string
-    }
-    
     internal func getNextString() -> String {
         
         var string = ""
-        
         var byteValue:UInt8 = self.data[parseIndex]
-        
         while byteValue != 0 {
             let scalar = UnicodeScalar.init(byteValue)
             let char = Character.init(scalar)
@@ -185,6 +164,28 @@ class BaseSpectrumParser {
         parseIndex += 1
         
         return string
+    }
+    
+    internal func getNextString(size: Int) -> String {
+        
+        var string = ""
+        var count:Int = 0
+        while count < size {
+            let byteValue:UInt8 = self.data[parseIndex+count]
+            count += 1
+            if (byteValue == 0) { break }
+            let scalar = UnicodeScalar.init(byteValue)
+            let char = Character.init(scalar)
+            string.append(char)
+        }
+        
+        self.parseIndex += size
+        return string
+    }
+    
+    internal func getNextPrefixedString() -> String {
+        let stringLength:UInt16 = getNextUInt16()
+        return getNextString(size: Int(stringLength))
     }
     
     internal func parseDoubleSpectralData(channelCount: Int) -> [Double] {

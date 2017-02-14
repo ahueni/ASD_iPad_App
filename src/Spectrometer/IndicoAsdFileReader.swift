@@ -19,29 +19,53 @@ class IndicoAsdFileReader : IndicoIniFileReader  {
         
         let spectralFileV8 : SpectralFileV8 = try super.parse() as! SpectralFileV8
         
+        spectralFileV8.ReferenceFlag = getNextBoolFrom2Bytes()
+        
+        parseIndex += 8 //spectralFile.ReferenceTime = Date()
+        parseIndex += 8 //spectralFile.SpectrumTime = Date()
+        
+        // take spectralFile comment as prefixedString
+        spectralFileV8.SpectrumDescription = getNextPrefixedString()
+        
+        // parse reference data
+        switch spectralFile.spectrumDataFormat {
+        case .DoubleFormat:
+            spectralFileV8.reference = parseDoubleSpectralData(channelCount: Int(spectralFileV8.channels))
+            break
+        case .FloatFormat:
+            spectralFileV8.reference = parseFloatSpectralData(channelCount: Int(spectralFileV8.channels))
+            break
+        case .IntegerFormat:
+            spectralFileV8.reference = parseIntegerSpectralData(channelCount: Int(spectralFileV8.channels))
+            break
+        default:
+            throw ParsingError(message: "Unbekanntes Datenformat der Referenzdaten.")
+        }
+        
         // MARK: Classifier Data
         spectralFileV8.yCode = ClassifierType(rawValue: getNextByte())!
         spectralFileV8.yModelType = getNextByte()
-        spectralFileV8.sTitle = getNextString()
-        spectralFileV8.sSubTitle = getNextString()
-        spectralFileV8.sProductName = getNextString()
-        spectralFileV8.sVendor = getNextString()
-        spectralFileV8.sLotNumber = getNextString()
-        spectralFileV8.sSample = getNextString()
-        spectralFileV8.sModelName = getNextString()
-        spectralFileV8.sOperator = getNextString()
-        spectralFileV8.sDateTime = getNextString()
-        spectralFileV8.sInstrument = getNextString()
-        spectralFileV8.sSerialNumber = getNextString()
-        spectralFileV8.sDisplayMode = getNextString()
-        spectralFileV8.sComments = getNextString()
-        spectralFileV8.sUnits = getNextString()
-        spectralFileV8.sFilename = getNextString()
-        spectralFileV8.sUserName = getNextString()
-        spectralFileV8.sReserved1 = getNextString()
-        spectralFileV8.sReserved2 = getNextString()
-        spectralFileV8.sReserved3 = getNextString()
-        spectralFileV8.sReserved4 = getNextString()
+        
+        spectralFileV8.sTitle = getNextPrefixedString()
+        spectralFileV8.sSubTitle = getNextPrefixedString()
+        spectralFileV8.sProductName = getNextPrefixedString()
+        spectralFileV8.sVendor = getNextPrefixedString()
+        spectralFileV8.sLotNumber = getNextPrefixedString()
+        spectralFileV8.sSample = getNextPrefixedString()
+        spectralFileV8.sModelName = getNextPrefixedString()
+        spectralFileV8.sOperator = getNextPrefixedString()
+        spectralFileV8.sDateTime = getNextPrefixedString()
+        spectralFileV8.sInstrument = getNextPrefixedString()
+        spectralFileV8.sSerialNumber = getNextPrefixedString()
+        spectralFileV8.sDisplayMode = getNextPrefixedString()
+        spectralFileV8.sComments = getNextPrefixedString()
+        spectralFileV8.sUnits = getNextPrefixedString()
+        spectralFileV8.sFilename = getNextPrefixedString()
+        spectralFileV8.sUserName = getNextPrefixedString()
+        spectralFileV8.sReserved1 = getNextPrefixedString()
+        spectralFileV8.sReserved2 = getNextPrefixedString()
+        spectralFileV8.sReserved3 = getNextPrefixedString()
+        spectralFileV8.sReserved4 = getNextPrefixedString()
         
         spectralFileV8.constituentCount = getNextUInt16()
         
@@ -60,7 +84,6 @@ class IndicoAsdFileReader : IndicoIniFileReader  {
             const.ScoresLimit = getNextDouble()
             const.ModelType = Int32(getNextInt())
             spectralFileV8.actConstituent.append(const)
-            
             // jump over reserved bytes
             parseIndex += 16
         }
@@ -68,12 +91,9 @@ class IndicoAsdFileReader : IndicoIniFileReader  {
         // MARK: Dependent Variables
         spectralFileV8.SaveDependentVariables = getNextBool()
         spectralFileV8.DependentVariableCount = getNextUInt16()
-        spectralFileV8.DependentVariableLabels = getNextString()
+        parseIndex += 1 // random, educated skip
+        spectralFileV8.DependentVariableLabels = getNextPrefixedString()
         spectralFileV8.DependentVariables = getNextFloat()
-        
-        
-        // Correct INDEX
-        parseIndex = 34974
         
         // MARK: Calibration Header
         spectralFileV8.calibrationCount = getNextByte()
@@ -82,15 +102,18 @@ class IndicoAsdFileReader : IndicoIniFileReader  {
             parseIndex += 29
         }
         
-        // MARK: Base Calibration Data
-        spectralFileV8.baseCalibrationData = parseDoubleSpectralData(channelCount: Int(spectralFileV8.channels))
-        
-        
-        // MARK: Lamp Calibration Data
-        spectralFileV8.lampCalibrationData = parseDoubleSpectralData(channelCount: Int(spectralFileV8.channels))
-        
-        // MARK: Fiber Optic Data
-        spectralFileV8.fiberOpticData = parseDoubleSpectralData(channelCount: Int(spectralFileV8.channels))
+        if (spectralFileV8.calibrationCount != 0) {
+            
+            // MARK: Base Calibration Data
+            spectralFileV8.baseCalibrationData = parseDoubleSpectralData(channelCount: Int(spectralFileV8.channels))
+            
+            // MARK: Lamp Calibration Data
+            spectralFileV8.lampCalibrationData = parseDoubleSpectralData(channelCount: Int(spectralFileV8.channels))
+            
+            // MARK: Fiber Optic Data
+            spectralFileV8.fiberOpticData = parseDoubleSpectralData(channelCount: Int(spectralFileV8.channels))
+            
+        }
         
         return spectralFileV8
     }

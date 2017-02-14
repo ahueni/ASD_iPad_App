@@ -60,15 +60,6 @@ class SpectralFileBase {
     // MARK: Spectral Data
     var spectrum: [Double] = [] // size of channels
     
-    // MARK: Reference File Header
-    var ReferenceFlag: Bool = false // why 2bytes?
-    var ReferenceTime: Date = Date() // 8 Bytes
-    var SpectrumTime: Date = Date() // 8 Bytes
-    var SpectrumDescription: String = "" //size ?!?
-    
-    // MARK: Reference Spectral Data
-    var reference: [Double] = []
-    
     func getChartData() -> LineChartData {
         var values: [ChartDataEntry] = []
         for i in 0...self.spectrum.count-1 {
@@ -81,12 +72,22 @@ class SpectralFileBase {
 }
 
 class SpectralFileV8 : SpectralFileBase {
+    
 
      /*
      // MARK: Spectral File Header V8 -> special only for V8 files
      var smartDetectorType: Float // 27bytes ?!?
      var reservedBytes: UInt8 = 5
      */
+    
+    // MARK: Reference File Header
+    var ReferenceFlag: Bool = false // why 2bytes?
+    var ReferenceTime: Date = Date() // 8 Bytes
+    var SpectrumTime: Date = Date() // 8 Bytes
+    var SpectrumDescription: String = "" //size ?!?
+    
+    // MARK: Reference Spectral Data
+    var reference: [Double] = []
  
  
      // MARK: Classifier Data
@@ -124,6 +125,8 @@ class SpectralFileV8 : SpectralFileBase {
      
      // MARK: Calibration Header
      var calibrationCount: UInt8 = 0
+    
+    
      var calibrationBuffer:[CalibrationBuffer] = []
      
      // MARK: Base Calibration Data
@@ -134,15 +137,5 @@ class SpectralFileV8 : SpectralFileBase {
      
      // MARK: Fiber Optic Data
      var fiberOpticData: [Double] = []
-    
-
-    /*
-    
-    // MARK: Audit Log
-    var auditCount: UInt32
-    var auditEvents: [String]
-    
-    // MARK: Signature
-    */
     
 }

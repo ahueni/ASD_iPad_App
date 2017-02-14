@@ -92,32 +92,6 @@ class IndicoIniFileReader: BaseSpectrumParser {
             throw ParsingError(message: "Unbekanntes Datenformat der Spektraldaten.")
         }
         
-        // special case for config reference files
-        // they have a special format without a reference
-        if (spectralFile.fileFormatVersion < 7) {
-            return spectralFile
-        }
-        
-        spectralFile.ReferenceFlag = getNextBoolFrom2Bytes()
-        parseIndex += 8 //spectralFile.ReferenceTime = Date()
-        parseIndex += 8 //spectralFile.SpectrumTime = Date()
-        spectralFile.SpectrumDescription = getNextString()
-        
-        // parse reference data
-        switch spectralFile.spectrumDataFormat {
-        case .DoubleFormat:
-            spectralFile.reference = parseDoubleSpectralData(channelCount: channels)
-            break
-        case .FloatFormat:
-            spectralFile.reference = parseFloatSpectralData(channelCount: channels)
-            break
-        case .IntegerFormat:
-            spectralFile.reference = parseIntegerSpectralData(channelCount: channels)
-            break
-        default:
-            throw ParsingError(message: "Unbekanntes Datenformat der Referenzdaten.")
-        }
-        
         return spectralFile
     }
     
