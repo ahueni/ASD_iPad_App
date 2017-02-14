@@ -17,13 +17,3 @@ class CalibrationBuffer {
     var swir2Gain: UInt16 = 0
     
 }
-
-enum CalibrationType: UInt8 {
-    
-    case AbsoluteReflectanceFile = 0
-    case BaseFile = 1
-    case LampFile = 2
-    case FiberOpticFile = 3
-    case UnknownFile = 9
-    
-}

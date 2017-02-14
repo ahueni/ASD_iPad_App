@@ -99,7 +99,13 @@ class IndicoAsdFileReader : IndicoIniFileReader  {
         spectralFileV8.calibrationCount = getNextByte()
         
         for _ in 0..<spectralFileV8.calibrationCount {
-            parseIndex += 29
+            let calibrationBuffer = CalibrationBuffer()
+            calibrationBuffer.calibrationType = CalibrationType(rawValue: getNextByte())!
+            calibrationBuffer.fileName = getNextString(size: 20)
+            calibrationBuffer.integrationTime = getNextUInt32()
+            calibrationBuffer.swir1Gain = getNextUInt16()
+            calibrationBuffer.swir2Gain = getNextUInt16()
+            spectralFileV8.calibrationBuffer.append(calibrationBuffer)
         }
         
         if (spectralFileV8.calibrationCount != 0) {
