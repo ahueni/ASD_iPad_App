@@ -85,16 +85,18 @@
 		487AEF15B040FDD03F64BD2B /* Pods_Spectrometer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F75F11DB25150E0C51143 /* Pods_Spectrometer.framework */; };
 		58EF26FA8A188D74341FE34B /* Pods_SpectrometerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F91CDAE87D559C5A7FFD5EB6 /* Pods_SpectrometerTests.framework */; };
 		E108F2141E3B8B670097B7EE /* BaseMeasurementModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E108F2131E3B8B670097B7EE /* BaseMeasurementModal.swift */; };
-		E108F2191E3B960D0097B7EE /* StartTestSeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E108F2181E3B960D0097B7EE /* StartTestSeriesViewController.swift */; };
-		E108F21B1E3F367C0097B7EE /* WhiteRefrenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E108F21A1E3F367C0097B7EE /* WhiteRefrenceViewController.swift */; };
+		E108F21B1E3F367C0097B7EE /* ReflectanceWhiteRefrenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E108F21A1E3F367C0097B7EE /* ReflectanceWhiteRefrenceViewController.swift */; };
 		E1129D331E2FBDC700331A02 /* FinishTestSeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1129D321E2FBDC700331A02 /* FinishTestSeriesViewController.swift */; };
+		E118A4CA1E51C77600F13053 /* RadianceWhiteRefrenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E118A4C91E51C77600F13053 /* RadianceWhiteRefrenceViewController.swift */; };
 		E12F66D41E4C54DB00B71AA0 /* IndicoAsdFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F66D31E4C54DB00B71AA0 /* IndicoAsdFileReader.swift */; };
+		E13176631E53129B002F0958 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13176621E53129B002F0958 /* RadioButton.swift */; };
+		E13176671E532179002F0958 /* RadianceSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13176661E532179002F0958 /* RadianceSettingsViewController.swift */; };
 		E14EC22E1E2E1889006EBD2F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */; };
 		E15C06AA1E4C66E300965868 /* spectrum.test in Resources */ = {isa = PBXBuildFile; fileRef = E15C06A81E4C66E300965868 /* spectrum.test */; };
 		E15C06AB1E4C66E300965868 /* whiteRefrence.test in Resources */ = {isa = PBXBuildFile; fileRef = E15C06A91E4C66E300965868 /* whiteRefrence.test */; };
 		E165E1F71E34B5A20077A5EB /* FastMeasurmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E165E1F61E34B5A20077A5EB /* FastMeasurmentViewController.swift */; };
 		E1807E5E1E2E576400BB205F /* ExceptionErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E5D1E2E576400BB205F /* ExceptionErrors.swift */; };
-		E1807E641E2F619B00BB205F /* StartTestSeriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E631E2F619B00BB205F /* StartTestSeriesTableViewController.swift */; };
+		E1807E641E2F619B00BB205F /* StartTestSeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E631E2F619B00BB205F /* StartTestSeriesViewController.swift */; };
 		E1807E681E2F7B2F00BB205F /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E671E2F7B2F00BB205F /* ParentViewController.swift */; };
 		E186B9481E364DDF00FE43F3 /* CommandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E186B9471E364DDF00FE43F3 /* CommandManager.swift */; };
 		E18970A01E2914B300722E9C /* BaseWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E189709F1E2914B300722E9C /* BaseWriter.swift */; };
@@ -216,16 +218,18 @@
 		40DCB724B196BBCD581A0791 /* Pods-SpectrometerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpectrometerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpectrometerTests/Pods-SpectrometerTests.release.xcconfig"; sourceTree = "<group>"; };
 		4D2A88B32C5C94ADBC30F188 /* Pods-Spectrometer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spectrometer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Spectrometer/Pods-Spectrometer.release.xcconfig"; sourceTree = "<group>"; };
 		E108F2131E3B8B670097B7EE /* BaseMeasurementModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMeasurementModal.swift; sourceTree = "<group>"; };
-		E108F2181E3B960D0097B7EE /* StartTestSeriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartTestSeriesViewController.swift; sourceTree = "<group>"; };
-		E108F21A1E3F367C0097B7EE /* WhiteRefrenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhiteRefrenceViewController.swift; sourceTree = "<group>"; };
+		E108F21A1E3F367C0097B7EE /* ReflectanceWhiteRefrenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflectanceWhiteRefrenceViewController.swift; sourceTree = "<group>"; };
 		E1129D321E2FBDC700331A02 /* FinishTestSeriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishTestSeriesViewController.swift; sourceTree = "<group>"; };
+		E118A4C91E51C77600F13053 /* RadianceWhiteRefrenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadianceWhiteRefrenceViewController.swift; sourceTree = "<group>"; };
 		E12F66D31E4C54DB00B71AA0 /* IndicoAsdFileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicoAsdFileReader.swift; sourceTree = "<group>"; };
+		E13176621E53129B002F0958 /* RadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		E13176661E532179002F0958 /* RadianceSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadianceSettingsViewController.swift; sourceTree = "<group>"; };
 		E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E15C06A81E4C66E300965868 /* spectrum.test */ = {isa = PBXFileReference; lastKnownFileType = file; path = spectrum.test; sourceTree = "<group>"; };
 		E15C06A91E4C66E300965868 /* whiteRefrence.test */ = {isa = PBXFileReference; lastKnownFileType = file; path = whiteRefrence.test; sourceTree = "<group>"; };
 		E165E1F61E34B5A20077A5EB /* FastMeasurmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FastMeasurmentViewController.swift; sourceTree = "<group>"; };
 		E1807E5D1E2E576400BB205F /* ExceptionErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExceptionErrors.swift; sourceTree = "<group>"; };
-		E1807E631E2F619B00BB205F /* StartTestSeriesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartTestSeriesTableViewController.swift; sourceTree = "<group>"; };
+		E1807E631E2F619B00BB205F /* StartTestSeriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartTestSeriesViewController.swift; sourceTree = "<group>"; };
 		E1807E671E2F7B2F00BB205F /* ParentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
 		E186B9471E364DDF00FE43F3 /* CommandManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandManager.swift; sourceTree = "<group>"; };
 		E189709F1E2914B300722E9C /* BaseWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWriter.swift; sourceTree = "<group>"; };
@@ -599,6 +603,7 @@
 				2E708A5B1DE714F0008EC78A /* Regex.swift */,
 				2E8F76701E45F63F00D54ABF /* LoadingButton.swift */,
 				2E8F76721E460CB800D54ABF /* MeasurementProgressBar.swift */,
+				E13176621E53129B002F0958 /* RadioButton.swift */,
 			);
 			name = ViewHelpers;
 			sourceTree = "<group>";
@@ -651,13 +656,14 @@
 		E1807E621E2F617900BB205F /* Modals */ = {
 			isa = PBXGroup;
 			children = (
-				E1807E631E2F619B00BB205F /* StartTestSeriesTableViewController.swift */,
+				E1807E631E2F619B00BB205F /* StartTestSeriesViewController.swift */,
 				E1807E671E2F7B2F00BB205F /* ParentViewController.swift */,
 				E1129D321E2FBDC700331A02 /* FinishTestSeriesViewController.swift */,
 				E165E1F61E34B5A20077A5EB /* FastMeasurmentViewController.swift */,
 				E108F2131E3B8B670097B7EE /* BaseMeasurementModal.swift */,
-				E108F2181E3B960D0097B7EE /* StartTestSeriesViewController.swift */,
-				E108F21A1E3F367C0097B7EE /* WhiteRefrenceViewController.swift */,
+				E108F21A1E3F367C0097B7EE /* ReflectanceWhiteRefrenceViewController.swift */,
+				E118A4C91E51C77600F13053 /* RadianceWhiteRefrenceViewController.swift */,
+				E13176661E532179002F0958 /* RadianceSettingsViewController.swift */,
 			);
 			name = Modals;
 			sourceTree = "<group>";
@@ -981,7 +987,7 @@
 				E14EC22E1E2E1889006EBD2F /* SettingsViewController.swift in Sources */,
 				2E91F2EF1DDB5B9F003E277F /* SocketOptions.swift in Sources */,
 				2E91F2A81DDB5B76003E277F /* ConnectionViewController.swift in Sources */,
-				E108F21B1E3F367C0097B7EE /* WhiteRefrenceViewController.swift in Sources */,
+				E108F21B1E3F367C0097B7EE /* ReflectanceWhiteRefrenceViewController.swift in Sources */,
 				2E91F3081DDB78D8003E277F /* SpectrumDataBase.swift in Sources */,
 				2EB362941DF1BCF900E74E39 /* SpectralFileEnums.swift in Sources */,
 				E1A40C2E1E40A2D60019F467 /* DirectoryBrowserTableViewController.swift in Sources */,
@@ -1002,12 +1008,12 @@
 				2EB822E71DE06C0300DF732C /* Extensions.swift in Sources */,
 				E1C936BC1E42165F00EF51BB /* IPNumberTextField.swift in Sources */,
 				E1C936BE1E42177500EF51BB /* BaseTextField.swift in Sources */,
+				E13176671E532179002F0958 /* RadianceSettingsViewController.swift in Sources */,
 				E108F2141E3B8B670097B7EE /* BaseMeasurementModal.swift in Sources */,
 				2E91F2FA1DDB6161003E277F /* Command.swift in Sources */,
 				2E91F2E81DDB5B9F003E277F /* Error.swift in Sources */,
 				2E8F76711E45F63F00D54ABF /* LoadingButton.swift in Sources */,
 				2EB8233C1DE113DA00DF732C /* CustomCharts.swift in Sources */,
-				E108F2191E3B960D0097B7EE /* StartTestSeriesViewController.swift in Sources */,
 				2E91F3051DDB7827003E277F /* BaseSpectrumParser.swift in Sources */,
 				2E8F76781E4754B900D54ABF /* UIBlueButton.swift in Sources */,
 				2E91F2E31DDB5B9F003E277F /* UDPClient.swift in Sources */,
@@ -1018,6 +1024,7 @@
 				E1C936C71E42214A00EF51BB /* TextRequiredButton.swift in Sources */,
 				2EB823091DE0AD1900DF732C /* AddEditConnectionViewController.swift in Sources */,
 				2EB822E91DE06F0900DF732C /* VersionParser.swift in Sources */,
+				E118A4CA1E51C77600F13053 /* RadianceWhiteRefrenceViewController.swift in Sources */,
 				2E91F2E51DDB5B9F003E277F /* Address.swift in Sources */,
 				2E91F2E11DDB5B9F003E277F /* SynchronousUDPServer.swift in Sources */,
 				2EB362A01DF1DF0A00E74E39 /* CalibrationBuffer.swift in Sources */,
@@ -1030,9 +1037,10 @@
 				2E91F3021DDB7472003E277F /* VnirHeader.swift in Sources */,
 				E186B9481E364DDF00FE43F3 /* CommandManager.swift in Sources */,
 				E1AC382B1E266ACD004CCBEF /* IndicoWriter.swift in Sources */,
+				E13176631E53129B002F0958 /* RadioButton.swift in Sources */,
 				2E91F2E91DDB5B9F003E277F /* FDSet.swift in Sources */,
 				2E91F3131DDB842A003E277F /* InstrumentControl.swift in Sources */,
-				E1807E641E2F619B00BB205F /* StartTestSeriesTableViewController.swift in Sources */,
+				E1807E641E2F619B00BB205F /* StartTestSeriesViewController.swift in Sources */,
 				2E708A5C1DE714F0008EC78A /* Regex.swift in Sources */,
 				E1807E681E2F7B2F00BB205F /* ParentViewController.swift in Sources */,
 				2E8F767D1E4754ED00D54ABF /* UILightGrayButton.swift in Sources */,

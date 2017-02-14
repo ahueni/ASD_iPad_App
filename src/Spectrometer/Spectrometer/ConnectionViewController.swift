@@ -19,7 +19,6 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBOutlet var deviceTableView: UITableView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: .reloadSpectrometerConfig, object: nil)

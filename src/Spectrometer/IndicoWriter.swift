@@ -15,7 +15,7 @@ class IndicoWriter : BaseWriter {
         // ------ Start Header ------
         
         //FileVersion
-        writeString(text: "as6")
+        writeString(text: "as7")
         
         //comments
         for _ in 1...157{
@@ -31,7 +31,7 @@ class IndicoWriter : BaseWriter {
         writeVersion(number: 6,decimalNumber: 0)
         
         //FileVersion
-        writeVersion(number: 8,decimalNumber: 0)
+        writeVersion(number: 7,decimalNumber: 0)
         
         //itTime - not used after V2.00
         writeByte(number: 0)
@@ -45,6 +45,9 @@ class IndicoWriter : BaseWriter {
         
         //dataType
         // which type should we use?
+        // DN : 0
+        // Reflectance : 1
+        // Radiance : 2
         writeByte(number: 0)
         
         //refTime
@@ -96,19 +99,21 @@ class IndicoWriter : BaseWriter {
         writeLong(number: UInt32(spectrum.spectrumHeader.vinirHeader.integrationTime))
         
         //fo
-        // ???
+        // Default :0
+        // else view in degrees
         writeInt(number: Int16(10))
         
         //dcc current dark collection value
-        // is this the drift which was used?
-        writeInt(number: Int16(10))
+        // is this the drift which was used? -> 0
+        writeInt(number: Int16(0))
         
         //calibration - calibration series
-        // ???
+        // Number of the numbered calibration file
         writeInt(number: UInt16(10))
         
         //instrument #
-        // ???
+        // Is this the version number of the spectrometer
+        // Serial number
         writeInt(number: UInt16(10))
         
         //ymin
@@ -145,15 +150,15 @@ class IndicoWriter : BaseWriter {
         writeLong(number: UInt32(1))
         
         //dc_count
-        // ???
+        // todo: take from settings
         writeInt(number: UInt16(2))
         
         //ref_count
-        // ???
+        // todo: take from settings
         writeInt(number: UInt16(2))
         
         //sample_count
-        // ???
+        // todo: take from settings
         writeInt(number: UInt16(2))
         
         //instrument type
@@ -177,12 +182,14 @@ class IndicoWriter : BaseWriter {
         writeInt(number: UInt16(spectrum.spectrumHeader.swir2Header.gain))
         
         //splice1_wavelength
-        // todo: get from restore command
-        writeFloat(number: 10)
+        // beetween which vinir and swir 1
+        // ???
+        writeFloat(number: 1000)
         
         //splice2_wavelength
-        // todo: get from restore command
-        writeFloat(number: 10)
+        // beetween which swir1 and swir 2
+        // ???
+        writeFloat(number: 1850)
         
         //SmartDetectorType
         // ???
@@ -292,7 +299,6 @@ class IndicoWriter : BaseWriter {
         writeString(text: "Serial Number of Instrument")
         writeByte(number: UInt8(0)) // End the Description with zero byte
         
-        
         // sDisplayMode
         writeString(text: "Display Mode")
         writeByte(number: UInt8(0)) // End the Description with zero byte
@@ -301,17 +307,13 @@ class IndicoWriter : BaseWriter {
         writeString(text: "Comments for Sample")
         writeByte(number: UInt8(0)) // End the Description with zero byte
         
-        
         // sUnits
         writeString(text: "Units of Concentration")
         writeByte(number: UInt8(0)) // End the Description with zero byte
         
-        
         // sFileName
         writeString(text: "File Name for sample")
         writeByte(number: UInt8(0)) // End the Description with zero byte
-        
-        
         
         // sUserName
         writeString(text: "User Name")
@@ -342,8 +344,10 @@ class IndicoWriter : BaseWriter {
         
         // ------ End Classifier Data ------
         
-        
         // ------ Start Dependent Variable Data ------
+        
+        // SaveDependentVariables
+        writeByte(number: 1)
         
         
         

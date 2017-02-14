@@ -1,45 +1,72 @@
 //
-//  StartTestSeriesViewController.swift
+//  TestSeriesViewController.swift
 //  Spectrometer
 //
-//  Created by Andreas Lüscher on 27.01.17.
+//  Created by Andreas Lüscher on 18.01.17.
 //  Copyright © 2017 YARX GmbH. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class StartTestSeriesViewController : BaseMeasurementModal {
+class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate {
     
-    // this vc is embeded with a container view
-    var containerViewController: StartTestSeriesTableViewController?
-    let containerSegueName = "StartTestSeriesTableViewSegue"
+    @IBOutlet weak var fileNameTextField: UITextField!
+    
+    @IBOutlet weak var filePathButton: UIButton!
+    
+    @IBOutlet weak var CancelButton: UIButton!
+    @IBOutlet weak var StartButton: UIButton!
+    
+    @IBOutlet weak var RawRadioButton: RadioButton!
+    @IBOutlet weak var RadianceRadioButton: RadioButton!
+    @IBOutlet weak var ReflectanceRadioButton: RadioButton!
     
     var selectedPath : URL? = nil
     
     override func viewDidLoad() {
-        containerViewController!.StartButton.addTarget(self, action:#selector(self.nextButtonClicked(_:)), for: .touchUpInside)
-        containerViewController!.CancelButton.addTarget(self, action:#selector(self.CancelButtonClicked(_:)), for: .touchUpInside)
-        containerViewController!.filePathButton.addTarget(self, action:#selector(self.changeFilePathButtonClicked(_:)), for: .touchUpInside)
+        fileNameTextField.delegate = self;
         
-        containerViewController?.MeasurmentCountStepper.value = Double((appDelegate.config?.measurmentCount)!)
-        containerViewController?.MeasurementCountStepperValueChanged((containerViewController?.MeasurmentCountStepper)!)
-        
-        //Initialize tap gesture to hide keyboard when clicked on view
+        RawRadioButton?.alternateButton = [RadianceRadioButton, ReflectanceRadioButton]
+        RadianceRadioButton?.alternateButton = [RawRadioButton, ReflectanceRadioButton]
+        ReflectanceRadioButton?.alternateButton = [RawRadioButton!, RadianceRadioButton]
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         view.addGestureRecognizer(tapGesture)
     }
     
-    func hideKeyboard() {
-        view.endEditing(true)
+    override func awakeFromNib() {
+        self.view.layoutIfNeeded()
+        
+        RawRadioButton.isSelected = true
+        RadianceRadioButton.isSelected = false
+        ReflectanceRadioButton.isSelected = false
     }
     
-    // prepare is called before viewDidLoad => set the embeded vc variable
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == containerSegueName {
-            containerViewController = segue.destination as? StartTestSeriesTableViewController
-            containerViewController!.pageContainer = pageContainer
-        }
+    @IBAction func NameTextFieldEditingChanged(_ sender: Any) {
+        validate()
+    }
+    
+    @IBAction func measurmentCountTextFieldEditingChanged(_ sender: Any) {
+        validate()
+    }
+    
+    func validate()
+    {
+        //StartButton.isEnabled = ValidationManager.sharedInstance.validateSubViews(view: view)
+    }
+    
+    // Hides the keyboard when the return button is clicked
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    
+    
+    
+    
+    func hideKeyboard() {
+        view.endEditing(true)
     }
     
     @IBAction func changeFilePathButtonClicked(_ sender: UIButton) {
@@ -52,13 +79,14 @@ class StartTestSeriesViewController : BaseMeasurementModal {
         // Hook up the select event
         directoryBrowserContainerViewController.didSelectFile = {(file: DiskFile) -> Void in
             self.selectedPath = file.filePath
-            self.containerViewController!.filePathButton.setTitle(file.filePath.lastPathComponent, for: .normal)
+            self.filePathButton.setTitle(file.filePath.lastPathComponent, for: .normal)
         }
         
         present(navigationController, animated: true, completion: nil)
     }
     
     override func goToNextPage(){
+        /*
         var whiteRefrenceSettings :WhiteRefrenceSettings?
         switch containerViewController!.whiteRefrenceSettingsSegmentControl.selectedSegmentIndex {
         case 0:
@@ -79,5 +107,8 @@ class StartTestSeriesViewController : BaseMeasurementModal {
         pageContainer!.measurmentSettings = MeasurmentSettings(measurementCount: Int(measurmentCount), whiteRefrenceSetting: whiteRefrenceSettings!, path: selectedPath!, fileName: (containerViewController?.fileNameTextField.text)!)
         
         pageContainer?.goToNextPage()
+ */
     }
+
+    
 }

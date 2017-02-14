@@ -48,7 +48,7 @@ class ParentViewController : UIPageViewController {
         case .TakeBefore:
             if(whiteRefrenceBefore == nil)
             {
-                showViewControllerWithIdentifier(identifier: "WhiteRefrenceViewController")
+                showViewControllerWithIdentifier(identifier: "RadianceWhiteRefrenceViewController")
             }
             else
             {
