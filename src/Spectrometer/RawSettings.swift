@@ -8,7 +8,18 @@
 
 import Foundation
 
-class RawSettings{
+class RawSettings : NSObject, NSCoding{
+    
+    required init(coder decoder: NSCoder) {
+        self.targetCount = Int(decoder.decodeInt32(forKey: "targetCount"))
+        self.targetDelay = Int(decoder.decodeInt32(forKey: "targetDelay"))
+    }
+    
+    public func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.targetCount, forKey: "targetCount")
+        aCoder.encode(self.targetDelay, forKey: "targetDelay")
+    }
+
     var targetCount : Int
     var targetDelay : Int
     

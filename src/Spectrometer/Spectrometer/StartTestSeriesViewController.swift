@@ -32,7 +32,18 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate 
         ReflectanceRadioButton?.alternateButton = [RawRadioButton!, RadianceRadioButton]
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         view.addGestureRecognizer(tapGesture)
+        
+        loadSettingsIfExist()
     }
+    
+    func loadSettingsIfExist(){
+        let measurmentSettings = UserDefaults.standard.data(forKey: "MeasurmentSettings")
+        if(measurmentSettings != nil){
+            let loadedSettings = NSKeyedUnarchiver.unarchiveObject(with: measurmentSettings!) as! MeasurmentSettings
+            print("settings loaded")
+        }
+    }
+
     
     override func awakeFromNib() {
         self.view.layoutIfNeeded()
@@ -61,10 +72,6 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate 
         return false
     }
     
-    
-    
-    
-    
     func hideKeyboard() {
         view.endEditing(true)
     }
@@ -86,28 +93,27 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate 
     }
     
     override func goToNextPage(){
-        /*
-        var whiteRefrenceSettings :WhiteRefrenceSettings?
-        switch containerViewController!.whiteRefrenceSettingsSegmentControl.selectedSegmentIndex {
-        case 0:
-            whiteRefrenceSettings = WhiteRefrenceSettings.TakeBefore
-        case 1:
-            whiteRefrenceSettings = WhiteRefrenceSettings.TakeBeforeAndAfter
-        case 2:
-            whiteRefrenceSettings = WhiteRefrenceSettings.TakeAfter
-        default:
-            whiteRefrenceSettings = WhiteRefrenceSettings.TakeBeforeAndAfter
+        let measurementMode = RawRadioButton.isSelected ? MeasurmentMode.Raw : ReflectanceRadioButton.isSelected ? MeasurmentMode.Reflectance : RadianceRadioButton.isSelected ? MeasurmentMode.Radiance : nil
+        let measurmentSettings = MeasurmentSettings(fileName: fileNameTextField.text!, path: selectedPath!, measurmentMode: measurementMode!)
+        
+        let settingsData = NSKeyedArchiver.archivedData(withRootObject: measurmentSettings)
+        UserDefaults.standard.set(settingsData, forKey: "MeasurmentSettings")
+        UserDefaults.standard.synchronize()
+        
+        print("settings saved")
+        
+        switch measurementMode! {
+        case MeasurmentMode.Raw:
+            pageContainer!.pages.append(RawPage())
+            break
+        case MeasurmentMode.Radiance:
+            pageContainer!.pages.append(RadiancePage())
+            break
+        case MeasurmentMode.Reflectance:
+            pageContainer!.pages.append(ReflectancePage())
+            break
         }
-        
-        //save measurmentCount to config
-        let measurmentCount = Int32(containerViewController!.MeasurmentCountStepper.value)
-        appDelegate.config?.measurmentCount = measurmentCount
-        appDelegate.saveContext()
-        
-        pageContainer!.measurmentSettings = MeasurmentSettings(measurementCount: Int(measurmentCount), whiteRefrenceSetting: whiteRefrenceSettings!, path: selectedPath!, fileName: (containerViewController?.fileNameTextField.text)!)
-        
         pageContainer?.goToNextPage()
- */
     }
 
     

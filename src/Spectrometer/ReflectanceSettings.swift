@@ -9,6 +9,17 @@
 import Foundation
 
 class ReflectanceSettings : RawSettings{
+    
+    required init(coder decoder: NSCoder) {
+        self.takeWhiteRefrenceBefore = decoder.decodeBool(forKey: "takeWhiteRefrenceBefore")
+        super.init(coder: decoder)
+    }
+    
+    public override func encode(with aCoder: NSCoder) {
+        super.encode(with: aCoder)
+        aCoder.encode(self.takeWhiteRefrenceBefore, forKey: "takeWhiteRefrenceBefore")
+    }
+    
     var takeWhiteRefrenceBefore : Bool
     
     init(targetCount : Int, targetDelay : Int, takeWhiteRefrenceBefore : Bool) {

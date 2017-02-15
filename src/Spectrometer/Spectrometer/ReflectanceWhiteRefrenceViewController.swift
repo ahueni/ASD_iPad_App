@@ -52,6 +52,7 @@ class ReflectanceWhiteRefrenceViewController : BaseMeasurementModal {
     }
     
     func updateValues(whiteReference: FullRangeInterpolatedSpectrum) -> Void {
+        /*
         if(currentWhiteRefrence == nil)
         {
             // switch back to UI Thread for updates
@@ -81,7 +82,7 @@ class ReflectanceWhiteRefrenceViewController : BaseMeasurementModal {
         {
             updateLineChart2(spectrum: whiteReference)
         }
-        
+        */
     }
     
     func updateLineChart2(spectrum : FullRangeInterpolatedSpectrum){

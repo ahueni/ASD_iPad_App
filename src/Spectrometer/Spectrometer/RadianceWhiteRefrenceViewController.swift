@@ -77,9 +77,11 @@ class RadianceWhiteRefrenceViewController : BaseMeasurementModal{
     
     func updateProgressBar(measurmentCount:Int, statusText:String)
     {
+        /*
         DispatchQueue.main.async {
             self.MeasureProgressBar.updateProgressBar(actual: measurmentCount, total: (self.pageContainer!.measurmentSettings?.measurementCount)!, statusText: statusText)
         }
+ */
     }
     
     func updateLineChart2(){

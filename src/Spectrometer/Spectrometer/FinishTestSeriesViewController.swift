@@ -37,7 +37,7 @@ class FinishTestSeriesViewController : BaseMeasurementModal {
                 let relativeFilePath = self.pageContainer!.measurmentSettings!.path.appendingPathComponent(fileName).relativePath
                 let fileWriter = IndicoWriter(path: relativeFilePath)
                 
-                fileWriter.write(spectrum: spectrumData.spectrum, whiteRefrenceSpectrum: spectrumData.whiteRefrence!)
+                //fileWriter.write(spectrum: spectrumData.spectrum, whiteRefrenceSpectrum: spectrumData.whiteRefrence!)
             }
             
             self.finishedSaving()

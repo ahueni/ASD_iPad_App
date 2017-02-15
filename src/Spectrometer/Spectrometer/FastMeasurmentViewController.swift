@@ -19,7 +19,7 @@ class FastMeasurmentViewController : BaseMeasurementModal
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        MeasureProgressBar.initialize(total: self.pageContainer!.measurmentSettings!.measurementCount)
+        //MeasureProgressBar.initialize(total: self.pageContainer!.measurmentSettings!.measurementCount)
     }
     
     @IBAction func StartMeasurmentsButtonClicked(_ sender: UIButton) {
@@ -28,7 +28,7 @@ class FastMeasurmentViewController : BaseMeasurementModal
     
     func startMeasureLoop()
     {
-        
+        /*
         startMeasurementButton.showLoading()
         
         DispatchQueue.global().async {
@@ -45,6 +45,7 @@ class FastMeasurmentViewController : BaseMeasurementModal
             }
             self.finishMeasurement()
         }
+ */
     }
     
     func finishMeasurement() {
@@ -61,9 +62,11 @@ class FastMeasurmentViewController : BaseMeasurementModal
     
     func updateProgressBar(measurmentCount:Int, statusText:String)
     {
+        /*
         DispatchQueue.main.async {
             self.MeasureProgressBar.updateProgressBar(actual: measurmentCount, total: (self.pageContainer!.measurmentSettings?.measurementCount)!, statusText: statusText)
         }
+ */
     }
     
 }

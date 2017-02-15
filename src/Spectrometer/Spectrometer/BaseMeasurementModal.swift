@@ -17,7 +17,7 @@ class BaseMeasurementModal : UIViewController
     @IBOutlet weak var MeasurementLineChart: SpectrumLineChartView!
     
     func goToNextPage() {
-        pageContainer?.goToNextPage()
+        pageContainer!.goToNextPage()
     }
     
     @IBAction func nextButtonClicked(_ sender: UIButton) {

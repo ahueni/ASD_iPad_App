@@ -94,6 +94,7 @@
 		E12547D71E5382050004B2A8 /* ReflectanceSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12547D61E5382050004B2A8 /* ReflectanceSettings.swift */; };
 		E12547D91E5382750004B2A8 /* RawSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12547D81E5382750004B2A8 /* RawSettings.swift */; };
 		E12547DB1E5382C40004B2A8 /* RadianceSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12547DA1E5382C40004B2A8 /* RadianceSettings.swift */; };
+		E12B760B1E54A44A00A4B105 /* MeasurmentSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12B760A1E54A44A00A4B105 /* MeasurmentSettings.swift */; };
 		E12F66D41E4C54DB00B71AA0 /* IndicoAsdFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F66D31E4C54DB00B71AA0 /* IndicoAsdFileReader.swift */; };
 		E13176631E53129B002F0958 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13176621E53129B002F0958 /* RadioButton.swift */; };
 		E13176671E532179002F0958 /* RadianceSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13176661E532179002F0958 /* RadianceSettingsViewController.swift */; };
@@ -233,6 +234,7 @@
 		E12547D61E5382050004B2A8 /* ReflectanceSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflectanceSettings.swift; sourceTree = "<group>"; };
 		E12547D81E5382750004B2A8 /* RawSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawSettings.swift; sourceTree = "<group>"; };
 		E12547DA1E5382C40004B2A8 /* RadianceSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadianceSettings.swift; sourceTree = "<group>"; };
+		E12B760A1E54A44A00A4B105 /* MeasurmentSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurmentSettings.swift; sourceTree = "<group>"; };
 		E12F66D31E4C54DB00B71AA0 /* IndicoAsdFileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicoAsdFileReader.swift; sourceTree = "<group>"; };
 		E13176621E53129B002F0958 /* RadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		E13176661E532179002F0958 /* RadianceSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadianceSettingsViewController.swift; sourceTree = "<group>"; };
@@ -638,6 +640,7 @@
 				E12547D61E5382050004B2A8 /* ReflectanceSettings.swift */,
 				E12547D81E5382750004B2A8 /* RawSettings.swift */,
 				E12547DA1E5382C40004B2A8 /* RadianceSettings.swift */,
+				E12B760A1E54A44A00A4B105 /* MeasurmentSettings.swift */,
 			);
 			name = SettingsModels;
 			sourceTree = "<group>";
@@ -1009,6 +1012,7 @@
 				2ECC63481E543B4500C3AACB /* SettingsBox.swift in Sources */,
 				E18DAE9D1E375D46005F6753 /* MeasurmentMasterTableViewController.swift in Sources */,
 				E1807E5E1E2E576400BB205F /* ExceptionErrors.swift in Sources */,
+				E12B760B1E54A44A00A4B105 /* MeasurmentSettings.swift in Sources */,
 				2E30A8501E44A075001236C5 /* DiskFileActivityItem.swift in Sources */,
 				2E91F2E21DDB5B9F003E277F /* TCPClient.swift in Sources */,
 				E14EC22E1E2E1889006EBD2F /* SettingsViewController.swift in Sources */,

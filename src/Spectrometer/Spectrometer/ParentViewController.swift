@@ -12,121 +12,37 @@ import UIKit
 class ParentViewController : UIPageViewController {
     
     var measurmentSettings : MeasurmentSettings?
-    var spectrumDataList : [SpectrumData] = [SpectrumData]()
-    var whiteRefrenceBefore : FullRangeInterpolatedSpectrum?
-    var whiteRefrenceAfter : FullRangeInterpolatedSpectrum?
+    var spectrumDataList = [FullRangeInterpolatedSpectrum]()
+    var whiteRefrenceBefore = [FullRangeInterpolatedSpectrum]()
+    var whiteRefrenceAfter = [FullRangeInterpolatedSpectrum]()
     
-    var settings : RawSettings?
+    var measurmentMode : MeasurmentMode?
+    
+    var pages = [ModalPage]()
+    
+    var currentIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let firstPage = self.storyboard!.instantiateViewController(withIdentifier: "StartTestSeriesViewController") as! StartTestSeriesViewController
-        firstPage.pageContainer = self
-        self.setViewControllers([firstPage], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
-    }
-    
-    func goToNextPage(spectrum : FullRangeInterpolatedSpectrum, whiteRefrenceSpectrum : FullRangeInterpolatedSpectrum)
-    {
-        spectrumDataList.append(SpectrumData(spectrum: spectrum, whiteRefrence: whiteRefrenceSpectrum))
-        goToNextPage()
-    }
-    
-    func goToNextPage(spectrum : FullRangeInterpolatedSpectrum)
-    {
-        spectrumDataList.append(SpectrumData(spectrum: spectrum))
+        pages.append(ModalPage())
         goToNextPage()
     }
     
     func goToNextPage()
     {
-        if(measurmentFinished()){
-            addWhiteRefrenceToSpectrumArray()
-            showViewControllerWithIdentifier(identifier: "FinishTestSeriesViewController")
-            return
-        }
-        
-        switch(measurmentSettings!.whiteRefrenceSetting){
-        case .TakeBefore:
-            if(whiteRefrenceBefore == nil)
-            {
-                showViewControllerWithIdentifier(identifier: "RadianceWhiteRefrenceViewController")
-            }
-            else
-            {
-                showViewControllerWithIdentifier(identifier: "FastMeasurmentViewController")
-            }
-        case .TakeBeforeAndAfter:
-            if(whiteRefrenceBefore == nil || spectrumDataList.count >= measurmentSettings!.measurementCount)
-            {
-                showViewControllerWithIdentifier(identifier: "WhiteRefrenceViewController")
-            }
-            else
-            {
-                showViewControllerWithIdentifier(identifier: "FastMeasurmentViewController")
-            }
-        case .TakeAfter:
-            if(spectrumDataList.count < measurmentSettings!.measurementCount)
-            {
-                showViewControllerWithIdentifier(identifier: "FastMeasurmentViewController")
-            }
-            else
-            {
-                showViewControllerWithIdentifier(identifier: "WhiteRefrenceViewController")
-            }
-        }
+        showViewControllerWithIdentifier(page: pages[currentIndex])
+        currentIndex += 1
     }
     
-    func addWhiteRefrenceToSpectrumArray()
-    {
-        switch measurmentSettings!.whiteRefrenceSetting {
-        case .TakeBefore:
-            for spetrumData in spectrumDataList
-            {
-                spetrumData.whiteRefrence = whiteRefrenceBefore
-            }
-        case .TakeBeforeAndAfter:
-            for spetrumData in spectrumDataList
-            {
-                //todo: take average of before and after wr
-                spetrumData.whiteRefrence = whiteRefrenceBefore
-            }
-        case .TakeAfter:
-            for spetrumData in spectrumDataList
-            {
-                spetrumData.whiteRefrence = whiteRefrenceAfter
-            }
-        }
-    }
-    
-    func showViewControllerWithIdentifier(identifier : String){
-        print("show: "+identifier)
-        let nextModal = self.storyboard!.instantiateViewController(withIdentifier: identifier) as! BaseMeasurementModal
+    func showViewControllerWithIdentifier(page: ModalPage){
+        let nextModal = self.storyboard!.instantiateViewController(withIdentifier: page.pageIdentifier) as! BaseMeasurementModal
         nextModal.pageContainer = self
         setViewControllers([nextModal], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
     }
     
     func measurmentFinished() -> Bool{
-        switch(measurmentSettings!.whiteRefrenceSetting){
-        case .TakeBefore:
-            return spectrumDataList.count >= measurmentSettings!.measurementCount
-        default:
-            return spectrumDataList.count >= measurmentSettings!.measurementCount && whiteRefrenceAfter != nil
-        }
-    }
-}
-
-class MeasurmentSettings{
-    var measurementCount : Int
-    var whiteRefrenceSetting : WhiteRefrenceSettings
-    var path :URL
-    var fileName : String
-    
-    init(measurementCount : Int, whiteRefrenceSetting : WhiteRefrenceSettings, path : URL, fileName : String){
-        self.measurementCount = measurementCount
-        self.whiteRefrenceSetting = whiteRefrenceSetting
-        self.path = path
-        self.fileName = fileName
+        return true
     }
 }
 
@@ -144,8 +60,69 @@ class SpectrumData{
     }
 }
 
-enum WhiteRefrenceSettings{
-    case TakeBefore
-    case TakeBeforeAndAfter
-    case TakeAfter
+class ModalPage {
+    var pageIdentifier : String
+    
+    init(){
+        pageIdentifier = "StartTestSeriesViewController"
+    }
+}
+
+class RawPage : ModalPage{
+    override init(){
+        super.init()
+        pageIdentifier = "RawSettingsViewController"
+    }
+}
+
+class ReflectancePage : ModalPage{
+    override init(){
+        super.init()
+        pageIdentifier = "ReflectanceSettingsViewController"
+    }
+}
+
+class RadiancePage : ModalPage{
+    override init(){
+        super.init()
+        pageIdentifier = "RadianceSettingsViewController"
+    }
+}
+
+class WhiteReferencePage : ModalPage{
+    var whiteReferenceCount : Int
+    var whiteReferenceDelay : Int
+    
+    init(whiteReferenceCount : Int, whiteReferenceDelay : Int){
+        self.whiteReferenceCount = whiteReferenceCount
+        self.whiteReferenceDelay = whiteReferenceDelay
+        super.init()
+        self.pageIdentifier = "WhiteRefrenceViewController"
+    }
+}
+
+class WhiteReferenceReflectancePage : WhiteReferencePage{
+    override init(whiteReferenceCount : Int, whiteReferenceDelay : Int){
+        super.init(whiteReferenceCount: whiteReferenceCount, whiteReferenceDelay: whiteReferenceDelay)
+        self.pageIdentifier = "WhiteRefrenceViewController"
+    }
+}
+
+class WhiteReferenceRadiancePage : WhiteReferencePage{
+    override init(whiteReferenceCount : Int, whiteReferenceDelay : Int){
+        super.init(whiteReferenceCount: whiteReferenceCount, whiteReferenceDelay: whiteReferenceDelay)
+        self.pageIdentifier = "WhiteRefrenceViewController"
+    }
+}
+
+class TargetPage : ModalPage{
+    let targetCount : Int
+    let targetDelay : Int
+    
+    init(targetCount : Int, targetDelay : Int){
+        self.targetCount = targetCount
+        self.targetDelay = targetDelay
+        super.init()
+        self.pageIdentifier = "FastMeasurmentViewController"
+    }
 }
