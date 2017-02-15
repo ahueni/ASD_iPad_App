@@ -10,44 +10,16 @@ import Foundation
 import UIKit
 
 class RadianceSettingsViewController : BaseMeasurementModal {
-    // MARK: fade DarkCurrent settings
-    @IBOutlet var contentHeight: NSLayoutConstraint!
-    @IBOutlet var darkCurrentContentView: UIView!
     
-    // MARK: fade WhiteReferenceBefore settings
-    @IBOutlet var whiteRefBeforeContentHeight: NSLayoutConstraint!
-    @IBOutlet var whiteRefBeforeContentView: UIView!
-    
-    @IBOutlet weak var whiteRefrenceAfterHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var whiteRefrenceAfterContentView: UIView!
-    
-    @IBOutlet weak var whiteRefrenceBeforeCountLabel: UILabel!
-    @IBOutlet weak var whiteRefrenceBeforeCountStepper: UIStepper!
-    
-    @IBOutlet weak var targetCountLabel: UILabel!
-    @IBOutlet weak var targetCountStepper: UIStepper!
-    
+    // MARK: DarkCurrent settings
     @IBOutlet weak var darkCurrentSwitch: UISwitch!
-    @IBOutlet weak var whiteRefrenceAfterCountLabel: UILabel!
-    @IBOutlet weak var whiteRefrenceAfterCountStepper: UIStepper!
-    
-    @IBOutlet weak var whiteRefrenceAfterSwitch: UISwitch!
-    @IBOutlet weak var whiteRefrenceBeforeSwitch: UISwitch!
-    @IBAction func whiteRefrenceBeforeCountStepperValueChanged(_ sender: UIStepper) {
-        whiteRefrenceAfterCountLabel.text = Int(sender.value).description
-    }
-    @IBAction func targetCountStepperValueChanged(_ sender: UIStepper) {
-        targetCountLabel.text = Int(sender.value).description
-    }
-    @IBAction func whiteRefrenceAfterCountStepperValueChanged(_ sender: UIStepper) {
-        whiteRefrenceAfterCountLabel.text = Int(sender.value).description
-    }
+    @IBOutlet var darkCurrentContentHeight: NSLayoutConstraint!
     
     @IBAction func darkCurrentSwitch(_ sender: UISwitch) {
         if sender.isOn {
-            self.contentHeight.constant = 100
+            self.darkCurrentContentHeight.constant = 95
         } else {
-            self.contentHeight.constant = 0
+            self.darkCurrentContentHeight.constant = 0
         }
         
         UIView.animate(withDuration: 0.5, animations: {
@@ -55,21 +27,66 @@ class RadianceSettingsViewController : BaseMeasurementModal {
         })
     }
     
-    @IBAction func whiteRefBeforeSwitch(_ sender: UISwitch) {
+    @IBAction func takeDarkCurrentPressed(_ sender: UIButton) {
+        
+        
+        
+    }
+    
+    
+    // MARK: WhiteReference before settings
+    @IBOutlet weak var whiteReferenceBeforeSwitch: UISwitch!
+    @IBOutlet var whiteReferenceBeforeContentHeight: NSLayoutConstraint!
+    
+    @IBAction func whiteReferenceBeforeSwitchValueChanged(_ sender: UISwitch) {
         if sender.isOn {
-            self.whiteRefBeforeContentHeight.constant = 70
+            self.whiteReferenceBeforeContentHeight.constant = 78
         } else {
-            self.whiteRefBeforeContentHeight.constant = 0
+            self.whiteReferenceBeforeContentHeight.constant = 0
         }
         
         UIView.animate(withDuration: 0.5, animations: {
             self.view.layoutIfNeeded()
         })
     }
+    
+    @IBOutlet weak var whiteReferenceBeforeCountLabel: UILabel!
+    @IBOutlet weak var whiteReferenceBeforeCountStepper: UIStepper!
+    
+    @IBAction func whiteReferenceBeforeCountStepperValueChanged(_ sender: UIStepper) {
+        whiteReferenceBeforeCountLabel.text = Int(sender.value).description
+    }
+    
+    @IBOutlet var whiteReferenceBeforeIntervalLabel: UILabel!
+    @IBOutlet var whiteReferenceBeforeIntervalStepper: UIStepper!
+    
+    @IBAction func whiteReferenceBeforeIntervalStepperValueChanged(_ sender: UIStepper) {
+        whiteReferenceBeforeIntervalLabel.text = Int(sender.value).description
+    }
+    
+    // MARK: Target settings
+    @IBOutlet weak var targetCountLabel: UILabel!
+    @IBOutlet weak var targetCountStepper: UIStepper!
+    
+    @IBAction func targetCountStepperValueChanged(_ sender: UIStepper) {
+        targetCountLabel.text = Int(sender.value).description
+    }
+    
+    @IBOutlet var targetIntervalLabel: UILabel!
+    @IBOutlet var targetIntervalStepper: UIStepper!
+    
+    @IBAction func targetIntervalStepperValueChanged(_ sender: UIStepper) {
+        targetIntervalLabel.text = Int(sender.value).description
+    }
+    
+    // MARK: WhiteReference after settings
+    @IBOutlet weak var whiteRefrenceAfterSwitch: UISwitch!
+    @IBOutlet weak var whiteRefrenceAfterHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var whiteRefrenceAfterContentView: UIView!
     
     @IBAction func whiteRefrenceAfterSwitchValueChanged(_ sender: UISwitch) {
         if sender.isOn {
-            self.whiteRefrenceAfterHeightConstraint.constant = 70
+            self.whiteRefrenceAfterHeightConstraint.constant = 78
         } else {
             self.whiteRefrenceAfterHeightConstraint.constant = 0
         }
@@ -79,37 +96,24 @@ class RadianceSettingsViewController : BaseMeasurementModal {
         })
     }
     
-    override func goToNextPage() {
-        pageContainer?.settings = RadianceSettings(targetCount: Int(targetCountStepper.value), targetDelay: 0, takeWhiteRefrenceBefore: whiteRefrenceBeforeSwitch.isOn, whiteRefrenceBeforeCount: Int(whiteRefrenceBeforeCountStepper.value), takeWhiteRefrenceAfter: whiteRefrenceAfterSwitch.isOn, whiteRefrenceAfterCount: Int(whiteRefrenceAfterCountStepper.value), whiteRefrenceBeforeDelay : 0, whiteRefrenceAfterDelay : 0)
+    @IBOutlet weak var whiteRefrenceAfterCountLabel: UILabel!
+    @IBOutlet weak var whiteRefrenceAfterCountStepper: UIStepper!
+    
+    @IBAction func whiteRefrenceAfterCountStepperValueChanged(_ sender: UIStepper) {
+        whiteRefrenceAfterCountLabel.text = Int(sender.value).description
     }
     
-}
-
-
-@IBDesignable class SettingsBox:UIView {
+    @IBOutlet var whiteReferenceAfterIntervalLabel: UILabel!
+    @IBOutlet var whiteReferenceAfterIntervalStepper: UIStepper!
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        backgroundColor = UIColor.white
-        
-        let borderColor:UIColor = UIColor(red:0.89, green:0.89, blue:0.89, alpha:1.00)
-        
-        layer.borderColor = borderColor.cgColor
-        
-        layer.borderWidth = 1.0
-        layer.cornerRadius = 2
-        
-        // AddHeaderRect
-        let headerRect:CGRect = CGRect(x: 0, y: 0, width: layer.frame.width, height: 46)
-        let headerView:UIView = UIView(frame: headerRect)
-        headerView.backgroundColor = UIColor(red:0.98, green:0.98, blue:0.98, alpha:1.00)
-        headerView.layer.addBorder(edge: .bottom, color: borderColor, thickness: 1.0)
-        addSubview(headerView)
-        
-        sendSubview(toBack: headerView)
-        
-        print("LAYOUT Subviews")
+    @IBAction func whiteReferenceAfterIntervalStepperValueChanged(_ sender: UIStepper) {
+        whiteReferenceAfterIntervalLabel.text = Int(sender.value).description
+    }
+    
+    
+    
+    override func goToNextPage() {
+        pageContainer?.settings = RadianceSettings(targetCount: Int(targetCountStepper.value), targetDelay: 0, takeWhiteRefrenceBefore: whiteReferenceBeforeSwitch.isOn, whiteRefrenceBeforeCount: Int(whiteReferenceBeforeCountStepper.value), takeWhiteRefrenceAfter: whiteRefrenceAfterSwitch.isOn, whiteRefrenceAfterCount: Int(whiteRefrenceAfterCountStepper.value), whiteRefrenceBeforeDelay : 0, whiteRefrenceAfterDelay : 0)
     }
     
 }
