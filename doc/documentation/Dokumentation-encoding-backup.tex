@@ -1,0 +1,91 @@
+%Hauptdokumentation der Lösung
+\NeedsTeXFormat{LaTeX2e}
+
+\documentclass[a4paper,oneside,abstract]{scrreprt}
+
+\usepackage[left=2cm,right=2cm,top=1cm,bottom=2cm,includeheadfoot]{geometry}
+
+\usepackage{ae}
+\usepackage{ngerman}				% neue deutsche Rechtschreibung
+\usepackage[ngerman]{babel}			% "Table of Contents" --> "Inhaltsverzeichnis"
+
+\usepackage[T1]{fontenc}			% Fontkodierung auf T1-Format
+\usepackage{graphicx}				% Bilder
+\usepackage{fancyhdr}				% Kopf- und Fusszeilen
+\usepackage{lastpage}				% Anzahl gesamte Seiten
+\usepackage{hyperref}				% f\"ur Hyperlinks
+\usepackage{array}					% f\"ur Tabellen (tabular Umgebung)
+\usepackage{listings}				% Quellcodeausgabe
+\usepackage{supertabular}			% f\"ur Tabellen \"uber mehrere Seiten
+\usepackage{verbatim}	
+\usepackage[applemac]{inputenc}
+\usepackage{cite}
+\usepackage{color}					% für Farben
+
+% definition für Farben
+\definecolor{LinkColor}{rgb}{0,0,0.5}
+\hypersetup{
+	colorlinks=true,				% definition der Links im PDF
+	linkcolor=LinkColor,
+	citecolor=LinkColor,
+	filecolor=LinkColor,
+	menucolor=LinkColor,
+	pagecolor=LinkColor,
+	urlcolor=LinkColor
+}
+
+
+\newcommand{\titel}{Spektrometer App}
+\newcommand{\doctype}{Bachelor Thesis}
+\newcommand{\untertitel}{Anbindung Spektrometer an mobiles Device}
+\newcommand{\datum}{\today}
+\newcommand{\autorA}{Andreas Lüscher}
+\newcommand{\autorB}{Raphael Bolliger}
+\newcommand{\ort}{Windisch}
+\newcommand{\dozent}{Martin Gwerder}
+\newcommand{\auftraggeber}{Andreas Hueni}
+
+\title{\titel}
+\author{\autorA  \and \AutorB}
+\date{\datum}
+
+\pagestyle{fancy}
+
+\fancyhf{}
+
+\fancypagestyle{plain}{
+	
+	\fancyhf{}
+	
+	\fancyhead[R]{\nouppercase{\leftmark}}
+	
+	\fancyfoot[L]{\doctype}	
+	\fancyfoot[C]{Seite \thepage\ von \pageref{LastPage}}
+	\fancyfoot[R]{\titel}
+	
+	\renewcommand{\footrulewidth}{0.5pt}	% Trennlinie Fusszeile
+	\renewcommand{\headrulewidth}{0.5pt} 	% obere Trennlinie
+	
+	\renewcommand{\headwidth}{17cm} 		% Breite der Kopf- und Fusszeile (21cm-2*2cm)
+}
+
+\begin{document}
+
+\input{layout_oneside}						% Seitenränder, Kopf-/Fusszeilen, usw.
+
+% Titelseite
+\input{chapters/Titelseite}
+
+% Inhaltsverzeichnis
+\pagenumbering{Roman}
+\tableofcontents
+\listoffigures 								% Abbildungsverzeichnis
+
+% Abstract
+\input{chapters/Abstract}
+\pagenumbering{arabic}
+
+% Ausgangslage und Problemstellung
+\input{chapters/Ausgangslage}
+
+\end{document}
