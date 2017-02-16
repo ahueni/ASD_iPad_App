@@ -44,4 +44,51 @@ class MeasurementProgressBar : UIView {
     
 }
 
-
+@IBDesignable class CustomProgressBar : UIView {
+    
+    fileprivate var totalValue:Int = 0
+    
+    @IBInspectable var fontColor: UIColor = UIColor.clear
+    @IBInspectable var fontSize:CGFloat = 14
+    
+    @IBInspectable var barColor: UIColor = UIColor.clear {
+        didSet {
+            layer.backgroundColor = barColor.withAlphaComponent(0.25).cgColor
+        }
+    }
+    
+    @IBInspectable var cornerRadius: CGFloat = 0 {
+        didSet {
+            layer.cornerRadius = cornerRadius
+        }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        // add progress view
+        let progressFrame = CGRect(x: 0, y: 0, width: 0, height: self.layer.frame.height)
+        let progressView = UIView(frame: progressFrame)
+        progressView.layer.cornerRadius = cornerRadius
+        progressView.layer.backgroundColor = barColor.cgColor
+        
+        // add countLabel
+        let countFrame = CGRect(x: 8, y: 0, width: 65, height: self.layer.frame.height)
+        var countLabel = UILabel(frame: countFrame)
+        countLabel.text = "CountLabel"
+        //countLabel.textColor = fontColor
+        //countLabel.font = UIFont(name: "OpenSans", size: 13)?.withSize(fontSize)
+        
+        addSubview(countLabel)
+        addSubview(progressView)
+        
+        sendSubview(toBack: progressView)
+        
+    }
+    
+    func initialize(total: Int) {
+        totalValue = total
+        
+    }
+    
+}
