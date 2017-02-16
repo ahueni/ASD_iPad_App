@@ -1164,7 +1164,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="540" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reflectance settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zjQ-Td-74R" userLabel="TitelLabel">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Radiance settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zjQ-Td-74R" userLabel="TitelLabel">
                                 <rect key="frame" x="20" y="20" width="500" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="cFC-O1-dK0"/>
@@ -1201,13 +1201,13 @@
                                                         <rect key="frame" x="0.0" y="46" width="500" height="95"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The last DarkCurrent was taken on 3:00 p.m. You can retake a DarkCurrent to have a actual value for the measurements" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cks-am-1N0">
-                                                                <rect key="frame" x="16" y="12" width="468" height="33"/>
+                                                                <rect key="frame" x="16" y="12" width="468" height="28"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0c-Il-QIj" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
-                                                                <rect key="frame" x="168" y="53" width="164" height="32"/>
+                                                                <rect key="frame" x="168" y="48" width="164" height="29"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="164" id="Z3T-IM-AGJ"/>
                                                                 </constraints>
@@ -1275,13 +1275,13 @@
                                                         <rect key="frame" x="0.0" y="46" width="500" height="78"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Intervall between:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDw-9U-Yz2">
-                                                                <rect key="frame" x="16" y="46.5" width="117" height="19.5"/>
+                                                                <rect key="frame" x="16" y="43.5" width="110.5" height="16.5"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AlZ-UM-P7h">
-                                                                <rect key="frame" x="322" y="13" width="60" height="19.5"/>
+                                                                <rect key="frame" x="322" y="13" width="60" height="16.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="60" id="j7c-K1-alu"/>
                                                                 </constraints>
@@ -1304,7 +1304,7 @@
                                                                 </connections>
                                                             </stepper>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xrg-8M-R8f">
-                                                                <rect key="frame" x="322" y="46.5" width="60" height="19.5"/>
+                                                                <rect key="frame" x="322" y="43.5" width="60" height="16.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="60" id="eEa-Oc-X6I"/>
                                                                 </constraints>
@@ -1313,7 +1313,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WhiteReference count:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Q3-DZ-aZl">
-                                                                <rect key="frame" x="16" y="13" width="148.5" height="19.5"/>
+                                                                <rect key="frame" x="16" y="13" width="143" height="16.5"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -1354,7 +1354,7 @@
                                                 <rect key="frame" x="0.0" y="295" width="500" height="124"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbU-lb-Bzo" userLabel="TitelLabel">
-                                                        <rect key="frame" x="16" y="0.0" width="46.5" height="46"/>
+                                                        <rect key="frame" x="16" y="0.0" width="44" height="46"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="46" id="7Cz-xZ-QGB"/>
                                                         </constraints>
@@ -1366,13 +1366,13 @@
                                                         <rect key="frame" x="0.0" y="46" width="500" height="78"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5LY-70-QSC">
-                                                                <rect key="frame" x="18" y="12" width="296" height="19.5"/>
+                                                                <rect key="frame" x="18" y="12" width="296" height="16.5"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IIL-jH-mSS">
-                                                                <rect key="frame" x="322" y="13" width="60" height="19.5"/>
+                                                                <rect key="frame" x="322" y="13" width="60" height="16.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="60" id="xOg-yC-lvH"/>
                                                                 </constraints>
@@ -1388,7 +1388,7 @@
                                                                 </connections>
                                                             </stepper>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interval between targets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EVg-3H-Vo9">
-                                                                <rect key="frame" x="18" y="45.5" width="301" height="19.5"/>
+                                                                <rect key="frame" x="18" y="42.5" width="301" height="16.5"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -1401,7 +1401,7 @@
                                                                 </connections>
                                                             </stepper>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0qQ-1A-76P">
-                                                                <rect key="frame" x="322" y="45.5" width="60" height="19.5"/>
+                                                                <rect key="frame" x="322" y="42.5" width="60" height="16.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="60" id="oaC-hj-XGY"/>
                                                                 </constraints>
@@ -1469,7 +1469,7 @@
                                                                 </connections>
                                                             </stepper>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obs-Pd-ZRS">
-                                                                <rect key="frame" x="18" y="46.5" width="296" height="19.5"/>
+                                                                <rect key="frame" x="18" y="43.5" width="296" height="16.5"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -1482,7 +1482,7 @@
                                                                 </connections>
                                                             </stepper>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gfu-Fe-hHS">
-                                                                <rect key="frame" x="322" y="13" width="60" height="19.5"/>
+                                                                <rect key="frame" x="322" y="13" width="60" height="16.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="60" id="B7I-HB-qu3"/>
                                                                 </constraints>
@@ -1491,7 +1491,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1zq-Ro-crP">
-                                                                <rect key="frame" x="322" y="46.5" width="60" height="19.5"/>
+                                                                <rect key="frame" x="322" y="43.5" width="60" height="16.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="60" id="egi-92-SiF"/>
                                                                 </constraints>
@@ -1500,7 +1500,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cu4-L7-xQy">
-                                                                <rect key="frame" x="18" y="13" width="305" height="19.5"/>
+                                                                <rect key="frame" x="18" y="13" width="305" height="16.5"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -1577,8 +1577,7 @@
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="CancelButtonClicked:" destination="b7d-mh-RXH" eventType="touchUpInside" id="Bfc-0Q-U1i"/>
-                                    <action selector="CancelButtonClicked:" destination="TmL-uw-0eO" eventType="touchUpInside" id="NCL-4k-fCN"/>
+                                    <action selector="CancelButtonClicked:" destination="b7d-mh-RXH" eventType="touchUpInside" id="mtV-Cb-eo3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fap-A8-4AZ" customClass="UIBlueButton" customModule="Spectrometer" customModuleProvider="target">
@@ -1592,8 +1591,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="nextButtonClicked:" destination="b7d-mh-RXH" eventType="touchUpInside" id="rDb-Ya-eIe"/>
-                                    <action selector="nextButtonClicked:" destination="TmL-uw-0eO" eventType="touchUpInside" id="vKD-0q-pdW"/>
+                                    <action selector="nextButtonClicked:" destination="b7d-mh-RXH" eventType="touchUpInside" id="dX8-Je-H43"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1835,12 +1833,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7AJ-22-wvt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3258.59375" y="-2201.3671875"/>
+            <point key="canvasLocation" x="3118" y="-2200"/>
         </scene>
         <!--Reflectance Settings View Controller-->
         <scene sceneID="TlN-yc-2Yv">
             <objects>
-                <viewController modalPresentationStyle="formSheet" id="m49-q8-zSz" customClass="ReflectanceSettingsViewController" customModule="Spectrometer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReflectanceSettingsViewController" modalPresentationStyle="formSheet" id="m49-q8-zSz" customClass="ReflectanceSettingsViewController" customModule="Spectrometer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OK8-pZ-Ky9"/>
                         <viewControllerLayoutGuide type="bottom" id="BkS-Ct-xds"/>
@@ -1877,7 +1875,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="CancelButtonClicked:" destination="m49-q8-zSz" eventType="touchUpInside" id="CeF-cF-eXC"/>
+                                    <action selector="CancelButtonClicked:" destination="m49-q8-zSz" eventType="touchUpInside" id="FNJ-Do-1FW"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ynd-a9-9AS" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
@@ -1898,6 +1896,9 @@
                                         <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="nextButtonClicked:" destination="m49-q8-zSz" eventType="touchUpInside" id="27G-vD-meX"/>
+                                </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q6X-Ae-Y5K">
                                 <rect key="frame" x="20" y="88" width="500" height="327"/>
@@ -1918,7 +1919,7 @@
                                                         <rect key="frame" x="0.0" y="46" width="500" height="60"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last DarkCurrent taken:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RGk-Gd-bzt">
-                                                                <rect key="frame" x="13" y="8" width="338" height="16.5"/>
+                                                                <rect key="frame" x="13" y="8" width="338" height="14"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -1954,7 +1955,7 @@ DarkCurrent</string>
                                                                 </userDefinedRuntimeAttributes>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15:14:56 (3 minutes ago)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hnl-Kn-j9W">
-                                                                <rect key="frame" x="13" y="26.5" width="338" height="16.5"/>
+                                                                <rect key="frame" x="13" y="24" width="338" height="14"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -1975,7 +1976,7 @@ DarkCurrent</string>
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DarkCurrent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LiJ-cE-a3v">
-                                                        <rect key="frame" x="16" y="13" width="419" height="22"/>
+                                                        <rect key="frame" x="16" y="13" width="419" height="19"/>
                                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -2001,13 +2002,13 @@ DarkCurrent</string>
                                                         <rect key="frame" x="0.0" y="46" width="500" height="85"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87E-4o-Qs7">
-                                                                <rect key="frame" x="16" y="14" width="328" height="19.5"/>
+                                                                <rect key="frame" x="16" y="14" width="328" height="16.5"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RjC-NE-VoM">
-                                                                <rect key="frame" x="352" y="14" width="30" height="19.5"/>
+                                                                <rect key="frame" x="352" y="14" width="30" height="16.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="30" id="GQF-1d-Wba"/>
                                                                 </constraints>
@@ -2016,7 +2017,7 @@ DarkCurrent</string>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fow-pp-eLw">
-                                                                <rect key="frame" x="352" y="51" width="30" height="19.5"/>
+                                                                <rect key="frame" x="352" y="48" width="30" height="16.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="30" id="UK3-tW-SKW"/>
                                                                 </constraints>
@@ -2039,7 +2040,7 @@ DarkCurrent</string>
                                                                 </connections>
                                                             </stepper>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Intervall between saves" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8mI-Bn-xLq">
-                                                                <rect key="frame" x="16" y="50.5" width="328" height="19.5"/>
+                                                                <rect key="frame" x="16" y="47.5" width="328" height="16.5"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -2124,6 +2125,8 @@ DarkCurrent</string>
                     <connections>
                         <outlet property="darkCurrentSettingsContentHeight" destination="w6m-gH-wd4" id="W19-BP-9YI"/>
                         <outlet property="targetCountLabel" destination="RjC-NE-VoM" id="9Ja-or-pIr"/>
+                        <outlet property="targetCountStepper" destination="RwE-aG-gCQ" id="aBA-Fq-ChJ"/>
+                        <outlet property="targetDelayStepper" destination="A1G-Rq-tOp" id="Ja7-rw-zoP"/>
                         <outlet property="targetIntervallLabel" destination="fow-pp-eLw" id="efb-Tu-LCN"/>
                     </connections>
                 </viewController>
@@ -2259,6 +2262,9 @@ DarkCurrent</string>
                                 <state key="normal" title="Abbrechen">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="CancelButtonClicked:" destination="S5w-Ls-E9g" eventType="touchUpInside" id="yVP-TE-qiM"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zN5-yr-898" customClass="UIBlueButton" customModule="Spectrometer" customModuleProvider="target">
                                 <rect key="frame" x="280" y="550" width="240" height="50"/>
@@ -2267,6 +2273,9 @@ DarkCurrent</string>
                                 <state key="normal" title="Weiter">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="nextButtonClicked:" destination="S5w-Ls-E9g" eventType="touchUpInside" id="Zsy-c0-JLX"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="White Reference" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgG-lc-ZjX">
                                 <rect key="frame" x="20" y="28" width="500" height="30"/>
@@ -2692,7 +2701,7 @@ DarkCurrent</string>
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="768" height="1024"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oEq-7H-IhW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="oEq-7H-IhW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2716,7 +2725,7 @@ DarkCurrent</string>
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="768" height="1024"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BtY-te-dYt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="BtY-te-dYt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2737,7 +2746,7 @@ DarkCurrent</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="I79-5a-bJl"/>
+        <segue reference="DfN-yu-tho"/>
         <segue reference="Rnf-3V-6Sk"/>
-        <segue reference="16U-68-zdS"/>
     </inferredMetricsTieBreakers>
 </document>

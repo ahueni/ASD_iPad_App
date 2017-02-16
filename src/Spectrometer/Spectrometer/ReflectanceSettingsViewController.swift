@@ -14,6 +14,8 @@ class ReflectanceSettingsViewController : BaseMeasurementModal {
     // MARK: WhiteReference settings
     @IBOutlet var darkCurrentSettingsContentHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var targetDelayStepper: UIStepper!
+    @IBOutlet weak var targetCountStepper: UIStepper!
     @IBAction func darkCurrentSettingsSwitchValueChanged(_ sender: UISwitch) {
         
         if sender.isOn {
@@ -41,8 +43,27 @@ class ReflectanceSettingsViewController : BaseMeasurementModal {
         targetIntervallLabel.text = Int(sender.value).description
     }
     
+    override func goToNextPage() {
+        saveSettings()
+        
+        if(pageContainer!.measurmentMode == MeasurmentMode.Reflectance)
+        {
+            pageContainer!.pages.append(WhiteReferenceReflectancePage())
+        }
+        pageContainer!.pages.append(TargetPage(targetCount: Int(targetCountStepper.value), targetDelay: Int(targetDelayStepper.value)))
+        
+        super.goToNextPage()
+    }
     
-    
+    func saveSettings()
+    {
+        let settings = ReflectanceSettings(targetCount: Int(targetCountStepper.value), targetDelay: Int(targetDelayStepper.value), takeWhiteRefrenceBefore: true)
+        
+        let settingsData = NSKeyedArchiver.archivedData(withRootObject: settings)
+        UserDefaults.standard.set(settingsData, forKey: "RadianceSettings")
+        UserDefaults.standard.synchronize()
+    }
+
     
     
 }

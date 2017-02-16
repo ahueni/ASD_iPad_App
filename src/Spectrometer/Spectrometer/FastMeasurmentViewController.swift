@@ -28,24 +28,23 @@ class FastMeasurmentViewController : BaseMeasurementModal
     
     func startMeasureLoop()
     {
-        /*
         startMeasurementButton.showLoading()
+        let targetPage = pageContainer!.currentPage as! TargetPage
         
         DispatchQueue.global().async {
-            for i in 0...(self.pageContainer!.measurmentSettings!.measurementCount)-1
+            for i in 0...targetPage.targetCount-1
             {
-                //self.updateProgressBar(measurmentCount: i+1, statusText: "Bereite nächste Messung vor")
-                //sleep(1 // Wait two second before starting the next measurment
-                self.updateProgressBar(measurmentCount: i+1, statusText: "Messe...")
+                self.updateProgressBar(measurmentCount: i+1, statusText: "Bereite nächste Messung vor", totalCount: targetPage.targetCount)
+                sleep(UInt32(targetPage.targetDelay)) // Wait two second before starting the next measurment
+                self.updateProgressBar(measurmentCount: i+1, statusText: "Messe...", totalCount: targetPage.targetCount)
                 let spectrum = CommandManager.sharedInstance.aquire(samples: self.appDelegate.config!.sampleCount)
-                self.pageContainer!.spectrumDataList.append(SpectrumData(spectrum: spectrum))
+                self.pageContainer!.spectrumList.append(spectrum)
                 self.updateLineChart(spectrum: spectrum)
-                //self.updateProgressBar(measurmentCount: i+1, statusText: "Messung beendet")
-                //sleep(2) //Wait two second
+                self.updateProgressBar(measurmentCount: i+1, statusText: "Messung beendet", totalCount: targetPage.targetCount)
+                sleep(UInt32(targetPage.targetDelay)) //Wait two second
             }
             self.finishMeasurement()
         }
- */
     }
     
     func finishMeasurement() {
@@ -60,13 +59,11 @@ class FastMeasurmentViewController : BaseMeasurementModal
         
     }
     
-    func updateProgressBar(measurmentCount:Int, statusText:String)
+    func updateProgressBar(measurmentCount:Int, statusText:String, totalCount : Int)
     {
-        /*
         DispatchQueue.main.async {
-            self.MeasureProgressBar.updateProgressBar(actual: measurmentCount, total: (self.pageContainer!.measurmentSettings?.measurementCount)!, statusText: statusText)
+            self.MeasureProgressBar.updateProgressBar(actual: measurmentCount, total: totalCount, statusText: statusText)
         }
- */
     }
     
 }

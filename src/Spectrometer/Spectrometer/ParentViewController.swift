@@ -11,16 +11,19 @@ import UIKit
 
 class ParentViewController : UIPageViewController {
     
-    var measurmentSettings : MeasurmentSettings?
-    var spectrumDataList = [FullRangeInterpolatedSpectrum]()
-    var whiteRefrenceBefore = [FullRangeInterpolatedSpectrum]()
-    var whiteRefrenceAfter = [FullRangeInterpolatedSpectrum]()
+    var spectrumList = [FullRangeInterpolatedSpectrum]()
+    var whiteRefrenceBeforeSpectrumList = [FullRangeInterpolatedSpectrum]()
+    var whiteRefrenceAfterSpectrumList = [FullRangeInterpolatedSpectrum]()
     
     var measurmentMode : MeasurmentMode?
-    
     var pages = [ModalPage]()
+    var currentIndex = -1
     
-    var currentIndex = 0
+    var currentPage : ModalPage{
+        get{
+            return pages[currentIndex]
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +34,15 @@ class ParentViewController : UIPageViewController {
     
     func goToNextPage()
     {
-        showViewControllerWithIdentifier(page: pages[currentIndex])
         currentIndex += 1
+        if(currentIndex >= pages.count)
+        {
+            showViewControllerWithIdentifier(page: FinishPage())
+        }
+        else
+        {
+            showViewControllerWithIdentifier(page: currentPage)
+        }
     }
     
     func showViewControllerWithIdentifier(page: ModalPage){
@@ -43,20 +53,6 @@ class ParentViewController : UIPageViewController {
     
     func measurmentFinished() -> Bool{
         return true
-    }
-}
-
-class SpectrumData{
-    var spectrum : FullRangeInterpolatedSpectrum
-    var whiteRefrence : FullRangeInterpolatedSpectrum?
-    
-    init(spectrum : FullRangeInterpolatedSpectrum){
-        self.spectrum = spectrum
-    }
-    
-    init(spectrum : FullRangeInterpolatedSpectrum, whiteRefrence : FullRangeInterpolatedSpectrum){
-        self.spectrum = spectrum
-        self.whiteRefrence = whiteRefrence
     }
 }
 
@@ -92,26 +88,28 @@ class RadiancePage : ModalPage{
 class WhiteReferencePage : ModalPage{
     var whiteReferenceCount : Int
     var whiteReferenceDelay : Int
+    var whiteRefrenceEnum : WhiteReferenceEnum
     
-    init(whiteReferenceCount : Int, whiteReferenceDelay : Int){
+    init(whiteReferenceCount : Int, whiteReferenceDelay : Int, whiteRefrenceEnum : WhiteReferenceEnum){
         self.whiteReferenceCount = whiteReferenceCount
         self.whiteReferenceDelay = whiteReferenceDelay
+        self.whiteRefrenceEnum = whiteRefrenceEnum
         super.init()
         self.pageIdentifier = "WhiteRefrenceViewController"
     }
 }
 
 class WhiteReferenceReflectancePage : WhiteReferencePage{
-    override init(whiteReferenceCount : Int, whiteReferenceDelay : Int){
-        super.init(whiteReferenceCount: whiteReferenceCount, whiteReferenceDelay: whiteReferenceDelay)
-        self.pageIdentifier = "WhiteRefrenceViewController"
+    init(){
+        super.init(whiteReferenceCount: 1, whiteReferenceDelay: 0, whiteRefrenceEnum: .Before)
+        self.pageIdentifier = "ReflectanceWhiteRefrenceViewController"
     }
 }
 
 class WhiteReferenceRadiancePage : WhiteReferencePage{
-    override init(whiteReferenceCount : Int, whiteReferenceDelay : Int){
-        super.init(whiteReferenceCount: whiteReferenceCount, whiteReferenceDelay: whiteReferenceDelay)
-        self.pageIdentifier = "WhiteRefrenceViewController"
+    override init(whiteReferenceCount : Int, whiteReferenceDelay : Int, whiteRefrenceEnum : WhiteReferenceEnum){
+        super.init(whiteReferenceCount: whiteReferenceCount, whiteReferenceDelay: whiteReferenceDelay, whiteRefrenceEnum : whiteRefrenceEnum)
+        self.pageIdentifier = "RadianceWhiteRefrenceViewController"
     }
 }
 
@@ -125,4 +123,16 @@ class TargetPage : ModalPage{
         super.init()
         self.pageIdentifier = "FastMeasurmentViewController"
     }
+}
+
+class FinishPage : ModalPage{
+    override init() {
+        super.init()
+        self.pageIdentifier = "FinishTestSeriesViewController"
+    }
+}
+
+enum WhiteReferenceEnum{
+    case Before
+    case After
 }

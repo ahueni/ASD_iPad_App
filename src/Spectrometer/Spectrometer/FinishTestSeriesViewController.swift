@@ -29,21 +29,39 @@ class FinishTestSeriesViewController : BaseMeasurementModal {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        let measurmentSettings = UserDefaults.standard.data(forKey: "MeasurmentSettings")
+        let loadedSettings = NSKeyedUnarchiver.unarchiveObject(with: measurmentSettings!) as! MeasurmentSettings
+        
+        switch pageContainer!.measurmentMode! {
+        case MeasurmentMode.Raw:
+            save(spectrums: pageContainer!.spectrumList, whiteRefrenceSpectrum: nil, loadedSettings: loadedSettings)
+            break
+        case MeasurmentMode.Radiance:
+            save(spectrums: pageContainer!.whiteRefrenceBeforeSpectrumList + pageContainer!.spectrumList + pageContainer!.whiteRefrenceAfterSpectrumList, whiteRefrenceSpectrum: nil, loadedSettings: loadedSettings)
+            break
+        case MeasurmentMode.Reflectance:
+            save(spectrums: pageContainer!.spectrumList, whiteRefrenceSpectrum: pageContainer!.whiteRefrenceBeforeSpectrumList.first!, loadedSettings: loadedSettings)
+            break
+        }
+    }
+    
+    func save(spectrums : [FullRangeInterpolatedSpectrum], whiteRefrenceSpectrum: FullRangeInterpolatedSpectrum?, loadedSettings: MeasurmentSettings)
+    {
         DispatchQueue.global().async {
             
-            for i in 0...(self.pageContainer!.spectrumDataList).count-1{
-                let spectrumData = self.pageContainer!.spectrumDataList[i]
-                let fileName = self.pageContainer!.measurmentSettings!.fileName + i.description + ".asd"
-                let relativeFilePath = self.pageContainer!.measurmentSettings!.path.appendingPathComponent(fileName).relativePath
+            for i in 0...spectrums.count-1{
+                let spectrumData = spectrums[i]
+                let fileName = loadedSettings.fileName + i.description + ".asd"
+                let relativeFilePath = loadedSettings.path.appendingPathComponent(fileName).relativePath
                 let fileWriter = IndicoWriter(path: relativeFilePath)
                 
-                //fileWriter.write(spectrum: spectrumData.spectrum, whiteRefrenceSpectrum: spectrumData.whiteRefrence!)
+                fileWriter.write(spectrum: spectrumData, whiteRefrenceSpectrum: whiteRefrenceSpectrum)
             }
+
             
             self.finishedSaving()
             
         }
-        
     }
     
     func finishedSaving() -> Void {

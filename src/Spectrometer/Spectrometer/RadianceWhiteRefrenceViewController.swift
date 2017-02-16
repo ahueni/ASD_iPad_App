@@ -51,17 +51,28 @@ class RadianceWhiteRefrenceViewController : BaseMeasurementModal{
         startWhiteRefrenceButton.showLoading()
         nextButton.isEnabled = false
         
+        let whiteRefrencePage = pageContainer!.currentPage as! WhiteReferencePage
+        
         DispatchQueue.global().async {
-            for i in 0...2
+            for i in 0...whiteRefrencePage.whiteReferenceCount-1
             {
-                //self.updateProgressBar(measurmentCount: i+1, statusText: "Bereite nächste Messung vor")
-                //sleep(1 // Wait two second before starting the next measurment
-                self.updateProgressBar(measurmentCount: i+1, statusText: "Messe...")
+                self.updateProgressBar(measurmentCount: i+1, statusText: "Bereite nächste Messung vor", totalMeasurments : whiteRefrencePage.whiteReferenceCount)
+                sleep(UInt32(whiteRefrencePage.whiteReferenceDelay)) // Wait two second before starting the next measurment
+                self.updateProgressBar(measurmentCount: i+1, statusText: "Messe...", totalMeasurments : whiteRefrencePage.whiteReferenceCount)
                 let spectrum = CommandManager.sharedInstance.aquire(samples: self.appDelegate.config!.sampleCount)
                 self.whiteRefrences.append(spectrum)
+                switch whiteRefrencePage.whiteRefrenceEnum
+                {
+                case .Before:
+                    self.pageContainer!.whiteRefrenceBeforeSpectrumList.append(spectrum)
+                    break
+                case .After:
+                    self.pageContainer!.whiteRefrenceAfterSpectrumList.append(spectrum)
+                    break
+                }
                 self.updateLineChart2()
-                //self.updateProgressBar(measurmentCount: i+1, statusText: "Messung beendet")
-                //sleep(2) //Wait two second
+                self.updateProgressBar(measurmentCount: i+1, statusText: "Messung beendet", totalMeasurments : whiteRefrencePage.whiteReferenceCount)
+                sleep(UInt32(whiteRefrencePage.whiteReferenceDelay)) //Wait two second
             }
             DispatchQueue.main.async {
                 
@@ -75,13 +86,11 @@ class RadianceWhiteRefrenceViewController : BaseMeasurementModal{
     }
     
     
-    func updateProgressBar(measurmentCount:Int, statusText:String)
+    func updateProgressBar(measurmentCount:Int, statusText:String, totalMeasurments : Int)
     {
-        /*
         DispatchQueue.main.async {
-            self.MeasureProgressBar.updateProgressBar(actual: measurmentCount, total: (self.pageContainer!.measurmentSettings?.measurementCount)!, statusText: statusText)
+            self.MeasureProgressBar.updateProgressBar(actual: measurmentCount, total: totalMeasurments, statusText: statusText)
         }
- */
     }
     
     func updateLineChart2(){

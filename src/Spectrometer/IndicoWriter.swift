@@ -10,7 +10,7 @@ import Foundation
 
 class IndicoWriter : BaseWriter {
     
-    func write(spectrum : FullRangeInterpolatedSpectrum, whiteRefrenceSpectrum : FullRangeInterpolatedSpectrum) -> FileHandle{
+    func write(spectrum : FullRangeInterpolatedSpectrum, whiteRefrenceSpectrum : FullRangeInterpolatedSpectrum?) -> FileHandle{
         
         // ------ Start Header ------
         
@@ -214,8 +214,16 @@ class IndicoWriter : BaseWriter {
         // ------ Start Refrence ------
         
         // ReferenceFlag Write bool with 2 Bytes
-        writeByte(number: 1)
-        writeByte(number: 1)
+        if(whiteRefrenceSpectrum != nil)
+        {
+            writeByte(number: 1)
+            writeByte(number: 1)
+        }
+        else
+        {
+            writeByte(number: 0)
+            writeByte(number: 0)
+        }
         
         //ReferenceTime
         // which format???
@@ -234,10 +242,16 @@ class IndicoWriter : BaseWriter {
         writeByte(number: UInt8(0)) // End the Description with zero byte
         
         //Refrence Spectrum Data
-        
         for i in 0...spectrum.spectrumBuffer.count-1 //channels
         {
-            writeFloat(number: whiteRefrenceSpectrum.spectrumBuffer[i])
+            if(whiteRefrenceSpectrum == nil)
+            {
+                writeFloat(number: 0)
+            }
+            else
+            {
+                writeFloat(number: whiteRefrenceSpectrum!.spectrumBuffer[i])
+            }
         }
         
         // ------ End Refrence ------

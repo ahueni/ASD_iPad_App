@@ -48,7 +48,7 @@ class RadianceSettingsViewController : BaseMeasurementModal {
             let loadedSettings = NSKeyedUnarchiver.unarchiveObject(with: radianceSettings!) as! RadianceSettings
             
             whiteReferenceBeforeCountStepper.value = Double(loadedSettings.whiteRefrenceBeforeCount)
-            whiteReferenceAfterIntervalStepper.value = Double(loadedSettings.whiteRefrenceBeforeDelay)
+            whiteReferenceBeforeIntervalStepper.value = Double(loadedSettings.whiteRefrenceBeforeDelay)
             targetCountStepper.value = Double(loadedSettings.targetCount)
             targetIntervalStepper.value = Double(loadedSettings.targetDelay)
             whiteRefrenceAfterCountStepper.value = Double(loadedSettings.whiteRefrenceAfterCount)
@@ -134,9 +134,16 @@ class RadianceSettingsViewController : BaseMeasurementModal {
     override func goToNextPage() {
         saveSettings()
         
-        pageContainer!.pages.append(WhiteReferenceRadiancePage(whiteReferenceCount: Int(whiteReferenceBeforeCountStepper.value), whiteReferenceDelay: Int(whiteReferenceBeforeIntervalStepper.value)))
+        if(whiteReferenceBeforeSwitch.isOn)
+        {
+            pageContainer!.pages.append(WhiteReferenceRadiancePage(whiteReferenceCount: Int(whiteReferenceBeforeCountStepper.value), whiteReferenceDelay: Int(whiteReferenceBeforeIntervalStepper.value), whiteRefrenceEnum: .Before))
+        }
         pageContainer!.pages.append(TargetPage(targetCount: Int(targetCountStepper.value), targetDelay: Int(targetIntervalStepper.value)))
-        pageContainer!.pages.append(WhiteReferenceRadiancePage(whiteReferenceCount: Int(whiteRefrenceAfterCountStepper.value), whiteReferenceDelay: Int(whiteReferenceAfterIntervalStepper.value)))
+        
+        if(whiteRefrenceAfterSwitch.isOn)
+        {
+            pageContainer!.pages.append(WhiteReferenceRadiancePage(whiteReferenceCount: Int(whiteRefrenceAfterCountStepper.value), whiteReferenceDelay: Int(whiteReferenceAfterIntervalStepper.value), whiteRefrenceEnum: .After))
+        }
         
         super.goToNextPage()
     }

@@ -94,6 +94,7 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate 
     
     override func goToNextPage(){
         let measurementMode = RawRadioButton.isSelected ? MeasurmentMode.Raw : ReflectanceRadioButton.isSelected ? MeasurmentMode.Reflectance : RadianceRadioButton.isSelected ? MeasurmentMode.Radiance : nil
+        pageContainer!.measurmentMode = measurementMode
         let measurmentSettings = MeasurmentSettings(fileName: fileNameTextField.text!, path: selectedPath!, measurmentMode: measurementMode!)
         
         let settingsData = NSKeyedArchiver.archivedData(withRootObject: measurmentSettings)
