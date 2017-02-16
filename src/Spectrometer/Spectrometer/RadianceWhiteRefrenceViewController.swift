@@ -16,8 +16,8 @@ class RadianceWhiteRefrenceViewController : BaseMeasurementModal{
     var whiteRefrences = [FullRangeInterpolatedSpectrum]()
     var currentWhiteRefrence : FullRangeInterpolatedSpectrum? = nil
     
+    @IBOutlet var progressBar: CustomProgressBar!
     @IBOutlet weak var startWhiteRefrenceButton: LoadingButton!
-    @IBOutlet var MeasureProgressBar: MeasurementProgressBar!
     @IBOutlet weak var nextButton: UIBlueButton!
     
     override func viewDidLoad() {
@@ -30,7 +30,7 @@ class RadianceWhiteRefrenceViewController : BaseMeasurementModal{
             }
         }
         
-        MeasureProgressBar.initialize(total: 3)
+        progressBar.initialize(total: 3)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -89,7 +89,7 @@ class RadianceWhiteRefrenceViewController : BaseMeasurementModal{
     func updateProgressBar(measurmentCount:Int, statusText:String, totalMeasurments : Int)
     {
         DispatchQueue.main.async {
-            self.MeasureProgressBar.updateProgressBar(actual: measurmentCount, total: totalMeasurments, statusText: statusText)
+            self.progressBar.updateProgressBar(actual: measurmentCount, statusText: statusText)
         }
     }
     

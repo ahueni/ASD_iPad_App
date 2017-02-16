@@ -9,6 +9,18 @@
 import Foundation
 import UIKit
 
+extension UIFont {
+    
+    class func defaultFontRegular(size : CGFloat) -> UIFont {
+        return UIFont(name: "Open Sans", size: size)!
+    }
+    
+    class func defaultFontBold(size : CGFloat) -> UIFont {
+        return UIFont(name: "OpenSans-Bold", size: size)!
+    }
+    
+}
+
 class MyUITextView : UITextView {
     
     override func becomeFirstResponder() -> Bool {

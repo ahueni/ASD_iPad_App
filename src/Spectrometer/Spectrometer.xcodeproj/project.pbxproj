@@ -14,7 +14,7 @@
 		2E77537D1E4329530081249C /* MeasurmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E77537C1E4329530081249C /* MeasurmentTableViewCell.swift */; };
 		2E77537F1E432A860081249C /* MeasurmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E77537E1E432A860081249C /* MeasurmentTableViewCell.xib */; };
 		2E8F76711E45F63F00D54ABF /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8F76701E45F63F00D54ABF /* LoadingButton.swift */; };
-		2E8F76731E460CB800D54ABF /* MeasurementProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8F76721E460CB800D54ABF /* MeasurementProgressBar.swift */; };
+		2E8F76731E460CB800D54ABF /* CustomProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8F76721E460CB800D54ABF /* CustomProgressBar.swift */; };
 		2E8F76781E4754B900D54ABF /* UIBlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8F76771E4754B900D54ABF /* UIBlueButton.swift */; };
 		2E8F767A1E4754CF00D54ABF /* UIGreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8F76791E4754CF00D54ABF /* UIGreenButton.swift */; };
 		2E8F767D1E4754ED00D54ABF /* UILightGrayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8F767C1E4754ED00D54ABF /* UILightGrayButton.swift */; };
@@ -150,7 +150,7 @@
 		2E77537C1E4329530081249C /* MeasurmentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurmentTableViewCell.swift; sourceTree = "<group>"; };
 		2E77537E1E432A860081249C /* MeasurmentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeasurmentTableViewCell.xib; sourceTree = "<group>"; };
 		2E8F76701E45F63F00D54ABF /* LoadingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
-		2E8F76721E460CB800D54ABF /* MeasurementProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurementProgressBar.swift; sourceTree = "<group>"; };
+		2E8F76721E460CB800D54ABF /* CustomProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomProgressBar.swift; sourceTree = "<group>"; };
 		2E8F76771E4754B900D54ABF /* UIBlueButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBlueButton.swift; sourceTree = "<group>"; };
 		2E8F76791E4754CF00D54ABF /* UIGreenButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIGreenButton.swift; sourceTree = "<group>"; };
 		2E8F767C1E4754ED00D54ABF /* UILightGrayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILightGrayButton.swift; sourceTree = "<group>"; };
@@ -618,7 +618,7 @@
 				2E708A221DE61A19008EC78A /* CustomizeExtensions.swift */,
 				2E708A5B1DE714F0008EC78A /* Regex.swift */,
 				2E8F76701E45F63F00D54ABF /* LoadingButton.swift */,
-				2E8F76721E460CB800D54ABF /* MeasurementProgressBar.swift */,
+				2E8F76721E460CB800D54ABF /* CustomProgressBar.swift */,
 				E13176621E53129B002F0958 /* RadioButton.swift */,
 				2ECC63471E543B4500C3AACB /* SettingsBox.swift */,
 			);
@@ -1099,7 +1099,7 @@
 				2EB3629A1DF1D8E400E74E39 /* AppData.swift in Sources */,
 				2E91F2A61DDB5B76003E277F /* AppDelegate.swift in Sources */,
 				E1C936B91E41D8B700EF51BB /* PortTextField.swift in Sources */,
-				2E8F76731E460CB800D54ABF /* MeasurementProgressBar.swift in Sources */,
+				2E8F76731E460CB800D54ABF /* CustomProgressBar.swift in Sources */,
 				2E91F2AE1DDB5B76003E277F /* Spectrometer.xcdatamodeld in Sources */,
 				2E91F30A1DDB7BDF003E277F /* FullRangeInterpolatedSpectrum.swift in Sources */,
 			);

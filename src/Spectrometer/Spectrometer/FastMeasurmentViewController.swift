@@ -13,7 +13,7 @@ class FastMeasurmentViewController : BaseMeasurementModal
 {
     var timer :Timer? = nil
     
-    @IBOutlet var MeasureProgressBar: MeasurementProgressBar!
+    @IBOutlet var progressBar: CustomProgressBar!
     @IBOutlet var startMeasurementButton: LoadingButton!
     @IBOutlet var nextButton: UIBlueButton!
     
@@ -62,7 +62,7 @@ class FastMeasurmentViewController : BaseMeasurementModal
     func updateProgressBar(measurmentCount:Int, statusText:String, totalCount : Int)
     {
         DispatchQueue.main.async {
-            self.MeasureProgressBar.updateProgressBar(actual: measurmentCount, total: totalCount, statusText: statusText)
+            self.progressBar.updateProgressBar(actual: measurmentCount, statusText: statusText)
         }
     }
     
