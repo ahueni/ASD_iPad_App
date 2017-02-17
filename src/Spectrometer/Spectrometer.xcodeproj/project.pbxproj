@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2E0324271E05600B00C52D58 /* ParameterParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0324261E05600B00C52D58 /* ParameterParser.swift */; };
 		2E30A8501E44A075001236C5 /* DiskFileActivityItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E30A84F1E44A075001236C5 /* DiskFileActivityItem.swift */; };
+		2E3552061E56E5A5001F7EE1 /* TitleSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3552051E56E5A5001F7EE1 /* TitleSection.swift */; };
+		2E3552091E56FAE4001F7EE1 /* CustomTextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3552081E56FAE4001F7EE1 /* CustomTextInput.swift */; };
+		2E35520B1E56FB07001F7EE1 /* SelectPathInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35520A1E56FB07001F7EE1 /* SelectPathInput.swift */; };
 		2E708A231DE61A19008EC78A /* CustomizeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E708A221DE61A19008EC78A /* CustomizeExtensions.swift */; };
 		2E708A5C1DE714F0008EC78A /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E708A5B1DE714F0008EC78A /* Regex.swift */; };
 		2E77537D1E4329530081249C /* MeasurmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E77537C1E4329530081249C /* MeasurmentTableViewCell.swift */; };
@@ -146,6 +149,9 @@
 		13FDA880A9F4A37458167799 /* Pods-SpectrometerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpectrometerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpectrometerTests/Pods-SpectrometerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2E0324261E05600B00C52D58 /* ParameterParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterParser.swift; sourceTree = "<group>"; };
 		2E30A84F1E44A075001236C5 /* DiskFileActivityItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskFileActivityItem.swift; sourceTree = "<group>"; };
+		2E3552051E56E5A5001F7EE1 /* TitleSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleSection.swift; sourceTree = "<group>"; };
+		2E3552081E56FAE4001F7EE1 /* CustomTextInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextInput.swift; sourceTree = "<group>"; };
+		2E35520A1E56FB07001F7EE1 /* SelectPathInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPathInput.swift; sourceTree = "<group>"; };
 		2E708A221DE61A19008EC78A /* CustomizeExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizeExtensions.swift; sourceTree = "<group>"; };
 		2E708A5B1DE714F0008EC78A /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		2E77537C1E4329530081249C /* MeasurmentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurmentTableViewCell.swift; sourceTree = "<group>"; };
@@ -312,6 +318,23 @@
 			children = (
 			);
 			name = AppIcon;
+			sourceTree = "<group>";
+		};
+		2E3552041E56E57E001F7EE1 /* TitleSection */ = {
+			isa = PBXGroup;
+			children = (
+				2E3552051E56E5A5001F7EE1 /* TitleSection.swift */,
+			);
+			name = TitleSection;
+			sourceTree = "<group>";
+		};
+		2E3552071E56FAAF001F7EE1 /* Inputs */ = {
+			isa = PBXGroup;
+			children = (
+				2E3552081E56FAE4001F7EE1 /* CustomTextInput.swift */,
+				2E35520A1E56FB07001F7EE1 /* SelectPathInput.swift */,
+			);
+			name = Inputs;
 			sourceTree = "<group>";
 		};
 		2E8F76761E4754A500D54ABF /* ColorButtons */ = {
@@ -614,6 +637,8 @@
 		2EB823261DE0D3ED00DF732C /* ViewHelpers */ = {
 			isa = PBXGroup;
 			children = (
+				2E3552071E56FAAF001F7EE1 /* Inputs */,
+				2E3552041E56E57E001F7EE1 /* TitleSection */,
 				2E8F76761E4754A500D54ABF /* ColorButtons */,
 				2EB823271DE0D40F00DF732C /* SpectrometerTabBar.swift */,
 				2EB8233B1DE113DA00DF732C /* CustomCharts.swift */,
@@ -1061,6 +1086,7 @@
 				2EB822EC1DE0811D00DF732C /* FullRangeInterpolatedSpectrumParser.swift in Sources */,
 				2E91F30F1DDB82C7003E277F /* Parameter.swift in Sources */,
 				2E708A231DE61A19008EC78A /* CustomizeExtensions.swift in Sources */,
+				2E3552061E56E5A5001F7EE1 /* TitleSection.swift in Sources */,
 				2EB362961DF1BD4F00E74E39 /* SpectralFile.swift in Sources */,
 				2E91F30D1DDB8068003E277F /* SpectralDataEnums.swift in Sources */,
 				E18DAE9F1E375E43005F6753 /* MeasurmentDetailViewController.swift in Sources */,
@@ -1113,6 +1139,7 @@
 				2EB362A51DF23DDB00E74E39 /* IndicoIniFileReader.swift in Sources */,
 				2E91F2F01DDB5B9F003E277F /* TCPSocket.swift in Sources */,
 				E1F052AD1E49C3AD0084CFBC /* SpectrometerConfigTableViewCell.swift in Sources */,
+				2E3552091E56FAE4001F7EE1 /* CustomTextInput.swift in Sources */,
 				E1A40C001E3F9B800019F467 /* BaseFileBrowserTableViewController.swift in Sources */,
 				2E91F2ED1DDB5B9F003E277F /* Socket.swift in Sources */,
 				2EB823251DE0CC2900DF732C /* AquireViewController.swift in Sources */,
@@ -1127,6 +1154,7 @@
 				2EB3629A1DF1D8E400E74E39 /* AppData.swift in Sources */,
 				2E91F2A61DDB5B76003E277F /* AppDelegate.swift in Sources */,
 				E1C936B91E41D8B700EF51BB /* PortTextField.swift in Sources */,
+				2E35520B1E56FB07001F7EE1 /* SelectPathInput.swift in Sources */,
 				2E8F76731E460CB800D54ABF /* CustomProgressBar.swift in Sources */,
 				2E91F2AE1DDB5B76003E277F /* Spectrometer.xcdatamodeld in Sources */,
 				2E91F30A1DDB7BDF003E277F /* FullRangeInterpolatedSpectrum.swift in Sources */,

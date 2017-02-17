@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class RadioButton: UIButton {
+    
     var alternateButton:Array<RadioButton>?
     
     private let white:UIColor = UIColor.white

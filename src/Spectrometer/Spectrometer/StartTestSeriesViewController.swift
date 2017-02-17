@@ -32,7 +32,6 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate 
         ReflectanceRadioButton?.alternateButton = [RawRadioButton!, RadianceRadioButton]
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         view.addGestureRecognizer(tapGesture)
-        
         loadSettingsIfExist()
     }
     

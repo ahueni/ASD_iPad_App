@@ -8,8 +8,8 @@ target 'Spectrometer' do
   # Pods for Spectrometer
     pod 'Charts/Realm'
     pod 'Zip'
-    pod "PlainPing"
-    pod "Pulsator"
+    pod 'PlainPing'
+    pod 'Pulsator'
 
   target 'SpectrometerTests' do
     inherit! :search_paths
