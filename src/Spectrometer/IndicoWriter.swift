@@ -10,7 +10,7 @@ import Foundation
 
 class IndicoWriter : BaseWriter {
     
-    func write(spectrum : FullRangeInterpolatedSpectrum, whiteRefrenceSpectrum : FullRangeInterpolatedSpectrum?) -> FileHandle{
+    func write(spectrum : FullRangeInterpolatedSpectrum, whiteRefrenceSpectrum : FullRangeInterpolatedSpectrum? = nil) -> FileHandle{
         
         // ------ Start Header ------
         
@@ -238,8 +238,7 @@ class IndicoWriter : BaseWriter {
         }
         
         //SpectrumDescripton
-        writeString(text: "description of spectrum")
-        writeByte(number: UInt8(0)) // End the Description with zero byte
+        writePrefixedString(text: "description of spectrum")
         
         //Refrence Spectrum Data
         for i in 0...spectrum.spectrumBuffer.count-1 //channels
@@ -270,84 +269,64 @@ class IndicoWriter : BaseWriter {
         writeByte(number: 0)
         
         // stitle
-        writeString(text: "Title of Classifier")
-        writeByte(number: UInt8(0)) // End the Description with zero byte
+        writePrefixedString(text: "Title of Classifier")
         
         //  sSubTitle
-        writeString(text: "Subtitle of Classifier")
-        writeByte(number: UInt8(0)) // End the Description with zero byte
+        writePrefixedString(text: "Subtitle of Classifier")
         
         // sProductName
-        writeString(text: "ProductName")
-        writeByte(number: UInt8(0)) // End the Description with zero byte
+        writePrefixedString(text: "ProductName")
         
         // sVendor
-        writeString(text: "Vendor")
-        writeByte(number: UInt8(0)) // End the Description with zero byte
+        writePrefixedString(text: "Vendor")
         
         // sLotNumber
-        writeString(text: "LotNumber")
-        writeByte(number: UInt8(0)) // End the Description with zero byte
+        writePrefixedString(text: "LotNumber")
         
         // sSample
-        writeString(text: "Sample Description")
-        writeByte(number: UInt8(0)) // End the Description with zero byte
+        writePrefixedString(text: "Sample Description")
         
         // sModelName
-        writeString(text: "Model Description")
-        writeByte(number: UInt8(0)) // End the Description with zero byte
+        writePrefixedString(text: "Model Description")
         
         // sOperator
-        writeString(text: "Operator Name")
-        writeByte(number: UInt8(0)) // End the Description with zero byte
+        writePrefixedString(text: "Operator Name")
         
         // sDateTime
-        writeString(text: "Date/time sample taken")
-        writeByte(number: UInt8(0)) // End the Description with zero byte
+        writePrefixedString(text: "Date/time sample taken")
         
         // sInstrument
-        writeString(text: "Instrument Name")
-        writeByte(number: UInt8(0)) // End the Description with zero byte
+        writePrefixedString(text: "Instrument Name")
         
         // sSerialNumber
-        writeString(text: "Serial Number of Instrument")
-        writeByte(number: UInt8(0)) // End the Description with zero byte
+        writePrefixedString(text: "Serial Number of Instrument")
         
         // sDisplayMode
-        writeString(text: "Display Mode")
-        writeByte(number: UInt8(0)) // End the Description with zero byte
+        writePrefixedString(text: "Display Mode")
         
         // sComments
-        writeString(text: "Comments for Sample")
-        writeByte(number: UInt8(0)) // End the Description with zero byte
+        writePrefixedString(text: "Comments for Sample")
         
         // sUnits
-        writeString(text: "Units of Concentration")
-        writeByte(number: UInt8(0)) // End the Description with zero byte
+        writePrefixedString(text: "Units of Concentration")
         
         // sFileName
-        writeString(text: "File Name for sample")
-        writeByte(number: UInt8(0)) // End the Description with zero byte
+        writePrefixedString(text: "File Name for sample")
         
         // sUserName
-        writeString(text: "User Name")
-        writeByte(number: UInt8(0)) // End the Description with zero byte
+        writePrefixedString(text: "User Name")
         
         // sReserved1
-        writeString(text: "Reservered")
-        writeByte(number: UInt8(0)) // End the Description with zero byte
+        writePrefixedString(text: "Reservered")
         
         // sReserved2
-        writeString(text: "Reservered")
-        writeByte(number: UInt8(0)) // End the Description with zero byte
+        writePrefixedString(text: "Reservered")
         
         // sReserved3
-        writeString(text: "Reservered")
-        writeByte(number: UInt8(0)) // End the Description with zero byte
+        writePrefixedString(text: "Reservered")
         
         // sReserved4
-        writeString(text: "Reservered")
-        writeByte(number: UInt8(0)) // End the Description with zero byte
+        writePrefixedString(text: "Reservered")
         
         //iConstituentCount
         // ???
@@ -363,13 +342,24 @@ class IndicoWriter : BaseWriter {
         // SaveDependentVariables
         writeByte(number: 1)
         
+        // DependentVariableCount
+        writeInt(number: UInt16(0))
         
+        // Skip
+        writeByte(number: 0)
+        
+        // DependentVariableLabels()
+        writePrefixedString(text: "DependentVariableLabels")
+        
+        // DependentVariables()
+        writeFloat(number: 0)
         
         // ------ End Dependent Variable Data ------
         
         // ------ Start Calibration Header ------
         
-        
+        // Count
+        writeByte(number: 0)
         
         // ------ End Calibration Header ------
         

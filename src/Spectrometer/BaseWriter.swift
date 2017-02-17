@@ -84,6 +84,13 @@ class BaseWriter{
         fileHandle.write(data)
     }
     
+    func writePrefixedString(text: String)
+    {
+        writeInt(number: UInt16(text.characters.count))
+        writeString(text: text)
+
+    }
+    
     func writeString(text:String){
         let data = text.data(using: String.Encoding.utf8)
         fileHandle.write(data!)

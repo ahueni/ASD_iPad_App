@@ -21,7 +21,7 @@ class SpectrometerTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testWriteReadSpectrumFile() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
@@ -36,7 +36,6 @@ class SpectrometerTests: XCTestCase {
         let spectrumFileParser = FullRangeInterpolatedSpectrumParser(data: spectrumDataBuffer)
         let whiteRefrenceFileParser = FullRangeInterpolatedSpectrumParser(data: whiteRefrenceDataBuffer)
         do{
-            
             var fullRangeSpectrum = try spectrumFileParser.parse();
             var whiteRefrenceSpectrum = try whiteRefrenceFileParser.parse();
             
@@ -56,16 +55,46 @@ class SpectrometerTests: XCTestCase {
             
         }
         
-        /*
-        let fileUrl = URL(fileURLWithPath: "TestResources/spectrum.test")
-        
-        let filePath = fileUrl.absoluteString
-        let dataBuffer = [UInt8](FileManager().contents(atPath: filePath)!)
-        let fileParser = IndicoIniFileReader(data: dataBuffer)
- */
- 
         XCTAssert(true)
     }
+    
+    func testWriteReadSpectrumFileWithCalibrationData() {
+        // This is an example of a functional test case.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        let bundle = Bundle(for: type(of: self))
+        let spectrumPath = bundle.path(forResource: "spectrum", ofType: "test")!
+        let spectrumDataBuffer = [UInt8](FileManager().contents(atPath: spectrumPath)!)
+        
+        
+        let whiteRefrencePath = bundle.path(forResource: "whiteRefrence", ofType: "test")!
+        let whiteRefrenceDataBuffer = [UInt8](FileManager().contents(atPath: whiteRefrencePath)!)
+        
+        let spectrumFileParser = FullRangeInterpolatedSpectrumParser(data: spectrumDataBuffer)
+        let whiteRefrenceFileParser = FullRangeInterpolatedSpectrumParser(data: whiteRefrenceDataBuffer)
+        do{
+            var fullRangeSpectrum = try spectrumFileParser.parse();
+            var whiteRefrenceSpectrum = try whiteRefrenceFileParser.parse();
+            
+            let dirPath = NSTemporaryDirectory()
+            let testFileURL = URL(fileURLWithPath: dirPath).appendingPathComponent("write.test")
+            let canCreate = FileManager.default.isWritableFile(atPath: dirPath)
+            let writer = IndicoWriter(path: testFileURL.relativePath)
+            let fileHandle = writer.write(spectrum: fullRangeSpectrum, whiteRefrenceSpectrum: whiteRefrenceSpectrum)
+            
+            let testFileDataBuffer = [UInt8](FileManager().contents(atPath: testFileURL.relativePath)!)
+            let testFileReader = IndicoAsdFileReader(data: testFileDataBuffer)
+            let parsedAsdTestFile = try testFileReader.parse()
+            
+            print("test")
+        }
+        catch{
+            
+        }
+        
+        XCTAssert(true)
+    }
+
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
