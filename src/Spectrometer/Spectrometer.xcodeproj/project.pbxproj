@@ -85,6 +85,8 @@
 		2EB823251DE0CC2900DF732C /* AquireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB823241DE0CC2900DF732C /* AquireViewController.swift */; };
 		2EB823281DE0D40F00DF732C /* SpectrometerTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB823271DE0D40F00DF732C /* SpectrometerTabBar.swift */; };
 		2EB8233C1DE113DA00DF732C /* CustomCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB8233B1DE113DA00DF732C /* CustomCharts.swift */; };
+		2EB9463A1E579E15006C71C8 /* CornerRadiusExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB946391E579E15006C71C8 /* CornerRadiusExtension.swift */; };
+		2EB9463D1E579E84006C71C8 /* BorderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB9463C1E579E84006C71C8 /* BorderExtension.swift */; };
 		2ECC63441E5337B600C3AACB /* ReflectanceSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECC63431E5337B600C3AACB /* ReflectanceSettingsViewController.swift */; };
 		2ECC63461E54325300C3AACB /* UIColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECC63451E54325300C3AACB /* UIColorButton.swift */; };
 		2ECC63481E543B4500C3AACB /* SettingsBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECC63471E543B4500C3AACB /* SettingsBox.swift */; };
@@ -229,6 +231,8 @@
 		2EB823241DE0CC2900DF732C /* AquireViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AquireViewController.swift; sourceTree = "<group>"; };
 		2EB823271DE0D40F00DF732C /* SpectrometerTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrometerTabBar.swift; sourceTree = "<group>"; };
 		2EB8233B1DE113DA00DF732C /* CustomCharts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCharts.swift; sourceTree = "<group>"; };
+		2EB946391E579E15006C71C8 /* CornerRadiusExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornerRadiusExtension.swift; sourceTree = "<group>"; };
+		2EB9463C1E579E84006C71C8 /* BorderExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderExtension.swift; sourceTree = "<group>"; };
 		2ECC63431E5337B600C3AACB /* ReflectanceSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflectanceSettingsViewController.swift; sourceTree = "<group>"; };
 		2ECC63451E54325300C3AACB /* UIColorButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorButton.swift; sourceTree = "<group>"; };
 		2ECC63471E543B4500C3AACB /* SettingsBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsBox.swift; sourceTree = "<group>"; };
@@ -637,6 +641,7 @@
 		2EB823261DE0D3ED00DF732C /* ViewHelpers */ = {
 			isa = PBXGroup;
 			children = (
+				2EB9463B1E579E4B006C71C8 /* ViewExtensions */,
 				2E3552071E56FAAF001F7EE1 /* Inputs */,
 				2E3552041E56E57E001F7EE1 /* TitleSection */,
 				2E8F76761E4754A500D54ABF /* ColorButtons */,
@@ -650,6 +655,15 @@
 				2ECC63471E543B4500C3AACB /* SettingsBox.swift */,
 			);
 			name = ViewHelpers;
+			sourceTree = "<group>";
+		};
+		2EB9463B1E579E4B006C71C8 /* ViewExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				2EB946391E579E15006C71C8 /* CornerRadiusExtension.swift */,
+				2EB9463C1E579E84006C71C8 /* BorderExtension.swift */,
+			);
+			name = ViewExtensions;
 			sourceTree = "<group>";
 		};
 		A7B7970FA11BC9ECE649EE47 /* Frameworks */ = {
@@ -1055,6 +1069,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EB9463D1E579E84006C71C8 /* BorderExtension.swift in Sources */,
 				2E91F2EE1DDB5B9F003E277F /* SocketOptions+Deprecated.swift in Sources */,
 				E1C936C01E421AEB00EF51BB /* RequiredTextField.swift in Sources */,
 				E1C936B51E41D61800EF51BB /* BaseValidationControl.swift in Sources */,
@@ -1104,6 +1119,7 @@
 				2E91F3051DDB7827003E277F /* BaseSpectrumParser.swift in Sources */,
 				2E8F76781E4754B900D54ABF /* UIBlueButton.swift in Sources */,
 				2E91F2E31DDB5B9F003E277F /* UDPClient.swift in Sources */,
+				2EB9463A1E579E15006C71C8 /* CornerRadiusExtension.swift in Sources */,
 				2E91F2F11DDB5B9F003E277F /* Types.swift in Sources */,
 				E1C936C51E42208C00EF51BB /* BaseButton.swift in Sources */,
 				E1C936C21E421BAD00EF51BB /* ValidationManager.swift in Sources */,

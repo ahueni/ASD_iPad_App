@@ -9,11 +9,10 @@
 import Foundation
 import UIKit
 
-class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate {
+class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate, SelectPathDelegate {
     
     @IBOutlet weak var fileNameTextField: UITextField!
-    
-    @IBOutlet weak var filePathButton: UIButton!
+    @IBOutlet var selectPathInput: SelectInputPath!
     
     @IBOutlet weak var CancelButton: UIButton!
     @IBOutlet weak var StartButton: UIButton!
@@ -24,8 +23,30 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate 
     
     var selectedPath : URL? = nil
     
+    func selectPath() -> DiskFile {
+        
+        let directoryBrowserContainerViewController = self.storyboard!.instantiateViewController(withIdentifier: "DirectoryBrowserContainerViewController") as! DirectoryBrowserContainerViewController
+        
+        let navigationController = UINavigationController(rootViewController: directoryBrowserContainerViewController)
+        navigationController.modalPresentationStyle = .formSheet
+        
+        var blubber:DiskFile!
+        
+        // Hook up the select event
+        directoryBrowserContainerViewController.didSelectFile = {(file: DiskFile) -> Void in
+            blubber = file
+            self.selectedPath = file.filePath
+        }
+        
+        present(navigationController, animated: true, completion: nil)
+        
+        return blubber
+    }
+    
     override func viewDidLoad() {
         fileNameTextField.delegate = self;
+        
+        selectPathInput.selectPathDelegate = self
         
         RawRadioButton?.alternateButton = [RadianceRadioButton, ReflectanceRadioButton]
         RadianceRadioButton?.alternateButton = [RawRadioButton, ReflectanceRadioButton]
@@ -75,21 +96,6 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate 
         view.endEditing(true)
     }
     
-    @IBAction func changeFilePathButtonClicked(_ sender: UIButton) {
-        
-        let directoryBrowserContainerViewController = self.storyboard!.instantiateViewController(withIdentifier: "DirectoryBrowserContainerViewController") as! DirectoryBrowserContainerViewController
-        
-        let navigationController = UINavigationController(rootViewController: directoryBrowserContainerViewController)
-        navigationController.modalPresentationStyle = .formSheet
-        
-        // Hook up the select event
-        directoryBrowserContainerViewController.didSelectFile = {(file: DiskFile) -> Void in
-            self.selectedPath = file.filePath
-            self.filePathButton.setTitle(file.filePath.lastPathComponent, for: .normal)
-        }
-        
-        present(navigationController, animated: true, completion: nil)
-    }
     
     override func goToNextPage(){
         let measurementMode = RawRadioButton.isSelected ? MeasurmentMode.Raw : ReflectanceRadioButton.isSelected ? MeasurmentMode.Reflectance : RadianceRadioButton.isSelected ? MeasurmentMode.Radiance : nil

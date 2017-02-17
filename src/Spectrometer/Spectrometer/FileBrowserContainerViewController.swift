@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class FileBrowserContainerViewController : UIViewController{    
+class FileBrowserContainerViewController : UIViewController {
     
     let inboxPath:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Inbox", isDirectory: true)
     

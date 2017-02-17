@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '9C636C0D4DFDF6FB0235356067DB750B'
+               BlueprintIdentifier = 'F08A0E089EFE3A28D6A2751D6A2D5628'
                BlueprintName = 'Pods-Spectrometer'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods-Spectrometer.framework'>
