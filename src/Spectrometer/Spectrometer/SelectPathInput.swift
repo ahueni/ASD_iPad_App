@@ -11,17 +11,15 @@ import UIKit
 import FontAwesome_swift
 
 protocol SelectPathDelegate {
-    func selectPath() -> DiskFile
+    func selectPath()
 }
 
 
-@IBDesignable class SelectInputPath:UIView {
+@IBDesignable class SelectInputPath:UIView, BaseValidationControl {
     
-    var selectPathDelegate: SelectPathDelegate!
+    var delegate: SelectPathDelegate!
     
-    private var _selectedPath:DiskFile?
-    
-    var selectedPath: String { return (_selectedPath?.filePath.relativePath)! }
+    var isValid: Bool
     
     var leftBackgroundView:UIView!
     var leftImageView:UIImageView!
@@ -80,11 +78,13 @@ protocol SelectPathDelegate {
     }
     
     override init(frame: CGRect) {
+        isValid = false
         super.init(frame: frame)
         addSubviews()
     }
     
     required init?(coder aDecoder: NSCoder) {
+        isValid = false
         super.init(coder: aDecoder)
         addSubviews()
     }
@@ -95,6 +95,10 @@ protocol SelectPathDelegate {
         leftBackgroundView.addSubview(leftImageView)
         pathLabel = UILabel()
         selectPathButton = UIButton()
+        
+        pathLabel.text = "Select path..."
+        pathLabel.textColor = textColor
+        pathLabel.font = UIFont.defaultFontRegular(size: textSize)
         
         self.addSubview(leftBackgroundView)
         self.addSubview(pathLabel)
@@ -125,16 +129,28 @@ protocol SelectPathDelegate {
         leftImageView.center = leftBackgroundView.center
         
         // style pathLabel
-        pathLabel.textColor = textColor
-        pathLabel.font = UIFont.defaultFontRegular(size: textSize)
-        pathLabel.text = "Select path..."
         pathLabel.frame = CGRect(x: self.frame.height + leftTextSpace, y: 0, width: self.frame.width - self.frame.height - leftTextSpace, height: self.frame.height)
         
     }
     
     func selectPath(sender:UITapGestureRecognizer) {
-        _selectedPath = self.selectPathDelegate.selectPath()
-        pathLabel.text = _selectedPath?.filePath.relativePath
+        self.delegate.selectPath()
+    }
+    
+    func update(selectedPath: DiskFile) {
+        
+        if selectedPath.isDirectory {
+            isValid = true
+            pathLabel.text = selectedPath.filePath.relativeString
+            pathLabel.textColor = UIColor.green
+        }
+        
+    }
+    
+    func validate() {
+        
+        
+        
     }
     
 }

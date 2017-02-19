@@ -121,13 +121,13 @@
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initialisierungs Dateien" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="haN-Ml-83i">
-                                                <rect key="frame" x="20" y="234.5" width="728" height="16.5"/>
+                                                <rect key="frame" x="20" y="234.5" width="728" height="17"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YEI-at-1sx">
-                                                <rect key="frame" x="0.0" y="261" width="768" height="40"/>
+                                                <rect key="frame" x="0.0" y="261.5" width="768" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="kBz-fi-ICm"/>
@@ -139,7 +139,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="03n-eu-a7a">
-                                                <rect key="frame" x="0.0" y="311" width="768" height="40"/>
+                                                <rect key="frame" x="0.0" y="311.5" width="768" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="lUp-8O-4TH"/>
@@ -151,7 +151,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNb-54-Zej">
-                                                <rect key="frame" x="0.0" y="361" width="768" height="40"/>
+                                                <rect key="frame" x="0.0" y="361.5" width="768" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="EhH-3s-85u"/>
@@ -163,7 +163,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Benötigen Sie weitere Informationen wie Sie die initialisierungs Dateien vorgängig auf Ihr iPad kopieren können?" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5QO-2b-Q40">
-                                                <rect key="frame" x="20" y="416" width="728" height="14"/>
+                                                <rect key="frame" x="20" y="416.5" width="728" height="14"/>
                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="10"/>
                                                 <color key="textColor" red="0.074509803920000006" green="0.41568627450000001" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -427,7 +427,7 @@
                                         <rect key="frame" x="0.0" y="28" width="728" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mmm-tZ-Xs7" id="yjQ-yq-CaX">
-                                            <rect key="frame" x="0.0" y="0.0" width="728" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="728" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spectrometer Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ec6-mm-Psg">
@@ -1074,13 +1074,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alle Messungen wurden erfolgreich durchgeführt und werden nun abgespeichert." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7M-uM-Rys">
-                                <rect key="frame" x="20" y="80" width="500" height="16.5"/>
+                                <rect key="frame" x="20" y="80" width="500" height="17"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Die Messungen werden gespeichert ..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSU-MD-mc2">
-                                <rect key="frame" x="20" y="275.5" width="500" height="16.5"/>
+                                <rect key="frame" x="20" y="275" width="500" height="17"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1741,76 +1741,82 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="urk-x0-IHY" customClass="RadioButton" customModule="Spectrometer" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NO2-BG-TwH" customClass="RadioButton" customModule="Spectrometer" customModuleProvider="target">
                                                 <rect key="frame" x="25" y="246" width="163.5" height="50"/>
                                                 <color key="backgroundColor" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="tgs-lk-VfD"/>
+                                                    <constraint firstAttribute="height" constant="50" id="mMm-k7-Doi"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <state key="normal" title="Raw">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
-                                                <connections>
-                                                    <action selector="nextButtonClicked:" destination="TmL-uw-0eO" eventType="touchUpInside" id="PhA-dY-Gdm"/>
-                                                </connections>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isLeft" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wuc-RN-48Y" customClass="RadioButton" customModule="Spectrometer" customModuleProvider="target">
-                                                <rect key="frame" x="188.5" y="246" width="163" height="50"/>
-                                                <color key="backgroundColor" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="bYg-96-E7F"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
-                                                <state key="normal" title="Radiance">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="nextButtonClicked:" destination="TmL-uw-0eO" eventType="touchUpInside" id="TD3-NY-Wyd"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PyF-qM-DDO" customClass="RadioButton" customModule="Spectrometer" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gyH-ra-0Vu" customClass="RadioButton" customModule="Spectrometer" customModuleProvider="target">
                                                 <rect key="frame" x="351.5" y="246" width="163.5" height="50"/>
                                                 <color key="backgroundColor" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="vuW-tZ-GZH"/>
+                                                    <constraint firstAttribute="height" constant="50" id="8CQ-CP-JS4"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <state key="normal" title="Radiance">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isRight" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEy-1h-8Ea" customClass="RadioButton" customModule="Spectrometer" customModuleProvider="target">
+                                                <rect key="frame" x="188.5" y="246" width="163" height="50"/>
+                                                <color key="backgroundColor" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="La9-lV-Eup"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <state key="normal" title="Reflectance">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
-                                                <connections>
-                                                    <action selector="nextButtonClicked:" destination="TmL-uw-0eO" eventType="touchUpInside" id="9pf-Ik-dus"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.97931915520000001" green="0.9800599217" blue="0.9794338346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="myS-GW-G7v" firstAttribute="top" secondItem="soy-lZ-5Aa" secondAttribute="bottom" constant="20" id="0Dy-9v-6tj"/>
-                                            <constraint firstItem="wuc-RN-48Y" firstAttribute="top" secondItem="yDL-Vd-sb7" secondAttribute="bottom" constant="8" id="1YS-V5-Zwn"/>
                                             <constraint firstAttribute="trailing" secondItem="4ZN-3r-kSL" secondAttribute="trailing" constant="25" id="26F-Sb-2NZ"/>
+                                            <constraint firstItem="FEy-1h-8Ea" firstAttribute="leading" secondItem="NO2-BG-TwH" secondAttribute="trailing" id="4ph-lv-nEz"/>
                                             <constraint firstItem="6Fk-Ii-aGN" firstAttribute="top" secondItem="FKg-eS-cOA" secondAttribute="top" constant="20" id="6Nk-I1-Hq7"/>
-                                            <constraint firstItem="PyF-qM-DDO" firstAttribute="leading" secondItem="wuc-RN-48Y" secondAttribute="trailing" id="765-mY-bdG"/>
-                                            <constraint firstItem="urk-x0-IHY" firstAttribute="top" secondItem="yDL-Vd-sb7" secondAttribute="bottom" constant="8" id="8n8-qg-kNH"/>
+                                            <constraint firstItem="gyH-ra-0Vu" firstAttribute="top" secondItem="yDL-Vd-sb7" secondAttribute="bottom" constant="8" id="By2-Oa-YgO"/>
                                             <constraint firstAttribute="trailing" secondItem="soy-lZ-5Aa" secondAttribute="trailing" constant="25" id="EKJ-uu-XnH"/>
+                                            <constraint firstItem="gyH-ra-0Vu" firstAttribute="leading" secondItem="FEy-1h-8Ea" secondAttribute="trailing" id="Ijm-tk-GRb"/>
+                                            <constraint firstItem="NO2-BG-TwH" firstAttribute="width" secondItem="FEy-1h-8Ea" secondAttribute="width" id="JIC-By-BvH"/>
                                             <constraint firstItem="soy-lZ-5Aa" firstAttribute="leading" secondItem="FKg-eS-cOA" secondAttribute="leading" constant="25" id="JzH-97-acz"/>
-                                            <constraint firstItem="urk-x0-IHY" firstAttribute="leading" secondItem="FKg-eS-cOA" secondAttribute="leading" constant="25" id="K4D-Uo-YeF"/>
                                             <constraint firstItem="myS-GW-G7v" firstAttribute="leading" secondItem="FKg-eS-cOA" secondAttribute="leading" constant="25" id="Kft-U8-PWL"/>
                                             <constraint firstAttribute="trailing" secondItem="myS-GW-G7v" secondAttribute="trailing" constant="25" id="L1c-0n-Ggn"/>
-                                            <constraint firstItem="urk-x0-IHY" firstAttribute="width" secondItem="wuc-RN-48Y" secondAttribute="width" id="ML0-TT-7a3"/>
+                                            <constraint firstAttribute="bottom" secondItem="NO2-BG-TwH" secondAttribute="bottom" constant="20" id="ON7-op-WX3"/>
                                             <constraint firstAttribute="trailing" secondItem="6Fk-Ii-aGN" secondAttribute="trailing" constant="25" id="PdI-hH-zG0"/>
                                             <constraint firstItem="4ZN-3r-kSL" firstAttribute="top" secondItem="myS-GW-G7v" secondAttribute="bottom" constant="6" id="YTO-YZ-89w"/>
-                                            <constraint firstItem="wuc-RN-48Y" firstAttribute="width" secondItem="PyF-qM-DDO" secondAttribute="width" id="bHb-Lk-nW1"/>
-                                            <constraint firstAttribute="bottom" secondItem="urk-x0-IHY" secondAttribute="bottom" constant="20" id="cX2-gC-eZr"/>
                                             <constraint firstItem="soy-lZ-5Aa" firstAttribute="top" secondItem="6Fk-Ii-aGN" secondAttribute="bottom" constant="6" id="deJ-E1-edz"/>
                                             <constraint firstItem="6Fk-Ii-aGN" firstAttribute="leading" secondItem="FKg-eS-cOA" secondAttribute="leading" constant="25" id="iGH-Kt-DV1"/>
                                             <constraint firstItem="4ZN-3r-kSL" firstAttribute="leading" secondItem="FKg-eS-cOA" secondAttribute="leading" constant="25" id="itg-5o-v7T"/>
+                                            <constraint firstItem="FEy-1h-8Ea" firstAttribute="width" secondItem="gyH-ra-0Vu" secondAttribute="width" id="jjt-Rl-ahR"/>
                                             <constraint firstItem="yDL-Vd-sb7" firstAttribute="leading" secondItem="FKg-eS-cOA" secondAttribute="leading" constant="25" id="l15-TQ-3W6"/>
+                                            <constraint firstItem="NO2-BG-TwH" firstAttribute="leading" secondItem="FKg-eS-cOA" secondAttribute="leading" constant="25" id="lY5-R4-6fa"/>
                                             <constraint firstAttribute="trailing" secondItem="yDL-Vd-sb7" secondAttribute="trailing" constant="25" id="lsF-jp-8eV"/>
-                                            <constraint firstItem="wuc-RN-48Y" firstAttribute="leading" secondItem="urk-x0-IHY" secondAttribute="trailing" id="ndM-Un-i5J"/>
+                                            <constraint firstItem="FEy-1h-8Ea" firstAttribute="top" secondItem="yDL-Vd-sb7" secondAttribute="bottom" constant="8" id="ntB-qX-h6W"/>
+                                            <constraint firstItem="NO2-BG-TwH" firstAttribute="top" secondItem="yDL-Vd-sb7" secondAttribute="bottom" constant="8" id="qBM-gx-reE"/>
                                             <constraint firstItem="yDL-Vd-sb7" firstAttribute="top" secondItem="4ZN-3r-kSL" secondAttribute="bottom" constant="20" id="sqi-ee-P9G"/>
-                                            <constraint firstAttribute="trailing" secondItem="PyF-qM-DDO" secondAttribute="trailing" constant="25" id="szY-hX-WzZ"/>
-                                            <constraint firstItem="PyF-qM-DDO" firstAttribute="top" secondItem="yDL-Vd-sb7" secondAttribute="bottom" constant="8" id="w5N-NW-Mrk"/>
+                                            <constraint firstAttribute="trailing" secondItem="gyH-ra-0Vu" secondAttribute="trailing" constant="25" id="xt9-V1-xxB"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1870,12 +1876,10 @@
                     </view>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="CancelButton" destination="Lfc-TG-ejt" id="ils-Fe-Rqi"/>
-                        <outlet property="RadianceRadioButton" destination="wuc-RN-48Y" id="AbI-ug-BWv"/>
-                        <outlet property="RawRadioButton" destination="urk-x0-IHY" id="pSt-Cd-doa"/>
-                        <outlet property="ReflectanceRadioButton" destination="PyF-qM-DDO" id="6rY-yx-hbr"/>
-                        <outlet property="StartButton" destination="gMq-0S-Gwj" id="n7N-xj-KJa"/>
                         <outlet property="fileNameTextField" destination="soy-lZ-5Aa" id="L4c-rF-bFb"/>
+                        <outlet property="radianceRadioButton" destination="gyH-ra-0Vu" id="aAE-sH-N9i"/>
+                        <outlet property="rawRadioButton" destination="NO2-BG-TwH" id="gTA-ML-nLb"/>
+                        <outlet property="reflectanceRadioButton" destination="FEy-1h-8Ea" id="yqD-TP-k1j"/>
                         <outlet property="selectPathInput" destination="4ZN-3r-kSL" id="WMp-xh-KCy"/>
                     </connections>
                 </viewController>

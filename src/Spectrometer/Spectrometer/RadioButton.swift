@@ -9,19 +9,55 @@
 import Foundation
 import UIKit
 
-class RadioButton: UIButton {
+@IBDesignable class RadioButton: UIButton {
     
     var alternateButton:[RadioButton] = []
     
-    private let white:UIColor = UIColor.white
-    private let gray:UIColor = UIColor.darkGray
-    private let blue:UIColor = UIColor(red:0.00, green:0.65, blue:0.93, alpha:1.00)
-    private let lightBlue:UIColor = UIColor(red:0.00, green:0.65, blue:0.93, alpha:0.25)
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                backgroundColor = backgroundColor?.withAlphaComponent(1.0)
+            } else {
+                backgroundColor = backgroundColor?.withAlphaComponent(0.25)
+            }
+        }
+    }
+    
+    @IBInspectable var cornerRadius: CGFloat = 0
+    
+    @IBInspectable var isLeft: Bool = false {
+        didSet {
+            //round(corners: [.topLeft, .bottomLeft], radius: cornerRadius)
+        }
+    }
+    
+    @IBInspectable var isRight: Bool = false {
+        didSet {
+            //round(corners: [.topRight, .bottomRight], radius: cornerRadius)
+        }
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        initViews()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        initViews()
+    }
+    
+    func initViews() {
+        if isSelected {
+            backgroundColor = backgroundColor?.withAlphaComponent(1.0)
+        } else {
+            backgroundColor = backgroundColor?.withAlphaComponent(0.25)
+        }
+    }
     
     func unselectAlternateButtons(){
-        
         if alternateButton.isEmpty {
-            toggleButton()
+            self.isSelected = !isSelected
         } else {
             self.isSelected = true
             for aButton:RadioButton in alternateButton {
@@ -31,36 +67,8 @@ class RadioButton: UIButton {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        unselectAlternateButtons()
         super.touchesBegan(touches, with: event)
+        unselectAlternateButtons()
     }
     
-    func toggleButton(){
-        self.isSelected = !isSelected
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        self.layer.cornerRadius = 4
-        
-        self.backgroundColor = lightBlue
-        if (isEnabled) {
-            self.backgroundColor = blue
-        }
-        
-        setTitleColor(white, for: .normal)
-        
-        
-    }
-    
-    override var isSelected: Bool {
-        didSet {
-            if isSelected {
-                self.backgroundColor = blue
-            } else {
-                self.backgroundColor = UIColor.lightGray
-            }
-        }
-    }
 }

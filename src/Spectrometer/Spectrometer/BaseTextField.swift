@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class BaseTextField : UITextField, BaseValidationControl{
+class BaseTextField : UITextField, BaseValidationControl {
     
     var isValid: Bool = false{
         didSet

@@ -9,13 +9,12 @@
 import Foundation
 import UIKit
 
-class ValidationManager{
+class ValidationManager {
     
     static let sharedInstance = ValidationManager()
     
     // prevent other instances of this class
-    private init() {
-    }
+    private init() { }
     
     public func validateSubViews(view :UIView) -> Bool
     {

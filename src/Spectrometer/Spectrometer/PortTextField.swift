@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class PortTextField : BaseTextField{
+class PortTextField : BaseTextField {
     
     override func validate(){
         let port = Int(text!)

@@ -11,48 +11,53 @@ import UIKit
 
 class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate, SelectPathDelegate {
     
-    @IBOutlet weak var fileNameTextField: UITextField!
+    @IBOutlet var fileNameTextField: UITextField!
     @IBOutlet var selectPathInput: SelectInputPath!
     
-    @IBOutlet weak var CancelButton: UIButton!
-    @IBOutlet weak var StartButton: UIButton!
-    
-    @IBOutlet weak var RawRadioButton: RadioButton!
-    @IBOutlet weak var RadianceRadioButton: RadioButton!
-    @IBOutlet weak var ReflectanceRadioButton: RadioButton!
+    @IBOutlet var rawRadioButton: RadioButton!
+    @IBOutlet var reflectanceRadioButton: RadioButton!
+    @IBOutlet var radianceRadioButton: RadioButton!
     
     var selectedPath : URL? = nil
     
-    func selectPath() -> DiskFile {
+    func selectPath() {
         
         let directoryBrowserContainerViewController = self.storyboard!.instantiateViewController(withIdentifier: "DirectoryBrowserContainerViewController") as! DirectoryBrowserContainerViewController
+        
+        // initialize path if already exists
+        if let path = selectedPath {
+            directoryBrowserContainerViewController.selectedPath = path
+        }
+        
         
         let navigationController = UINavigationController(rootViewController: directoryBrowserContainerViewController)
         navigationController.modalPresentationStyle = .formSheet
         
-        var blubber:DiskFile!
-        
         // Hook up the select event
         directoryBrowserContainerViewController.didSelectFile = {(file: DiskFile) -> Void in
-            blubber = file
             self.selectedPath = file.filePath
+            self.selectPathInput.update(selectedPath: file)
         }
         
         present(navigationController, animated: true, completion: nil)
-        
-        return blubber
     }
     
     override func viewDidLoad() {
+        
+        // add delegates
         fileNameTextField.delegate = self;
+        selectPathInput.delegate = self
         
-        selectPathInput.selectPathDelegate = self
+        // initialize measurement mode buttons
+        rawRadioButton.alternateButton = [radianceRadioButton, reflectanceRadioButton]
+        radianceRadioButton.alternateButton = [rawRadioButton, reflectanceRadioButton]
+        reflectanceRadioButton.alternateButton = [rawRadioButton, radianceRadioButton]
         
-        RawRadioButton?.alternateButton = [RadianceRadioButton, ReflectanceRadioButton]
-        RadianceRadioButton?.alternateButton = [RawRadioButton, ReflectanceRadioButton]
-        ReflectanceRadioButton?.alternateButton = [RawRadioButton!, RadianceRadioButton]
+        // click anywhere to close keyboard
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         view.addGestureRecognizer(tapGesture)
+        
+        // initialize last setting values
         loadSettingsIfExist()
     }
     
@@ -63,28 +68,6 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
             print("settings loaded")
         }
     }
-
-    
-    override func awakeFromNib() {
-        self.view.layoutIfNeeded()
-        
-        RawRadioButton.isSelected = true
-        RadianceRadioButton.isSelected = false
-        ReflectanceRadioButton.isSelected = false
-    }
-    
-    @IBAction func NameTextFieldEditingChanged(_ sender: Any) {
-        validate()
-    }
-    
-    @IBAction func measurmentCountTextFieldEditingChanged(_ sender: Any) {
-        validate()
-    }
-    
-    func validate()
-    {
-        //StartButton.isEnabled = ValidationManager.sharedInstance.validateSubViews(view: view)
-    }
     
     // Hides the keyboard when the return button is clicked
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -93,20 +76,18 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
     }
     
     func hideKeyboard() {
-        view.endEditing(true)
+        self.view.endEditing(true)
     }
     
     
     override func goToNextPage(){
-        let measurementMode = RawRadioButton.isSelected ? MeasurmentMode.Raw : ReflectanceRadioButton.isSelected ? MeasurmentMode.Reflectance : RadianceRadioButton.isSelected ? MeasurmentMode.Radiance : nil
+        let measurementMode = rawRadioButton.isSelected ? MeasurmentMode.Raw : reflectanceRadioButton.isSelected ? MeasurmentMode.Reflectance : radianceRadioButton.isSelected ? MeasurmentMode.Radiance : nil
         pageContainer!.measurmentMode = measurementMode
         let measurmentSettings = MeasurmentSettings(fileName: fileNameTextField.text!, path: selectedPath!, measurmentMode: measurementMode!)
         
         let settingsData = NSKeyedArchiver.archivedData(withRootObject: measurmentSettings)
         UserDefaults.standard.set(settingsData, forKey: "MeasurmentSettings")
         UserDefaults.standard.synchronize()
-        
-        print("settings saved")
         
         switch measurementMode! {
         case MeasurmentMode.Raw:
