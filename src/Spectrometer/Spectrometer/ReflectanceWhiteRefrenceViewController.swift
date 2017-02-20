@@ -52,26 +52,11 @@ class ReflectanceWhiteRefrenceViewController : BaseMeasurementModal {
     }
     
     func updateValues(whiteReference: FullRangeInterpolatedSpectrum) -> Void {
-        /*
+        
         if(currentWhiteRefrence == nil)
         {
             // switch back to UI Thread for updates
             DispatchQueue.main.async {
-                switch(self.pageContainer!.measurmentSettings!.whiteRefrenceSetting){
-                case .TakeBefore:
-                    self.pageContainer!.whiteRefrenceBefore = whiteReference
-                case .TakeBeforeAndAfter:
-                    if(self.pageContainer!.whiteRefrenceBefore == nil) {
-                        self.pageContainer!.whiteRefrenceBefore = whiteReference
-                    } else {
-                        self.pageContainer!.whiteRefrenceAfter = whiteReference
-                        self.nextButton.setTitle("Fertig", for: .normal)
-                    }
-                case .TakeAfter:
-                    self.pageContainer!.whiteRefrenceAfter = whiteReference
-                    self.nextButton.setTitle("Fertig", for: .normal)
-                }
-                
                 self.updateLineChart(spectrum: whiteReference)
                 
                 self.nextButton.isEnabled = true
@@ -82,7 +67,12 @@ class ReflectanceWhiteRefrenceViewController : BaseMeasurementModal {
         {
             updateLineChart2(spectrum: whiteReference)
         }
-        */
+        
+    }
+    
+    override func goToNextPage() {
+        pageContainer!.whiteRefrenceBeforeSpectrumList.append(currentWhiteRefrence!)
+        super.goToNextPage()
     }
     
     func updateLineChart2(spectrum : FullRangeInterpolatedSpectrum){
