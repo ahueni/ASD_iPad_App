@@ -12,35 +12,12 @@ import UIKit
 class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate, SelectPathDelegate {
     
     @IBOutlet var fileNameTextField: UITextField!
-    @IBOutlet var selectPathInput: SelectInputPath!
+    @IBOutlet var selectPathInput: SelectInputPath! 
+    @IBOutlet var nextButton: UIColorButton!
     
     @IBOutlet var rawRadioButton: RadioButton!
     @IBOutlet var reflectanceRadioButton: RadioButton!
     @IBOutlet var radianceRadioButton: RadioButton!
-    
-    var selectedPath : URL? = nil
-    
-    func selectPath() {
-        
-        let directoryBrowserContainerViewController = self.storyboard!.instantiateViewController(withIdentifier: "DirectoryBrowserContainerViewController") as! DirectoryBrowserContainerViewController
-        
-        // initialize path if already exists
-        if let path = selectedPath {
-            directoryBrowserContainerViewController.selectedPath = path
-        }
-        
-        
-        let navigationController = UINavigationController(rootViewController: directoryBrowserContainerViewController)
-        navigationController.modalPresentationStyle = .formSheet
-        
-        // Hook up the select event
-        directoryBrowserContainerViewController.didSelectFile = {(file: DiskFile) -> Void in
-            self.selectedPath = file.filePath
-            self.selectPathInput.update(selectedPath: file)
-        }
-        
-        present(navigationController, animated: true, completion: nil)
-    }
     
     override func viewDidLoad() {
         
@@ -57,21 +34,59 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         view.addGestureRecognizer(tapGesture)
         
-        // initialize last setting values
+        // initialize last setting values and update it on the view
         loadSettingsIfExist()
     }
     
     func loadSettingsIfExist(){
-        let measurmentSettings = UserDefaults.standard.data(forKey: "MeasurmentSettings")
-        if(measurmentSettings != nil){
-            let loadedSettings = NSKeyedUnarchiver.unarchiveObject(with: measurmentSettings!) as! MeasurmentSettings
-            print("settings loaded")
+        let _loadedSettings = UserDefaults.standard.data(forKey: "MeasurmentSettings")
+        if let loadedSettings = _loadedSettings {
+            let measurementSettings = NSKeyedUnarchiver.unarchiveObject(with: loadedSettings) as! MeasurmentSettings
+            
+            fileNameTextField.text = measurementSettings.fileName
+            selectPathInput.update(diskFile: measurementSettings.path)
+            
+            switch measurementSettings.measurmentMode {
+            case .Raw:
+                rawRadioButton.unselectAlternateButtons()
+            case .Reflectance:
+                reflectanceRadioButton.unselectAlternateButtons()
+            case .Radiance:
+                radianceRadioButton.unselectAlternateButtons()
+            }
+            
+            
         }
+    }
+    
+    func openFileBrowser(path: URL?) {
+        
+        let directoryBrowserContainerViewController = self.storyboard!.instantiateViewController(withIdentifier: "DirectoryBrowserContainerViewController") as! DirectoryBrowserContainerViewController
+        
+        // initialize path if already exists
+        if let existingPath = path {
+            directoryBrowserContainerViewController.selectedPath = existingPath
+        }
+        
+        let navigationController = UINavigationController(rootViewController: directoryBrowserContainerViewController)
+        navigationController.modalPresentationStyle = .formSheet
+        
+        // Hook up the select event
+        directoryBrowserContainerViewController.didSelectFile = {(file: DiskFile) -> Void in
+            self.selectPathInput.update(diskFile: file.filePath)
+        }
+        
+        present(navigationController, animated: true, completion: nil)
+    }
+    
+    func didSelectPath() {
+        validateInputFields()
     }
     
     // Hides the keyboard when the return button is clicked
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
+        validateInputFields()
+        hideKeyboard()
         return false
     }
     
@@ -79,16 +94,26 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
         self.view.endEditing(true)
     }
     
+    func validateInputFields() -> Void {
+        if ValidationManager.sharedInstance.validateSubViews(view: self.view) {
+            nextButton.isEnabled = true
+        } else {
+            nextButton.isEnabled = false
+        }
+    }
     
     override func goToNextPage(){
+        
+        // first save settings to userDefaults
         let measurementMode = rawRadioButton.isSelected ? MeasurmentMode.Raw : reflectanceRadioButton.isSelected ? MeasurmentMode.Reflectance : radianceRadioButton.isSelected ? MeasurmentMode.Radiance : nil
         pageContainer!.measurmentMode = measurementMode
-        let measurmentSettings = MeasurmentSettings(fileName: fileNameTextField.text!, path: selectedPath!, measurmentMode: measurementMode!)
+        let measurmentSettings = MeasurmentSettings(fileName: fileNameTextField.text!, path: selectPathInput.selectedPath!, measurmentMode: measurementMode!)
         
         let settingsData = NSKeyedArchiver.archivedData(withRootObject: measurmentSettings)
         UserDefaults.standard.set(settingsData, forKey: "MeasurmentSettings")
         UserDefaults.standard.synchronize()
         
+        // append the next page
         switch measurementMode! {
         case MeasurmentMode.Raw:
             pageContainer!.pages.append(RawPage())
@@ -100,6 +125,8 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
             pageContainer!.pages.append(ReflectancePage())
             break
         }
+        
+        // got to next page
         pageContainer?.goToNextPage()
     }
 

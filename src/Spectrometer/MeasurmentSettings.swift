@@ -9,14 +9,14 @@
 import Foundation
 
 class MeasurmentSettings : NSObject, NSCoding{
-    var fileName : String
-    var path :URL
-    var measurmentMode : MeasurmentMode
+    
+    var fileName: String
+    var path: URL
+    var measurmentMode: MeasurmentMode
     
     required init(coder decoder: NSCoder) {
         self.fileName = decoder.decodeObject(forKey: "fileName") as! String
         self.path = decoder.decodeObject(forKey: "path") as! URL
-        
         self.measurmentMode = MeasurmentMode(rawValue: Int(decoder.decodeInt32(forKey: "measurmentMode")))!
     }
     

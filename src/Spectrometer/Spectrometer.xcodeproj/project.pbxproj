@@ -87,6 +87,8 @@
 		2EB8233C1DE113DA00DF732C /* CustomCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB8233B1DE113DA00DF732C /* CustomCharts.swift */; };
 		2EB9463A1E579E15006C71C8 /* CornerRadiusExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB946391E579E15006C71C8 /* CornerRadiusExtension.swift */; };
 		2EB9463D1E579E84006C71C8 /* BorderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB9463C1E579E84006C71C8 /* BorderExtension.swift */; };
+		2EB9463F1E5B59CD006C71C8 /* GeneralSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB9463E1E5B59CD006C71C8 /* GeneralSettingsViewController.swift */; };
+		2EB946411E5B62DE006C71C8 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB946401E5B62DE006C71C8 /* URL.swift */; };
 		2ECC63441E5337B600C3AACB /* ReflectanceSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECC63431E5337B600C3AACB /* ReflectanceSettingsViewController.swift */; };
 		2ECC63461E54325300C3AACB /* UIColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECC63451E54325300C3AACB /* UIColorButton.swift */; };
 		2ECC63481E543B4500C3AACB /* SettingsBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECC63471E543B4500C3AACB /* SettingsBox.swift */; };
@@ -233,6 +235,8 @@
 		2EB8233B1DE113DA00DF732C /* CustomCharts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCharts.swift; sourceTree = "<group>"; };
 		2EB946391E579E15006C71C8 /* CornerRadiusExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornerRadiusExtension.swift; sourceTree = "<group>"; };
 		2EB9463C1E579E84006C71C8 /* BorderExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderExtension.swift; sourceTree = "<group>"; };
+		2EB9463E1E5B59CD006C71C8 /* GeneralSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralSettingsViewController.swift; sourceTree = "<group>"; };
+		2EB946401E5B62DE006C71C8 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		2ECC63431E5337B600C3AACB /* ReflectanceSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflectanceSettingsViewController.swift; sourceTree = "<group>"; };
 		2ECC63451E54325300C3AACB /* UIColorButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorButton.swift; sourceTree = "<group>"; };
 		2ECC63471E543B4500C3AACB /* SettingsBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsBox.swift; sourceTree = "<group>"; };
@@ -383,7 +387,7 @@
 				E1A40C191E4076960019F467 /* Resources */,
 				E18DAE981E375CDB005F6753 /* Measurement */,
 				E14EC2291E2E187B006EBD2F /* Settings */,
-				2EB823261DE0D3ED00DF732C /* ViewHelpers */,
+				2EB823261DE0D3ED00DF732C /* ViewComponents */,
 				2EB823231DE0CC0600DF732C /* Aquire */,
 				2EB823071DE0ACD400DF732C /* Connection */,
 				2E91F2A51DDB5B76003E277F /* AppDelegate.swift */,
@@ -638,7 +642,7 @@
 			name = Aquire;
 			sourceTree = "<group>";
 		};
-		2EB823261DE0D3ED00DF732C /* ViewHelpers */ = {
+		2EB823261DE0D3ED00DF732C /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
 				2EB9463B1E579E4B006C71C8 /* ViewExtensions */,
@@ -654,7 +658,7 @@
 				E13176621E53129B002F0958 /* RadioButton.swift */,
 				2ECC63471E543B4500C3AACB /* SettingsBox.swift */,
 			);
-			name = ViewHelpers;
+			name = ViewComponents;
 			sourceTree = "<group>";
 		};
 		2EB9463B1E579E4B006C71C8 /* ViewExtensions */ = {
@@ -662,6 +666,7 @@
 			children = (
 				2EB946391E579E15006C71C8 /* CornerRadiusExtension.swift */,
 				2EB9463C1E579E84006C71C8 /* BorderExtension.swift */,
+				2EB946401E5B62DE006C71C8 /* URL.swift */,
 			);
 			name = ViewExtensions;
 			sourceTree = "<group>";
@@ -735,6 +740,7 @@
 			isa = PBXGroup;
 			children = (
 				E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */,
+				2EB9463E1E5B59CD006C71C8 /* GeneralSettingsViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -1075,6 +1081,7 @@
 				E1C936B51E41D61800EF51BB /* BaseValidationControl.swift in Sources */,
 				2E91F3111DDB8408003E277F /* Init.swift in Sources */,
 				E165E1F71E34B5A20077A5EB /* FastMeasurmentViewController.swift in Sources */,
+				2EB946411E5B62DE006C71C8 /* URL.swift in Sources */,
 				2E91F2EA1DDB5B9F003E277F /* InternetSocket.swift in Sources */,
 				2ECC63481E543B4500C3AACB /* SettingsBox.swift in Sources */,
 				E18DAE9D1E375D46005F6753 /* MeasurmentMasterTableViewController.swift in Sources */,
@@ -1083,6 +1090,7 @@
 				2E30A8501E44A075001236C5 /* DiskFileActivityItem.swift in Sources */,
 				2E91F2E21DDB5B9F003E277F /* TCPClient.swift in Sources */,
 				E1446F031E56DD6100840AF2 /* RawSettingsViewController.swift in Sources */,
+				2EB9463F1E5B59CD006C71C8 /* GeneralSettingsViewController.swift in Sources */,
 				E14EC22E1E2E1889006EBD2F /* SettingsViewController.swift in Sources */,
 				E12547D91E5382750004B2A8 /* RawSettings.swift in Sources */,
 				2E91F2EF1DDB5B9F003E277F /* SocketOptions.swift in Sources */,

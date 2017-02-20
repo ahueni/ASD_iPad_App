@@ -10,13 +10,12 @@ import Foundation
 import UIKit
 import FontAwesome_swift
 
-@IBDesignable class CustomTextField:UITextField {
+class CustomTextField:UITextField {
     
     var leftSpaceView:UIView!
     var leftBackgroundView:UIView!
     var leftImageView:UIImageView!
     var leftIcon:UIImage!
-    
     
     @IBInspectable var cornerRadius: CGFloat = 0 {
         didSet {
@@ -48,9 +47,19 @@ import FontAwesome_swift
         }
     }
     
+    @IBInspectable var icon: String = "fa-i-cursor" {
+        didSet {
+            let iconImg:UIImage? = UIImage.fontAwesomeIcon(code: icon, textColor: .white, size: CGSize(width: iconSize, height: iconSize))
+            if let image = iconImg {
+                leftIcon = image
+            } else {
+                leftIcon = UIImage.fontAwesomeIcon(name: .iCursor, textColor: .white, size: CGSize(width: iconSize, height: iconSize))
+            }
+        }
+    }
+    
     @IBInspectable var iconSize: Int = 16 {
         didSet {
-            leftIcon = UIImage.fontAwesomeIcon(name: .fileTextO, textColor: .white, size: CGSize(width: iconSize, height: iconSize))
             leftImageView.frame = CGRect(origin: leftBackgroundView.center, size: CGSize(width: iconSize, height: iconSize))
         }
     }

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class BaseTextField : UITextField, BaseValidationControl {
+class BaseTextField : CustomTextField, BaseValidationControl {
     
     var isValid: Bool = false{
         didSet
@@ -18,9 +18,12 @@ class BaseTextField : UITextField, BaseValidationControl {
         }
     }
     
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
-        
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         self.addTarget(self, action: #selector(validate), for: .editingChanged)
     }
     

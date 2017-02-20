@@ -11,13 +11,17 @@ import UIKit
 import FontAwesome_swift
 
 protocol SelectPathDelegate {
-    func selectPath()
+    func openFileBrowser(path:URL?)
+    func didSelectPath()
 }
 
 
 @IBDesignable class SelectInputPath:UIView, BaseValidationControl {
     
     var delegate: SelectPathDelegate!
+    
+    private var _selectedPath:URL?
+    var selectedPath:URL? { get { return _selectedPath } }
     
     var isValid: Bool
     
@@ -134,22 +138,28 @@ protocol SelectPathDelegate {
     }
     
     func selectPath(sender:UITapGestureRecognizer) {
-        self.delegate.selectPath()
+        self.delegate.openFileBrowser(path: selectedPath)
     }
     
-    func update(selectedPath: DiskFile) {
-        
-        if selectedPath.isDirectory {
-            isValid = true
-            pathLabel.text = selectedPath.filePath.relativeString
-            pathLabel.textColor = UIColor.green
-        }
-        
+    func update(diskFile: URL) {
+        _selectedPath = diskFile
+        validate()
+        self.delegate.didSelectPath()
     }
     
     func validate() {
         
+        if let path = selectedPath {
+            if path.isDirectory() {
+                isValid = true
+                pathLabel.text = path.standardized.description
+                pathLabel.textColor = UIColor.green
+                return
+            }
+        }
         
+        isValid = false
+        pathLabel.textColor = UIColor.red
         
     }
     
