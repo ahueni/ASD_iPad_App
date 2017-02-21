@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class RawSettingsViewController : BaseMeasurementModal {
+class RawSettingsViewController: BaseMeasurementModal {
     
     // MARK: Raw settings
     @IBOutlet var darkCurrentSettingsContentHeight: NSLayoutConstraint!

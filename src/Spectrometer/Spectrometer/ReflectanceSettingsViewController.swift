@@ -16,8 +16,14 @@ class ReflectanceSettingsViewController : RawSettingsViewController {
         if(reflectanceSettings != nil){
             let loadedSettings = NSKeyedUnarchiver.unarchiveObject(with: reflectanceSettings!) as! ReflectanceSettings
             
+            darkCurrentSettingsSwitch.isOn = loadedSettings.takeDarkCurrent
+            darkCurrentSettingsSwitchValueChanged(darkCurrentSettingsSwitch)
+            
             targetCountStepper.value = Double(loadedSettings.targetCount)
+            targetCountLabel.text = loadedSettings.targetCount.description
+            
             targetDelayStepper.value = Double(loadedSettings.targetDelay)
+            targetIntervallLabel.text = loadedSettings.targetDelay.description
         }
     }
     

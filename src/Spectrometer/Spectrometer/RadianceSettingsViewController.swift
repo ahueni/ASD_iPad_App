@@ -47,12 +47,36 @@ class RadianceSettingsViewController : BaseMeasurementModal {
         if(radianceSettings != nil){
             let loadedSettings = NSKeyedUnarchiver.unarchiveObject(with: radianceSettings!) as! RadianceSettings
             
+            // init darkCurrent section
+            darkCurrentSwitch.isOn = loadedSettings.takeDarkCurrent
+            darkCurrentSwitch(darkCurrentSwitch)
+            
+            // init white Ref BEFORE section
+            whiteReferenceBeforeSwitch.isOn = loadedSettings.takeWhiteRefrenceBefore
+            whiteReferenceBeforeSwitchValueChanged(whiteReferenceBeforeSwitch)
+            
             whiteReferenceBeforeCountStepper.value = Double(loadedSettings.whiteRefrenceBeforeCount)
+            whiteReferenceBeforeCountLabel.text = loadedSettings.whiteRefrenceBeforeCount.description
+            
             whiteReferenceBeforeIntervalStepper.value = Double(loadedSettings.whiteRefrenceBeforeDelay)
+            whiteReferenceBeforeIntervalLabel.text = loadedSettings.whiteRefrenceBeforeDelay.description
+            
+            // ini target section
             targetCountStepper.value = Double(loadedSettings.targetCount)
+            targetCountLabel.text = loadedSettings.targetCount.description
+            
             targetIntervalStepper.value = Double(loadedSettings.targetDelay)
+            targetIntervalLabel.text = loadedSettings.targetDelay.description
+            
+            // init white Ref AFTER section
+            whiteRefrenceAfterSwitch.isOn = loadedSettings.takeWhiteRefrenceAfter
+            whiteRefrenceAfterSwitchValueChanged(whiteRefrenceAfterSwitch)
+            
             whiteRefrenceAfterCountStepper.value = Double(loadedSettings.whiteRefrenceAfterCount)
+            whiteRefrenceAfterCountLabel.text = loadedSettings.whiteRefrenceAfterCount.description
+            
             whiteReferenceAfterIntervalStepper.value = Double(loadedSettings.whiteRefrenceAfterDelay)
+            whiteReferenceAfterIntervalLabel.text = loadedSettings.whiteRefrenceAfterDelay.description
         }
     }
     
