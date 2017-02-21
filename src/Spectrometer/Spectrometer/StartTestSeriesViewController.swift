@@ -44,7 +44,9 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
             let measurementSettings = NSKeyedUnarchiver.unarchiveObject(with: loadedSettings) as! MeasurmentSettings
             
             fileNameTextField.text = measurementSettings.fileName
-            selectPathInput.update(diskFile: measurementSettings.path)
+            
+            // not working - recreate a url from NSUserDefaults is not possible
+            //selectPathInput.update(diskFile: measurementSettings.path)
             
             switch measurementSettings.measurmentMode {
             case .Raw:
@@ -55,6 +57,7 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
                 radianceRadioButton.unselectAlternateButtons()
             }
             
+            validateInputFields()
             
         }
     }
@@ -81,6 +84,14 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
     
     func didSelectPath() {
         validateInputFields()
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        validateInputFields()
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        nextButton.isEnabled = false
     }
     
     // Hides the keyboard when the return button is clicked

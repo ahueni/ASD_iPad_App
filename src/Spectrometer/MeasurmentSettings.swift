@@ -11,25 +11,28 @@ import Foundation
 class MeasurmentSettings : NSObject, NSCoding{
     
     var fileName: String
-    var path: URL
     var measurmentMode: MeasurmentMode
+    var path: URL
     
     required init(coder decoder: NSCoder) {
         self.fileName = decoder.decodeObject(forKey: "fileName") as! String
-        self.path = decoder.decodeObject(forKey: "path") as! URL
         self.measurmentMode = MeasurmentMode(rawValue: Int(decoder.decodeInt32(forKey: "measurmentMode")))!
+        
+        let pathString = decoder.decodeObject(forKey: "pathString") as! String
+        self.path = URL(string: pathString)!
+        
     }
     
     public func encode(with aCoder: NSCoder) {
         aCoder.encode(self.fileName, forKey: "fileName")
-        aCoder.encode(self.path, forKey: "path")
+        aCoder.encode(self.path.relativePath, forKey: "pathString")
         aCoder.encode(self.measurmentMode.rawValue, forKey: "measurmentMode")
     }
     
-    init(fileName : String, path : URL, measurmentMode : MeasurmentMode){
+    init(fileName: String, path: URL, measurmentMode : MeasurmentMode){
         self.fileName = fileName
-        self.path = path
         self.measurmentMode = measurmentMode
+        self.path = path
     }
 }
 

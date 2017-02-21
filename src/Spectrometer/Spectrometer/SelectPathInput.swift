@@ -23,7 +23,14 @@ protocol SelectPathDelegate {
     private var _selectedPath:URL?
     var selectedPath:URL? { get { return _selectedPath } }
     
-    var isValid: Bool
+    var isValid: Bool {
+        get {
+            if let path = selectedPath {
+                return path.isDirectory()
+            }
+            return false
+        }
+    }
     
     var leftBackgroundView:UIView!
     var leftImageView:UIImageView!
@@ -82,13 +89,11 @@ protocol SelectPathDelegate {
     }
     
     override init(frame: CGRect) {
-        isValid = false
         super.init(frame: frame)
         addSubviews()
     }
     
     required init?(coder aDecoder: NSCoder) {
-        isValid = false
         super.init(coder: aDecoder)
         addSubviews()
     }
@@ -143,23 +148,18 @@ protocol SelectPathDelegate {
     
     func update(diskFile: URL) {
         _selectedPath = diskFile
-        validate()
         self.delegate.didSelectPath()
+        validate()
     }
     
     func validate() {
         
-        if let path = selectedPath {
-            if path.isDirectory() {
-                isValid = true
-                pathLabel.text = path.standardized.description
-                pathLabel.textColor = UIColor.green
-                return
-            }
+        if isValid {
+            pathLabel.text = self.selectedPath?.lastPathComponent
+            pathLabel.textColor = UIColor.green
+        } else {
+            pathLabel.textColor = UIColor.red
         }
-        
-        isValid = false
-        pathLabel.textColor = UIColor.red
         
     }
     

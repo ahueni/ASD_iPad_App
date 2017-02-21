@@ -12,6 +12,12 @@ import UIKit
 @IBDesignable
 class RequiredTextField : BaseTextField {
     
+    override var isValid: Bool {
+        get {
+             return text != nil && text != ""
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -20,7 +26,4 @@ class RequiredTextField : BaseTextField {
         super.init(coder: aDecoder)
     }
     
-    override func validate() {
-        isValid = text != nil && text != ""
-    }
 }

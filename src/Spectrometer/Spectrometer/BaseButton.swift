@@ -9,7 +9,8 @@
 import Foundation
 import UIKit
 
-class BaseButton : UIButton, BaseValidationControl{
+class BaseButton : UIButton, BaseValidationControl {
+
     var isValid: Bool = false{
         didSet
         {

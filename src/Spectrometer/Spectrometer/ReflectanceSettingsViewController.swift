@@ -28,7 +28,11 @@ class ReflectanceSettingsViewController : RawSettingsViewController {
     
     override func saveSettings()
     {
-        let settings = ReflectanceSettings(targetCount: Int(targetCountStepper.value), targetDelay: Int(targetDelayStepper.value), takeWhiteRefrenceBefore: true)
+        let takeDC = darkCurrentSettingsSwitch.isOn
+        let targetCountValue = Int(targetCountStepper.value)
+        let targetDelayValue = Int(targetDelayStepper.value)
+        
+        let settings = ReflectanceSettings(takeDarkCurrent: takeDC, targetCount: targetCountValue, targetDelay: targetDelayValue, takeWhiteRefrenceBefore: true)
         
         let settingsData = NSKeyedArchiver.archivedData(withRootObject: settings)
         UserDefaults.standard.set(settingsData, forKey: "ReflectanceSettings")

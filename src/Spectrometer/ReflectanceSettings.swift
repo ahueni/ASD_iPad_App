@@ -20,10 +20,10 @@ class ReflectanceSettings : RawSettings{
         aCoder.encode(self.takeWhiteRefrenceBefore, forKey: "takeWhiteRefrenceBefore")
     }
     
-    var takeWhiteRefrenceBefore : Bool
+    var takeWhiteRefrenceBefore: Bool
     
-    init(targetCount : Int, targetDelay : Int, takeWhiteRefrenceBefore : Bool) {
+    init(takeDarkCurrent: Bool, targetCount: Int, targetDelay: Int, takeWhiteRefrenceBefore: Bool) {
         self.takeWhiteRefrenceBefore = takeWhiteRefrenceBefore
-        super.init(targetCount: targetCount, targetDelay: targetDelay)
+        super.init(takeDarkCurrent: takeDarkCurrent, targetCount: targetCount, targetDelay: targetDelay)
     }
 }

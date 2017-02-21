@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RadianceSettings : ReflectanceSettings{
+class RadianceSettings: ReflectanceSettings{
     
     required init(coder decoder: NSCoder) {
         self.whiteRefrenceBeforeCount = Int(decoder.decodeInt32(forKey: "whiteRefrenceBeforeCount"))
@@ -28,19 +28,19 @@ class RadianceSettings : ReflectanceSettings{
         aCoder.encode(self.whiteRefrenceAfterDelay, forKey: "whiteRefrenceAfterDelay")
     }
     
-    var whiteRefrenceBeforeCount : Int
-    var whiteRefrenceBeforeDelay : Int
-    var takeWhiteRefrenceAfter : Bool
-    var whiteRefrenceAfterCount : Int
-    var whiteRefrenceAfterDelay : Int
+    var whiteRefrenceBeforeCount: Int
+    var whiteRefrenceBeforeDelay: Int
+    var takeWhiteRefrenceAfter: Bool
+    var whiteRefrenceAfterCount: Int
+    var whiteRefrenceAfterDelay: Int
     
     
-    init(targetCount : Int, targetDelay : Int, takeWhiteRefrenceBefore : Bool, whiteRefrenceBeforeCount : Int, takeWhiteRefrenceAfter : Bool, whiteRefrenceAfterCount : Int, whiteRefrenceBeforeDelay : Int, whiteRefrenceAfterDelay : Int) {
+    init(takeDarkCurrent: Bool, targetCount: Int, targetDelay: Int, takeWhiteRefrenceBefore: Bool, whiteRefrenceBeforeCount: Int, takeWhiteRefrenceAfter: Bool, whiteRefrenceAfterCount: Int, whiteRefrenceBeforeDelay: Int, whiteRefrenceAfterDelay: Int) {
         self.whiteRefrenceBeforeCount = whiteRefrenceBeforeCount
         self.takeWhiteRefrenceAfter = takeWhiteRefrenceAfter
         self.whiteRefrenceAfterCount = whiteRefrenceAfterCount
         self.whiteRefrenceBeforeDelay = whiteRefrenceBeforeDelay
         self.whiteRefrenceAfterDelay = whiteRefrenceAfterDelay
-        super.init(targetCount: targetCount, targetDelay: targetDelay, takeWhiteRefrenceBefore: takeWhiteRefrenceBefore)
+        super.init(takeDarkCurrent: takeDarkCurrent, targetCount: targetCount, targetDelay: targetDelay, takeWhiteRefrenceBefore: takeWhiteRefrenceBefore)
     }
 }

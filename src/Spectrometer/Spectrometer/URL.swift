@@ -12,10 +12,10 @@ extension URL {
     
     func isDirectory() -> Bool {
         var isDir: ObjCBool = false
-        FileManager.default.fileExists(atPath: self.path, isDirectory: &isDir)
-        let test:Bool = isDir.boolValue
-        
-        return test
+        if FileManager.default.fileExists(atPath: self.path, isDirectory: &isDir) {
+            return isDir.boolValue
+        }
+        return false
     }
     
 }

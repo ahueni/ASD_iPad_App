@@ -12,16 +12,18 @@ import UIKit
 @IBDesignable
 class IPNumberTextField : BaseTextField {
     
+    override var isValid: Bool {
+        get {
+            return Regex.valideIp(ip: text)
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    }
-    
-    override func validate() {
-        isValid = Regex.valideIp(ip: text)
     }
     
 }

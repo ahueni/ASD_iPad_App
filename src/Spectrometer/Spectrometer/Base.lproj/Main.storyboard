@@ -2292,6 +2292,7 @@ DarkCurrent</string>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="darkCurrentSettingsContentHeight" destination="w6m-gH-wd4" id="W19-BP-9YI"/>
+                        <outlet property="darkCurrentSettingsSwitch" destination="Ciw-2q-0Cl" id="Z3I-IA-Nwj"/>
                         <outlet property="targetCountLabel" destination="RjC-NE-VoM" id="9Ja-or-pIr"/>
                         <outlet property="targetCountStepper" destination="RwE-aG-gCQ" id="aBA-Fq-ChJ"/>
                         <outlet property="targetDelayStepper" destination="A1G-Rq-tOp" id="Ja7-rw-zoP"/>
@@ -3156,6 +3157,7 @@ DarkCurrent</string>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="darkCurrentSettingsContentHeight" destination="EnG-dJ-pXF" id="Cv6-UB-fxV"/>
+                        <outlet property="darkCurrentSettingsSwitch" destination="k3y-Na-DwR" id="rg3-z8-p3l"/>
                         <outlet property="targetCountLabel" destination="uNV-O5-8ag" id="yWa-4J-MaR"/>
                         <outlet property="targetCountStepper" destination="F8C-mv-6KL" id="eIh-pq-Odk"/>
                         <outlet property="targetDelayStepper" destination="zGK-bP-g0L" id="FGy-dy-sLb"/>
@@ -3175,6 +3177,6 @@ DarkCurrent</string>
     <inferredMetricsTieBreakers>
         <segue reference="RjI-9a-Ldm"/>
         <segue reference="t41-HF-zAw"/>
-        <segue reference="DfN-yu-tho"/>
+        <segue reference="16U-68-zdS"/>
     </inferredMetricsTieBreakers>
 </document>

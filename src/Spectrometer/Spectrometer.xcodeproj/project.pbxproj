@@ -671,6 +671,14 @@
 			name = ViewExtensions;
 			sourceTree = "<group>";
 		};
+		2EB946421E5C3583006C71C8 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				E1C936BD1E42177500EF51BB /* BaseTextField.swift */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
 		A7B7970FA11BC9ECE649EE47 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -836,10 +844,10 @@
 		E1C936BA1E42164400EF51BB /* TextField */ = {
 			isa = PBXGroup;
 			children = (
+				2EB946421E5C3583006C71C8 /* Base */,
 				E1C936B61E41D64A00EF51BB /* NumberTextField.swift */,
 				E1C936B81E41D8B700EF51BB /* PortTextField.swift */,
 				E1C936BB1E42165F00EF51BB /* IPNumberTextField.swift */,
-				E1C936BD1E42177500EF51BB /* BaseTextField.swift */,
 				E1C936BF1E421AEB00EF51BB /* RequiredTextField.swift */,
 			);
 			name = TextField;

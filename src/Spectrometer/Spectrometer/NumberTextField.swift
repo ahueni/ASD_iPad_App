@@ -10,7 +10,14 @@ import Foundation
 import UIKit
 
 @IBDesignable
-class NumberTextField : BaseTextField{
+class NumberTextField : BaseTextField {
+    
+    override var isValid: Bool {
+        get {
+            let port = Int(text!)
+            return port != nil
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,9 +26,5 @@ class NumberTextField : BaseTextField{
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
-    override func validate() {
-        let port = Int(text!)
-        isValid = port != nil
-    }
+
 }

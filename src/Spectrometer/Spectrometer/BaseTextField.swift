@@ -11,10 +11,9 @@ import UIKit
 
 class BaseTextField : CustomTextField, BaseValidationControl {
     
-    var isValid: Bool = false{
-        didSet
-        {
-            textColor = isValid ? .black : .red
+    var isValid: Bool {
+        get {
+            return false
         }
     }
     
@@ -28,6 +27,8 @@ class BaseTextField : CustomTextField, BaseValidationControl {
     }
     
     func validate(){
+        textColor = isValid ? .black : .red
+        self.leftBackgroundView.backgroundColor = isValid ? .green : .red
     }
     
 }

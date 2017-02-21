@@ -11,8 +11,10 @@ import UIKit
 
 class RawSettingsViewController : BaseMeasurementModal {
     
-    // MARK: WhiteReference settings
+    // MARK: Raw settings
     @IBOutlet var darkCurrentSettingsContentHeight: NSLayoutConstraint!
+    
+    @IBOutlet var darkCurrentSettingsSwitch: UISwitch!
     
     @IBOutlet weak var targetDelayStepper: UIStepper!
     @IBOutlet weak var targetCountStepper: UIStepper!
@@ -36,10 +38,21 @@ class RawSettingsViewController : BaseMeasurementModal {
     func loadSettings()
     {
         let rawSettings = UserDefaults.standard.data(forKey: "RawSettings")
+        
         if(rawSettings != nil){
+            
             let loadedSettings = NSKeyedUnarchiver.unarchiveObject(with: rawSettings!) as! RawSettings
+            
+            darkCurrentSettingsSwitch.isOn = loadedSettings.takeDarkCurrent
+            darkCurrentSettingsSwitchValueChanged(darkCurrentSettingsSwitch)
+            
             targetCountStepper.value = Double(loadedSettings.targetCount)
+            targetCountLabel.text = Int(targetCountStepper.value).description
+            
             targetDelayStepper.value = Double(loadedSettings.targetDelay)
+            targetIntervallLabel.text = Int(targetDelayStepper.value).description
+            
+            
         }
 
     }
@@ -69,7 +82,12 @@ class RawSettingsViewController : BaseMeasurementModal {
     
     func saveSettings()
     {
-        let settings = RawSettings(targetCount: Int(targetCountStepper.value), targetDelay: Int(targetDelayStepper.value))
+        let takeDC = darkCurrentSettingsSwitch.isOn
+        let targetCountValue = Int(targetCountStepper.value)
+        let targetDelayValue = Int(targetDelayStepper.value)
+        
+        let settings = RawSettings(takeDarkCurrent: takeDC, targetCount: targetCountValue, targetDelay: targetDelayValue)
+        
         let settingsData = NSKeyedArchiver.archivedData(withRootObject: settings)
         UserDefaults.standard.set(settingsData, forKey: "RawSettings")
         UserDefaults.standard.synchronize()
