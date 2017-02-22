@@ -14,6 +14,7 @@ class MeasurmentTableViewCell : UITableViewCell {
     @IBOutlet var titelLabel: UILabel!
     @IBOutlet var myImageView: UIImageView!
     @IBOutlet var pathLabel: UILabel!
+    @IBOutlet var exportButton: UIButton!
     
     var selectedFile: DiskFile? = nil
     var viewController: UIViewController? = nil

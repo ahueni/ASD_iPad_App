@@ -45,12 +45,11 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rUm-XY-2Gf">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rUm-XY-2Gf" userLabel="ExportIcon">
                         <rect key="frame" x="473" y="10" width="40" height="40"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="TmE-je-QX5"/>
                         </constraints>
-                        <state key="normal" title="fasdf" image="ExportIcon"/>
                         <connections>
                             <action selector="export:" destination="NAK-17-xxQ" eventType="touchUpInside" id="LfX-ch-Z00"/>
                         </connections>
@@ -72,6 +71,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="exportButton" destination="rUm-XY-2Gf" id="tRk-Yu-sJS"/>
                 <outlet property="imageView" destination="lUd-J4-107" id="30Z-4G-qeb"/>
                 <outlet property="myImageView" destination="lUd-J4-107" id="IIG-v9-EUF"/>
                 <outlet property="pathLabel" destination="X1i-bt-1CM" id="r6s-NT-z5V"/>
@@ -80,7 +80,4 @@
             <point key="canvasLocation" x="372.5" y="-194"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="ExportIcon" width="40" height="40"/>
-    </resources>
 </document>

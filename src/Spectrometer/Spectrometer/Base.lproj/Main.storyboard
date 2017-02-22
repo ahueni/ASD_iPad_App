@@ -8,6 +8,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1147,57 +1148,210 @@
                         <viewControllerLayoutGuide type="top" id="q68-V6-2I0"/>
                         <viewControllerLayoutGuide type="bottom" id="SKD-6G-TQ8"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="aLw-JQ-Eht">
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="aLw-JQ-Eht">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="975"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="buq-02-Ymr" customClass="SpectrumLineChartView" customModule="Spectrometer">
-                                <rect key="frame" x="0.0" y="56" width="768" height="919"/>
+                                <rect key="frame" x="0.0" y="397" width="768" height="578"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wEU-oK-YU2">
-                                <rect key="frame" x="20" y="20" width="82" height="30"/>
-                                <state key="normal" title="Start Aquire"/>
-                                <connections>
-                                    <action selector="startAquire:" destination="CAT-Jv-66J" eventType="touchUpInside" id="9z4-ec-Ijv"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ZP-g4-AaM">
-                                <rect key="frame" x="260" y="22" width="82" height="30"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UWI-hC-j2d">
+                                <rect key="frame" x="0.0" y="20" width="768" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wEU-oK-YU2" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
+                                        <rect key="frame" x="670" y="8" width="90" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="nGA-m0-67M"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                        <state key="normal" title="Start"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="background">
+                                                <color key="value" red="0.12549019610000001" green="0.75686274509999996" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="startAquire:" destination="CAT-Jv-66J" eventType="touchUpInside" id="9z4-ec-Ijv"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lhG-Vr-zOf" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="8" width="100" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="sjW-xx-4tU"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                        <state key="normal" title="Raw"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="background">
+                                                <color key="value" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HsK-Cf-J8v" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
+                                        <rect key="frame" x="208" y="8" width="100" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="yau-Eu-wIa"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                        <state key="normal" title="Radiance"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="background">
+                                                <color key="value" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QIW-iu-CZ9" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
+                                        <rect key="frame" x="542" y="8" width="120" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="96u-wT-9El"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                        <state key="normal" title="Measurement"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="background">
+                                                <color key="value" red="0.12549019610000001" green="0.75686274509999996" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="HXw-qQ-t8O" kind="presentation" identifier="StartTestSeriesSegue" id="DfN-yu-tho"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JdE-6o-Ize" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
+                                        <rect key="frame" x="108" y="8" width="100" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="KYx-69-M05"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                        <state key="normal" title="Reflectance"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="background">
+                                                <color key="value" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HWA-lz-QPj" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
+                                        <rect key="frame" x="474" y="8" width="60" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="aWz-aS-JnD"/>
+                                        </constraints>
+                                        <state key="normal" title="DC"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="background">
+                                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="darkCurrent:" destination="CAT-Jv-66J" eventType="touchUpInside" id="rfM-eW-zjx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXc-0k-vyf" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
+                                        <rect key="frame" x="406" y="8" width="60" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="fZf-qL-PWf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                        <state key="normal" title="WR"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="background">
+                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="whiteReference:" destination="CAT-Jv-66J" eventType="touchUpInside" id="qlS-pL-JqL"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fuq-Nw-e81" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
+                                        <rect key="frame" x="316" y="8" width="82" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="u1N-Xz-Bfv"/>
+                                        </constraints>
+                                        <state key="normal" title="Foreoptic"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="background">
+                                                <color key="value" red="0.46368015959999997" green="0.53725490200000003" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.97931915520000001" green="0.9800599217" blue="0.9794338346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="82" id="d4N-RJ-i2q"/>
+                                    <constraint firstItem="lhG-Vr-zOf" firstAttribute="leading" secondItem="UWI-hC-j2d" secondAttribute="leading" constant="8" id="Fcb-KP-X15"/>
+                                    <constraint firstItem="HsK-Cf-J8v" firstAttribute="top" secondItem="UWI-hC-j2d" secondAttribute="top" constant="8" id="Fmg-Ma-2Kk"/>
+                                    <constraint firstItem="fuq-Nw-e81" firstAttribute="top" secondItem="UWI-hC-j2d" secondAttribute="top" constant="8" id="FpB-EI-VXZ"/>
+                                    <constraint firstItem="JdE-6o-Ize" firstAttribute="width" secondItem="lhG-Vr-zOf" secondAttribute="height" multiplier="20:7" id="LoZ-eG-uEN"/>
+                                    <constraint firstItem="gXc-0k-vyf" firstAttribute="top" secondItem="UWI-hC-j2d" secondAttribute="top" constant="8" id="RJq-Ac-IHs"/>
+                                    <constraint firstItem="HsK-Cf-J8v" firstAttribute="leading" secondItem="JdE-6o-Ize" secondAttribute="trailing" id="Sv7-m1-ZoT"/>
+                                    <constraint firstItem="wEU-oK-YU2" firstAttribute="leading" secondItem="QIW-iu-CZ9" secondAttribute="trailing" constant="8" id="Tbk-0f-aOM"/>
+                                    <constraint firstItem="HWA-lz-QPj" firstAttribute="top" secondItem="UWI-hC-j2d" secondAttribute="top" constant="8" id="UUD-Ow-noz"/>
+                                    <constraint firstItem="QIW-iu-CZ9" firstAttribute="leading" secondItem="HWA-lz-QPj" secondAttribute="trailing" constant="8" id="VZ5-Mo-MGp"/>
+                                    <constraint firstItem="HWA-lz-QPj" firstAttribute="leading" secondItem="gXc-0k-vyf" secondAttribute="trailing" constant="8" id="VcF-WV-icW"/>
+                                    <constraint firstItem="QIW-iu-CZ9" firstAttribute="top" secondItem="UWI-hC-j2d" secondAttribute="top" constant="8" id="XfE-WD-nwM"/>
+                                    <constraint firstItem="gXc-0k-vyf" firstAttribute="leading" secondItem="fuq-Nw-e81" secondAttribute="trailing" constant="8" id="am5-Po-FRz"/>
+                                    <constraint firstItem="lhG-Vr-zOf" firstAttribute="top" secondItem="UWI-hC-j2d" secondAttribute="top" constant="8" id="bEh-bs-7hl"/>
+                                    <constraint firstAttribute="trailing" secondItem="wEU-oK-YU2" secondAttribute="trailing" constant="8" id="d86-jd-Yi2"/>
+                                    <constraint firstItem="gXc-0k-vyf" firstAttribute="width" secondItem="fuq-Nw-e81" secondAttribute="height" multiplier="12:7" id="dfL-IH-M3Y"/>
+                                    <constraint firstItem="JdE-6o-Ize" firstAttribute="top" secondItem="UWI-hC-j2d" secondAttribute="top" constant="8" id="jRb-rc-WM1"/>
+                                    <constraint firstItem="fuq-Nw-e81" firstAttribute="width" secondItem="HsK-Cf-J8v" secondAttribute="height" multiplier="82:35" id="nlT-mD-03y"/>
+                                    <constraint firstAttribute="height" constant="60" id="rNY-wM-W28"/>
+                                    <constraint firstItem="HWA-lz-QPj" firstAttribute="width" secondItem="gXc-0k-vyf" secondAttribute="height" multiplier="12:7" id="rhQ-lT-Nh7"/>
+                                    <constraint firstItem="wEU-oK-YU2" firstAttribute="top" secondItem="UWI-hC-j2d" secondAttribute="top" constant="8" id="t38-Xf-ZUp"/>
+                                    <constraint firstItem="JdE-6o-Ize" firstAttribute="leading" secondItem="lhG-Vr-zOf" secondAttribute="trailing" id="tQp-n6-Gby"/>
+                                    <constraint firstItem="fuq-Nw-e81" firstAttribute="leading" secondItem="HsK-Cf-J8v" secondAttribute="trailing" constant="8" id="xDG-Gi-GUB"/>
+                                    <constraint firstItem="QIW-iu-CZ9" firstAttribute="width" secondItem="HWA-lz-QPj" secondAttribute="height" multiplier="24:7" id="xqL-Ia-US2"/>
+                                    <constraint firstItem="HsK-Cf-J8v" firstAttribute="width" secondItem="JdE-6o-Ize" secondAttribute="height" multiplier="20:7" id="yZY-Zv-4Su"/>
+                                    <constraint firstItem="wEU-oK-YU2" firstAttribute="width" secondItem="QIW-iu-CZ9" secondAttribute="height" multiplier="18:7" id="zbD-dr-zpD"/>
                                 </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ZP-g4-AaM">
+                                <rect key="frame" x="242" y="106" width="82" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="RAD"/>
                                 <connections>
                                     <action selector="radiance:" destination="CAT-Jv-66J" eventType="touchUpInside" id="1VZ-bo-bwe"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QIW-iu-CZ9">
-                                <rect key="frame" x="340" y="20" width="109" height="30"/>
-                                <state key="normal" title="Start Messreihe"/>
-                                <connections>
-                                    <segue destination="HXw-qQ-t8O" kind="presentation" identifier="StartTestSeriesSegue" id="DfN-yu-tho"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXc-0k-vyf">
-                                <rect key="frame" x="133" y="20" width="30" height="30"/>
-                                <state key="normal" title="WR"/>
-                                <connections>
-                                    <action selector="whiteReference:" destination="CAT-Jv-66J" eventType="touchUpInside" id="qlS-pL-JqL"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HWA-lz-QPj">
-                                <rect key="frame" x="179" y="22" width="82" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="82" id="IsZ-tf-BFK"/>
-                                </constraints>
-                                <state key="normal" title="DC"/>
-                                <connections>
-                                    <action selector="darkCurrent:" destination="CAT-Jv-66J" eventType="touchUpInside" id="rfM-eW-zjx"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jRh-Rt-5VZ">
-                                <rect key="frame" x="488" y="18" width="30" height="30"/>
+                                <rect key="frame" x="454" y="106" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Opt"/>
                                 <connections>
@@ -1207,20 +1361,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wEU-oK-YU2" firstAttribute="leading" secondItem="aLw-JQ-Eht" secondAttribute="leadingMargin" id="257-NI-tSM"/>
-                            <constraint firstItem="QIW-iu-CZ9" firstAttribute="leading" secondItem="HWA-lz-QPj" secondAttribute="trailing" constant="79" id="27v-8O-cLJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="buq-02-Ymr" secondAttribute="trailing" constant="-20" id="GDT-TF-rPO"/>
-                            <constraint firstItem="HWA-lz-QPj" firstAttribute="top" secondItem="q68-V6-2I0" secondAttribute="bottom" constant="2" id="GVf-6R-12R"/>
-                            <constraint firstItem="9ZP-g4-AaM" firstAttribute="leading" secondItem="gXc-0k-vyf" secondAttribute="trailing" constant="97" id="JZi-00-YBJ"/>
-                            <constraint firstItem="HWA-lz-QPj" firstAttribute="baseline" secondItem="9ZP-g4-AaM" secondAttribute="baseline" id="LB3-DB-oGk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UWI-hC-j2d" secondAttribute="trailing" constant="-20" id="N6Z-My-0ir"/>
                             <constraint firstItem="SKD-6G-TQ8" firstAttribute="top" secondItem="buq-02-Ymr" secondAttribute="bottom" id="Wvp-ZG-xNl"/>
-                            <constraint firstItem="gXc-0k-vyf" firstAttribute="top" secondItem="q68-V6-2I0" secondAttribute="bottom" id="YaY-Xp-ry6"/>
-                            <constraint firstItem="gXc-0k-vyf" firstAttribute="baseline" secondItem="QIW-iu-CZ9" secondAttribute="baseline" id="dv4-fq-ClY"/>
-                            <constraint firstItem="gXc-0k-vyf" firstAttribute="baseline" secondItem="wEU-oK-YU2" secondAttribute="baseline" id="lSe-DF-v11"/>
-                            <constraint firstItem="buq-02-Ymr" firstAttribute="top" secondItem="q68-V6-2I0" secondAttribute="bottom" constant="36" id="tT6-HV-M24"/>
+                            <constraint firstItem="UWI-hC-j2d" firstAttribute="leading" secondItem="aLw-JQ-Eht" secondAttribute="leadingMargin" constant="-20" id="bDp-ee-rjh"/>
+                            <constraint firstItem="UWI-hC-j2d" firstAttribute="top" secondItem="q68-V6-2I0" secondAttribute="bottom" id="frf-zB-P1x"/>
+                            <constraint firstItem="buq-02-Ymr" firstAttribute="top" secondItem="q68-V6-2I0" secondAttribute="bottom" constant="377" id="tT6-HV-M24"/>
                             <constraint firstAttribute="leadingMargin" secondItem="buq-02-Ymr" secondAttribute="leading" constant="20" id="tqu-2p-kfs"/>
-                            <constraint firstItem="HWA-lz-QPj" firstAttribute="leading" secondItem="gXc-0k-vyf" secondAttribute="trailing" constant="16" id="xLt-Uz-Zld"/>
-                            <constraint firstItem="gXc-0k-vyf" firstAttribute="leading" secondItem="wEU-oK-YU2" secondAttribute="trailing" constant="31" id="yKC-Y9-PeR"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Spektrometer" id="j7u-3J-zL2"/>
@@ -1231,7 +1378,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mB1-QS-UxI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3118" y="-1187"/>
+            <point key="canvasLocation" x="3117.96875" y="-1187.109375"/>
         </scene>
         <!--Finish Test Series View Controller-->
         <scene sceneID="TXN-aY-4Bf">
@@ -3253,8 +3400,8 @@ DarkCurrent</string>
         <image name="folder.png" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="DfN-yu-tho"/>
         <segue reference="RjI-9a-Ldm"/>
         <segue reference="t41-HF-zAw"/>
-        <segue reference="16U-68-zdS"/>
     </inferredMetricsTieBreakers>
 </document>
