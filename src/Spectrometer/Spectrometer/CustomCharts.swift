@@ -82,6 +82,7 @@ class SpectrumLineChartDataSet: LineChartDataSet {
         //highlightLineWidth = 1
         lineCapType = CGLineCap.round
         colors = [color]
+        drawValuesEnabled = false
         
     }
     
@@ -93,6 +94,7 @@ class SpectrumLineChartDataSet: LineChartDataSet {
         //highlightLineWidth = 1
         lineCapType = CGLineCap.round
         colors = [UIColor.black]
+        drawValuesEnabled = false
         
     }
     
@@ -104,6 +106,7 @@ class SpectrumLineChartDataSet: LineChartDataSet {
         highlightLineWidth = 1
         lineCapType = CGLineCap.round
         colors = [UIColor.black]
+        drawValuesEnabled = false
         
     }
     

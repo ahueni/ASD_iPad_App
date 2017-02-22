@@ -13,13 +13,18 @@ import UIKit
     
     private var totalValue:Int = 0
     
-    private var progressView:UIView?
-    private var stateLabel:UILabel?
-    private var countLabel:UILabel?
+    private var progressView:UIView!
+    private var stateLabel:UILabel!
+    private var countLabel:UILabel!
     
     @IBInspectable var fontColor: UIColor = UIColor.black
     
-    @IBInspectable var fontSize:CGFloat = 14
+    @IBInspectable var fontSize:CGFloat = 14 {
+        didSet {
+            stateLabel.font = UIFont.defaultFontRegular(size: fontSize)
+            countLabel.font = UIFont.defaultFontRegular(size: fontSize)
+        }
+    }
     
     @IBInspectable var barColor: UIColor = UIColor.clear {
         didSet {
@@ -33,33 +38,53 @@ import UIKit
         }
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addSubveiws()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        addSubveiws()
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        // add progress view
-        let progressFrame = CGRect(x: 0, y: 0, width: 0, height: self.layer.frame.height)
-        progressView = UIView(frame: progressFrame)
-        progressView?.layer.cornerRadius = cornerRadius
-        progressView?.layer.backgroundColor = barColor.cgColor
+        // layout progress view
+        progressView.layer.cornerRadius = cornerRadius
+        progressView.layer.backgroundColor = barColor.cgColor
         
         // add countLabel
-        let countFrame = CGRect(x: self.layer.frame.width - 85, y: 0, width: 75, height: self.layer.frame.height)
-        countLabel = UILabel(frame: countFrame)
-        countLabel?.textColor = fontColor
-        countLabel?.text = "1000/1000"
-        countLabel?.font = UIFont.defaultFontRegular(size: fontSize)
-        countLabel?.textAlignment = .right
+        countLabel.frame = CGRect(x: self.layer.frame.width - 85, y: 0, width: 75, height: self.layer.frame.height)
+        countLabel.textColor = fontColor
+        countLabel.font = UIFont.defaultFontRegular(size: fontSize)
+        countLabel.textAlignment = .right
         
         // add stateLabel
-        let stateFrame = CGRect(x: 10, y: 0, width: self.layer.frame.width - 85, height: self.layer.frame.height)
-        stateLabel = UILabel(frame: stateFrame)
-        stateLabel?.textColor = fontColor
-        stateLabel?.text = "State..."
-        stateLabel?.font = UIFont.defaultFontRegular(size: fontSize)
+        stateLabel.frame = CGRect(x: 10, y: 0, width: self.layer.frame.width - 85, height: self.layer.frame.height)
+        stateLabel.textColor = fontColor
+        stateLabel.font = UIFont.defaultFontRegular(size: fontSize)
         
-        addSubview(stateLabel!)
-        addSubview(countLabel!)
-        addSubview(progressView!)
+    }
+    
+    func addSubveiws() {
+        
+        // add progress view
+        progressView = UIView()
+        progressView.frame = CGRect(x: 0, y: 0, width: 0, height: self.layer.frame.height)
+        
+        // add count label
+        countLabel = UILabel()
+        countLabel.text = "1000/1000"
+        
+        // add stateLabel
+        stateLabel = UILabel()
+        stateLabel.text = "State..."
+        
+        addSubview(progressView)
+        addSubview(stateLabel)
+        addSubview(countLabel)
         
     }
     
@@ -75,15 +100,15 @@ import UIKit
             fatalError("progress bar not initialized")
         }
         
-        countLabel?.text = actual.description + " / " + totalValue.description
-        stateLabel?.text = statusText
+        countLabel.text = actual.description + " / " + totalValue.description
+        stateLabel.text = statusText
         
         let totalWidth = self.frame.width
         let oneStep = totalWidth / CGFloat(totalValue)
-        let newWidth = (progressView?.frame.width)! + oneStep
+        let newWidth = CGFloat(actual) * oneStep
         
         UIView.animate(withDuration: TimeInterval(1.0), animations: {
-            self.progressView?.frame = CGRect(origin: (self.progressView?.frame.origin)!, size: CGSize(width: newWidth, height: (self.progressView?.frame.height)!))
+            self.progressView.frame = CGRect(origin: self.progressView.frame.origin, size: CGSize(width: newWidth, height: self.progressView.frame.height))
         })
         
     }
