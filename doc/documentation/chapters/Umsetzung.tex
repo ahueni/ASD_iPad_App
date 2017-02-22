@@ -1,0 +1,42 @@
+\chapter{Umsetzung}
+Dieses Kapitel beschreibt die Umsetzung des Produktes.
+Die Nachfolgenden Abschnitte werden Schrittweise detaillierter und beschreiben den Aufbau sowie die Designentscheidungen des Softwarecodes.
+
+\section{Voraussetzungen}
+Das Projekt wurde in der Programmiersprache Swift 3 umgesetzt und ist mit iOS 10 und höher kompatibel. Es wurde darauf geachtet, dass alle Abhängigkeiten ebenfalls in Swift umgesetzt sind.
+
+\section{Architektur}
+
+Um weite Teile des Quellcodes erneut nutzen zu können, wurde das Projekt in 2 Teile aufgeteilt. Der Core-Teil beinhaltet den gesamten Code, welcher Systemunabhängig ist. Der restliche Code befindet sich im Ordner Spektrometer. Dieser ist iOS spezifisch und kann nicht einfach auf andere Plattformen portiert werden.
+
+\section{UI}
+Alle ViewController sind in der Datei Main.storyboard enthalten. Dies war eine bewusste Entscheidung, um Entwicklern einen guten Überblick über den gesamten UI Ablauf zu ermöglichen. Einzig das Design für eine Zelle der Messübersichtstabelle wurde in eine eigne XIB-Datei ausgelagert.
+
+Die Anordnung der Controls wurde im Storyboard gelöst. Kleinere Merkmale wurden jeweils im Code angepasst, indem von bestehenden Controls abgeleitet wurde.
+
+\section{Validierung}
+Für die Validierung wurde von jedem benutzen Control eine Ableitung erstellt und und das BaseValidationControl Protokoll implementiert. Dieses Protkoll enthält ein Property isValid welches den Gültikeitszustand des Objektes enthält.
+
+In jedem ViewController, muss nun nur noch der ValidationManager aufgerufen werden und die Hauptview übergeben werden. Dieser ValidationManager prüft nun alle Subviews, welchedas Protokoll implementieren.
+
+Um die Validation für einen neuen ViewController hinzuzufügen, kann folgendermassen vorgangen werden:
+1. Erstellen Sie einen neuen ViewController
+2. Fügen Sie ein Control hinzu und leiten sie von einem bestehenden ValidationControl ab. Oder erstellen Sie eine neue Ableitung eines Controls und implementieren Sie das BaseValidationControl Protokoll.
+3. Rufen Sie die validateSubViews Methode des ValidationMangers auf.
+
+\section{Einstellungen}
+Einstellungen, welche pro Applikation verfügbar sein müssen, werden in den sogenannten UserDefaults gespeichert. Dieser Speicher, kann sämtliche serialisierbaren Objekte speichern.
+
+\section{Gespeicherte Daten}
+Alle Dateien, welche auf dem Gerät gespeichert sind, 
+
+\section{Indico Format}
+Um Messungen speichern zu können, bietet die Firma ASD ein Format namens Indico File Format an. Diese Projektarbeit stützt sich ebenfalls auf dieses Format.
+
+\section{Raw}
+Bei sogenannten Raw Messungen, werden die Dateien welche vom Spektrometer gesendet werden, ohne weitere Manipulationen gespeichert.
+
+\section{Reflectance}
+
+
+\section{Radiance}

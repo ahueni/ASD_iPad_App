@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.20)  7 FEB 2017 15:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.20)  22 FEB 2017 16:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -473,7 +473,7 @@ LaTeX Info: Redefining \nameref on input line 72.
 \openout3 = `Dokumentation.out'.
 
 \c@lstlisting=\count120
- (./layout_oneside.tex) (./chapters/Titelseite.tex <images/fhnw_logo.pdf, id=16, 184.69pt x 29.10875pt>
+ (./layout_oneside.tex) (./chapters/Titelseite.tex <images/fhnw_logo.pdf, id=60, 184.69pt x 29.10875pt>
 File: images/fhnw_logo.pdf Graphic file (type pdf)
  <use images/fhnw_logo.pdf>
 Package pdftex.def Info: images/fhnw_logo.pdf used on input line 17.
@@ -525,37 +525,41 @@ Class scrreprt Warning: \float@addtolists detected!
 (scrreprt)              a package that still implements the
 (scrreprt)              deprecated \float@addtolist interface .
 
-) 
-AED: lastpage setting LastPage
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+) (./chapters/Umsetzung.texpdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.91 \end{document}
-                    [1
+l.1 \chapter
+            {Umsetzung} [1
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 91.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 91.
+chapter 2.
+[2
+
+]) 
+AED: lastpage setting LastPage
+[3]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 95.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 95.
  (/Users/Andreas/Projects/Bachelorthesis/portableSpectrometer/doc/documentation/.texpadtmp/Dokumentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 91.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 91.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 95.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 95.
 Package rerunfilecheck Info: File `Dokumentation.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 91.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 95.
  ) 
 Here is how much of TeX's memory you used:
- 10236 strings out of 493014
- 161630 string characters out of 6133350
- 346050 words of memory out of 5000000
- 13592 multiletter control sequences out of 15000+600000
+ 10267 strings out of 493014
+ 162066 string characters out of 6133350
+ 348066 words of memory out of 5000000
+ 13607 multiletter control sequences out of 15000+600000
  31766 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  43i,11n,66p,8492b,434s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb>
-Output written on /Users/Andreas/Projects/Bachelorthesis/portableSpectrometer/doc/documentation/.texpadtmp/Dokumentation.pdf (5 pages, 67137 bytes).
+Output written on /Users/Andreas/Projects/Bachelorthesis/portableSpectrometer/doc/documentation/.texpadtmp/Dokumentation.pdf (7 pages, 79276 bytes).
 PDF statistics:
- 71 PDF objects out of 1000 (max. 8388607)
- 58 compressed objects within 1 object stream
- 10 named destinations out of 1000 (max. 500000)
- 30 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 140 PDF objects out of 1000 (max. 8388607)
+ 124 compressed objects within 2 object streams
+ 23 named destinations out of 1000 (max. 500000)
+ 118 words of extra memory for PDF output out of 10000 (max. 10000000)
 

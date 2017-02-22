@@ -1,3 +1,14 @@
 \contentsline {chapter}{\numberline {1}Ausgangslage und Problemstellung}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Ausgangslage}{1}{section.1.1}
 \contentsline {section}{\numberline {1.2}Problemstellung}{1}{section.1.2}
+\contentsline {chapter}{\numberline {2}Umsetzung}{2}{chapter.2}
+\contentsline {section}{\numberline {2.1}Voraussetzungen}{2}{section.2.1}
+\contentsline {section}{\numberline {2.2}Architektur}{2}{section.2.2}
+\contentsline {section}{\numberline {2.3}UI}{2}{section.2.3}
+\contentsline {section}{\numberline {2.4}Validierung}{2}{section.2.4}
+\contentsline {section}{\numberline {2.5}Einstellungen}{3}{section.2.5}
+\contentsline {section}{\numberline {2.6}Gespeicherte Daten}{3}{section.2.6}
+\contentsline {section}{\numberline {2.7}Indico Format}{3}{section.2.7}
+\contentsline {section}{\numberline {2.8}Raw}{3}{section.2.8}
+\contentsline {section}{\numberline {2.9}Reflectance}{3}{section.2.9}
+\contentsline {section}{\numberline {2.10}Radiance}{3}{section.2.10}
