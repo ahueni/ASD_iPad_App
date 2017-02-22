@@ -10,7 +10,13 @@ import Foundation
 import UIKit
 import FontAwesome_swift
 
-class CustomTextField:UITextField {
+class BaseTextField: UITextField, BaseValidationControl {
+    
+    var isValid: Bool {
+        get {
+            return false
+        }
+    }
     
     var leftSpaceView:UIView!
     var leftBackgroundView:UIView!
@@ -73,6 +79,7 @@ class CustomTextField:UITextField {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.leftViewMode = .always
+        self.addTarget(self, action: #selector(validate), for: .editingChanged)
         addSubviews()
     }
     
@@ -110,6 +117,11 @@ class CustomTextField:UITextField {
         
         self.leftView = leftSpaceView
         
+    }
+    
+    func validate(){
+        textColor = isValid ? .black : .red
+        self.leftBackgroundView.backgroundColor = isValid ? .green : .red
     }
     
 }

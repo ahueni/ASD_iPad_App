@@ -15,6 +15,14 @@ protocol ISpectrumParser {
     
 }
 
+extension Sequence {
+    
+    func get(index: Int) {
+        
+    }
+    
+}
+
 class BaseSpectrumParser {
     
     var spectralFile : SpectralFileBase
@@ -171,6 +179,7 @@ class BaseSpectrumParser {
         var string = ""
         var count:Int = 0
         while count < size {
+            
             let byteValue:UInt8 = self.data[parseIndex+count]
             count += 1
             if (byteValue == 0) { break }

@@ -10,8 +10,8 @@
 		2E0324271E05600B00C52D58 /* ParameterParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0324261E05600B00C52D58 /* ParameterParser.swift */; };
 		2E30A8501E44A075001236C5 /* DiskFileActivityItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E30A84F1E44A075001236C5 /* DiskFileActivityItem.swift */; };
 		2E3552061E56E5A5001F7EE1 /* TitleSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3552051E56E5A5001F7EE1 /* TitleSection.swift */; };
-		2E3552091E56FAE4001F7EE1 /* CustomTextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3552081E56FAE4001F7EE1 /* CustomTextInput.swift */; };
-		2E35520B1E56FB07001F7EE1 /* SelectPathInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35520A1E56FB07001F7EE1 /* SelectPathInput.swift */; };
+		2E3552091E56FAE4001F7EE1 /* BaseUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3552081E56FAE4001F7EE1 /* BaseUITextField.swift */; };
+		2E35520B1E56FB07001F7EE1 /* BaseSelectInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35520A1E56FB07001F7EE1 /* BaseSelectInput.swift */; };
 		2E708A231DE61A19008EC78A /* CustomizeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E708A221DE61A19008EC78A /* CustomizeExtensions.swift */; };
 		2E708A5C1DE714F0008EC78A /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E708A5B1DE714F0008EC78A /* Regex.swift */; };
 		2E77537D1E4329530081249C /* MeasurmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E77537C1E4329530081249C /* MeasurmentTableViewCell.swift */; };
@@ -89,9 +89,15 @@
 		2EB9463D1E579E84006C71C8 /* BorderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB9463C1E579E84006C71C8 /* BorderExtension.swift */; };
 		2EB9463F1E5B59CD006C71C8 /* GeneralSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB9463E1E5B59CD006C71C8 /* GeneralSettingsViewController.swift */; };
 		2EB946411E5B62DE006C71C8 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB946401E5B62DE006C71C8 /* URL.swift */; };
+		2EC6D8111E5C7F570022F70E /* PathSelectInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6D8101E5C7F570022F70E /* PathSelectInput.swift */; };
+		2EC6D8141E5C80A80022F70E /* AbsoluteReflectanceFileSelectInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6D8131E5C80A80022F70E /* AbsoluteReflectanceFileSelectInput.swift */; };
+		2EC6D8161E5C86970022F70E /* BaseCalibrationSelectInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6D8151E5C86970022F70E /* BaseCalibrationSelectInput.swift */; };
+		2EC6D8191E5C9D090022F70E /* BaseFileSelectInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6D8181E5C9D090022F70E /* BaseFileSelectInput.swift */; };
+		2EC6D81B1E5C9D6F0022F70E /* LampFileSelectInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6D81A1E5C9D6F0022F70E /* LampFileSelectInput.swift */; };
 		2ECC63441E5337B600C3AACB /* ReflectanceSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECC63431E5337B600C3AACB /* ReflectanceSettingsViewController.swift */; };
 		2ECC63461E54325300C3AACB /* UIColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECC63451E54325300C3AACB /* UIColorButton.swift */; };
 		2ECC63481E543B4500C3AACB /* SettingsBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECC63471E543B4500C3AACB /* SettingsBox.swift */; };
+		2ECE10C21E5DCB1100B45372 /* FiberOpticFileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ECE10C11E5DCB1100B45372 /* FiberOpticFileTableViewCell.xib */; };
 		487AEF15B040FDD03F64BD2B /* Pods_Spectrometer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F75F11DB25150E0C51143 /* Pods_Spectrometer.framework */; };
 		58EF26FA8A188D74341FE34B /* Pods_SpectrometerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F91CDAE87D559C5A7FFD5EB6 /* Pods_SpectrometerTests.framework */; };
 		E108F2141E3B8B670097B7EE /* BaseMeasurementModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E108F2131E3B8B670097B7EE /* BaseMeasurementModal.swift */; };
@@ -131,7 +137,6 @@
 		E1C936B71E41D64A00EF51BB /* NumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C936B61E41D64A00EF51BB /* NumberTextField.swift */; };
 		E1C936B91E41D8B700EF51BB /* PortTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C936B81E41D8B700EF51BB /* PortTextField.swift */; };
 		E1C936BC1E42165F00EF51BB /* IPNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C936BB1E42165F00EF51BB /* IPNumberTextField.swift */; };
-		E1C936BE1E42177500EF51BB /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C936BD1E42177500EF51BB /* BaseTextField.swift */; };
 		E1C936C01E421AEB00EF51BB /* RequiredTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C936BF1E421AEB00EF51BB /* RequiredTextField.swift */; };
 		E1C936C21E421BAD00EF51BB /* ValidationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C936C11E421BAD00EF51BB /* ValidationManager.swift */; };
 		E1C936C51E42208C00EF51BB /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C936C41E42208C00EF51BB /* BaseButton.swift */; };
@@ -154,8 +159,8 @@
 		2E0324261E05600B00C52D58 /* ParameterParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterParser.swift; sourceTree = "<group>"; };
 		2E30A84F1E44A075001236C5 /* DiskFileActivityItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskFileActivityItem.swift; sourceTree = "<group>"; };
 		2E3552051E56E5A5001F7EE1 /* TitleSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleSection.swift; sourceTree = "<group>"; };
-		2E3552081E56FAE4001F7EE1 /* CustomTextInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextInput.swift; sourceTree = "<group>"; };
-		2E35520A1E56FB07001F7EE1 /* SelectPathInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPathInput.swift; sourceTree = "<group>"; };
+		2E3552081E56FAE4001F7EE1 /* BaseUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseUITextField.swift; sourceTree = "<group>"; };
+		2E35520A1E56FB07001F7EE1 /* BaseSelectInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSelectInput.swift; sourceTree = "<group>"; };
 		2E708A221DE61A19008EC78A /* CustomizeExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizeExtensions.swift; sourceTree = "<group>"; };
 		2E708A5B1DE714F0008EC78A /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		2E77537C1E4329530081249C /* MeasurmentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurmentTableViewCell.swift; sourceTree = "<group>"; };
@@ -237,9 +242,15 @@
 		2EB9463C1E579E84006C71C8 /* BorderExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderExtension.swift; sourceTree = "<group>"; };
 		2EB9463E1E5B59CD006C71C8 /* GeneralSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralSettingsViewController.swift; sourceTree = "<group>"; };
 		2EB946401E5B62DE006C71C8 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		2EC6D8101E5C7F570022F70E /* PathSelectInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathSelectInput.swift; sourceTree = "<group>"; };
+		2EC6D8131E5C80A80022F70E /* AbsoluteReflectanceFileSelectInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbsoluteReflectanceFileSelectInput.swift; sourceTree = "<group>"; };
+		2EC6D8151E5C86970022F70E /* BaseCalibrationSelectInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCalibrationSelectInput.swift; sourceTree = "<group>"; };
+		2EC6D8181E5C9D090022F70E /* BaseFileSelectInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFileSelectInput.swift; sourceTree = "<group>"; };
+		2EC6D81A1E5C9D6F0022F70E /* LampFileSelectInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LampFileSelectInput.swift; sourceTree = "<group>"; };
 		2ECC63431E5337B600C3AACB /* ReflectanceSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflectanceSettingsViewController.swift; sourceTree = "<group>"; };
 		2ECC63451E54325300C3AACB /* UIColorButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorButton.swift; sourceTree = "<group>"; };
 		2ECC63471E543B4500C3AACB /* SettingsBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsBox.swift; sourceTree = "<group>"; };
+		2ECE10C11E5DCB1100B45372 /* FiberOpticFileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiberOpticFileTableViewCell.xib; sourceTree = "<group>"; };
 		40DCB724B196BBCD581A0791 /* Pods-SpectrometerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpectrometerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpectrometerTests/Pods-SpectrometerTests.release.xcconfig"; sourceTree = "<group>"; };
 		4D2A88B32C5C94ADBC30F188 /* Pods-Spectrometer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spectrometer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Spectrometer/Pods-Spectrometer.release.xcconfig"; sourceTree = "<group>"; };
 		E108F2131E3B8B670097B7EE /* BaseMeasurementModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMeasurementModal.swift; sourceTree = "<group>"; };
@@ -279,7 +290,6 @@
 		E1C936B61E41D64A00EF51BB /* NumberTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberTextField.swift; sourceTree = "<group>"; };
 		E1C936B81E41D8B700EF51BB /* PortTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortTextField.swift; sourceTree = "<group>"; };
 		E1C936BB1E42165F00EF51BB /* IPNumberTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPNumberTextField.swift; sourceTree = "<group>"; };
-		E1C936BD1E42177500EF51BB /* BaseTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTextField.swift; sourceTree = "<group>"; };
 		E1C936BF1E421AEB00EF51BB /* RequiredTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequiredTextField.swift; sourceTree = "<group>"; };
 		E1C936C11E421BAD00EF51BB /* ValidationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationManager.swift; sourceTree = "<group>"; };
 		E1C936C41E42208C00EF51BB /* BaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
@@ -336,13 +346,14 @@
 			name = TitleSection;
 			sourceTree = "<group>";
 		};
-		2E3552071E56FAAF001F7EE1 /* Inputs */ = {
+		2E3552071E56FAAF001F7EE1 /* InputControls */ = {
 			isa = PBXGroup;
 			children = (
-				2E3552081E56FAE4001F7EE1 /* CustomTextInput.swift */,
-				2E35520A1E56FB07001F7EE1 /* SelectPathInput.swift */,
+				E1C936C31E42206B00EF51BB /* Buttons */,
+				2EC6D80E1E5C7E4B0022F70E /* Selects */,
+				E1C936BA1E42164400EF51BB /* TextFields */,
 			);
-			name = Inputs;
+			name = InputControls;
 			sourceTree = "<group>";
 		};
 		2E8F76761E4754A500D54ABF /* ColorButtons */ = {
@@ -397,6 +408,7 @@
 				2E91F2B41DDB5B76003E277F /* Info.plist */,
 				2E91F2AC1DDB5B76003E277F /* Spectrometer.xcdatamodeld */,
 				2E77537E1E432A860081249C /* MeasurmentTableViewCell.xib */,
+				2ECE10C11E5DCB1100B45372 /* FiberOpticFileTableViewCell.xib */,
 			);
 			path = Spectrometer;
 			sourceTree = "<group>";
@@ -646,7 +658,7 @@
 			isa = PBXGroup;
 			children = (
 				2EB9463B1E579E4B006C71C8 /* ViewExtensions */,
-				2E3552071E56FAAF001F7EE1 /* Inputs */,
+				2E3552071E56FAAF001F7EE1 /* InputControls */,
 				2E3552041E56E57E001F7EE1 /* TitleSection */,
 				2E8F76761E4754A500D54ABF /* ColorButtons */,
 				2EB823271DE0D40F00DF732C /* SpectrometerTabBar.swift */,
@@ -674,7 +686,44 @@
 		2EB946421E5C3583006C71C8 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				E1C936BD1E42177500EF51BB /* BaseTextField.swift */,
+				2E3552081E56FAE4001F7EE1 /* BaseUITextField.swift */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		2EC6D80E1E5C7E4B0022F70E /* Selects */ = {
+			isa = PBXGroup;
+			children = (
+				2EC6D80F1E5C7E560022F70E /* Base */,
+				2EC6D8121E5C7F620022F70E /* CalibrationFileInputs */,
+				2EC6D8101E5C7F570022F70E /* PathSelectInput.swift */,
+			);
+			name = Selects;
+			sourceTree = "<group>";
+		};
+		2EC6D80F1E5C7E560022F70E /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				2E35520A1E56FB07001F7EE1 /* BaseSelectInput.swift */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		2EC6D8121E5C7F620022F70E /* CalibrationFileInputs */ = {
+			isa = PBXGroup;
+			children = (
+				2EC6D8171E5C884F0022F70E /* Base */,
+				2EC6D8131E5C80A80022F70E /* AbsoluteReflectanceFileSelectInput.swift */,
+				2EC6D8181E5C9D090022F70E /* BaseFileSelectInput.swift */,
+				2EC6D81A1E5C9D6F0022F70E /* LampFileSelectInput.swift */,
+			);
+			name = CalibrationFileInputs;
+			sourceTree = "<group>";
+		};
+		2EC6D8171E5C884F0022F70E /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				2EC6D8151E5C86970022F70E /* BaseCalibrationSelectInput.swift */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -709,13 +758,13 @@
 			name = SpectrometerParser;
 			sourceTree = "<group>";
 		};
-		E12F66D21E4C545B00B71AA0 /* FileParser */ = {
+		E12F66D21E4C545B00B71AA0 /* FileReader */ = {
 			isa = PBXGroup;
 			children = (
 				2EB362A41DF23DDB00E74E39 /* IndicoIniFileReader.swift */,
 				E12F66D31E4C54DB00B71AA0 /* IndicoAsdFileReader.swift */,
 			);
-			name = FileParser;
+			name = FileReader;
 			sourceTree = "<group>";
 		};
 		E1446EFF1E56DD2A00840AF2 /* Raw */ = {
@@ -814,7 +863,7 @@
 		E1AC38251E2665E6004CCBEF /* Parser */ = {
 			isa = PBXGroup;
 			children = (
-				E12F66D21E4C545B00B71AA0 /* FileParser */,
+				E12F66D21E4C545B00B71AA0 /* FileReader */,
 				E12F66D11E4C544B00B71AA0 /* SpectrometerParser */,
 				2EB822EA1DE080A400DF732C /* Base */,
 			);
@@ -833,15 +882,13 @@
 		E1C936B31E41D60000EF51BB /* Validation */ = {
 			isa = PBXGroup;
 			children = (
-				E1C936C31E42206B00EF51BB /* Button */,
-				E1C936BA1E42164400EF51BB /* TextField */,
 				E1C936B41E41D61800EF51BB /* BaseValidationControl.swift */,
 				E1C936C11E421BAD00EF51BB /* ValidationManager.swift */,
 			);
 			name = Validation;
 			sourceTree = "<group>";
 		};
-		E1C936BA1E42164400EF51BB /* TextField */ = {
+		E1C936BA1E42164400EF51BB /* TextFields */ = {
 			isa = PBXGroup;
 			children = (
 				2EB946421E5C3583006C71C8 /* Base */,
@@ -850,16 +897,16 @@
 				E1C936BB1E42165F00EF51BB /* IPNumberTextField.swift */,
 				E1C936BF1E421AEB00EF51BB /* RequiredTextField.swift */,
 			);
-			name = TextField;
+			name = TextFields;
 			sourceTree = "<group>";
 		};
-		E1C936C31E42206B00EF51BB /* Button */ = {
+		E1C936C31E42206B00EF51BB /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
 				E1C936C41E42208C00EF51BB /* BaseButton.swift */,
 				E1C936C61E42214A00EF51BB /* TextRequiredButton.swift */,
 			);
-			name = Button;
+			name = Buttons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -961,6 +1008,7 @@
 				2EB823011DE0A2D100DF732C /* OpenSans-Italic.ttf in Resources */,
 				2EB823001DE0A2D100DF732C /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				E1A40C1F1E4076BF0019F467 /* folder@2x.png in Resources */,
+				2ECE10C21E5DCB1100B45372 /* FiberOpticFileTableViewCell.xib in Resources */,
 				E1A40C211E4076C80019F467 /* zip@2x.png in Resources */,
 				2E91F2B01DDB5B76003E277F /* Assets.xcassets in Resources */,
 				E1A40C1E1E4076BF0019F467 /* file@2x.png in Resources */,
@@ -1085,6 +1133,7 @@
 			files = (
 				2EB9463D1E579E84006C71C8 /* BorderExtension.swift in Sources */,
 				2E91F2EE1DDB5B9F003E277F /* SocketOptions+Deprecated.swift in Sources */,
+				2EC6D8141E5C80A80022F70E /* AbsoluteReflectanceFileSelectInput.swift in Sources */,
 				E1C936C01E421AEB00EF51BB /* RequiredTextField.swift in Sources */,
 				E1C936B51E41D61800EF51BB /* BaseValidationControl.swift in Sources */,
 				2E91F3111DDB8408003E277F /* Init.swift in Sources */,
@@ -1110,6 +1159,7 @@
 				E12547D71E5382050004B2A8 /* ReflectanceSettings.swift in Sources */,
 				E12F66D41E4C54DB00B71AA0 /* IndicoAsdFileReader.swift in Sources */,
 				2E91F2F71DDB5CF7003E277F /* TcpManager.swift in Sources */,
+				2EC6D81B1E5C9D6F0022F70E /* LampFileSelectInput.swift in Sources */,
 				E1A40C231E4077660019F467 /* FileBrowserTableViewController.swift in Sources */,
 				2E91F2EB1DDB5B9F003E277F /* Pipe.swift in Sources */,
 				2E91F2FE1DDB7446003E277F /* SpectrumHeader.swift in Sources */,
@@ -1125,9 +1175,9 @@
 				2EB3629C1DF1D91C00E74E39 /* GpsData.swift in Sources */,
 				2EB822E71DE06C0300DF732C /* Extensions.swift in Sources */,
 				E1C936BC1E42165F00EF51BB /* IPNumberTextField.swift in Sources */,
-				E1C936BE1E42177500EF51BB /* BaseTextField.swift in Sources */,
 				E13176671E532179002F0958 /* RadianceSettingsViewController.swift in Sources */,
 				E108F2141E3B8B670097B7EE /* BaseMeasurementModal.swift in Sources */,
+				2EC6D8161E5C86970022F70E /* BaseCalibrationSelectInput.swift in Sources */,
 				2E91F2FA1DDB6161003E277F /* Command.swift in Sources */,
 				2E91F2E81DDB5B9F003E277F /* Error.swift in Sources */,
 				2E8F76711E45F63F00D54ABF /* LoadingButton.swift in Sources */,
@@ -1157,6 +1207,7 @@
 				2E91F2EC1DDB5B9F003E277F /* Select.swift in Sources */,
 				2E91F3021DDB7472003E277F /* VnirHeader.swift in Sources */,
 				E186B9481E364DDF00FE43F3 /* CommandManager.swift in Sources */,
+				2EC6D8191E5C9D090022F70E /* BaseFileSelectInput.swift in Sources */,
 				E1AC382B1E266ACD004CCBEF /* IndicoWriter.swift in Sources */,
 				E13176631E53129B002F0958 /* RadioButton.swift in Sources */,
 				2E91F2E91DDB5B9F003E277F /* FDSet.swift in Sources */,
@@ -1171,7 +1222,7 @@
 				2EB362A51DF23DDB00E74E39 /* IndicoIniFileReader.swift in Sources */,
 				2E91F2F01DDB5B9F003E277F /* TCPSocket.swift in Sources */,
 				E1F052AD1E49C3AD0084CFBC /* SpectrometerConfigTableViewCell.swift in Sources */,
-				2E3552091E56FAE4001F7EE1 /* CustomTextInput.swift in Sources */,
+				2E3552091E56FAE4001F7EE1 /* BaseUITextField.swift in Sources */,
 				E1A40C001E3F9B800019F467 /* BaseFileBrowserTableViewController.swift in Sources */,
 				2E91F2ED1DDB5B9F003E277F /* Socket.swift in Sources */,
 				2EB823251DE0CC2900DF732C /* AquireViewController.swift in Sources */,
@@ -1184,9 +1235,10 @@
 				E1C936B71E41D64A00EF51BB /* NumberTextField.swift in Sources */,
 				2EB823281DE0D40F00DF732C /* SpectrometerTabBar.swift in Sources */,
 				2EB3629A1DF1D8E400E74E39 /* AppData.swift in Sources */,
+				2EC6D8111E5C7F570022F70E /* PathSelectInput.swift in Sources */,
 				2E91F2A61DDB5B76003E277F /* AppDelegate.swift in Sources */,
 				E1C936B91E41D8B700EF51BB /* PortTextField.swift in Sources */,
-				2E35520B1E56FB07001F7EE1 /* SelectPathInput.swift in Sources */,
+				2E35520B1E56FB07001F7EE1 /* BaseSelectInput.swift in Sources */,
 				2E8F76731E460CB800D54ABF /* CustomProgressBar.swift in Sources */,
 				2E91F2AE1DDB5B76003E277F /* Spectrometer.xcdatamodeld in Sources */,
 				2E91F30A1DDB7BDF003E277F /* FullRangeInterpolatedSpectrum.swift in Sources */,

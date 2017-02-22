@@ -10,23 +10,23 @@ import Foundation
 import UIKit
 import FontAwesome_swift
 
-protocol SelectPathDelegate {
-    func openFileBrowser(path:URL?)
+protocol BaseSelectInputDelegate {
+    func openFileBrowser(path:URL?, sender: BaseSelectInput)
     func didSelectPath()
 }
 
 
-@IBDesignable class SelectInputPath:UIView, BaseValidationControl {
+class BaseSelectInput: UIView, BaseValidationControl {
     
-    var delegate: SelectPathDelegate!
+    var delegate: BaseSelectInputDelegate!
     
-    private var _selectedPath:URL?
+    internal var _selectedPath:URL?
     var selectedPath:URL? { get { return _selectedPath } }
     
     var isValid: Bool {
         get {
             if let path = selectedPath {
-                return path.isDirectory()
+                return path.exists()
             }
             return false
         }
@@ -36,7 +36,6 @@ protocol SelectPathDelegate {
     var leftImageView:UIImageView!
     var leftIcon:UIImage!
     var pathLabel:UILabel!
-    var selectPathButton:UIButton!
     
     
     @IBInspectable var cornerRadius: CGFloat = 0 {
@@ -57,9 +56,21 @@ protocol SelectPathDelegate {
         }
     }
     
+    @IBInspectable var placeHolderText: String = "Select..." {
+        didSet {
+            pathLabel.text = placeHolderText
+        }
+    }
+    
     @IBInspectable var textColor: UIColor = UIColor.clear {
         didSet {
-            pathLabel.textColor = textColor
+            pathLabel.textColor = textColor.withAlphaComponent(0.75)
+        }
+    }
+    
+    @IBInspectable var textSize: CGFloat = 16 {
+        didSet {
+            pathLabel.font = UIFont.defaultFontRegular(size: textSize)
         }
     }
     
@@ -75,15 +86,8 @@ protocol SelectPathDelegate {
         }
     }
     
-    @IBInspectable var textSize: CGFloat = 16 {
-        didSet {
-            pathLabel.font = UIFont.defaultFontRegular(size: textSize)
-        }
-    }
-    
     @IBInspectable var iconSize: Int = 16 {
         didSet {
-            leftIcon = UIImage.fontAwesomeIcon(name: .folderOpenO, textColor: .white, size: CGSize(width: iconSize, height: iconSize))
             leftImageView.frame = CGRect(origin: leftBackgroundView.center, size: CGSize(width: iconSize, height: iconSize))
         }
     }
@@ -103,15 +107,13 @@ protocol SelectPathDelegate {
         leftImageView = UIImageView()
         leftBackgroundView.addSubview(leftImageView)
         pathLabel = UILabel()
-        selectPathButton = UIButton()
         
-        pathLabel.text = "Select path..."
-        pathLabel.textColor = textColor
+        pathLabel.text = placeHolderText
+        pathLabel.textColor = textColor.withAlphaComponent(0.75)
         pathLabel.font = UIFont.defaultFontRegular(size: textSize)
         
         self.addSubview(leftBackgroundView)
         self.addSubview(pathLabel)
-        self.addSubview(selectPathButton)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(selectPath(sender:)))
         self.addGestureRecognizer(tapGesture)
@@ -133,7 +135,7 @@ protocol SelectPathDelegate {
         leftBackgroundView.bringSubview(toFront: leftImageView)
         
         // style ImageView
-        leftImageView.image = leftIcon
+        leftImageView.image = UIImage.fontAwesomeIcon(name: .folderOpenO, textColor: .white, size: CGSize(width: iconSize, height: iconSize))
         leftImageView.frame = CGRect(origin: leftBackgroundView.center, size: CGSize(width: iconSize, height: iconSize))
         leftImageView.center = leftBackgroundView.center
         
@@ -143,20 +145,20 @@ protocol SelectPathDelegate {
     }
     
     func selectPath(sender:UITapGestureRecognizer) {
-        self.delegate.openFileBrowser(path: selectedPath)
+        self.delegate.openFileBrowser(path: selectedPath, sender: self)
     }
     
-    func update(diskFile: URL) {
-        _selectedPath = diskFile
-        self.delegate.didSelectPath()
+    func update(selectedPath: URL) {
+        _selectedPath = selectedPath
         validate()
+        self.delegate.didSelectPath()
     }
     
     func validate() {
         
         if isValid {
             pathLabel.text = self.selectedPath?.lastPathComponent
-            pathLabel.textColor = UIColor.green
+            pathLabel.textColor = textColor
         } else {
             pathLabel.textColor = UIColor.red
         }

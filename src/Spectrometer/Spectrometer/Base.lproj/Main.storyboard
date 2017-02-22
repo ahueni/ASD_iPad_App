@@ -29,184 +29,63 @@
                         <viewControllerLayoutGuide type="bottom" id="LzZ-IQ-cpN"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xCq-cj-YBm" userLabel="ControllerContainer">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="00t-fB-ARv" userLabel="TopElements">
-                                <rect key="frame" x="0.0" y="20" width="768" height="50"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pqZ-Hr-sCA" customClass="TitleSection" customModule="Spectrometer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="540" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWU-AM-yIx">
-                                        <rect key="frame" x="673" y="15" width="75" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="75" id="Ei8-Zf-zF8"/>
-                                        </constraints>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWU-AM-yIx" userLabel="SaveButton">
+                                        <rect key="frame" x="490" y="9" width="35" height="33"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
-                                        <state key="normal" title="Speichern"/>
+                                        <state key="normal" title="Save"/>
                                         <connections>
                                             <action selector="savePressed:" destination="A3h-GE-KAx" eventType="touchUpInside" id="JGf-Q5-oc1"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7P-xr-NQY">
-                                        <rect key="frame" x="20" y="15" width="77" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="77" id="BI5-fj-5l3"/>
-                                        </constraints>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7P-xr-NQY" userLabel="CancelButton">
+                                        <rect key="frame" x="15" y="9" width="47" height="33"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                        <state key="normal" title="Abbrechen"/>
+                                        <state key="normal" title="Cancel"/>
                                         <connections>
                                             <action selector="cancelPressed:" destination="A3h-GE-KAx" eventType="touchUpInside" id="QlB-7o-awu"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spektrometer hinzufügen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wk6-Wz-1eH">
-                                        <rect key="frame" x="107" y="10" width="556" height="30"/>
-                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="KWU-AM-yIx" firstAttribute="leading" secondItem="wk6-Wz-1eH" secondAttribute="trailing" constant="10" id="22Y-PS-LFv"/>
-                                    <constraint firstAttribute="bottom" secondItem="wk6-Wz-1eH" secondAttribute="bottom" constant="10" id="B9h-i2-FwX"/>
-                                    <constraint firstAttribute="trailing" secondItem="KWU-AM-yIx" secondAttribute="trailing" constant="20" id="GNG-0G-rp4"/>
-                                    <constraint firstAttribute="height" constant="50" id="JA7-Cm-4Jc"/>
-                                    <constraint firstItem="wk6-Wz-1eH" firstAttribute="leading" secondItem="f7P-xr-NQY" secondAttribute="trailing" constant="10" id="KO1-7A-zCd"/>
-                                    <constraint firstItem="KWU-AM-yIx" firstAttribute="top" secondItem="00t-fB-ARv" secondAttribute="top" constant="15" id="LKg-By-wkE"/>
-                                    <constraint firstItem="f7P-xr-NQY" firstAttribute="leading" secondItem="00t-fB-ARv" secondAttribute="leading" constant="20" id="WcS-Z2-1g1"/>
-                                    <constraint firstItem="f7P-xr-NQY" firstAttribute="top" secondItem="00t-fB-ARv" secondAttribute="top" constant="15" id="nY6-ss-reU"/>
-                                    <constraint firstAttribute="bottom" secondItem="f7P-xr-NQY" secondAttribute="bottom" constant="15" id="ovw-eo-qQH"/>
-                                    <constraint firstAttribute="bottom" secondItem="KWU-AM-yIx" secondAttribute="bottom" constant="15" id="rys-fU-NJe"/>
-                                    <constraint firstItem="wk6-Wz-1eH" firstAttribute="top" secondItem="00t-fB-ARv" secondAttribute="top" constant="10" id="wC3-hV-the"/>
+                                    <constraint firstAttribute="trailing" secondItem="KWU-AM-yIx" secondAttribute="trailing" constant="15" id="Rq2-jI-VOu"/>
+                                    <constraint firstItem="f7P-xr-NQY" firstAttribute="leading" secondItem="pqZ-Hr-sCA" secondAttribute="leading" constant="15" id="Z1l-Fe-CeE"/>
+                                    <constraint firstAttribute="height" constant="50" id="ji0-ri-NJS"/>
+                                    <constraint firstItem="KWU-AM-yIx" firstAttribute="top" secondItem="pqZ-Hr-sCA" secondAttribute="top" constant="9" id="vxJ-g3-5LT"/>
+                                    <constraint firstItem="f7P-xr-NQY" firstAttribute="top" secondItem="pqZ-Hr-sCA" secondAttribute="top" constant="9" id="xLf-47-2NK"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Add Spectrometer"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="6iC-y3-TaJ">
-                                <rect key="frame" x="0.0" y="70" width="768" height="954"/>
+                                <rect key="frame" x="0.0" y="70" width="540" height="730"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ob1-U2-zav" userLabel="Container">
-                                        <rect key="frame" x="0.0" y="0.0" width="768" height="490"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ob1-U2-zav" userLabel="ContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="540" height="625.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axE-FU-TVk">
-                                                <rect key="frame" x="20" y="10" width="728" height="49.5"/>
+                                                <rect key="frame" x="20" y="10" width="500" height="65.5"/>
                                                 <string key="text">Zu jedem Spektrometer müssen Sie für die Verbindung eine IP-Adresse mit dem dazugehörigen Port angeben. Weiter müssen zu jedem Spektrometer die entsprechenden INI-Files ausgewählt werden. Die Dateien müssen bereits auf dem iPad vorhanden sein damit Sie diese hier auswählen können.</string>
                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="IP Adresse" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iis-RT-SBS" customClass="IPNumberTextField" customModule="Spectrometer" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="119.5" width="718" height="40"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="ViN-Le-bg1"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="4"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="iconBackgroundColor">
-                                                        <color key="value" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="iconSize">
-                                                        <integer key="value" value="22"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftTextSpace">
-                                                        <real key="value" value="12"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="icon" value="fa-globe"/>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="ipAdressEditEnd:" destination="A3h-GE-KAx" eventType="editingDidEnd" id="PH3-V8-DcV"/>
-                                                    <action selector="ipAdressNextClick:" destination="A3h-GE-KAx" eventType="primaryActionTriggered" id="oYh-Es-LGF"/>
-                                                </connections>
-                                            </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Port" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZcT-7T-Vra" customClass="PortTextField" customModule="Spectrometer" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="169.5" width="718" height="40"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="lpY-ZY-9il"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftTextSpace">
-                                                        <real key="value" value="12"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="iconSize">
-                                                        <integer key="value" value="22"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="icon" value="fa-circle"/>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="iconBackgroundColor">
-                                                        <color key="value" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="4"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="portEditEnd:forEvent:" destination="A3h-GE-KAx" eventType="editingDidEnd" id="oFI-H6-4cs"/>
-                                                    <action selector="portNextClick:forEvent:" destination="A3h-GE-KAx" eventType="primaryActionTriggered" id="2RL-bN-4x5"/>
-                                                </connections>
-                                            </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initialisierungs Dateien" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="haN-Ml-83i">
-                                                <rect key="frame" x="20" y="234.5" width="728" height="16.5"/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YEI-at-1sx">
-                                                <rect key="frame" x="0.0" y="261" width="768" height="40"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="kBz-fi-ICm"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
-                                                <state key="normal" title="Wähle LMP INI-File"/>
-                                                <connections>
-                                                    <action selector="selectLMPFile:" destination="A3h-GE-KAx" eventType="touchUpInside" id="9jY-TX-TXJ"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="03n-eu-a7a">
-                                                <rect key="frame" x="0.0" y="311" width="768" height="40"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="lUp-8O-4TH"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
-                                                <state key="normal" title="Wähle REF INI-File"/>
-                                                <connections>
-                                                    <action selector="selectREFFile:" destination="A3h-GE-KAx" eventType="touchUpInside" id="GKT-kH-jtn"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNb-54-Zej">
-                                                <rect key="frame" x="0.0" y="361" width="768" height="40"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="EhH-3s-85u"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
-                                                <state key="normal" title="Wähle ILL INI-File"/>
-                                                <connections>
-                                                    <action selector="selectILLFile:" destination="A3h-GE-KAx" eventType="touchUpInside" id="gL8-uU-yce"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Benötigen Sie weitere Informationen wie Sie die initialisierungs Dateien vorgängig auf Ihr iPad kopieren können?" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5QO-2b-Q40">
-                                                <rect key="frame" x="20" y="416" width="728" height="14"/>
-                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="10"/>
-                                                <color key="textColor" red="0.074509803920000006" green="0.41568627450000001" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Bezeichnung / Seriennummer" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gk6-ms-Xsn" customClass="RequiredTextField" customModule="Spectrometer" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="69.5" width="718" height="40"/>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Name / Serialnumber" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gk6-ms-Xsn" customClass="RequiredTextField" customModule="Spectrometer" customModuleProvider="target">
+                                                <rect key="frame" x="25" y="85" width="490" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="RLn-0s-tPP"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="iconBackgroundColor">
                                                         <color key="value" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -223,40 +102,235 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="icon" value="fa-hdd-o"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="nameEditEnd:" destination="A3h-GE-KAx" eventType="editingDidEnd" id="Rbk-eg-5N1"/>
-                                                    <action selector="nameNextClick:" destination="A3h-GE-KAx" eventType="primaryActionTriggered" id="hVF-iJ-vK0"/>
+                                                    <action selector="nameDidValueChanged:" destination="A3h-GE-KAx" eventType="valueChanged" id="UQ6-3D-vtm"/>
                                                 </connections>
                                             </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="IP Adress" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iis-RT-SBS" userLabel="IPAdress" customClass="IPNumberTextField" customModule="Spectrometer" customModuleProvider="target">
+                                                <rect key="frame" x="25" y="135.5" width="490" height="40"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="ViN-Le-bg1"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="iconBackgroundColor">
+                                                        <color key="value" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="iconSize">
+                                                        <integer key="value" value="22"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftTextSpace">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="icon" value="fa-globe"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="ipAdressDidValueChanged:" destination="A3h-GE-KAx" eventType="valueChanged" id="c4o-wh-n1Q"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Port" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZcT-7T-Vra" customClass="PortTextField" customModule="Spectrometer" customModuleProvider="target">
+                                                <rect key="frame" x="25" y="185.5" width="490" height="40"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="lpY-ZY-9il"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftTextSpace">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="iconSize">
+                                                        <integer key="value" value="22"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="icon" value="fa-circle"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="iconBackgroundColor">
+                                                        <color key="value" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="portDidValueChanged:" destination="A3h-GE-KAx" eventType="valueChanged" id="NqG-sq-ODg"/>
+                                                </connections>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calibration files" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="haN-Ml-83i" userLabel="CalibrationFilesTitle">
+                                                <rect key="frame" x="25" y="250.5" width="490" height="17"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Foreoptic files" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBN-6u-72L" userLabel="FiberOpticFilesTitle">
+                                                <rect key="frame" x="25" y="440.5" width="490" height="17"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" sectionIndexMinimumDisplayRowCount="3" rowHeight="40" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TIE-7v-5ag" userLabel="FiberOpticFilesTableView">
+                                                <rect key="frame" x="25" y="465.5" width="490" height="80"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="80" id="4Na-R7-Ta2"/>
+                                                </constraints>
+                                            </tableView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9cK-6H-ycX" userLabel="AddFiberOpticFileButton" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
+                                                <rect key="frame" x="25" y="553.5" width="490" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="m7e-4i-VE7"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
+                                                <state key="normal" title="Add Foreoptic file"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="background">
+                                                        <color key="value" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="selectFiberOpticFile:" destination="A3h-GE-KAx" eventType="touchUpInside" id="sAj-Hb-UUn"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you need additional information how to copy files on your iPad oder iPhone?" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5QO-2b-Q40">
+                                                <rect key="frame" x="25" y="601.5" width="490" height="14"/>
+                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="10"/>
+                                                <color key="textColor" red="0.074509803920000006" green="0.41568627450000001" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kHB-td-D6o" customClass="AbsoluteReflectanceFileSelectInput" customModule="Spectrometer" customModuleProvider="target">
+                                                <rect key="frame" x="25" y="275.5" width="490" height="40"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="x79-CB-LEq"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="iconSize">
+                                                        <integer key="value" value="22"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftTextSpace">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="iconBackgroundColor">
+                                                        <color key="value" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderText" value="Select Absolute-Reflectance-File"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="textSize">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4wY-Hq-FI4" customClass="BaseFileSelectInput" customModule="Spectrometer" customModuleProvider="target">
+                                                <rect key="frame" x="25" y="325.5" width="490" height="40"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="CR9-ZE-qcZ"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="iconBackgroundColor">
+                                                        <color key="value" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderText" value="Select Base-File"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftTextSpace">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="iconSize">
+                                                        <integer key="value" value="22"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="textSize">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sx8-si-dii" customClass="LampFileSelectInput" customModule="Spectrometer" customModuleProvider="target">
+                                                <rect key="frame" x="25" y="375.5" width="490" height="40"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="uX4-KC-ehc"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="iconBackgroundColor">
+                                                        <color key="value" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="iconSize">
+                                                        <integer key="value" value="22"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftTextSpace">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderText" value="Select Lamp-File"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="textSize">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstItem="YEI-at-1sx" firstAttribute="leading" secondItem="ob1-U2-zav" secondAttribute="leading" id="0eU-eV-y2g"/>
-                                            <constraint firstAttribute="trailing" secondItem="SNb-54-Zej" secondAttribute="trailing" id="0j5-hH-g1h"/>
-                                            <constraint firstItem="SNb-54-Zej" firstAttribute="leading" secondItem="ob1-U2-zav" secondAttribute="leading" id="49c-Su-wzl"/>
-                                            <constraint firstItem="5QO-2b-Q40" firstAttribute="top" secondItem="SNb-54-Zej" secondAttribute="bottom" constant="15" id="5RM-o2-O3w"/>
-                                            <constraint firstAttribute="trailing" secondItem="5QO-2b-Q40" secondAttribute="trailing" constant="20" id="6KL-Yn-Dfy"/>
-                                            <constraint firstItem="03n-eu-a7a" firstAttribute="leading" secondItem="ob1-U2-zav" secondAttribute="leading" id="71G-4X-VsG"/>
-                                            <constraint firstAttribute="trailing" secondItem="haN-Ml-83i" secondAttribute="trailing" constant="20" id="CY7-1U-tbE"/>
-                                            <constraint firstItem="SNb-54-Zej" firstAttribute="top" secondItem="03n-eu-a7a" secondAttribute="bottom" constant="10" id="EBu-WP-WtL"/>
+                                            <constraint firstAttribute="trailing" secondItem="4wY-Hq-FI4" secondAttribute="trailing" constant="25" id="3yK-th-WKs"/>
+                                            <constraint firstItem="TIE-7v-5ag" firstAttribute="top" secondItem="fBN-6u-72L" secondAttribute="bottom" constant="8" id="58D-nx-gmT"/>
+                                            <constraint firstItem="TIE-7v-5ag" firstAttribute="leading" secondItem="ob1-U2-zav" secondAttribute="leading" constant="25" id="5wG-qE-aaO"/>
+                                            <constraint firstAttribute="trailing" secondItem="5QO-2b-Q40" secondAttribute="trailing" constant="25" id="6KL-Yn-Dfy"/>
+                                            <constraint firstItem="fBN-6u-72L" firstAttribute="leading" secondItem="ob1-U2-zav" secondAttribute="leading" constant="25" id="8Wc-on-X7a"/>
+                                            <constraint firstAttribute="trailing" secondItem="haN-Ml-83i" secondAttribute="trailing" constant="25" id="CY7-1U-tbE"/>
+                                            <constraint firstAttribute="trailing" secondItem="TIE-7v-5ag" secondAttribute="trailing" constant="25" id="Cy1-hn-XEO"/>
+                                            <constraint firstItem="sx8-si-dii" firstAttribute="leading" secondItem="ob1-U2-zav" secondAttribute="leading" constant="25" id="DAW-gJ-ABA"/>
                                             <constraint firstItem="ZcT-7T-Vra" firstAttribute="top" secondItem="Iis-RT-SBS" secondAttribute="bottom" constant="10" id="ETB-Lz-s5l"/>
+                                            <constraint firstItem="kHB-td-D6o" firstAttribute="top" secondItem="haN-Ml-83i" secondAttribute="bottom" constant="8" id="EdE-yH-aqj"/>
+                                            <constraint firstAttribute="trailing" secondItem="fBN-6u-72L" secondAttribute="trailing" constant="25" id="HXa-Iw-ygy"/>
                                             <constraint firstAttribute="trailing" secondItem="axE-FU-TVk" secondAttribute="trailing" constant="20" id="I0q-pQ-pBN"/>
                                             <constraint firstAttribute="trailing" secondItem="Iis-RT-SBS" secondAttribute="trailing" constant="25" id="JBv-ls-t0j"/>
-                                            <constraint firstItem="03n-eu-a7a" firstAttribute="top" secondItem="YEI-at-1sx" secondAttribute="bottom" constant="10" id="MTl-qw-0tE"/>
+                                            <constraint firstAttribute="trailing" secondItem="9cK-6H-ycX" secondAttribute="trailing" constant="25" id="MoO-fc-qMB"/>
+                                            <constraint firstItem="fBN-6u-72L" firstAttribute="top" secondItem="sx8-si-dii" secondAttribute="bottom" constant="25" id="O1N-Qs-vsh"/>
                                             <constraint firstItem="Iis-RT-SBS" firstAttribute="top" secondItem="gk6-ms-Xsn" secondAttribute="bottom" constant="10" id="Oaz-oH-tdV"/>
-                                            <constraint firstItem="YEI-at-1sx" firstAttribute="top" secondItem="haN-Ml-83i" secondAttribute="bottom" constant="10" id="Pt5-wC-7df"/>
-                                            <constraint firstAttribute="trailing" secondItem="03n-eu-a7a" secondAttribute="trailing" id="Qy4-qS-OS8"/>
+                                            <constraint firstAttribute="bottom" secondItem="5QO-2b-Q40" secondAttribute="bottom" constant="10" id="RaY-9B-MaN"/>
+                                            <constraint firstItem="4wY-Hq-FI4" firstAttribute="leading" secondItem="ob1-U2-zav" secondAttribute="leading" constant="25" id="RvG-AZ-8Lh"/>
+                                            <constraint firstItem="4wY-Hq-FI4" firstAttribute="top" secondItem="kHB-td-D6o" secondAttribute="bottom" constant="10" id="TAz-QO-SyR"/>
                                             <constraint firstAttribute="trailing" secondItem="ZcT-7T-Vra" secondAttribute="trailing" constant="25" id="VO7-cI-1sc"/>
                                             <constraint firstItem="axE-FU-TVk" firstAttribute="top" secondItem="ob1-U2-zav" secondAttribute="top" constant="10" id="WFF-3u-yf1"/>
                                             <constraint firstAttribute="trailing" secondItem="gk6-ms-Xsn" secondAttribute="trailing" constant="25" id="XST-Fe-hSL"/>
-                                            <constraint firstAttribute="trailing" secondItem="YEI-at-1sx" secondAttribute="trailing" id="Xyd-9S-BdY"/>
-                                            <constraint firstItem="5QO-2b-Q40" firstAttribute="leading" secondItem="ob1-U2-zav" secondAttribute="leading" constant="20" id="ZQn-3f-iWU"/>
+                                            <constraint firstItem="9cK-6H-ycX" firstAttribute="top" secondItem="TIE-7v-5ag" secondAttribute="bottom" constant="8" id="ZDm-Hw-cR1"/>
+                                            <constraint firstItem="5QO-2b-Q40" firstAttribute="leading" secondItem="ob1-U2-zav" secondAttribute="leading" constant="25" id="ZQn-3f-iWU"/>
                                             <constraint firstItem="haN-Ml-83i" firstAttribute="top" secondItem="ZcT-7T-Vra" secondAttribute="bottom" constant="25" id="ZaW-sC-oYZ"/>
+                                            <constraint firstItem="sx8-si-dii" firstAttribute="top" secondItem="4wY-Hq-FI4" secondAttribute="bottom" constant="10" id="cdi-Dc-doa"/>
+                                            <constraint firstAttribute="trailing" secondItem="kHB-td-D6o" secondAttribute="trailing" constant="25" id="dJm-yC-dpZ"/>
                                             <constraint firstItem="Iis-RT-SBS" firstAttribute="leading" secondItem="ob1-U2-zav" secondAttribute="leading" constant="25" id="eiZ-9u-Gxu"/>
+                                            <constraint firstItem="9cK-6H-ycX" firstAttribute="leading" secondItem="ob1-U2-zav" secondAttribute="leading" constant="25" id="gjE-Ct-hb7"/>
                                             <constraint firstItem="ZcT-7T-Vra" firstAttribute="leading" secondItem="ob1-U2-zav" secondAttribute="leading" constant="25" id="h9c-bE-Gmf"/>
                                             <constraint firstItem="gk6-ms-Xsn" firstAttribute="leading" secondItem="ob1-U2-zav" secondAttribute="leading" constant="25" id="hCi-tN-YbC"/>
+                                            <constraint firstItem="kHB-td-D6o" firstAttribute="leading" secondItem="ob1-U2-zav" secondAttribute="leading" constant="25" id="kjT-3G-JbP"/>
                                             <constraint firstItem="axE-FU-TVk" firstAttribute="leading" secondItem="ob1-U2-zav" secondAttribute="leading" constant="20" id="lc1-yB-z5x"/>
-                                            <constraint firstAttribute="height" constant="490" id="nuH-qI-eHe"/>
-                                            <constraint firstItem="haN-Ml-83i" firstAttribute="leading" secondItem="ob1-U2-zav" secondAttribute="leading" constant="20" id="skC-Db-Ces"/>
+                                            <constraint firstItem="haN-Ml-83i" firstAttribute="leading" secondItem="ob1-U2-zav" secondAttribute="leading" constant="25" id="skC-Db-Ces"/>
+                                            <constraint firstAttribute="trailing" secondItem="sx8-si-dii" secondAttribute="trailing" constant="25" id="uEi-hx-raS"/>
+                                            <constraint firstItem="5QO-2b-Q40" firstAttribute="top" secondItem="9cK-6H-ycX" secondAttribute="bottom" constant="8" id="wZK-hQ-H6w"/>
                                             <constraint firstItem="gk6-ms-Xsn" firstAttribute="top" secondItem="axE-FU-TVk" secondAttribute="bottom" constant="10" id="yxL-1s-5bq"/>
                                         </constraints>
                                     </view>
@@ -265,36 +339,40 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="ob1-U2-zav" secondAttribute="trailing" id="TpQ-tX-2lb"/>
                                     <constraint firstItem="ob1-U2-zav" firstAttribute="leading" secondItem="6iC-y3-TaJ" secondAttribute="leading" id="cI2-uJ-5kf"/>
-                                    <constraint firstAttribute="bottom" secondItem="ob1-U2-zav" secondAttribute="bottom" id="f8M-F5-Kvv"/>
+                                    <constraint firstAttribute="bottom" secondItem="ob1-U2-zav" secondAttribute="bottom" constant="34" id="f8M-F5-Kvv"/>
                                     <constraint firstItem="ob1-U2-zav" firstAttribute="top" secondItem="6iC-y3-TaJ" secondAttribute="top" id="vnU-Dc-A2O"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="6iC-y3-TaJ" firstAttribute="top" secondItem="pqZ-Hr-sCA" secondAttribute="bottom" id="HMs-d4-H1v"/>
+                            <constraint firstItem="pqZ-Hr-sCA" firstAttribute="leading" secondItem="xCq-cj-YBm" secondAttribute="leadingMargin" constant="-20" id="IUS-Tr-PFu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pqZ-Hr-sCA" secondAttribute="trailing" constant="-20" id="N7X-PA-2mD"/>
                             <constraint firstItem="6iC-y3-TaJ" firstAttribute="leading" secondItem="xCq-cj-YBm" secondAttribute="leadingMargin" constant="-20" id="cDL-qo-NLb"/>
                             <constraint firstItem="LzZ-IQ-cpN" firstAttribute="top" secondItem="6iC-y3-TaJ" secondAttribute="bottom" id="ceB-Rr-ez3"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="00t-fB-ARv" secondAttribute="trailing" constant="-20" id="dlT-PK-Vhh"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="00t-fB-ARv" secondAttribute="leading" constant="20" id="hdG-y8-XDq"/>
                             <constraint firstItem="ob1-U2-zav" firstAttribute="width" secondItem="xCq-cj-YBm" secondAttribute="width" id="lSB-jJ-wEL"/>
-                            <constraint firstItem="6iC-y3-TaJ" firstAttribute="top" secondItem="00t-fB-ARv" secondAttribute="bottom" id="pFb-ff-naA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6iC-y3-TaJ" secondAttribute="trailing" constant="-20" id="qdL-xf-pbo"/>
-                            <constraint firstItem="00t-fB-ARv" firstAttribute="top" secondItem="g3T-4g-4kn" secondAttribute="bottom" id="yfw-9R-YMg"/>
+                            <constraint firstItem="pqZ-Hr-sCA" firstAttribute="top" secondItem="g3T-4g-4kn" secondAttribute="bottom" id="veC-oY-YWa"/>
                         </constraints>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="540" height="800"/>
                     <connections>
-                        <outlet property="illButton" destination="SNb-54-Zej" id="hnH-tC-gZq"/>
+                        <outlet property="absoluteReflectanceSelect" destination="kHB-td-D6o" id="au7-9P-PBY"/>
+                        <outlet property="baseFileSelect" destination="4wY-Hq-FI4" id="bYm-K4-06J"/>
+                        <outlet property="fiberOpticFilesTableView" destination="TIE-7v-5ag" id="Il2-KE-ZVM"/>
+                        <outlet property="fiberOpticsTableViewHeight" destination="4Na-R7-Ta2" id="hr9-At-d0E"/>
                         <outlet property="ipAdress" destination="Iis-RT-SBS" id="CLm-N5-VPC"/>
-                        <outlet property="lmpButton" destination="YEI-at-1sx" id="v7K-pe-40m"/>
+                        <outlet property="lampFileSelect" destination="sx8-si-dii" id="HFM-0c-gmp"/>
                         <outlet property="name" destination="gk6-ms-Xsn" id="lRr-F9-xvw"/>
                         <outlet property="port" destination="ZcT-7T-Vra" id="lm1-dP-vBB"/>
-                        <outlet property="refButton" destination="03n-eu-a7a" id="aFW-bc-JjS"/>
                         <outlet property="saveButton" destination="KWU-AM-yIx" id="zAg-mG-Q5o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rO1-K1-hv8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1155" y="1510"/>
+            <point key="canvasLocation" x="1154.6875" y="1509.9609375"/>
         </scene>
         <!--File Browser Container View Controller-->
         <scene sceneID="Va4-Cl-Oac">
@@ -449,14 +527,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZuH-AQ-NxF">
-                                <rect key="frame" x="20" y="117" width="728" height="49"/>
+                                <rect key="frame" x="20" y="117" width="728" height="57.5"/>
                                 <string key="text">Um eine Verbindung mit dem Spektrometer herzustellen müssen die Verbindungseinstellungen zum Gerät zuerst im App erfasst werden. Sie haben die Möglichkeit hier das App mit einem Spektrometer zu verbinden oder weitere Verbindungen einzurichten.</string>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XgJ-hU-ctM">
-                                <rect key="frame" x="300" y="923" width="169" height="32"/>
+                                <rect key="frame" x="295" y="923" width="179" height="32"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                 <state key="normal" title="Spektrometer hinzufügen"/>
                                 <connections>
@@ -464,7 +542,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eqG-6H-HNG">
-                                <rect key="frame" x="20" y="176" width="728" height="716"/>
+                                <rect key="frame" x="20" y="184.5" width="728" height="707.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -472,11 +550,11 @@
                                         <rect key="frame" x="0.0" y="28" width="728" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mmm-tZ-Xs7" id="yjQ-yq-CaX">
-                                            <rect key="frame" x="0.0" y="0.0" width="728" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="728" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spectrometer Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ec6-mm-Psg">
-                                                    <rect key="frame" x="183" y="9" width="399" height="50"/>
+                                                    <rect key="frame" x="183" y="9" width="399" height="52"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -496,7 +574,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IP: 10.1.1.77 / Port: 8080" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aF7-2C-20b">
-                                                    <rect key="frame" x="183" y="65" width="399" height="18"/>
+                                                    <rect key="frame" x="183" y="67" width="399" height="16"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -534,7 +612,7 @@
                                 <sections/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UZg-A0-uSz">
-                                <rect key="frame" x="547" y="925" width="46" height="30"/>
+                                <rect key="frame" x="552" y="925" width="46" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="sP8-Ow-0XN"/>
                                 </constraints>
@@ -590,11 +668,11 @@
                                         <rect key="frame" x="0.0" y="35" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aOc-vK-DdF" id="9XQ-3y-ChR">
-                                            <rect key="frame" x="0.0" y="0.0" width="696" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="696" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="BareFiber" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CMU-FZ-zZx">
-                                                    <rect key="frame" x="48" y="0.0" width="648" height="43.5"/>
+                                                    <rect key="frame" x="48" y="0.0" width="648" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -607,11 +685,11 @@
                                         <rect key="frame" x="0.0" y="79" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wce-xj-iHC" id="PJZ-gZ-LKj">
-                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="3°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wh2-pe-cYr">
-                                                    <rect key="frame" x="48" y="0.0" width="672" height="43.5"/>
+                                                    <rect key="frame" x="48" y="0.0" width="672" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -648,11 +726,11 @@
                                         <rect key="frame" x="0.0" y="35" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bd0-qf-VNO" id="PHM-XQ-hlJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Instrument Configuration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zws-RY-5Mo">
-                                                    <rect key="frame" x="15" y="0.0" width="270" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -672,11 +750,11 @@
                                         <rect key="frame" x="0.0" y="159" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xxk-m8-0yG" id="p9r-o4-IPv">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Instrument Control" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qC2-kt-db7">
-                                                    <rect key="frame" x="15" y="0.0" width="270" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -696,11 +774,11 @@
                                         <rect key="frame" x="0.0" y="267" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LzP-Pa-bqn" id="UAK-D7-mJB">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="General" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xns-Tg-vju">
-                                                    <rect key="frame" x="15" y="0.0" width="270" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -775,18 +853,18 @@
                                         <rect key="frame" x="0.0" y="35" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5nf-zS-eDm" id="OMB-GB-8V9">
-                                            <rect key="frame" x="0.0" y="0.0" width="702" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="702" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Foreoptic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NzU-Ri-bB7">
-                                                    <rect key="frame" x="48" y="10" width="74.5" height="23.5"/>
+                                                    <rect key="frame" x="48" y="10" width="75" height="24"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="BareFiber" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CYc-ag-egS">
-                                                    <rect key="frame" x="625" y="10" width="77" height="23.5"/>
+                                                    <rect key="frame" x="625" y="10" width="77" height="24"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -803,10 +881,10 @@
                             <tableViewSection headerTitle="Number of samples" id="zB7-kd-fH0">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NumOfSampSpectrum" id="kQD-fm-Jrd">
-                                        <rect key="frame" x="0.0" y="135" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="136" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kQD-fm-Jrd" id="P78-Le-zBx">
-                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="2" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="L6E-km-Vpk">
@@ -848,10 +926,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NumOfSamplesDarkCurrent" id="OgF-6q-77f">
-                                        <rect key="frame" x="0.0" y="179" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="180" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OgF-6q-77f" id="8vc-iq-aNF">
-                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="2" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="jtO-Ht-u4q">
@@ -893,10 +971,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NumOfSamplesWhiteReference" id="8f1-wh-CjP">
-                                        <rect key="frame" x="0.0" y="223" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="224" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8f1-wh-CjP" id="hUV-KQ-DwI">
-                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="2" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="49O-RP-RZe">
@@ -942,14 +1020,14 @@
                             <tableViewSection headerTitle="Scan Type" id="SIp-5G-Ge0">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ScanType" textLabel="dpj-cs-nkK" style="IBUITableViewCellStyleDefault" id="mBa-S6-qwV">
-                                        <rect key="frame" x="0.0" y="323" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="325" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mBa-S6-qwV" id="RM7-4S-tGf">
-                                            <rect key="frame" x="0.0" y="0.0" width="702" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="702" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="AB Even" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dpj-cs-nkK">
-                                                    <rect key="frame" x="48" y="0.0" width="654" height="43.5"/>
+                                                    <rect key="frame" x="48" y="0.0" width="654" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -963,21 +1041,21 @@
                             <tableViewSection id="xUq-hx-MVm">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AbsoluteReflectance" textLabel="mtJ-lY-ZdN" detailTextLabel="0zb-4y-g7J" style="IBUITableViewCellStyleValue1" id="Fbb-Xo-UGo">
-                                        <rect key="frame" x="0.0" y="403" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="405" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fbb-Xo-UGo" id="M1g-Vf-QqI">
-                                            <rect key="frame" x="0.0" y="0.0" width="702" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="702" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Absolute Reflectance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mtJ-lY-ZdN">
-                                                    <rect key="frame" x="48" y="10" width="166" height="23.5"/>
+                                                    <rect key="frame" x="48" y="10" width="166" height="24"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Aus" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0zb-4y-g7J">
-                                                    <rect key="frame" x="672.5" y="10" width="29.5" height="23.5"/>
+                                                    <rect key="frame" x="672" y="10" width="30" height="24"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -1168,19 +1246,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Messungen abspeichern" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="war-x9-xc7">
-                                <rect key="frame" x="20" y="40" width="500" height="26"/>
+                                <rect key="frame" x="20" y="40" width="500" height="30"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alle Messungen wurden erfolgreich durchgeführt und werden nun abgespeichert." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7M-uM-Rys">
-                                <rect key="frame" x="20" y="76" width="500" height="14"/>
+                                <rect key="frame" x="20" y="80" width="500" height="17"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Die Messungen werden gespeichert ..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSU-MD-mc2">
-                                <rect key="frame" x="20" y="278" width="500" height="14"/>
+                                <rect key="frame" x="20" y="275" width="500" height="17"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1210,7 +1288,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Die Messungen wurden erfolgreich abgespeichert. Sie können alle Messungen im Tab &quot;Messungen&quot; einsehen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPK-w9-25L">
-                                <rect key="frame" x="40" y="458" width="460" height="28"/>
+                                <rect key="frame" x="40" y="458" width="460" height="33"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1808,7 +1886,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ZN-3r-kSL" customClass="SelectInputPath" customModule="Spectrometer" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ZN-3r-kSL" customClass="BaseSelectInput" customModule="Spectrometer" customModuleProvider="target">
                                                 <rect key="frame" x="25" y="146" width="490" height="50"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -2830,7 +2908,7 @@ DarkCurrent</string>
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="768" height="1024"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oEq-7H-IhW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="oEq-7H-IhW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

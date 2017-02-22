@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FiberOpticFileTableViewCell" rowHeight="41" id="XnJ-ge-COc" customClass="FiberOpticFileTableViewCell" customModule="Spectrometer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="434" height="41"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XnJ-ge-COc" id="SYd-2N-blN">
+                <rect key="frame" x="0.0" y="0.0" width="434" height="40"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UOm-wQ-8rs" userLabel="LeftBackgroundView">
+                        <rect key="frame" x="0.0" y="0.0" width="42" height="42"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cty-qT-g2B">
+                                <rect key="frame" x="10" y="10" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="22" id="NhY-X3-xYE"/>
+                                    <constraint firstAttribute="height" constant="22" id="vqw-IG-XQr"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="cty-qT-g2B" firstAttribute="centerX" secondItem="UOm-wQ-8rs" secondAttribute="centerX" id="BCL-2O-gLF"/>
+                            <constraint firstAttribute="width" secondItem="UOm-wQ-8rs" secondAttribute="height" multiplier="240:240" id="SZ0-yY-1uC"/>
+                            <constraint firstItem="cty-qT-g2B" firstAttribute="centerY" secondItem="UOm-wQ-8rs" secondAttribute="centerY" id="qYx-Zb-08g"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fsm-FX-UDj" userLabel="BackgroundView">
+                        <rect key="frame" x="42" y="0.0" width="393" height="41"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ForeopticName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1N7-Ld-XTK">
+                                <rect key="frame" x="8" y="2" width="286" height="21"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FileName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="of6-FS-hnq">
+                                <rect key="frame" x="8" y="23" width="286" height="14"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="10"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Mn-is-Z9X" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
+                                <rect key="frame" x="306" y="6" width="81" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="81" id="jtP-ti-4E6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                <state key="normal" title="Remove"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="background">
+                                        <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.97931915520000001" green="0.9800599217" blue="0.9794338346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="of6-FS-hnq" firstAttribute="leading" secondItem="fsm-FX-UDj" secondAttribute="leading" constant="8" id="4x9-1g-2JK"/>
+                            <constraint firstItem="of6-FS-hnq" firstAttribute="top" secondItem="1N7-Ld-XTK" secondAttribute="bottom" id="69g-Wy-bet"/>
+                            <constraint firstItem="8Mn-is-Z9X" firstAttribute="leading" secondItem="of6-FS-hnq" secondAttribute="trailing" constant="12" id="6eC-gQ-Lso"/>
+                            <constraint firstAttribute="trailing" secondItem="8Mn-is-Z9X" secondAttribute="trailing" constant="6" id="9Yd-pe-azL"/>
+                            <constraint firstItem="8Mn-is-Z9X" firstAttribute="leading" secondItem="1N7-Ld-XTK" secondAttribute="trailing" constant="12" id="FsL-9n-nvX"/>
+                            <constraint firstAttribute="bottom" secondItem="8Mn-is-Z9X" secondAttribute="bottom" constant="6" id="P6R-Ye-p1K"/>
+                            <constraint firstItem="1N7-Ld-XTK" firstAttribute="top" secondItem="fsm-FX-UDj" secondAttribute="top" constant="2" id="pcm-GA-87q"/>
+                            <constraint firstItem="1N7-Ld-XTK" firstAttribute="leading" secondItem="fsm-FX-UDj" secondAttribute="leading" constant="8" id="tlS-cu-cG3"/>
+                            <constraint firstItem="8Mn-is-Z9X" firstAttribute="top" secondItem="fsm-FX-UDj" secondAttribute="top" constant="6" id="zla-mO-hEB"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="UOm-wQ-8rs" firstAttribute="leading" secondItem="SYd-2N-blN" secondAttribute="leadingMargin" constant="-8" id="0M6-tv-IJO"/>
+                    <constraint firstItem="UOm-wQ-8rs" firstAttribute="top" secondItem="SYd-2N-blN" secondAttribute="topMargin" constant="-8" id="0Nv-kc-bcy"/>
+                    <constraint firstAttribute="topMargin" secondItem="fsm-FX-UDj" secondAttribute="top" constant="8" id="8Ip-ry-sK2"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="fsm-FX-UDj" secondAttribute="bottom" constant="-8.5" id="9a6-5Y-wse"/>
+                    <constraint firstItem="fsm-FX-UDj" firstAttribute="leading" secondItem="UOm-wQ-8rs" secondAttribute="trailing" id="N4I-ow-wEj"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="UOm-wQ-8rs" secondAttribute="bottom" constant="-9.5" id="R6a-ib-IYB"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="fsm-FX-UDj" secondAttribute="trailing" constant="-9" id="V3U-Af-qpm"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="backView" destination="fsm-FX-UDj" id="Tmm-2X-V8X"/>
+                <outlet property="fileName" destination="of6-FS-hnq" id="l1j-wm-Lyz"/>
+                <outlet property="iconImage" destination="cty-qT-g2B" id="wHl-kS-xro"/>
+                <outlet property="name" destination="1N7-Ld-XTK" id="MlV-2c-Zlc"/>
+                <outlet property="removeButton" destination="8Mn-is-Z9X" id="X4Y-ms-gPX"/>
+            </connections>
+            <point key="canvasLocation" x="-197" y="-176"/>
+        </tableViewCell>
+    </objects>
+</document>

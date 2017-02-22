@@ -9,251 +9,298 @@
 import Foundation
 import UIKit
 
-class AddEditConnectionViewController: UIViewController {
+class AddEditConnectionViewController: UIViewController, UITextFieldDelegate, BaseSelectInputDelegate, UITableViewDelegate, UITableViewDataSource {
+
     let fileManager:FileManager = FileManager.default
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let dataViewContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     // config object
-    var config: SpectrometerConfig? = nil
-    
-    // colors
-    let red = UIColor.red
-    let black = UIColor.black
-    let green = UIColor.green
+    internal var config: SpectrometerConfig!
     
     // text fields
     @IBOutlet var name: UITextField!
     @IBOutlet var ipAdress: UITextField!
     @IBOutlet var port: UITextField!
     
-    // buttons
-    @IBOutlet var lmpButton: UIButton!
-    @IBOutlet var refButton: UIButton!
-    @IBOutlet var illButton: UIButton!
+    // choose calibrationFiles
+    @IBOutlet var absoluteReflectanceSelect: AbsoluteReflectanceFileSelectInput!
+    @IBOutlet var baseFileSelect: BaseFileSelectInput!
+    @IBOutlet var lampFileSelect: LampFileSelectInput!
     
-    // spectras
-    var lmpSpectra: [Double]? = nil
-    var refSpectra: [Double]? = nil
-    var illSpectra: [Double]? = nil
+    @IBOutlet var fiberOpticFilesTableView: UITableView!
+    @IBOutlet var fiberOpticsTableViewHeight: NSLayoutConstraint!
+    
     
     @IBOutlet var saveButton: UIButton!
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         
-        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-        print(path?.absoluteString ?? "kein Pfad")
+        // set delegates
+        name.delegate = self
+        ipAdress.delegate = self
+        port.delegate = self
         
-        // set values to lables if available in config
-        if (self.config != nil) {
-            self.name.text = config?.name
-            self.ipAdress.text = config?.ipAdress
-            self.port.text = config?.port.description
-            self.lmpButton.setTitle("LMP Datei ersetzen", for: UIControlState.normal)
-            self.lmpSpectra = config?.lmpSpectrum as? [Double]
-            self.refButton.setTitle("REF Datei ersetzen", for: UIControlState.normal)
-            self.refSpectra = config?.refSpectrum as? [Double]
-            self.illButton.setTitle("ILL Datei ersetzen", for: UIControlState.normal)
-            self.illSpectra = config?.illSpectrum as? [Double]
+        absoluteReflectanceSelect.delegate = self
+        baseFileSelect.delegate = self
+        lampFileSelect.delegate = self
+        
+        fiberOpticFilesTableView.delegate = self
+        fiberOpticFilesTableView.dataSource = self
+        
+        fiberOpticFilesTableView.register(UINib(nibName: "FiberOpticFileTableViewCell", bundle: nil), forCellReuseIdentifier: "FiberOpticFileTableViewCell")
+        fiberOpticFilesTableView.layer.cornerRadius = 4.0
+        
+        // create config if not set -> for edit-mode, a config must be set with the initData methode
+        if self.config == nil {
+            self.config = SpectrometerConfig(context: dataViewContext)
+        } else {
+            
+            // init controls
+            self.name.text = config.name
+            self.ipAdress.text = config.ipAdress
+            self.port.text = config.port.description
+            
+            self.absoluteReflectanceSelect.pathLabel.text = "Replace " + (config.absoluteReflectance?.name)!
+            self.absoluteReflectanceSelect.isInEditMode = true
+            
+            self.baseFileSelect.pathLabel.text = "Replace " + (config.base?.name)!
+            self.baseFileSelect.isInEditMode = true
+            
+            self.lampFileSelect.pathLabel.text = "Replace " + (config.lamp?.name)!
+            self.lampFileSelect.isInEditMode = true
+            
+            validateControls()
+            
         }
         
-        super.viewDidLoad()
+        reloadTableData()
+        
     }
     
     @IBAction func cancelPressed(_ sender: Any) {
+        dataViewContext.rollback()
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func savePressed(_ sender: Any) {
-        print("Config Saved")
         
-        // if its new create a new config
-        if self.config == nil {
-            self.config = SpectrometerConfig(context: dataViewContext)
+        config.name = name.text
+        config.ipAdress = ipAdress.text
+        config.port = Int16(port.text!)!
+        
+        if !absoluteReflectanceSelect.isInEditMode {
+            
+            if config.absoluteReflectance == nil {
+                let absoluteReflectance = CalibrationFile(context: dataViewContext)
+                absoluteReflectance.name = "Absolute Reflectance"
+                absoluteReflectance.filename = absoluteReflectanceSelect.pathLabel.text
+                absoluteReflectance.spectrum = absoluteReflectanceSelect.calibrationFile?.spectrum
+                config.absoluteReflectance = absoluteReflectance
+            } else {
+                config.absoluteReflectance?.name = absoluteReflectanceSelect.pathLabel.text
+                config.absoluteReflectance?.spectrum = absoluteReflectanceSelect.calibrationFile?.spectrum
+            }
+            
         }
         
-        config?.name = name.text
-        config?.ipAdress = ipAdress.text
-        config?.port = Int16(port.text!)!
-        config?.lmpSpectrum = lmpSpectra as NSObject?
-        config?.refSpectrum = refSpectra as NSObject?
-        config?.illSpectrum = illSpectra as NSObject?
-        config?.sampleCount = 10 //default value for sampleCount
-        config?.sampleCountDarkCurrent = 10 //default value for sampleCount
-        config?.sampleCountWhiteRefrence = 10 //default value for sampleCount
-        config?.measurmentCount = 10 //default value for measurmentCount
+        if !baseFileSelect.isInEditMode {
+            
+            if config.base == nil {
+                let base = CalibrationFile(context: dataViewContext)
+                base.name = "Base"
+                base.filename = baseFileSelect.pathLabel.text
+                base.spectrum = baseFileSelect.calibrationFile?.spectrum
+                config.base = base
+            } else {
+                config.base?.name = baseFileSelect.pathLabel.text
+                config.base?.spectrum = baseFileSelect.calibrationFile?.spectrum
+            }
+            
+        }
+        
+        if !lampFileSelect.isInEditMode {
+            
+            if config.lamp == nil {
+                let lamp = CalibrationFile(context: dataViewContext)
+                lamp.name = "Lamp"
+                lamp.filename = lampFileSelect.pathLabel.text
+                lamp.spectrum = lampFileSelect.calibrationFile?.spectrum
+                config.lamp = lamp
+            } else {
+                config.lamp?.name = lampFileSelect.pathLabel.text
+                config.lamp?.spectrum = lampFileSelect.calibrationFile?.spectrum
+            }
+            
+        }
+        
+        config.sampleCount = 10 //default value for sampleCount
+        config.sampleCountDarkCurrent = 10 //default value for sampleCount
+        config.sampleCountWhiteRefrence = 10 //default value for sampleCount
+        config.measurmentCount = 10 //default value for measurmentCount
         
         appDelegate.saveContext()
+        
         NotificationCenter.default.post(name: .reloadSpectrometerConfig, object: nil)
+        
         dismiss(animated: true, completion: nil)
         
     }
     
-    @IBAction func nameNextClick(_ sender: Any) {
-        ipAdress.becomeFirstResponder()
-    }
-    
-    @IBAction func nameEditEnd(_ sender: Any) {
-        toggleSaveButton()
-    }
-    
-    @IBAction func ipAdressNextClick(_ sender: Any) {
-        port.becomeFirstResponder()
-    }
-    
-    @IBAction func ipAdressEditEnd(_ sender: Any) {
-        toggleSaveButton()
-    }
-    
-    @IBAction func portNextClick(_ sender: UITextField, forEvent event: UIEvent) {
-        view.endEditing(true)
-    }
-    
-    @IBAction func portEditEnd(_ sender: UITextField, forEvent event: UIEvent) {
-        toggleSaveButton()
-    }
-    
-    @IBAction func selectLMPFile(_ sender: Any) {
-        
-        let fileBrowserContainerViewController = self.storyboard!.instantiateViewController(withIdentifier: "FileBrowserContainerViewController") as! FileBrowserContainerViewController
-        let navigationController = UINavigationController(rootViewController: fileBrowserContainerViewController)
-        navigationController.modalPresentationStyle = .formSheet
-        
-        // Hook up the select event
-        fileBrowserContainerViewController.didSelectFile = {(file: DiskFile) -> Void in
-            let parseResult = self.validateLMPFile(filePath: file.filePath.path)
-            self.lmpButton.setTitle(file.displayName, for: UIControlState.normal)
-            if (!parseResult) {
-                self.lmpButton.setTitleColor(self.red, for: UIControlState.normal)
-                self.lmpSpectra = nil
-                self.toggleSaveButton()
-            } else {
-                self.lmpButton.setTitleColor(self.green, for: UIControlState.normal)
-                self.toggleSaveButton()
-            }
-
+    func initData(config: SpectrometerConfig) -> Void {
+        if self.config != nil {
+            fatalError("data must be initialized before viewDidLoad")
         }
-        present(navigationController, animated: true, completion: nil)
-    }
-    
-    @IBAction func selectREFFile(_ sender: Any) {
-        
-        
-        let fileBrowserContainerViewController = self.storyboard!.instantiateViewController(withIdentifier: "FileBrowserContainerViewController") as! FileBrowserContainerViewController
-        let navigationController = UINavigationController(rootViewController: fileBrowserContainerViewController)
-        navigationController.modalPresentationStyle = .formSheet
-        
-        // Hook up the select event
-        fileBrowserContainerViewController.didSelectFile = {(file: DiskFile) -> Void in
-            let parseResult = self.validateREFFile(filePath: file.filePath.path)
-            self.refButton.setTitle(file.displayName, for: UIControlState.normal)
-            if (!parseResult) {
-                self.refButton.setTitleColor(self.red, for: UIControlState.normal)
-                self.refSpectra = nil
-                self.toggleSaveButton()
-            } else {
-                self.refButton.setTitleColor(self.green, for: UIControlState.normal)
-                self.toggleSaveButton()
-            }
-        }
-        present(navigationController, animated: true, completion: nil)
-        
-    }
-    
-    @IBAction func selectILLFile(_ sender: Any) {
-        
-        let fileBrowserContainerViewController = self.storyboard!.instantiateViewController(withIdentifier: "FileBrowserContainerViewController") as! FileBrowserContainerViewController
-        let navigationController = UINavigationController(rootViewController: fileBrowserContainerViewController)
-        navigationController.modalPresentationStyle = .formSheet
-        
-        // Hook up the select event
-        fileBrowserContainerViewController.didSelectFile = {(file: DiskFile) -> Void in
-            let parseResult = self.validateILLFile(filePath: file.filePath.path)
-            self.illButton.setTitle(file.displayName, for: UIControlState.normal)
-            if (!parseResult) {
-                self.illButton.setTitleColor(self.red, for: UIControlState.normal)
-                self.illSpectra = nil
-                self.toggleSaveButton()
-            } else {
-                self.illButton.setTitleColor(self.green, for: UIControlState.normal)
-                self.toggleSaveButton()
-            }
-        }
-        present(navigationController, animated: true, completion: nil)
-        
-    }
-    
-    func setConfigData(config: SpectrometerConfig) -> Void {
         self.config = config
     }
     
-    private func validateLMPFile(filePath: String) -> Bool {
+    func openFileBrowser(path: URL?, sender: BaseSelectInput) {
         
-        let lmpFile = parseSpectralFile(filePath: filePath)
+        let fileBrowserContainerViewController = self.storyboard!.instantiateViewController(withIdentifier: "FileBrowserContainerViewController") as! FileBrowserContainerViewController
         
-        if (lmpFile == nil) { return false }
+        let navigationController = UINavigationController(rootViewController: fileBrowserContainerViewController)
+        navigationController.modalPresentationStyle = .formSheet
         
-        // TODO: Vaildate if its a REF File -> how??
-        if (lmpFile?.dataType != DataType.RefType) {
-            self.showWarningMessage(title: "Dateifehler", message: "Bitte wählen Sie eine LMP Datei aus.")
-            return false
+        // Hook up the select event
+        fileBrowserContainerViewController.didSelectFile = {(file: DiskFile) -> Void in
+            sender.update(selectedPath: file.filePath)
         }
-        self.lmpSpectra = (lmpFile?.spectrum)!
-        return true
+        
+        present(navigationController, animated: true, completion: nil)
+        
     }
     
-    private func validateREFFile(filePath: String) -> Bool {
-        
-        let refFile = parseSpectralFile(filePath: filePath)
-        
-        if (refFile == nil) { return false }
-        
-        // TODO: Vaildate if its a REF File -> how??
-        if (refFile?.dataType != DataType.RefType) {
-            self.showWarningMessage(title: "Dateifehler", message: "Bitte wählen Sie eine REF Datei aus.")
-            return false
+    // handle all text field and select delegates
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.saveButton.isEnabled = false
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        validateControls()
+    }
+    
+    // finish button pressed
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        validateControls()
+        return textField.resignFirstResponder()
+    }
+    
+    func didSelectPath() {
+        validateControls()
+    }
+    
+    internal func validateControls(){
+        if ValidationManager.sharedInstance.validateSubViews(view: self.view) {
+            self.saveButton.isEnabled = true
+        } else {
+            self.saveButton.isEnabled = false
         }
-        self.refSpectra = (refFile?.spectrum)!
-        return true
     }
     
-    private func validateILLFile(filePath: String) -> Bool {
+    /*
+    ForeOptics tableview definitions
+    */
+    internal var fiberOpticFiles:[CalibrationFile] = []
+    
+    func reloadTableData() -> Void {
+        fiberOpticFiles = self.config.fiberOpticCalibrations?.allObjects as! [CalibrationFile]
+        fiberOpticFilesTableView.reloadData()
+        calcualteTableViewHeight()
+    }
+    
+    @available(iOS 2.0, *)
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = fiberOpticFilesTableView.dequeueReusableCell(withIdentifier: "FiberOpticFileTableViewCell", for: indexPath) as! FiberOpticFileTableViewCell
+        cell.name.text = fiberOpticFiles[indexPath.row].name
+        cell.fileName.text = fiberOpticFiles[indexPath.row].filename
+        if (indexPath.row % 2 != 0) { cell.backView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.25) }
+        cell.iconImage.image = UIImage.fontAwesomeIcon(name: .fileO, textColor: .white, size: CGSize(width: 22, height: 22))
         
-        let illFile = parseSpectralFile(filePath: filePath)
+        cell.removeButton.tag = indexPath.row
+        cell.removeButton.addTarget(self, action: #selector(deleteFiberOpticFile(sender:)), for: .touchUpInside)
+        return cell
+    }
+    
+    @available(iOS 2.0, *)
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return fiberOpticFiles.count
+    }
+    
+    
+    @IBAction func selectFiberOpticFile(_ sender: UIColorButton) {
         
-        if (illFile == nil) { return false }
+        let fileBrowserContainerViewController = self.storyboard!.instantiateViewController(withIdentifier: "FileBrowserContainerViewController") as! FileBrowserContainerViewController
         
-        // TODO: Vaildate if its a REF File -> how??
-        if (illFile?.dataType != DataType.RefType) {
-            self.showWarningMessage(title: "Dateifehler", message: "Bitte wählen Sie eine ILL Datei aus.")
-            return false
+        let navigationController = UINavigationController(rootViewController: fileBrowserContainerViewController)
+        navigationController.modalPresentationStyle = .formSheet
+        
+        // Hook up the select event
+        fileBrowserContainerViewController.didSelectFile = {(file: DiskFile) -> Void in
+            
+            let fileData = [UInt8](FileManager.default.contents(atPath: file.filePath.relativePath)!)
+            let configurationFileReader = IndicoIniFileReader(data: fileData)
+            
+            do {
+                let calibrationFile = try configurationFileReader.parse()
+                self.addFiberOpticFile(file: calibrationFile, filename: file.filePath.lastPathComponent, name: file.filePath.lastPathComponent)
+            } catch let error as ParsingError {
+                print(error.message)
+            } catch {
+                fatalError("somthing went wrong!")
+            }
+            
+            
         }
-        self.illSpectra = (illFile?.spectrum)!
-        return true
-    }
-    
-    private func parseSpectralFile(filePath: String) -> SpectralFileBase? {
         
-        let dataBuffer = [UInt8](self.fileManager.contents(atPath: filePath)!)
-        let fileParser = IndicoIniFileReader(data: dataBuffer)
-        var file: SpectralFileBase
+        present(navigationController, animated: true, completion: nil)
         
-        do {
-            file = try fileParser.parse()
-        } catch let error as ParsingError {
-            self.showWarningMessage(title: "Fehler", message: error.message)
-            return nil
-        } catch {
-            self.showWarningMessage(title: "Dateifehler", message: "Die Datei konnte nicht gelesen werden.")
-            return nil
-        }
-        return file
     }
     
-    private func toggleSaveButton() -> Void {
-        saveButton.isEnabled = ValidationManager.sharedInstance.validateSubViews(view: view)
+    
+    internal func addFiberOpticFile(file: SpectralFileBase, filename: String, name: String) -> Void {
+        
+        let newCaliFile = CalibrationFile(context: self.dataViewContext)
+        newCaliFile.filename = filename
+        newCaliFile.name = name
+        newCaliFile.spectrum = file.spectrum
+        
+        config.addToFiberOpticCalibrations(newCaliFile)
+        
+        fiberOpticFilesTableView.beginUpdates()
+        fiberOpticFiles.append(newCaliFile)
+        fiberOpticFilesTableView.insertRows(at: [IndexPath(row: fiberOpticFiles.count-1, section: 0)], with: .top)
+        fiberOpticFilesTableView.endUpdates()
+        
+        calcualteTableViewHeight()
+        
+        fiberOpticFilesTableView.reloadData()
+        
     }
     
+    func deleteFiberOpticFile(sender: UIButton) -> Void {
+        
+        let calFile =  fiberOpticFiles[sender.tag]
+        
+        config.removeFromFiberOpticCalibrations(calFile)
+        
+        fiberOpticFilesTableView.beginUpdates()
+        fiberOpticFiles.remove(at: sender.tag)
+        fiberOpticFilesTableView.deleteRows(at: [IndexPath(row: sender.tag, section: 0)], with: .bottom)
+        fiberOpticFilesTableView.endUpdates()
+        
+        calcualteTableViewHeight()
+        
+        fiberOpticFilesTableView.reloadData()
+    }
+    
+    internal func calcualteTableViewHeight() {
+        fiberOpticsTableViewHeight.constant = CGFloat(fiberOpticFiles.count) * fiberOpticFilesTableView.rowHeight
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
+    }
     
     
 }

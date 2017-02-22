@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 
-class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate, SelectPathDelegate {
+class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate, BaseSelectInputDelegate {
     
     @IBOutlet var fileNameTextField: UITextField!
-    @IBOutlet var selectPathInput: SelectInputPath! 
+    @IBOutlet var selectPathInput: BaseSelectInput!
     @IBOutlet var nextButton: UIColorButton!
     
     @IBOutlet var rawRadioButton: RadioButton!
@@ -22,7 +22,7 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
     override func viewDidLoad() {
         
         // add delegates
-        fileNameTextField.delegate = self;
+        fileNameTextField.delegate = self
         selectPathInput.delegate = self
         
         // initialize measurement mode buttons
@@ -62,7 +62,7 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
         }
     }
     
-    func openFileBrowser(path: URL?) {
+    func openFileBrowser(path: URL?, sender: BaseSelectInput) {
         
         let directoryBrowserContainerViewController = self.storyboard!.instantiateViewController(withIdentifier: "DirectoryBrowserContainerViewController") as! DirectoryBrowserContainerViewController
         
@@ -76,7 +76,7 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
         
         // Hook up the select event
         directoryBrowserContainerViewController.didSelectFile = {(file: DiskFile) -> Void in
-            self.selectPathInput.update(diskFile: file.filePath)
+            sender.update(selectedPath: file.filePath)
         }
         
         present(navigationController, animated: true, completion: nil)

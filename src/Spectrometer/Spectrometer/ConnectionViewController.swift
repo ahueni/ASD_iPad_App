@@ -34,10 +34,11 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func reloadData() -> Void {
+        
         do {
             self.configs = try dataViewContext.fetch(SpectrometerConfig.fetchRequest())
         } catch {
-            print("could not load spectrometers")
+            self.showWarningMessage(title: "Warning", message: "Could not load spectrometer configs")
         }
         
         
@@ -47,7 +48,7 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
     
     func connectDevice(sender: UIButton) -> Void {
              
-        let alert = UIAlertController(title: nil, message: "Verbinden...", preferredStyle: .alert)
+        let alert = UIAlertController(title: nil, message: "Connecting...", preferredStyle: .alert)
         let acitivty = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         
         alert.view.tintColor = UIColor.black
@@ -71,7 +72,7 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
                 self.displayMainPage(tcpManager: tcpManager, config: config)
             } else {
                 alert.dismiss(animated: true, completion: {
-                    self.showWarningMessage(title: "Verbindung fehlgeschlagen", message: "Es konnte keine Verbindung mit dem Spektrometer hergestellt werden. Überprüfen sie die Einstellungen und ob das Gerät mit dem Netzwerk des Spektrometers verbunden ist.")
+                    self.showWarningMessage(title: "Connection failed", message: "Es konnte keine Verbindung mit dem Spektrometer hergestellt werden. Überprüfen sie die Einstellungen und ob das Gerät mit dem Netzwerk des Spektrometers verbunden ist.")
                 })
             }
             
@@ -81,7 +82,7 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
         
     }
     
-    func displayMainPage(tcpManager: TcpManager, config : SpectrometerConfig) -> Void {
+    func displayMainPage(tcpManager: TcpManager, config: SpectrometerConfig) -> Void {
         
         DispatchQueue.main.sync {
             let test = tcpManager.sendCommand(command: Command(commandParam: CommandEnum.Restore, params: "1"))
@@ -156,7 +157,7 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
             //print(config.illSpectrum as! [Double])
             
             let modalViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddEditConnection") as! AddEditConnectionViewController
-            modalViewController.setConfigData(config: config)
+            modalViewController.initData(config: config)
             modalViewController.modalPresentationStyle = .formSheet
             self.present(modalViewController, animated: true, completion: nil)
             

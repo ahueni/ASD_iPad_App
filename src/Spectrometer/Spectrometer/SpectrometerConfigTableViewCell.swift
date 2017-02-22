@@ -15,4 +15,16 @@ class SpectrometerConfigTableViewCell : UITableViewCell {
     @IBOutlet var ipAndPort: UILabel!
     @IBOutlet var connectButton: UIButton!
     @IBOutlet weak var spectrometerImageView: UIImageView!
+
+}
+
+class FiberOpticFileTableViewCell : UITableViewCell {
+    
+    @IBOutlet var name: UILabel!
+    @IBOutlet var fileName: UILabel!
+    @IBOutlet var removeButton: UIColorButton!
+    @IBOutlet var iconImage: UIImageView!
+    @IBOutlet var backView: UIView!
+    
+    
 }

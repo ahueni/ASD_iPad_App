@@ -10,6 +10,10 @@ import Foundation
 
 extension URL {
     
+    func exists() -> Bool {
+        return FileManager.default.fileExists(atPath: self.path)
+    }
+    
     func isDirectory() -> Bool {
         var isDir: ObjCBool = false
         if FileManager.default.fileExists(atPath: self.path, isDirectory: &isDir) {

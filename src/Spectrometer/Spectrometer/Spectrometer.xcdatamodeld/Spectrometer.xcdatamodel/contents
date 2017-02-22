@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16D32" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CalibrationFile" representedClassName="CalibrationFile" syncable="YES" codeGenerationType="class">
+        <attribute name="filename" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="spectrum" attributeType="Transformable" customClassName="[Double]" syncable="YES"/>
+    </entity>
     <entity name="SpectrometerConfig" representedClassName="SpectrometerConfig" syncable="YES" codeGenerationType="class">
-        <attribute name="illSpectrum" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <attribute name="ipAdress" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="lmpSpectrum" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <attribute name="measurmentCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="port" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="refSpectrum" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <attribute name="sampleCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="sampleCountDarkCurrent" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="sampleCountWhiteRefrence" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="ipAdress" attributeType="String" syncable="YES"/>
+        <attribute name="measurmentCount" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="port" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sampleCount" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sampleCountDarkCurrent" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sampleCountWhiteRefrence" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="absoluteReflectance" maxCount="1" deletionRule="Cascade" destinationEntity="CalibrationFile" syncable="YES"/>
+        <relationship name="base" maxCount="1" deletionRule="Cascade" destinationEntity="CalibrationFile" syncable="YES"/>
+        <relationship name="fiberOpticCalibrations" toMany="YES" deletionRule="Cascade" destinationEntity="CalibrationFile" syncable="YES"/>
+        <relationship name="lamp" maxCount="1" deletionRule="Cascade" destinationEntity="CalibrationFile" syncable="YES"/>
     </entity>
     <elements>
-        <element name="SpectrometerConfig" positionX="-63" positionY="-18" width="128" height="195"/>
+        <element name="CalibrationFile" positionX="-155" positionY="-27" width="128" height="88"/>
+        <element name="SpectrometerConfig" positionX="333" positionY="134" width="288" height="208"/>
     </elements>
 </model>
