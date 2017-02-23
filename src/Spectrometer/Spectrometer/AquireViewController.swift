@@ -34,7 +34,6 @@ class AquireViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         darkCurrent()
     }
     
@@ -48,6 +47,7 @@ class AquireViewController: UIViewController {
         }
         
     }
+    
     @IBAction func optimizeButtonClicked(_ sender: UIButton) {
         aquireLoopOn = false
         CommandManager.sharedInstance.optimize()
@@ -88,10 +88,6 @@ class AquireViewController: UIViewController {
     @IBAction func closeShutter(_ sender: Any) {
         aquireLoopOn = false
         closeShutter()
-    }
-    
-    @IBAction func radiance(_ sender: Any) {
-        aquireLoopOn = false
     }
     
     @IBAction func whiteReference(_ sender: UIButton) {
