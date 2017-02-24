@@ -3,6 +3,20 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "TcpManager.sendCommand(command : Command) -&gt; [UInt8]:TcpManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "recData">
+            </PersistentString>
+            <PersistentString
+               value = "command.size">
+            </PersistentString>
+            <PersistentString
+               value = "recData/command.size * 100">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "AddEditConnectionViewController.validateSubViews(view : UIView, valid : Bool) -&gt; Bool:AddEditConnectionViewController.swift">
          <PersistentStrings>
             <PersistentString

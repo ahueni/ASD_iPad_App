@@ -12,12 +12,12 @@ import UIKit
 class BaseMeasurementModal : UIViewController
 {
     var appDelegate = UIApplication.shared.delegate as! AppDelegate
-    var pageContainer : ParentViewController? = nil
+    var pageContainer : ParentViewController!
     
     @IBOutlet weak var MeasurementLineChart: SpectrumLineChartView!
     
     func goToNextPage() {
-        pageContainer!.goToNextPage()
+        pageContainer.goToNextPage()
     }
     
     @IBAction func nextButtonClicked(_ sender: UIButton) {

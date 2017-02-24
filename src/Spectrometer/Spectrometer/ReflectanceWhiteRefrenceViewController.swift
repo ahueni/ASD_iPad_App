@@ -10,73 +10,27 @@ import Foundation
 import UIKit
 import Charts
 
-class ReflectanceWhiteRefrenceViewController : BaseMeasurementModal {
+class ReflectanceWhiteRefrenceViewController : BaseWhiteReferenceViewController {
     
-    @IBOutlet var whiteReferenceButton: LoadingButton!
-    @IBOutlet var nextButton: UIBlueButton!
     var currentWhiteRefrence : FullRangeInterpolatedSpectrum? = nil
     
-    var aquireLoopOn = false // Indicates if a aquireLoop is running
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        aquireLoopOn = true
-        DispatchQueue.global().async {
-            while(self.aquireLoopOn){
-                self.aquire()
-            }
-        }
+    override func setSpectrum(){
+        self.currentWhiteRefrence = CommandManager.sharedInstance.aquire(samples: self.appDelegate.config!.sampleCount)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        aquireLoopOn = false
-    }
-    
-    func aquire() {
-        // Background tasks
-        let spectrum = CommandManager.sharedInstance.aquire(samples: (self.appDelegate.config?.sampleCount)!)
-        
-        DispatchQueue.main.async {
-            //update ui
-            self.updateValues(whiteReference: spectrum)
-        }
-    }
-    
-    @IBAction func TakeWhiteRefrenceButtonClicked(_ sender: UIButton) {
-        
-        // switch to background thread for aquire white reference
-        DispatchQueue.global().async {
-            self.currentWhiteRefrence = CommandManager.sharedInstance.aquire(samples: self.appDelegate.config!.sampleCountWhiteRefrence)
-        }
-    }
-    
-    func updateValues(whiteReference: FullRangeInterpolatedSpectrum) -> Void {
-        
-        if(currentWhiteRefrence == nil)
-        {
-            // switch back to UI Thread for updates
-            DispatchQueue.main.async {
-                self.updateLineChart(spectrum: whiteReference)
-                
-                self.nextButton.isEnabled = true
-                //self.whiteReferenceButton.hideLoading()
-            }
-        }
-        else
-        {
-            updateLineChart2(spectrum: whiteReference)
-        }
-        
+    override func updateLineChart(spectrum: FullRangeInterpolatedSpectrum) {
+        // Show the LineChart if no whiteRefrence was taken. Show the reflectance otherwise
+        currentWhiteRefrence == nil ? super.updateLineChart(spectrum: currentSpectrum!) : self.showReflectance()
     }
     
     override func goToNextPage() {
+        // Add the white Refrence to the parent VC
         pageContainer!.whiteRefrenceBeforeSpectrumList.append(currentWhiteRefrence!)
         super.goToNextPage()
     }
     
-    func updateLineChart2(spectrum : FullRangeInterpolatedSpectrum){
-        
+    // Show Reflectance => WhiteRefrence / Current spectrum
+    func showReflectance() {
         DispatchQueue.main.async {
             //update ui
             self.MeasurementLineChart.setAxisValues(min: 0, max: 5)
@@ -85,10 +39,10 @@ class ReflectanceWhiteRefrenceViewController : BaseMeasurementModal {
             for i in 0...self.currentWhiteRefrence!.spectrumBuffer.count-1 {
                 if(i == 1201)
                 {
-                    print((self.currentWhiteRefrence?.spectrumBuffer[i].description)! + " / " + spectrum.spectrumBuffer[i].description)
-                    print("result: " + ((self.currentWhiteRefrence?.spectrumBuffer[i])! / spectrum.spectrumBuffer[i]).description)
+                    print((self.currentWhiteRefrence?.spectrumBuffer[i].description)! + " / " + self.currentSpectrum!.spectrumBuffer[i].description)
+                    print("result: " + ((self.currentWhiteRefrence?.spectrumBuffer[i])! / self.currentSpectrum!.spectrumBuffer[i]).description)
                 }
-                values.append(ChartDataEntry(x: Double(i+350), y: Double(spectrum.spectrumBuffer[i] /  self.currentWhiteRefrence!.spectrumBuffer[i] )))
+                values.append(ChartDataEntry(x: Double(i+350), y: Double(self.currentSpectrum!.spectrumBuffer[i] /  self.currentWhiteRefrence!.spectrumBuffer[i] )))
             }
             let lineChartDataSet = SpectrumLineChartDataSet(values: values, label: "-")
             let lineChartData =  LineChartData(dataSet: lineChartDataSet)
