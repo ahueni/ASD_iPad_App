@@ -41,6 +41,13 @@ class AquireViewController: UIViewController {
     
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        setViewOrientation()
+    }
+    
+    internal func setViewOrientation() -> Void {
+        
+        let navigationStackWidth = NSLayoutConstraint(item: navigationStackView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 140.0)
         
         if UIDevice.current.orientation.isLandscape {
             
@@ -49,6 +56,8 @@ class AquireViewController: UIViewController {
             navigationStackView.axis = .vertical
             navigationStackView.alignment = .fill
             navigationStackView.distribution = .equalSpacing
+            
+            navigationStackView.removeConstraint(navigationStackWidth)
             
             for stackView in navigationElements {
                 
@@ -66,9 +75,7 @@ class AquireViewController: UIViewController {
             navigationStackView.alignment = .top
             navigationStackView.distribution = .fillEqually
             
-            let test = NSLayoutConstraint(item: navigationStackView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 120.0)
-            
-            navigationStackView.addConstraint(test)
+            navigationStackView.addConstraint(navigationStackWidth)
             
             for stackView in navigationElements {
                 
@@ -78,11 +85,11 @@ class AquireViewController: UIViewController {
             
         }
         
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setViewOrientation()
         //darkCurrent()
     }
     
@@ -115,6 +122,7 @@ class AquireViewController: UIViewController {
         print("Drift: " + drift.description)
         
         let darkCorrectionRange = ((self.endingWaveLength + 1) - self.startingWaveLength)
+        
         let darkCorrectedSpectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: spectrum, darkCurrent: self.darkCurrentSpectrum!, darkCorrectionRange: darkCorrectionRange, drift: drift)
         
         DispatchQueue.main.async {
