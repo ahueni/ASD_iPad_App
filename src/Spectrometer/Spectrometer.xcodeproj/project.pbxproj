@@ -111,6 +111,7 @@
 		E12F66D41E4C54DB00B71AA0 /* IndicoAsdFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F66D31E4C54DB00B71AA0 /* IndicoAsdFileReader.swift */; };
 		E13176631E53129B002F0958 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13176621E53129B002F0958 /* RadioButton.swift */; };
 		E13176671E532179002F0958 /* RadianceSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13176661E532179002F0958 /* RadianceSettingsViewController.swift */; };
+		E13567891E61BB260049DCA7 /* SpectrumCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13567881E61BB260049DCA7 /* SpectrumCalculator.swift */; };
 		E1446F031E56DD6100840AF2 /* RawSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1446F021E56DD6100840AF2 /* RawSettingsViewController.swift */; };
 		E14EC22E1E2E1889006EBD2F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */; };
 		E15C06AA1E4C66E300965868 /* spectrum.test in Resources */ = {isa = PBXBuildFile; fileRef = E15C06A81E4C66E300965868 /* spectrum.test */; };
@@ -266,6 +267,7 @@
 		E12F66D31E4C54DB00B71AA0 /* IndicoAsdFileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicoAsdFileReader.swift; sourceTree = "<group>"; };
 		E13176621E53129B002F0958 /* RadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		E13176661E532179002F0958 /* RadianceSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadianceSettingsViewController.swift; sourceTree = "<group>"; };
+		E13567881E61BB260049DCA7 /* SpectrumCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumCalculator.swift; sourceTree = "<group>"; };
 		E1446F021E56DD6100840AF2 /* RawSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawSettingsViewController.swift; sourceTree = "<group>"; };
 		E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E15C06A81E4C66E300965868 /* spectrum.test */ = {isa = PBXFileReference; lastKnownFileType = file; path = spectrum.test; sourceTree = "<group>"; };
@@ -480,6 +482,7 @@
 				2E91F2F61DDB5CF7003E277F /* TcpManager.swift */,
 				E186B9471E364DDF00FE43F3 /* CommandManager.swift */,
 				E1C019771E60332A0072E8BB /* AquireUpdateProtocol.swift */,
+				E13567881E61BB260049DCA7 /* SpectrumCalculator.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -1205,6 +1208,7 @@
 				2E91F2F11DDB5B9F003E277F /* Types.swift in Sources */,
 				E1C936C51E42208C00EF51BB /* BaseButton.swift in Sources */,
 				E1C936C21E421BAD00EF51BB /* ValidationManager.swift in Sources */,
+				E13567891E61BB260049DCA7 /* SpectrumCalculator.swift in Sources */,
 				2E91F2E01DDB5B9F003E277F /* SynchronousTCPServer.swift in Sources */,
 				E1C936C71E42214A00EF51BB /* TextRequiredButton.swift in Sources */,
 				2EB823091DE0AD1900DF732C /* AddEditConnectionViewController.swift in Sources */,

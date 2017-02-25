@@ -21,26 +21,6 @@ class FullRangeInterpolatedSpectrum : BaseSpectrum {
         self.spectrumBuffer = spectrumBuffer
     }
     
-    func subtractDarkCurrent(darkCurrent: FullRangeInterpolatedSpectrum, darkCorrectionRange: Int, drift: Float) -> Void {
-        
-        spectrumHeader.vinirHeader.darkSubtracted = DarkSubtracted.Yes
-        spectrumHeader.swir1Header.darkSubtracted = DarkSubtracted.Yes
-        spectrumHeader.swir2Header.darkSubtracted = DarkSubtracted.Yes
-        
-        for i in 0...darkCorrectionRange{
-            spectrumBuffer[i] = spectrumBuffer[i] - darkCurrent.spectrumBuffer[i] + drift;
-        }
-        
-        /*
-        for (i, dVal) in darkCurrent.spectrumBuffer.enumerated() {
-            let sVal = spectrumBuffer[i]
-            let calculated = sVal - dVal + drift
-            spectrumBuffer[i] = calculated
-        }*/
-        
-        
-    }
-    
     func getChartData() -> LineChartData {
         var values: [ChartDataEntry] = []
         for i in 0...self.spectrumBuffer.count-1 {

@@ -34,16 +34,7 @@ class ReflectanceWhiteRefrenceViewController : BaseWhiteReferenceViewController 
         DispatchQueue.main.async {
             //update ui
             self.MeasurementLineChart.setAxisValues(min: 0, max: 5)
-            
-            var values: [ChartDataEntry] = []
-            for i in 0...self.currentWhiteRefrence!.spectrumBuffer.count-1 {
-                if(i == 1201)
-                {
-                    print((self.currentWhiteRefrence?.spectrumBuffer[i].description)! + " / " + self.currentSpectrum!.spectrumBuffer[i].description)
-                    print("result: " + ((self.currentWhiteRefrence?.spectrumBuffer[i])! / self.currentSpectrum!.spectrumBuffer[i]).description)
-                }
-                values.append(ChartDataEntry(x: Double(i+350), y: Double(self.currentSpectrum!.spectrumBuffer[i] /  self.currentWhiteRefrence!.spectrumBuffer[i] )))
-            }
+            let values = SpectrumCalculator.calculateReflectance(currentSpectrum: self.currentSpectrum!, whiteReferenceSpectrum: self.currentWhiteRefrence!)
             let lineChartDataSet = SpectrumLineChartDataSet(values: values, label: "-")
             let lineChartData =  LineChartData(dataSet: lineChartDataSet)
             DispatchQueue.main.async {

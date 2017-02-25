@@ -103,25 +103,25 @@ class AquireViewController: UIViewController {
     }
     
     func aquireWithDarkCorrection () {
-            // Background tasks
-            let spectrum = CommandManager.sharedInstance.aquire(samples: (self.appDelegate.config?.sampleCount)!)
-            let currentDrift = spectrum.spectrumHeader.vinirHeader.drift
-            
-            if (self.darkCurrentSpectrum == nil){
-                return //throw SpectrometerErrors.noDarkCurrentFound
-            }
-            
-            let drift = Float(self.vinirDarkCurrentCorrection + Double(currentDrift - self.darkDrift))
-            print("Drift: " + drift.description)
-            
-            let darkCorrectionRange = ((self.endingWaveLength + 1) - self.startingWaveLength)
-            spectrum.subtractDarkCurrent(darkCurrent: self.darkCurrentSpectrum!, darkCorrectionRange: darkCorrectionRange, drift: drift)
-            
-            DispatchQueue.main.async {
-                //update ui
-                self.lineChart.setAxisValues(min: 0, max: 65000)
-                self.updateChart(data: spectrum.getChartData())
-            }
+        // Background tasks
+        let spectrum = CommandManager.sharedInstance.aquire(samples: (self.appDelegate.config?.sampleCount)!)
+        let currentDrift = spectrum.spectrumHeader.vinirHeader.drift
+        
+        if (self.darkCurrentSpectrum == nil){
+            return //throw SpectrometerErrors.noDarkCurrentFound
+        }
+        
+        let drift = Float(self.vinirDarkCurrentCorrection + Double(currentDrift - self.darkDrift))
+        print("Drift: " + drift.description)
+        
+        let darkCorrectionRange = ((self.endingWaveLength + 1) - self.startingWaveLength)
+        let darkCorrectedSpectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: spectrum, darkCurrent: self.darkCurrentSpectrum!, darkCorrectionRange: darkCorrectionRange, drift: drift)
+        
+        DispatchQueue.main.async {
+            //update ui
+            self.lineChart.setAxisValues(min: 0, max: 65000)
+            self.updateChart(data: darkCorrectedSpectrum.getChartData())
+        }
     }
     
     @IBAction func darkCurrent(_ sender: Any) {
@@ -166,25 +166,25 @@ class AquireViewController: UIViewController {
     }
     
     /*
-    func saveSpectrum(spectrum: FullRangeInterpolatedSpectrum, whiteRefrenceSpectrum: FullRangeInterpolatedSpectrum){
-        let path = ("~/Documents/test.txt" as NSString).expandingTildeInPath
-        
-        let fw = FileWriter(path: path)
-        let fileHandle:FileHandle = fw.write(spectrum: spectrum, whiteRefrenceSpectrum: spectrum)
-        
-        let dataBuffer = [UInt8](FileManager().contents(atPath: path)!)
-        let fileParser = SpectralFileParser(data: dataBuffer)
-        
-        do{
-            try fileParser.parse()
-            print("File succesfully parsed!")
-        }
-        catch{
-            
-            print("File not parsed!")
-        }
-
-    }*/
+     func saveSpectrum(spectrum: FullRangeInterpolatedSpectrum, whiteRefrenceSpectrum: FullRangeInterpolatedSpectrum){
+     let path = ("~/Documents/test.txt" as NSString).expandingTildeInPath
+     
+     let fw = FileWriter(path: path)
+     let fileHandle:FileHandle = fw.write(spectrum: spectrum, whiteRefrenceSpectrum: spectrum)
+     
+     let dataBuffer = [UInt8](FileManager().contents(atPath: path)!)
+     let fileParser = SpectralFileParser(data: dataBuffer)
+     
+     do{
+     try fileParser.parse()
+     print("File succesfully parsed!")
+     }
+     catch{
+     
+     print("File not parsed!")
+     }
+     
+     }*/
     
     
     
