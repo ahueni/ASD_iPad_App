@@ -21,11 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         let appearance = UITabBarItem.appearance()
-        let attributes = [NSFontAttributeName:UIFont(name: "OpenSans-Bold", size: 15)!]
+        let attributes = [NSFontAttributeName:UIFont(name: "OpenSans", size: 15)!]
         let attributesTabBarButton = [NSFontAttributeName:UIFont(name: "OpenSans", size: 15)!]
         
         appearance.setTitleTextAttributes(attributes, for: .normal)
-        appearance.titlePositionAdjustment = UIOffsetMake(0.0, -6.0)
         
         UISearchBar.appearance().placeholder = "Suchen"
         

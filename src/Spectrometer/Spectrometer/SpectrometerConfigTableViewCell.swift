@@ -25,6 +25,7 @@ class FiberOpticFileTableViewCell : UITableViewCell {
     @IBOutlet var removeButton: UIColorButton!
     @IBOutlet var iconImage: UIImageView!
     @IBOutlet var backView: UIView!
+    @IBOutlet var iconBackView: UIView!
     
     
 }

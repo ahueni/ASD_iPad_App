@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Charts
 
-class AquireViewController: UIViewController {
+class AquireViewController: UIViewController, SelectFiberopticDelegate {
     
     // buttons
     @IBOutlet var aquireButton: UIButton!
@@ -38,41 +38,13 @@ class AquireViewController: UIViewController {
         setViewOrientation()
     }
     
-    internal func setViewOrientation() -> Void {
-        let navigationStackWidth = NSLayoutConstraint(item: navigationStackView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 140.0)
-        
-        if UIDevice.current.orientation.isLandscape {
-            mainStackView.axis = .horizontal
-            navigationStackView.axis = .vertical
-            navigationStackView.alignment = .fill
-            navigationStackView.distribution = .equalSpacing
-            
-            navigationStackView.removeConstraint(navigationStackWidth)
-            
-            for stackView in navigationElements {
-                stackView.distribution = .fill
-            }
-        }
-        
-        if UIDevice.current.orientation.isPortrait {
-            
-            mainStackView.axis = .vertical
-            navigationStackView.axis = .horizontal
-            navigationStackView.alignment = .top
-            navigationStackView.distribution = .fillEqually
-            
-            navigationStackView.addConstraint(navigationStackWidth)
-            
-            for stackView in navigationElements {
-                stackView.distribution = .fillEqually
-            }
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setViewOrientation()
-        //darkCurrent()
     }
     
     @IBAction func startAquire(_ sender: UIButton) {
@@ -89,6 +61,25 @@ class AquireViewController: UIViewController {
     @IBAction func optimizeButtonClicked(_ sender: UIButton) {
         aquireLoopOn = false
         CommandManager.sharedInstance.optimize()
+    }
+    
+    @IBAction func selectFiberOptic(_ sender: UIColorButton) {
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SelectFiberOpticTableViewController") as! SelectFiberOpticTableViewController
+        vc.delegate = self
+        
+        vc.modalPresentationStyle = .popover
+        
+        let popover = vc.popoverPresentationController!
+        
+        popover.permittedArrowDirections = [.left, .up]
+        popover.sourceView = sender
+        popover.sourceRect = sender.bounds
+        
+        self.present(vc, animated: true, completion: nil)
+        
+        
+        
     }
     
     func aquire () {
@@ -113,17 +104,7 @@ class AquireViewController: UIViewController {
     
     @IBAction func darkCurrent(_ sender: Any) {
         aquireLoopOn = false
-        CommandManager.sharedInstance.darkCurrent()
-    }
-    
-    @IBAction func openShutter(_ sender: Any) {
-        aquireLoopOn = false
-        CommandManager.sharedInstance.openShutter()
-    }
-    
-    @IBAction func closeShutter(_ sender: Any) {
-        aquireLoopOn = false
-        CommandManager.sharedInstance.closeShutter()
+        self.darkCurrentSpectrum = CommandManager.sharedInstance.darkCurrent()
     }
     
     @IBAction func whiteReference(_ sender: UIButton) {
@@ -135,6 +116,39 @@ class AquireViewController: UIViewController {
         if segue.identifier == "StartTestSeriesSegue"{
             aquireLoopOn = false
         }
+    }
+    
+    internal func didSelectFiberoptic(fiberoptic: CalibrationFile) {
+        print("fiberoptic selected...")
+    }
+    
+    internal func setViewOrientation() -> Void {
+        
+        if UIDevice.current.orientation.isLandscape {
+            mainStackView.axis = .horizontal
+            navigationStackView.axis = .vertical
+            navigationStackView.alignment = .fill
+            navigationStackView.distribution = .equalSpacing
+            
+            for stackView in navigationElements {
+                stackView.distribution = .fill
+            }
+        }
+        
+        if UIDevice.current.orientation.isPortrait {
+            
+            mainStackView.axis = .vertical
+            navigationStackView.axis = .horizontal
+            navigationStackView.alignment = .top
+            navigationStackView.distribution = .fillEqually
+            
+            for stackView in navigationElements {
+                stackView.distribution = .fillEqually
+            }
+        }
+        
+        self.view.layoutSubviews()
+        
     }
     
     /*

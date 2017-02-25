@@ -105,6 +105,7 @@
             <connections>
                 <outlet property="backView" destination="fsm-FX-UDj" id="Tmm-2X-V8X"/>
                 <outlet property="fileName" destination="of6-FS-hnq" id="l1j-wm-Lyz"/>
+                <outlet property="iconBackView" destination="UOm-wQ-8rs" id="3Xf-nx-Kr6"/>
                 <outlet property="iconImage" destination="cty-qT-g2B" id="wHl-kS-xro"/>
                 <outlet property="name" destination="1N7-Ld-XTK" id="MlV-2c-Zlc"/>
                 <outlet property="removeButton" destination="8Mn-is-Z9X" id="X4Y-ms-gPX"/>

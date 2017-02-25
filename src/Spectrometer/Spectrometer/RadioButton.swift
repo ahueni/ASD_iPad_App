@@ -9,7 +9,8 @@
 import Foundation
 import UIKit
 
-@IBDesignable class RadioButton: UIButton {
+@IBDesignable
+class RadioButton: UIButton {
     
     var alternateButton:[RadioButton] = []
     
@@ -23,17 +24,9 @@ import UIKit
         }
     }
     
-    @IBInspectable var cornerRadius: CGFloat = 0
-    
-    @IBInspectable var isLeft: Bool = false {
+    @IBInspectable var cornerRadius: CGFloat = 0 {
         didSet {
-            //round(corners: [.topLeft, .bottomLeft], radius: cornerRadius)
-        }
-    }
-    
-    @IBInspectable var isRight: Bool = false {
-        didSet {
-            //round(corners: [.topRight, .bottomRight], radius: cornerRadius)
+            layer.cornerRadius = cornerRadius
         }
     }
     
@@ -45,6 +38,16 @@ import UIKit
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initViews()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layer.cornerRadius = cornerRadius
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        unselectAlternateButtons()
     }
     
     func initViews() {
@@ -64,11 +67,6 @@ import UIKit
                 aButton.isSelected = false
             }
         }
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        unselectAlternateButtons()
     }
     
 }

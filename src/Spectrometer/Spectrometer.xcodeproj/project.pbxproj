@@ -12,6 +12,8 @@
 		2E3552061E56E5A5001F7EE1 /* TitleSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3552051E56E5A5001F7EE1 /* TitleSection.swift */; };
 		2E3552091E56FAE4001F7EE1 /* BaseUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3552081E56FAE4001F7EE1 /* BaseUITextField.swift */; };
 		2E35520B1E56FB07001F7EE1 /* BaseSelectInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35520A1E56FB07001F7EE1 /* BaseSelectInput.swift */; };
+		2E54E9AB1E620A5B0047565E /* SelectFiberopticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E54E9AA1E620A5B0047565E /* SelectFiberopticViewController.swift */; };
+		2E54E9AD1E62316B0047565E /* UIRoundBorderedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E54E9AC1E62316B0047565E /* UIRoundBorderedView.swift */; };
 		2E708A231DE61A19008EC78A /* CustomizeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E708A221DE61A19008EC78A /* CustomizeExtensions.swift */; };
 		2E708A5C1DE714F0008EC78A /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E708A5B1DE714F0008EC78A /* Regex.swift */; };
 		2E77537D1E4329530081249C /* MeasurmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E77537C1E4329530081249C /* MeasurmentTableViewCell.swift */; };
@@ -165,6 +167,8 @@
 		2E3552051E56E5A5001F7EE1 /* TitleSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleSection.swift; sourceTree = "<group>"; };
 		2E3552081E56FAE4001F7EE1 /* BaseUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseUITextField.swift; sourceTree = "<group>"; };
 		2E35520A1E56FB07001F7EE1 /* BaseSelectInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSelectInput.swift; sourceTree = "<group>"; };
+		2E54E9AA1E620A5B0047565E /* SelectFiberopticViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectFiberopticViewController.swift; sourceTree = "<group>"; };
+		2E54E9AC1E62316B0047565E /* UIRoundBorderedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIRoundBorderedView.swift; sourceTree = "<group>"; };
 		2E708A221DE61A19008EC78A /* CustomizeExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizeExtensions.swift; sourceTree = "<group>"; };
 		2E708A5B1DE714F0008EC78A /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		2E77537C1E4329530081249C /* MeasurmentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurmentTableViewCell.swift; sourceTree = "<group>"; };
@@ -362,6 +366,14 @@
 				E1C936BA1E42164400EF51BB /* TextFields */,
 			);
 			name = InputControls;
+			sourceTree = "<group>";
+		};
+		2E54E9AE1E6232670047565E /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				2E54E9AC1E62316B0047565E /* UIRoundBorderedView.swift */,
+			);
+			name = CustomViews;
 			sourceTree = "<group>";
 		};
 		2E8F76761E4754A500D54ABF /* ColorButtons */ = {
@@ -668,6 +680,7 @@
 		2EB823261DE0D3ED00DF732C /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				2E54E9AE1E6232670047565E /* CustomViews */,
 				2EB9463B1E579E4B006C71C8 /* ViewExtensions */,
 				2E3552071E56FAAF001F7EE1 /* InputControls */,
 				2E3552041E56E57E001F7EE1 /* TitleSection */,
@@ -680,6 +693,7 @@
 				2E8F76721E460CB800D54ABF /* CustomProgressBar.swift */,
 				E13176621E53129B002F0958 /* RadioButton.swift */,
 				2ECC63471E543B4500C3AACB /* SettingsBox.swift */,
+				2E54E9AA1E620A5B0047565E /* SelectFiberopticViewController.swift */,
 			);
 			name = ViewComponents;
 			sourceTree = "<group>";
@@ -1172,6 +1186,7 @@
 				2EB9463F1E5B59CD006C71C8 /* GeneralSettingsViewController.swift in Sources */,
 				E14EC22E1E2E1889006EBD2F /* SettingsViewController.swift in Sources */,
 				E12547D91E5382750004B2A8 /* RawSettings.swift in Sources */,
+				2E54E9AB1E620A5B0047565E /* SelectFiberopticViewController.swift in Sources */,
 				2E91F2EF1DDB5B9F003E277F /* SocketOptions.swift in Sources */,
 				2E91F2A81DDB5B76003E277F /* ConnectionViewController.swift in Sources */,
 				E108F21B1E3F367C0097B7EE /* ReflectanceWhiteRefrenceViewController.swift in Sources */,
@@ -1188,6 +1203,7 @@
 				2E91F3171DDB848E003E277F /* Version.swift in Sources */,
 				E1C019781E60332A0072E8BB /* AquireUpdateProtocol.swift in Sources */,
 				2EB822EC1DE0811D00DF732C /* FullRangeInterpolatedSpectrumParser.swift in Sources */,
+				2E54E9AD1E62316B0047565E /* UIRoundBorderedView.swift in Sources */,
 				2E91F30F1DDB82C7003E277F /* Parameter.swift in Sources */,
 				2E708A231DE61A19008EC78A /* CustomizeExtensions.swift in Sources */,
 				2E3552061E56E5A5001F7EE1 /* TitleSection.swift in Sources */,

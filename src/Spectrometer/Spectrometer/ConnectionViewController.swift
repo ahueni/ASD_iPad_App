@@ -27,8 +27,6 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //deviceTableView.layer.cornerRadius = 15
-        deviceTableView.layer.masksToBounds = true
         reloadData()
     }
     
@@ -56,28 +54,34 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
         let config = self.configs[sender.tag]
         let tcpManager: TcpManager = TcpManager(hostname: config.ipAdress!, port: Int(config.port))
         
-        present(alert, animated: false, completion: nil)
+        present(alert, animated: false, completion: {
         
-        // connect with background thread
-        DispatchQueue.global(qos: .background).async {
-            
-            alert.dismiss(animated: true, completion: nil)
-            //self.displayMainPage(tcpManager: tcpManager, config: config)
-            
-            if (tcpManager.connect()) {
+            // connect with background thread
+            DispatchQueue.global(qos: .background).async {
+                
                 alert.dismiss(animated: true, completion: nil)
+                
                 self.displayMainPage(tcpManager: tcpManager, config: config)
-            } else {
-                alert.dismiss(animated: true, completion: {
-                    self.showWarningMessage(title: "Connection failed", message: "Es konnte keine Verbindung mit dem Spektrometer hergestellt werden. Überprüfen sie die Einstellungen und ob das Gerät mit dem Netzwerk des Spektrometers verbunden ist.")
-                })
+                
+                /*
+                 if (tcpManager.connect()) {
+                 alert.dismiss(animated: true, completion: nil)
+                 self.displayMainPage(tcpManager: tcpManager, config: config)
+                 } else {
+                 alert.dismiss(animated: true, completion: {
+                 self.showWarningMessage(title: "Connection failed", message: "Es konnte keine Verbindung mit dem Spektrometer hergestellt werden. Überprüfen sie die Einstellungen und ob das Gerät mit dem Netzwerk des Spektrometers verbunden ist.")
+                 })
+                 }
+                 */
             }
-        }
+        
+        })
+        
     }
     
     func displayMainPage(tcpManager: TcpManager, config: SpectrometerConfig) -> Void {
         DispatchQueue.main.sync {
-            _ = tcpManager.sendCommand(command: Command(commandParam: CommandEnum.Restore, params: "1"))
+            //_ = tcpManager.sendCommand(command: Command(commandParam: CommandEnum.Restore, params: "1"))
             
             self.appDelegate.tcpManager = tcpManager
             self.appDelegate.config = config
