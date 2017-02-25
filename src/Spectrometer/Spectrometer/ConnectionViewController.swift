@@ -23,26 +23,21 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: .reloadSpectrometerConfig, object: nil)
         deviceTableView.delegate = self
-        deviceTableView.dataSource = self        
+        deviceTableView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         //deviceTableView.layer.cornerRadius = 15
         deviceTableView.layer.masksToBounds = true
-        
         reloadData()
     }
     
     func reloadData() -> Void {
-        
         do {
             self.configs = try dataViewContext.fetch(SpectrometerConfig.fetchRequest())
         } catch {
             self.showWarningMessage(title: "Warning", message: "Could not load spectrometer configs")
         }
-        
-        
-        
         deviceTableView.reloadData()
     }
     
@@ -61,16 +56,14 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
         let config = self.configs[sender.tag]
         let tcpManager: TcpManager = TcpManager(hostname: config.ipAdress!, port: Int(config.port))
         
-        //present(alert, animated: false, completion: nil)
-        
+        present(alert, animated: false, completion: nil)
         
         // connect with background thread
         DispatchQueue.global(qos: .background).async {
             
-            //alert.dismiss(animated: true, completion: nil)
-            self.displayMainPage(tcpManager: tcpManager, config: config)
+            alert.dismiss(animated: true, completion: nil)
+            //self.displayMainPage(tcpManager: tcpManager, config: config)
             
-            /*
             if (tcpManager.connect()) {
                 alert.dismiss(animated: true, completion: nil)
                 self.displayMainPage(tcpManager: tcpManager, config: config)
@@ -79,17 +72,12 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
                     self.showWarningMessage(title: "Connection failed", message: "Es konnte keine Verbindung mit dem Spektrometer hergestellt werden. Überprüfen sie die Einstellungen und ob das Gerät mit dem Netzwerk des Spektrometers verbunden ist.")
                 })
             }
-            */
         }
-        
-        
-        
     }
     
     func displayMainPage(tcpManager: TcpManager, config: SpectrometerConfig) -> Void {
-        
         DispatchQueue.main.sync {
-            //_ = tcpManager.sendCommand(command: Command(commandParam: CommandEnum.Restore, params: "1"))
+            _ = tcpManager.sendCommand(command: Command(commandParam: CommandEnum.Restore, params: "1"))
             
             self.appDelegate.tcpManager = tcpManager
             self.appDelegate.config = config
@@ -98,11 +86,9 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
             self.appDelegate.window?.rootViewController = initialViewController
             self.appDelegate.window?.makeKeyAndVisible()
         }
-        
     }
 
     @IBAction func sendVersionCommand(_ sender: Any) {
-        
         let tcpManager: TcpManager = appDelegate.tcpManager!
         
         let command:Command = Command(commandParam: CommandEnum.Version, params: "")
@@ -115,8 +101,6 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
         print("Version: "+version.version)
         print("Version: "+version.versionNumber.description)
         print("Type: "+version.type.rawValue.description)
-        
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -124,9 +108,7 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let config = configs[indexPath.row]
-        
         let cell = deviceTableView.dequeueReusableCell(withIdentifier: "Cell") as! SpectrometerConfigTableViewCell
         
         cell.name.text = config.name
@@ -151,12 +133,10 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
                 print("ping failed for "+config.ipAdress!)
             }
         })
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
         let editRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Bearbeiten", handler:{action, indexpath in
             let config: SpectrometerConfig = self.configs[indexpath.row]
             //print(config.illSpectrum as! [Double])
@@ -179,12 +159,8 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
             } catch {
                 print("Cant delete")
             }
-            self.reloadData()
-            
-        });
-        
+            self.reloadData()        });
         return [deleteRowAction, editRowAction];
-        
     }
     
 }

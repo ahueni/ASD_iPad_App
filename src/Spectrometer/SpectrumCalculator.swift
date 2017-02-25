@@ -11,10 +11,13 @@ import Charts
 
 class SpectrumCalculator{
     
-    class func calculateDarkCurrentCorrection(spectrum : FullRangeInterpolatedSpectrum, darkCurrent: FullRangeInterpolatedSpectrum, darkCorrectionRange: Int, drift: Float) -> FullRangeInterpolatedSpectrum
+    class func calculateDarkCurrentCorrection(spectrum : FullRangeInterpolatedSpectrum, darkCurrentSpectrum : FullRangeInterpolatedSpectrum) -> FullRangeInterpolatedSpectrum
     {
+        
+        let darkCorrectionRange = ((InstrumentSettingsCache.sharedInstance.endingWaveLength + 1) - InstrumentSettingsCache.sharedInstance.startingWaveLength)
+        
         for i in 0...darkCorrectionRange{
-            spectrum.spectrumBuffer[i] = spectrum.spectrumBuffer[i] - darkCurrent.spectrumBuffer[i] + drift;
+            spectrum.spectrumBuffer[i] = spectrum.spectrumBuffer[i] - darkCurrentSpectrum.spectrumBuffer[i] + Float(InstrumentSettingsCache.sharedInstance.drift);
         }
         
         /*

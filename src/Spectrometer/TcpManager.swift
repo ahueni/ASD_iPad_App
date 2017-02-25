@@ -12,7 +12,7 @@ class TcpManager {
     
     let address:InternetAddress
     let initByteSize:Int = 60
-    var client: TCPClient? = nil
+    var client: TCPClient!
     var connectState: Bool = false
     var aquireUpdateProtocol : AquireUpdateProtocol?
     
@@ -57,14 +57,14 @@ class TcpManager {
         
         do {
             let start = NSDate()
-            try client?.send(bytes: command.getCommandString().toBytes())
+            try client.send(bytes: command.getCommandString().toBytes())
             print(NSString(format: "First: %.2f",start.timeIntervalSinceNow));
             
             var recData = 0
             while recData < command.size {
-                let recPart: [UInt8]? = try client?.receive(maxBytes: 200) //try client?.receiveAll()
+                let recPart: [UInt8]? = try client.receiveAll() //try client.receive(maxBytes: 200)
                 array += recPart!
-                recData += (recPart?.count)!
+                recData += recPart!.count
                 aquireUpdateProtocol?.update(percentageReceived: Int(Double(recData)/Double(command.size) * 100))
                 print("Emfpangen: "+Int(Double(recData)/Double(command.size) * 100).description)
             }

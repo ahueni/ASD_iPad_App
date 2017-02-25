@@ -144,6 +144,7 @@
 		E1C936C21E421BAD00EF51BB /* ValidationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C936C11E421BAD00EF51BB /* ValidationManager.swift */; };
 		E1C936C51E42208C00EF51BB /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C936C41E42208C00EF51BB /* BaseButton.swift */; };
 		E1C936C71E42214A00EF51BB /* TextRequiredButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C936C61E42214A00EF51BB /* TextRequiredButton.swift */; };
+		E1D7BD601E61D0CB00E1EF2E /* InstrumentSettingsCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D7BD5F1E61D0CB00E1EF2E /* InstrumentSettingsCache.swift */; };
 		E1F052AD1E49C3AD0084CFBC /* SpectrometerConfigTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F052AC1E49C3AD0084CFBC /* SpectrometerConfigTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -300,6 +301,7 @@
 		E1C936C11E421BAD00EF51BB /* ValidationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationManager.swift; sourceTree = "<group>"; };
 		E1C936C41E42208C00EF51BB /* BaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		E1C936C61E42214A00EF51BB /* TextRequiredButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextRequiredButton.swift; sourceTree = "<group>"; };
+		E1D7BD5F1E61D0CB00E1EF2E /* InstrumentSettingsCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentSettingsCache.swift; sourceTree = "<group>"; };
 		E1F052AC1E49C3AD0084CFBC /* SpectrometerConfigTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrometerConfigTableViewCell.swift; sourceTree = "<group>"; };
 		F30C2C6661380C931C0A5C15 /* Pods-Spectrometer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spectrometer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Spectrometer/Pods-Spectrometer.debug.xcconfig"; sourceTree = "<group>"; };
 		F91CDAE87D559C5A7FFD5EB6 /* Pods_SpectrometerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpectrometerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -483,6 +485,7 @@
 				E186B9471E364DDF00FE43F3 /* CommandManager.swift */,
 				E1C019771E60332A0072E8BB /* AquireUpdateProtocol.swift */,
 				E13567881E61BB260049DCA7 /* SpectrumCalculator.swift */,
+				E1D7BD5F1E61D0CB00E1EF2E /* InstrumentSettingsCache.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -1157,6 +1160,7 @@
 				2E91F3111DDB8408003E277F /* Init.swift in Sources */,
 				E165E1F71E34B5A20077A5EB /* FastMeasurmentViewController.swift in Sources */,
 				2EB946411E5B62DE006C71C8 /* URL.swift in Sources */,
+				E1D7BD601E61D0CB00E1EF2E /* InstrumentSettingsCache.swift in Sources */,
 				2E91F2EA1DDB5B9F003E277F /* InternetSocket.swift in Sources */,
 				2ECC63481E543B4500C3AACB /* SettingsBox.swift in Sources */,
 				E18DAE9D1E375D46005F6753 /* MeasurmentMasterTableViewController.swift in Sources */,
