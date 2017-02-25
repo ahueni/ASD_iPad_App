@@ -93,14 +93,30 @@ class AddEditConnectionViewController: UIViewController, UITextFieldDelegate, Ba
         if !absoluteReflectanceSelect.isInEditMode {
             
             if config.absoluteReflectance == nil {
+                
                 let absoluteReflectance = CalibrationFile(context: dataViewContext)
                 absoluteReflectance.name = "Absolute Reflectance"
                 absoluteReflectance.filename = absoluteReflectanceSelect.pathLabel.text
-                absoluteReflectance.spectrum = absoluteReflectanceSelect.calibrationFile?.spectrum
+                absoluteReflectance.type = Int16(CalibrationType.AbsoluteReflectanceFile.rawValue)
+                
+                if let caliFile = absoluteReflectanceSelect.calibrationFile {
+                    absoluteReflectance.spectrum = caliFile.spectrum
+                    absoluteReflectance.integrationTime = Int32(caliFile.integrationTime)
+                    absoluteReflectance.swir1Gain = Int16(caliFile.swir1Gain)
+                    absoluteReflectance.swir2Gain = Int16(caliFile.swir2Gain)
+                }
+                
                 config.absoluteReflectance = absoluteReflectance
             } else {
+                
                 config.absoluteReflectance?.name = absoluteReflectanceSelect.pathLabel.text
-                config.absoluteReflectance?.spectrum = absoluteReflectanceSelect.calibrationFile?.spectrum
+                
+                if let caliFile = absoluteReflectanceSelect.calibrationFile {
+                    config.absoluteReflectance?.spectrum = caliFile.spectrum
+                    config.absoluteReflectance?.integrationTime = Int32(caliFile.integrationTime)
+                    config.absoluteReflectance?.swir1Gain = Int16(caliFile.swir1Gain)
+                    config.absoluteReflectance?.swir2Gain = Int16(caliFile.swir2Gain)
+                }
             }
             
         }
@@ -108,14 +124,30 @@ class AddEditConnectionViewController: UIViewController, UITextFieldDelegate, Ba
         if !baseFileSelect.isInEditMode {
             
             if config.base == nil {
+                
                 let base = CalibrationFile(context: dataViewContext)
                 base.name = "Base"
                 base.filename = baseFileSelect.pathLabel.text
-                base.spectrum = baseFileSelect.calibrationFile?.spectrum
+                base.type = Int16(CalibrationType.BaseFile.rawValue)
+                
+                if let caliFile = baseFileSelect.calibrationFile {
+                    base.spectrum = caliFile.spectrum
+                    base.integrationTime = Int32(caliFile.integrationTime)
+                    base.swir1Gain = Int16(caliFile.swir1Gain)
+                    base.swir2Gain = Int16(caliFile.swir2Gain)
+                }
+                
                 config.base = base
             } else {
                 config.base?.name = baseFileSelect.pathLabel.text
-                config.base?.spectrum = baseFileSelect.calibrationFile?.spectrum
+                
+                if let caliFile = baseFileSelect.calibrationFile {
+                    config.base?.spectrum = caliFile.spectrum
+                    config.base?.integrationTime = Int32(caliFile.integrationTime)
+                    config.base?.swir1Gain = Int16(caliFile.swir1Gain)
+                    config.base?.swir2Gain = Int16(caliFile.swir2Gain)
+                }
+                
             }
             
         }
@@ -126,11 +158,26 @@ class AddEditConnectionViewController: UIViewController, UITextFieldDelegate, Ba
                 let lamp = CalibrationFile(context: dataViewContext)
                 lamp.name = "Lamp"
                 lamp.filename = lampFileSelect.pathLabel.text
-                lamp.spectrum = lampFileSelect.calibrationFile?.spectrum
+                lamp.type = Int16(CalibrationType.LampFile.rawValue)
+                
+                if let caliFile = lampFileSelect.calibrationFile {
+                    lamp.spectrum = caliFile.spectrum
+                    lamp.integrationTime = Int32(caliFile.integrationTime)
+                    lamp.swir1Gain = Int16(caliFile.swir1Gain)
+                    lamp.swir2Gain = Int16(caliFile.swir2Gain)
+                }
+                
                 config.lamp = lamp
             } else {
                 config.lamp?.name = lampFileSelect.pathLabel.text
-                config.lamp?.spectrum = lampFileSelect.calibrationFile?.spectrum
+                
+                if let caliFile = lampFileSelect.calibrationFile {
+                    config.lamp?.spectrum = caliFile.spectrum
+                    config.lamp?.integrationTime = Int32(caliFile.integrationTime)
+                    config.lamp?.swir1Gain = Int16(caliFile.swir1Gain)
+                    config.lamp?.swir2Gain = Int16(caliFile.swir2Gain)
+                }
+                
             }
             
         }
@@ -192,7 +239,7 @@ class AddEditConnectionViewController: UIViewController, UITextFieldDelegate, Ba
     }
     
     internal func validateControls(){
-        if ValidationManager.sharedInstance.validateSubViews(view: self.view) {
+        if ValidationManager.sharedInstance.validateSubViews(view: self.view) && fiberOpticFiles.count > 0 {
             self.saveButton.isEnabled = true
         } else {
             self.saveButton.isEnabled = false
@@ -265,6 +312,10 @@ class AddEditConnectionViewController: UIViewController, UITextFieldDelegate, Ba
         newCaliFile.filename = filename
         newCaliFile.name = name
         newCaliFile.spectrum = file.spectrum
+        newCaliFile.type = Int16(CalibrationType.FiberOpticFile.rawValue)
+        newCaliFile.integrationTime = Int32(file.integrationTime)
+        newCaliFile.swir1Gain = Int16(file.swir1Gain)
+        newCaliFile.swir2Gain = Int16(file.swir2Gain)
         
         config.addToFiberOpticCalibrations(newCaliFile)
         
@@ -274,9 +325,8 @@ class AddEditConnectionViewController: UIViewController, UITextFieldDelegate, Ba
         fiberOpticFilesTableView.endUpdates()
         
         calcualteTableViewHeight()
-        
         fiberOpticFilesTableView.reloadData()
-        
+        validateControls()
     }
     
     func deleteFiberOpticFile(sender: UIButton) -> Void {
@@ -284,6 +334,7 @@ class AddEditConnectionViewController: UIViewController, UITextFieldDelegate, Ba
         let calFile =  fiberOpticFiles[sender.tag]
         
         config.removeFromFiberOpticCalibrations(calFile)
+        dataViewContext.delete(calFile)
         
         fiberOpticFilesTableView.beginUpdates()
         fiberOpticFiles.remove(at: sender.tag)
@@ -291,13 +342,13 @@ class AddEditConnectionViewController: UIViewController, UITextFieldDelegate, Ba
         fiberOpticFilesTableView.endUpdates()
         
         calcualteTableViewHeight()
-        
         fiberOpticFilesTableView.reloadData()
+        validateControls()
     }
     
     internal func calcualteTableViewHeight() {
         fiberOpticsTableViewHeight.constant = CGFloat(fiberOpticFiles.count) * fiberOpticFilesTableView.rowHeight
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.2, animations: {
             self.view.layoutIfNeeded()
         })
     }

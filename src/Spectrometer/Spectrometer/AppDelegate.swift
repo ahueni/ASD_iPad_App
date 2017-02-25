@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var tcpManager: TcpManager?
+    
     // config object
     var config: SpectrometerConfig? = nil
 

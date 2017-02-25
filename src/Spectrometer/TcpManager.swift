@@ -58,10 +58,8 @@ class TcpManager {
         do {
             let start = NSDate()
             try client?.send(bytes: command.getCommandString().toBytes())
-            let end = NSDate();
             print(NSString(format: "First: %.2f",start.timeIntervalSinceNow));
             
-            let start2 = NSDate()
             var recData = 0
             while recData < command.size {
                 let recPart: [UInt8]? = try client?.receive(maxBytes: 200) //try client?.receiveAll()

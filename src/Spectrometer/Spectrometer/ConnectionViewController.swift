@@ -85,7 +85,8 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
     func displayMainPage(tcpManager: TcpManager, config: SpectrometerConfig) -> Void {
         
         DispatchQueue.main.sync {
-            let test = tcpManager.sendCommand(command: Command(commandParam: CommandEnum.Restore, params: "1"))
+            _ = tcpManager.sendCommand(command: Command(commandParam: CommandEnum.Restore, params: "1"))
+            
             self.appDelegate.tcpManager = tcpManager
             self.appDelegate.config = config
             
