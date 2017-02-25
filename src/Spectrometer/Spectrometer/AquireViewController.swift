@@ -32,9 +32,58 @@ class AquireViewController: UIViewController {
     
     var darkDrift: Int = 0
     
+    // stack views
+    
+    @IBOutlet var mainStackView: UIStackView!
+    @IBOutlet var navigationStackView: UIStackView!
+    
+    @IBOutlet var navigationElements: [UIStackView]!
+    
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        
+        if UIDevice.current.orientation.isLandscape {
+            
+            mainStackView.axis = .horizontal
+            
+            navigationStackView.axis = .vertical
+            navigationStackView.alignment = .fill
+            navigationStackView.distribution = .equalSpacing
+            
+            for stackView in navigationElements {
+                
+                stackView.distribution = .fill
+                
+            }
+            
+        }
+        
+        if UIDevice.current.orientation.isPortrait {
+            
+            mainStackView.axis = .vertical
+            
+            navigationStackView.axis = .horizontal
+            navigationStackView.alignment = .top
+            navigationStackView.distribution = .fillEqually
+            
+            let test = NSLayoutConstraint(item: navigationStackView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 120.0)
+            
+            navigationStackView.addConstraint(test)
+            
+            for stackView in navigationElements {
+                
+                stackView.distribution = .fillEqually
+                
+            }
+            
+        }
+        
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        darkCurrent()
+        //darkCurrent()
     }
     
     @IBAction func startAquire(_ sender: UIButton) {
