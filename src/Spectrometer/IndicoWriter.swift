@@ -33,7 +33,6 @@ class IndicoWriter : BaseWriter {
         }
         else
         {
-            innerWriteBasic(spectrum : spectrum, whiteRefrenceSpectrum : nil)
             innerWriteCalibration(indicoCalibration: indicoCalibration!)
             fileHandle.closeFile()
         }
@@ -48,21 +47,21 @@ class IndicoWriter : BaseWriter {
         
         //Write Base File header
         writeByte(number: UInt8(indicoCalibration.baseFile.type))
-        writeString(text: indicoCalibration.baseFile.filename!)
+        writeStringWithFixedLength(text: indicoCalibration.baseFile.filename!, length: 20)
         writeLong(number: indicoCalibration.baseFile.integrationTime)
         writeInt(number: indicoCalibration.baseFile.swir1Gain)
         writeInt(number: indicoCalibration.baseFile.swir2Gain)
         
         //Write Lamp File header
         writeByte(number: UInt8(indicoCalibration.lampFile.type))
-        writeString(text: indicoCalibration.lampFile.filename!)
+        writeStringWithFixedLength(text: indicoCalibration.lampFile.filename!, length: 20)
         writeLong(number: indicoCalibration.lampFile.integrationTime)
         writeInt(number: indicoCalibration.lampFile.swir1Gain)
         writeInt(number: indicoCalibration.lampFile.swir2Gain)
         
         //Write Foreoptic File header
         writeByte(number: UInt8(indicoCalibration.fiberOptic.type))
-        writeString(text: indicoCalibration.fiberOptic.filename!)
+        writeStringWithFixedLength(text: indicoCalibration.fiberOptic.filename!, length: 20)
         writeLong(number: indicoCalibration.fiberOptic.integrationTime)
         writeInt(number: indicoCalibration.fiberOptic.swir1Gain)
         writeInt(number: indicoCalibration.fiberOptic.swir2Gain)

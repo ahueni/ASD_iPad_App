@@ -96,6 +96,16 @@ class BaseWriter{
         fileHandle.write(data!)
     }
     
+    func writeStringWithFixedLength(text : String, length : Int){
+        let data = text.data(using: String.Encoding.utf8)
+        fileHandle.write(data!)
+        
+        let paddingLength = length - text.lengthOfBytes(using: String.Encoding.utf8)
+        for _ in 1...paddingLength{
+            writeByte(number: 0)
+        }
+    }
+    
     func writeFloat(number : Float){
         var bytes = toByteArray(number)
         for i in 0...bytes.count-1
