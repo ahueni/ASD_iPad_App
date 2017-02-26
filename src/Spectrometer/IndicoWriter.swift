@@ -8,9 +8,98 @@
 
 import Foundation
 
+class IndicoCalibration{
+    var baseFile : CalibrationFile
+    var lampFile : CalibrationFile
+    var fiberOptic : CalibrationFile
+    
+    init(baseFile : CalibrationFile, lampFile : CalibrationFile, fiberOptic : CalibrationFile) {
+        self.baseFile = baseFile
+        self.lampFile = lampFile
+        self.fiberOptic = fiberOptic
+    }
+}
+
 class IndicoWriter : BaseWriter {
     
-    func write(spectrum : FullRangeInterpolatedSpectrum, whiteRefrenceSpectrum : FullRangeInterpolatedSpectrum? = nil) -> FileHandle{
+    // write basic file without calibration (Raw and Ref only)
+    func write(spectrum : FullRangeInterpolatedSpectrum, whiteRefrenceSpectrum : FullRangeInterpolatedSpectrum?, indicoCalibration : IndicoCalibration?){
+        innerWriteBasic(spectrum : spectrum, whiteRefrenceSpectrum : whiteRefrenceSpectrum)
+        
+        if(indicoCalibration == nil)
+        {
+            // Calibration Header Count
+            writeByte(number: 0)
+        }
+        else
+        {
+            innerWriteBasic(spectrum : spectrum, whiteRefrenceSpectrum : nil)
+            innerWriteCalibration(indicoCalibration: indicoCalibration!)
+            fileHandle.closeFile()
+        }
+        fileHandle.closeFile()
+    }
+    
+    private func innerWriteCalibration(indicoCalibration : IndicoCalibration){
+        // ------ Start Calibration Header ------
+        
+        // Count
+        writeByte(number: 3)
+        
+        //Write Base File header
+        writeByte(number: UInt8(indicoCalibration.baseFile.type))
+        writeString(text: indicoCalibration.baseFile.filename!)
+        writeLong(number: indicoCalibration.baseFile.integrationTime)
+        writeInt(number: indicoCalibration.baseFile.swir1Gain)
+        writeInt(number: indicoCalibration.baseFile.swir2Gain)
+        
+        //Write Lamp File header
+        writeByte(number: UInt8(indicoCalibration.lampFile.type))
+        writeString(text: indicoCalibration.lampFile.filename!)
+        writeLong(number: indicoCalibration.lampFile.integrationTime)
+        writeInt(number: indicoCalibration.lampFile.swir1Gain)
+        writeInt(number: indicoCalibration.lampFile.swir2Gain)
+        
+        //Write Foreoptic File header
+        writeByte(number: UInt8(indicoCalibration.fiberOptic.type))
+        writeString(text: indicoCalibration.fiberOptic.filename!)
+        writeLong(number: indicoCalibration.fiberOptic.integrationTime)
+        writeInt(number: indicoCalibration.fiberOptic.swir1Gain)
+        writeInt(number: indicoCalibration.fiberOptic.swir2Gain)
+        
+        // ------ End Calibration Header ------
+        
+        // ------ Start Base Data ------
+        
+        for i in 0...indicoCalibration.baseFile.spectrum!.count-1
+        {
+            writeFloat(number: Float(indicoCalibration.baseFile.spectrum![i]))
+        }
+        
+        // ------ End Base Data ------
+        
+        // ------ Start Lamp Data ------
+        
+        for i in 0...indicoCalibration.lampFile.spectrum!.count-1
+        {
+            writeFloat(number: Float(indicoCalibration.lampFile.spectrum![i]))
+        }
+        
+        // ------ End Lamp Data ------
+        
+        // ------ Start Fiber Optic Data ------
+        
+        for i in 0...indicoCalibration.fiberOptic.spectrum!.count-1
+        {
+            writeFloat(number: Float(indicoCalibration.fiberOptic.spectrum![i]))
+        }
+        
+        // ------ End Fiber Optic Data ------
+        
+        print("Calibration updated!")
+    }
+    
+    private func innerWriteBasic(spectrum : FullRangeInterpolatedSpectrum, whiteRefrenceSpectrum : FullRangeInterpolatedSpectrum? = nil){
         
         // ------ Start Header ------
         
@@ -356,42 +445,6 @@ class IndicoWriter : BaseWriter {
         
         // ------ End Dependent Variable Data ------
         
-        // ------ Start Calibration Header ------
-        
-        // Count
-        writeByte(number: 0)
-        
-        // ------ End Calibration Header ------
-        
-        
-        
-        // ------ Start Base Data ------
-        
-        
-        
-        // ------ End Base Data ------
-        
-        
-        
-        
-        // ------ Start Lamp Data ------
-        
-        
-        
-        // ------ End Lamp Data ------
-        
-        
-        
-        
-        // ------ Start Fiber Optic Data ------
-        
-        
-        
-        // ------ End Fiber Optic Data ------
-        
-        fileHandle.closeFile()
-        print("File updated!")
-        
-        return fileHandle
+        print("Basic File updated")
     }
 }

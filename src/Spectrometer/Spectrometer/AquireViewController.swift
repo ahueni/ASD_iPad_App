@@ -64,8 +64,7 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     }
     
     @IBAction func selectFiberOptic(_ sender: UIColorButton) {
-        
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SelectFiberOpticTableViewController") as! SelectFiberOpticTableViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SelectFiberOpticTableViewController") as!SelectFiberOpticTableViewController
         vc.delegate = self
         
         vc.modalPresentationStyle = .popover
@@ -77,9 +76,6 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
         popover.sourceRect = sender.bounds
         
         self.present(vc, animated: true, completion: nil)
-        
-        
-        
     }
     
     func aquire () {
@@ -120,6 +116,7 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     
     internal func didSelectFiberoptic(fiberoptic: CalibrationFile) {
         print("fiberoptic selected...")
+        
     }
     
     internal func setViewOrientation() -> Void {

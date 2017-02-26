@@ -61,9 +61,9 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
                 
                 alert.dismiss(animated: true, completion: nil)
                 
-                self.displayMainPage(tcpManager: tcpManager, config: config)
+                //self.displayMainPage(tcpManager: tcpManager, config: config)
                 
-                /*
+                
                  if (tcpManager.connect()) {
                  alert.dismiss(animated: true, completion: nil)
                  self.displayMainPage(tcpManager: tcpManager, config: config)
@@ -72,7 +72,7 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
                  self.showWarningMessage(title: "Connection failed", message: "Es konnte keine Verbindung mit dem Spektrometer hergestellt werden. Überprüfen sie die Einstellungen und ob das Gerät mit dem Netzwerk des Spektrometers verbunden ist.")
                  })
                  }
-                 */
+                
             }
         
         })
@@ -81,7 +81,7 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
     
     func displayMainPage(tcpManager: TcpManager, config: SpectrometerConfig) -> Void {
         DispatchQueue.main.sync {
-            //_ = tcpManager.sendCommand(command: Command(commandParam: CommandEnum.Restore, params: "1"))
+            _ = tcpManager.sendCommand(command: Command(commandParam: CommandEnum.Restore, params: "1"))
             
             self.appDelegate.tcpManager = tcpManager
             self.appDelegate.config = config

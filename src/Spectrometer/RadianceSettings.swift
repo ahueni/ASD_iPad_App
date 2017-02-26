@@ -16,6 +16,7 @@ class RadianceSettings: ReflectanceSettings{
         self.takeWhiteRefrenceAfter = decoder.decodeBool(forKey: "takeWhiteRefrenceAfter")
         self.whiteRefrenceAfterCount = Int(decoder.decodeInt32(forKey: "whiteRefrenceAfterCount"))
         self.whiteRefrenceAfterDelay = Int(decoder.decodeInt32(forKey: "whiteRefrenceAfterDelay"))
+        self.foreOpticId = decoder.decodeObject(forKey: "foreOpticId") as! String
         super.init(coder: decoder)
     }
     
@@ -26,6 +27,7 @@ class RadianceSettings: ReflectanceSettings{
         aCoder.encode(self.takeWhiteRefrenceAfter, forKey: "takeWhiteRefrenceAfter")
         aCoder.encode(self.whiteRefrenceAfterCount, forKey: "whiteRefrenceAfterCount")
         aCoder.encode(self.whiteRefrenceAfterDelay, forKey: "whiteRefrenceAfterDelay")
+        aCoder.encode(self.foreOpticId, forKey: "foreOpticId")
     }
     
     var whiteRefrenceBeforeCount: Int
@@ -33,14 +35,16 @@ class RadianceSettings: ReflectanceSettings{
     var takeWhiteRefrenceAfter: Bool
     var whiteRefrenceAfterCount: Int
     var whiteRefrenceAfterDelay: Int
+    var foreOpticId : String
     
     
-    init(takeDarkCurrent: Bool, targetCount: Int, targetDelay: Int, takeWhiteRefrenceBefore: Bool, whiteRefrenceBeforeCount: Int, takeWhiteRefrenceAfter: Bool, whiteRefrenceAfterCount: Int, whiteRefrenceBeforeDelay: Int, whiteRefrenceAfterDelay: Int) {
+    init(takeDarkCurrent: Bool, targetCount: Int, targetDelay: Int, takeWhiteRefrenceBefore: Bool, whiteRefrenceBeforeCount: Int, takeWhiteRefrenceAfter: Bool, whiteRefrenceAfterCount: Int, whiteRefrenceBeforeDelay: Int, whiteRefrenceAfterDelay: Int, foreOpticId : String) {
         self.whiteRefrenceBeforeCount = whiteRefrenceBeforeCount
         self.takeWhiteRefrenceAfter = takeWhiteRefrenceAfter
         self.whiteRefrenceAfterCount = whiteRefrenceAfterCount
         self.whiteRefrenceBeforeDelay = whiteRefrenceBeforeDelay
         self.whiteRefrenceAfterDelay = whiteRefrenceAfterDelay
+        self.foreOpticId = foreOpticId
         super.init(takeDarkCurrent: takeDarkCurrent, targetCount: targetCount, targetDelay: targetDelay, takeWhiteRefrenceBefore: takeWhiteRefrenceBefore)
     }
 }

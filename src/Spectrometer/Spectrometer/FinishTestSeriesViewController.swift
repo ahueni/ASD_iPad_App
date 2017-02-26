@@ -37,7 +37,14 @@ class FinishTestSeriesViewController : BaseMeasurementModal {
             save(spectrums: pageContainer!.spectrumList, whiteRefrenceSpectrum: nil, loadedSettings: loadedSettings)
             break
         case MeasurmentMode.Radiance:
-            save(spectrums: pageContainer!.whiteRefrenceBeforeSpectrumList + pageContainer!.spectrumList + pageContainer!.whiteRefrenceAfterSpectrumList, whiteRefrenceSpectrum: nil, loadedSettings: loadedSettings)
+            let indicoCalibration = IndicoCalibration(baseFile: (appDelegate.config!.base)!, lampFile: appDelegate.config!.lamp!, fiberOptic: pageContainer.selectedForeOptic!)
+            
+            //save wr before
+            save(spectrums: pageContainer!.whiteRefrenceBeforeSpectrumList, whiteRefrenceSpectrum: nil, loadedSettings: loadedSettings,indicoCalibration: indicoCalibration, fileSuffix: "_wrBefore")
+            //save target
+            save(spectrums: pageContainer!.spectrumList, whiteRefrenceSpectrum: nil, loadedSettings: loadedSettings,indicoCalibration: indicoCalibration)
+            //save wr after
+            save(spectrums: pageContainer!.whiteRefrenceAfterSpectrumList, whiteRefrenceSpectrum: nil, loadedSettings: loadedSettings,indicoCalibration: indicoCalibration, fileSuffix: "_wrAfter")
             break
         case MeasurmentMode.Reflectance:
             save(spectrums: pageContainer!.spectrumList, whiteRefrenceSpectrum: pageContainer!.whiteRefrenceBeforeSpectrumList.first!, loadedSettings: loadedSettings)
@@ -45,22 +52,18 @@ class FinishTestSeriesViewController : BaseMeasurementModal {
         }
     }
     
-    func save(spectrums : [FullRangeInterpolatedSpectrum], whiteRefrenceSpectrum: FullRangeInterpolatedSpectrum?, loadedSettings: MeasurmentSettings)
+    func save(spectrums : [FullRangeInterpolatedSpectrum], whiteRefrenceSpectrum: FullRangeInterpolatedSpectrum?, loadedSettings: MeasurmentSettings, indicoCalibration: IndicoCalibration? = nil, fileSuffix :String = "")
     {
         DispatchQueue.global().async {
-            
             for i in 0...spectrums.count-1{
                 let spectrumData = spectrums[i]
-                let fileName = loadedSettings.fileName + i.description + ".asd"
+                let fileName = String(format: "%03d", i) + loadedSettings.fileName + fileSuffix + ".asd"
                 let relativeFilePath = loadedSettings.path.appendingPathComponent(fileName).relativePath
                 let fileWriter = IndicoWriter(path: relativeFilePath)
                 
-                fileWriter.write(spectrum: spectrumData, whiteRefrenceSpectrum: whiteRefrenceSpectrum)
+                fileWriter.write(spectrum: spectrumData, whiteRefrenceSpectrum: whiteRefrenceSpectrum, indicoCalibration: indicoCalibration)
             }
-
-            
             self.finishedSaving()
-            
         }
     }
     
