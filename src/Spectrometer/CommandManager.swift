@@ -37,8 +37,16 @@ class CommandManager{
     func darkCurrent() -> Void {
         
         serialQueue.sync {
+            
+            // only to have first a aquire command -> rs3 dose the same result is not nescessary
+            _ = internalAquire(samples: 2)
+            
+            // get all wavelengths to have darkcurrent calculation wavelengths
             getWaveLengthts()
+            
+            // optimice -> rs3 dose the same
             internOptimize()
+            
             closeShutter()
             InstrumentSettingsCache.sharedInstance.darkCurrent = internalAquire(samples: 10)
             openShutter()
@@ -54,12 +62,21 @@ class CommandManager{
     }
     
     internal func getWaveLengthts(){
-        InstrumentSettingsCache.sharedInstance.startingWaveLength = Int(initialize(valueName: "StartingWavelength").value)
-        InstrumentSettingsCache.sharedInstance.endingWaveLength = Int(initialize(valueName: "EndingWavelength").value)
-        InstrumentSettingsCache.sharedInstance.vinirStartingWavelength = Int(initialize(valueName: "VStartingWavelength").value)
-        InstrumentSettingsCache.sharedInstance.vinirEndingWavelength = Int(initialize(valueName: "VEndingWavelength").value)
-        InstrumentSettingsCache.sharedInstance.vinirDarkCurrentCorrection = initialize(valueName: "VDarkCurrentCorrection").value
-        print("DarkCurrentCorrectionValue: " + InstrumentSettingsCache.sharedInstance.vinirDarkCurrentCorrection.description)
+        
+        let startingWavelength = initialize(valueName: "StartingWavelength")
+        let endingWavelength = initialize(valueName: "EndingWavelength")
+        let vinirStartingWavelength = initialize(valueName: "VStartingWavelength")
+        let vinirEndingWavelength = initialize(valueName: "VEndingWavelength")
+        
+        let vinirDarkCurrentCorrection = initialize(valueName: "VDarkCurrentCorrection")
+        
+        
+        InstrumentSettingsCache.sharedInstance.startingWaveLength = Int(startingWavelength.value)
+        InstrumentSettingsCache.sharedInstance.endingWaveLength = Int(endingWavelength.value)
+        InstrumentSettingsCache.sharedInstance.vinirStartingWavelength = Int(vinirStartingWavelength.value)
+        InstrumentSettingsCache.sharedInstance.vinirEndingWavelength = Int(vinirEndingWavelength.value)
+        
+        InstrumentSettingsCache.sharedInstance.vinirDarkCurrentCorrection = vinirDarkCurrentCorrection.value
     }
     
     internal func closeShutter() -> Void {

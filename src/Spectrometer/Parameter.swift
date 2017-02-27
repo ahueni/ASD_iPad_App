@@ -15,7 +15,8 @@ struct Parameter {
     
     var header: Int
     var errbyte: Int
-    var name: [String]
+    var name: String
     var value: Double
     var count: Int
+    
 }

@@ -8,8 +8,11 @@
 
 import Foundation
 
-class InstrumentSettingsCache{
+class InstrumentSettingsCache {
+    
     static let sharedInstance = InstrumentSettingsCache()
+    
+    var aquireLoop = false
     
     var startingWaveLength: Int = 0
     var endingWaveLength: Int = 0

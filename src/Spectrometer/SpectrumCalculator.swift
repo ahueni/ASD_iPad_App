@@ -22,8 +22,6 @@ class SpectrumCalculator{
             let darkDrift: Float = Float(darkCurrent.spectrumHeader.vinirHeader.drift)
             
             let drift: Float = vinirDarkCurrentCorrection + (currentDrift - darkDrift)
-            print("CurrentDrift: " + currentDrift.description)
-            print("DarkDrift: " + darkDrift.description)
             
             let vinirEndingWaveLength = InstrumentSettingsCache.sharedInstance.vinirEndingWavelength
             let vinirStartingWaveLength = InstrumentSettingsCache.sharedInstance.startingWaveLength
@@ -31,7 +29,7 @@ class SpectrumCalculator{
             let darkCorrectionRange = vinirEndingWaveLength + 1 - vinirStartingWaveLength
             print("DarkCorrectionRange: " + darkCorrectionRange.description)
             
-            for i in 0...650{
+            for i in 0...darkCorrectionRange{
                 spectrum.spectrumBuffer[i] = spectrum.spectrumBuffer[i] - (darkCurrent.spectrumBuffer[i] + drift)
             }
             

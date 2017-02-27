@@ -23,10 +23,6 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     
     var whiteReferenceSpectrum: FullRangeInterpolatedSpectrum? = nil
     
-    var aquireLoopOn = false // Indicates if a aquireLoop is running
-    
-    let aquireQueue = DispatchQueue(label: "aquireQueue")
-    
     // stack views
     
     @IBOutlet var mainStackView: UIStackView!
@@ -53,7 +49,7 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     }
     
     @IBAction func optimizeButtonClicked(_ sender: UIButton) {
-        aquireLoopOn = false
+        InstrumentSettingsCache.sharedInstance.aquireLoop = false
         CommandManager.sharedInstance.optimize()
     }
     
@@ -74,11 +70,25 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     
     internal func startAquire() {
         
-        aquireLoopOn = true
-            aquireQueue.async {
-            while(self.aquireLoopOn){
+        InstrumentSettingsCache.sharedInstance.aquireLoop = !InstrumentSettingsCache.sharedInstance.aquireLoop
+        
+        // change button title
+        if InstrumentSettingsCache.sharedInstance.aquireLoop {
+            aquireButton.setTitle("Stop Aquire", for: .normal)
+        } else {
+            aquireButton.setTitle("Start Aquire", for: .normal)
+        }
+        
+        // don't start a new aquire queue when its false -> the button is pressed to stopp it
+        // without this check a second aquireQueue will be started only to end emediatly
+        if !InstrumentSettingsCache.sharedInstance.aquireLoop { return }
+        
+        DispatchQueue(label: "aquireQueue").async {
+            print("AquireLoop started...")
+            while(InstrumentSettingsCache.sharedInstance.aquireLoop){
                 self.aquire()
             }
+            print("AquireLoop stopped...")
         }
         
     }
@@ -96,19 +106,19 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     }
     
     @IBAction func darkCurrent(_ sender: Any) {
-        aquireQueue.suspend()
+        InstrumentSettingsCache.sharedInstance.aquireLoop = false
         CommandManager.sharedInstance.darkCurrent()
         startAquire()
     }
     
     @IBAction func whiteReference(_ sender: UIButton) {
-        aquireLoopOn = false
+        InstrumentSettingsCache.sharedInstance.aquireLoop = false
         //CommandManager.sharedInstance.aquire(samples: 10)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "StartTestSeriesSegue"{
-            aquireLoopOn = false
+            InstrumentSettingsCache.sharedInstance.aquireLoop = false
         }
     }
     

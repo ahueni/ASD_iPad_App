@@ -12,17 +12,19 @@ class ParameterParser: BaseSpectrumParser {
     
     func parse() -> Parameter {
         
+        print("PARAMETER COUNT: " + self.data.count.description)
+        
         if self.data.count < Parameter.SIZE {
             fatalError("return data ist too small, parsing not possible")
         }
         
-        let header: Int = getNextInt()
-        let error: Int = getNextInt()
-        let string: String = getNextString(size: 30)
-        let value: Double = getNextDouble()
-        let count: Int = getNextInt()
+        let header: Int = getNextInt() // 4
+        let error: Int = getNextInt()  // 8
+        let string: String = getNextString(size: 30) // 38
+        let value: Double = getNextDoubleReverse() // 46
+        let count: Int = getNextInt() // 50
         
-        return Parameter(header: header, errbyte: error, name: [string], value: value, count: count)
+        return Parameter(header: header, errbyte: error, name: string, value: value, count: count)
     }
     
 }

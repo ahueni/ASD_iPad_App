@@ -147,8 +147,20 @@ class BaseSpectrumParser {
         
         var byteArray: [UInt8] = []
         for i in 0...7 {
-            //byteArray.insert(self.data[parseIndex+i], at: 0)
             byteArray.append(self.data[parseIndex+i])
+        }
+        
+        let doubleValue:Double = Double(byteArray)!
+        
+        parseIndex += 8
+        return doubleValue
+    }
+    
+    internal func getNextDoubleReverse() -> Double {
+        
+        var byteArray: [UInt8] = []
+        for i in 0...7 {
+            byteArray.insert(self.data[parseIndex+i], at: 0)
         }
         
         let doubleValue:Double = Double(byteArray)!
