@@ -15,14 +15,18 @@ class AbsoluteReflectanceFileSelectInput: BaseCalibrationFileSelectInput {
     override var isValid: Bool {
         get {
             
+            // in editMode its always true
             if isInEditMode {
                 return true
             }
             
-            if let file = calibrationFile {
-                return file.dataType == .RefType
+            // its optional if its empty its valid otherwise it hase to be a Reflectance Type
+            if let calibrationFile = calibrationFile {
+                return calibrationFile.dataType == .RefType
+            } else {
+                return true
             }
-            return false
+            
         }
     }
     

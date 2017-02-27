@@ -17,13 +17,13 @@
         <attribute name="sampleCount" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="sampleCountDarkCurrent" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="sampleCountWhiteRefrence" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="absoluteReflectance" maxCount="1" deletionRule="Cascade" destinationEntity="CalibrationFile" syncable="YES"/>
+        <relationship name="absoluteReflectance" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CalibrationFile" syncable="YES"/>
         <relationship name="base" maxCount="1" deletionRule="Cascade" destinationEntity="CalibrationFile" syncable="YES"/>
         <relationship name="fiberOpticCalibrations" toMany="YES" deletionRule="Cascade" destinationEntity="CalibrationFile" syncable="YES"/>
         <relationship name="lamp" maxCount="1" deletionRule="Cascade" destinationEntity="CalibrationFile" syncable="YES"/>
     </entity>
     <elements>
         <element name="CalibrationFile" positionX="-155" positionY="-27" width="128" height="150"/>
-        <element name="SpectrometerConfig" positionX="333" positionY="134" width="288" height="208"/>
+        <element name="SpectrometerConfig" positionX="333" positionY="134" width="288" height="210"/>
     </elements>
 </model>

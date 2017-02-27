@@ -57,13 +57,15 @@ class AddEditConnectionViewController: UIViewController, UITextFieldDelegate, Ba
             self.config = SpectrometerConfig(context: dataViewContext)
         } else {
             
-            // init controls
+            // init controls in edit mode
             self.name.text = config.name
             self.ipAdress.text = config.ipAdress
             self.port.text = config.port.description
             
-            self.absoluteReflectanceSelect.pathLabel.text = "Replace " + (config.absoluteReflectance?.name)!
-            self.absoluteReflectanceSelect.isInEditMode = true
+            if let absoluteReflectanceConfig = config.absoluteReflectance {
+                self.absoluteReflectanceSelect.pathLabel.text = "Replace " + absoluteReflectanceConfig.name!
+                self.absoluteReflectanceSelect.isInEditMode = true
+            }
             
             self.baseFileSelect.pathLabel.text = "Replace " + (config.base?.name)!
             self.baseFileSelect.isInEditMode = true
@@ -90,7 +92,7 @@ class AddEditConnectionViewController: UIViewController, UITextFieldDelegate, Ba
         config.ipAdress = ipAdress.text
         config.port = Int16(port.text!)!
         
-        if !absoluteReflectanceSelect.isInEditMode {
+        if absoluteReflectanceSelect.calibrationFile != nil {
             
             if config.absoluteReflectance == nil {
                 
@@ -239,7 +241,7 @@ class AddEditConnectionViewController: UIViewController, UITextFieldDelegate, Ba
     }
     
     internal func validateControls(){
-        if ValidationManager.sharedInstance.validateSubViews(view: self.view) && fiberOpticFiles.count > 0 {
+        if ValidationManager.sharedInstance.validateSubViews(view: self.view) {
             self.saveButton.isEnabled = true
         } else {
             self.saveButton.isEnabled = false
@@ -283,21 +285,37 @@ class AddEditConnectionViewController: UIViewController, UITextFieldDelegate, Ba
         let navigationController = UINavigationController(rootViewController: fileBrowserContainerViewController)
         navigationController.modalPresentationStyle = .formSheet
         
-        // Hook up the select event
+        // hook up the select event
         fileBrowserContainerViewController.didSelectFile = {(file: DiskFile) -> Void in
             
             let fileData = [UInt8](FileManager.default.contents(atPath: file.filePath.relativePath)!)
             let configurationFileReader = IndicoIniFileReader(data: fileData)
             
             do {
+                
+                // parse calibration file
                 let calibrationFile = try configurationFileReader.parse()
-                self.addFiberOpticFile(file: calibrationFile, filename: file.filePath.lastPathComponent, name: file.filePath.lastPathComponent)
+                
+                // validate 
+                if calibrationFile.dataType != .RawType {
+                    self.showWarningMessage(title: "Error", message: "Please select a RawType file")
+                    return
+                }
+                
+                // create filename
+                var fileName: String = calibrationFile.fo.description + " Degree"
+                if calibrationFile.fo == 0 {
+                    fileName = "BareFiber"
+                }
+                
+                // add file to fiberOpticFiles table
+                self.addFiberOpticFile(file: calibrationFile, filename: file.filePath.lastPathComponent, name: fileName)
+                
             } catch let error as ParsingError {
-                print(error.message)
+                self.showWarningMessage(title: "Error", message: error.message)
             } catch {
-                fatalError("somthing went wrong!")
+                self.showWarningMessage(title: "Error", message: file.filePath.lastPathComponent + " could not be parsed please select a valid ForeOptic file")
             }
-            
             
         }
         
