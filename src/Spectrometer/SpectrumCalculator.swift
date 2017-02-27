@@ -27,10 +27,9 @@ class SpectrumCalculator{
             let vinirStartingWaveLength = InstrumentSettingsCache.sharedInstance.startingWaveLength
             
             let darkCorrectionRange = vinirEndingWaveLength + 1 - vinirStartingWaveLength
-            print("DarkCorrectionRange: " + darkCorrectionRange.description)
             
             for i in 0...darkCorrectionRange{
-                spectrum.spectrumBuffer[i] = spectrum.spectrumBuffer[i] - (darkCurrent.spectrumBuffer[i] + drift)
+                spectrum.spectrumBuffer[i] -= darkCurrent.spectrumBuffer[i] + drift
             }
             
             // set darkCorrected flag in headers
@@ -38,20 +37,18 @@ class SpectrumCalculator{
             spectrum.spectrumHeader.swir1Header.darkSubtracted = DarkSubtracted.Yes
             spectrum.spectrumHeader.swir2Header.darkSubtracted = DarkSubtracted.Yes
             
-            print("DarkCurrent corrected")
-            
         }
         
         return spectrum
     }
     
-    class func calculateReflectance(currentSpectrum : FullRangeInterpolatedSpectrum, whiteReferenceSpectrum : FullRangeInterpolatedSpectrum) -> [ChartDataEntry]
+    class func calculateReflectance(currentSpectrum : FullRangeInterpolatedSpectrum, whiteReferenceSpectrum : FullRangeInterpolatedSpectrum) -> FullRangeInterpolatedSpectrum
     {
-        var values: [ChartDataEntry] = []
         for i in 0...whiteReferenceSpectrum.spectrumBuffer.count-1 {
-            values.append(ChartDataEntry(x: Double(i+350), y: Double(currentSpectrum.spectrumBuffer[i] /  whiteReferenceSpectrum.spectrumBuffer[i] )))
+            currentSpectrum.spectrumBuffer[i] = currentSpectrum.spectrumBuffer[i] / whiteReferenceSpectrum.spectrumBuffer[i]
         }
-        return values
+        
+        return currentSpectrum
     }
     
     class func calculateRadiance(){

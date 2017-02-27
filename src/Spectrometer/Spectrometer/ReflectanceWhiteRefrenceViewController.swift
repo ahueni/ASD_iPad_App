@@ -34,11 +34,11 @@ class ReflectanceWhiteRefrenceViewController : BaseWhiteReferenceViewController 
         DispatchQueue.main.async {
             //update ui
             self.MeasurementLineChart.setAxisValues(min: 0, max: 5)
-            let values = SpectrumCalculator.calculateReflectance(currentSpectrum: SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: self.currentSpectrum!), whiteReferenceSpectrum: SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: self.currentWhiteRefrence!))
-            let lineChartDataSet = SpectrumLineChartDataSet(values: values, label: "-")
-            let lineChartData =  LineChartData(dataSet: lineChartDataSet)
+            
+            let reflectanceSpectrum = SpectrumCalculator.calculateReflectance(currentSpectrum: SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: self.currentSpectrum!), whiteReferenceSpectrum: SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: self.currentWhiteRefrence!))
+            
             DispatchQueue.main.async {
-                self.MeasurementLineChart.data = lineChartData
+                self.MeasurementLineChart.data = reflectanceSpectrum.getChartData()
             }
         }
     }

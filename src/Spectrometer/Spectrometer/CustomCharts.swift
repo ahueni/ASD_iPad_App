@@ -78,7 +78,7 @@ class SpectrumLineChartDataSet: LineChartDataSet {
         
         valueFont = openSansFont
         drawCirclesEnabled = drawCircles
-        lineWidth = 3
+        lineWidth = 2
         //highlightLineWidth = 1
         lineCapType = CGLineCap.round
         colors = [color]
@@ -90,7 +90,7 @@ class SpectrumLineChartDataSet: LineChartDataSet {
         super.init(values: values, label: label)
         valueFont = openSansFont
         drawCirclesEnabled = false
-        lineWidth = 3
+        lineWidth = 2
         //highlightLineWidth = 1
         lineCapType = CGLineCap.round
         colors = [UIColor.black]

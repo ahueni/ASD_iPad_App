@@ -10,23 +10,19 @@ import Foundation
 import UIKit
 
 @IBDesignable
-class RadioButton: UIButton {
+class RadioButton: UIColorButton {
     
     var alternateButton:[RadioButton] = []
     
     override var isSelected: Bool {
         didSet {
-            if isSelected {
-                backgroundColor = backgroundColor?.withAlphaComponent(1.0)
-            } else {
-                backgroundColor = backgroundColor?.withAlphaComponent(0.25)
-            }
+            changeButtonBackground()
         }
     }
     
-    @IBInspectable var cornerRadius: CGFloat = 0 {
+    override var isEnabled: Bool {
         didSet {
-            layer.cornerRadius = cornerRadius
+            changeButtonBackground()
         }
     }
     
@@ -42,7 +38,7 @@ class RadioButton: UIButton {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        layer.cornerRadius = cornerRadius
+        changeButtonBackground()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -51,14 +47,10 @@ class RadioButton: UIButton {
     }
     
     func initViews() {
-        if isSelected {
-            backgroundColor = backgroundColor?.withAlphaComponent(1.0)
-        } else {
-            backgroundColor = backgroundColor?.withAlphaComponent(0.25)
-        }
+        changeButtonBackground()
     }
     
-    func unselectAlternateButtons(){
+    internal func unselectAlternateButtons() {
         if alternateButton.isEmpty {
             self.isSelected = !isSelected
         } else {
@@ -67,6 +59,24 @@ class RadioButton: UIButton {
                 aButton.isSelected = false
             }
         }
+    }
+    
+    internal func changeButtonBackground() {
+        
+        // get actual font size to set new font with same size
+        let acutalFontSize = (self.titleLabel?.font.pointSize)!
+        
+        if state.contains(.disabled) {
+            backgroundColor = backgroundColor?.withAlphaComponent(0.2)
+            self.titleLabel?.font = UIFont.defaultFontRegular(size: acutalFontSize)
+        } else if state.contains(.selected) {
+            backgroundColor = backgroundColor?.withAlphaComponent(1.0)
+            self.titleLabel?.font = UIFont.defaultFontRegular(size: acutalFontSize)
+        } else {
+            backgroundColor = backgroundColor?.withAlphaComponent(0.6)
+            self.titleLabel?.font = UIFont.defaultFontRegular(size: acutalFontSize)
+        }
+        
     }
     
 }

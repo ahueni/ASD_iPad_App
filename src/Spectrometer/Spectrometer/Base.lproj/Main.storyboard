@@ -1151,7 +1151,7 @@
                         <viewControllerLayoutGuide type="top" id="q68-V6-2I0"/>
                         <viewControllerLayoutGuide type="bottom" id="SKD-6G-TQ8"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="aLw-JQ-Eht">
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="aLw-JQ-Eht">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="975"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1170,12 +1170,13 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gGJ-zG-H4J" userLabel="ModeContainerView" customClass="UIRoundBorderedView" customModule="Spectrometer" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="196" height="105"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lhG-Vr-zOf" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
+                                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lhG-Vr-zOf" customClass="RadioButton" customModule="Spectrometer" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="196" height="35"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="35" id="vTe-XL-65f"/>
                                                                         </constraints>
                                                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                         <state key="normal" title="Raw"/>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="color" keyPath="background">
@@ -1184,15 +1185,22 @@
                                                                             <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
                                                                                 <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                             </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                <real key="value" value="0.0"/>
+                                                                            </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
+                                                                        <connections>
+                                                                            <action selector="changeAquireMode:" destination="CAT-Jv-66J" eventType="touchUpInside" id="ec8-IX-VsP"/>
+                                                                        </connections>
                                                                     </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JdE-6o-Ize" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
+                                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JdE-6o-Ize" customClass="RadioButton" customModule="Spectrometer" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="35" width="196" height="35"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="35" id="iif-Zc-wOj"/>
                                                                         </constraints>
                                                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                                                        <state key="normal" title="Ref"/>
+                                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                        <state key="normal" title="Reflectance"/>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="color" keyPath="background">
                                                                                 <color key="value" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1201,14 +1209,18 @@
                                                                                 <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
+                                                                        <connections>
+                                                                            <action selector="changeAquireMode:" destination="CAT-Jv-66J" eventType="touchUpInside" id="Msb-KU-tO3"/>
+                                                                        </connections>
                                                                     </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HsK-Cf-J8v" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
+                                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HsK-Cf-J8v" customClass="RadioButton" customModule="Spectrometer" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="70" width="196" height="35"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="35" id="1I3-pM-4bt"/>
                                                                         </constraints>
                                                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                                                        <state key="normal" title="Rad"/>
+                                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                        <state key="normal" title="Radiance"/>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="color" keyPath="background">
                                                                                 <color key="value" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1217,6 +1229,9 @@
                                                                                 <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
+                                                                        <connections>
+                                                                            <action selector="changeAquireMode:" destination="CAT-Jv-66J" eventType="touchUpInside" id="hNk-NT-gQj"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1265,11 +1280,11 @@
                                                                             <action selector="selectFiberOptic:" destination="CAT-Jv-66J" eventType="touchUpInside" id="ghK-I7-iIP"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HAb-u9-PvQ">
-                                                                        <rect key="frame" x="0.0" y="35" width="196" height="100"/>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HAb-u9-PvQ">
+                                                                        <rect key="frame" x="0.0" y="35" width="196" height="57"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Please select a Foreoptic to activate &quot;Radiance&quot; mode" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62T-XW-n7n">
-                                                                                <rect key="frame" x="8" y="12" width="180" height="76"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please select a Foreoptic to activate &quot;Radiance&quot; mode" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62T-XW-n7n">
+                                                                                <rect key="frame" x="8" y="12" width="180" height="33"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="180" id="JCl-sg-p8L"/>
                                                                                 </constraints>
@@ -1317,7 +1332,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mEn-Yi-yHa" userLabel="WhiteReferenceContentView" customClass="UIRoundBorderedView" customModule="Spectrometer" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="196" height="99"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXc-0k-vyf" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXc-0k-vyf" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="196" height="35"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="35" id="Cwr-My-4X8"/>
@@ -1339,17 +1354,17 @@
                                                                             <action selector="whiteReference:" destination="CAT-Jv-66J" eventType="touchUpInside" id="qlS-pL-JqL"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KCW-Ce-eSX">
-                                                                        <rect key="frame" x="0.0" y="35" width="196" height="104"/>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KCW-Ce-eSX">
+                                                                        <rect key="frame" x="0.0" y="35" width="196" height="64"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Last White Reference taken" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wNF-TH-nKL">
-                                                                                <rect key="frame" x="8" y="12" width="180" height="58"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last White Reference taken" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wNF-TH-nKL">
+                                                                                <rect key="frame" x="8" y="12" width="180" height="18"/>
                                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="3 minutes ago | 13:45" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAl-Z2-FKj">
-                                                                                <rect key="frame" x="8" y="74" width="180" height="18"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 minutes ago | 13:45" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAl-Z2-FKj">
+                                                                                <rect key="frame" x="8" y="34" width="180" height="18"/>
                                                                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="13"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -1397,7 +1412,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CZY-AM-DPF" userLabel="DarkCurrentContainerView" customClass="UIRoundBorderedView" customModule="Spectrometer" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="196" height="99"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HWA-lz-QPj" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
+                                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HWA-lz-QPj" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="196" height="35"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="35" id="8AA-4G-Lz2"/>
@@ -1416,17 +1431,17 @@
                                                                             <action selector="darkCurrent:" destination="CAT-Jv-66J" eventType="touchUpInside" id="rfM-eW-zjx"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wY5-Rz-NtP">
-                                                                        <rect key="frame" x="0.0" y="35" width="196" height="100"/>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wY5-Rz-NtP">
+                                                                        <rect key="frame" x="0.0" y="35" width="196" height="64"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Last Dark Current taken" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbI-kE-ahM">
-                                                                                <rect key="frame" x="8" y="12" width="180" height="54"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Dark Current taken" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbI-kE-ahM">
+                                                                                <rect key="frame" x="8" y="12" width="180" height="18"/>
                                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="3 minutes ago | 13:45" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mkJ-7y-3vf">
-                                                                                <rect key="frame" x="8" y="70" width="180" height="18"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 minutes ago | 13:45" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mkJ-7y-3vf">
+                                                                                <rect key="frame" x="8" y="34" width="180" height="18"/>
                                                                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="13"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -1548,9 +1563,14 @@
                     <tabBarItem key="tabBarItem" title="Spektrometer" id="j7u-3J-zL2"/>
                     <connections>
                         <outlet property="aquireButton" destination="wEU-oK-YU2" id="NN3-bG-DuX"/>
+                        <outlet property="foreOpticButton" destination="fuq-Nw-e81" id="yDa-1m-27w"/>
+                        <outlet property="foreOpticLabel" destination="62T-XW-n7n" id="tz9-rE-XOp"/>
                         <outlet property="lineChart" destination="buq-02-Ymr" id="N5g-sm-xnN"/>
                         <outlet property="mainStackView" destination="Ntg-6e-Vsi" id="sM8-fe-SRE"/>
                         <outlet property="navigationStackView" destination="pWi-pv-zIU" id="Kwk-P3-zLy"/>
+                        <outlet property="radianceRadioButton" destination="HsK-Cf-J8v" id="7Zl-fS-O1O"/>
+                        <outlet property="rawRadioButton" destination="lhG-Vr-zOf" id="4kV-xF-Bwc"/>
+                        <outlet property="reflectanceRadioButton" destination="JdE-6o-Ize" id="dcr-Cl-iqq"/>
                         <outletCollection property="navigationElements" destination="J69-Zw-bwH" collectionClass="NSMutableArray" id="HeL-wX-isc"/>
                         <outletCollection property="navigationElements" destination="ahg-0a-FrH" collectionClass="NSMutableArray" id="22E-IY-RK4"/>
                         <outletCollection property="navigationElements" destination="sGQ-TP-CW2" collectionClass="NSMutableArray" id="QOi-3X-P8p"/>
@@ -1581,13 +1601,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alle Messungen wurden erfolgreich durchgeführt und werden nun abgespeichert." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7M-uM-Rys">
-                                <rect key="frame" x="20" y="80" width="500" height="16.5"/>
+                                <rect key="frame" x="20" y="80" width="500" height="17"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Die Messungen werden gespeichert ..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSU-MD-mc2">
-                                <rect key="frame" x="20" y="275.5" width="500" height="16.5"/>
+                                <rect key="frame" x="20" y="275" width="500" height="17"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

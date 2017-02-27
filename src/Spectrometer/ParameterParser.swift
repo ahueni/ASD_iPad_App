@@ -12,8 +12,6 @@ class ParameterParser: BaseSpectrumParser {
     
     func parse() -> Parameter {
         
-        print("PARAMETER COUNT: " + self.data.count.description)
-        
         if self.data.count < Parameter.SIZE {
             fatalError("return data ist too small, parsing not possible")
         }
