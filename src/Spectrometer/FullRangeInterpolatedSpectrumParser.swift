@@ -17,8 +17,8 @@ class FullRangeInterpolatedSpectrumParser: BaseSpectrumParser, ISpectrumParser {
         }
         
         // first parse spectrum header values
-        let header: HeaderValues = HeaderValues(rawValue: getNextInt())!
-        let error: ErrorCodes = ErrorCodes(rawValue: getNextInt())!
+        let header: HeaderValues = HeaderValues(fromRawValue: getNextInt())
+        let error: ErrorCodes = ErrorCodes(fromRawValue: getNextInt())
         let sampleCount: Int = getNextInt()
         let trigger: Int = getNextInt()
         let voltage: Float = getNextFloat()
@@ -38,7 +38,7 @@ class FullRangeInterpolatedSpectrumParser: BaseSpectrumParser, ISpectrumParser {
         let scans: Int = getNextInt()
         let maxChannel: Int = getNextInt()
         let minChannel: Int = getNextInt()
-        let saturation: Saturation = Saturation(rawValue: getNextInt())!
+        let saturation: Saturation = Saturation(fromRawValue: getNextInt())
         let shutter: ShutterStatus = ShutterStatus(rawValue: getNextInt())!
         let drift: Int = getNextInt()
         let darkSubtracted: DarkSubtracted = DarkSubtracted(rawValue: getNextInt())!
@@ -53,7 +53,7 @@ class FullRangeInterpolatedSpectrumParser: BaseSpectrumParser, ISpectrumParser {
         let s1tecCurrent: Int = getNextInt()
         let s1maxChannel: Int = getNextInt()
         let s1minChannel: Int = getNextInt()
-        let s1saturation: Saturation = Saturation(rawValue: getNextInt())!
+        let s1saturation: Saturation = Saturation(fromRawValue: getNextInt())
         let s1AScans: Int = getNextInt()
         let s1BScans: Int = getNextInt()
         let s1darkCurrent: Int = getNextInt()
@@ -73,7 +73,7 @@ class FullRangeInterpolatedSpectrumParser: BaseSpectrumParser, ISpectrumParser {
         let s2tecCurrent: Int = getNextInt()
         let s2maxChannel: Int = getNextInt()
         let s2minChannel: Int = getNextInt()
-        let s2saturation: Saturation = Saturation(rawValue: getNextInt())!
+        let s2saturation: Saturation = Saturation(fromRawValue: getNextInt())
         let s2AScans: Int = getNextInt()
         let s2BScans: Int = getNextInt()
         let s2darkCurrent: Int = getNextInt()

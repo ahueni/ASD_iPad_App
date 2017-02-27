@@ -56,9 +56,7 @@ class TcpManager {
         var array:[UInt8] = []
         
         do {
-            let start = NSDate()
             try client.send(bytes: command.getCommandString().toBytes())
-            print(NSString(format: "First: %.2f",start.timeIntervalSinceNow));
             
             var recData = 0
             while recData < command.size {
@@ -66,9 +64,7 @@ class TcpManager {
                 array += recPart!
                 recData += recPart!.count
                 aquireUpdateProtocol?.update(percentageReceived: Int(Double(recData)/Double(command.size) * 100))
-                print("Emfpangen: "+Int(Double(recData)/Double(command.size) * 100).description)
             }
-            print(NSString(format: "Second: %.2f",start.timeIntervalSinceNow));
             
         } catch {
             print("Error \(error)")

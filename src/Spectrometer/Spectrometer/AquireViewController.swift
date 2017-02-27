@@ -21,10 +21,11 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let tcpManager: TcpManager = (UIApplication.shared.delegate as! AppDelegate).tcpManager!
     
-    var darkCurrentSpectrum: FullRangeInterpolatedSpectrum? = nil
     var whiteReferenceSpectrum: FullRangeInterpolatedSpectrum? = nil
     
     var aquireLoopOn = false // Indicates if a aquireLoop is running
+    
+    let aquireQueue = DispatchQueue(label: "aquireQueue")
     
     // stack views
     
@@ -48,14 +49,7 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     }
     
     @IBAction func startAquire(_ sender: UIButton) {
-        aquireLoopOn = !aquireLoopOn
-        
-        DispatchQueue.global().async {
-            while(self.aquireLoopOn){
-                self.aquire()
-            }
-        }
-        
+        startAquire()
     }
     
     @IBAction func optimizeButtonClicked(_ sender: UIButton) {
@@ -78,18 +72,21 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
         self.present(vc, animated: true, completion: nil)
     }
     
-    func aquire () {
-        // Background tasks
-        var spectrum = CommandManager.sharedInstance.aquire(samples: (self.appDelegate.config?.sampleCount)!)
-        let currentDrift = spectrum.spectrumHeader.vinirHeader.drift
+    internal func startAquire() {
         
-        // if dc exists -> do darkcorrection
-        if (self.darkCurrentSpectrum != nil){
-            InstrumentSettingsCache.sharedInstance.drift = Int(Float(InstrumentSettingsCache.sharedInstance.vinirDarkCurrentCorrection + Double(currentDrift - InstrumentSettingsCache.sharedInstance.darkDrift)))
-            print("Drift: " + InstrumentSettingsCache.sharedInstance.drift.description)
-            
-            spectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: spectrum, darkCurrentSpectrum: self.darkCurrentSpectrum!)
+        aquireLoopOn = true
+            aquireQueue.async {
+            while(self.aquireLoopOn){
+                self.aquire()
+            }
         }
+        
+    }
+    
+    internal func aquire () {
+        
+        var spectrum = CommandManager.sharedInstance.aquire(samples: (self.appDelegate.config?.sampleCount)!)
+        spectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: spectrum)
         
         DispatchQueue.main.async {
             //update ui
@@ -99,8 +96,9 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     }
     
     @IBAction func darkCurrent(_ sender: Any) {
-        aquireLoopOn = false
-        self.darkCurrentSpectrum = CommandManager.sharedInstance.darkCurrent()
+        aquireQueue.suspend()
+        CommandManager.sharedInstance.darkCurrent()
+        startAquire()
     }
     
     @IBAction func whiteReference(_ sender: UIButton) {

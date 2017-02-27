@@ -72,7 +72,7 @@ class IndicoWriter : BaseWriter {
         
         for i in 0...indicoCalibration.baseFile.spectrum!.count-1
         {
-            writeFloat(number: Float(indicoCalibration.baseFile.spectrum![i]))
+            writeDouble(number: indicoCalibration.baseFile.spectrum![i])
         }
         
         // ------ End Base Data ------
@@ -81,7 +81,7 @@ class IndicoWriter : BaseWriter {
         
         for i in 0...indicoCalibration.lampFile.spectrum!.count-1
         {
-            writeFloat(number: Float(indicoCalibration.lampFile.spectrum![i]))
+            writeDouble(number: indicoCalibration.lampFile.spectrum![i])
         }
         
         // ------ End Lamp Data ------
@@ -90,7 +90,7 @@ class IndicoWriter : BaseWriter {
         
         for i in 0...indicoCalibration.fiberOptic.spectrum!.count-1
         {
-            writeFloat(number: Float(indicoCalibration.fiberOptic.spectrum![i]))
+            writeDouble(number: indicoCalibration.fiberOptic.spectrum![i])
         }
         
         // ------ End Fiber Optic Data ------
@@ -184,7 +184,8 @@ class IndicoWriter : BaseWriter {
         }
         
         //integrationTime
-        writeLong(number: UInt32(spectrum.spectrumHeader.vinirHeader.integrationTime))
+        writeLong(number: UInt32(8))
+        //writeLong(number: UInt32(spectrum.spectrumHeader.vinirHeader.integrationTime))
         
         //fo
         // Default :0

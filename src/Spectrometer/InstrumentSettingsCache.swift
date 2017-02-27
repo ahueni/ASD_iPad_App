@@ -11,13 +11,13 @@ import Foundation
 class InstrumentSettingsCache{
     static let sharedInstance = InstrumentSettingsCache()
     
-    var drift : Int = 0
     var startingWaveLength: Int = 0
     var endingWaveLength: Int = 0
     var vinirStartingWavelength : Int = 0
     var vinirEndingWavelength: Int = 0
     var vinirDarkCurrentCorrection: Double = 0
-    var darkDrift: Int = 0
+    
+    var darkCurrent: FullRangeInterpolatedSpectrum?
     
     // prevent other instances of this class
     private init() {

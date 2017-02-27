@@ -18,6 +18,12 @@ enum HeaderValues: Int {
     case InterpolateError = 700
     case OptimizeError = 800
     case InstrumentControlError = 900
+    case UnknownError = 999
+    
+    init(fromRawValue: Int){
+        self = HeaderValues(rawValue: fromRawValue) ?? .UnknownError
+    }
+    
 }
 
 enum ErrorCodes: Int {
@@ -39,7 +45,12 @@ enum ErrorCodes: Int {
     case AbortError = -18
     case VnirInterpolateError = -20
     case Swir1InterpolateError = -21
-    case Swir2InterpolateError = -22
+    case UnknownError = 99
+    
+    init(fromRawValue: Int){
+        self = ErrorCodes(rawValue: fromRawValue) ?? .UnknownError
+    }
+    
 }
 
 enum InstrumentTypes: Int {
@@ -51,6 +62,12 @@ enum InstrumentTypes: Int {
     case VinirSwir2 = 9
     case Swir1Swir2 = 12
     case VinirSwir1Swir2 = 13
+    case UnknownInstrument = 99
+    
+    init(fromRawValue: Int){
+        self = InstrumentTypes(rawValue: fromRawValue) ?? .UnknownInstrument
+    }
+    
 }
 
 enum InstrumentControlValues: Int {
@@ -59,11 +76,21 @@ enum InstrumentControlValues: Int {
     case Offset = 2
     case Shutter = 3
     case Trigger = 4
+    case UnknownError = 99
+    
+    init(fromRawValue: Int){
+        self = InstrumentControlValues(rawValue: fromRawValue) ?? .UnknownError
+    }
 }
 
 enum Saturation: Int {
     case NoSaturation = 0
-    case Saturation = 1
+    case Saturated = 1
+    
+    init(fromRawValue: Int){
+        self = Saturation(rawValue: fromRawValue) ?? .Saturated
+    }
+    
 }
 
 enum ShutterStatus: Int {

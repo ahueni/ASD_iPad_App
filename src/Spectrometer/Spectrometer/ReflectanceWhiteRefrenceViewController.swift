@@ -25,7 +25,7 @@ class ReflectanceWhiteRefrenceViewController : BaseWhiteReferenceViewController 
     
     override func goToNextPage() {
         // Add the white Refrence to the parent VC
-        pageContainer!.whiteRefrenceBeforeSpectrumList.append(currentWhiteRefrence!)
+        pageContainer!.whiteRefrenceBeforeSpectrumList.append(SpectrumCalculator.calculateDarkCurrentCorrection( spectrum: currentWhiteRefrence!))
         super.goToNextPage()
     }
     
@@ -34,7 +34,7 @@ class ReflectanceWhiteRefrenceViewController : BaseWhiteReferenceViewController 
         DispatchQueue.main.async {
             //update ui
             self.MeasurementLineChart.setAxisValues(min: 0, max: 5)
-            let values = SpectrumCalculator.calculateReflectance(currentSpectrum: self.currentSpectrum!, whiteReferenceSpectrum: self.currentWhiteRefrence!)
+            let values = SpectrumCalculator.calculateReflectance(currentSpectrum: SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: self.currentSpectrum!), whiteReferenceSpectrum: SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: self.currentWhiteRefrence!))
             let lineChartDataSet = SpectrumLineChartDataSet(values: values, label: "-")
             let lineChartData =  LineChartData(dataSet: lineChartDataSet)
             DispatchQueue.main.async {

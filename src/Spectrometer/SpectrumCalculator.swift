@@ -11,26 +11,38 @@ import Charts
 
 class SpectrumCalculator{
     
-    class func calculateDarkCurrentCorrection(spectrum : FullRangeInterpolatedSpectrum, darkCurrentSpectrum : FullRangeInterpolatedSpectrum) -> FullRangeInterpolatedSpectrum
+    class func calculateDarkCurrentCorrection(spectrum : FullRangeInterpolatedSpectrum) -> FullRangeInterpolatedSpectrum
     {
         
-        let darkCorrectionRange = ((InstrumentSettingsCache.sharedInstance.endingWaveLength + 1) - InstrumentSettingsCache.sharedInstance.startingWaveLength)
-        
-        for i in 0...darkCorrectionRange{
-            spectrum.spectrumBuffer[i] = spectrum.spectrumBuffer[i] - darkCurrentSpectrum.spectrumBuffer[i] + Float(InstrumentSettingsCache.sharedInstance.drift);
+        // if dc exists -> do darkcorrection
+        if let darkCurrent = InstrumentSettingsCache.sharedInstance.darkCurrent {
+            
+            let vinirDarkCurrentCorrection: Float = Float(InstrumentSettingsCache.sharedInstance.vinirDarkCurrentCorrection)
+            let currentDrift: Float = Float(spectrum.spectrumHeader.vinirHeader.drift)
+            let darkDrift: Float = Float(darkCurrent.spectrumHeader.vinirHeader.drift)
+            
+            let drift: Float = vinirDarkCurrentCorrection + (currentDrift - darkDrift)
+            print("CurrentDrift: " + currentDrift.description)
+            print("DarkDrift: " + darkDrift.description)
+            
+            let vinirEndingWaveLength = InstrumentSettingsCache.sharedInstance.vinirEndingWavelength
+            let vinirStartingWaveLength = InstrumentSettingsCache.sharedInstance.startingWaveLength
+            
+            let darkCorrectionRange = vinirEndingWaveLength + 1 - vinirStartingWaveLength
+            print("DarkCorrectionRange: " + darkCorrectionRange.description)
+            
+            for i in 0...650{
+                spectrum.spectrumBuffer[i] = spectrum.spectrumBuffer[i] - (darkCurrent.spectrumBuffer[i] + drift)
+            }
+            
+            // set darkCorrected flag in headers
+            spectrum.spectrumHeader.vinirHeader.darkSubtracted = DarkSubtracted.Yes
+            spectrum.spectrumHeader.swir1Header.darkSubtracted = DarkSubtracted.Yes
+            spectrum.spectrumHeader.swir2Header.darkSubtracted = DarkSubtracted.Yes
+            
+            print("DarkCurrent corrected")
+            
         }
-        
-        /*
-         for (i, dVal) in darkCurrent.spectrumBuffer.enumerated() {
-         let sVal = spectrumBuffer[i]
-         let calculated = sVal - dVal + drift
-         spectrumBuffer[i] = calculated
-         }*/
-        
-        // Set darkCorrected flag in headers
-        spectrum.spectrumHeader.vinirHeader.darkSubtracted = DarkSubtracted.Yes
-        spectrum.spectrumHeader.swir1Header.darkSubtracted = DarkSubtracted.Yes
-        spectrum.spectrumHeader.swir2Header.darkSubtracted = DarkSubtracted.Yes
         
         return spectrum
     }
