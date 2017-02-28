@@ -15,6 +15,7 @@
 			<string>Alternate</string>
 			<key>LSItemContentTypes</key>
 			<array>
+				<string>public.raw</string>
 				<string>public.ill</string>
 				<string>public.ref</string>
 				<string>public.ini</string>
@@ -62,10 +63,27 @@
 		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>
+				<string>public.raw</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>FiberOptic files for ASD Spectrometer</string>
+			<key>UTTypeIdentifier</key>
+			<string>public.raw</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.mime-type</key>
+				<string>application/spectrometer</string>
+				<key>public.filename-extension</key>
+				<string>raw</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
 				<string>public.asd</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>ASD Dateien für ASD Spektrometer</string>
+			<string>.asd files for Spectrometer</string>
 			<key>UTTypeIdentifier</key>
 			<string>public.asd</string>
 			<key>UTTypeTagSpecification</key>

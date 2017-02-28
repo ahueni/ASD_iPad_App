@@ -72,6 +72,11 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
         setViewOrientation()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        InstrumentSettingsCache.sharedInstance.aquireLoop = false
+    }
+    
     @IBAction func startAquire(_ sender: UIButton) {
         startAquire()
     }
