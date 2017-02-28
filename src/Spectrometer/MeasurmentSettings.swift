@@ -11,12 +11,12 @@ import Foundation
 class MeasurmentSettings : NSObject, NSCoding{
     
     var fileName: String
-    var measurmentMode: MeasurmentMode
+    var measurmentMode: MeasurementMode
     var path: URL
     
     required init(coder decoder: NSCoder) {
         self.fileName = decoder.decodeObject(forKey: "fileName") as! String
-        self.measurmentMode = MeasurmentMode(rawValue: Int(decoder.decodeInt32(forKey: "measurmentMode")))!
+        self.measurmentMode = MeasurementMode(rawValue: Int(decoder.decodeInt32(forKey: "measurmentMode")))!
         
         let pathString = decoder.decodeObject(forKey: "pathString") as! String
         self.path = URL(string: pathString)!
@@ -29,14 +29,14 @@ class MeasurmentSettings : NSObject, NSCoding{
         aCoder.encode(self.measurmentMode.rawValue, forKey: "measurmentMode")
     }
     
-    init(fileName: String, path: URL, measurmentMode : MeasurmentMode){
+    init(fileName: String, path: URL, measurmentMode : MeasurementMode){
         self.fileName = fileName
         self.measurmentMode = measurmentMode
         self.path = path
     }
 }
 
-enum MeasurmentMode : Int{
+enum MeasurementMode : Int{
     case Raw
     case Reflectance
     case Radiance

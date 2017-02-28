@@ -17,7 +17,7 @@ class ParentViewController : UIPageViewController {
     
     var selectedForeOptic : CalibrationFile? // only used in radiance
     
-    var measurmentMode : MeasurmentMode?
+    var measurmentMode : MeasurementMode?
     var pages = [ModalPage]()
     var currentIndex = -1
     

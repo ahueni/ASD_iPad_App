@@ -52,26 +52,50 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
         alert.view.addSubview(loadingIndicator)
         
         let config = self.configs[sender.tag]
-        let tcpManager: TcpManager = TcpManager(hostname: config.ipAdress!, port: Int(config.port))
+        let adress = InternetAddress(hostname: config.ipAdress!, port: Port(Int(config.port)))
         
         present(alert, animated: false, completion: {
         
-            // connect with background thread
-            DispatchQueue.global(qos: .background).async {
+            // connect in background thread
+            DispatchQueue.global(qos: .userInitiated).async {
                 
-                alert.dismiss(animated: true, completion: nil)
+                // if connection successful display main page otherwise show warning message
+                if (TcpManager.sharedInstance.connect(internetAdress: adress)) {
+                    
+                    DispatchQueue.main.async {
+                        alert.message = "Restore..."
+                    }
+                    
+                    // set config to app delegate ->>>>> SHOULD BE IN A GLOBAL CACHE MANAGER
+                    self.appDelegate.config = config
+                    
+                    // first send a RESTORE command to initilaize spectrometer
+                    CommandManager.sharedInstance.restore()
+                    
+                    DispatchQueue.main.async {
+                        alert.message = "Optimize..."
+                    }
+                    CommandManager.sharedInstance.optimize()
+                    
+                    DispatchQueue.main.async {
+                        alert.message = "Initialize..."
+                    }
+                    // initialize app with defualt spectrometer values
+                    CommandManager.sharedInstance.initialize()
+                    
+                    // pre calculate radiance values
+                    let firstForeoptic = (config.fiberOpticCalibrations?.allObjects as! [CalibrationFile]).first
+                    SpectrumCalculator.sharedInstance.updateForeopticFiles(base: config.base!, lamp: config.lamp!, foreoptic: firstForeoptic!)
+                    
+                    // close connecting alert and redirect to main page
+                    alert.dismiss(animated: true, completion: nil)
+                    self.displayMainPage()
                 
-                //self.displayMainPage(tcpManager: tcpManager, config: config)
-                
-                
-                 if (tcpManager.connect()) {
-                 alert.dismiss(animated: true, completion: nil)
-                 self.displayMainPage(tcpManager: tcpManager, config: config)
-                 } else {
-                 alert.dismiss(animated: true, completion: {
-                 self.showWarningMessage(title: "Connection failed", message: "Es konnte keine Verbindung mit dem Spektrometer hergestellt werden. Überprüfen sie die Einstellungen und ob das Gerät mit dem Netzwerk des Spektrometers verbunden ist.")
-                 })
-                 }
+                } else {
+                    alert.dismiss(animated: true, completion: {
+                        self.showWarningMessage(title: "Connection failed", message: "Es konnte keine Verbindung mit dem Spektrometer hergestellt werden. Überprüfen sie die Einstellungen und ob das Gerät mit dem Netzwerk des Spektrometers verbunden ist.")
+                    })
+                }
                 
             }
         
@@ -79,33 +103,18 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
         
     }
     
-    func displayMainPage(tcpManager: TcpManager, config: SpectrometerConfig) -> Void {
-        DispatchQueue.main.sync {
-            _ = tcpManager.sendCommand(command: Command(commandParam: CommandEnum.Restore, params: "1"))
-            
-            self.appDelegate.tcpManager = tcpManager
-            self.appDelegate.config = config
-            
+    func displayMainPage() -> Void {
+        
+        DispatchQueue.main.async {
+            // create viewcontroller and set it as new rootView controller
             let initialViewController = self.storyboard?.instantiateViewController(withIdentifier: "SpektrometerApp") as! UITabBarController
             self.appDelegate.window?.rootViewController = initialViewController
             self.appDelegate.window?.makeKeyAndVisible()
         }
-    }
-
-    @IBAction func sendVersionCommand(_ sender: Any) {
-        let tcpManager: TcpManager = appDelegate.tcpManager!
         
-        let command:Command = Command(commandParam: CommandEnum.Version, params: "")
-        let data = tcpManager.sendCommand(command: command)
-        let versionParser = VersionParser(data: data)
-        let version = versionParser.parse()
-        
-        print("Header: "+version.header.rawValue.description)
-        print("Error: "+version.error.rawValue.description)
-        print("Version: "+version.version)
-        print("Version: "+version.versionNumber.description)
-        print("Type: "+version.type.rawValue.description)
     }
+    
+    // MARK - Spectrometer TableView configuration
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return configs.count
@@ -122,9 +131,8 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
         
         PlainPing.ping(config.ipAdress!, withTimeout: 1.0, completionBlock: { (timeElapsed:Double?, error:Error?) in
             
-            if let latency = timeElapsed {
+            if timeElapsed != nil {
                 cell.name.textColor = .blue
-                
                 let pulsator = Pulsator()
                 pulsator.numPulse = 4
                 pulsator.radius = 45
@@ -134,8 +142,9 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
             }
             
             if let error = error {
-                print("ping failed for "+config.ipAdress!)
+                print("ping failed for " + config.ipAdress! + " | error: " + error.localizedDescription)
             }
+            
         })
         return cell
     }

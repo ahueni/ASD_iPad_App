@@ -25,7 +25,7 @@ class FullRangeInterpolatedSpectrum : BaseSpectrum {
         var values: [ChartDataEntry] = []
         for i in 0...self.spectrumBuffer.count-1 {
             // read starting wavelength and count it to actual index of x-chart entry
-            let startingWaveLength = InstrumentSettingsCache.sharedInstance.startingWaveLength
+            let startingWaveLength = InstrumentSettingsCache.sharedInstance.startingWaveLength!
             let chartEntry = ChartDataEntry(x: Double(i + startingWaveLength), y: Double(spectrumBuffer[i]))
             values.append(chartEntry)
         }

@@ -14,16 +14,22 @@ class InstrumentSettingsCache {
     
     var aquireLoop = false
     
-    var startingWaveLength: Int = 0
-    var endingWaveLength: Int = 0
-    var vinirStartingWavelength : Int = 0
-    var vinirEndingWavelength: Int = 0
-    var vinirDarkCurrentCorrection: Double = 0
+    var startingWaveLength: Int!
+    var endingWaveLength: Int!
+    var vinirStartingWavelength: Int!
+    var vinirEndingWavelength: Int!
+    var s1StartingWavelength: Int!
+    var s1EndingWavelength: Int!
+    var s2StartingWavelength: Int!
+    var s2EndingWavelength: Int!
+    
+    var vinirDarkCurrentCorrection: Double!
     
     var darkCurrent: FullRangeInterpolatedSpectrum?
     
     // prevent other instances of this class
     private init() {
+        
     }
 
 }

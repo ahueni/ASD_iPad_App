@@ -139,7 +139,6 @@
 		E1A40C2E1E40A2D60019F467 /* DirectoryBrowserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A40C2D1E40A2D60019F467 /* DirectoryBrowserTableViewController.swift */; };
 		E1AC382B1E266ACD004CCBEF /* IndicoWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC382A1E266ACD004CCBEF /* IndicoWriter.swift */; };
 		E1BD75EF1E60705100AB92CD /* BaseWhiteReferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD75EE1E60705100AB92CD /* BaseWhiteReferenceViewController.swift */; };
-		E1C019781E60332A0072E8BB /* AquireUpdateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C019771E60332A0072E8BB /* AquireUpdateProtocol.swift */; };
 		E1C936B51E41D61800EF51BB /* BaseValidationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C936B41E41D61800EF51BB /* BaseValidationControl.swift */; };
 		E1C936B71E41D64A00EF51BB /* NumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C936B61E41D64A00EF51BB /* NumberTextField.swift */; };
 		E1C936B91E41D8B700EF51BB /* PortTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C936B81E41D8B700EF51BB /* PortTextField.swift */; };
@@ -300,7 +299,6 @@
 		E1A40C2D1E40A2D60019F467 /* DirectoryBrowserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryBrowserTableViewController.swift; sourceTree = "<group>"; };
 		E1AC382A1E266ACD004CCBEF /* IndicoWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicoWriter.swift; sourceTree = "<group>"; };
 		E1BD75EE1E60705100AB92CD /* BaseWhiteReferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWhiteReferenceViewController.swift; sourceTree = "<group>"; };
-		E1C019771E60332A0072E8BB /* AquireUpdateProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AquireUpdateProtocol.swift; sourceTree = "<group>"; };
 		E1C936B41E41D61800EF51BB /* BaseValidationControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseValidationControl.swift; sourceTree = "<group>"; };
 		E1C936B61E41D64A00EF51BB /* NumberTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberTextField.swift; sourceTree = "<group>"; };
 		E1C936B81E41D8B700EF51BB /* PortTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortTextField.swift; sourceTree = "<group>"; };
@@ -499,7 +497,6 @@
 				2E91F2F81DDB6137003E277F /* Helpers */,
 				2E91F2F61DDB5CF7003E277F /* TcpManager.swift */,
 				E186B9471E364DDF00FE43F3 /* CommandManager.swift */,
-				E1C019771E60332A0072E8BB /* AquireUpdateProtocol.swift */,
 				E13567881E61BB260049DCA7 /* SpectrumCalculator.swift */,
 				E1D7BD5F1E61D0CB00E1EF2E /* InstrumentSettingsCache.swift */,
 			);
@@ -1199,7 +1196,6 @@
 				2E91F2EB1DDB5B9F003E277F /* Pipe.swift in Sources */,
 				2E91F2FE1DDB7446003E277F /* SpectrumHeader.swift in Sources */,
 				2E91F3171DDB848E003E277F /* Version.swift in Sources */,
-				E1C019781E60332A0072E8BB /* AquireUpdateProtocol.swift in Sources */,
 				2EB822EC1DE0811D00DF732C /* FullRangeInterpolatedSpectrumParser.swift in Sources */,
 				2E54E9AD1E62316B0047565E /* UIRoundBorderedView.swift in Sources */,
 				2E91F30F1DDB82C7003E277F /* Parameter.swift in Sources */,

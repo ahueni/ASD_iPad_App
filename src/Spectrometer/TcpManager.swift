@@ -10,20 +10,21 @@ import Foundation
 
 class TcpManager {
     
-    let address:InternetAddress
-    let initByteSize:Int = 60
-    var client: TCPClient!
-    var connectState: Bool = false
-    var aquireUpdateProtocol : AquireUpdateProtocol?
+    static let sharedInstance = TcpManager()
     
-    init(hostname: String, port: Int) {
-        address = InternetAddress(hostname: hostname, port: Port(port))
+    private init() {
+        
     }
     
-    func connect() -> Bool {
+    internal var client: TCPClient!
+    internal var connectState: Bool = false
+    
+    func connect(internetAdress: InternetAddress) -> Bool {
+        
+        let initByteSize:Int = 60
         
         do {
-            client = try TCPClient(address: address, connectionTimeout: 5)
+            client = try TCPClient(address: internetAdress, connectionTimeout: 8)
             var recData = 0
             while recData < initByteSize {
                 let recPart = try client?.receiveAll()
@@ -63,7 +64,6 @@ class TcpManager {
                 let recPart: [UInt8]? = try client.receiveAll()
                 array += recPart!
                 recData += recPart!.count
-                aquireUpdateProtocol?.update(percentageReceived: Int(Double(recData)/Double(command.size) * 100))
             }
             
         } catch {

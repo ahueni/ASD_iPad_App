@@ -9,19 +9,16 @@
 import Foundation
 import UIKit
 
-class CommandManager{
+class CommandManager {
     
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    let tcpManager: TcpManager = (UIApplication.shared.delegate as! AppDelegate).tcpManager!
+    // handle command manager as a singelton
+    static let sharedInstance = CommandManager()
+    private init() { }
+    
+    let tcpManager: TcpManager = TcpManager.sharedInstance
+    
     // used to queue requests to spectrometer. It is essential that only one request at a time is processing
     let serialQueue = DispatchQueue(label: "spectrometerQueue")
-    
-    static let sharedInstance = CommandManager()
-    
-    // prevent other instances of this class
-    private init() {
-    
-    }
     
     func aquire(samples: Int32) -> FullRangeInterpolatedSpectrum {
         
@@ -53,24 +50,74 @@ class CommandManager{
         let spectrum = spectrums.first!
         spectrum.spectrumBuffer = resultSpectrumBuffer
         return spectrum
+        
     }
     
     func darkCurrent() -> Void {
         
         serialQueue.sync {
-            
-            // only to have first a aquire command -> rs3 dose the same result is not nescessary
-            _ = internalAquire(samples: 2)
-            
-            // get all wavelengths to have darkcurrent calculation wavelengths
-            getWaveLengthts()
-            
-            // optimice -> rs3 dose the same
-            internOptimize()
-            
+            // optimize is not needed here
+            //internOptimize()
             closeShutter()
             InstrumentSettingsCache.sharedInstance.darkCurrent = internalAquire(samples: 10)
             openShutter()
+        }
+        
+    }
+    
+    func initialize() -> Void {
+        
+        serialQueue.sync {
+            // initialize values from spectrometer
+            let startingWavelength = initialize(valueName: "StartingWavelength")
+            let endingWavelength = initialize(valueName: "EndingWavelength")
+            let vinirStartingWavelength = initialize(valueName: "VStartingWavelength")
+            let vinirEndingWavelength = initialize(valueName: "VEndingWavelength")
+            let s1StartingWavelength = initialize(valueName: "S1StartingWavelength")
+            let s1EndingWavelength = initialize(valueName: "S1EndingWavelength")
+            let s2StartingWavelength = initialize(valueName: "S2StartingWavelength")
+            let s2EndingWavelength = initialize(valueName: "S2EndingWavelength")
+            
+            let vinirDarkCurrentCorrection = initialize(valueName: "VDarkCurrentCorrection")
+            
+            InstrumentSettingsCache.sharedInstance.startingWaveLength = Int(startingWavelength.value)
+            InstrumentSettingsCache.sharedInstance.endingWaveLength = Int(endingWavelength.value)
+            InstrumentSettingsCache.sharedInstance.vinirStartingWavelength = Int(vinirStartingWavelength.value)
+            InstrumentSettingsCache.sharedInstance.vinirEndingWavelength = Int(vinirEndingWavelength.value)
+            InstrumentSettingsCache.sharedInstance.s1StartingWavelength = Int(s1StartingWavelength.value)
+            InstrumentSettingsCache.sharedInstance.s1EndingWavelength = Int(s1EndingWavelength.value)
+            InstrumentSettingsCache.sharedInstance.s2StartingWavelength = Int(s2StartingWavelength.value)
+            InstrumentSettingsCache.sharedInstance.s2EndingWavelength = Int(s2EndingWavelength.value)
+            
+            InstrumentSettingsCache.sharedInstance.vinirDarkCurrentCorrection = vinirDarkCurrentCorrection.value
+        }
+        
+    }
+    
+    func restore() -> Void {
+        
+        serialQueue.sync {
+            
+            let restoreCommand = Command(commandParam: CommandEnum.Restore, params: "1")
+            _ = tcpManager.sendCommand(command: restoreCommand)
+            
+        }
+        
+    }
+    
+    func optimize() -> Void {
+        serialQueue.sync {
+            internOptimize()
+        }
+    }
+    
+    func setVinirIntegrationTime(index: Int) -> Void {
+        
+        serialQueue.sync {
+            
+            let command:Command = Command(commandParam: CommandEnum.InstrumentControl, params: "2,0," + index.description)
+            _ = tcpManager.sendCommand(command: command)
+            
         }
         
     }
@@ -80,24 +127,6 @@ class CommandManager{
         let data = tcpManager.sendCommand(command: command)
         let spectrumParser = FullRangeInterpolatedSpectrumParser(data: data)
         return spectrumParser.parse()
-    }
-    
-    internal func getWaveLengthts(){
-        
-        let startingWavelength = initialize(valueName: "StartingWavelength")
-        let endingWavelength = initialize(valueName: "EndingWavelength")
-        let vinirStartingWavelength = initialize(valueName: "VStartingWavelength")
-        let vinirEndingWavelength = initialize(valueName: "VEndingWavelength")
-        
-        let vinirDarkCurrentCorrection = initialize(valueName: "VDarkCurrentCorrection")
-        
-        
-        InstrumentSettingsCache.sharedInstance.startingWaveLength = Int(startingWavelength.value)
-        InstrumentSettingsCache.sharedInstance.endingWaveLength = Int(endingWavelength.value)
-        InstrumentSettingsCache.sharedInstance.vinirStartingWavelength = Int(vinirStartingWavelength.value)
-        InstrumentSettingsCache.sharedInstance.vinirEndingWavelength = Int(vinirEndingWavelength.value)
-        
-        InstrumentSettingsCache.sharedInstance.vinirDarkCurrentCorrection = vinirDarkCurrentCorrection.value
     }
     
     internal func closeShutter() -> Void {
@@ -114,12 +143,7 @@ class CommandManager{
         let command:Command = Command(commandParam: CommandEnum.Optimize, params: "7")
         _ = tcpManager.sendCommand(command: command)
     }
-    
-    func optimize() -> Void {
-        serialQueue.sync {
-            internOptimize()
-        }
-    }
+
     
     internal func initialize(valueName: String) -> Parameter {
         let command:Command = Command(commandParam: CommandEnum.Initialize, params: "0,"+valueName)

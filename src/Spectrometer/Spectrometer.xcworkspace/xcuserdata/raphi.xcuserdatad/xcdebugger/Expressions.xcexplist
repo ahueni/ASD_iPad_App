@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "FullRangeInterpolatedSpectrumParser.parse() -&gt; FullRangeInterpolatedSpectrum:FullRangeInterpolatedSpectrumParser.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "getNextInt()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "IndicoWriter.innerWriteBasic(spectrum : FullRangeInterpolatedSpectrum, whiteRefrenceSpectrum : FullRangeInterpolatedSpectrum?) -&gt; ():IndicoWriter.swift">
          <PersistentStrings>
             <PersistentString

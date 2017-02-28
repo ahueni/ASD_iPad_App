@@ -10,14 +10,6 @@ import Foundation
 import UIKit
 import Charts
 
-enum MeasurementMode {
-    
-    case Raw
-    case Reflectance
-    case Radiance
-    
-}
-
 class AquireViewController: UIViewController, SelectFiberopticDelegate {
     
     // buttons
@@ -36,7 +28,6 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     @IBOutlet var lineChart: SpectrumLineChartView!
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    let tcpManager: TcpManager = (UIApplication.shared.delegate as! AppDelegate).tcpManager!
     
     // stack views
     @IBOutlet var mainStackView: UIStackView!
@@ -107,8 +98,13 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     @IBAction func darkCurrent(_ sender: Any) {
         InstrumentSettingsCache.sharedInstance.aquireLoop = false
         CommandManager.sharedInstance.darkCurrent()
-        self.lineChart.setAxisValues(min: 0, max: 65000)
-        self.lineChart.data = InstrumentSettingsCache.sharedInstance.darkCurrent?.getChartData()
+        
+        // update chart data
+        self.updateChart(chartData: (InstrumentSettingsCache.sharedInstance.darkCurrent?.getChartData())!, measurementMode: .Raw)
+        
+        // after a dark current evaluate measurement modes
+        activateRadianceMode()
+        activateReflectanceMode()
     }
     
     @IBAction func whiteReference(_ sender: UIButton) {
@@ -122,18 +118,11 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
         let whiteRefWithoutDarkCurrent = CommandManager.sharedInstance.aquire(samples: 10)
         whiteReferenceSpectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: whiteRefWithoutDarkCurrent)
         
-        // display the actual white reference to chart
-        self.lineChart.setAxisValues(min: 0, max: 65000)
-        self.lineChart.data = whiteReferenceSpectrum?.getChartData()
+        // update chart data
+        updateChart(chartData: (whiteReferenceSpectrum?.getChartData())!, measurementMode: .Raw)
         
+        // activate reflectance mode
         activateReflectanceMode()
-        
-    }
-    
-    @IBAction func optimizeButtonClicked(_ sender: UIButton) {
-        InstrumentSettingsCache.sharedInstance.aquireLoop = false
-        CommandManager.sharedInstance.optimize()
-        startAquire()
     }
     
     @IBAction func selectFiberOptic(_ sender: UIColorButton) {
@@ -174,24 +163,19 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
                 
                 // calculate reflectance or radiance and change axis of line chart
                 switch self.measurementMode {
-                case .Raw:
-                    self.lineChart.setAxisValues(min: 0, max: 65000)
+                case .Raw: break
                 case .Reflectance:
-                    self.lineChart.setAxisValues(min: -1, max: 4)
                     spectrum = SpectrumCalculator.calculateReflectance(currentSpectrum: spectrum, whiteReferenceSpectrum: self.whiteReferenceSpectrum!)
                 case .Radiance:
-                    self.lineChart.setAxisValues(min: -1, max: 4)
-                    //spectrum = SpectrumCalculator.calculateRadiance()
+                    spectrum = SpectrumCalculator.calculateRadiance(spectrum: spectrum)
                 }
                 
-                // update user interface in main thread
-                DispatchQueue.main.async {
-                    self.lineChart.data = spectrum.getChartData()
-                }
+                // update chart data
+                self.updateChart(chartData: spectrum.getChartData(), measurementMode: self.measurementMode)
                 
             }
-            self.aquireButton.setTitle("Start Aquire", for: .normal)
             print("AquireLoop stopped...")
+            self.aquireButton.setTitle("Start Aquire", for: .normal)
         }
         
     }
@@ -202,9 +186,33 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
         }
     }
     
+    internal func updateChart(chartData: LineChartData, measurementMode: MeasurementMode) {
+        
+        // switch to UI thread
+        DispatchQueue.main.async {
+            
+            // set chart axis
+            switch measurementMode {
+            case .Raw:
+                self.lineChart.setAxisValues(min: 0, max: 65535)
+            case .Reflectance:
+                self.lineChart.setAxisValues(min: 0, max: 3)
+            case .Radiance:
+                self.lineChart.setAxisValues(min: 0, max: 1)
+            }
+            
+            // update chart data
+            self.lineChart.data = chartData
+            
+        }
+        
+        
+    }
+    
     internal func activateReflectanceMode() {
         
-        if whiteReferenceSpectrum != nil {
+        // check if white reference and dark current available
+        if whiteReferenceSpectrum != nil && InstrumentSettingsCache.sharedInstance.darkCurrent != nil {
             reflectanceRadioButton.isEnabled = true
         } else {
             reflectanceRadioButton.isEnabled = false
@@ -214,9 +222,15 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     
     internal func activateRadianceMode() {
         
+        // check if a foreoptic is slected
         if let selectedForeOptic = selectedForeOptic {
-            foreOpticLabel.text = selectedForeOptic.name
-            radianceRadioButton.isEnabled = true
+            
+            // check if darkCurrent is taken before activate radiance mode
+            if InstrumentSettingsCache.sharedInstance.darkCurrent != nil {
+                foreOpticLabel.text = selectedForeOptic.name
+                radianceRadioButton.isEnabled = true
+            }
+            
         } else {
             foreOpticLabel.text = "Please select a Foreoptic to activate Radiance mode"
             radianceRadioButton.isEnabled = false

@@ -96,6 +96,14 @@ enum Saturation: Int {
 enum ShutterStatus: Int {
     case Open = 0
     case Closed = 1
+    case Error = 99
+    
+    init(fromRawValue: Int){
+        
+        if (fromRawValue > 1) { print("ShutterStatus: " + fromRawValue.description) }        
+        self = ShutterStatus(rawValue: fromRawValue) ?? .Error
+    }
+    
 }
 
 enum DarkSubtracted: Int {
@@ -112,4 +120,51 @@ enum TecStatus: Int {
 enum Trigger: Int {
     case Off = 0
     case On = 1
+}
+
+struct IntegrationTimeMapper {
+    
+    static func mapIndex(index : Int) -> (Int, Float){
+        
+        switch(index) {
+        case -1:
+            return (index, 8.5)
+        case 0:
+            return (index, 17)
+        case 1:
+            return (index, 34)
+        case 2:
+            return (index, 68)
+        case 3:
+            return (index, 136)
+        case 4:
+            return (index, 272)
+        case 5:
+            return (index, 544)
+        case 6:
+            return (index, 1090)
+        case 7:
+            return (index, 2180)
+        case 8:
+            return (index, 4350)
+        case 9:
+            return (index, 8700)
+        case 10:
+            return (index, 17410)
+        case 11:
+            return (index, 34820)
+        case 12:
+            return (index, 69600)
+        case 13:
+            return (index, 139200)
+        case 14:
+            return (index, 278400)
+        case 15:
+            return (index, 556800)
+        default:
+            return (-1, 8.5)
+        }
+        
+    }
+    
 }

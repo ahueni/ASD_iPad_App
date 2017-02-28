@@ -39,7 +39,7 @@ class FullRangeInterpolatedSpectrumParser: BaseSpectrumParser, ISpectrumParser {
         let maxChannel: Int = getNextInt()
         let minChannel: Int = getNextInt()
         let saturation: Saturation = Saturation(fromRawValue: getNextInt())
-        let shutter: ShutterStatus = ShutterStatus(rawValue: getNextInt())!
+        let shutter: ShutterStatus = ShutterStatus(fromRawValue: getNextInt())
         let drift: Int = getNextInt()
         let darkSubtracted: DarkSubtracted = DarkSubtracted(rawValue: getNextInt())!
         

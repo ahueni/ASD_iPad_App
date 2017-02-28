@@ -33,10 +33,10 @@ class FinishTestSeriesViewController : BaseMeasurementModal {
         let loadedSettings = NSKeyedUnarchiver.unarchiveObject(with: measurmentSettings!) as! MeasurmentSettings
         
         switch pageContainer!.measurmentMode! {
-        case MeasurmentMode.Raw:
+        case MeasurementMode.Raw:
             save(spectrums: pageContainer!.spectrumList, whiteRefrenceSpectrum: nil, loadedSettings: loadedSettings)
             break
-        case MeasurmentMode.Radiance:
+        case MeasurementMode.Radiance:
             let indicoCalibration = IndicoCalibration(baseFile: (appDelegate.config!.base)!, lampFile: appDelegate.config!.lamp!, fiberOptic: pageContainer.selectedForeOptic!)
             
             //save wr before
@@ -46,7 +46,7 @@ class FinishTestSeriesViewController : BaseMeasurementModal {
             //save wr after
             save(spectrums: pageContainer!.whiteRefrenceAfterSpectrumList, whiteRefrenceSpectrum: nil, loadedSettings: loadedSettings,indicoCalibration: indicoCalibration, fileSuffix: "_wrAfter")
             break
-        case MeasurmentMode.Reflectance:
+        case MeasurementMode.Reflectance:
             save(spectrums: pageContainer!.spectrumList, whiteRefrenceSpectrum: pageContainer!.whiteRefrenceBeforeSpectrumList.first!, loadedSettings: loadedSettings)
             break
         }

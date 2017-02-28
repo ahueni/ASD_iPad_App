@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class FastMeasurmentViewController : BaseMeasurementModal, AquireUpdateProtocol
+class FastMeasurmentViewController : BaseMeasurementModal
 {
     internal func update(percentageReceived: Int) {
         DispatchQueue.main.async {
@@ -25,9 +25,7 @@ class FastMeasurmentViewController : BaseMeasurementModal, AquireUpdateProtocol
     override func viewDidLoad() {
         super.viewDidLoad()
         targetPage = pageContainer.currentPage as! TargetPage
-        //self.progressBar.initialize(total: self.targetPage.targetCount)
-        self.progressBar.initialize(total: 100)
-        appDelegate.tcpManager?.aquireUpdateProtocol = self
+        self.progressBar.initialize(total: self.targetPage.targetCount)
     }
     
     @IBAction func StartMeasurmentsButtonClicked(_ sender: UIButton) {

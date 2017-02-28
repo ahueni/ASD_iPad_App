@@ -116,7 +116,7 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
     override func goToNextPage(){
         
         // first save settings to userDefaults
-        let measurementMode = rawRadioButton.isSelected ? MeasurmentMode.Raw : reflectanceRadioButton.isSelected ? MeasurmentMode.Reflectance : radianceRadioButton.isSelected ? MeasurmentMode.Radiance : nil
+        let measurementMode = rawRadioButton.isSelected ? MeasurementMode.Raw : reflectanceRadioButton.isSelected ? MeasurementMode.Reflectance : radianceRadioButton.isSelected ? MeasurementMode.Radiance : nil
         pageContainer!.measurmentMode = measurementMode
         let measurmentSettings = MeasurmentSettings(fileName: fileNameTextField.text!, path: selectPathInput.selectedPath!, measurmentMode: measurementMode!)
         
@@ -126,13 +126,13 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
         
         // append the next page
         switch measurementMode! {
-        case MeasurmentMode.Raw:
+        case MeasurementMode.Raw:
             pageContainer!.pages.append(RawPage())
             break
-        case MeasurmentMode.Radiance:
+        case MeasurementMode.Radiance:
             pageContainer!.pages.append(RadiancePage())
             break
-        case MeasurmentMode.Reflectance:
+        case MeasurementMode.Reflectance:
             pageContainer!.pages.append(ReflectancePage())
             break
         }
