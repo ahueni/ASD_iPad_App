@@ -23,11 +23,8 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     @IBOutlet var foreOpticButton: UIColorButton!
     @IBOutlet var foreOpticLabel: UILabel!
     
-    
     // chart
     @IBOutlet var lineChart: SpectrumLineChartView!
-    
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     // stack views
     @IBOutlet var mainStackView: UIStackView!
@@ -51,9 +48,7 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
         reflectanceRadioButton.alternateButton = [rawRadioButton, radianceRadioButton]
         radianceRadioButton.alternateButton = [rawRadioButton, reflectanceRadioButton]
         
-        // select a default foreOptic file
-        let allForeOpticFiles = self.appDelegate.config?.fiberOpticCalibrations?.allObjects as! [CalibrationFile]
-        InstrumentSettingsCache.sharedInstance.selectedForeOptic = allForeOpticFiles.first
+        // activateRadianceMode -> actually nothing happens because no dark current is taken
         activateRadianceMode()
         
     }
@@ -97,7 +92,10 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     
     @IBAction func darkCurrent(_ sender: Any) {
         InstrumentSettingsCache.sharedInstance.aquireLoop = false
-        CommandManager.sharedInstance.darkCurrent()
+        
+        // take dark current
+        let darkCurrentSampleCount = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent
+        CommandManager.sharedInstance.darkCurrent(sampleCount: darkCurrentSampleCount)
         
         // update chart data
         self.updateChart(chartData: (InstrumentSettingsCache.sharedInstance.darkCurrent?.getChartData())!, measurementMode: .Raw)
@@ -112,10 +110,12 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
         InstrumentSettingsCache.sharedInstance.aquireLoop = false
         
         // first take a new dark current
-        CommandManager.sharedInstance.darkCurrent()
+        let darkCurrentSampleCount = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent
+        CommandManager.sharedInstance.darkCurrent(sampleCount: darkCurrentSampleCount)
         
         // take white reference and calculate dark current correction
-        let whiteRefWithoutDarkCurrent = CommandManager.sharedInstance.aquire(samples: 10)
+        let whiteRefSampleCount = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent
+        let whiteRefWithoutDarkCurrent = CommandManager.sharedInstance.aquire(samples: whiteRefSampleCount)
         whiteReferenceSpectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: whiteRefWithoutDarkCurrent)
         
         // update chart data
@@ -156,7 +156,8 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
             while(InstrumentSettingsCache.sharedInstance.aquireLoop){
                 
                 // collect spectrum
-                var spectrum = CommandManager.sharedInstance.aquire(samples: (self.appDelegate.config?.sampleCount)!)
+                let sampleCount = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCount
+                var spectrum = CommandManager.sharedInstance.aquire(samples: sampleCount)
                 
                 // calculate dark current if selected on view
                 spectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: spectrum)
@@ -225,9 +226,10 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
         // check if a foreoptic is slected
         if let selectedForeOptic = InstrumentSettingsCache.sharedInstance.selectedForeOptic {
             
+            foreOpticLabel.text = selectedForeOptic.name
+            
             // check if darkCurrent is taken before activate radiance mode
             if InstrumentSettingsCache.sharedInstance.darkCurrent != nil {
-                foreOpticLabel.text = selectedForeOptic.name
                 radianceRadioButton.isEnabled = true
             }
             

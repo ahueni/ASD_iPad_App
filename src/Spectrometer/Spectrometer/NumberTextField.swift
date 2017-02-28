@@ -28,3 +28,22 @@ class NumberTextField : BaseTextField {
     }
 
 }
+
+@IBDesignable
+class OptionalTextField : BaseTextField {
+    
+    override var isValid: Bool {
+        get {
+            return true
+        }
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+}

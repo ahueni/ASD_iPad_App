@@ -37,7 +37,11 @@ class FinishTestSeriesViewController : BaseMeasurementModal {
             save(spectrums: pageContainer!.spectrumList, whiteRefrenceSpectrum: nil, loadedSettings: loadedSettings)
             break
         case MeasurementMode.Radiance:
-            let indicoCalibration = IndicoCalibration(baseFile: (appDelegate.config!.base)!, lampFile: appDelegate.config!.lamp!, fiberOptic: InstrumentSettingsCache.sharedInstance.selectedForeOptic!)
+            
+            let base = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.base!
+            let lamp = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.lamp!
+            let fiberOptic = InstrumentSettingsCache.sharedInstance.selectedForeOptic!
+            let indicoCalibration = IndicoCalibration(baseFile: base, lampFile: lamp, fiberOptic: fiberOptic)
             
             //save wr before
             save(spectrums: pageContainer!.whiteRefrenceBeforeSpectrumList, whiteRefrenceSpectrum: nil, loadedSettings: loadedSettings,indicoCalibration: indicoCalibration, fileSuffix: "_wrBefore")
@@ -52,7 +56,7 @@ class FinishTestSeriesViewController : BaseMeasurementModal {
         }
     }
     
-    /*
+    
     func save(spectrums : [FullRangeInterpolatedSpectrum], whiteRefrenceSpectrum: FullRangeInterpolatedSpectrum?, loadedSettings: MeasurmentSettings, indicoCalibration: IndicoCalibration? = nil, fileSuffix :String = "")
     {
         DispatchQueue.global().async {
@@ -67,7 +71,6 @@ class FinishTestSeriesViewController : BaseMeasurementModal {
             self.finishedSaving()
         }
     }
- */
     
     func finishedSaving() -> Void {
         

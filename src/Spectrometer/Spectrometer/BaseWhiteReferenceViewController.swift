@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class BaseWhiteReferenceViewController : BaseMeasurementModal{
+class BaseWhiteReferenceViewController : BaseMeasurementModal {
     
     var currentSpectrum : FullRangeInterpolatedSpectrum? = nil // the actual Measurment
     var whiteRefrencePage : WhiteReferencePage! // currentPage
@@ -39,7 +39,8 @@ class BaseWhiteReferenceViewController : BaseMeasurementModal{
     
     func aquire() {
         // Background tasks
-        let aquiredSpectrum = CommandManager.sharedInstance.aquire(samples: (self.appDelegate.config?.sampleCount)!)
+        let sampleCount = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCount
+        let aquiredSpectrum = CommandManager.sharedInstance.aquire(samples: sampleCount)
         currentSpectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: aquiredSpectrum)
         self.updateLineChart(spectrum: self.currentSpectrum!)
     }

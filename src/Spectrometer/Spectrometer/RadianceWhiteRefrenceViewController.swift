@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Charts
 
-class RadianceWhiteRefrenceViewController : BaseWhiteReferenceViewController{
+class RadianceWhiteRefrenceViewController : BaseWhiteReferenceViewController {
     
     var whiteRefrences = [FullRangeInterpolatedSpectrum]() // temporary store for taken white refrences
     var whiteRefrencesInRadiance = [FullRangeInterpolatedSpectrum]() // temporary store for taken white refrences
@@ -66,7 +66,8 @@ class RadianceWhiteRefrenceViewController : BaseWhiteReferenceViewController{
     
     override func setSpectrum(){
         //Aquire spectrum
-        let spectrum = CommandManager.sharedInstance.aquire(samples: self.appDelegate.config!.sampleCount)
+        let sampleCount = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCount
+        let spectrum = CommandManager.sharedInstance.aquire(samples: sampleCount)
         // Calculate Radiance values
         let radianceSpectrum = SpectrumCalculator.calculateRadiance(spectrum: spectrum)
         // add whiteReference to the whiteReferenceLists

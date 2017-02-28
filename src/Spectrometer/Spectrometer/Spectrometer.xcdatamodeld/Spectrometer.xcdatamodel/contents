@@ -2,6 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16D32" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CalibrationFile" representedClassName="CalibrationFile" syncable="YES" codeGenerationType="class">
         <attribute name="filename" attributeType="String" syncable="YES"/>
+        <attribute name="fo" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="integrationTime" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="spectrum" attributeType="Transformable" customClassName="[Double]" syncable="YES"/>
@@ -23,7 +24,7 @@
         <relationship name="lamp" maxCount="1" deletionRule="Cascade" destinationEntity="CalibrationFile" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CalibrationFile" positionX="-155" positionY="-27" width="128" height="150"/>
+        <element name="CalibrationFile" positionX="-155" positionY="-27" width="128" height="165"/>
         <element name="SpectrometerConfig" positionX="333" positionY="134" width="288" height="210"/>
     </elements>
 </model>

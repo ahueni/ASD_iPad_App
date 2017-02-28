@@ -15,7 +15,8 @@ class ReflectanceWhiteRefrenceViewController : BaseWhiteReferenceViewController 
     var currentWhiteRefrence : FullRangeInterpolatedSpectrum? = nil
     
     override func setSpectrum(){
-        let whiteReference = CommandManager.sharedInstance.aquire(samples: self.appDelegate.config!.sampleCount)
+        let whiteRefSampleCount = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCountWhiteRefrence
+        let whiteReference = CommandManager.sharedInstance.aquire(samples: whiteRefSampleCount)
         self.currentWhiteRefrence = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: whiteReference)
     }
     

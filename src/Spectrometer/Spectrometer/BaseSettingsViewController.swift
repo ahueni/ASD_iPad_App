@@ -51,7 +51,9 @@ class BaseSettingsViewController : BaseMeasurementModal {
     }
     
     @IBAction func takeDarkCurrentPressed(_ sender: UIButton) {
-        CommandManager.sharedInstance.darkCurrent()
+        
+        let darkCurrentSampleCount = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent
+        CommandManager.sharedInstance.darkCurrent(sampleCount: darkCurrentSampleCount)
         nextButton.isEnabled = true
     }
     

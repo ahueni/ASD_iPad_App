@@ -51,7 +51,9 @@ class TargetViewController : BaseMeasurementModal
                 self.updateProgressBar(measurmentCount: i, statusText: "Bereite nächste Messung vor", totalCount: self.targetPage.targetCount)
                 sleep(UInt32(self.targetPage.targetDelay)) // Wait two second before starting the next measurment
                 self.updateProgressBar(measurmentCount: i, statusText: "Messe...", totalCount: self.targetPage.targetCount)
-                var spectrum = CommandManager.sharedInstance.aquire(samples: self.appDelegate.config!.sampleCount)
+                
+                let sampleCount = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCount
+                var spectrum = CommandManager.sharedInstance.aquire(samples: sampleCount)
                 if(self.targetPage.takeDarkCurrent)
                 {
                     spectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: spectrum)

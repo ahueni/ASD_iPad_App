@@ -66,9 +66,6 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
                         alert.message = "Restore..."
                     }
                     
-                    // set config to app delegate ->>>>> SHOULD BE IN A GLOBAL CACHE MANAGER
-                    self.appDelegate.config = config
-                    
                     // first send a RESTORE command to initilaize spectrometer
                     CommandManager.sharedInstance.restore()
                     
@@ -83,9 +80,18 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
                     // initialize app with defualt spectrometer values
                     CommandManager.sharedInstance.initialize()
                     
-                    // pre calculate radiance values
-                    let firstForeoptic = (config.fiberOpticCalibrations?.allObjects as! [CalibrationFile]).first
-                    SpectrumCalculator.sharedInstance.updateForeopticFiles(base: config.base!, lamp: config.lamp!, foreoptic: firstForeoptic!)
+                    // set spectrometer config applicationwide
+                    InstrumentSettingsCache.sharedInstance.instrumentConfiguration = config
+                    
+                    // after initialization set default foreoptic file - it will pre-calculate radiance values
+                    // first check if bareFiber is available otherwise take the first of all files
+                    let allForeOpticFiles = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.fiberOpticCalibrations?.allObjects as! [CalibrationFile]
+                    if let bareFiberFile = allForeOpticFiles.first(where: { $0.fo == 0 }) {
+                        InstrumentSettingsCache.sharedInstance.selectedForeOptic = bareFiberFile
+                    } else {
+                        InstrumentSettingsCache.sharedInstance.selectedForeOptic = allForeOpticFiles.first
+                    }
+                        
                     
                     // close connecting alert and redirect to main page
                     alert.dismiss(animated: true, completion: nil)

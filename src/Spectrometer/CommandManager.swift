@@ -53,13 +53,13 @@ class CommandManager {
         
     }
     
-    func darkCurrent() -> Void {
+    func darkCurrent(sampleCount: Int32) -> Void {
         
         serialQueue.sync {
             // optimize is not needed here
             //internOptimize()
             closeShutter()
-            InstrumentSettingsCache.sharedInstance.darkCurrent = internalAquire(samples: 10)
+            InstrumentSettingsCache.sharedInstance.darkCurrent = internalAquire(samples: sampleCount)
             openShutter()
         }
         

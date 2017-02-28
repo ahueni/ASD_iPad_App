@@ -329,6 +329,7 @@ class AddEditConnectionViewController: UIViewController, UITextFieldDelegate, Ba
         let newCaliFile = CalibrationFile(context: self.dataViewContext)
         newCaliFile.filename = filename
         newCaliFile.name = name
+        newCaliFile.fo = file.fo
         newCaliFile.spectrum = file.spectrum
         newCaliFile.type = Int16(CalibrationType.FiberOpticFile.rawValue)
         newCaliFile.integrationTime = Int32(file.integrationTime)

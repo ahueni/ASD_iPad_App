@@ -12,9 +12,15 @@ class InstrumentSettingsCache {
     
     static let sharedInstance = InstrumentSettingsCache()
     
+    // indicators to stopp a loop in background threads -> they have to be in a singelton
     var aquireLoop = false
     var cancelMeasurment = true
     
+    // instrument configuration file all informations like ip, port, base-file, lamp-file and foreoptics
+    var instrumentConfiguration: SpectrometerConfig!
+    
+    // all wavelength values of FS3 and FS4 devices
+    // they will be read and set at startup (initialize)
     var startingWaveLength: Int!
     var endingWaveLength: Int!
     var vinirStartingWavelength: Int!
@@ -24,12 +30,21 @@ class InstrumentSettingsCache {
     var s2StartingWavelength: Int!
     var s2EndingWavelength: Int!
     
+    // its needed to calculate dark current -> set at initialization
     var vinirDarkCurrentCorrection: Double!
     
+    // if darkCurrent is taken its saved here applicationwide
     var darkCurrent: FullRangeInterpolatedSpectrum?
-    var selectedForeOptic: CalibrationFile?
     
-    // prevent other instances of this class
+    // the actual selected foreoptic file, is there a new one all the radiance pre-calculated values
+    // have to be recalculated
+    var selectedForeOptic: CalibrationFile? {
+        didSet {
+            SpectrumCalculator.sharedInstance.updateForeopticFiles(base: instrumentConfiguration.base!, lamp: instrumentConfiguration.lamp!, foreoptic: selectedForeOptic!)
+        }
+    }
+    
+    // prevent other instances of this class -> singelton
     private init() {
         
     }
