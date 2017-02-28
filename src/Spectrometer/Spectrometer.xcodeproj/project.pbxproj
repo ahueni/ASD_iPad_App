@@ -118,6 +118,7 @@
 		E13AC1301E656BC900FE3048 /* BaseSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13AC12F1E656BC900FE3048 /* BaseSettingsViewController.swift */; };
 		E1446F031E56DD6100840AF2 /* RawSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1446F021E56DD6100840AF2 /* RawSettingsViewController.swift */; };
 		E14EC22E1E2E1889006EBD2F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */; };
+		E15995C91E661D8C00254FAE /* BackgroundFileWriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15995C81E661D8C00254FAE /* BackgroundFileWriteManager.swift */; };
 		E15C06AA1E4C66E300965868 /* spectrum.test in Resources */ = {isa = PBXBuildFile; fileRef = E15C06A81E4C66E300965868 /* spectrum.test */; };
 		E15C06AB1E4C66E300965868 /* whiteRefrence.test in Resources */ = {isa = PBXBuildFile; fileRef = E15C06A91E4C66E300965868 /* whiteRefrence.test */; };
 		E165E1F71E34B5A20077A5EB /* TargetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E165E1F61E34B5A20077A5EB /* TargetViewController.swift */; };
@@ -278,6 +279,7 @@
 		E13AC12F1E656BC900FE3048 /* BaseSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSettingsViewController.swift; sourceTree = "<group>"; };
 		E1446F021E56DD6100840AF2 /* RawSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawSettingsViewController.swift; sourceTree = "<group>"; };
 		E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E15995C81E661D8C00254FAE /* BackgroundFileWriteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundFileWriteManager.swift; sourceTree = "<group>"; };
 		E15C06A81E4C66E300965868 /* spectrum.test */ = {isa = PBXFileReference; lastKnownFileType = file; path = spectrum.test; sourceTree = "<group>"; };
 		E15C06A91E4C66E300965868 /* whiteRefrence.test */ = {isa = PBXFileReference; lastKnownFileType = file; path = whiteRefrence.test; sourceTree = "<group>"; };
 		E165E1F61E34B5A20077A5EB /* TargetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetViewController.swift; sourceTree = "<group>"; };
@@ -499,6 +501,7 @@
 				E186B9471E364DDF00FE43F3 /* CommandManager.swift */,
 				E13567881E61BB260049DCA7 /* SpectrumCalculator.swift */,
 				E1D7BD5F1E61D0CB00E1EF2E /* InstrumentSettingsCache.swift */,
+				E15995C81E661D8C00254FAE /* BackgroundFileWriteManager.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -1160,6 +1163,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E15995C91E661D8C00254FAE /* BackgroundFileWriteManager.swift in Sources */,
 				2EB9463D1E579E84006C71C8 /* BorderExtension.swift in Sources */,
 				2E91F2EE1DDB5B9F003E277F /* SocketOptions+Deprecated.swift in Sources */,
 				E1BD75EF1E60705100AB92CD /* BaseWhiteReferenceViewController.swift in Sources */,

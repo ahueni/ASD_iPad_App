@@ -51,7 +51,7 @@ class BaseWhiteReferenceViewController : BaseMeasurementModal{
         DispatchQueue.global().async {
             for i in 0...self.whiteRefrencePage.whiteReferenceCount-1
             {
-                if(!InstrumentSettingsCache.sharedInstance.cancelMeasurment)
+                if(InstrumentSettingsCache.sharedInstance.cancelMeasurment)
                 {
                     return
                 }

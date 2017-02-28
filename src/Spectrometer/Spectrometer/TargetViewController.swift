@@ -29,11 +29,12 @@ class TargetViewController : BaseMeasurementModal
     }
     
     @IBAction func StartMeasurmentsButtonClicked(_ sender: UIButton) {
+        InstrumentSettingsCache.sharedInstance.cancelMeasurment = false
         startMeasureLoop()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        InstrumentSettingsCache.sharedInstance.cancelMeasurment = false
+        InstrumentSettingsCache.sharedInstance.cancelMeasurment = true
     }
     
     func startMeasureLoop()
@@ -42,7 +43,7 @@ class TargetViewController : BaseMeasurementModal
         DispatchQueue.global().async {
             for i in 0...self.targetPage.targetCount-1
             {
-                if(!InstrumentSettingsCache.sharedInstance.cancelMeasurment)
+                if(InstrumentSettingsCache.sharedInstance.cancelMeasurment)
                 {
                     return
                 }
