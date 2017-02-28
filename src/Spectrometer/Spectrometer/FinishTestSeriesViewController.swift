@@ -52,6 +52,7 @@ class FinishTestSeriesViewController : BaseMeasurementModal {
         }
     }
     
+    /*
     func save(spectrums : [FullRangeInterpolatedSpectrum], whiteRefrenceSpectrum: FullRangeInterpolatedSpectrum?, loadedSettings: MeasurmentSettings, indicoCalibration: IndicoCalibration? = nil, fileSuffix :String = "")
     {
         DispatchQueue.global().async {
@@ -66,6 +67,7 @@ class FinishTestSeriesViewController : BaseMeasurementModal {
             self.finishedSaving()
         }
     }
+ */
     
     func finishedSaving() -> Void {
         
