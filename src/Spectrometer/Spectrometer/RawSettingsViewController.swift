@@ -9,15 +9,14 @@
 import Foundation
 import UIKit
 
-class RawSettingsViewController: BaseMeasurementModal {
+class RawSettingsViewController: BaseMeasurementModal, SettingsProtocol {
     
-    // MARK: Raw settings
     @IBOutlet var darkCurrentSettingsContentHeight: NSLayoutConstraint!
-    
     @IBOutlet var darkCurrentSettingsSwitch: UISwitch!
-    
     @IBOutlet weak var targetDelayStepper: UIStepper!
     @IBOutlet weak var targetCountStepper: UIStepper!
+    @IBOutlet var targetCountLabel: UILabel!
+    @IBOutlet var targetIntervallLabel: UILabel!
     
     @IBAction func darkCurrentSettingsSwitchValueChanged(_ sender: UISwitch) {
         if sender.isOn {
@@ -54,11 +53,6 @@ class RawSettingsViewController: BaseMeasurementModal {
         }
 
     }
-    
-    // MARK: Target settings
-    @IBOutlet var targetCountLabel: UILabel!
-    @IBOutlet var targetIntervallLabel: UILabel!
-    
     
     @IBAction func targetCountStepperValueChanged(_ sender: UIStepper) {
         targetCountLabel.text = Int(sender.value).description

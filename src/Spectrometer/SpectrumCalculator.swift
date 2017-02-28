@@ -17,15 +17,13 @@ class SpectrumCalculator{
         // if dc exists -> do darkcorrection
         if let darkCurrent = InstrumentSettingsCache.sharedInstance.darkCurrent {
             
+            // Redeclaration for easier access in the calculation
             let vinirDarkCurrentCorrection: Float = Float(InstrumentSettingsCache.sharedInstance.vinirDarkCurrentCorrection)
             let currentDrift: Float = Float(spectrum.spectrumHeader.vinirHeader.drift)
             let darkDrift: Float = Float(darkCurrent.spectrumHeader.vinirHeader.drift)
-            
             let drift: Float = vinirDarkCurrentCorrection + (currentDrift - darkDrift)
-            
             let vinirEndingWaveLength = InstrumentSettingsCache.sharedInstance.vinirEndingWavelength
             let vinirStartingWaveLength = InstrumentSettingsCache.sharedInstance.startingWaveLength
-            
             let darkCorrectionRange = vinirEndingWaveLength + 1 - vinirStartingWaveLength
             
             for i in 0...darkCorrectionRange{
@@ -36,9 +34,7 @@ class SpectrumCalculator{
             spectrum.spectrumHeader.vinirHeader.darkSubtracted = DarkSubtracted.Yes
             spectrum.spectrumHeader.swir1Header.darkSubtracted = DarkSubtracted.Yes
             spectrum.spectrumHeader.swir2Header.darkSubtracted = DarkSubtracted.Yes
-            
         }
-        
         return spectrum
     }
     

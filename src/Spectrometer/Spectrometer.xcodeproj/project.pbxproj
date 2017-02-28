@@ -114,6 +114,8 @@
 		E13176631E53129B002F0958 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13176621E53129B002F0958 /* RadioButton.swift */; };
 		E13176671E532179002F0958 /* RadianceSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13176661E532179002F0958 /* RadianceSettingsViewController.swift */; };
 		E13567891E61BB260049DCA7 /* SpectrumCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13567881E61BB260049DCA7 /* SpectrumCalculator.swift */; };
+		E13AC12E1E65693000FE3048 /* BaseModeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13AC12D1E65693000FE3048 /* BaseModeSettings.swift */; };
+		E13AC1301E656BC900FE3048 /* SettingsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13AC12F1E656BC900FE3048 /* SettingsProtocol.swift */; };
 		E1446F031E56DD6100840AF2 /* RawSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1446F021E56DD6100840AF2 /* RawSettingsViewController.swift */; };
 		E14EC22E1E2E1889006EBD2F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */; };
 		E15C06AA1E4C66E300965868 /* spectrum.test in Resources */ = {isa = PBXBuildFile; fileRef = E15C06A81E4C66E300965868 /* spectrum.test */; };
@@ -273,6 +275,8 @@
 		E13176621E53129B002F0958 /* RadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		E13176661E532179002F0958 /* RadianceSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadianceSettingsViewController.swift; sourceTree = "<group>"; };
 		E13567881E61BB260049DCA7 /* SpectrumCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumCalculator.swift; sourceTree = "<group>"; };
+		E13AC12D1E65693000FE3048 /* BaseModeSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModeSettings.swift; sourceTree = "<group>"; };
+		E13AC12F1E656BC900FE3048 /* SettingsProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsProtocol.swift; sourceTree = "<group>"; };
 		E1446F021E56DD6100840AF2 /* RawSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawSettingsViewController.swift; sourceTree = "<group>"; };
 		E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E15C06A81E4C66E300965868 /* spectrum.test */ = {isa = PBXFileReference; lastKnownFileType = file; path = spectrum.test; sourceTree = "<group>"; };
@@ -765,9 +769,7 @@
 		E12547D51E5381D30004B2A8 /* SettingsModels */ = {
 			isa = PBXGroup;
 			children = (
-				E12547D61E5382050004B2A8 /* ReflectanceSettings.swift */,
-				E12547D81E5382750004B2A8 /* RawSettings.swift */,
-				E12547DA1E5382C40004B2A8 /* RadianceSettings.swift */,
+				E13AC1321E65739C00FE3048 /* ModeSettings */,
 				E12B760A1E54A44A00A4B105 /* MeasurmentSettings.swift */,
 			);
 			name = SettingsModels;
@@ -792,30 +794,26 @@
 			name = FileReader;
 			sourceTree = "<group>";
 		};
-		E1446EFF1E56DD2A00840AF2 /* Raw */ = {
+		E13AC1311E656CC600FE3048 /* SettingsViews */ = {
 			isa = PBXGroup;
 			children = (
+				E13AC12F1E656BC900FE3048 /* SettingsProtocol.swift */,
+				2ECC63431E5337B600C3AACB /* ReflectanceSettingsViewController.swift */,
+				E13176661E532179002F0958 /* RadianceSettingsViewController.swift */,
 				E1446F021E56DD6100840AF2 /* RawSettingsViewController.swift */,
 			);
-			name = Raw;
+			name = SettingsViews;
 			sourceTree = "<group>";
 		};
-		E1446F001E56DD3100840AF2 /* Radiance */ = {
+		E13AC1321E65739C00FE3048 /* ModeSettings */ = {
 			isa = PBXGroup;
 			children = (
-				E118A4C91E51C77600F13053 /* RadianceWhiteRefrenceViewController.swift */,
-				E13176661E532179002F0958 /* RadianceSettingsViewController.swift */,
+				E12547DA1E5382C40004B2A8 /* RadianceSettings.swift */,
+				E12547D81E5382750004B2A8 /* RawSettings.swift */,
+				E12547D61E5382050004B2A8 /* ReflectanceSettings.swift */,
+				E13AC12D1E65693000FE3048 /* BaseModeSettings.swift */,
 			);
-			name = Radiance;
-			sourceTree = "<group>";
-		};
-		E1446F011E56DD3600840AF2 /* Reflectance */ = {
-			isa = PBXGroup;
-			children = (
-				2ECC63431E5337B600C3AACB /* ReflectanceSettingsViewController.swift */,
-				E108F21A1E3F367C0097B7EE /* ReflectanceWhiteRefrenceViewController.swift */,
-			);
-			name = Reflectance;
+			name = ModeSettings;
 			sourceTree = "<group>";
 		};
 		E14EC2291E2E187B006EBD2F /* Settings */ = {
@@ -839,6 +837,7 @@
 		E1807E621E2F617900BB205F /* Modals */ = {
 			isa = PBXGroup;
 			children = (
+				E13AC1311E656CC600FE3048 /* SettingsViews */,
 				E1BD75ED1E60703100AB92CD /* MesurmentViews */,
 				E1807E631E2F619B00BB205F /* StartTestSeriesViewController.swift */,
 				E1807E671E2F7B2F00BB205F /* ParentViewController.swift */,
@@ -905,9 +904,8 @@
 			isa = PBXGroup;
 			children = (
 				E165E1F61E34B5A20077A5EB /* FastMeasurmentViewController.swift */,
-				E1446F011E56DD3600840AF2 /* Reflectance */,
-				E1446F001E56DD3100840AF2 /* Radiance */,
-				E1446EFF1E56DD2A00840AF2 /* Raw */,
+				E118A4C91E51C77600F13053 /* RadianceWhiteRefrenceViewController.swift */,
+				E108F21A1E3F367C0097B7EE /* ReflectanceWhiteRefrenceViewController.swift */,
 				E1BD75EE1E60705100AB92CD /* BaseWhiteReferenceViewController.swift */,
 			);
 			name = MesurmentViews;
@@ -1205,6 +1203,7 @@
 				2EB822EC1DE0811D00DF732C /* FullRangeInterpolatedSpectrumParser.swift in Sources */,
 				2E54E9AD1E62316B0047565E /* UIRoundBorderedView.swift in Sources */,
 				2E91F30F1DDB82C7003E277F /* Parameter.swift in Sources */,
+				E13AC12E1E65693000FE3048 /* BaseModeSettings.swift in Sources */,
 				2E708A231DE61A19008EC78A /* CustomizeExtensions.swift in Sources */,
 				2E3552061E56E5A5001F7EE1 /* TitleSection.swift in Sources */,
 				2EB362961DF1BD4F00E74E39 /* SpectralFile.swift in Sources */,
@@ -1245,6 +1244,7 @@
 				E18970A01E2914B300722E9C /* BaseWriter.swift in Sources */,
 				2E8F767A1E4754CF00D54ABF /* UIGreenButton.swift in Sources */,
 				2E91F2EC1DDB5B9F003E277F /* Select.swift in Sources */,
+				E13AC1301E656BC900FE3048 /* SettingsProtocol.swift in Sources */,
 				2E91F3021DDB7472003E277F /* VnirHeader.swift in Sources */,
 				E186B9481E364DDF00FE43F3 /* CommandManager.swift in Sources */,
 				2EC6D8191E5C9D090022F70E /* BaseFileSelectInput.swift in Sources */,

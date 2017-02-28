@@ -34,6 +34,27 @@ class CommandManager{
         return spectrum
     }
     
+    func aquireCollect(samples: Int32) -> FullRangeInterpolatedSpectrum {
+        
+        var spectrums = [FullRangeInterpolatedSpectrum]()
+        for _ in 1...samples{
+            serialQueue.sync {
+                spectrums.append(internalAquire(samples: 1))
+            }
+        }
+        
+        var resultSpectrumBuffer = [Float](repeating: 0, count: spectrums.first!.spectrumBuffer.count)
+        for i in 0...spectrums.first!.spectrumBuffer.count - 1{
+            for spectrum in spectrums{
+                resultSpectrumBuffer[i] += spectrum.spectrumBuffer[i]
+            }
+            resultSpectrumBuffer[i] = resultSpectrumBuffer[i] / Float(samples)
+        }
+        let spectrum = spectrums.first!
+        spectrum.spectrumBuffer = resultSpectrumBuffer
+        return spectrum
+    }
+    
     func darkCurrent() -> Void {
         
         serialQueue.sync {

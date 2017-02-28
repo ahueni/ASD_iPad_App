@@ -9,15 +9,22 @@
 import Foundation
 import UIKit
 
-class ReflectanceSettingsViewController : RawSettingsViewController {
+class ReflectanceSettingsViewController : BaseMeasurementModal, SettingsProtocol {
     
-    override func loadSettings() {
+    @IBOutlet var darkCurrentSettingsContentHeight: NSLayoutConstraint!
+    @IBOutlet weak var targetDelayStepper: UIStepper!
+    @IBOutlet weak var targetCountStepper: UIStepper!
+    @IBOutlet var targetCountLabel: UILabel!
+    @IBOutlet var targetIntervallLabel: UILabel!
+    
+    override func viewDidLoad() {
+        loadSettings()
+    }
+    
+    func loadSettings() {
         let reflectanceSettings = UserDefaults.standard.data(forKey: "ReflectanceSettings")
         if(reflectanceSettings != nil){
             let loadedSettings = NSKeyedUnarchiver.unarchiveObject(with: reflectanceSettings!) as! ReflectanceSettings
-            
-            darkCurrentSettingsSwitch.isOn = loadedSettings.takeDarkCurrent
-            darkCurrentSettingsSwitchValueChanged(darkCurrentSettingsSwitch)
             
             targetCountStepper.value = Double(loadedSettings.targetCount)
             targetCountLabel.text = loadedSettings.targetCount.description
@@ -27,18 +34,22 @@ class ReflectanceSettingsViewController : RawSettingsViewController {
         }
     }
     
-    override func addPages() {
+    func addPages() {
         pageContainer!.pages.append(WhiteReferenceReflectancePage())
         pageContainer!.pages.append(TargetPage(targetCount: Int(targetCountStepper.value), targetDelay: Int(targetDelayStepper.value)))
     }
     
-    override func saveSettings()
+    override func goToNextPage() {
+        addPages()
+        super.goToNextPage()
+    }
+    
+    func saveSettings()
     {
-        let takeDC = darkCurrentSettingsSwitch.isOn
         let targetCountValue = Int(targetCountStepper.value)
         let targetDelayValue = Int(targetDelayStepper.value)
         
-        let settings = ReflectanceSettings(takeDarkCurrent: takeDC, targetCount: targetCountValue, targetDelay: targetDelayValue, takeWhiteRefrenceBefore: true)
+        let settings = ReflectanceSettings(targetCount: targetCountValue, targetDelay: targetDelayValue, takeWhiteRefrenceBefore: true)
         
         let settingsData = NSKeyedArchiver.archivedData(withRootObject: settings)
         UserDefaults.standard.set(settingsData, forKey: "ReflectanceSettings")

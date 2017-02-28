@@ -60,7 +60,7 @@ class TcpManager {
             
             var recData = 0
             while recData < command.size {
-                let recPart: [UInt8]? = try client.receiveAll() //try client.receive(maxBytes: 200)
+                let recPart: [UInt8]? = try client.receiveAll()
                 array += recPart!
                 recData += recPart!.count
                 aquireUpdateProtocol?.update(percentageReceived: Int(Double(recData)/Double(command.size) * 100))

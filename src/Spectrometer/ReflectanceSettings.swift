@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ReflectanceSettings : RawSettings{
+class ReflectanceSettings : BaseModeSettings{
     
     required init(coder decoder: NSCoder) {
         self.takeWhiteRefrenceBefore = decoder.decodeBool(forKey: "takeWhiteRefrenceBefore")
@@ -22,8 +22,8 @@ class ReflectanceSettings : RawSettings{
     
     var takeWhiteRefrenceBefore: Bool
     
-    init(takeDarkCurrent: Bool, targetCount: Int, targetDelay: Int, takeWhiteRefrenceBefore: Bool) {
+    init(targetCount: Int, targetDelay: Int, takeWhiteRefrenceBefore: Bool) {
         self.takeWhiteRefrenceBefore = takeWhiteRefrenceBefore
-        super.init(takeDarkCurrent: takeDarkCurrent, targetCount: targetCount, targetDelay: targetDelay)
+        super.init(targetCount: targetCount, targetDelay: targetDelay)
     }
 }

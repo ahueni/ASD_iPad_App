@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class RadianceSettingsViewController : BaseMeasurementModal, SelectFiberopticDelegate {
+class RadianceSettingsViewController : BaseMeasurementModal, SelectFiberopticDelegate, SettingsProtocol {
     
     // DarkCurrent
     @IBOutlet var darkCurrentSwitch: UISwitch!
@@ -40,22 +40,18 @@ class RadianceSettingsViewController : BaseMeasurementModal, SelectFiberopticDel
     var selectedForeOptic : CalibrationFile?
     
     override func viewDidLoad() {
-        loadSettingsIfExist()
+        loadSettings()
         updateStepperLabels()
     }
     
     @IBAction func foreOpticButtonClicked(_ sender: UIButton) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "SelectFiberOpticTableViewController") as!SelectFiberOpticTableViewController
         vc.delegate = self
-        
         vc.modalPresentationStyle = .popover
-        
         let popover = vc.popoverPresentationController!
-        
         popover.permittedArrowDirections = [.left, .up]
         popover.sourceView = sender
         popover.sourceRect = sender.bounds
-        
         self.present(vc, animated: true, completion: nil)
     }
     
@@ -64,75 +60,28 @@ class RadianceSettingsViewController : BaseMeasurementModal, SelectFiberopticDel
         selectedForeOptic = fiberoptic
     }
     
-    func loadSettingsIfExist(){
+    func loadSettings(){
         let radianceSettings = UserDefaults.standard.data(forKey: "RadianceSettings")
         if(radianceSettings != nil){
             let loadedSettings = NSKeyedUnarchiver.unarchiveObject(with: radianceSettings!) as! RadianceSettings
             
-            // init darkCurrent section
-            darkCurrentSwitch.isOn = loadedSettings.takeDarkCurrent
-            darkCurrentSwitch(darkCurrentSwitch)
-            
             // init white Ref BEFORE section
             whiteReferenceBeforeSwitch.isOn = loadedSettings.takeWhiteRefrenceBefore
             whiteReferenceBeforeSwitchValueChanged(whiteReferenceBeforeSwitch)
-            
             whiteReferenceBeforeCountStepper.value = Double(loadedSettings.whiteRefrenceBeforeCount)
-            whiteReferenceBeforeCountLabel.text = loadedSettings.whiteRefrenceBeforeCount.description
-            
             whiteReferenceBeforeIntervalStepper.value = Double(loadedSettings.whiteRefrenceBeforeDelay)
-            whiteReferenceBeforeIntervalLabel.text = loadedSettings.whiteRefrenceBeforeDelay.description
             
-            // ini target section
+            // init target section
             targetCountStepper.value = Double(loadedSettings.targetCount)
-            targetCountLabel.text = loadedSettings.targetCount.description
-            
             targetIntervalStepper.value = Double(loadedSettings.targetDelay)
-            targetIntervalLabel.text = loadedSettings.targetDelay.description
             
             // init white Ref AFTER section
             whiteRefrenceAfterSwitch.isOn = loadedSettings.takeWhiteRefrenceAfter
             whiteRefrenceAfterSwitchValueChanged(whiteRefrenceAfterSwitch)
-            
             whiteRefrenceAfterCountStepper.value = Double(loadedSettings.whiteRefrenceAfterCount)
-            whiteRefrenceAfterCountLabel.text = loadedSettings.whiteRefrenceAfterCount.description
-            
             whiteReferenceAfterIntervalStepper.value = Double(loadedSettings.whiteRefrenceAfterDelay)
-            whiteReferenceAfterIntervalLabel.text = loadedSettings.whiteRefrenceAfterDelay.description
-            
-            if(loadedSettings.foreOpticId != nil)
-            {
-                let url = NSURL(string: loadedSettings.foreOpticId)
-                //let test = appDelegate.config!.fiberOpticCalibrations?.value(forKey: (url?.absoluteString)!)
-                
-                let calibrationFiles = appDelegate.config?.fiberOpticCalibrations?.allObjects.filter({($0 as! CalibrationFile).objectID.uriRepresentation().absoluteString == url?.absoluteString})
-                
-                let calibrationFile : CalibrationFile? = (calibrationFiles?.count)! > 0 ? calibrationFiles?.first as! CalibrationFile : nil
-                print("OK")
-                
-            /*
-            if let object = managedObjectContext.existingObjectWithID(objectID, error: &error) {
-                // do something with it
-            }
-            else {
-                println("Can't find object \(error)")
-            }
-                             */
-            }
         }
-    }
-    
-    
-    @IBAction func darkCurrentSwitch(_ sender: UISwitch) {
-        if sender.isOn {
-            self.darkCurrentContentHeight.constant = 95
-        } else {
-            self.darkCurrentContentHeight.constant = 0
-        }
-        
-        UIView.animate(withDuration: 0.5, animations: {
-            self.view.layoutIfNeeded()
-        })
+        updateStepperLabels()
     }
     
     @IBAction func takeDarkCurrentPressed(_ sender: UIButton) {
@@ -197,28 +146,33 @@ class RadianceSettingsViewController : BaseMeasurementModal, SelectFiberopticDel
         whiteReferenceAfterIntervalLabel.text = Int(whiteReferenceAfterIntervalStepper.value).description
     }
     
-    override func goToNextPage() {
-        saveSettings()
-        
+    func addPages(){
+        // add before whiteReferencePage if switch is on
         if(whiteReferenceBeforeSwitch.isOn)
         {
             pageContainer!.pages.append(WhiteReferenceRadiancePage(whiteReferenceCount: Int(whiteReferenceBeforeCountStepper.value), whiteReferenceDelay: Int(whiteReferenceBeforeIntervalStepper.value), whiteRefrenceEnum: .Before))
         }
+        // target is not optional => include it anyway
         pageContainer!.pages.append(TargetPage(targetCount: Int(targetCountStepper.value), targetDelay: Int(targetIntervalStepper.value)))
         
+        // add after whiteReferencePage if switch is on
         if(whiteRefrenceAfterSwitch.isOn)
         {
             pageContainer!.pages.append(WhiteReferenceRadiancePage(whiteReferenceCount: Int(whiteRefrenceAfterCountStepper.value), whiteReferenceDelay: Int(whiteReferenceAfterIntervalStepper.value), whiteRefrenceEnum: .After))
         }
-        
+
+    }
+    
+    override func goToNextPage() {
+        saveSettings()
+        addPages()
         pageContainer.selectedForeOptic = selectedForeOptic
-        
         super.goToNextPage()
     }
     
     func saveSettings()
     {
-        let settings = RadianceSettings(takeDarkCurrent: darkCurrentSwitch.isOn, targetCount: Int(targetCountStepper.value), targetDelay: Int(targetIntervalStepper.value), takeWhiteRefrenceBefore: whiteReferenceBeforeSwitch.isOn, whiteRefrenceBeforeCount: Int(whiteReferenceBeforeCountStepper.value), takeWhiteRefrenceAfter: whiteRefrenceAfterSwitch.isOn, whiteRefrenceAfterCount: Int(whiteRefrenceAfterCountStepper.value), whiteRefrenceBeforeDelay : Int(whiteReferenceBeforeIntervalStepper.value), whiteRefrenceAfterDelay : Int(whiteReferenceAfterIntervalStepper.value), foreOpticId: (selectedForeOptic?.objectID.uriRepresentation().absoluteString)!)
+        let settings = RadianceSettings(targetCount: Int(targetCountStepper.value), targetDelay: Int(targetIntervalStepper.value), takeWhiteRefrenceBefore: whiteReferenceBeforeSwitch.isOn, whiteRefrenceBeforeCount: Int(whiteReferenceBeforeCountStepper.value), takeWhiteRefrenceAfter: whiteRefrenceAfterSwitch.isOn, whiteRefrenceAfterCount: Int(whiteRefrenceAfterCountStepper.value), whiteRefrenceBeforeDelay : Int(whiteReferenceBeforeIntervalStepper.value), whiteRefrenceAfterDelay : Int(whiteReferenceAfterIntervalStepper.value))
         
         let settingsData = NSKeyedArchiver.archivedData(withRootObject: settings)
         UserDefaults.standard.set(settingsData, forKey: "RadianceSettings")
