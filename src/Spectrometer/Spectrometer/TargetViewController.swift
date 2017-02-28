@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class FastMeasurmentViewController : BaseMeasurementModal
+class TargetViewController : BaseMeasurementModal
 {
     internal func update(percentageReceived: Int) {
         DispatchQueue.main.async {
@@ -32,21 +32,32 @@ class FastMeasurmentViewController : BaseMeasurementModal
         startMeasureLoop()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        InstrumentSettingsCache.sharedInstance.cancelMeasurment = false
+    }
+    
     func startMeasureLoop()
     {
         startMeasurementButton.showLoading()
-        
-        
         DispatchQueue.global().async {
             for i in 0...self.targetPage.targetCount-1
             {
-                self.updateProgressBar(measurmentCount: 0, statusText: "Bereite nächste Messung vor", totalCount: self.targetPage.targetCount)
+                if(!InstrumentSettingsCache.sharedInstance.cancelMeasurment)
+                {
+                    return
+                }
+                
+                self.updateProgressBar(measurmentCount: i, statusText: "Bereite nächste Messung vor", totalCount: self.targetPage.targetCount)
                 sleep(UInt32(self.targetPage.targetDelay)) // Wait two second before starting the next measurment
-                //self.updateProgressBar(measurmentCount: i, statusText: "Messe...", totalCount: self.targetPage.targetCount)
-                let spectrum = CommandManager.sharedInstance.aquire(samples: self.appDelegate.config!.sampleCount)
+                self.updateProgressBar(measurmentCount: i, statusText: "Messe...", totalCount: self.targetPage.targetCount)
+                var spectrum = CommandManager.sharedInstance.aquire(samples: self.appDelegate.config!.sampleCount)
+                if(self.targetPage.takeDarkCurrent)
+                {
+                    spectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: spectrum)
+                }
                 self.pageContainer.spectrumList.append(spectrum)
                 self.updateLineChart(spectrum: spectrum)
-                //self.updateProgressBar(measurmentCount: i+1, statusText: "Messung beendet", totalCount: self.targetPage.targetCount)
+                self.updateProgressBar(measurmentCount: i+1, statusText: "Messung beendet", totalCount: self.targetPage.targetCount)
                 sleep(UInt32(self.targetPage.targetDelay)) //Wait two second
             }
             self.finishMeasurement()

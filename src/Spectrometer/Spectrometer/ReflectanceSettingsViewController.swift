@@ -9,19 +9,16 @@
 import Foundation
 import UIKit
 
-class ReflectanceSettingsViewController : BaseMeasurementModal, SettingsProtocol {
+class ReflectanceSettingsViewController : BaseSettingsViewController {
     
     @IBOutlet var darkCurrentSettingsContentHeight: NSLayoutConstraint!
-    @IBOutlet weak var targetDelayStepper: UIStepper!
-    @IBOutlet weak var targetCountStepper: UIStepper!
-    @IBOutlet var targetCountLabel: UILabel!
-    @IBOutlet var targetIntervallLabel: UILabel!
-    
+        
     override func viewDidLoad() {
-        loadSettings()
+        super.viewDidLoad()
+        nextButton.isEnabled = InstrumentSettingsCache.sharedInstance.darkCurrent != nil
     }
     
-    func loadSettings() {
+    override func loadSettings() {
         let reflectanceSettings = UserDefaults.standard.data(forKey: "ReflectanceSettings")
         if(reflectanceSettings != nil){
             let loadedSettings = NSKeyedUnarchiver.unarchiveObject(with: reflectanceSettings!) as! ReflectanceSettings
@@ -34,17 +31,12 @@ class ReflectanceSettingsViewController : BaseMeasurementModal, SettingsProtocol
         }
     }
     
-    func addPages() {
+    override func addPages() {
         pageContainer!.pages.append(WhiteReferenceReflectancePage())
         pageContainer!.pages.append(TargetPage(targetCount: Int(targetCountStepper.value), targetDelay: Int(targetDelayStepper.value)))
     }
     
-    override func goToNextPage() {
-        addPages()
-        super.goToNextPage()
-    }
-    
-    func saveSettings()
+    override func saveSettings()
     {
         let targetCountValue = Int(targetCountStepper.value)
         let targetDelayValue = Int(targetDelayStepper.value)

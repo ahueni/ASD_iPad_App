@@ -9,14 +9,10 @@
 import Foundation
 import UIKit
 
-class RawSettingsViewController: BaseMeasurementModal, SettingsProtocol {
+class RawSettingsViewController: BaseSettingsViewController {
     
     @IBOutlet var darkCurrentSettingsContentHeight: NSLayoutConstraint!
     @IBOutlet var darkCurrentSettingsSwitch: UISwitch!
-    @IBOutlet weak var targetDelayStepper: UIStepper!
-    @IBOutlet weak var targetCountStepper: UIStepper!
-    @IBOutlet var targetCountLabel: UILabel!
-    @IBOutlet var targetIntervallLabel: UILabel!
     
     @IBAction func darkCurrentSettingsSwitchValueChanged(_ sender: UISwitch) {
         if sender.isOn {
@@ -30,11 +26,7 @@ class RawSettingsViewController: BaseMeasurementModal, SettingsProtocol {
         })
     }
     
-    override func viewDidLoad() {
-        loadSettings()
-    }
-    
-    func loadSettings()
+    override func loadSettings()
     {
         let rawSettings = UserDefaults.standard.data(forKey: "RawSettings")
         
@@ -54,25 +46,11 @@ class RawSettingsViewController: BaseMeasurementModal, SettingsProtocol {
 
     }
     
-    @IBAction func targetCountStepperValueChanged(_ sender: UIStepper) {
-        targetCountLabel.text = Int(sender.value).description
+    override func addPages(){
+        pageContainer!.pages.append(TargetPage(targetCount: Int(targetCountStepper.value), targetDelay: Int(targetDelayStepper.value), takeDarkCurrent: darkCurrentSettingsSwitch.isOn))
     }
     
-    @IBAction func targetIntervallStepperValueChanged(_ sender: UIStepper) {
-        targetIntervallLabel.text = Int(sender.value).description
-    }
-    
-    override func goToNextPage() {
-        saveSettings()
-        addPages()
-        super.goToNextPage()
-    }
-    
-    func addPages(){
-        pageContainer!.pages.append(TargetPage(targetCount: Int(targetCountStepper.value), targetDelay: Int(targetDelayStepper.value)))
-    }
-    
-    func saveSettings()
+    override func saveSettings()
     {
         let takeDC = darkCurrentSettingsSwitch.isOn
         let targetCountValue = Int(targetCountStepper.value)

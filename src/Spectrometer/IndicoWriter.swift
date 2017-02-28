@@ -39,66 +39,7 @@ class IndicoWriter : BaseWriter {
         fileHandle.closeFile()
     }
     
-    private func innerWriteCalibration(indicoCalibration : IndicoCalibration){
-        // ------ Start Calibration Header ------
-        
-        // Count
-        writeByte(number: 3)
-        
-        //Write Base File header
-        writeByte(number: UInt8(indicoCalibration.baseFile.type))
-        writeStringWithFixedLength(text: indicoCalibration.baseFile.filename!, length: 20)
-        writeLong(number: indicoCalibration.baseFile.integrationTime)
-        writeInt(number: indicoCalibration.baseFile.swir1Gain)
-        writeInt(number: indicoCalibration.baseFile.swir2Gain)
-        
-        //Write Lamp File header
-        writeByte(number: UInt8(indicoCalibration.lampFile.type))
-        writeStringWithFixedLength(text: indicoCalibration.lampFile.filename!, length: 20)
-        writeLong(number: indicoCalibration.lampFile.integrationTime)
-        writeInt(number: indicoCalibration.lampFile.swir1Gain)
-        writeInt(number: indicoCalibration.lampFile.swir2Gain)
-        
-        //Write Foreoptic File header
-        writeByte(number: UInt8(indicoCalibration.fiberOptic.type))
-        writeStringWithFixedLength(text: indicoCalibration.fiberOptic.filename!, length: 20)
-        writeLong(number: indicoCalibration.fiberOptic.integrationTime)
-        writeInt(number: indicoCalibration.fiberOptic.swir1Gain)
-        writeInt(number: indicoCalibration.fiberOptic.swir2Gain)
-        
-        // ------ End Calibration Header ------
-        
-        // ------ Start Base Data ------
-        
-        for i in 0...indicoCalibration.baseFile.spectrum!.count-1
-        {
-            writeDouble(number: indicoCalibration.baseFile.spectrum![i])
-        }
-        
-        // ------ End Base Data ------
-        
-        // ------ Start Lamp Data ------
-        
-        for i in 0...indicoCalibration.lampFile.spectrum!.count-1
-        {
-            writeDouble(number: indicoCalibration.lampFile.spectrum![i])
-        }
-        
-        // ------ End Lamp Data ------
-        
-        // ------ Start Fiber Optic Data ------
-        
-        for i in 0...indicoCalibration.fiberOptic.spectrum!.count-1
-        {
-            writeDouble(number: indicoCalibration.fiberOptic.spectrum![i])
-        }
-        
-        // ------ End Fiber Optic Data ------
-        
-        print("Calibration updated!")
-    }
-    
-    private func innerWriteBasic(spectrum : FullRangeInterpolatedSpectrum, whiteRefrenceSpectrum : FullRangeInterpolatedSpectrum? = nil){
+    internal func innerWriteBasic(spectrum : FullRangeInterpolatedSpectrum, whiteRefrenceSpectrum : FullRangeInterpolatedSpectrum? = nil){
         
         // ------ Start Header ------
         
@@ -183,9 +124,9 @@ class IndicoWriter : BaseWriter {
             writeByte(number: UInt8(0))
         }
         
-        //integrationTime
-        writeLong(number: UInt32(8))
-        //writeLong(number: UInt32(spectrum.spectrumHeader.vinirHeader.integrationTime))
+        //integrationTime -> Decimals will be cut. This is the same behaviour as the rs3 software
+        let integrationTime = IntegrationTimeMapper.mapIndex(index: spectrum.spectrumHeader.vinirHeader.integrationTime).1
+        writeLong(number: UInt32(integrationTime))
         
         //fo
         // Default :0
@@ -446,5 +387,66 @@ class IndicoWriter : BaseWriter {
         // ------ End Dependent Variable Data ------
         
         print("Basic File updated")
+    }
+    
+    
+    
+    internal func innerWriteCalibration(indicoCalibration : IndicoCalibration){
+        // ------ Start Calibration Header ------
+        
+        // Count => In this project the calibration count is always 3 if measurment is radiance. 1x Base, 1x Lamp & 1x Foreoptic
+        writeByte(number: 3)
+        
+        //Write Base File header
+        writeByte(number: UInt8(indicoCalibration.baseFile.type))
+        writeStringWithFixedLength(text: indicoCalibration.baseFile.filename!, length: 20)
+        writeLong(number: indicoCalibration.baseFile.integrationTime)
+        writeInt(number: indicoCalibration.baseFile.swir1Gain)
+        writeInt(number: indicoCalibration.baseFile.swir2Gain)
+        
+        //Write Lamp File header
+        writeByte(number: UInt8(indicoCalibration.lampFile.type))
+        writeStringWithFixedLength(text: indicoCalibration.lampFile.filename!, length: 20)
+        writeLong(number: indicoCalibration.lampFile.integrationTime)
+        writeInt(number: indicoCalibration.lampFile.swir1Gain)
+        writeInt(number: indicoCalibration.lampFile.swir2Gain)
+        
+        //Write Foreoptic File header
+        writeByte(number: UInt8(indicoCalibration.fiberOptic.type))
+        writeStringWithFixedLength(text: indicoCalibration.fiberOptic.filename!, length: 20)
+        writeLong(number: indicoCalibration.fiberOptic.integrationTime)
+        writeInt(number: indicoCalibration.fiberOptic.swir1Gain)
+        writeInt(number: indicoCalibration.fiberOptic.swir2Gain)
+        
+        // ------ End Calibration Header ------
+        
+        // ------ Start Base Data ------
+        
+        for i in 0...indicoCalibration.baseFile.spectrum!.count-1
+        {
+            writeDouble(number: indicoCalibration.baseFile.spectrum![i])
+        }
+        
+        // ------ End Base Data ------
+        
+        // ------ Start Lamp Data ------
+        
+        for i in 0...indicoCalibration.lampFile.spectrum!.count-1
+        {
+            writeDouble(number: indicoCalibration.lampFile.spectrum![i])
+        }
+        
+        // ------ End Lamp Data ------
+        
+        // ------ Start Fiber Optic Data ------
+        
+        for i in 0...indicoCalibration.fiberOptic.spectrum!.count-1
+        {
+            writeDouble(number: indicoCalibration.fiberOptic.spectrum![i])
+        }
+        
+        // ------ End Fiber Optic Data ------
+        
+        print("Calibration updated!")
     }
 }

@@ -36,7 +36,7 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     
     var measurementMode: MeasurementMode = MeasurementMode.Raw
     var whiteReferenceSpectrum: FullRangeInterpolatedSpectrum?
-    var selectedForeOptic: CalibrationFile?
+    
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
@@ -53,7 +53,7 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
         
         // select a default foreOptic file
         let allForeOpticFiles = self.appDelegate.config?.fiberOpticCalibrations?.allObjects as! [CalibrationFile]
-        selectedForeOptic = allForeOpticFiles.first
+        InstrumentSettingsCache.sharedInstance.selectedForeOptic = allForeOpticFiles.first
         activateRadianceMode()
         
     }
@@ -223,7 +223,7 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     internal func activateRadianceMode() {
         
         // check if a foreoptic is slected
-        if let selectedForeOptic = selectedForeOptic {
+        if let selectedForeOptic = InstrumentSettingsCache.sharedInstance.selectedForeOptic {
             
             // check if darkCurrent is taken before activate radiance mode
             if InstrumentSettingsCache.sharedInstance.darkCurrent != nil {
@@ -239,7 +239,7 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     }
     
     internal func didSelectFiberoptic(fiberoptic: CalibrationFile) {
-        selectedForeOptic = fiberoptic
+        InstrumentSettingsCache.sharedInstance.selectedForeOptic = fiberoptic
         activateRadianceMode()
     }
     

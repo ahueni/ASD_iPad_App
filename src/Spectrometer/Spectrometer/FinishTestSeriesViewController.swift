@@ -37,7 +37,7 @@ class FinishTestSeriesViewController : BaseMeasurementModal {
             save(spectrums: pageContainer!.spectrumList, whiteRefrenceSpectrum: nil, loadedSettings: loadedSettings)
             break
         case MeasurementMode.Radiance:
-            let indicoCalibration = IndicoCalibration(baseFile: (appDelegate.config!.base)!, lampFile: appDelegate.config!.lamp!, fiberOptic: pageContainer.selectedForeOptic!)
+            let indicoCalibration = IndicoCalibration(baseFile: (appDelegate.config!.base)!, lampFile: appDelegate.config!.lamp!, fiberOptic: InstrumentSettingsCache.sharedInstance.selectedForeOptic!)
             
             //save wr before
             save(spectrums: pageContainer!.whiteRefrenceBeforeSpectrumList, whiteRefrenceSpectrum: nil, loadedSettings: loadedSettings,indicoCalibration: indicoCalibration, fileSuffix: "_wrBefore")

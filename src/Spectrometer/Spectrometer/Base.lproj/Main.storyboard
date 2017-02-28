@@ -528,14 +528,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZuH-AQ-NxF">
-                                <rect key="frame" x="20" y="117" width="728" height="57.5"/>
+                                <rect key="frame" x="20" y="117" width="728" height="49"/>
                                 <string key="text">Um eine Verbindung mit dem Spektrometer herzustellen müssen die Verbindungseinstellungen zum Gerät zuerst im App erfasst werden. Sie haben die Möglichkeit hier das App mit einem Spektrometer zu verbinden oder weitere Verbindungen einzurichten.</string>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XgJ-hU-ctM">
-                                <rect key="frame" x="295" y="923" width="179" height="32"/>
+                                <rect key="frame" x="300" y="923" width="169" height="32"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                 <state key="normal" title="Spektrometer hinzufügen"/>
                                 <connections>
@@ -546,7 +546,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eqG-6H-HNG">
-                                <rect key="frame" x="20" y="184.5" width="728" height="707.5"/>
+                                <rect key="frame" x="20" y="176" width="728" height="716"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -558,7 +558,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spectrometer Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ec6-mm-Psg">
-                                                    <rect key="frame" x="183" y="9" width="399" height="52"/>
+                                                    <rect key="frame" x="183" y="9" width="399" height="50"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -578,7 +578,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IP: 10.1.1.77 / Port: 8080" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aF7-2C-20b">
-                                                    <rect key="frame" x="183" y="67" width="399" height="16"/>
+                                                    <rect key="frame" x="183" y="65" width="399" height="18"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -616,7 +616,7 @@
                                 <sections/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UZg-A0-uSz">
-                                <rect key="frame" x="552" y="925" width="46" height="30"/>
+                                <rect key="frame" x="547" y="925" width="46" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="sP8-Ow-0XN"/>
                                 </constraints>
@@ -1595,19 +1595,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Messungen abspeichern" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="war-x9-xc7">
-                                <rect key="frame" x="20" y="40" width="500" height="30"/>
+                                <rect key="frame" x="20" y="40" width="500" height="26"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alle Messungen wurden erfolgreich durchgeführt und werden nun abgespeichert." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7M-uM-Rys">
-                                <rect key="frame" x="20" y="80" width="500" height="16.5"/>
+                                <rect key="frame" x="20" y="76" width="500" height="14"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Die Messungen werden gespeichert ..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSU-MD-mc2">
-                                <rect key="frame" x="20" y="275.5" width="500" height="16.5"/>
+                                <rect key="frame" x="20" y="278" width="500" height="14"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1637,7 +1637,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Die Messungen wurden erfolgreich abgespeichert. Sie können alle Messungen im Tab &quot;Messungen&quot; einsehen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPK-w9-25L">
-                                <rect key="frame" x="40" y="458" width="460" height="33"/>
+                                <rect key="frame" x="40" y="458" width="460" height="28"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1925,7 +1925,7 @@
                                                                 <rect key="frame" x="398" y="41" width="94" height="29"/>
                                                                 <color key="tintColor" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <connections>
-                                                                    <action selector="targetIntervalStepperValueChanged:" destination="b7d-mh-RXH" eventType="valueChanged" id="1yR-4A-85w"/>
+                                                                    <action selector="targetIntervallStepperValueChanged:" destination="b7d-mh-RXH" eventType="valueChanged" id="0aX-FF-SSH"/>
                                                                 </connections>
                                                             </stepper>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0qQ-1A-76P">
@@ -2145,10 +2145,11 @@
                     <size key="freeformSize" width="540" height="800"/>
                     <connections>
                         <outlet property="darkCurrentContentHeight" destination="WKv-al-NbK" id="6l6-PH-YNR"/>
+                        <outlet property="nextButton" destination="fap-A8-4AZ" id="nSg-uz-ed0"/>
                         <outlet property="targetCountLabel" destination="IIL-jH-mSS" id="myF-1b-RKZ"/>
                         <outlet property="targetCountStepper" destination="yZf-Im-H73" id="AiI-Bb-1eQ"/>
-                        <outlet property="targetIntervalLabel" destination="0qQ-1A-76P" id="0S7-T8-GZ3"/>
-                        <outlet property="targetIntervalStepper" destination="Qrh-jO-2b9" id="2yh-To-WED"/>
+                        <outlet property="targetDelayStepper" destination="Qrh-jO-2b9" id="uoJ-H4-Unh"/>
+                        <outlet property="targetIntervallLabel" destination="0qQ-1A-76P" id="ZAJ-ga-84R"/>
                         <outlet property="whiteReferenceAfterIntervalLabel" destination="1zq-Ro-crP" id="yjd-qa-rOY"/>
                         <outlet property="whiteReferenceAfterIntervalStepper" destination="quX-KL-e85" id="FVP-Ln-nda"/>
                         <outlet property="whiteReferenceBeforeContentHeight" destination="2Yo-9I-QZS" id="O3p-mW-RQC"/>
@@ -2504,6 +2505,9 @@ DarkCurrent</string>
                                                                         <color key="value" red="0.96415284859999995" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="takeDarkCurrentPressed:" destination="m49-q8-zSz" eventType="touchUpInside" id="7MB-Tf-Wyv"/>
+                                                                </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15:14:56 (3 minutes ago)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hnl-Kn-j9W">
                                                                 <rect key="frame" x="13" y="26.5" width="338" height="16.5"/>
@@ -2716,6 +2720,7 @@ DarkCurrent</string>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="darkCurrentSettingsContentHeight" destination="w6m-gH-wd4" id="W19-BP-9YI"/>
+                        <outlet property="nextButton" destination="Ynd-a9-9AS" id="lHp-RX-fSz"/>
                         <outlet property="targetCountLabel" destination="RjC-NE-VoM" id="9Ja-or-pIr"/>
                         <outlet property="targetCountStepper" destination="RwE-aG-gCQ" id="aBA-Fq-ChJ"/>
                         <outlet property="targetDelayStepper" destination="A1G-Rq-tOp" id="Ja7-rw-zoP"/>
@@ -3097,10 +3102,10 @@ DarkCurrent</string>
             </objects>
             <point key="canvasLocation" x="4183.59375" y="-2200.1953125"/>
         </scene>
-        <!--Fast Measurment View Controller-->
+        <!--Target View Controller-->
         <scene sceneID="tOg-pH-r4C">
             <objects>
-                <viewController storyboardIdentifier="FastMeasurmentViewController" id="rIH-yb-C7q" customClass="FastMeasurmentViewController" customModule="Spectrometer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TargetViewController" id="rIH-yb-C7q" customClass="TargetViewController" customModule="Spectrometer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EfF-xw-wwu"/>
                         <viewControllerLayoutGuide type="bottom" id="vfX-rd-0sP"/>
@@ -3384,6 +3389,9 @@ DarkCurrent</string>
                                                                         <color key="value" red="0.96415284859999995" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="takeDarkCurrentPressed:" destination="Gk8-sV-zxg" eventType="touchUpInside" id="p4f-in-iTy"/>
+                                                                </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15:14:56 (3 minutes ago)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYt-AE-Yqu">
                                                                 <rect key="frame" x="13" y="26.5" width="338" height="16.5"/>

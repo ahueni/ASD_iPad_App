@@ -15,7 +15,8 @@ class ReflectanceWhiteRefrenceViewController : BaseWhiteReferenceViewController 
     var currentWhiteRefrence : FullRangeInterpolatedSpectrum? = nil
     
     override func setSpectrum(){
-        self.currentWhiteRefrence = CommandManager.sharedInstance.aquire(samples: self.appDelegate.config!.sampleCount)
+        let whiteReference = CommandManager.sharedInstance.aquire(samples: self.appDelegate.config!.sampleCount)
+        self.currentWhiteRefrence = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: whiteReference)
     }
     
     override func updateLineChart(spectrum: FullRangeInterpolatedSpectrum) {
@@ -35,7 +36,7 @@ class ReflectanceWhiteRefrenceViewController : BaseWhiteReferenceViewController 
             //update ui
             self.MeasurementLineChart.setAxisValues(min: 0, max: 5)
             
-            let reflectanceSpectrum = SpectrumCalculator.calculateReflectance(currentSpectrum: SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: self.currentSpectrum!), whiteReferenceSpectrum: SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: self.currentWhiteRefrence!))
+            let reflectanceSpectrum = SpectrumCalculator.calculateReflectance(currentSpectrum: self.currentSpectrum!, whiteReferenceSpectrum: self.currentWhiteRefrence!)
             
             DispatchQueue.main.async {
                 self.MeasurementLineChart.data = reflectanceSpectrum.getChartData()

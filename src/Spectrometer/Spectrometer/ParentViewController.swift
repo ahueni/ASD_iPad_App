@@ -118,12 +118,14 @@ class WhiteReferenceRadiancePage : WhiteReferencePage{
 class TargetPage : ModalPage{
     let targetCount : Int
     let targetDelay : Int
+    let takeDarkCurrent : Bool
     
-    init(targetCount : Int, targetDelay : Int){
+    init(targetCount : Int, targetDelay : Int, takeDarkCurrent : Bool = true){
         self.targetCount = targetCount
         self.targetDelay = targetDelay
+        self.takeDarkCurrent = takeDarkCurrent
         super.init()
-        self.pageIdentifier = "FastMeasurmentViewController"
+        self.pageIdentifier = "TargetViewController"
     }
 }
 

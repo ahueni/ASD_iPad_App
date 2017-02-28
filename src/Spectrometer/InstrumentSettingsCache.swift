@@ -13,6 +13,7 @@ class InstrumentSettingsCache {
     static let sharedInstance = InstrumentSettingsCache()
     
     var aquireLoop = false
+    var cancelMeasurment = true
     
     var startingWaveLength: Int!
     var endingWaveLength: Int!
@@ -26,6 +27,7 @@ class InstrumentSettingsCache {
     var vinirDarkCurrentCorrection: Double!
     
     var darkCurrent: FullRangeInterpolatedSpectrum?
+    var selectedForeOptic: CalibrationFile?
     
     // prevent other instances of this class
     private init() {

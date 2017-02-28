@@ -115,12 +115,12 @@
 		E13176671E532179002F0958 /* RadianceSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13176661E532179002F0958 /* RadianceSettingsViewController.swift */; };
 		E13567891E61BB260049DCA7 /* SpectrumCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13567881E61BB260049DCA7 /* SpectrumCalculator.swift */; };
 		E13AC12E1E65693000FE3048 /* BaseModeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13AC12D1E65693000FE3048 /* BaseModeSettings.swift */; };
-		E13AC1301E656BC900FE3048 /* SettingsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13AC12F1E656BC900FE3048 /* SettingsProtocol.swift */; };
+		E13AC1301E656BC900FE3048 /* BaseSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13AC12F1E656BC900FE3048 /* BaseSettingsViewController.swift */; };
 		E1446F031E56DD6100840AF2 /* RawSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1446F021E56DD6100840AF2 /* RawSettingsViewController.swift */; };
 		E14EC22E1E2E1889006EBD2F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */; };
 		E15C06AA1E4C66E300965868 /* spectrum.test in Resources */ = {isa = PBXBuildFile; fileRef = E15C06A81E4C66E300965868 /* spectrum.test */; };
 		E15C06AB1E4C66E300965868 /* whiteRefrence.test in Resources */ = {isa = PBXBuildFile; fileRef = E15C06A91E4C66E300965868 /* whiteRefrence.test */; };
-		E165E1F71E34B5A20077A5EB /* FastMeasurmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E165E1F61E34B5A20077A5EB /* FastMeasurmentViewController.swift */; };
+		E165E1F71E34B5A20077A5EB /* TargetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E165E1F61E34B5A20077A5EB /* TargetViewController.swift */; };
 		E1807E5E1E2E576400BB205F /* ExceptionErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E5D1E2E576400BB205F /* ExceptionErrors.swift */; };
 		E1807E641E2F619B00BB205F /* StartTestSeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E631E2F619B00BB205F /* StartTestSeriesViewController.swift */; };
 		E1807E681E2F7B2F00BB205F /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E671E2F7B2F00BB205F /* ParentViewController.swift */; };
@@ -275,12 +275,12 @@
 		E13176661E532179002F0958 /* RadianceSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadianceSettingsViewController.swift; sourceTree = "<group>"; };
 		E13567881E61BB260049DCA7 /* SpectrumCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumCalculator.swift; sourceTree = "<group>"; };
 		E13AC12D1E65693000FE3048 /* BaseModeSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModeSettings.swift; sourceTree = "<group>"; };
-		E13AC12F1E656BC900FE3048 /* SettingsProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsProtocol.swift; sourceTree = "<group>"; };
+		E13AC12F1E656BC900FE3048 /* BaseSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSettingsViewController.swift; sourceTree = "<group>"; };
 		E1446F021E56DD6100840AF2 /* RawSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawSettingsViewController.swift; sourceTree = "<group>"; };
 		E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E15C06A81E4C66E300965868 /* spectrum.test */ = {isa = PBXFileReference; lastKnownFileType = file; path = spectrum.test; sourceTree = "<group>"; };
 		E15C06A91E4C66E300965868 /* whiteRefrence.test */ = {isa = PBXFileReference; lastKnownFileType = file; path = whiteRefrence.test; sourceTree = "<group>"; };
-		E165E1F61E34B5A20077A5EB /* FastMeasurmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FastMeasurmentViewController.swift; sourceTree = "<group>"; };
+		E165E1F61E34B5A20077A5EB /* TargetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetViewController.swift; sourceTree = "<group>"; };
 		E1807E5D1E2E576400BB205F /* ExceptionErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExceptionErrors.swift; sourceTree = "<group>"; };
 		E1807E631E2F619B00BB205F /* StartTestSeriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartTestSeriesViewController.swift; sourceTree = "<group>"; };
 		E1807E671E2F7B2F00BB205F /* ParentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
@@ -794,7 +794,7 @@
 		E13AC1311E656CC600FE3048 /* SettingsViews */ = {
 			isa = PBXGroup;
 			children = (
-				E13AC12F1E656BC900FE3048 /* SettingsProtocol.swift */,
+				E13AC12F1E656BC900FE3048 /* BaseSettingsViewController.swift */,
 				2ECC63431E5337B600C3AACB /* ReflectanceSettingsViewController.swift */,
 				E13176661E532179002F0958 /* RadianceSettingsViewController.swift */,
 				E1446F021E56DD6100840AF2 /* RawSettingsViewController.swift */,
@@ -900,7 +900,7 @@
 		E1BD75ED1E60703100AB92CD /* MesurmentViews */ = {
 			isa = PBXGroup;
 			children = (
-				E165E1F61E34B5A20077A5EB /* FastMeasurmentViewController.swift */,
+				E165E1F61E34B5A20077A5EB /* TargetViewController.swift */,
 				E118A4C91E51C77600F13053 /* RadianceWhiteRefrenceViewController.swift */,
 				E108F21A1E3F367C0097B7EE /* ReflectanceWhiteRefrenceViewController.swift */,
 				E1BD75EE1E60705100AB92CD /* BaseWhiteReferenceViewController.swift */,
@@ -1167,7 +1167,7 @@
 				E1C936C01E421AEB00EF51BB /* RequiredTextField.swift in Sources */,
 				E1C936B51E41D61800EF51BB /* BaseValidationControl.swift in Sources */,
 				2E91F3111DDB8408003E277F /* Init.swift in Sources */,
-				E165E1F71E34B5A20077A5EB /* FastMeasurmentViewController.swift in Sources */,
+				E165E1F71E34B5A20077A5EB /* TargetViewController.swift in Sources */,
 				2EB946411E5B62DE006C71C8 /* URL.swift in Sources */,
 				E1D7BD601E61D0CB00E1EF2E /* InstrumentSettingsCache.swift in Sources */,
 				2E91F2EA1DDB5B9F003E277F /* InternetSocket.swift in Sources */,
@@ -1240,7 +1240,7 @@
 				E18970A01E2914B300722E9C /* BaseWriter.swift in Sources */,
 				2E8F767A1E4754CF00D54ABF /* UIGreenButton.swift in Sources */,
 				2E91F2EC1DDB5B9F003E277F /* Select.swift in Sources */,
-				E13AC1301E656BC900FE3048 /* SettingsProtocol.swift in Sources */,
+				E13AC1301E656BC900FE3048 /* BaseSettingsViewController.swift in Sources */,
 				2E91F3021DDB7472003E277F /* VnirHeader.swift in Sources */,
 				E186B9481E364DDF00FE43F3 /* CommandManager.swift in Sources */,
 				2EC6D8191E5C9D090022F70E /* BaseFileSelectInput.swift in Sources */,

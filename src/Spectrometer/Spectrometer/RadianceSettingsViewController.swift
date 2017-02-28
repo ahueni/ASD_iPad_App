@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class RadianceSettingsViewController : BaseMeasurementModal, SelectFiberopticDelegate, SettingsProtocol {
+class RadianceSettingsViewController : BaseSettingsViewController, SelectFiberopticDelegate {
     
     // DarkCurrent
     @IBOutlet var darkCurrentSwitch: UISwitch!
@@ -23,12 +23,6 @@ class RadianceSettingsViewController : BaseMeasurementModal, SelectFiberopticDel
     @IBOutlet var whiteReferenceBeforeIntervalLabel: UILabel!
     @IBOutlet var whiteReferenceBeforeIntervalStepper: UIStepper!
     
-    // Target
-    @IBOutlet var targetCountLabel: UILabel!
-    @IBOutlet var targetCountStepper: UIStepper!
-    @IBOutlet var targetIntervalLabel: UILabel!
-    @IBOutlet var targetIntervalStepper: UIStepper!
-    
     // White Reference After
     @IBOutlet var whiteRefrenceAfterSwitch: UISwitch!
     @IBOutlet var whiteRefrenceAfterHeightConstraint: NSLayoutConstraint!
@@ -36,14 +30,7 @@ class RadianceSettingsViewController : BaseMeasurementModal, SelectFiberopticDel
     @IBOutlet var whiteRefrenceAfterCountLabel: UILabel!
     @IBOutlet var whiteReferenceAfterIntervalLabel: UILabel!
     @IBOutlet var whiteReferenceAfterIntervalStepper: UIStepper!
-    
-    var selectedForeOptic : CalibrationFile?
-    
-    override func viewDidLoad() {
-        loadSettings()
-        updateStepperLabels()
-    }
-    
+        
     @IBAction func foreOpticButtonClicked(_ sender: UIButton) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "SelectFiberOpticTableViewController") as!SelectFiberOpticTableViewController
         vc.delegate = self
@@ -55,12 +42,16 @@ class RadianceSettingsViewController : BaseMeasurementModal, SelectFiberopticDel
         self.present(vc, animated: true, completion: nil)
     }
     
-    
-    internal func didSelectFiberoptic(fiberoptic: CalibrationFile) {
-        selectedForeOptic = fiberoptic
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        nextButton.isEnabled = InstrumentSettingsCache.sharedInstance.darkCurrent != nil
     }
     
-    func loadSettings(){
+    internal func didSelectFiberoptic(fiberoptic: CalibrationFile) {
+        InstrumentSettingsCache.sharedInstance.selectedForeOptic = fiberoptic
+    }
+    
+    override func loadSettings(){
         let radianceSettings = UserDefaults.standard.data(forKey: "RadianceSettings")
         if(radianceSettings != nil){
             let loadedSettings = NSKeyedUnarchiver.unarchiveObject(with: radianceSettings!) as! RadianceSettings
@@ -73,7 +64,7 @@ class RadianceSettingsViewController : BaseMeasurementModal, SelectFiberopticDel
             
             // init target section
             targetCountStepper.value = Double(loadedSettings.targetCount)
-            targetIntervalStepper.value = Double(loadedSettings.targetDelay)
+            targetDelayStepper.value = Double(loadedSettings.targetDelay)
             
             // init white Ref AFTER section
             whiteRefrenceAfterSwitch.isOn = loadedSettings.takeWhiteRefrenceAfter
@@ -82,10 +73,6 @@ class RadianceSettingsViewController : BaseMeasurementModal, SelectFiberopticDel
             whiteReferenceAfterIntervalStepper.value = Double(loadedSettings.whiteRefrenceAfterDelay)
         }
         updateStepperLabels()
-    }
-    
-    @IBAction func takeDarkCurrentPressed(_ sender: UIButton) {
-        
     }
     
     @IBAction func whiteReferenceBeforeSwitchValueChanged(_ sender: UISwitch) {
@@ -105,14 +92,6 @@ class RadianceSettingsViewController : BaseMeasurementModal, SelectFiberopticDel
     }
     
     @IBAction func whiteReferenceBeforeIntervalStepperValueChanged(_ sender: UIStepper) {
-        updateStepperLabels()
-    }
-    
-    @IBAction func targetCountStepperValueChanged(_ sender: UIStepper) {
-        updateStepperLabels()
-    }
-    
-    @IBAction func targetIntervalStepperValueChanged(_ sender: UIStepper) {
         updateStepperLabels()
     }
     
@@ -136,43 +115,36 @@ class RadianceSettingsViewController : BaseMeasurementModal, SelectFiberopticDel
         updateStepperLabels()
     }
     
-    func updateStepperLabels()
+    override func updateStepperLabels()
     {
         whiteReferenceBeforeCountLabel.text = Int(whiteReferenceBeforeCountStepper.value).description
         whiteReferenceBeforeIntervalLabel.text = Int(whiteReferenceBeforeIntervalStepper.value).description
         targetCountLabel.text = Int(targetCountStepper.value).description
-        targetIntervalLabel.text = Int(targetIntervalStepper.value).description
+        targetIntervallLabel.text = Int(targetDelayStepper.value).description
         whiteRefrenceAfterCountLabel.text = Int(whiteRefrenceAfterCountStepper.value).description
         whiteReferenceAfterIntervalLabel.text = Int(whiteReferenceAfterIntervalStepper.value).description
+        super.updateStepperLabels()
     }
     
-    func addPages(){
+    override func addPages(){
         // add before whiteReferencePage if switch is on
         if(whiteReferenceBeforeSwitch.isOn)
         {
             pageContainer!.pages.append(WhiteReferenceRadiancePage(whiteReferenceCount: Int(whiteReferenceBeforeCountStepper.value), whiteReferenceDelay: Int(whiteReferenceBeforeIntervalStepper.value), whiteRefrenceEnum: .Before))
         }
         // target is not optional => include it anyway
-        pageContainer!.pages.append(TargetPage(targetCount: Int(targetCountStepper.value), targetDelay: Int(targetIntervalStepper.value)))
+        pageContainer!.pages.append(TargetPage(targetCount: Int(targetCountStepper.value), targetDelay: Int(targetDelayStepper.value)))
         
         // add after whiteReferencePage if switch is on
         if(whiteRefrenceAfterSwitch.isOn)
         {
             pageContainer!.pages.append(WhiteReferenceRadiancePage(whiteReferenceCount: Int(whiteRefrenceAfterCountStepper.value), whiteReferenceDelay: Int(whiteReferenceAfterIntervalStepper.value), whiteRefrenceEnum: .After))
         }
-
     }
     
-    override func goToNextPage() {
-        saveSettings()
-        addPages()
-        pageContainer.selectedForeOptic = selectedForeOptic
-        super.goToNextPage()
-    }
-    
-    func saveSettings()
+    override func saveSettings()
     {
-        let settings = RadianceSettings(targetCount: Int(targetCountStepper.value), targetDelay: Int(targetIntervalStepper.value), takeWhiteRefrenceBefore: whiteReferenceBeforeSwitch.isOn, whiteRefrenceBeforeCount: Int(whiteReferenceBeforeCountStepper.value), takeWhiteRefrenceAfter: whiteRefrenceAfterSwitch.isOn, whiteRefrenceAfterCount: Int(whiteRefrenceAfterCountStepper.value), whiteRefrenceBeforeDelay : Int(whiteReferenceBeforeIntervalStepper.value), whiteRefrenceAfterDelay : Int(whiteReferenceAfterIntervalStepper.value))
+        let settings = RadianceSettings(targetCount: Int(targetCountStepper.value), targetDelay: Int(targetDelayStepper.value), takeWhiteRefrenceBefore: whiteReferenceBeforeSwitch.isOn, whiteRefrenceBeforeCount: Int(whiteReferenceBeforeCountStepper.value), takeWhiteRefrenceAfter: whiteRefrenceAfterSwitch.isOn, whiteRefrenceAfterCount: Int(whiteRefrenceAfterCountStepper.value), whiteRefrenceBeforeDelay : Int(whiteReferenceBeforeIntervalStepper.value), whiteRefrenceAfterDelay : Int(whiteReferenceAfterIntervalStepper.value))
         
         let settingsData = NSKeyedArchiver.archivedData(withRootObject: settings)
         UserDefaults.standard.set(settingsData, forKey: "RadianceSettings")

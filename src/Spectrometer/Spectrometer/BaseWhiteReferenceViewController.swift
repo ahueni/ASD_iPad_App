@@ -11,7 +11,6 @@ import UIKit
 
 class BaseWhiteReferenceViewController : BaseMeasurementModal{
     
-    var aquireLoopOn = false // Indicates if a aquireLoop is running
     var currentSpectrum : FullRangeInterpolatedSpectrum? = nil // the actual Measurment
     var whiteRefrencePage : WhiteReferencePage! // currentPage
     
@@ -26,26 +25,23 @@ class BaseWhiteReferenceViewController : BaseMeasurementModal{
         progressBar?.initialize(total: whiteRefrencePage.whiteReferenceCount)
         
         // start aquire data
-        aquireLoopOn = true
+        InstrumentSettingsCache.sharedInstance.cancelMeasurment = false
         DispatchQueue.global().async {
-            while(self.aquireLoopOn){
+            while(!InstrumentSettingsCache.sharedInstance.cancelMeasurment){
                 self.aquire()
             }
         }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        aquireLoopOn = false
+        InstrumentSettingsCache.sharedInstance.cancelMeasurment = true
     }
     
     func aquire() {
         // Background tasks
-        currentSpectrum = CommandManager.sharedInstance.aquire(samples: (self.appDelegate.config?.sampleCount)!)
-        
-        DispatchQueue.main.async {
-            //update ui
-            self.updateLineChart(spectrum: self.currentSpectrum!)
-        }
+        let aquiredSpectrum = CommandManager.sharedInstance.aquire(samples: (self.appDelegate.config?.sampleCount)!)
+        currentSpectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: aquiredSpectrum)
+        self.updateLineChart(spectrum: self.currentSpectrum!)
     }
     
     @IBAction func takeWhiteRefrence(_ sender: UIButton) {
@@ -55,6 +51,11 @@ class BaseWhiteReferenceViewController : BaseMeasurementModal{
         DispatchQueue.global().async {
             for i in 0...self.whiteRefrencePage.whiteReferenceCount-1
             {
+                if(!InstrumentSettingsCache.sharedInstance.cancelMeasurment)
+                {
+                    return
+                }
+                
                 self.updateProgressBar(measurmentCount: i, statusText: "Bereite nächste Messung vor")
                 sleep(UInt32(self.whiteRefrencePage.whiteReferenceDelay)) // Wait two second before starting the next measurment
                 self.updateProgressBar(measurmentCount: i, statusText: "Messe...")
@@ -70,8 +71,9 @@ class BaseWhiteReferenceViewController : BaseMeasurementModal{
         }
     }
     
-    // Only used in subClasses
+    // Swift does not support abstract classes. This is the only way to make sure the derived classes do override this method
     func setSpectrum(){
+        fatalError("Must Override")
     }
     
     func updateProgressBar(measurmentCount:Int, statusText:String)

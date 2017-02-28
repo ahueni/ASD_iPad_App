@@ -60,11 +60,11 @@ class SpectrumLineChartView : LineChartView {
         
     }
     
-    func setAxisValues(min: Int, max: Int) -> Void {
-        self.rightAxis.axisMinimum = Double(min)
-        self.rightAxis.axisMaximum = Double(max)
-        self.leftAxis.axisMinimum = Double(min)
-        self.leftAxis.axisMaximum = Double(max)
+    func setAxisValues(min: Double, max: Double) -> Void {
+        self.rightAxis.axisMinimum = min
+        self.rightAxis.axisMaximum = max
+        self.leftAxis.axisMinimum = min
+        self.leftAxis.axisMaximum = max
     }
     
 }
