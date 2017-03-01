@@ -19,9 +19,25 @@ extension FloatingPoint {
     }
 }
 
+extension CGFloat {
+    static func random() -> CGFloat {
+        return CGFloat(arc4random()) / CGFloat(UInt32.max)
+    }
+}
+
+extension UIColor {
+    static func randomColor() -> UIColor {
+        return UIColor(red:   .random(),
+                       green: .random(),
+                       blue:  .random(),
+                       alpha: 1.0)
+    }
+}
 
 extension Array where Element : FloatingPoint {
-    func getChartData() -> LineChartData {
+    
+    func getChartData(lineColor: UIColor = UIColor.black) -> LineChartDataSet {
+        
         var values: [ChartDataEntry] = []
         let startingWaveLength = InstrumentSettingsCache.sharedInstance.startingWaveLength!
         
@@ -38,8 +54,8 @@ extension Array where Element : FloatingPoint {
                 values.append(chartEntry)
             }
         }
-        let lineChartDataSet = SpectrumLineChartDataSet(values: values, label: nil)
-        return LineChartData(dataSet: lineChartDataSet)
+        
+        return SpectrumLineChartDataSet(values: values, label: "", color: lineColor, drawCircles: false)
         
     }}
  

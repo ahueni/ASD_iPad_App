@@ -8,7 +8,7 @@
 
 import Foundation
 
-class IndicoCalibration{
+class RadianceCalibrationFiles{
     var baseFile : CalibrationFile
     var lampFile : CalibrationFile
     var fiberOptic : CalibrationFile
@@ -23,17 +23,20 @@ class IndicoCalibration{
 class IndicoWriter : BaseWriter {
     
     // write basic file without calibration (Raw and Ref only)
-    func write(spectrum : FullRangeInterpolatedSpectrum, dataType : DataType, whiteRefrenceSpectrum : FullRangeInterpolatedSpectrum?, indicoCalibration : IndicoCalibration?){
+    func write(spectrum : FullRangeInterpolatedSpectrum, dataType : DataType, whiteRefrenceSpectrum : FullRangeInterpolatedSpectrum?, radianceCalibrationFiles : RadianceCalibrationFiles?){
+        
+        // write all basic file values
         innerWriteBasic(spectrum : spectrum, dataType: dataType, whiteRefrenceSpectrum : whiteRefrenceSpectrum)
         
-        if(indicoCalibration == nil)
+        // decide if spectrum is in radiance mode
+        if(radianceCalibrationFiles == nil)
         {
             // Calibration Header Count
             writeByte(number: 0)
         }
         else
         {
-            innerWriteCalibration(indicoCalibration: indicoCalibration!)
+            innerWriteCalibration(radianceCalibrationFiles: radianceCalibrationFiles!)
             fileHandle.closeFile()
         }
         fileHandle.closeFile()
@@ -72,7 +75,6 @@ class IndicoWriter : BaseWriter {
         writeLong(number: UInt32(Date().timeIntervalSince1970))
         
         //dataType
-        // which type should we use?
         // DN : 0
         // Reflectance : 1
         // Radiance : 2
@@ -388,39 +390,39 @@ class IndicoWriter : BaseWriter {
     
     
     
-    internal func innerWriteCalibration(indicoCalibration : IndicoCalibration){
+    internal func innerWriteCalibration(radianceCalibrationFiles : RadianceCalibrationFiles){
         // ------ Start Calibration Header ------
         
         // Count => In this project the calibration count is always 3 if measurment is radiance. 1x Base, 1x Lamp & 1x Foreoptic
         writeByte(number: 3)
         
         //Write Base File header
-        writeByte(number: UInt8(indicoCalibration.baseFile.type))
-        writeStringWithFixedLength(text: indicoCalibration.baseFile.filename!, length: 20)
-        writeLong(number: indicoCalibration.baseFile.integrationTime)
-        writeInt(number: indicoCalibration.baseFile.swir1Gain)
-        writeInt(number: indicoCalibration.baseFile.swir2Gain)
+        writeByte(number: UInt8(radianceCalibrationFiles.baseFile.type))
+        writeStringWithFixedLength(text: radianceCalibrationFiles.baseFile.filename!, length: 20)
+        writeLong(number: radianceCalibrationFiles.baseFile.integrationTime)
+        writeInt(number: radianceCalibrationFiles.baseFile.swir1Gain)
+        writeInt(number: radianceCalibrationFiles.baseFile.swir2Gain)
         
         //Write Lamp File header
-        writeByte(number: UInt8(indicoCalibration.lampFile.type))
-        writeStringWithFixedLength(text: indicoCalibration.lampFile.filename!, length: 20)
-        writeLong(number: indicoCalibration.lampFile.integrationTime)
-        writeInt(number: indicoCalibration.lampFile.swir1Gain)
-        writeInt(number: indicoCalibration.lampFile.swir2Gain)
+        writeByte(number: UInt8(radianceCalibrationFiles.lampFile.type))
+        writeStringWithFixedLength(text: radianceCalibrationFiles.lampFile.filename!, length: 20)
+        writeLong(number: radianceCalibrationFiles.lampFile.integrationTime)
+        writeInt(number: radianceCalibrationFiles.lampFile.swir1Gain)
+        writeInt(number: radianceCalibrationFiles.lampFile.swir2Gain)
         
         //Write Foreoptic File header
-        writeByte(number: UInt8(indicoCalibration.fiberOptic.type))
-        writeStringWithFixedLength(text: indicoCalibration.fiberOptic.filename!, length: 20)
-        writeLong(number: indicoCalibration.fiberOptic.integrationTime)
-        writeInt(number: indicoCalibration.fiberOptic.swir1Gain)
-        writeInt(number: indicoCalibration.fiberOptic.swir2Gain)
+        writeByte(number: UInt8(radianceCalibrationFiles.fiberOptic.type))
+        writeStringWithFixedLength(text: radianceCalibrationFiles.fiberOptic.filename!, length: 20)
+        writeLong(number: radianceCalibrationFiles.fiberOptic.integrationTime)
+        writeInt(number: radianceCalibrationFiles.fiberOptic.swir1Gain)
+        writeInt(number: radianceCalibrationFiles.fiberOptic.swir2Gain)
         
         // ------ End Calibration Header ------
         
         // ------ Start Base Data ------
         
-        let baseFileBuffer = indicoCalibration.baseFile.spectrum!
-        for i in 0...indicoCalibration.baseFile.spectrum!.count-1
+        let baseFileBuffer = radianceCalibrationFiles.baseFile.spectrum!
+        for i in 0...radianceCalibrationFiles.baseFile.spectrum!.count-1
         {
             writeDouble(number: baseFileBuffer[i])
         }
@@ -429,8 +431,8 @@ class IndicoWriter : BaseWriter {
         
         // ------ Start Lamp Data ------
         
-        let lampFileBuffer = indicoCalibration.lampFile.spectrum!
-        for i in 0...indicoCalibration.lampFile.spectrum!.count-1
+        let lampFileBuffer = radianceCalibrationFiles.lampFile.spectrum!
+        for i in 0...radianceCalibrationFiles.lampFile.spectrum!.count-1
         {
             writeDouble(number: lampFileBuffer[i])
         }
@@ -439,8 +441,8 @@ class IndicoWriter : BaseWriter {
         
         // ------ Start Fiber Optic Data ------
         
-        let fiberOpticBuffer = indicoCalibration.fiberOptic.spectrum!
-        for i in 0...indicoCalibration.fiberOptic.spectrum!.count-1
+        let fiberOpticBuffer = radianceCalibrationFiles.fiberOptic.spectrum!
+        for i in 0...radianceCalibrationFiles.fiberOptic.spectrum!.count-1
         {
             writeDouble(number: fiberOpticBuffer[i])
         }

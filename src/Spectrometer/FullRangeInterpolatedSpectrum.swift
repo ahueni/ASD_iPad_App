@@ -21,17 +21,4 @@ class FullRangeInterpolatedSpectrum : BaseSpectrum {
         self.spectrumBuffer = spectrumBuffer
     }
     
-    func getChartData() -> LineChartData {
-        var values: [ChartDataEntry] = []
-        for i in 0...self.spectrumBuffer.count-1 {
-            // read starting wavelength and count it to actual index of x-chart entry
-            let startingWaveLength = InstrumentSettingsCache.sharedInstance.startingWaveLength!
-            let chartEntry = ChartDataEntry(x: Double(i + startingWaveLength), y: Double(spectrumBuffer[i]))
-            values.append(chartEntry)
-        }
-        
-        let lineChartDataSet = SpectrumLineChartDataSet(values: values, label: nil)
-        return LineChartData(dataSet: lineChartDataSet)
-    }
-    
 }

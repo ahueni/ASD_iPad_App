@@ -112,7 +112,9 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
         CommandManager.sharedInstance.darkCurrent(sampleCount: darkCurrentSampleCount)
         
         // update chart data
-        self.updateChart(chartData: (InstrumentSettingsCache.sharedInstance.darkCurrent?.getChartData())!, measurementMode: .Raw)
+        let chartDataSet = InstrumentSettingsCache.sharedInstance.darkCurrent!.spectrumBuffer.getChartData()
+        let lineChartData = LineChartData(dataSet: chartDataSet)
+        self.updateChart(chartData: lineChartData, measurementMode: .Raw)
         
         // restart darkCurrent timer
         InstrumentSettingsCache.sharedInstance.restartDarkCurrentTimer()
@@ -136,7 +138,9 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
         whiteReferenceSpectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: whiteRefWithoutDarkCurrent)
         
         // update chart data
-        updateChart(chartData: (whiteReferenceSpectrum?.getChartData())!, measurementMode: .Raw)
+        let chartDataSet = whiteReferenceSpectrum!.spectrumBuffer.getChartData()
+        let lineChartDataSet = LineChartData(dataSet: chartDataSet)
+        self.updateChart(chartData: lineChartDataSet, measurementMode: .Raw)
         
         // restart whiteReference timer
         InstrumentSettingsCache.sharedInstance.restartWhiteReferenceTimer()
@@ -209,7 +213,9 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
                 }
                 
                 // update chart data
-                self.updateChart(chartData: spectrum.getChartData(), measurementMode: self.measurementMode)
+                let chartDataSet = spectrum.spectrumBuffer.getChartData()
+                let lineChartDataSet = LineChartData(dataSet: chartDataSet)
+                self.updateChart(chartData: lineChartDataSet, measurementMode: self.measurementMode)
                 
             }
             CommandManager.sharedInstance.addCancelCallback(callBack: self.finishedAquireLoopHandler)

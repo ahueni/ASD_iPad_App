@@ -54,7 +54,7 @@ class InstrumentSettingsCache {
         }
         
         darkCurrentStartTime = NSDate.timeIntervalSinceReferenceDate
-        darkCurrentTimer = Timer.scheduledTimer(withTimeInterval: 0.6, repeats: true, block: {_ in
+        darkCurrentTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: {_ in
             NotificationCenter.default.post(name: .darkCurrentTimer, object: nil)
         })
         
@@ -67,7 +67,7 @@ class InstrumentSettingsCache {
         }
         
         whiteReferenceStartTime = NSDate.timeIntervalSinceReferenceDate
-        whiteReferenceTimer = Timer.scheduledTimer(withTimeInterval: 0.6, repeats: true, block: {_ in
+        whiteReferenceTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: {_ in
             NotificationCenter.default.post(name: .whiteReferenceTimer, object: nil)
         })
         

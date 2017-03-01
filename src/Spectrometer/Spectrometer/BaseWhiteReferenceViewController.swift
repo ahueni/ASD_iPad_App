@@ -34,11 +34,22 @@ class BaseWhiteReferenceViewController : BaseMeasurementModal {
     }
     
     func aquire() {
-        // Background tasks
+        //Aquire
         let sampleCount = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCount
         let aquiredSpectrum = CommandManager.sharedInstance.aquire(samples: sampleCount)
+        
+        // DC Correction
         currentSpectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: aquiredSpectrum)
-        self.updateLineChart(spectrum: self.currentSpectrum!)
+        //Additional Calculations for example convert dn to radiance
+        additionalCalculationOnCurrentSpectrum()
+        
+        lineChartDataContainer.currentLineChart = currentSpectrum!.spectrumBuffer.getChartData()
+        //update Chart
+        self.updateLineChart()
+    }
+    
+    func additionalCalculationOnCurrentSpectrum(){
+        fatalError("Must override")
     }
     
     @IBAction func takeWhiteRefrence(_ sender: UIButton) {
@@ -54,13 +65,18 @@ class BaseWhiteReferenceViewController : BaseMeasurementModal {
                     return
                 }
                 
-                self.updateProgressBar(measurmentCount: i, statusText: "Bereite nächste Messung vor")
-                sleep(UInt32(self.whiteRefrencePage.whiteReferenceDelay)) // Wait two second before starting the next measurment
-                self.updateProgressBar(measurmentCount: i, statusText: "Messe...")
-                self.setSpectrum()
-                self.updateProgressBar(measurmentCount: i+1, statusText: "Messung beendet")
-                sleep(UInt32(self.whiteRefrencePage.whiteReferenceDelay)) //Wait two second
+                //Aquire spectrum
+                self.updateProgressBar(measurmentCount: i, statusText: "Measure...")
+                let sampleCount = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCount
+                let spectrum = CommandManager.sharedInstance.aquire(samples: sampleCount)
+                self.setSpectrum(whiteReferenceSpectrum: spectrum)
+                
+                //update progress and wait delay
+                self.updateProgressBar(measurmentCount: i+1, statusText: "Waiting...")
+                sleep(UInt32(self.whiteRefrencePage.whiteReferenceDelay))
             }
+            
+            //update UI
             DispatchQueue.main.async {
                 self.startWhiteRefrenceButton.hideLoading()
                 self.startWhiteRefrenceButton.setTitle("Retake white Refrence", for: .normal)
@@ -70,7 +86,7 @@ class BaseWhiteReferenceViewController : BaseMeasurementModal {
     }
     
     // Swift does not support abstract classes. This is the only way to make sure the derived classes do override this method
-    func setSpectrum(){
+    func setSpectrum(whiteReferenceSpectrum : FullRangeInterpolatedSpectrum){
         fatalError("Must Override")
     }
     

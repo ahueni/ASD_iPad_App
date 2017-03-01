@@ -33,6 +33,16 @@ class TargetViewController : BaseMeasurementModal
         startMeasureLoop()
     }
     
+    override func updateLineChart() {
+        super.updateLineChart()
+        if(pageContainer.measurmentMode == MeasurementMode.Reflectance)
+        {
+            DispatchQueue.main.async {
+                self.MeasurementLineChart.setAxisValues(min: 0, max: MeasurementMode.Raw.rawValue)
+            }
+        }
+    }
+    
     func startMeasureLoop()
     {
         startMeasurementButton.showLoading()
@@ -44,33 +54,58 @@ class TargetViewController : BaseMeasurementModal
                     return
                 }
                 
-                self.updateProgressBar(measurmentCount: i, statusText: "Bereite nächste Messung vor", totalCount: self.targetPage.targetCount)
-                sleep(UInt32(self.targetPage.targetDelay))
-                self.updateProgressBar(measurmentCount: i, statusText: "Messe...", totalCount: self.targetPage.targetCount)
+                // Update progress
+                self.updateProgressBar(measurmentCount: i, statusText: "Measure...", totalCount: self.targetPage.targetCount)
                 
+                // Measure
                 let sampleCount = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCount
                 var spectrum = CommandManager.sharedInstance.aquire(samples: sampleCount)
+                //DC Correction
                 if(self.targetPage.takeDarkCurrent)
                 {
                     spectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: spectrum)
                 }
                 
-                self.writeFileAsync(spectrum: spectrum ,isWhiteReference: false, dataType: self.targetPage.dataType)
-                                
+                //Queue write of file
+                
+                
+                switch self.pageContainer.measurmentMode! {
+                case .Raw:
+                        self.writeRawFileAsync(spectrum: spectrum, dataType: .RawType)
+                case MeasurementMode.Reflectance:
+                    self.writeReflectanceFileAsync(spectrum: spectrum, whiteRefrenceSpectrum: self.pageContainer.reflectanceWhiteReference, dataType: .RefType)
+                case MeasurementMode.Radiance:
+                    self.writeRadianceFilesAsync(spectrums: [spectrum], dataType: .RadType, isWhiteReference: false)
+                }
+                
+                //calculate for display and show
+                let caluclatedSpectrumBuffer = self.calculateSpectrum(spectrum: spectrum)
                 self.pageContainer.spectrumList.append(spectrum)
-                self.updateLineChart(spectrum: spectrum)
-                self.updateProgressBar(measurmentCount: i+1, statusText: "Messung beendet", totalCount: self.targetPage.targetCount)
-                sleep(UInt32(self.targetPage.targetDelay)) //Wait two second
+                self.lineChartDataContainer.currentLineChart = caluclatedSpectrumBuffer.getChartData()
+                self.updateLineChart()
+                
+                // update progress & wait delay
+                self.updateProgressBar(measurmentCount: i+1, statusText: "Waiting...", totalCount: self.targetPage.targetCount)
+                sleep(UInt32(self.targetPage.targetDelay))
             }
             self.finishMeasurement()
         }
+    }
+    
+    func calculateSpectrum(spectrum : FullRangeInterpolatedSpectrum) -> [Float]
+    {
+        if(self.pageContainer.measurmentMode == MeasurementMode.Radiance)
+        {
+            return SpectrumCalculator.calculateRadiance(spectrum: spectrum)
+        }
+        return spectrum.spectrumBuffer
     }
     
     func finishMeasurement() {
         
         DispatchQueue.main.async {
             self.startMeasurementButton.hideLoading()
-            self.startMeasurementButton.setTitle("Alle Messungen durchgeführt", for: .application)
+            self.startMeasurementButton.setTitle("All measurments are done", for: .application)
             self.startMeasurementButton.isEnabled = false
             self.nextButton.isEnabled = true
             self.goToNextPage()

@@ -16,18 +16,17 @@ class BackgroundFileWriteManager{
     static let sharedInstance = BackgroundFileWriteManager()
     private init() { }
     
-    func addToQueue(spectrums : [FullRangeInterpolatedSpectrum], whiteRefrenceSpectrum: FullRangeInterpolatedSpectrum?, loadedSettings: MeasurmentSettings, dataType : DataType, indicoCalibration: IndicoCalibration? = nil, fileSuffix :String = "")
+    func addToQueue(spectrums : [FullRangeInterpolatedSpectrum], whiteRefrenceSpectrum: FullRangeInterpolatedSpectrum? = nil, settings: MeasurmentSettings, dataType : DataType, radianceCalibrationFiles: RadianceCalibrationFiles? = nil, fileSuffix :String = "")
     {
         serialQueue.sync {
             for spectrum in spectrums
             {
-                let index = getHighestIndex(filePath: loadedSettings.path) + 1
-                let fileName = String(format: "%03d_", index) + loadedSettings.fileName + fileSuffix + ".asd"
+                let index = getHighestIndex(filePath: settings.path) + 1
+                let fileName = String(format: "%03d_", index) + settings.fileName + fileSuffix + ".asd"
                 print(fileName + " queued")
-                let relativeFilePath = loadedSettings.path.appendingPathComponent(fileName).relativePath
+                let relativeFilePath = settings.path.appendingPathComponent(fileName).relativePath
                 let fileWriter = IndicoWriter(path: relativeFilePath)
-                let datatype : DataType
-                fileWriter.write(spectrum: spectrum, dataType: dataType, whiteRefrenceSpectrum: whiteRefrenceSpectrum, indicoCalibration: indicoCalibration)
+                fileWriter.write(spectrum: spectrum, dataType: dataType, whiteRefrenceSpectrum: whiteRefrenceSpectrum, radianceCalibrationFiles: radianceCalibrationFiles)
             }
         }
     }
@@ -38,7 +37,7 @@ class BackgroundFileWriteManager{
         }
     }
     
-    func getHighestIndex(filePath : URL)-> Int{
+    internal func getHighestIndex(filePath : URL)-> Int{
         var index = 0
         do{
             let directoryContents = try FileManager.default.contentsOfDirectory(at: filePath, includingPropertiesForKeys: nil, options: [])

@@ -12,12 +12,11 @@ import UIKit
 class ParentViewController : UIPageViewController {
     
     var spectrumList = [FullRangeInterpolatedSpectrum]()
-    var whiteRefrenceBeforeSpectrumList = [FullRangeInterpolatedSpectrum]()
-    var whiteRefrenceAfterSpectrumList = [FullRangeInterpolatedSpectrum]()
+    var reflectanceWhiteReference : FullRangeInterpolatedSpectrum! // stores the wr from the Reflectance
     
     var selectedForeOptic : CalibrationFile? // only used in radiance
     
-    var measurmentMode : MeasurementMode?
+    var measurmentMode : MeasurementMode!
     var pages = [ModalPage]()
     var currentIndex = -1
     
