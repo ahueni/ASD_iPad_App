@@ -63,6 +63,8 @@
 		2E91F3131DDB842A003E277F /* InstrumentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F3121DDB842A003E277F /* InstrumentControl.swift */; };
 		2E91F3151DDB8440003E277F /* Optimize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F3141DDB8440003E277F /* Optimize.swift */; };
 		2E91F3171DDB848E003E277F /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F3161DDB848E003E277F /* Version.swift */; };
+		2E924EEA1E66CCE300B9BB42 /* SpectrometerTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E924EE91E66CCE300B9BB42 /* SpectrometerTabBarItem.swift */; };
+		2E924EEC1E66CCFD00B9BB42 /* UIOptionalTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E924EEB1E66CCFD00B9BB42 /* UIOptionalTextField.swift */; };
 		2EB362941DF1BCF900E74E39 /* SpectralFileEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB362931DF1BCF900E74E39 /* SpectralFileEnums.swift */; };
 		2EB362961DF1BD4F00E74E39 /* SpectralFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB362951DF1BD4F00E74E39 /* SpectralFile.swift */; };
 		2EB3629A1DF1D8E400E74E39 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB362991DF1D8E400E74E39 /* AppData.swift */; };
@@ -224,6 +226,8 @@
 		2E91F3121DDB842A003E277F /* InstrumentControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentControl.swift; sourceTree = "<group>"; };
 		2E91F3141DDB8440003E277F /* Optimize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Optimize.swift; sourceTree = "<group>"; };
 		2E91F3161DDB848E003E277F /* Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
+		2E924EE91E66CCE300B9BB42 /* SpectrometerTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrometerTabBarItem.swift; sourceTree = "<group>"; };
+		2E924EEB1E66CCFD00B9BB42 /* UIOptionalTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIOptionalTextField.swift; sourceTree = "<group>"; };
 		2EB362931DF1BCF900E74E39 /* SpectralFileEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectralFileEnums.swift; sourceTree = "<group>"; };
 		2EB362951DF1BD4F00E74E39 /* SpectralFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectralFile.swift; sourceTree = "<group>"; };
 		2EB362991DF1D8E400E74E39 /* AppData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
@@ -567,6 +571,14 @@
 			name = Enums;
 			sourceTree = "<group>";
 		};
+		2E924EE81E66CC4600B9BB42 /* TabBarItems */ = {
+			isa = PBXGroup;
+			children = (
+				2E924EE91E66CCE300B9BB42 /* SpectrometerTabBarItem.swift */,
+			);
+			name = TabBarItems;
+			sourceTree = "<group>";
+		};
 		2EB3628C1DF0212400E74E39 /* SpectralFile */ = {
 			isa = PBXGroup;
 			children = (
@@ -684,6 +696,7 @@
 		2EB823261DE0D3ED00DF732C /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				2E924EE81E66CC4600B9BB42 /* TabBarItems */,
 				2E54E9AE1E6232670047565E /* CustomViews */,
 				2EB9463B1E579E4B006C71C8 /* ViewExtensions */,
 				2E3552071E56FAAF001F7EE1 /* InputControls */,
@@ -928,6 +941,7 @@
 				E1C936B81E41D8B700EF51BB /* PortTextField.swift */,
 				E1C936BB1E42165F00EF51BB /* IPNumberTextField.swift */,
 				E1C936BF1E421AEB00EF51BB /* RequiredTextField.swift */,
+				2E924EEB1E66CCFD00B9BB42 /* UIOptionalTextField.swift */,
 			);
 			name = TextFields;
 			sourceTree = "<group>";
@@ -1194,6 +1208,7 @@
 				E1A40C2E1E40A2D60019F467 /* DirectoryBrowserTableViewController.swift in Sources */,
 				E12547D71E5382050004B2A8 /* ReflectanceSettings.swift in Sources */,
 				E12F66D41E4C54DB00B71AA0 /* IndicoAsdFileReader.swift in Sources */,
+				2E924EEA1E66CCE300B9BB42 /* SpectrometerTabBarItem.swift in Sources */,
 				2E91F2F71DDB5CF7003E277F /* TcpManager.swift in Sources */,
 				2EC6D81B1E5C9D6F0022F70E /* LampFileSelectInput.swift in Sources */,
 				E1A40C231E4077660019F467 /* FileBrowserTableViewController.swift in Sources */,
@@ -1221,6 +1236,7 @@
 				2E8F76711E45F63F00D54ABF /* LoadingButton.swift in Sources */,
 				2EB8233C1DE113DA00DF732C /* CustomCharts.swift in Sources */,
 				2E91F3051DDB7827003E277F /* BaseSpectrumParser.swift in Sources */,
+				2E924EEC1E66CCFD00B9BB42 /* UIOptionalTextField.swift in Sources */,
 				2E8F76781E4754B900D54ABF /* UIBlueButton.swift in Sources */,
 				2E91F2E31DDB5B9F003E277F /* UDPClient.swift in Sources */,
 				2EB9463A1E579E15006C71C8 /* CornerRadiusExtension.swift in Sources */,

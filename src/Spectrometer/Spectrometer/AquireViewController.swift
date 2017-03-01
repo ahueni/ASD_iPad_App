@@ -136,6 +136,23 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
         self.present(vc, animated: true, completion: nil)
     }
     
+    @IBAction func disconnectSpectrometer(_ sender: UIColorButton) {
+        
+        // stopp aquire loop
+        InstrumentSettingsCache.sharedInstance.aquireLoop = false
+        
+        // close connection
+        TcpManager.sharedInstance.close()
+        
+        // redirect to SpectrometerConfig view
+        let initialViewController = self.storyboard?.instantiateViewController(withIdentifier: "SpectrometerConfig") as! UITabBarController
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = initialViewController
+        appDelegate.window?.makeKeyAndVisible()
+        
+    }
+    
     internal func startAquire() {
         
         InstrumentSettingsCache.sharedInstance.aquireLoop = !InstrumentSettingsCache.sharedInstance.aquireLoop
