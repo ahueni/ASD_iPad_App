@@ -12,6 +12,9 @@ import Charts
 
 class AquireViewController: UIViewController, SelectFiberopticDelegate {
     
+    // colors
+    let greenButtonColor = UIColor(red:0.09, green:0.76, blue:0.28, alpha:1.00)
+    
     // buttons
     @IBOutlet var aquireButton: UIButton!
     
@@ -26,6 +29,10 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     // chart
     @IBOutlet var lineChart: SpectrumLineChartView!
     
+    // dc and wr timer labels
+    @IBOutlet var darkCurrentTimerLabel: UILabel!
+    @IBOutlet var whiteReferenceTimerLabel: UILabel!
+    
     // stack views
     @IBOutlet var mainStackView: UIStackView!
     @IBOutlet var navigationStackView: UIStackView!
@@ -33,6 +40,9 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     
     var measurementMode: MeasurementMode = MeasurementMode.Raw
     var whiteReferenceSpectrum: FullRangeInterpolatedSpectrum?
+    
+    // disconnect indicator
+    var disconnectWhenFinished: Bool = false
     
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -47,6 +57,10 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
         rawRadioButton.alternateButton = [reflectanceRadioButton, radianceRadioButton]
         reflectanceRadioButton.alternateButton = [rawRadioButton, radianceRadioButton]
         radianceRadioButton.alternateButton = [rawRadioButton, reflectanceRadioButton]
+        
+        // register dc and wr labels for update notifications
+        NotificationCenter.default.addObserver(self, selector: #selector(updateDarkCurrentTimerLabel), name: .darkCurrentTimer, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateWhiteReferenceTimerLabel), name: .whiteReferenceTimer, object: nil)
         
         // activateRadianceMode -> actually nothing happens because no dark current is taken
         activateRadianceMode()
@@ -100,6 +114,9 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
         // update chart data
         self.updateChart(chartData: (InstrumentSettingsCache.sharedInstance.darkCurrent?.getChartData())!, measurementMode: .Raw)
         
+        // restart darkCurrent timer
+        InstrumentSettingsCache.sharedInstance.restartDarkCurrentTimer()
+        
         // after a dark current evaluate measurement modes
         activateRadianceMode()
         activateReflectanceMode()
@@ -121,6 +138,9 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
         // update chart data
         updateChart(chartData: (whiteReferenceSpectrum?.getChartData())!, measurementMode: .Raw)
         
+        // restart whiteReference timer
+        InstrumentSettingsCache.sharedInstance.restartWhiteReferenceTimer()
+        
         // activate reflectance mode
         activateReflectanceMode()
     }
@@ -138,18 +158,14 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     
     @IBAction func disconnectSpectrometer(_ sender: UIColorButton) {
         
-        // stopp aquire loop
+        // if no loop is active -> disconnect otherwise wait until loop has ended
+        if (!InstrumentSettingsCache.sharedInstance.aquireLoop) {
+            finishedAquireLoopHandler()
+        }
+        
+        // stopp aquire loop and set disconnect indicator
         InstrumentSettingsCache.sharedInstance.aquireLoop = false
-        
-        // close connection
-        TcpManager.sharedInstance.close()
-        
-        // redirect to SpectrometerConfig view
-        let initialViewController = self.storyboard?.instantiateViewController(withIdentifier: "SpectrometerConfig") as! UITabBarController
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.window?.rootViewController = initialViewController
-        appDelegate.window?.makeKeyAndVisible()
+        self.disconnectWhenFinished = true
         
     }
     
@@ -160,8 +176,10 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
         // change button title
         if InstrumentSettingsCache.sharedInstance.aquireLoop {
             aquireButton.setTitle("Stop Aquire", for: .normal)
+            aquireButton.backgroundColor = UIColor.red
         } else {
             aquireButton.setTitle("Start Aquire", for: .normal)
+            aquireButton.backgroundColor = greenButtonColor
         }
         
         // don't start a new aquire queue when its false -> the button is pressed to stopp it
@@ -192,8 +210,8 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
                 self.updateChart(chartData: spectrum.getChartData(), measurementMode: self.measurementMode)
                 
             }
+            CommandManager.sharedInstance.addCancelCallback(callBack: self.finishedAquireLoopHandler)
             print("AquireLoop stopped...")
-            self.aquireButton.setTitle("Start Aquire", for: .normal)
         }
         
     }
@@ -204,6 +222,33 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
         }
     }
     
+    internal func finishedAquireLoopHandler() {
+        
+        // switch back to UI thread
+        DispatchQueue.main.async {
+            
+            self.aquireButton.setTitle("Start Aquire", for: .normal)
+            self.aquireButton.backgroundColor = self.greenButtonColor
+            
+            // if disconnect button was pressed -> return to config view
+            if (self.disconnectWhenFinished) {
+                
+                // close connection
+                TcpManager.sharedInstance.close()
+                
+                // redirect to SpectrometerConfig view
+                let initialViewController = self.storyboard?.instantiateViewController(withIdentifier: "SpectrometerConfig") as! UITabBarController
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.window?.rootViewController = initialViewController
+                appDelegate.window?.makeKeyAndVisible()
+                
+            }
+            
+            
+        }
+        
+    }
+    
     internal func updateChart(chartData: LineChartData, measurementMode: MeasurementMode) {
         
         // switch to UI thread
@@ -212,11 +257,11 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
             // set chart axis
             switch measurementMode {
             case .Raw:
-                self.lineChart.setAxisValues(min: 0, max: 65535)
+                self.lineChart.setAxisValues(min: 0, max: measurementMode.rawValue)
             case .Reflectance:
-                self.lineChart.setAxisValues(min: 0, max: 3)
+                self.lineChart.setAxisValues(min: 0, max: measurementMode.rawValue)
             case .Radiance:
-                self.lineChart.setAxisValues(min: 0, max: 1)
+                self.lineChart.setAxisValues(min: 0, max: measurementMode.rawValue)
             }
             
             // update chart data
@@ -260,6 +305,24 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     internal func didSelectFiberoptic(fiberoptic: CalibrationFile) {
         InstrumentSettingsCache.sharedInstance.selectedForeOptic = fiberoptic
         activateRadianceMode()
+    }
+    
+    internal func updateDarkCurrentTimerLabel() {
+        
+        if let darkCurrentStartTime = InstrumentSettingsCache.sharedInstance.darkCurrentStartTime {
+            let elapsedTime = NSDate.timeIntervalSinceReferenceDate - darkCurrentStartTime
+            darkCurrentTimerLabel.text = Int(elapsedTime).description
+        }
+        
+    }
+    
+    internal func updateWhiteReferenceTimerLabel() {
+        
+        if let whiteReferenceStartTime = InstrumentSettingsCache.sharedInstance.whiteReferenceStartTime {
+            let elapsedTime = NSDate.timeIntervalSinceReferenceDate - whiteReferenceStartTime
+            whiteReferenceTimerLabel.text = Int(elapsedTime).description
+        }
+        
     }
     
     internal func setViewOrientation() -> Void {

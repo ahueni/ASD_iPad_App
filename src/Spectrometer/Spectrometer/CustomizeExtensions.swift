@@ -35,6 +35,8 @@ class MyUITextView : UITextView {
 
 extension Notification.Name {
     static let reloadSpectrometerConfig = Notification.Name("reloadSpectrometerConfig")
+    static let darkCurrentTimer = Notification.Name("darkCurrentTimer")
+    static let whiteReferenceTimer = Notification.Name("whiteReferenceTimer")
 }
 
 

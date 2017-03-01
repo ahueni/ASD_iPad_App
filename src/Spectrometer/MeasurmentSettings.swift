@@ -10,13 +10,13 @@ import Foundation
 
 class MeasurmentSettings : NSObject, NSCoding {
     var fileName: String
-    var comment: String
+    var comment: String?
     var measurmentMode: MeasurementMode
     var path: URL
     
     required init(coder decoder: NSCoder) {
         self.fileName = decoder.decodeObject(forKey: "fileName") as! String
-        self.comment = decoder.decodeObject(forKey: "comment") as! String
+        self.comment = decoder.decodeObject(forKey: "comment") as? String
         self.measurmentMode = MeasurementMode(rawValue: decoder.decodeDouble(forKey: "measurmentMode"))!
         
         let pathString = decoder.decodeObject(forKey: "pathString") as! String
@@ -30,7 +30,7 @@ class MeasurmentSettings : NSObject, NSCoding {
         aCoder.encode(self.measurmentMode.rawValue, forKey: "measurmentMode")
     }
     
-    init(fileName: String, comment: String, path: URL, measurmentMode : MeasurementMode){
+    init(fileName: String, comment: String?, path: URL, measurmentMode : MeasurementMode){
         self.fileName = fileName
         self.comment = comment
         self.measurmentMode = measurmentMode

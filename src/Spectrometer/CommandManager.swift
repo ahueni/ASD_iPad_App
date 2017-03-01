@@ -122,6 +122,12 @@ class CommandManager {
         
     }
     
+    func addCancelCallback(callBack: () -> Void) {
+        serialQueue.sync {
+            callBack()
+        }
+    }
+    
     internal func internalAquire(samples: Int32) -> FullRangeInterpolatedSpectrum {
         let command:Command = Command(commandParam: CommandEnum.Aquire, params: "1," + samples.description)
         let data = tcpManager.sendCommand(command: command)

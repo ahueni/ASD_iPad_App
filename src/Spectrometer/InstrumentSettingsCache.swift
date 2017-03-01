@@ -12,7 +12,7 @@ class InstrumentSettingsCache {
     
     static let sharedInstance = InstrumentSettingsCache()
     
-    // indicators to stopp a loop in background threads -> they have to be in a singelton
+    // indicators to stopp or check a loop in background threads -> they have to be in a singelton
     var aquireLoop = false
     var cancelMeasurment = true
     
@@ -36,12 +36,45 @@ class InstrumentSettingsCache {
     // if darkCurrent is taken its saved here applicationwide
     var darkCurrent: FullRangeInterpolatedSpectrum?
     
+    // timer objects for dark current and white reference
+    private var darkCurrentTimer:Timer?
+    var darkCurrentStartTime: TimeInterval?
+    
+    private var whiteReferenceTimer: Timer?
+    var whiteReferenceStartTime: TimeInterval?
+    
     // the actual selected foreoptic file, is there a new one all the radiance pre-calculated values
     // have to be recalculated
     var selectedForeOptic: CalibrationFile? {
         didSet {
             SpectrumCalculator.sharedInstance.updateForeopticFiles(base: instrumentConfiguration.base!, lamp: instrumentConfiguration.lamp!, foreoptic: selectedForeOptic!)
         }
+    }
+    
+    func restartDarkCurrentTimer() -> Void {
+        
+        if let actualDarkCurrentTimer = darkCurrentTimer {
+            actualDarkCurrentTimer.invalidate()
+        }
+        
+        darkCurrentStartTime = NSDate.timeIntervalSinceReferenceDate
+        darkCurrentTimer = Timer.scheduledTimer(withTimeInterval: 0.6, repeats: true, block: {_ in
+            NotificationCenter.default.post(name: .darkCurrentTimer, object: nil)
+        })
+        
+    }
+    
+    func restartWhiteReferenceTimer() -> Void {
+        
+        if let actualWhiteReferenceTimer = whiteReferenceTimer {
+            actualWhiteReferenceTimer.invalidate()
+        }
+        
+        whiteReferenceStartTime = NSDate.timeIntervalSinceReferenceDate
+        whiteReferenceTimer = Timer.scheduledTimer(withTimeInterval: 0.6, repeats: true, block: {_ in
+            NotificationCenter.default.post(name: .whiteReferenceTimer, object: nil)
+        })
+        
     }
     
     // prevent other instances of this class -> singelton

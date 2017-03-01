@@ -535,7 +535,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XgJ-hU-ctM">
-                                <rect key="frame" x="295" y="923" width="179" height="32"/>
+                                <rect key="frame" x="295" y="922" width="179" height="33"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                 <state key="normal" title="Spektrometer hinzufügen"/>
                                 <connections>
@@ -546,7 +546,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eqG-6H-HNG">
-                                <rect key="frame" x="20" y="184.5" width="728" height="707.5"/>
+                                <rect key="frame" x="20" y="184.5" width="728" height="706.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -554,7 +554,7 @@
                                         <rect key="frame" x="0.0" y="28" width="728" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mmm-tZ-Xs7" id="yjQ-yq-CaX">
-                                            <rect key="frame" x="0.0" y="0.0" width="728" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="728" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spectrometer Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ec6-mm-Psg">
@@ -615,16 +615,6 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UZg-A0-uSz">
-                                <rect key="frame" x="552" y="925" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="sP8-Ow-0XN"/>
-                                </constraints>
-                                <state key="normal" title="Debug"/>
-                                <connections>
-                                    <segue destination="HXw-qQ-t8O" kind="presentation" id="16U-68-zdS"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -633,11 +623,8 @@
                             <constraint firstItem="H6r-xf-8BW" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="6RU-xP-lCW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="H6r-xf-8BW" secondAttribute="trailing" id="7EK-0u-Qby"/>
                             <constraint firstAttribute="leadingMargin" secondItem="eqG-6H-HNG" secondAttribute="leading" id="AI4-ly-P1O"/>
-                            <constraint firstItem="UZg-A0-uSz" firstAttribute="top" secondItem="eqG-6H-HNG" secondAttribute="bottom" constant="33" id="KDo-nf-cfq"/>
-                            <constraint firstItem="UZg-A0-uSz" firstAttribute="leading" secondItem="XgJ-hU-ctM" secondAttribute="trailing" constant="78" id="Kbh-kA-ibw"/>
                             <constraint firstItem="eqG-6H-HNG" firstAttribute="top" secondItem="ZuH-AQ-NxF" secondAttribute="bottom" constant="10" id="Q7Z-gi-RLi"/>
                             <constraint firstItem="H6r-xf-8BW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bX2-v5-0xO"/>
-                            <constraint firstItem="UZg-A0-uSz" firstAttribute="bottom" secondItem="XgJ-hU-ctM" secondAttribute="bottom" id="c4z-Qk-ZBu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ZuH-AQ-NxF" secondAttribute="trailing" id="c8P-Yi-Aga"/>
                             <constraint firstItem="XgJ-hU-ctM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eSx-kf-d2d"/>
                             <constraint firstAttribute="leadingMargin" secondItem="H6r-xf-8BW" secondAttribute="leading" id="ilp-EK-cLl"/>
@@ -646,8 +633,11 @@
                             <constraint firstItem="ZuH-AQ-NxF" firstAttribute="top" secondItem="H6r-xf-8BW" secondAttribute="bottom" constant="10" id="zqu-YT-S5H"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Konfiguration" image="folder.png" id="ZjH-oZ-xgc">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="10"/>
+                    <tabBarItem key="tabBarItem" title="Configuration" id="ZjH-oZ-xgc" customClass="SpectrometerTabBarItem" customModule="Spectrometer" customModuleProvider="target">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="icon" value="fa-hdd-o"/>
+                        </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <connections>
                         <outlet property="deviceTableView" destination="eqG-6H-HNG" id="9OC-PS-cVY"/>
@@ -672,11 +662,11 @@
                                         <rect key="frame" x="0.0" y="35" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aOc-vK-DdF" id="9XQ-3y-ChR">
-                                            <rect key="frame" x="0.0" y="0.0" width="696" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="696" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="BareFiber" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CMU-FZ-zZx">
-                                                    <rect key="frame" x="48" y="0.0" width="648" height="43.5"/>
+                                                    <rect key="frame" x="48" y="0.0" width="648" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -689,11 +679,11 @@
                                         <rect key="frame" x="0.0" y="79" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wce-xj-iHC" id="PJZ-gZ-LKj">
-                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="3°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wh2-pe-cYr">
-                                                    <rect key="frame" x="48" y="0.0" width="672" height="43.5"/>
+                                                    <rect key="frame" x="48" y="0.0" width="672" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -730,11 +720,11 @@
                                         <rect key="frame" x="0.0" y="35" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bd0-qf-VNO" id="PHM-XQ-hlJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Instrument Configuration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zws-RY-5Mo">
-                                                    <rect key="frame" x="15" y="0.0" width="270" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -754,11 +744,11 @@
                                         <rect key="frame" x="0.0" y="159" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xxk-m8-0yG" id="p9r-o4-IPv">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Instrument Control" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qC2-kt-db7">
-                                                    <rect key="frame" x="15" y="0.0" width="270" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -778,11 +768,11 @@
                                         <rect key="frame" x="0.0" y="267" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LzP-Pa-bqn" id="UAK-D7-mJB">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="General" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xns-Tg-vju">
-                                                    <rect key="frame" x="15" y="0.0" width="270" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -857,18 +847,18 @@
                                         <rect key="frame" x="0.0" y="35" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5nf-zS-eDm" id="OMB-GB-8V9">
-                                            <rect key="frame" x="0.0" y="0.0" width="702" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="702" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Foreoptic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NzU-Ri-bB7">
-                                                    <rect key="frame" x="48" y="10" width="74.5" height="23.5"/>
+                                                    <rect key="frame" x="48" y="10" width="75" height="24"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="BareFiber" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CYc-ag-egS">
-                                                    <rect key="frame" x="625" y="10" width="77" height="23.5"/>
+                                                    <rect key="frame" x="625" y="10" width="77" height="24"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -885,10 +875,10 @@
                             <tableViewSection headerTitle="Number of samples" id="zB7-kd-fH0">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NumOfSampSpectrum" id="kQD-fm-Jrd">
-                                        <rect key="frame" x="0.0" y="135" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="136" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kQD-fm-Jrd" id="P78-Le-zBx">
-                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="2" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="L6E-km-Vpk">
@@ -930,10 +920,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NumOfSamplesDarkCurrent" id="OgF-6q-77f">
-                                        <rect key="frame" x="0.0" y="179" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="180" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OgF-6q-77f" id="8vc-iq-aNF">
-                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="2" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="jtO-Ht-u4q">
@@ -975,10 +965,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NumOfSamplesWhiteReference" id="8f1-wh-CjP">
-                                        <rect key="frame" x="0.0" y="223" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="224" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8f1-wh-CjP" id="hUV-KQ-DwI">
-                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="2" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="49O-RP-RZe">
@@ -1024,14 +1014,14 @@
                             <tableViewSection headerTitle="Scan Type" id="SIp-5G-Ge0">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ScanType" textLabel="dpj-cs-nkK" style="IBUITableViewCellStyleDefault" id="mBa-S6-qwV">
-                                        <rect key="frame" x="0.0" y="323" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="325" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mBa-S6-qwV" id="RM7-4S-tGf">
-                                            <rect key="frame" x="0.0" y="0.0" width="702" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="702" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="AB Even" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dpj-cs-nkK">
-                                                    <rect key="frame" x="48" y="0.0" width="654" height="43.5"/>
+                                                    <rect key="frame" x="48" y="0.0" width="654" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -1045,21 +1035,21 @@
                             <tableViewSection id="xUq-hx-MVm">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AbsoluteReflectance" textLabel="mtJ-lY-ZdN" detailTextLabel="0zb-4y-g7J" style="IBUITableViewCellStyleValue1" id="Fbb-Xo-UGo">
-                                        <rect key="frame" x="0.0" y="403" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="405" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fbb-Xo-UGo" id="M1g-Vf-QqI">
-                                            <rect key="frame" x="0.0" y="0.0" width="702" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="702" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Absolute Reflectance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mtJ-lY-ZdN">
-                                                    <rect key="frame" x="48" y="10" width="166" height="23.5"/>
+                                                    <rect key="frame" x="48" y="10" width="166" height="24"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Aus" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0zb-4y-g7J">
-                                                    <rect key="frame" x="672.5" y="10" width="29.5" height="23.5"/>
+                                                    <rect key="frame" x="672" y="10" width="30" height="24"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -1130,11 +1120,15 @@
             </objects>
             <point key="canvasLocation" x="3295" y="465"/>
         </scene>
-        <!--Einstellungen-->
+        <!--Settings-->
         <scene sceneID="UPU-OB-DjX">
             <objects>
                 <splitViewController wantsFullScreenLayout="YES" extendedLayoutIncludesOpaqueBars="YES" id="suE-Ub-Jt1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Einstellungen" id="6Oe-Ub-zmS"/>
+                    <tabBarItem key="tabBarItem" title="Settings" id="6Oe-Ub-zmS" customClass="SpectrometerTabBarItem" customModule="Spectrometer" customModuleProvider="target">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="icon" value="fa-cogs"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <connections>
                         <segue destination="6Pc-k0-7qU" kind="relationship" relationship="masterViewController" id="R4M-Yz-AZW"/>
                     </connections>
@@ -1256,7 +1250,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ahg-0a-FrH" userLabel="Foreoptic">
-                                                        <rect key="frame" x="0.0" y="210" width="196" height="92"/>
+                                                        <rect key="frame" x="0.0" y="197.5" width="196" height="92"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mDJ-Ac-fjy" userLabel="ForeopticContainerView" customClass="UIRoundBorderedView" customModule="Spectrometer" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="196" height="92"/>
@@ -1327,7 +1321,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sGQ-TP-CW2" userLabel="WhiteRefrence">
-                                                        <rect key="frame" x="0.0" y="407" width="196" height="99"/>
+                                                        <rect key="frame" x="0.0" y="382" width="196" height="99"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mEn-Yi-yHa" userLabel="WhiteReferenceContentView" customClass="UIRoundBorderedView" customModule="Spectrometer" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="196" height="99"/>
@@ -1363,7 +1357,7 @@
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 minutes ago | 13:45" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAl-Z2-FKj">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Never taken" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAl-Z2-FKj">
                                                                                 <rect key="frame" x="8" y="34" width="180" height="18"/>
                                                                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="13"/>
                                                                                 <nil key="textColor"/>
@@ -1407,7 +1401,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="c9D-wN-nhA" userLabel="DarkCurrent">
-                                                        <rect key="frame" x="0.0" y="611" width="196" height="99"/>
+                                                        <rect key="frame" x="0.0" y="573.5" width="196" height="99"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CZY-AM-DPF" userLabel="DarkCurrentContainerView" customClass="UIRoundBorderedView" customModule="Spectrometer" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="196" height="99"/>
@@ -1440,7 +1434,7 @@
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 minutes ago | 13:45" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mkJ-7y-3vf">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Never taken" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mkJ-7y-3vf">
                                                                                 <rect key="frame" x="8" y="34" width="180" height="18"/>
                                                                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="13"/>
                                                                                 <nil key="textColor"/>
@@ -1484,7 +1478,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8wv-rR-oJW" userLabel="MeasurementControl">
-                                                        <rect key="frame" x="0.0" y="815" width="196" height="90"/>
+                                                        <rect key="frame" x="0.0" y="765" width="196" height="140"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QIW-iu-CZ9" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="196" height="40"/>
@@ -1514,7 +1508,7 @@
                                                                     <constraint firstAttribute="height" constant="40" id="Ajp-69-87U"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                                                <state key="normal" title="Start"/>
+                                                                <state key="normal" title="Start Aquire"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="background">
                                                                         <color key="value" red="0.12549019610000001" green="0.75686274509999996" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1528,6 +1522,13 @@
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <action selector="startAquire:" destination="CAT-Jv-66J" eventType="touchUpInside" id="9z4-ec-Ijv"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ew-Nk-ccm" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="100" width="196" height="40"/>
+                                                                <state key="normal" title="Disconnect"/>
+                                                                <connections>
+                                                                    <action selector="disconnectSpectrometer:" destination="CAT-Jv-66J" eventType="touchUpInside" id="BfY-3t-Lio"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -1560,9 +1561,14 @@
                             <constraint firstItem="Ntg-6e-Vsi" firstAttribute="top" secondItem="q68-V6-2I0" secondAttribute="bottom" id="z8n-Wi-Whu"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Spektrometer" id="j7u-3J-zL2"/>
+                    <tabBarItem key="tabBarItem" title="Spektrometer" id="j7u-3J-zL2" customClass="SpectrometerTabBarItem" customModule="Spectrometer" customModuleProvider="target">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="icon" value="fa-hdd-o"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <connections>
                         <outlet property="aquireButton" destination="wEU-oK-YU2" id="NN3-bG-DuX"/>
+                        <outlet property="darkCurrentTimerLabel" destination="mkJ-7y-3vf" id="C19-rQ-CHj"/>
                         <outlet property="foreOpticButton" destination="fuq-Nw-e81" id="yDa-1m-27w"/>
                         <outlet property="foreOpticLabel" destination="62T-XW-n7n" id="tz9-rE-XOp"/>
                         <outlet property="lineChart" destination="buq-02-Ymr" id="N5g-sm-xnN"/>
@@ -1571,6 +1577,7 @@
                         <outlet property="radianceRadioButton" destination="HsK-Cf-J8v" id="7Zl-fS-O1O"/>
                         <outlet property="rawRadioButton" destination="lhG-Vr-zOf" id="4kV-xF-Bwc"/>
                         <outlet property="reflectanceRadioButton" destination="JdE-6o-Ize" id="dcr-Cl-iqq"/>
+                        <outlet property="whiteReferenceTimerLabel" destination="MAl-Z2-FKj" id="MxW-cf-Chx"/>
                         <outletCollection property="navigationElements" destination="J69-Zw-bwH" collectionClass="NSMutableArray" id="HeL-wX-isc"/>
                         <outletCollection property="navigationElements" destination="ahg-0a-FrH" collectionClass="NSMutableArray" id="22E-IY-RK4"/>
                         <outletCollection property="navigationElements" destination="sGQ-TP-CW2" collectionClass="NSMutableArray" id="QOi-3X-P8p"/>
@@ -1594,20 +1601,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Messungen abspeichern" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="war-x9-xc7">
-                                <rect key="frame" x="20" y="40" width="500" height="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save measurements" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="war-x9-xc7">
+                                <rect key="frame" x="20" y="40" width="500" height="30"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alle Messungen wurden erfolgreich durchgeführt und werden nun abgespeichert." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7M-uM-Rys">
-                                <rect key="frame" x="20" y="76" width="500" height="14"/>
+                                <rect key="frame" x="20" y="80" width="500" height="16.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Die Messungen werden gespeichert ..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSU-MD-mc2">
-                                <rect key="frame" x="20" y="278" width="500" height="14"/>
+                                <rect key="frame" x="20" y="275.5" width="500" height="16.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1619,7 +1626,7 @@
                                     <constraint firstAttribute="height" constant="50" id="vOr-7q-a3b"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
-                                <state key="normal" title="Abschliessen">
+                                <state key="normal" title="Close">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1637,7 +1644,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Die Messungen wurden erfolgreich abgespeichert. Sie können alle Messungen im Tab &quot;Messungen&quot; einsehen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPK-w9-25L">
-                                <rect key="frame" x="40" y="458" width="460" height="28"/>
+                                <rect key="frame" x="40" y="458" width="460" height="33"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1688,7 +1695,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Q35-eC-ZyI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="D2O-Fx-14E">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vNb-iz-Xys" userLabel="RadianceTitle" customClass="TitleSection" customModule="Spectrometer" customModuleProvider="target">
@@ -1702,13 +1709,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OKt-P8-Q8J">
-                                <rect key="frame" x="20" y="70" width="500" height="645"/>
+                                <rect key="frame" x="20" y="70" width="500" height="845"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JT3-jH-E4Q" userLabel="ScrollContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="500" height="543"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="500" height="618"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tgp-nn-lPp" userLabel="DarkCurrent settings" customClass="SettingsBox" customModule="Spectrometer" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="500" height="141"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="500" height="106"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DarkCurrent settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ghy-1p-Pro" userLabel="TitelLabel">
                                                         <rect key="frame" x="16" y="0.0" width="155" height="46"/>
@@ -1720,21 +1727,32 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="04W-Bc-l5c" userLabel="ContentView">
-                                                        <rect key="frame" x="0.0" y="46" width="500" height="95"/>
+                                                        <rect key="frame" x="0.0" y="46" width="500" height="60"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The last DarkCurrent was taken on 3:00 p.m. You can retake a DarkCurrent to have a actual value for the measurements" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cks-am-1N0">
-                                                                <rect key="frame" x="16" y="12" width="468" height="33"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Dark Current taken:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cks-am-1N0">
+                                                                <rect key="frame" x="16" y="12" width="333" height="16.5"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0c-Il-QIj" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
-                                                                <rect key="frame" x="168" y="53" width="164" height="32"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B0c-Il-QIj" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
+                                                                <rect key="frame" x="359" y="8" width="133" height="44"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="164" id="Z3T-IM-AGJ"/>
+                                                                    <constraint firstAttribute="width" constant="133" id="81U-mf-rrx"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
-                                                                <state key="normal" title="Take DarkCurrent"/>
+                                                                <state key="normal">
+                                                                    <attributedString key="attributedTitle">
+                                                                        <fragment>
+                                                                            <string key="content">Retake
+Dark Current</string>
+                                                                            <attributes>
+                                                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                <font key="NSFont" size="12" name="OpenSans"/>
+                                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                            </attributes>
+                                                                        </fragment>
+                                                                    </attributedString>
+                                                                </state>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="background">
                                                                         <color key="value" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1743,31 +1761,32 @@
                                                                         <real key="value" value="4"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
-                                                                        <color key="value" red="0.96415284859999995" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <action selector="takeDarkCurrentPressed:" destination="b7d-mh-RXH" eventType="touchUpInside" id="TcT-wl-a7z"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fyT-7w-7zp">
-                                                                <rect key="frame" x="16" y="55" width="65" height="30"/>
-                                                                <state key="normal" title="Foreoptic"/>
-                                                                <connections>
-                                                                    <action selector="foreOpticButtonClicked:" destination="b7d-mh-RXH" eventType="touchUpInside" id="FRg-lG-20c"/>
-                                                                </connections>
-                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Never taken" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mdl-n3-ptl">
+                                                                <rect key="frame" x="16" y="30.5" width="338" height="17"/>
+                                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstItem="cks-am-1N0" firstAttribute="leading" secondItem="04W-Bc-l5c" secondAttribute="leading" constant="16" id="0Gu-Lc-c08"/>
-                                                            <constraint firstAttribute="trailing" secondItem="cks-am-1N0" secondAttribute="trailing" constant="16" id="N8x-A1-ASt"/>
-                                                            <constraint firstItem="B0c-Il-QIj" firstAttribute="top" secondItem="cks-am-1N0" secondAttribute="bottom" constant="8" id="QTF-Y3-O7Q"/>
+                                                            <constraint firstItem="B0c-Il-QIj" firstAttribute="top" secondItem="04W-Bc-l5c" secondAttribute="top" constant="8" id="8NR-i1-N2E"/>
+                                                            <constraint firstItem="B0c-Il-QIj" firstAttribute="leading" secondItem="Mdl-n3-ptl" secondAttribute="trailing" constant="5" id="Bm4-I1-sBQ"/>
+                                                            <constraint firstAttribute="bottom" secondItem="B0c-Il-QIj" secondAttribute="bottom" constant="8" id="Iaj-Uy-QkI"/>
+                                                            <constraint firstItem="B0c-Il-QIj" firstAttribute="leading" secondItem="cks-am-1N0" secondAttribute="trailing" constant="10" id="KiB-xD-Why"/>
+                                                            <constraint firstItem="Mdl-n3-ptl" firstAttribute="leading" secondItem="04W-Bc-l5c" secondAttribute="leading" constant="16" id="TLz-rB-35a"/>
                                                             <constraint firstItem="cks-am-1N0" firstAttribute="top" secondItem="04W-Bc-l5c" secondAttribute="top" constant="12" id="V0b-p6-XmG"/>
-                                                            <constraint firstAttribute="height" constant="95" id="WKv-al-NbK"/>
-                                                            <constraint firstItem="fyT-7w-7zp" firstAttribute="leading" secondItem="cks-am-1N0" secondAttribute="leading" id="iFT-fi-oVB"/>
-                                                            <constraint firstItem="B0c-Il-QIj" firstAttribute="centerX" secondItem="04W-Bc-l5c" secondAttribute="centerX" id="kUt-Iu-zCj"/>
-                                                            <constraint firstItem="fyT-7w-7zp" firstAttribute="bottom" secondItem="B0c-Il-QIj" secondAttribute="bottom" id="waE-Xj-qcd"/>
+                                                            <constraint firstAttribute="height" constant="60" id="WKv-al-NbK"/>
+                                                            <constraint firstItem="Mdl-n3-ptl" firstAttribute="top" secondItem="cks-am-1N0" secondAttribute="bottom" constant="2" id="kK0-q0-io7"/>
+                                                            <constraint firstAttribute="trailing" secondItem="B0c-Il-QIj" secondAttribute="trailing" constant="8" id="p0n-DR-qdt"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
@@ -1781,8 +1800,53 @@
                                                     <constraint firstItem="Ghy-1p-Pro" firstAttribute="top" secondItem="tgp-nn-lPp" secondAttribute="top" id="v2f-IP-HSW"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="byw-Wm-13F" userLabel="Foreoptic settings" customClass="SettingsBox" customModule="Spectrometer" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="116" width="500" height="100"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change foreoptic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvR-RG-pdS" userLabel="TitelLabel">
+                                                        <rect key="frame" x="16" y="0.0" width="128" height="46"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="46" id="B2w-A5-TFS"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fyT-7w-7zp" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
+                                                        <rect key="frame" x="10" y="55" width="480" height="35"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="35" id="jIA-CV-P2K"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
+                                                        <state key="normal" title="Foreoptic"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="background">
+                                                                <color key="value" red="0.1647058824" green="0.53725490200000003" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="foreOpticButtonClicked:" destination="b7d-mh-RXH" eventType="touchUpInside" id="FRg-lG-20c"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="fyT-7w-7zp" firstAttribute="top" secondItem="byw-Wm-13F" secondAttribute="top" constant="55" id="85t-qE-tPB"/>
+                                                    <constraint firstAttribute="trailing" secondItem="fyT-7w-7zp" secondAttribute="trailing" constant="10" id="H6I-Kl-6sj"/>
+                                                    <constraint firstItem="tvR-RG-pdS" firstAttribute="top" secondItem="byw-Wm-13F" secondAttribute="top" id="Idu-9k-GRZ"/>
+                                                    <constraint firstItem="tvR-RG-pdS" firstAttribute="leading" secondItem="byw-Wm-13F" secondAttribute="leading" constant="16" id="JjW-Dg-ojY"/>
+                                                    <constraint firstAttribute="bottom" secondItem="fyT-7w-7zp" secondAttribute="bottom" constant="10" id="KEf-yx-37l"/>
+                                                    <constraint firstItem="fyT-7w-7zp" firstAttribute="leading" secondItem="byw-Wm-13F" secondAttribute="leading" constant="10" id="RaY-s5-wRE"/>
+                                                </constraints>
+                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VA2-Qs-xBu" userLabel="WR before settings" customClass="SettingsBox" customModule="Spectrometer" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="151" width="500" height="124"/>
+                                                <rect key="frame" x="0.0" y="226" width="500" height="124"/>
                                                 <subviews>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c49-aN-rEQ">
                                                         <rect key="frame" x="443" y="8" width="51" height="31"/>
@@ -1802,8 +1866,8 @@
                                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zb-K9-h2T" userLabel="ContentView">
                                                         <rect key="frame" x="0.0" y="46" width="500" height="78"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Intervall between:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDw-9U-Yz2">
-                                                                <rect key="frame" x="16" y="46.5" width="117" height="19.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Intervall between saves" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDw-9U-Yz2">
+                                                                <rect key="frame" x="16" y="46.5" width="153" height="20"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -1840,8 +1904,8 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WhiteReference count:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Q3-DZ-aZl">
-                                                                <rect key="frame" x="16" y="13" width="148.5" height="19.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WhiteReference count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Q3-DZ-aZl">
+                                                                <rect key="frame" x="16" y="13" width="144.5" height="20"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -1879,7 +1943,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vqk-U3-Xxh" userLabel="Target settings" customClass="SettingsBox" customModule="Spectrometer" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="285" width="500" height="124"/>
+                                                <rect key="frame" x="0.0" y="360" width="500" height="124"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbU-lb-Bzo" userLabel="TitelLabel">
                                                         <rect key="frame" x="16" y="0.0" width="46.5" height="46"/>
@@ -1915,8 +1979,8 @@
                                                                     <action selector="targetCountStepperValueChanged:" destination="b7d-mh-RXH" eventType="valueChanged" id="2rQ-gN-J8q"/>
                                                                 </connections>
                                                             </stepper>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interval between targets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EVg-3H-Vo9">
-                                                                <rect key="frame" x="18" y="45.5" width="301" height="19.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interval between saves" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EVg-3H-Vo9">
+                                                                <rect key="frame" x="18" y="45.5" width="301" height="20"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -1969,7 +2033,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ypp-ve-22z" userLabel="WR after settings" customClass="SettingsBox" customModule="Spectrometer" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="419" width="500" height="124"/>
+                                                <rect key="frame" x="0.0" y="494" width="500" height="124"/>
                                                 <subviews>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CAg-sm-v1E">
                                                         <rect key="frame" x="443" y="8" width="51" height="31"/>
@@ -1996,8 +2060,8 @@
                                                                     <action selector="whiteRefrenceAfterCountStepperValueChanged:" destination="b7d-mh-RXH" eventType="valueChanged" id="Nt8-8L-gM9"/>
                                                                 </connections>
                                                             </stepper>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obs-Pd-ZRS">
-                                                                <rect key="frame" x="18" y="46.5" width="296" height="19.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interval between saves" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obs-Pd-ZRS">
+                                                                <rect key="frame" x="18" y="46.5" width="296" height="20"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -2027,8 +2091,8 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cu4-L7-xQy">
-                                                                <rect key="frame" x="18" y="13" width="305" height="19.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WhiteReference count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cu4-L7-xQy">
+                                                                <rect key="frame" x="18" y="13" width="305" height="20"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -2075,14 +2139,17 @@
                                             <constraint firstAttribute="trailing" secondItem="tgp-nn-lPp" secondAttribute="trailing" id="9Vg-mX-LKL"/>
                                             <constraint firstItem="Ypp-ve-22z" firstAttribute="top" secondItem="Vqk-U3-Xxh" secondAttribute="bottom" constant="10" id="Ad2-QP-11D"/>
                                             <constraint firstAttribute="trailing" secondItem="VA2-Qs-xBu" secondAttribute="trailing" id="BI0-Pj-RCa"/>
-                                            <constraint firstItem="VA2-Qs-xBu" firstAttribute="top" secondItem="tgp-nn-lPp" secondAttribute="bottom" constant="10" id="Fww-5G-x2M"/>
+                                            <constraint firstItem="byw-Wm-13F" firstAttribute="top" secondItem="tgp-nn-lPp" secondAttribute="bottom" constant="10" id="P6i-l7-zOe"/>
                                             <constraint firstAttribute="bottom" secondItem="Ypp-ve-22z" secondAttribute="bottom" id="Rqz-dL-Lvr"/>
+                                            <constraint firstItem="byw-Wm-13F" firstAttribute="leading" secondItem="JT3-jH-E4Q" secondAttribute="leading" id="W7H-Yg-Y9c"/>
                                             <constraint firstItem="tgp-nn-lPp" firstAttribute="top" secondItem="JT3-jH-E4Q" secondAttribute="top" id="X2W-Kv-odI"/>
+                                            <constraint firstItem="VA2-Qs-xBu" firstAttribute="top" secondItem="byw-Wm-13F" secondAttribute="bottom" constant="10" id="g2k-lf-GPS"/>
                                             <constraint firstAttribute="trailing" secondItem="Vqk-U3-Xxh" secondAttribute="trailing" id="k3r-ps-unr"/>
                                             <constraint firstAttribute="trailing" secondItem="Ypp-ve-22z" secondAttribute="trailing" id="l9N-iN-yPN"/>
                                             <constraint firstItem="Ypp-ve-22z" firstAttribute="leading" secondItem="JT3-jH-E4Q" secondAttribute="leading" id="n4Q-GG-NWL"/>
                                             <constraint firstItem="VA2-Qs-xBu" firstAttribute="leading" secondItem="JT3-jH-E4Q" secondAttribute="leading" id="nyb-5o-bFa"/>
                                             <constraint firstItem="tgp-nn-lPp" firstAttribute="leading" secondItem="JT3-jH-E4Q" secondAttribute="leading" id="s3b-c1-BZn"/>
+                                            <constraint firstAttribute="trailing" secondItem="byw-Wm-13F" secondAttribute="trailing" id="zDg-Vx-dT6"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -2095,7 +2162,7 @@
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vy4-YO-FtY" customClass="UILightGrayButton" customModule="Spectrometer" customModuleProvider="target">
-                                <rect key="frame" x="20" y="735" width="240" height="45"/>
+                                <rect key="frame" x="20" y="935" width="240" height="45"/>
                                 <color key="backgroundColor" white="0.95720238099999999" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="OyO-NM-TNU"/>
@@ -2109,7 +2176,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fap-A8-4AZ" customClass="UIBlueButton" customModule="Spectrometer" customModuleProvider="target">
-                                <rect key="frame" x="280" y="735" width="240" height="45"/>
+                                <rect key="frame" x="280" y="935" width="240" height="45"/>
                                 <color key="backgroundColor" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="bhJ-TE-xfY"/>
@@ -2142,7 +2209,7 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="540" height="800"/>
+                    <size key="freeformSize" width="540" height="1000"/>
                     <connections>
                         <outlet property="darkCurrentContentHeight" destination="WKv-al-NbK" id="6l6-PH-YNR"/>
                         <outlet property="nextButton" destination="fap-A8-4AZ" id="nSg-uz-ed0"/>
@@ -2166,7 +2233,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7oM-Mg-bNb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3722.65625" y="-1754.296875"/>
+            <point key="canvasLocation" x="3722.65625" y="-1629.4921875"/>
         </scene>
         <!--Start Test Series View Controller-->
         <scene sceneID="kZm-SO-WRe">
@@ -2523,7 +2590,7 @@
                                                         <rect key="frame" x="0.0" y="46" width="500" height="60"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last DarkCurrent taken:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RGk-Gd-bzt">
-                                                                <rect key="frame" x="13" y="8" width="338" height="16.5"/>
+                                                                <rect key="frame" x="13" y="12" width="338" height="16.5"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -2537,7 +2604,7 @@
                                                                     <attributedString key="attributedTitle">
                                                                         <fragment>
                                                                             <string key="content">Retake
-DarkCurrent</string>
+Dark Current</string>
                                                                             <attributes>
                                                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                                 <font key="NSFont" size="12" name="OpenSans"/>
@@ -2561,8 +2628,8 @@ DarkCurrent</string>
                                                                     <action selector="takeDarkCurrentPressed:" destination="m49-q8-zSz" eventType="touchUpInside" id="7MB-Tf-Wyv"/>
                                                                 </connections>
                                                             </button>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15:14:56 (3 minutes ago)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hnl-Kn-j9W">
-                                                                <rect key="frame" x="13" y="26.5" width="338" height="16.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Never taken" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hnl-Kn-j9W">
+                                                                <rect key="frame" x="13" y="30.5" width="338" height="17"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -2576,7 +2643,7 @@ DarkCurrent</string>
                                                             <constraint firstAttribute="bottom" secondItem="8hn-nW-zOJ" secondAttribute="bottom" constant="8" id="PR3-bJ-7LY"/>
                                                             <constraint firstItem="8hn-nW-zOJ" firstAttribute="leading" secondItem="Hnl-Kn-j9W" secondAttribute="trailing" constant="8" id="Qxk-oY-Gu5"/>
                                                             <constraint firstItem="Hnl-Kn-j9W" firstAttribute="top" secondItem="RGk-Gd-bzt" secondAttribute="bottom" constant="2" id="YqY-1h-Cxy"/>
-                                                            <constraint firstItem="RGk-Gd-bzt" firstAttribute="top" secondItem="xjp-DQ-tjh" secondAttribute="top" constant="8" id="dPh-eA-Ow3"/>
+                                                            <constraint firstItem="RGk-Gd-bzt" firstAttribute="top" secondItem="xjp-DQ-tjh" secondAttribute="top" constant="12" id="dPh-eA-Ow3"/>
                                                             <constraint firstItem="Hnl-Kn-j9W" firstAttribute="leading" secondItem="xjp-DQ-tjh" secondAttribute="leading" constant="13" id="mA3-my-twR"/>
                                                             <constraint firstItem="8hn-nW-zOJ" firstAttribute="leading" secondItem="RGk-Gd-bzt" secondAttribute="trailing" constant="8" id="n0f-Nj-z7K"/>
                                                             <constraint firstAttribute="height" constant="60" id="w6m-gH-wd4"/>
@@ -2792,20 +2859,89 @@ DarkCurrent</string>
                         <viewControllerLayoutGuide type="bottom" id="wps-Ha-8ns"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="W2w-Nr-3Ed">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="975"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ii-qZ-zF1" userLabel="RadioButtonView" customClass="UIRoundBorderedView" customModule="Spectrometer" customModuleProvider="target">
+                                <rect key="frame" x="20" y="84" width="728" height="45"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jaU-pH-NUf" customClass="RadioButton" customModule="Spectrometer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="242.5" height="45"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
+                                        <state key="normal" title="Raw"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="background">
+                                                <color key="value" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hkc-P3-VQe" customClass="RadioButton" customModule="Spectrometer" customModuleProvider="target">
+                                        <rect key="frame" x="242.5" y="0.0" width="243" height="45"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
+                                        <state key="normal" title="Reflectance"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="background">
+                                                <color key="value" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B9f-0I-kn6" customClass="RadioButton" customModule="Spectrometer" customModuleProvider="target">
+                                        <rect key="frame" x="485.5" y="0.0" width="242.5" height="45"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
+                                        <state key="normal" title="Radiance"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="background">
+                                                <color key="value" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="B9f-0I-kn6" firstAttribute="top" secondItem="8ii-qZ-zF1" secondAttribute="top" id="2dO-Gj-Fwt"/>
+                                    <constraint firstItem="hkc-P3-VQe" firstAttribute="width" secondItem="B9f-0I-kn6" secondAttribute="width" id="4b1-OR-zLn"/>
+                                    <constraint firstAttribute="bottom" secondItem="jaU-pH-NUf" secondAttribute="bottom" id="51X-Jc-mGT"/>
+                                    <constraint firstItem="B9f-0I-kn6" firstAttribute="leading" secondItem="hkc-P3-VQe" secondAttribute="trailing" id="5mp-9Q-JT3"/>
+                                    <constraint firstAttribute="trailing" secondItem="B9f-0I-kn6" secondAttribute="trailing" id="6hv-W3-usG"/>
+                                    <constraint firstItem="hkc-P3-VQe" firstAttribute="height" secondItem="B9f-0I-kn6" secondAttribute="height" id="6x3-oq-QbJ"/>
+                                    <constraint firstItem="jaU-pH-NUf" firstAttribute="top" secondItem="8ii-qZ-zF1" secondAttribute="top" id="IbC-xQ-bda"/>
+                                    <constraint firstItem="jaU-pH-NUf" firstAttribute="height" secondItem="hkc-P3-VQe" secondAttribute="height" id="Wet-cN-7KC"/>
+                                    <constraint firstItem="jaU-pH-NUf" firstAttribute="leading" secondItem="8ii-qZ-zF1" secondAttribute="leading" id="epO-qF-ieT"/>
+                                    <constraint firstAttribute="height" constant="45" id="g9O-KV-tHa"/>
+                                    <constraint firstItem="hkc-P3-VQe" firstAttribute="leading" secondItem="jaU-pH-NUf" secondAttribute="trailing" id="jiY-mv-P7O"/>
+                                    <constraint firstItem="hkc-P3-VQe" firstAttribute="top" secondItem="8ii-qZ-zF1" secondAttribute="top" id="lLb-Bp-ZGC"/>
+                                    <constraint firstAttribute="bottom" secondItem="B9f-0I-kn6" secondAttribute="bottom" id="mDT-LU-Njq"/>
+                                    <constraint firstItem="jaU-pH-NUf" firstAttribute="width" secondItem="hkc-P3-VQe" secondAttribute="width" id="rQJ-9I-wWl"/>
+                                    <constraint firstAttribute="bottom" secondItem="hkc-P3-VQe" secondAttribute="bottom" id="y09-o0-PcH"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rQd-FZ-Sgn" customClass="SpectrumLineChartView" customModule="Spectrometer" customModuleProvider="target">
-                                <rect key="frame" x="20" y="64" width="728" height="911"/>
+                                <rect key="frame" x="20" y="149" width="728" height="816"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wps-Ha-8ns" firstAttribute="top" secondItem="rQd-FZ-Sgn" secondAttribute="bottom" id="XiU-c5-Wmz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8ii-qZ-zF1" secondAttribute="trailing" id="2yJ-Bu-ceH"/>
+                            <constraint firstItem="8ii-qZ-zF1" firstAttribute="top" secondItem="Sek-6T-UiP" secondAttribute="bottom" constant="20" id="8BB-g7-Xel"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="8ii-qZ-zF1" secondAttribute="leading" id="KxH-mg-mnN"/>
+                            <constraint firstItem="rQd-FZ-Sgn" firstAttribute="top" secondItem="8ii-qZ-zF1" secondAttribute="bottom" constant="20" id="MNG-PI-Yxs"/>
+                            <constraint firstItem="wps-Ha-8ns" firstAttribute="top" secondItem="rQd-FZ-Sgn" secondAttribute="bottom" constant="10" id="XiU-c5-Wmz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rQd-FZ-Sgn" secondAttribute="trailing" id="g2s-m6-bZS"/>
                             <constraint firstItem="rQd-FZ-Sgn" firstAttribute="leading" secondItem="W2w-Nr-3Ed" secondAttribute="leadingMargin" id="nMw-ba-X3w"/>
-                            <constraint firstItem="rQd-FZ-Sgn" firstAttribute="top" secondItem="Sek-6T-UiP" secondAttribute="bottom" id="sIa-bi-iba"/>
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -2815,7 +2951,7 @@ DarkCurrent</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6j2-2P-ZwE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3991" y="386"/>
+            <point key="canvasLocation" x="3990.625" y="385.546875"/>
         </scene>
         <!--NOT INITIALIZED-->
         <scene sceneID="Urh-yl-JRP">
@@ -2874,7 +3010,11 @@ DarkCurrent</string>
         <scene sceneID="Oh5-lP-jFJ">
             <objects>
                 <splitViewController title="Messungen" extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" id="gxB-zT-ly3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Messungen" id="m3q-rI-zqR"/>
+                    <tabBarItem key="tabBarItem" title="Measurements" id="m3q-rI-zqR" customClass="SpectrometerTabBarItem" customModule="Spectrometer" customModuleProvider="target">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="icon" value="fa-file-text-o"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <connections>
                         <segue destination="oGX-Cd-Qk1" kind="relationship" relationship="masterViewController" id="OeQ-GG-9N5"/>
                         <segue destination="3qF-CH-WrA" kind="relationship" relationship="detailViewController" id="e4I-j2-2fd"/>
@@ -2907,7 +3047,7 @@ DarkCurrent</string>
                                     <constraint firstAttribute="height" constant="50" id="upu-JY-bVg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
-                                <state key="normal" title="Abbrechen">
+                                <state key="normal" title="Cancel">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -2921,7 +3061,7 @@ DarkCurrent</string>
                                     <constraint firstAttribute="height" constant="50" id="drj-uG-aI1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
-                                <state key="normal" title="Weiter">
+                                <state key="normal" title="Next">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -2942,7 +3082,7 @@ DarkCurrent</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="White Reference ausführen">
+                                <state key="normal" title="Take White Reference">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -3070,7 +3210,7 @@ DarkCurrent</string>
                                     <constraint firstAttribute="height" constant="50" id="6H9-NP-otR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
-                                <state key="normal" title="Abbrechen">
+                                <state key="normal" title="Cancel">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -3091,7 +3231,7 @@ DarkCurrent</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="White Reference ausführen">
+                                <state key="normal" title="Take White Reference">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -3112,7 +3252,7 @@ DarkCurrent</string>
                                     <constraint firstAttribute="height" constant="50" id="4Qp-wr-3T5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
-                                <state key="normal" title="Weiter">
+                                <state key="normal" title="Next">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -3174,7 +3314,7 @@ DarkCurrent</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Messungen ausführen"/>
+                                <state key="normal" title="Take Measurements"/>
                                 <connections>
                                     <action selector="StartMeasurmentsButtonClicked:" destination="rIH-yb-C7q" eventType="touchUpInside" id="Ekd-bn-cGy"/>
                                 </connections>
@@ -3186,14 +3326,14 @@ DarkCurrent</string>
                                     <constraint firstAttribute="height" constant="50" id="g6M-1z-Gam"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
-                                <state key="normal" title="Abbrechen">
+                                <state key="normal" title="Cancel">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="CancelButtonClicked:" destination="rIH-yb-C7q" eventType="touchUpInside" id="C3S-gZ-CcO"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Messungen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gWQ-4k-dX2">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Measurements" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gWQ-4k-dX2">
                                 <rect key="frame" x="20" y="40" width="500" height="30"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="22"/>
                                 <nil key="textColor"/>
@@ -3216,7 +3356,7 @@ DarkCurrent</string>
                                     <constraint firstAttribute="height" constant="50" id="hcg-bT-Nhf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
-                                <state key="normal" title="Weiter">
+                                <state key="normal" title="Next">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -3302,10 +3442,10 @@ DarkCurrent</string>
             </objects>
             <point key="canvasLocation" x="2273" y="-1187"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--SpectrometerConfig-->
         <scene sceneID="fNL-kn-i1N">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Rka-Q0-yd8" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="SpectrometerConfig" automaticallyAdjustsScrollViewInsets="NO" id="Rka-Q0-yd8" userLabel="SpectrometerConfig" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" itemPositioning="fill" id="Rpk-6L-YEQ">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -3329,7 +3469,7 @@ DarkCurrent</string>
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="768" height="1024"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oEq-7H-IhW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="oEq-7H-IhW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3353,7 +3493,7 @@ DarkCurrent</string>
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="768" height="1024"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BtY-te-dYt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="BtY-te-dYt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3407,7 +3547,7 @@ DarkCurrent</string>
                                                         <rect key="frame" x="0.0" y="46" width="500" height="60"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last DarkCurrent taken:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6q-uQ-PZX">
-                                                                <rect key="frame" x="13" y="8" width="338" height="16.5"/>
+                                                                <rect key="frame" x="13" y="12" width="338" height="16.5"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -3445,8 +3585,8 @@ DarkCurrent</string>
                                                                     <action selector="takeDarkCurrentPressed:" destination="Gk8-sV-zxg" eventType="touchUpInside" id="p4f-in-iTy"/>
                                                                 </connections>
                                                             </button>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15:14:56 (3 minutes ago)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYt-AE-Yqu">
-                                                                <rect key="frame" x="13" y="26.5" width="338" height="16.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Never taken" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYt-AE-Yqu">
+                                                                <rect key="frame" x="13" y="30.5" width="338" height="17"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -3462,7 +3602,7 @@ DarkCurrent</string>
                                                             <constraint firstItem="RYt-AE-Yqu" firstAttribute="leading" secondItem="GgY-TH-cd6" secondAttribute="leading" constant="13" id="MN6-W9-C7y"/>
                                                             <constraint firstAttribute="bottom" secondItem="SIW-Uo-cU8" secondAttribute="bottom" constant="8" id="PP3-k7-smu"/>
                                                             <constraint firstAttribute="trailing" secondItem="SIW-Uo-cU8" secondAttribute="trailing" constant="8" id="RNh-Ji-HqI"/>
-                                                            <constraint firstItem="c6q-uQ-PZX" firstAttribute="top" secondItem="GgY-TH-cd6" secondAttribute="top" constant="8" id="aDS-Vc-NTZ"/>
+                                                            <constraint firstItem="c6q-uQ-PZX" firstAttribute="top" secondItem="GgY-TH-cd6" secondAttribute="top" constant="12" id="aDS-Vc-NTZ"/>
                                                             <constraint firstItem="RYt-AE-Yqu" firstAttribute="top" secondItem="c6q-uQ-PZX" secondAttribute="bottom" constant="2" id="suT-fx-aOQ"/>
                                                         </constraints>
                                                     </view>
@@ -3675,12 +3815,10 @@ DarkCurrent</string>
     <resources>
         <image name="SpektrometerAppIcon180" width="180" height="180"/>
         <image name="done" width="448" height="455"/>
-        <image name="folder.png" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="RjI-9a-Ldm"/>
+        <segue reference="t41-HF-zAw"/>
         <segue reference="gLK-2g-HZO"/>
-        <segue reference="bZs-2v-qBs"/>
-        <segue reference="I79-5a-bJl"/>
-        <segue reference="DfN-yu-tho"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -14,7 +14,7 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
     @IBOutlet var fileNameTextField: UITextField!
     @IBOutlet var selectPathInput: BaseSelectInput!
     @IBOutlet var nextButton: UIColorButton!
-    @IBOutlet weak var commentTextField: OptionalTextField!
+    @IBOutlet var commentTextField: OptionalTextField!
     
     @IBOutlet var rawRadioButton: RadioButton!
     @IBOutlet var reflectanceRadioButton: RadioButton!
@@ -45,6 +45,7 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
             let measurementSettings = NSKeyedUnarchiver.unarchiveObject(with: loadedSettings) as! MeasurmentSettings
             
             fileNameTextField.text = measurementSettings.fileName
+            commentTextField.text = measurementSettings.comment
             
             // not working - recreate a url from NSUserDefaults is not possible
             //selectPathInput.update(diskFile: measurementSettings.path)
@@ -119,7 +120,7 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
         // first save settings to userDefaults
         let measurementMode = rawRadioButton.isSelected ? MeasurementMode.Raw : reflectanceRadioButton.isSelected ? MeasurementMode.Reflectance : radianceRadioButton.isSelected ? MeasurementMode.Radiance : nil
         pageContainer!.measurmentMode = measurementMode
-        let measurmentSettings = MeasurmentSettings(fileName: fileNameTextField.text!,comment: commentTextField.text!, path: selectPathInput.selectedPath!, measurmentMode: measurementMode!)
+        let measurmentSettings = MeasurmentSettings(fileName: fileNameTextField.text!,comment: commentTextField.text, path: selectPathInput.selectedPath!, measurmentMode: measurementMode!)
         
         let settingsData = NSKeyedArchiver.archivedData(withRootObject: measurmentSettings)
         UserDefaults.standard.set(settingsData, forKey: "MeasurmentSettings")
