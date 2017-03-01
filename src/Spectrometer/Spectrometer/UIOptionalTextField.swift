@@ -1,8 +1,8 @@
 //
-//  NumberTextField.swift
+//  UIOptionalTextField.swift
 //  Spectrometer
 //
-//  Created by Andreas Lüscher on 01.02.17.
+//  Created by raphi on 01.03.17.
 //  Copyright © 2017 YARX GmbH. All rights reserved.
 //
 
@@ -10,12 +10,11 @@ import Foundation
 import UIKit
 
 @IBDesignable
-class NumberTextField : BaseTextField {
+class OptionalTextField : BaseTextField {
     
     override var isValid: Bool {
         get {
-            let port = Int(text!)
-            return port != nil
+            return true
         }
     }
     
@@ -26,5 +25,5 @@ class NumberTextField : BaseTextField {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-
+    
 }
