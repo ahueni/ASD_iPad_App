@@ -9,7 +9,6 @@
 import Foundation
 
 class MeasurmentSettings : NSObject, NSCoding {
-    
     var fileName: String
     var comment: String
     var measurmentMode: MeasurementMode
@@ -18,11 +17,10 @@ class MeasurmentSettings : NSObject, NSCoding {
     required init(coder decoder: NSCoder) {
         self.fileName = decoder.decodeObject(forKey: "fileName") as! String
         self.comment = decoder.decodeObject(forKey: "comment") as! String
-        self.measurmentMode = MeasurementMode(rawValue: Int(decoder.decodeInt32(forKey: "measurmentMode")))!
+        self.measurmentMode = MeasurementMode(rawValue: decoder.decodeDouble(forKey: "measurmentMode"))!
         
         let pathString = decoder.decodeObject(forKey: "pathString") as! String
         self.path = URL(string: pathString)!
-        
     }
     
     public func encode(with aCoder: NSCoder) {
@@ -40,8 +38,8 @@ class MeasurmentSettings : NSObject, NSCoding {
     }
 }
 
-enum MeasurementMode : Int{
-    case Raw
-    case Reflectance
-    case Radiance
+enum MeasurementMode : Double{
+    case Raw = 65535
+    case Reflectance = 1.25
+    case Radiance = 1
 }
