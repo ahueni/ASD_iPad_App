@@ -33,10 +33,6 @@ class TargetViewController : BaseMeasurementModal
         startMeasureLoop()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        InstrumentSettingsCache.sharedInstance.cancelMeasurment = true
-    }
-    
     func startMeasureLoop()
     {
         startMeasurementButton.showLoading()

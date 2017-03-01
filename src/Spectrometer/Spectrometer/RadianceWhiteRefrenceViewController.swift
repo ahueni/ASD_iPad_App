@@ -55,9 +55,11 @@ class RadianceWhiteRefrenceViewController : BaseWhiteReferenceViewController {
             dataSets.append(lineChartDataSet)
         }
         
+        /*
         for dataSet in dataSets{
             print("color: " + dataSet.color(atIndex: 1).description)
         }
+ */
         
         let lineChartData =  LineChartData(dataSets: dataSets)
         

@@ -33,10 +33,6 @@ class BaseWhiteReferenceViewController : BaseMeasurementModal {
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        InstrumentSettingsCache.sharedInstance.cancelMeasurment = true
-    }
-    
     func aquire() {
         // Background tasks
         let sampleCount = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCount
@@ -48,6 +44,7 @@ class BaseWhiteReferenceViewController : BaseMeasurementModal {
     @IBAction func takeWhiteRefrence(_ sender: UIButton) {
         startWhiteRefrenceButton.showLoading()
         nextButton.isEnabled = false
+        InstrumentSettingsCache.sharedInstance.cancelMeasurment = false
         
         DispatchQueue.global().async {
             for i in 0...self.whiteRefrencePage.whiteReferenceCount-1

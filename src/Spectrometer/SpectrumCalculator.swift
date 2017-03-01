@@ -114,17 +114,17 @@ class SpectrumCalculator{
         for i in 0...vinirEnd{
             spectrum.spectrumBuffer[i] = preCalculatedBuffer[i] * spectrum.spectrumBuffer[i] / vinirIntegrationTime
         }
-        print("Vinir time: "+start.timeIntervalSinceNow.description)
+        //print("Vinir time: "+start.timeIntervalSinceNow.description)
         
         for i in swir1Start...swir1End{
             spectrum.spectrumBuffer[i] = preCalculatedBuffer[i] * spectrum.spectrumBuffer[i] / swir1Gain
         }
-        print("Swir1 time: "+start.timeIntervalSinceNow.description)
+        //print("Swir1 time: "+start.timeIntervalSinceNow.description)
         
         for i in swir2Start...swir2End{
             spectrum.spectrumBuffer[i] = preCalculatedBuffer[i] * spectrum.spectrumBuffer[i] / swir2Gain
         }
-        print("Swir2 time: "+start.timeIntervalSinceNow.description)
+        //print("Swir2 time: "+start.timeIntervalSinceNow.description)
         
         
         return spectrum

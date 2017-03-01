@@ -24,57 +24,13 @@ class FinishTestSeriesViewController : BaseMeasurementModal {
         super.viewDidLoad()
         checkMarkImage.alpha = 0
         successSavingLabel.alpha = 0
-        finishedSaving()
+        InstrumentSettingsCache.sharedInstance.cancelMeasurment = true
     }
     
-    /*
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        let measurmentSettings = UserDefaults.standard.data(forKey: "MeasurmentSettings")
-        let loadedSettings = NSKeyedUnarchiver.unarchiveObject(with: measurmentSettings!) as! MeasurmentSettings
-        
-        switch pageContainer!.measurmentMode! {
-        case MeasurementMode.Raw:
-            save(spectrums: pageContainer!.spectrumList, whiteRefrenceSpectrum: nil, loadedSettings: loadedSettings)
-            break
-        case MeasurementMode.Radiance:
-            
-            let base = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.base!
-            let lamp = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.lamp!
-            let fiberOptic = InstrumentSettingsCache.sharedInstance.selectedForeOptic!
-            let indicoCalibration = IndicoCalibration(baseFile: base, lampFile: lamp, fiberOptic: fiberOptic)
-            
-            //save wr before
-            save(spectrums: pageContainer!.whiteRefrenceBeforeSpectrumList, whiteRefrenceSpectrum: nil, loadedSettings: loadedSettings,indicoCalibration: indicoCalibration, fileSuffix: "_wrBefore")
-            //save target
-            save(spectrums: pageContainer!.spectrumList, whiteRefrenceSpectrum: nil, loadedSettings: loadedSettings,indicoCalibration: indicoCalibration)
-            //save wr after
-            save(spectrums: pageContainer!.whiteRefrenceAfterSpectrumList, whiteRefrenceSpectrum: nil, loadedSettings: loadedSettings,indicoCalibration: indicoCalibration, fileSuffix: "_wrAfter")
-            break
-        case MeasurementMode.Reflectance:
-            save(spectrums: pageContainer!.spectrumList, whiteRefrenceSpectrum: pageContainer!.whiteRefrenceBeforeSpectrumList.first!, loadedSettings: loadedSettings)
-            break
-        }
+        BackgroundFileWriteManager.sharedInstance.addFinishWritingCallBack(callBack: finishedSaving)
     }
- */
- 
-    /*
-    func save(spectrums : [FullRangeInterpolatedSpectrum], whiteRefrenceSpectrum: FullRangeInterpolatedSpectrum?, loadedSettings: MeasurmentSettings, indicoCalibration: IndicoCalibration? = nil, fileSuffix :String = "")
-    {
-        DispatchQueue.global().async {
-            for i in 0...spectrums.count-1{
-                let spectrumData = spectrums[i]
-                let fileName = String(format: "%03d_", i) + loadedSettings.fileName + fileSuffix + ".asd"
-                let relativeFilePath = loadedSettings.path.appendingPathComponent(fileName).relativePath
-                let fileWriter = IndicoWriter(path: relativeFilePath)
-                
-                fileWriter.write(spectrum: spectrumData, whiteRefrenceSpectrum: whiteRefrenceSpectrum, indicoCalibration: indicoCalibration)
-            }
-            self.finishedSaving()
-        }
-    }
- */
     
     func finishedSaving() -> Void {
         

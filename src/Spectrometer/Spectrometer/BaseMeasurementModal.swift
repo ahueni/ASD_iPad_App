@@ -25,6 +25,7 @@ class BaseMeasurementModal : UIViewController
     }
     
     @IBAction func CancelButtonClicked(_ sender: UIButton) {
+        InstrumentSettingsCache.sharedInstance.cancelMeasurment = true
         dismiss(animated: true, completion: nil)
     }
     
