@@ -9,7 +9,8 @@
 import Foundation
 import UIKit
 
-class LoadingButton: UIGreenButton {
+@IBDesignable
+class LoadingButton: UIColorButton {
     
     var activityIndicator: UIActivityIndicatorView!
     var oldString:String = ""

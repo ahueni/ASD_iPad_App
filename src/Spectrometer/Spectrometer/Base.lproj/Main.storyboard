@@ -528,7 +528,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZuH-AQ-NxF">
-                                <rect key="frame" x="20" y="117" width="728" height="57.5"/>
+                                <rect key="frame" x="20" y="117" width="728" height="58"/>
                                 <string key="text">Um eine Verbindung mit dem Spektrometer herzustellen müssen die Verbindungseinstellungen zum Gerät zuerst im App erfasst werden. Sie haben die Möglichkeit hier das App mit einem Spektrometer zu verbinden oder weitere Verbindungen einzurichten.</string>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                 <nil key="textColor"/>
@@ -546,7 +546,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eqG-6H-HNG">
-                                <rect key="frame" x="20" y="184.5" width="728" height="706.5"/>
+                                <rect key="frame" x="20" y="185" width="728" height="706"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -1608,13 +1608,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alle Messungen wurden erfolgreich durchgeführt und werden nun abgespeichert." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7M-uM-Rys">
-                                <rect key="frame" x="20" y="80" width="500" height="16.5"/>
+                                <rect key="frame" x="20" y="80" width="500" height="17"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Die Messungen werden gespeichert ..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSU-MD-mc2">
-                                <rect key="frame" x="20" y="275.5" width="500" height="16.5"/>
+                                <rect key="frame" x="20" y="275" width="500" height="17"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1735,7 +1735,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B0c-Il-QIj" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B0c-Il-QIj" customClass="LoadingButton" customModule="Spectrometer" customModuleProvider="target">
                                                                 <rect key="frame" x="359" y="8" width="133" height="44"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="133" id="81U-mf-rrx"/>
@@ -2212,6 +2212,7 @@ Dark Current</string>
                     <size key="freeformSize" width="540" height="1000"/>
                     <connections>
                         <outlet property="darkCurrentContentHeight" destination="WKv-al-NbK" id="6l6-PH-YNR"/>
+                        <outlet property="darkCurrentTimerLabel" destination="Mdl-n3-ptl" id="a2p-Ai-EIK"/>
                         <outlet property="nextButton" destination="fap-A8-4AZ" id="nSg-uz-ed0"/>
                         <outlet property="targetCountLabel" destination="IIL-jH-mSS" id="myF-1b-RKZ"/>
                         <outlet property="targetCountStepper" destination="yZf-Im-H73" id="AiI-Bb-1eQ"/>
@@ -2595,7 +2596,7 @@ Dark Current</string>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8hn-nW-zOJ" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8hn-nW-zOJ" customClass="LoadingButton" customModule="Spectrometer" customModuleProvider="target">
                                                                 <rect key="frame" x="359" y="8" width="133" height="44"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="133" id="Bwt-7f-hHe"/>
@@ -2839,6 +2840,7 @@ Dark Current</string>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="darkCurrentSettingsContentHeight" destination="w6m-gH-wd4" id="W19-BP-9YI"/>
+                        <outlet property="darkCurrentTimerLabel" destination="Hnl-Kn-j9W" id="LAz-ZI-Mun"/>
                         <outlet property="nextButton" destination="Ynd-a9-9AS" id="lHp-RX-fSz"/>
                         <outlet property="targetCountLabel" destination="RjC-NE-VoM" id="9Ja-or-pIr"/>
                         <outlet property="targetCountStepper" destination="RwE-aG-gCQ" id="aBA-Fq-ChJ"/>
@@ -3096,6 +3098,17 @@ Dark Current</string>
                                 <state key="normal" title="Take White Reference">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="background">
+                                        <color key="value" red="0.12549019610000001" green="0.75686274509999996" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="takeWhiteRefrence:" destination="S5w-Ls-E9g" eventType="touchUpInside" id="JpR-GJ-WzD"/>
                                 </connections>
@@ -3245,6 +3258,17 @@ Dark Current</string>
                                 <state key="normal" title="Take White Reference">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="background">
+                                        <color key="value" red="0.12549019610000001" green="0.75686274509999996" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="takeWhiteRefrence:" destination="TmL-uw-0eO" eventType="touchUpInside" id="jBv-mA-p15"/>
                                 </connections>
@@ -3326,6 +3350,17 @@ Dark Current</string>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Take Measurements"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="background">
+                                        <color key="value" red="0.12549019610000001" green="0.75686274509999996" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="StartMeasurmentsButtonClicked:" destination="rIH-yb-C7q" eventType="touchUpInside" id="Ekd-bn-cGy"/>
                                 </connections>
@@ -3480,7 +3515,7 @@ Dark Current</string>
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="768" height="1024"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="oEq-7H-IhW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oEq-7H-IhW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3504,7 +3539,7 @@ Dark Current</string>
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="768" height="1024"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="BtY-te-dYt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BtY-te-dYt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3563,7 +3598,7 @@ Dark Current</string>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SIW-Uo-cU8" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SIW-Uo-cU8" customClass="LoadingButton" customModule="Spectrometer" customModuleProvider="target">
                                                                 <rect key="frame" x="359" y="8" width="133" height="44"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="133" id="RH6-nL-kdA"/>
@@ -3597,7 +3632,7 @@ DarkCurrent</string>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Never taken" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYt-AE-Yqu">
-                                                                <rect key="frame" x="13" y="30.5" width="338" height="17"/>
+                                                                <rect key="frame" x="13" y="30.5" width="338" height="16.5"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -3811,6 +3846,7 @@ DarkCurrent</string>
                     <connections>
                         <outlet property="darkCurrentSettingsContentHeight" destination="EnG-dJ-pXF" id="Cv6-UB-fxV"/>
                         <outlet property="darkCurrentSettingsSwitch" destination="k3y-Na-DwR" id="rg3-z8-p3l"/>
+                        <outlet property="darkCurrentTimerLabel" destination="RYt-AE-Yqu" id="oMt-NV-MTY"/>
                         <outlet property="nextButton" destination="GAU-y4-Gv2" id="Xsx-bw-E6G"/>
                         <outlet property="targetCountLabel" destination="uNV-O5-8ag" id="yWa-4J-MaR"/>
                         <outlet property="targetCountStepper" destination="F8C-mv-6KL" id="eIh-pq-Odk"/>

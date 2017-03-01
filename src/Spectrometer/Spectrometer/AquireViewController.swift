@@ -16,7 +16,7 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     let greenButtonColor = UIColor(red:0.09, green:0.76, blue:0.28, alpha:1.00)
     
     // buttons
-    @IBOutlet var aquireButton: UIButton!
+    @IBOutlet var aquireButton: UIColorButton!
     
     @IBOutlet var rawRadioButton: RadioButton!
     @IBOutlet var reflectanceRadioButton: RadioButton!
@@ -173,13 +173,15 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
         
         InstrumentSettingsCache.sharedInstance.aquireLoop = !InstrumentSettingsCache.sharedInstance.aquireLoop
         
-        // change button title
-        if InstrumentSettingsCache.sharedInstance.aquireLoop {
-            aquireButton.setTitle("Stop Aquire", for: .normal)
-            aquireButton.backgroundColor = UIColor.red
-        } else {
-            aquireButton.setTitle("Start Aquire", for: .normal)
-            aquireButton.backgroundColor = greenButtonColor
+        DispatchQueue.main.async {
+            // change button title
+            if InstrumentSettingsCache.sharedInstance.aquireLoop {
+                self.aquireButton.setTitle("Stop Aquire", for: .normal)
+                self.aquireButton.background = UIColor.red
+            } else {
+                self.aquireButton.setTitle("Start Aquire", for: .normal)
+                self.aquireButton.background = self.greenButtonColor
+            }
         }
         
         // don't start a new aquire queue when its false -> the button is pressed to stopp it
@@ -228,7 +230,7 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
         DispatchQueue.main.async {
             
             self.aquireButton.setTitle("Start Aquire", for: .normal)
-            self.aquireButton.backgroundColor = self.greenButtonColor
+            self.aquireButton.background = self.greenButtonColor
             
             // if disconnect button was pressed -> return to config view
             if (self.disconnectWhenFinished) {

@@ -9,7 +9,8 @@
 import Foundation
 import UIKit
 
-@IBDesignable class UIColorButton:UIButton {
+@IBDesignable
+class UIColorButton: UIButton {
     
     @IBInspectable var background: UIColor = UIColor.clear {
         didSet {

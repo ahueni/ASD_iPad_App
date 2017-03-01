@@ -11,13 +11,20 @@ import UIKit
 
 class BaseSettingsViewController : BaseMeasurementModal {
     
-    @IBOutlet weak var targetDelayStepper: UIStepper!
-    @IBOutlet weak var targetCountStepper: UIStepper!
+    @IBOutlet var targetDelayStepper: UIStepper!
+    @IBOutlet var targetCountStepper: UIStepper!
     @IBOutlet var targetCountLabel: UILabel!
     @IBOutlet var targetIntervallLabel: UILabel!
     
+    @IBOutlet var darkCurrentTimerLabel: UILabel!
+    
     @IBOutlet weak var nextButton: UIButton!
+    
     override func viewDidLoad() {
+        
+        // register labels for timer updateStepperLabels
+        NotificationCenter.default.addObserver(self, selector: #selector(updateDarkCurrentTimerLabel), name: .darkCurrentTimer, object: nil)
+        
         loadSettings()
     }
     
@@ -50,10 +57,25 @@ class BaseSettingsViewController : BaseMeasurementModal {
         targetIntervallLabel.text = Int(targetDelayStepper.value).description
     }
     
-    @IBAction func takeDarkCurrentPressed(_ sender: UIButton) {
-        let darkCurrentSampleCount = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent
-        CommandManager.sharedInstance.darkCurrent(sampleCount: darkCurrentSampleCount)
-        nextButton.isEnabled = true
+    @IBAction func takeDarkCurrentPressed(_ sender: LoadingButton) {
+        sender.showLoading()
+        
+        DispatchQueue.global().async {
+            
+            let darkCurrentSampleCount = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent
+            CommandManager.sharedInstance.darkCurrent(sampleCount: darkCurrentSampleCount)
+            
+            
+            DispatchQueue.main.async {
+                
+                InstrumentSettingsCache.sharedInstance.restartDarkCurrentTimer()
+                self.nextButton.isEnabled = true
+                sender.hideLoading()
+                
+            }
+            
+        }
+        
     }
     
     override func goToNextPage() {
@@ -61,4 +83,14 @@ class BaseSettingsViewController : BaseMeasurementModal {
         addPages()
         super.goToNextPage()
     }
+    
+    internal func updateDarkCurrentTimerLabel() {
+        
+        if let darkCurrentStartTime = InstrumentSettingsCache.sharedInstance.darkCurrentStartTime {
+            let elapsedTime = NSDate.timeIntervalSinceReferenceDate - darkCurrentStartTime
+            darkCurrentTimerLabel.text = Int(elapsedTime).description
+        }
+        
+    }
+    
 }
