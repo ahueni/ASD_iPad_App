@@ -11,58 +11,62 @@ import Charts
 
 class SpectrumCalculator{
     
-    static let sharedInstance = SpectrumCalculator()
-    
+    // this buffer is only used for calculations in real time! (from device)
+    // do not use this buffer to calculate file values! (from file)
     private static var preCalculatedBuffer: [Float] = []
     
     private init() {
     }
     
-    public func updateForeopticFiles(base: CalibrationFile, lamp: CalibrationFile, foreoptic: CalibrationFile) {
-        
+    public class func updateForeopticFiles(base: CalibrationFile, lamp: CalibrationFile, foreoptic: CalibrationFile) {
         let vinirEnd: Int = InstrumentSettingsCache.sharedInstance.vinirEndingWavelength - InstrumentSettingsCache.sharedInstance.startingWaveLength
         let swir1Start: Int = InstrumentSettingsCache.sharedInstance.s1StartingWavelength - InstrumentSettingsCache.sharedInstance.startingWaveLength
         let swir1End: Int = InstrumentSettingsCache.sharedInstance.s1EndingWavelength - InstrumentSettingsCache.sharedInstance.startingWaveLength
         let swir2Start: Int = InstrumentSettingsCache.sharedInstance.s2StartingWavelength - InstrumentSettingsCache.sharedInstance.startingWaveLength
         let swir2End: Int = InstrumentSettingsCache.sharedInstance.s2EndingWavelength - InstrumentSettingsCache.sharedInstance.startingWaveLength
         
+        SpectrumCalculator.preCalculatedBuffer = calculateForeOpticPreCacluclatedValues(vinirEnd: vinirEnd, swir1Start: swir1Start, swir1End: swir1End, swir2Start: swir2Start, swir2End: swir2End, baseSpectrum: base.spectrum!, lampSpectrum: lamp.spectrum!, foreOpticSpectrum : foreoptic.spectrum!, foIntegrationTime : Double(foreoptic.integrationTime), foSwir1Gain : Double(foreoptic.swir1Gain), foSwir2Gain : Double(foreoptic.swir2Gain))
+    }
+    
+    private class func calculateForeOpticPreCacluclatedValues(vinirEnd: Int, swir1Start: Int, swir1End: Int, swir2Start: Int, swir2End: Int, baseSpectrum : [Double], lampSpectrum : [Double], foreOpticSpectrum : [Double], foIntegrationTime : Double, foSwir1Gain : Double, foSwir2Gain : Double) -> [Float]
+    {
+        var preCalculatedBufferTemp: [Float] = []
+        
         let start = NSDate()
         var lampPiBaseBuffer: [Double] = []
         // calculate lamp and abse spectrum with pi as first step
         for i in 0...swir2End {
-            lampPiBaseBuffer.append(lamp.spectrum![i] / Double.pi * base.spectrum![i])
+            lampPiBaseBuffer.append(lampSpectrum[i] / Double.pi * baseSpectrum[i])
         }
         print("Buffer time: "+start.timeIntervalSinceNow.description)
         
-        let calibrationIntegrationTime: Double = Double(foreoptic.integrationTime)
-        let foreopticSwir1Gain: Double = Double(2048) / Double(foreoptic.swir1Gain)
-        let foreopticSwir2Gain: Double = Double(2048) / Double(foreoptic.swir2Gain)
-        
+        let calibrationIntegrationTime: Double = foIntegrationTime
+        let foreopticSwir1Gain: Double = Double(2048) / foSwir1Gain
+        let foreopticSwir2Gain: Double = Double(2048) / foSwir2Gain
         
         for i in 0...vinirEnd{
-            let preCalculatedValue: Double = lampPiBaseBuffer[i] / (foreoptic.spectrum![i] / calibrationIntegrationTime)
-            SpectrumCalculator.preCalculatedBuffer.append(Float(preCalculatedValue))
+            let preCalculatedValue: Double = lampPiBaseBuffer[i] / (foreOpticSpectrum[i] / calibrationIntegrationTime)
+            preCalculatedBufferTemp.append(Float(preCalculatedValue))
         }
         print("Vinir time: "+start.timeIntervalSinceNow.description)
         
         for i in swir1Start...swir1End{
-            let preCalculatedValue:Double = lampPiBaseBuffer[i] / (foreoptic.spectrum![i] / foreopticSwir1Gain)
-            SpectrumCalculator.preCalculatedBuffer.append(Float(preCalculatedValue))
+            let preCalculatedValue:Double = lampPiBaseBuffer[i] / (foreOpticSpectrum[i] / foreopticSwir1Gain)
+            preCalculatedBufferTemp.append(Float(preCalculatedValue))
         }
         print("Swir1 time: "+start.timeIntervalSinceNow.description)
         
         for i in swir2Start...swir2End{
-            let preCalculatedValue:Double = lampPiBaseBuffer[i] / (foreoptic.spectrum![i] / foreopticSwir2Gain)
-            SpectrumCalculator.preCalculatedBuffer.append(Float(preCalculatedValue))
+            let preCalculatedValue:Double = lampPiBaseBuffer[i] / (foreOpticSpectrum[i] / foreopticSwir2Gain)
+            preCalculatedBufferTemp.append(Float(preCalculatedValue))
         }
         print("Swir2 time: "+start.timeIntervalSinceNow.description)
         
-        
+        return preCalculatedBufferTemp
     }
     
     class func calculateDarkCurrentCorrection(spectrum : FullRangeInterpolatedSpectrum) -> FullRangeInterpolatedSpectrum
     {
-        
         // if dc exists -> do darkcorrection
         if let darkCurrent = InstrumentSettingsCache.sharedInstance.darkCurrent {
             
@@ -91,11 +95,17 @@ class SpectrumCalculator{
     
     class func calculateReflectance(currentSpectrum : FullRangeInterpolatedSpectrum, whiteReferenceSpectrum : FullRangeInterpolatedSpectrum) -> FullRangeInterpolatedSpectrum
     {
-        for i in 0...whiteReferenceSpectrum.spectrumBuffer.count-1 {
-            currentSpectrum.spectrumBuffer[i] = currentSpectrum.spectrumBuffer[i] / whiteReferenceSpectrum.spectrumBuffer[i]
-        }
+        currentSpectrum.spectrumBuffer = calculateReflectance(spectrumBuffer: currentSpectrum.spectrumBuffer, whiteReferenceBuffer: whiteReferenceSpectrum.spectrumBuffer)
         
         return currentSpectrum
+    }
+    
+    internal static func calculateReflectance<T : FloatingPoint>(spectrumBuffer: [T], whiteReferenceBuffer: [T]) -> [T]{
+        var resultBuffer = spectrumBuffer
+        for i in 0..<whiteReferenceBuffer.count {
+            resultBuffer[i] = spectrumBuffer[i] / whiteReferenceBuffer[i]
+        }
+        return resultBuffer
     }
     
     class func calculateRadiance(spectrum: FullRangeInterpolatedSpectrum) -> FullRangeInterpolatedSpectrum {
@@ -110,25 +120,62 @@ class SpectrumCalculator{
         let swir1Gain:Float = Float(2048) / Float(spectrum.spectrumHeader.swir1Header.gain)
         let swir2Gain:Float = Float(2048) / Float(spectrum.spectrumHeader.swir2Header.gain)
         
-        let start = NSDate()
+        spectrum.spectrumBuffer = calculateRadiance(spectrumBuffer: spectrum.spectrumBuffer, preCalculatedBufferTemp : preCalculatedBuffer, vinirEnd: vinirEnd, swir1Start: swir1Start, swir1End: swir1End, swir2Start: swir2Start, swir2End: swir2End, vinirIntegrationTime:vinirIntegrationTime, swir1Gain:swir1Gain, swir2Gain:swir2Gain)
+        
+        return spectrum
+    }
+    
+    class private func calculateRadiance(spectrumBuffer: [Float], preCalculatedBufferTemp : [Float], vinirEnd: Int, swir1Start: Int, swir1End: Int, swir2Start: Int, swir2End: Int, vinirIntegrationTime:Float, swir1Gain:Float, swir2Gain:Float) -> [Float]{
+        var resultBuffer = spectrumBuffer
+        //let start = NSDate()
         for i in 0...vinirEnd{
-            spectrum.spectrumBuffer[i] = preCalculatedBuffer[i] * spectrum.spectrumBuffer[i] / vinirIntegrationTime
+            resultBuffer[i] = preCalculatedBufferTemp[i] * spectrumBuffer[i] / vinirIntegrationTime
         }
         //print("Vinir time: "+start.timeIntervalSinceNow.description)
         
         for i in swir1Start...swir1End{
-            spectrum.spectrumBuffer[i] = preCalculatedBuffer[i] * spectrum.spectrumBuffer[i] / swir1Gain
+            resultBuffer[i] = preCalculatedBufferTemp[i] * spectrumBuffer[i] / swir1Gain
         }
         //print("Swir1 time: "+start.timeIntervalSinceNow.description)
         
         for i in swir2Start...swir2End{
-            spectrum.spectrumBuffer[i] = preCalculatedBuffer[i] * spectrum.spectrumBuffer[i] / swir2Gain
+            resultBuffer[i] = preCalculatedBufferTemp[i] * spectrumBuffer[i] / swir2Gain
         }
         //print("Swir2 time: "+start.timeIntervalSinceNow.description)
         
+        return resultBuffer
+    }
+    
+    class  func calculateReflectanceFromFile(spectrumFile : SpectralFileV8) -> [Double]{
+        return calculateReflectance(spectrumBuffer: spectrumFile.spectrum, whiteReferenceBuffer: spectrumFile.reference)
+    }
+    
+    class func calculateRadianceFromFile(spectralFile : SpectralFileV8) -> [Float]{
+        let vinirEnd: Int = 650 //Int(spectralFile.channels) - Int(spectralFile.splice2WaveLength) - Int(spectralFile.splice1WaveLength) - 1
+        let swir1Start: Int = 651//Int(spectralFile.channels) - Int(spectralFile.splice2WaveLength) - Int(spectralFile.splice1WaveLength)
+        let swir1End: Int = 1450//Int(spectralFile.channels) - Int(spectralFile.splice2WaveLength) - 1
+        let swir2Start: Int = 1451//Int(spectralFile.channels) - Int(spectralFile.splice2WaveLength)
+        let swir2End: Int = 2150//Int(spectralFile.channels)
         
-        return spectrum
+        let foreOptic = spectralFile.calibrationBuffer.filter({$0.calibrationType == CalibrationType.FiberOpticFile}).first!
         
+        let foreOpticIntegrationTime = 17//foreOptic.integrationTime
+        let swir1Gain = foreOptic.swir1Gain
+        let swir2Gain = foreOptic.swir2Gain
+        
+        let vinirIntegrationTime : Float = 17//Float(spectralFile.integrationTime)
+                
+        let preCalculatedBufferTemp =  calculateForeOpticPreCacluclatedValues(vinirEnd: vinirEnd, swir1Start: swir1Start, swir1End: swir1End, swir2Start: swir2Start, swir2End: swir2End, baseSpectrum: spectralFile.baseCalibrationData, lampSpectrum: spectralFile.lampCalibrationData, foreOpticSpectrum: spectralFile.fiberOpticData, foIntegrationTime: Double(foreOpticIntegrationTime), foSwir1Gain: Double(swir1Gain), foSwir2Gain: Double(swir2Gain))
+        
+        var spectrumAsFloatArray = [Float]()
+        //convert spectrum to a float array
+        for i in spectralFile.spectrum{
+            spectrumAsFloatArray.append(Float(i))
+        }
+        
+        let resultSpectrum = calculateRadiance(spectrumBuffer: spectrumAsFloatArray, preCalculatedBufferTemp : preCalculatedBufferTemp, vinirEnd: vinirEnd, swir1Start: swir1Start, swir1End: swir1End, swir2Start: swir2Start, swir2End: swir2End, vinirIntegrationTime:vinirIntegrationTime, swir1Gain:Float(swir1Gain), swir2Gain:Float(swir2Gain))
+        
+        return resultSpectrum
     }
     
 }

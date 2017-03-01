@@ -92,7 +92,7 @@ class RadianceWhiteRefrenceViewController : BaseWhiteReferenceViewController {
             break
         }
         
-        writeFileAsync(spectrums: whiteRefrences, isWhiteReference: true)
+        writeFileAsync(spectrums: whiteRefrences, isWhiteReference: true, dataType: DataType.RadType)
         
         super.goToNextPage()
     }

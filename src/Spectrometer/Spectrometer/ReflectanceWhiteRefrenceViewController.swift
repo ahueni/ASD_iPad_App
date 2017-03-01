@@ -28,8 +28,8 @@ class ReflectanceWhiteRefrenceViewController : BaseWhiteReferenceViewController 
     override func goToNextPage() {
         
         let darkCorrectedWhiteReference = SpectrumCalculator.calculateDarkCurrentCorrection( spectrum: currentWhiteRefrence!)
-        
-        writeFileAsync(spectrum: darkCorrectedWhiteReference, isWhiteReference: true)
+        // dataType of reflectance is counter intuitive. It has datatype raw. only target reflectance mesurment is of type ref
+        writeFileAsync(spectrum: darkCorrectedWhiteReference, isWhiteReference: true, dataType: DataType.RawType)
         
         // Add the white Refrence to the parent VC
         pageContainer!.whiteRefrenceBeforeSpectrumList.append(darkCorrectedWhiteReference)

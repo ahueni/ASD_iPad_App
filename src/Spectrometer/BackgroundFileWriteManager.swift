@@ -16,7 +16,7 @@ class BackgroundFileWriteManager{
     static let sharedInstance = BackgroundFileWriteManager()
     private init() { }
     
-    func addToQueue(spectrums : [FullRangeInterpolatedSpectrum], whiteRefrenceSpectrum: FullRangeInterpolatedSpectrum?, loadedSettings: MeasurmentSettings, indicoCalibration: IndicoCalibration? = nil, fileSuffix :String = "")
+    func addToQueue(spectrums : [FullRangeInterpolatedSpectrum], whiteRefrenceSpectrum: FullRangeInterpolatedSpectrum?, loadedSettings: MeasurmentSettings, dataType : DataType, indicoCalibration: IndicoCalibration? = nil, fileSuffix :String = "")
     {
         serialQueue.sync {
             for spectrum in spectrums
@@ -26,10 +26,10 @@ class BackgroundFileWriteManager{
                 print(fileName + " queued")
                 let relativeFilePath = loadedSettings.path.appendingPathComponent(fileName).relativePath
                 let fileWriter = IndicoWriter(path: relativeFilePath)
-                fileWriter.write(spectrum: spectrum, whiteRefrenceSpectrum: whiteRefrenceSpectrum, indicoCalibration: indicoCalibration)
+                let datatype : DataType
+                fileWriter.write(spectrum: spectrum, dataType: dataType, whiteRefrenceSpectrum: whiteRefrenceSpectrum, indicoCalibration: indicoCalibration)
             }
         }
-        
     }
     
     func addFinishWritingCallBack(callBack: ()->Void){

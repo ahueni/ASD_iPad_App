@@ -129,11 +129,13 @@ class TargetPage : ModalPage{
     let targetCount : Int
     let targetDelay : Int
     let takeDarkCurrent : Bool
+    let dataType : DataType
     
-    init(targetCount : Int, targetDelay : Int, takeDarkCurrent : Bool = true){
+    init(targetCount : Int, targetDelay : Int, takeDarkCurrent : Bool = true, dataType : DataType){
         self.targetCount = targetCount
         self.targetDelay = targetDelay
         self.takeDarkCurrent = takeDarkCurrent
+        self.dataType = dataType
         super.init()
         self.pageIdentifier = "TargetViewController"
     }

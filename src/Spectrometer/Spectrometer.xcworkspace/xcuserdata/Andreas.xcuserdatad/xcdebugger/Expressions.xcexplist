@@ -79,7 +79,20 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "BaseWhiteReferenceViewController.(viewDidLoad() -&gt; ()).(closure #1):BaseWhiteReferenceViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "InstrumentSettingsCache.sharedInstance.cancelMeasurment">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "BaseSettingsViewController.takeDarkCurrentPressed(UIButton) -&gt; ():BaseSettingsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "nextButton">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "BaseWhiteReferenceViewController.(takeWhiteRefrence(UIButton) -&gt; ()).(closure #1):BaseWhiteReferenceViewController.swift">

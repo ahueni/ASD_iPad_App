@@ -47,7 +47,7 @@ class BaseMeasurementModal : UIViewController
         
     }
     
-    func writeFileAsync(spectrums : [FullRangeInterpolatedSpectrum], isWhiteReference :Bool)
+    func writeFileAsync(spectrums : [FullRangeInterpolatedSpectrum], isWhiteReference :Bool, dataType: DataType)
     {
         DispatchQueue.global().async {
             var indicoCalibration : IndicoCalibration? = nil
@@ -61,13 +61,13 @@ class BaseMeasurementModal : UIViewController
             
             let fileSuffix = isWhiteReference ? "_WR" : ""
             
-            BackgroundFileWriteManager.sharedInstance.addToQueue(spectrums: spectrums, whiteRefrenceSpectrum: nil, loadedSettings: self.pageContainer!.measurmentSettings, indicoCalibration: indicoCalibration, fileSuffix: fileSuffix)
+            BackgroundFileWriteManager.sharedInstance.addToQueue(spectrums: spectrums, whiteRefrenceSpectrum: nil, loadedSettings: self.pageContainer!.measurmentSettings, dataType: dataType, indicoCalibration: indicoCalibration, fileSuffix: fileSuffix)
         }
     }
     
-    func writeFileAsync(spectrum : FullRangeInterpolatedSpectrum, isWhiteReference :Bool){
+    func writeFileAsync(spectrum : FullRangeInterpolatedSpectrum, isWhiteReference :Bool, dataType: DataType){
         var spectrums : [FullRangeInterpolatedSpectrum] = [FullRangeInterpolatedSpectrum]()
         spectrums.append(spectrum)
-        writeFileAsync(spectrums : spectrums, isWhiteReference: isWhiteReference)
+        writeFileAsync(spectrums : spectrums, isWhiteReference: isWhiteReference, dataType: dataType)
     }
 }

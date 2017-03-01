@@ -33,7 +33,7 @@ class ReflectanceSettingsViewController : BaseSettingsViewController {
     
     override func addPages() {
         pageContainer!.pages.append(WhiteReferenceReflectancePage())
-        pageContainer!.pages.append(TargetPage(targetCount: Int(targetCountStepper.value), targetDelay: Int(targetDelayStepper.value)))
+        pageContainer!.pages.append(TargetPage(targetCount: Int(targetCountStepper.value), targetDelay: Int(targetDelayStepper.value), dataType: DataType.RefType))
     }
     
     override func saveSettings()

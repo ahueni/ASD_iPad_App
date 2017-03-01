@@ -55,7 +55,7 @@ class TargetViewController : BaseMeasurementModal
                     spectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: spectrum)
                 }
                 
-                self.writeFileAsync(spectrum: spectrum,isWhiteReference: false)
+                self.writeFileAsync(spectrum: spectrum,isWhiteReference: false, dataType: self.targetPage.dataType)
                 
                 self.pageContainer.spectrumList.append(spectrum)
                 self.updateLineChart(spectrum: spectrum)

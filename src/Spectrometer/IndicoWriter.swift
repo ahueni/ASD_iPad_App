@@ -23,8 +23,8 @@ class IndicoCalibration{
 class IndicoWriter : BaseWriter {
     
     // write basic file without calibration (Raw and Ref only)
-    func write(spectrum : FullRangeInterpolatedSpectrum, whiteRefrenceSpectrum : FullRangeInterpolatedSpectrum?, indicoCalibration : IndicoCalibration?){
-        innerWriteBasic(spectrum : spectrum, whiteRefrenceSpectrum : whiteRefrenceSpectrum)
+    func write(spectrum : FullRangeInterpolatedSpectrum, dataType : DataType, whiteRefrenceSpectrum : FullRangeInterpolatedSpectrum?, indicoCalibration : IndicoCalibration?){
+        innerWriteBasic(spectrum : spectrum, dataType: dataType, whiteRefrenceSpectrum : whiteRefrenceSpectrum)
         
         if(indicoCalibration == nil)
         {
@@ -39,7 +39,7 @@ class IndicoWriter : BaseWriter {
         fileHandle.closeFile()
     }
     
-    internal func innerWriteBasic(spectrum : FullRangeInterpolatedSpectrum, whiteRefrenceSpectrum : FullRangeInterpolatedSpectrum? = nil){
+    internal func innerWriteBasic(spectrum : FullRangeInterpolatedSpectrum, dataType : DataType, whiteRefrenceSpectrum : FullRangeInterpolatedSpectrum? = nil){
         
         // ------ Start Header ------
         
@@ -213,12 +213,10 @@ class IndicoWriter : BaseWriter {
         
         //splice1_wavelength
         // beetween which vinir and swir 1
-        // ???
         writeFloat(number: 1000)
         
         //splice2_wavelength
         // beetween which swir1 and swir 2
-        // ???
         writeFloat(number: 1850)
         
         //SmartDetectorType

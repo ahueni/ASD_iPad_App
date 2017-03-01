@@ -47,7 +47,7 @@ class RawSettingsViewController: BaseSettingsViewController {
     }
     
     override func addPages(){
-        pageContainer!.pages.append(TargetPage(targetCount: Int(targetCountStepper.value), targetDelay: Int(targetDelayStepper.value), takeDarkCurrent: darkCurrentSettingsSwitch.isOn))
+        pageContainer!.pages.append(TargetPage(targetCount: Int(targetCountStepper.value), targetDelay: Int(targetDelayStepper.value), takeDarkCurrent: darkCurrentSettingsSwitch.isOn, dataType: DataType.RawType))
     }
     
     override func saveSettings()

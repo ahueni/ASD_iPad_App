@@ -47,7 +47,7 @@ class InstrumentSettingsCache {
     // have to be recalculated
     var selectedForeOptic: CalibrationFile? {
         didSet {
-            SpectrumCalculator.sharedInstance.updateForeopticFiles(base: instrumentConfiguration.base!, lamp: instrumentConfiguration.lamp!, foreoptic: selectedForeOptic!)
+            SpectrumCalculator.updateForeopticFiles(base: instrumentConfiguration.base!, lamp: instrumentConfiguration.lamp!, foreoptic: selectedForeOptic!)
         }
     }
     
