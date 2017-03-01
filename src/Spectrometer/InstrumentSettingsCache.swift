@@ -45,11 +45,7 @@ class InstrumentSettingsCache {
     
     // the actual selected foreoptic file, is there a new one all the radiance pre-calculated values
     // have to be recalculated
-    var selectedForeOptic: CalibrationFile? {
-        didSet {
-            SpectrumCalculator.updateForeopticFiles(base: instrumentConfiguration.base!, lamp: instrumentConfiguration.lamp!, foreoptic: selectedForeOptic!)
-        }
-    }
+    var selectedForeOptic: CalibrationFile?
     
     func restartDarkCurrentTimer() -> Void {
         
