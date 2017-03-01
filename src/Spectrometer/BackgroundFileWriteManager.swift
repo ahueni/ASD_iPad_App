@@ -27,6 +27,12 @@ class BackgroundFileWriteManager{
         }
     }
     
+    func addCancelCallBack(callBack: ()->Void){
+        serialQueue.sync {
+            callBack()
+        }
+    }
+    
     func getHighestIndex(filePath : URL)-> Int{
         var index = 0
         do{
