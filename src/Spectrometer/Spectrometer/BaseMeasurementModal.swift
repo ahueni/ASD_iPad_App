@@ -35,16 +35,15 @@ class BaseMeasurementModal : UIViewController
             //update ui
             if(self.pageContainer.measurmentMode == MeasurementMode.Radiance)
             {
-                self.MeasurementLineChart.setAxisValues(min: 0, max: 1.6)
-                let radianceSpectrum = SpectrumCalculator.calculateRadiance(spectrum: spectrum)
-                self.MeasurementLineChart.data = radianceSpectrum.getChartData()
+                self.MeasurementLineChart.setAxisValues(min: 0, max: MeasurementMode.Radiance.rawValue)
+                let radianceSpectrumBuffer = SpectrumCalculator.calculateRadiance(spectrum: spectrum)
+                self.MeasurementLineChart.data = radianceSpectrumBuffer.getChartData()
             }
             else{
-                self.MeasurementLineChart.setAxisValues(min: 0, max: 65000)
+                self.MeasurementLineChart.setAxisValues(min: 0, max: MeasurementMode.Raw.rawValue)
                 self.MeasurementLineChart.data = spectrum.getChartData()
             }
         }
-        
     }
     
     func writeFileAsync(spectrums : [FullRangeInterpolatedSpectrum], isWhiteReference :Bool, dataType: DataType)

@@ -108,7 +108,7 @@ class SpectrumCalculator{
         return resultBuffer
     }
     
-    class func calculateRadiance(spectrum: FullRangeInterpolatedSpectrum) -> FullRangeInterpolatedSpectrum {
+    class func calculateRadiance(spectrum: FullRangeInterpolatedSpectrum) -> [Float] {
         
         let vinirEnd: Int = InstrumentSettingsCache.sharedInstance.vinirEndingWavelength - InstrumentSettingsCache.sharedInstance.startingWaveLength
         let swir1Start: Int = InstrumentSettingsCache.sharedInstance.s1StartingWavelength - InstrumentSettingsCache.sharedInstance.startingWaveLength
@@ -120,9 +120,9 @@ class SpectrumCalculator{
         let swir1Gain:Float = Float(2048) / Float(spectrum.spectrumHeader.swir1Header.gain)
         let swir2Gain:Float = Float(2048) / Float(spectrum.spectrumHeader.swir2Header.gain)
         
-        spectrum.spectrumBuffer = calculateRadiance(spectrumBuffer: spectrum.spectrumBuffer, preCalculatedBufferTemp : preCalculatedBuffer, vinirEnd: vinirEnd, swir1Start: swir1Start, swir1End: swir1End, swir2Start: swir2Start, swir2End: swir2End, vinirIntegrationTime:vinirIntegrationTime, swir1Gain:swir1Gain, swir2Gain:swir2Gain)
+        let resultBuffer = calculateRadiance(spectrumBuffer: spectrum.spectrumBuffer, preCalculatedBufferTemp : preCalculatedBuffer, vinirEnd: vinirEnd, swir1Start: swir1Start, swir1End: swir1End, swir2Start: swir2Start, swir2End: swir2End, vinirIntegrationTime:vinirIntegrationTime, swir1Gain:swir1Gain, swir2Gain:swir2Gain)
         
-        return spectrum
+        return resultBuffer
     }
     
     class private func calculateRadiance(spectrumBuffer: [Float], preCalculatedBufferTemp : [Float], vinirEnd: Int, swir1Start: Int, swir1End: Int, swir2Start: Int, swir2End: Int, vinirIntegrationTime:Float, swir1Gain:Float, swir2Gain:Float) -> [Float]{

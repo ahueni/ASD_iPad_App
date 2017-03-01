@@ -45,7 +45,7 @@ class TargetViewController : BaseMeasurementModal
                 }
                 
                 self.updateProgressBar(measurmentCount: i, statusText: "Bereite nächste Messung vor", totalCount: self.targetPage.targetCount)
-                sleep(UInt32(self.targetPage.targetDelay)) // Wait two second before starting the next measurment
+                sleep(UInt32(self.targetPage.targetDelay))
                 self.updateProgressBar(measurmentCount: i, statusText: "Messe...", totalCount: self.targetPage.targetCount)
                 
                 let sampleCount = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCount
@@ -55,8 +55,8 @@ class TargetViewController : BaseMeasurementModal
                     spectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: spectrum)
                 }
                 
-                self.writeFileAsync(spectrum: spectrum,isWhiteReference: false, dataType: self.targetPage.dataType)
-                
+                self.writeFileAsync(spectrum: spectrum ,isWhiteReference: false, dataType: self.targetPage.dataType)
+                                
                 self.pageContainer.spectrumList.append(spectrum)
                 self.updateLineChart(spectrum: spectrum)
                 self.updateProgressBar(measurmentCount: i+1, statusText: "Messung beendet", totalCount: self.targetPage.targetCount)

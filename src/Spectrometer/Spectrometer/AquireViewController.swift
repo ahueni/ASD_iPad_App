@@ -203,7 +203,7 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
                 case .Reflectance:
                     spectrum = SpectrumCalculator.calculateReflectance(currentSpectrum: spectrum, whiteReferenceSpectrum: self.whiteReferenceSpectrum!)
                 case .Radiance:
-                    spectrum = SpectrumCalculator.calculateRadiance(spectrum: spectrum)
+                    spectrum.spectrumBuffer = SpectrumCalculator.calculateRadiance(spectrum: spectrum)
                 }
                 
                 // update chart data

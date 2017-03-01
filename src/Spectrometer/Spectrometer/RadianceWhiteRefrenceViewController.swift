@@ -12,7 +12,7 @@ import Charts
 
 class RadianceWhiteRefrenceViewController : BaseWhiteReferenceViewController {
     
-    var whiteRefrences = [FullRangeInterpolatedSpectrum]() // temporary store for taken white refrences
+    var whiteRefrences = [FullRangeInterpolatedSpectrum]() // temporary store for taken white refrences as raw data
     var whiteRefrencesInRadiance = [FullRangeInterpolatedSpectrum]() // temporary store for taken white refrences
     
     //override to remove all stored whiteReferences. Then do normal routine with a super call
@@ -25,7 +25,7 @@ class RadianceWhiteRefrenceViewController : BaseWhiteReferenceViewController {
     override func updateLineChart(spectrum: FullRangeInterpolatedSpectrum) {
         // copy whiteRefrences to new Array and insert the actual measurment
         var spectrums = whiteRefrencesInRadiance
-        currentSpectrum = SpectrumCalculator.calculateRadiance(spectrum: currentSpectrum!)
+        currentSpectrum!.spectrumBuffer = SpectrumCalculator.calculateRadiance(spectrum: currentSpectrum!)
         spectrums.insert(currentSpectrum!, at: 0)
         
         self.MeasurementLineChart.setAxisValues(min: 0, max: 65000)
@@ -77,7 +77,7 @@ class RadianceWhiteRefrenceViewController : BaseWhiteReferenceViewController {
         let radianceSpectrum = SpectrumCalculator.calculateRadiance(spectrum: spectrum)
         // add whiteReference to the whiteReferenceLists
         self.whiteRefrences.append(spectrum)
-        self.whiteRefrencesInRadiance.append(radianceSpectrum)
+        //self.whiteRefrencesInRadiance.append(radianceSpectrum)
     }
     
     override func goToNextPage() {

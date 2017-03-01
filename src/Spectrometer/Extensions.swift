@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Charts
 
 extension FloatingPoint {
     
@@ -17,3 +18,28 @@ extension FloatingPoint {
         }
     }
 }
+
+
+extension Array where Element : FloatingPoint {
+    func getChartData() -> LineChartData {
+        var values: [ChartDataEntry] = []
+        let startingWaveLength = InstrumentSettingsCache.sharedInstance.startingWaveLength!
+        
+        for i in 0...self.count-1 {
+            
+            // read starting wavelength and count it to actual index of x-chart entry
+            if let value = self[i] as? Float {
+                let chartEntry = ChartDataEntry(x: Double(i + startingWaveLength), y: Double(value))
+                values.append(chartEntry)
+            }
+            
+            if let value = self[i] as? Double {
+                let chartEntry = ChartDataEntry(x: Double(i + startingWaveLength), y: value)
+                values.append(chartEntry)
+            }
+        }
+        let lineChartDataSet = SpectrumLineChartDataSet(values: values, label: nil)
+        return LineChartData(dataSet: lineChartDataSet)
+        
+    }}
+ 

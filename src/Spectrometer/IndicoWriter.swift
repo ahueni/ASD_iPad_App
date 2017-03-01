@@ -66,8 +66,7 @@ class IndicoWriter : BaseWriter {
         writeByte(number: 0)
         
         //dcCorr
-        // in our case always corrected right?
-        writeByte(number: 1)
+        writeByte(number: UInt8(spectrum.spectrumHeader.vinirHeader.darkSubtracted.rawValue))
         
         //dcTime
         writeLong(number: UInt32(Date().timeIntervalSince1970))
@@ -77,7 +76,7 @@ class IndicoWriter : BaseWriter {
         // DN : 0
         // Reflectance : 1
         // Radiance : 2
-        writeByte(number: 0)
+        writeByte(number: dataType.rawValue)
         
         //refTime
         writeLong(number: UInt32(Date().timeIntervalSince1970))
@@ -420,27 +419,30 @@ class IndicoWriter : BaseWriter {
         
         // ------ Start Base Data ------
         
+        let baseFileBuffer = indicoCalibration.baseFile.spectrum!
         for i in 0...indicoCalibration.baseFile.spectrum!.count-1
         {
-            writeDouble(number: indicoCalibration.baseFile.spectrum![i])
+            writeDouble(number: baseFileBuffer[i])
         }
         
         // ------ End Base Data ------
         
         // ------ Start Lamp Data ------
         
+        let lampFileBuffer = indicoCalibration.lampFile.spectrum!
         for i in 0...indicoCalibration.lampFile.spectrum!.count-1
         {
-            writeDouble(number: indicoCalibration.lampFile.spectrum![i])
+            writeDouble(number: lampFileBuffer[i])
         }
         
         // ------ End Lamp Data ------
         
         // ------ Start Fiber Optic Data ------
         
+        let fiberOpticBuffer = indicoCalibration.fiberOptic.spectrum!
         for i in 0...indicoCalibration.fiberOptic.spectrum!.count-1
         {
-            writeDouble(number: indicoCalibration.fiberOptic.spectrum![i])
+            writeDouble(number: fiberOpticBuffer[i])
         }
         
         // ------ End Fiber Optic Data ------
