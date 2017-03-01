@@ -26,8 +26,13 @@ class ReflectanceWhiteRefrenceViewController : BaseWhiteReferenceViewController 
     }
     
     override func goToNextPage() {
+        
+        let darkCorrectedWhiteReference = SpectrumCalculator.calculateDarkCurrentCorrection( spectrum: currentWhiteRefrence!)
+        
+        writeFileAsync(spectrum: darkCorrectedWhiteReference, isWhiteReference: true)
+        
         // Add the white Refrence to the parent VC
-        pageContainer!.whiteRefrenceBeforeSpectrumList.append(SpectrumCalculator.calculateDarkCurrentCorrection( spectrum: currentWhiteRefrence!))
+        pageContainer!.whiteRefrenceBeforeSpectrumList.append(darkCorrectedWhiteReference)
         super.goToNextPage()
     }
     

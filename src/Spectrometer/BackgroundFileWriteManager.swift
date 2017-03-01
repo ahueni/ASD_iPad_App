@@ -16,6 +16,13 @@ class BackgroundFileWriteManager{
     static let sharedInstance = BackgroundFileWriteManager()
     private init() { }
     
+    func addToQueue(spectrums : [FullRangeInterpolatedSpectrum], whiteRefrenceSpectrum: FullRangeInterpolatedSpectrum?, loadedSettings: MeasurmentSettings, indicoCalibration: IndicoCalibration? = nil, fileSuffix :String = "")
+    {
+        for spectrum in spectrums{
+            addToQueue(spectrum: spectrum, whiteRefrenceSpectrum: whiteRefrenceSpectrum, loadedSettings: loadedSettings, indicoCalibration:indicoCalibration,fileSuffix : fileSuffix)
+        }
+    }
+    
     func addToQueue(spectrum : FullRangeInterpolatedSpectrum, whiteRefrenceSpectrum: FullRangeInterpolatedSpectrum?, loadedSettings: MeasurmentSettings, indicoCalibration: IndicoCalibration? = nil, fileSuffix :String = "")
     {
         serialQueue.sync {

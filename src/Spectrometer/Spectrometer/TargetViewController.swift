@@ -59,11 +59,7 @@ class TargetViewController : BaseMeasurementModal
                     spectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: spectrum)
                 }
                 
-                // todo: save this in parent vc and get it from there
-                let measurmentSettings = UserDefaults.standard.data(forKey: "MeasurmentSettings")
-                let loadedSettings = NSKeyedUnarchiver.unarchiveObject(with: measurmentSettings!) as! MeasurmentSettings
-                
-                BackgroundFileWriteManager.sharedInstance.addToQueue(spectrum: spectrum, whiteRefrenceSpectrum: nil, loadedSettings: loadedSettings)
+                self.writeFileAsync(spectrum: spectrum,isWhiteReference: false)
                 
                 self.pageContainer.spectrumList.append(spectrum)
                 self.updateLineChart(spectrum: spectrum)

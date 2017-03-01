@@ -32,6 +32,9 @@ class RadianceWhiteRefrenceViewController : BaseWhiteReferenceViewController {
         var dataSets = [ChartDataSet]()
         
         for j in 0...spectrums.count-1{
+            if(InstrumentSettingsCache.sharedInstance.cancelMeasurment){
+                return
+            }
             
             var storedValues: [ChartDataEntry] = []
             let spectrum = spectrums[j]
@@ -86,6 +89,9 @@ class RadianceWhiteRefrenceViewController : BaseWhiteReferenceViewController {
             self.pageContainer.whiteRefrenceAfterSpectrumList.append(contentsOf: whiteRefrences)
             break
         }
+        
+        writeFileAsync(spectrums: whiteRefrences, isWhiteReference: true)
+        
         super.goToNextPage()
     }
     

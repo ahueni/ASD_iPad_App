@@ -27,6 +27,16 @@ class ParentViewController : UIPageViewController {
         }
     }
     
+    var measurmentSettings : MeasurmentSettings{
+        get
+        {
+            // todo: save this in parent vc and get it from there
+            let measurmentSettings = UserDefaults.standard.data(forKey: "MeasurmentSettings")
+            let loadedSettings = NSKeyedUnarchiver.unarchiveObject(with: measurmentSettings!) as! MeasurmentSettings
+            return loadedSettings
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

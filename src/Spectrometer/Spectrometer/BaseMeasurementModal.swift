@@ -45,4 +45,28 @@ class BaseMeasurementModal : UIViewController
         }
         
     }
+    
+    func writeFileAsync(spectrums : [FullRangeInterpolatedSpectrum], isWhiteReference :Bool)
+    {
+        DispatchQueue.global().async {
+            var indicoCalibration : IndicoCalibration? = nil
+            if(self.pageContainer.measurmentMode == MeasurementMode.Radiance)
+            {
+                let base = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.base!
+                let lamp = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.lamp!
+                let fiberOptic = InstrumentSettingsCache.sharedInstance.selectedForeOptic!
+                indicoCalibration = IndicoCalibration(baseFile: base, lampFile: lamp, fiberOptic: fiberOptic)
+            }
+            
+            let fileSuffix = isWhiteReference ? "_WR" : ""
+            
+            BackgroundFileWriteManager.sharedInstance.addToQueue(spectrums: spectrums, whiteRefrenceSpectrum: nil, loadedSettings: self.pageContainer!.measurmentSettings, indicoCalibration: indicoCalibration, fileSuffix: fileSuffix)
+        }
+    }
+    
+    func writeFileAsync(spectrum : FullRangeInterpolatedSpectrum, isWhiteReference :Bool){
+        var spectrums : [FullRangeInterpolatedSpectrum] = [FullRangeInterpolatedSpectrum]()
+        spectrums.append(spectrum)
+        writeFileAsync(spectrums : spectrums, isWhiteReference: isWhiteReference)
+    }
 }

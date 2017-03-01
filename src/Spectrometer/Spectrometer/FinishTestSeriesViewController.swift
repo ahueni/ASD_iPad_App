@@ -24,8 +24,10 @@ class FinishTestSeriesViewController : BaseMeasurementModal {
         super.viewDidLoad()
         checkMarkImage.alpha = 0
         successSavingLabel.alpha = 0
+        finishedSaving()
     }
     
+    /*
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -55,14 +57,15 @@ class FinishTestSeriesViewController : BaseMeasurementModal {
             break
         }
     }
-    
-    
+ */
+ 
+    /*
     func save(spectrums : [FullRangeInterpolatedSpectrum], whiteRefrenceSpectrum: FullRangeInterpolatedSpectrum?, loadedSettings: MeasurmentSettings, indicoCalibration: IndicoCalibration? = nil, fileSuffix :String = "")
     {
         DispatchQueue.global().async {
             for i in 0...spectrums.count-1{
                 let spectrumData = spectrums[i]
-                let fileName = String(format: "%03d", i) + loadedSettings.fileName + fileSuffix + ".asd"
+                let fileName = String(format: "%03d_", i) + loadedSettings.fileName + fileSuffix + ".asd"
                 let relativeFilePath = loadedSettings.path.appendingPathComponent(fileName).relativePath
                 let fileWriter = IndicoWriter(path: relativeFilePath)
                 
@@ -71,6 +74,7 @@ class FinishTestSeriesViewController : BaseMeasurementModal {
             self.finishedSaving()
         }
     }
+ */
     
     func finishedSaving() -> Void {
         
