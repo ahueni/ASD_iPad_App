@@ -12,11 +12,9 @@ import Charts
 
 class MeasurmentDetailViewController: UIViewController {
     
-    
     @IBOutlet var rawButton: RadioButton!
     @IBOutlet var reflectanceButton: RadioButton!
     @IBOutlet var radianceButton: RadioButton!
-    
     @IBOutlet var MeasurementLineChart: SpectrumLineChartView!
     
     var url : URL? = nil
@@ -29,7 +27,6 @@ class MeasurmentDetailViewController: UIViewController {
     }
     
     @IBAction func reflectanceButtonClicked(_ sender: UIButton) {
-        
         self.MeasurementLineChart.setAxisValues(min: 0, max: MeasurementMode.Reflectance.rawValue)
         let calculatedSpectrum = SpectrumCalculator.calculateReflectanceFromFile(spectrumFile: spectralFile)
         let chartDataSet = calculatedSpectrum.getChartData(lineWidth: 1)
@@ -37,16 +34,13 @@ class MeasurmentDetailViewController: UIViewController {
     }
     
     @IBAction func radianceButtonClicked(_ sender: UIButton) {
-        
         self.MeasurementLineChart.setAxisValues(min: 0, max: MeasurementMode.Radiance.rawValue)
         let calculatedSpectrum = SpectrumCalculator.calculateRadianceFromFile(spectralFile: spectralFile)
         let chartDataSet = calculatedSpectrum.getChartData()
         self.MeasurementLineChart.data = LineChartData(dataSet: chartDataSet)
-        
     }
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         
         // init radio buttons
@@ -72,13 +66,10 @@ class MeasurmentDetailViewController: UIViewController {
             self.rawButtonClicked(rawButton)
             
         }
-        
         self.MeasurementLineChart.noDataText = "Please select a file..."
-        
     }
     
     private func parseSpectralFile(filePath: String) -> SpectralFileBase? {
-        
         let fileManager = FileManager()
         let dataBuffer = [UInt8](fileManager.contents(atPath: filePath)!)
         let fileParser = IndicoAsdFileReader(data: dataBuffer)

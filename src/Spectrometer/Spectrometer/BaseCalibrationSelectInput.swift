@@ -53,6 +53,7 @@ class BaseCalibrationFileSelectInput: BaseSelectInput {
             
         }
         
+        self.updateFilePathLabel()
         self.validate()
         self.delegate.didSelectPath()
     }

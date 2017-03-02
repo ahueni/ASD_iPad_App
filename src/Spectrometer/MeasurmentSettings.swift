@@ -18,25 +18,16 @@ class MeasurmentSettings : NSObject, NSCoding {
         self.fileName = decoder.decodeObject(forKey: "fileName") as! String
         self.comment = decoder.decodeObject(forKey: "comment") as? String
         self.measurmentMode = MeasurementMode(rawValue: decoder.decodeDouble(forKey: "measurmentMode"))!
-        
         let pathString = decoder.decodeObject(forKey: "pathString") as! String
         
-        // create url string
-        let urlStr = pathString.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
-        
         // create url if its possible
-        if let urlStr = urlStr {
-            self.path = URL(fileURLWithPath: urlStr, isDirectory: true)
-        } else {
-            self.path = InstrumentSettingsCache.sharedInstance.measurementsRoot
-        }
-        
+        self.path = URL(fileURLWithPath: pathString, isDirectory: true)
     }
     
     public func encode(with aCoder: NSCoder) {
         aCoder.encode(self.fileName, forKey: "fileName")
         aCoder.encode(self.comment, forKey: "comment")
-        aCoder.encode(self.path.relativePath, forKey: "pathString")
+        aCoder.encode(self.path.path, forKey: "pathString")
         aCoder.encode(self.measurmentMode.rawValue, forKey: "measurmentMode")
     }
     

@@ -15,11 +15,10 @@ class RawSettingsViewController: BaseSettingsViewController {
     @IBOutlet var darkCurrentSettingsSwitch: UISwitch!
     
     @IBAction func darkCurrentSettingsSwitchValueChanged(_ sender: UISwitch) {
-        if sender.isOn {
-            self.darkCurrentSettingsContentHeight.constant = 60
-        } else {
-            self.darkCurrentSettingsContentHeight.constant = 0
-        }
+        // next is only enabled if dc is set off for this raw measurment OR dc is set on and dc exists
+        nextButton.isEnabled = !sender.isOn || (sender.isOn && InstrumentSettingsCache.sharedInstance.darkCurrent != nil)
+        //set correct height for dc section
+        self.darkCurrentSettingsContentHeight.constant = sender.isOn ? 60 : 0
         
         UIView.animate(withDuration: 0.5, animations: {
             self.view.layoutIfNeeded()

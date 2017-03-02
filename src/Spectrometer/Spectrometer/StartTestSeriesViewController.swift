@@ -21,7 +21,6 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
     @IBOutlet var radianceRadioButton: RadioButton!
     
     override func viewDidLoad() {
-        
         // add delegates
         fileNameTextField.delegate = self
         selectPathInput.delegate = self
@@ -52,8 +51,6 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
             fileNameTextField.text = measurementSettings.fileName
             commentTextField.text = measurementSettings.comment
             
-            // not working - recreate a url from NSUserDefaults is not possible
-            //selectPathInput.update(diskFile: measurementSettings.path)
             selectPathInput.update(selectedPath: measurementSettings.path)
             
             switch measurementSettings.measurmentMode {

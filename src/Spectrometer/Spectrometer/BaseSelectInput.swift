@@ -26,6 +26,8 @@ class BaseSelectInput: UIView, BaseValidationControl {
     var isValid: Bool {
         get {
             if let path = selectedPath {
+                print("Validate: " + path.absoluteString)
+                print("Result: " + path.exists().description)
                 return path.exists()
             }
             return false
@@ -36,7 +38,6 @@ class BaseSelectInput: UIView, BaseValidationControl {
     var leftImageView:UIImageView!
     var leftIcon:UIImage!
     var pathLabel:UILabel!
-    
     
     @IBInspectable var cornerRadius: CGFloat = 0 {
         didSet {
@@ -152,13 +153,23 @@ class BaseSelectInput: UIView, BaseValidationControl {
     func update(selectedPath: URL) {
         _selectedPath = selectedPath
         validate()
+        updateFilePathLabel()
         self.delegate.didSelectPath()
+    }
+    
+    func updateFilePathLabel()
+    {
+        if isValid {
+            let documentsPath = InstrumentSettingsCache.sharedInstance.documentsRoot
+            let displayPath = self.selectedPath!.pathComponents[documentsPath.pathComponents.count...(selectedPath!.pathComponents.count)-1].joined(separator: "/")
+            pathLabel.text = displayPath
+            
+        }
     }
     
     func validate() {
         
         if isValid {
-            pathLabel.text = self.selectedPath?.absoluteString
             pathLabel.textColor = textColor
         } else {
             pathLabel.textColor = UIColor.red

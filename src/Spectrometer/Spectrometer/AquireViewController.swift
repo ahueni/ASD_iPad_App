@@ -64,7 +64,6 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
         
         // activateRadianceMode -> actually nothing happens because no dark current is taken
         activateRadianceMode()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -161,7 +160,6 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     }
     
     @IBAction func disconnectSpectrometer(_ sender: UIColorButton) {
-        
         // if no loop is active -> disconnect otherwise wait until loop has ended
         if (!InstrumentSettingsCache.sharedInstance.aquireLoop) {
             finishedAquireLoopHandler()
@@ -170,11 +168,9 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
         // stopp aquire loop and set disconnect indicator
         InstrumentSettingsCache.sharedInstance.aquireLoop = false
         self.disconnectWhenFinished = true
-        
     }
     
     internal func startAquire() {
-        
         InstrumentSettingsCache.sharedInstance.aquireLoop = !InstrumentSettingsCache.sharedInstance.aquireLoop
         
         DispatchQueue.main.async {
@@ -231,7 +227,6 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     }
     
     internal func finishedAquireLoopHandler() {
-        
         // switch back to UI thread
         DispatchQueue.main.async {
             
@@ -258,7 +253,6 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     }
     
     internal func updateChart(chartData: LineChartData, measurementMode: MeasurementMode) {
-        
         // switch to UI thread
         DispatchQueue.main.async {
             
@@ -274,40 +268,31 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
             
             // update chart data
             self.lineChart.data = chartData
-            
         }
-        
-        
     }
     
     internal func activateReflectanceMode() {
-        
         // check if white reference and dark current available
         if whiteReferenceSpectrum != nil && InstrumentSettingsCache.sharedInstance.darkCurrent != nil {
             reflectanceRadioButton.isEnabled = true
         } else {
             reflectanceRadioButton.isEnabled = false
         }
-        
     }
     
     internal func activateRadianceMode() {
-        
         // check if a foreoptic is slected
         if let selectedForeOptic = InstrumentSettingsCache.sharedInstance.selectedForeOptic {
-            
             foreOpticLabel.text = selectedForeOptic.name
             
             // check if darkCurrent is taken before activate radiance mode
             if InstrumentSettingsCache.sharedInstance.darkCurrent != nil {
                 radianceRadioButton.isEnabled = true
             }
-            
         } else {
             foreOpticLabel.text = "Please select a Foreoptic to activate Radiance mode"
             radianceRadioButton.isEnabled = false
         }
-        
     }
     
     internal func didSelectFiberoptic(fiberoptic: CalibrationFile) {
@@ -316,25 +301,20 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     }
     
     internal func updateDarkCurrentTimerLabel() {
-        
         if let darkCurrentStartTime = InstrumentSettingsCache.sharedInstance.darkCurrentStartTime {
             let elapsedTime = NSDate.timeIntervalSinceReferenceDate - darkCurrentStartTime
             darkCurrentTimerLabel.text = Int(elapsedTime).description
         }
-        
     }
     
     internal func updateWhiteReferenceTimerLabel() {
-        
         if let whiteReferenceStartTime = InstrumentSettingsCache.sharedInstance.whiteReferenceStartTime {
             let elapsedTime = NSDate.timeIntervalSinceReferenceDate - whiteReferenceStartTime
             whiteReferenceTimerLabel.text = Int(elapsedTime).description
         }
-        
     }
     
     internal func setViewOrientation() -> Void {
-        
         if UIDevice.current.orientation.isLandscape {
             mainStackView.axis = .horizontal
             navigationStackView.axis = .vertical
@@ -357,10 +337,6 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
                 stackView.distribution = .fillEqually
             }
         }
-        
         self.view.layoutSubviews()
-        
     }
-    
-    
 }

@@ -36,17 +36,16 @@ class FileBrowserContainerViewController : UIViewController {
     
     func jumpToPath(targetPath : URL){
         
+        // Breaking the recursiv call when targetpath not exists OR is reached
+        if(!targetPath.exists() || targetPath.absoluteString == selectedPath.absoluteString){
+            return
+        }
         
         let directoryBrowserContainerViewController = self.storyboard?.instantiateViewController(withIdentifier: "DirectoryBrowserContainerViewController") as! DirectoryBrowserContainerViewController
         
         // Get the next folder in chain to target
         let targetPathComponents = targetPath.pathComponents
         let currentPathComponents = selectedPath.pathComponents
-        
-        // Breaking the recursiv call when targetpath is reached
-        if(targetPath.absoluteString == selectedPath.absoluteString || currentPathComponents.count == targetPathComponents.count){
-            return
-        }
         
         var nextJump : URL = selectedPath
         let nextFolder = targetPathComponents[currentPathComponents.count]
