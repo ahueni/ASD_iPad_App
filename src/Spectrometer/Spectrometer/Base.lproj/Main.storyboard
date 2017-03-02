@@ -6,8 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -433,13 +432,13 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3T3-6H-JHc">
                                 <rect key="frame" x="0.0" y="576" width="540" height="44"/>
                                 <items>
-                                    <barButtonItem title="Neuer Ordner" id="jyE-i3-CRe">
+                                    <barButtonItem title="Create folder" id="jyE-i3-CRe">
                                         <connections>
                                             <action selector="AddDirectoryButtonClicked:" destination="UIA-Zh-fKE" id="SSf-xu-jeh"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="4Vy-9G-O0d"/>
-                                    <barButtonItem title="Auswählen" style="done" id="Igy-f0-5TJ">
+                                    <barButtonItem title="Select folder" style="done" id="Igy-f0-5TJ">
                                         <connections>
                                             <action selector="ChooseDirectoryButtonClicked:" destination="UIA-Zh-fKE" id="dg5-Uy-M9u"/>
                                         </connections>
@@ -528,7 +527,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZuH-AQ-NxF">
-                                <rect key="frame" x="20" y="117" width="728" height="38.5"/>
+                                <rect key="frame" x="20" y="117" width="728" height="39"/>
                                 <string key="text">In the following section, you can add or remove connections to your spectromter devices. You can also establish a connection to one of your devices.</string>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                 <nil key="textColor"/>
@@ -545,70 +544,115 @@
                                     </segue>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eqG-6H-HNG">
-                                <rect key="frame" x="20" y="165.5" width="728" height="725.5"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eqG-6H-HNG">
+                                <rect key="frame" x="20" y="166" width="728" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" editingAccessoryType="detailButton" rowHeight="100" id="mmm-tZ-Xs7" customClass="SpectrometerConfigTableViewCell" customModule="Spectrometer" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" editingAccessoryType="detailButton" rowHeight="100" id="mmm-tZ-Xs7" customClass="SpectrometerConfigTableViewCell" customModule="Spectrometer" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="728" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mmm-tZ-Xs7" id="yjQ-yq-CaX">
-                                            <rect key="frame" x="0.0" y="0.0" width="728" height="99"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="728" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spectrometer Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ec6-mm-Psg">
-                                                    <rect key="frame" x="183" y="9" width="399" height="52"/>
-                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wDv-BE-3lp">
-                                                    <rect key="frame" x="590" y="8" width="130" height="81"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Kq-9o-fLD" userLabel="BorderView" customClass="UIRoundBorderedView" customModule="Spectrometer" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="8" width="712" height="83.5"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IrZ-k0-RPb">
+                                                            <rect key="frame" x="6" y="6" width="71.5" height="71.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="IrZ-k0-RPb" secondAttribute="height" multiplier="1:1" id="FTE-rV-sN3"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wDv-BE-3lp" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
+                                                            <rect key="frame" x="580" y="12" width="120" height="60"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="120" id="QVS-Ea-yCy"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
+                                                            <state key="normal" title="Connect"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="background">
+                                                                    <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                                    <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="4"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8080" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aF7-2C-20b">
+                                                            <rect key="frame" x="448" y="44" width="120" height="17"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="120" id="LpE-lH-EBv"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="255.255.255.255" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JEi-Ts-f6u">
+                                                            <rect key="frame" x="447" y="23" width="120" height="17"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="120" id="ED0-L8-sw7"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spectrometer Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ec6-mm-Psg">
+                                                            <rect key="frame" x="101" y="12" width="334" height="60"/>
+                                                            <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="22"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="130" id="aXz-CL-EWk"/>
+                                                        <constraint firstAttribute="bottom" secondItem="aF7-2C-20b" secondAttribute="bottom" constant="23" id="3Mg-V2-9es"/>
+                                                        <constraint firstItem="wDv-BE-3lp" firstAttribute="top" secondItem="1Kq-9o-fLD" secondAttribute="top" constant="12" id="9KO-KR-qGZ"/>
+                                                        <constraint firstAttribute="bottom" secondItem="IrZ-k0-RPb" secondAttribute="bottom" constant="6" id="BOT-dE-Uk4"/>
+                                                        <constraint firstItem="ec6-mm-Psg" firstAttribute="leading" secondItem="IrZ-k0-RPb" secondAttribute="trailing" constant="24" id="CEE-Jv-Vig"/>
+                                                        <constraint firstAttribute="trailing" secondItem="wDv-BE-3lp" secondAttribute="trailing" constant="12" id="Cu8-bG-hWu"/>
+                                                        <constraint firstItem="IrZ-k0-RPb" firstAttribute="leading" secondItem="1Kq-9o-fLD" secondAttribute="leading" constant="6" id="IFk-7i-jwd"/>
+                                                        <constraint firstItem="wDv-BE-3lp" firstAttribute="leading" secondItem="JEi-Ts-f6u" secondAttribute="trailing" constant="13" id="VTC-zF-rg2"/>
+                                                        <constraint firstItem="JEi-Ts-f6u" firstAttribute="leading" secondItem="ec6-mm-Psg" secondAttribute="trailing" constant="12" id="Whe-jh-UCc"/>
+                                                        <constraint firstAttribute="bottom" secondItem="wDv-BE-3lp" secondAttribute="bottom" constant="12" id="bLM-4T-xh1"/>
+                                                        <constraint firstAttribute="bottom" secondItem="ec6-mm-Psg" secondAttribute="bottom" constant="12" id="bf3-Z0-NNH"/>
+                                                        <constraint firstItem="wDv-BE-3lp" firstAttribute="leading" secondItem="aF7-2C-20b" secondAttribute="trailing" constant="12" id="fkh-jX-CbC"/>
+                                                        <constraint firstItem="ec6-mm-Psg" firstAttribute="top" secondItem="1Kq-9o-fLD" secondAttribute="top" constant="12" id="kUa-g8-lLH"/>
+                                                        <constraint firstItem="IrZ-k0-RPb" firstAttribute="top" secondItem="1Kq-9o-fLD" secondAttribute="top" constant="6" id="mei-F2-BIB"/>
+                                                        <constraint firstItem="JEi-Ts-f6u" firstAttribute="top" secondItem="1Kq-9o-fLD" secondAttribute="top" constant="23" id="sNF-FO-X5O"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
-                                                    <state key="normal" title="Connect"/>
-                                                </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SpektrometerAppIcon180" translatesAutoresizingMaskIntoConstraints="NO" id="IrZ-k0-RPb">
-                                                    <rect key="frame" x="8" y="17" width="80" height="66"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="80" id="w01-bY-dHd"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IP: 10.1.1.77 / Port: 8080" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aF7-2C-20b">
-                                                    <rect key="frame" x="183" y="67" width="399" height="16"/>
-                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="4"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="2"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="wDv-BE-3lp" firstAttribute="trailing" secondItem="yjQ-yq-CaX" secondAttribute="trailingMargin" id="2gr-PP-o6y"/>
-                                                <constraint firstItem="wDv-BE-3lp" firstAttribute="leading" secondItem="ec6-mm-Psg" secondAttribute="trailing" constant="8" symbolic="YES" id="5QJ-uW-96i"/>
-                                                <constraint firstItem="IrZ-k0-RPb" firstAttribute="top" secondItem="yjQ-yq-CaX" secondAttribute="topMargin" constant="9" id="DgE-gL-qzc"/>
-                                                <constraint firstItem="wDv-BE-3lp" firstAttribute="leading" secondItem="aF7-2C-20b" secondAttribute="trailing" constant="8" symbolic="YES" id="FqG-th-a8O"/>
-                                                <constraint firstItem="ec6-mm-Psg" firstAttribute="leading" secondItem="aF7-2C-20b" secondAttribute="leading" id="PD1-6D-Y5B"/>
-                                                <constraint firstItem="IrZ-k0-RPb" firstAttribute="bottom" secondItem="aF7-2C-20b" secondAttribute="bottom" id="QUm-md-6mb"/>
-                                                <constraint firstItem="aF7-2C-20b" firstAttribute="top" secondItem="ec6-mm-Psg" secondAttribute="bottom" constant="6" id="S9f-nW-Hud"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="wDv-BE-3lp" secondAttribute="bottom" constant="2" id="U6S-uC-9li"/>
-                                                <constraint firstItem="IrZ-k0-RPb" firstAttribute="centerY" secondItem="yjQ-yq-CaX" secondAttribute="centerY" id="XZN-F4-5TS"/>
-                                                <constraint firstItem="ec6-mm-Psg" firstAttribute="baseline" secondItem="wDv-BE-3lp" secondAttribute="firstBaseline" id="Xf5-Ng-vnl"/>
-                                                <constraint firstItem="ec6-mm-Psg" firstAttribute="leading" secondItem="IrZ-k0-RPb" secondAttribute="trailing" constant="95" id="ah0-GJ-G0b"/>
-                                                <constraint firstItem="ec6-mm-Psg" firstAttribute="baseline" secondItem="wDv-BE-3lp" secondAttribute="baseline" id="bWf-0a-DsW"/>
-                                                <constraint firstItem="IrZ-k0-RPb" firstAttribute="top" secondItem="yjQ-yq-CaX" secondAttribute="topMargin" constant="9" id="dDh-Lo-yfA"/>
-                                                <constraint firstItem="IrZ-k0-RPb" firstAttribute="leading" secondItem="yjQ-yq-CaX" secondAttribute="leadingMargin" id="f5e-OA-lLm"/>
-                                                <constraint firstItem="IrZ-k0-RPb" firstAttribute="centerY" secondItem="yjQ-yq-CaX" secondAttribute="centerY" id="ufx-QB-18F"/>
-                                                <constraint firstItem="wDv-BE-3lp" firstAttribute="top" secondItem="yjQ-yq-CaX" secondAttribute="topMargin" id="v5w-UE-nM2"/>
-                                                <constraint firstItem="ec6-mm-Psg" firstAttribute="top" secondItem="yjQ-yq-CaX" secondAttribute="topMargin" constant="1" id="zfF-9I-Vfe"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="1Kq-9o-fLD" secondAttribute="bottom" id="3ET-s4-gs4"/>
+                                                <constraint firstItem="1Kq-9o-fLD" firstAttribute="leading" secondItem="yjQ-yq-CaX" secondAttribute="leadingMargin" id="8Zm-9T-tR0"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="1Kq-9o-fLD" secondAttribute="trailing" id="GXs-7M-ef0"/>
+                                                <constraint firstItem="1Kq-9o-fLD" firstAttribute="top" secondItem="yjQ-yq-CaX" secondAttribute="topMargin" id="evk-uj-sEo"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
+                                            <outlet property="borderView" destination="1Kq-9o-fLD" id="TjY-nY-gKC"/>
                                             <outlet property="connectButton" destination="wDv-BE-3lp" id="pV4-Gp-eb9"/>
-                                            <outlet property="ipAndPort" destination="aF7-2C-20b" id="XHH-6o-dzl"/>
+                                            <outlet property="ipAdress" destination="JEi-Ts-f6u" id="S7v-I7-cws"/>
                                             <outlet property="name" destination="ec6-mm-Psg" id="BFC-fw-dH2"/>
+                                            <outlet property="port" destination="aF7-2C-20b" id="LUe-dN-mQC"/>
                                             <outlet property="spectrometerImageView" destination="IrZ-k0-RPb" id="NWh-WO-2WQ"/>
                                         </connections>
                                     </tableViewCell>
@@ -813,7 +857,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vaJ-lD-pUO">
-                                <rect key="frame" x="241" y="494" width="286" height="36"/>
+                                <rect key="frame" x="234" y="492" width="301" height="40"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
                                 <state key="normal" title="Delete all measurement settings"/>
                                 <connections>
@@ -1522,19 +1566,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save measurements" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="war-x9-xc7">
-                                <rect key="frame" x="20" y="40" width="500" height="26"/>
+                                <rect key="frame" x="20" y="40" width="500" height="30"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alle Messungen wurden erfolgreich durchgeführt und werden nun abgespeichert." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7M-uM-Rys">
-                                <rect key="frame" x="20" y="76" width="500" height="14"/>
+                                <rect key="frame" x="20" y="80" width="500" height="17"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Die Messungen werden gespeichert ..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSU-MD-mc2">
-                                <rect key="frame" x="20" y="278" width="500" height="14"/>
+                                <rect key="frame" x="20" y="275" width="500" height="17"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1564,7 +1608,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Die Messungen wurden erfolgreich abgespeichert. Sie können alle Messungen im Tab &quot;Messungen&quot; einsehen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPK-w9-25L">
-                                <rect key="frame" x="40" y="458" width="460" height="28"/>
+                                <rect key="frame" x="40" y="458" width="460" height="33"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2658,7 +2702,7 @@ Dark Current</string>
                                                             <constraint firstItem="87E-4o-Qs7" firstAttribute="top" secondItem="Df1-wb-cck" secondAttribute="top" constant="14" id="xSc-wD-RIu"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Target" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53v-b1-ybt">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53v-b1-ybt">
                                                         <rect key="frame" x="16" y="11" width="419" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
@@ -3464,7 +3508,7 @@ Dark Current</string>
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="768" height="1024"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BtY-te-dYt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="BtY-te-dYt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3667,7 +3711,7 @@ DarkCurrent</string>
                                                             <constraint firstItem="b8i-K4-qOR" firstAttribute="top" secondItem="ctD-2p-th1" secondAttribute="top" constant="14" id="zSP-dR-ayJ"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Target" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7by-1d-urt">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7by-1d-urt">
                                                         <rect key="frame" x="16" y="11" width="419" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
@@ -3785,7 +3829,6 @@ DarkCurrent</string>
         </scene>
     </scenes>
     <resources>
-        <image name="SpektrometerAppIcon180" width="180" height="180"/>
         <image name="done" width="448" height="455"/>
     </resources>
     <inferredMetricsTieBreakers>

@@ -24,7 +24,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="521" height="59"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4K-IB-ojZ">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4K-IB-ojZ">
                         <rect key="frame" x="59" y="8" width="406" height="25"/>
                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                         <nil key="textColor"/>
@@ -72,12 +72,11 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="exportButton" destination="rUm-XY-2Gf" id="tRk-Yu-sJS"/>
-                <outlet property="imageView" destination="lUd-J4-107" id="30Z-4G-qeb"/>
                 <outlet property="myImageView" destination="lUd-J4-107" id="IIG-v9-EUF"/>
                 <outlet property="pathLabel" destination="X1i-bt-1CM" id="r6s-NT-z5V"/>
                 <outlet property="titelLabel" destination="F4K-IB-ojZ" id="XBG-IQ-8Vq"/>
             </connections>
-            <point key="canvasLocation" x="372.5" y="-194"/>
+            <point key="canvasLocation" x="310" y="-227"/>
         </tableViewCell>
     </objects>
 </document>

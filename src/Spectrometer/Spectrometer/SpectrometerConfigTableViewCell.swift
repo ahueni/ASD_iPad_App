@@ -11,10 +11,19 @@ import UIKit
 
 class SpectrometerConfigTableViewCell : UITableViewCell {
     
+    @IBOutlet var borderView: UIRoundBorderedView!
     @IBOutlet var name: UILabel!
-    @IBOutlet var ipAndPort: UILabel!
-    @IBOutlet var connectButton: UIButton!
-    @IBOutlet weak var spectrometerImageView: UIImageView!
+    @IBOutlet var ipAdress: UILabel!
+    @IBOutlet var port: UILabel!
+    @IBOutlet var connectButton: UIColorButton!
+    @IBOutlet var spectrometerImageView: UIImageView! {
+        didSet {
+            let ceruleanBlue = UIColor(red:0.00, green:0.61, blue:0.92, alpha:1.00)
+            let imageViewSize = spectrometerImageView.layer.frame.size
+            spectrometerImageView.image = UIImage.fontAwesomeIcon(name: .hddO, textColor: ceruleanBlue, size: imageViewSize)
+            
+        }
+    }
 
 }
 

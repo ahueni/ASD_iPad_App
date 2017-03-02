@@ -41,7 +41,7 @@ class FullRangeInterpolatedSpectrumParser: BaseSpectrumParser, ISpectrumParser {
         let saturation: Saturation = Saturation(fromRawValue: getNextInt())
         let shutter: ShutterStatus = ShutterStatus(fromRawValue: getNextInt())
         let drift: Int = getNextInt()
-        let darkSubtracted: DarkSubtracted = DarkSubtracted(rawValue: getNextInt())!
+        let darkSubtracted: DarkSubtracted = DarkSubtracted(fromRawValue: getNextInt())
         
         // jum over reserved bytes
         parseIndex += VnirHeader.reserve*4
@@ -61,7 +61,7 @@ class FullRangeInterpolatedSpectrumParser: BaseSpectrumParser, ISpectrumParser {
         let s1offset: Int = getNextInt()
         let s1scansize1: Int = getNextInt()
         let s1scansize2: Int = getNextInt()
-        let s1darkSubtracted: DarkSubtracted = DarkSubtracted(rawValue: getNextInt())!
+        let s1darkSubtracted: DarkSubtracted = DarkSubtracted(fromRawValue: getNextInt())
         
         // jump over reserved bytes
         parseIndex += SwirHeader.reserve*4
@@ -69,7 +69,7 @@ class FullRangeInterpolatedSpectrumParser: BaseSpectrumParser, ISpectrumParser {
         let swir1Header: SwirHeader = SwirHeader(tecStatus: s1tecStatus, tecCurrent: s1tecCurrent, maxChannel: s1maxChannel, minChannel: s1minChannel, saturation: s1saturation, AScans: s1AScans, BScans: s1BScans, darkCurrent: s1darkCurrent, gain: s1gain, offset: s1offset, scansize1: s1scansize1, scansize2: s1scansize2, darkSubtracted: s1darkSubtracted)
         
         // parse Swir2 Header
-        let s2tecStatus: TecStatus = TecStatus(rawValue: getNextInt())!
+        let s2tecStatus: TecStatus = TecStatus(fromRawValue: getNextInt())
         let s2tecCurrent: Int = getNextInt()
         let s2maxChannel: Int = getNextInt()
         let s2minChannel: Int = getNextInt()
@@ -81,7 +81,7 @@ class FullRangeInterpolatedSpectrumParser: BaseSpectrumParser, ISpectrumParser {
         let s2offset: Int = getNextInt()
         let s2scansize1: Int = getNextInt()
         let s2scansize2: Int = getNextInt()
-        let s2darkSubtracted: DarkSubtracted = DarkSubtracted(rawValue: getNextInt())!
+        let s2darkSubtracted: DarkSubtracted = DarkSubtracted(fromRawValue: getNextInt())
         
         // jump over reserved bytes
         parseIndex += SwirHeader.reserve*4

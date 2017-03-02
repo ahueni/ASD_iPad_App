@@ -88,10 +88,10 @@ class MeasurmentDetailViewController: UIViewController {
         do {
             file = try fileParser.parse()
         } catch let error as ParsingError {
-            self.showWarningMessage(title: "Fehler", message: error.message)
+            self.showWarningMessage(title: "Error", message: error.message)
             return nil
         } catch {
-            self.showWarningMessage(title: "Dateifehler", message: "Die Datei konnte nicht gelesen werden.")
+            self.showWarningMessage(title: "File error", message: "Could not read file...")
             return nil
         }
         

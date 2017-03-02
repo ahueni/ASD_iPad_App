@@ -11,7 +11,7 @@ import UIKit
 
 class DirectoryBrowserContainerViewController : FileBrowserContainerViewController
 {
-    let measurementPath:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Measurements", isDirectory: true)
+    let measurementPath:URL = InstrumentSettingsCache.sharedInstance.measurementsRoot
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

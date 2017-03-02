@@ -21,7 +21,7 @@ class MeasurmentMasterTableViewController: BaseFileBrowserTableViewController {
         
         // initialize start folder
         print("-- INSTANTIATE MEASUREMENT TABLE VIEW CONTROLLER --")
-        let initFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Measurements", isDirectory: true)
+        let initFolder = InstrumentSettingsCache.sharedInstance.measurementsRoot
         self.initializeTableData(startFolder: initFolder)
         
     }
@@ -50,8 +50,21 @@ class MeasurmentMasterTableViewController: BaseFileBrowserTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MeasurmentTableViewCell", for: indexPath) as! MeasurmentTableViewCell
+        
         let selectedFile = getFileForIndexPath(indexPath: indexPath)
-        cell.setInfo(selectedFile: selectedFile, viewController: self)
+        
+        cell.viewController = self
+        cell.selectedFile = selectedFile
+        
+        cell.titelLabel.text = selectedFile.displayName
+        
+        // show the last 3 path components
+        let pathComponents = selectedFile.filePath.pathComponents
+        cell.pathLabel.text = pathComponents[pathComponents.count-3...pathComponents.count-1].joined(separator: "/")
+
+        let newImageSize = CGSize(width: 40, height: 40)
+        let ceruleanColor = UIColor(red:0.00, green:0.61, blue:0.92, alpha:1.00)
+        cell.myImageView.image = selectedFile.image(size: newImageSize, color: ceruleanColor)
         
         return cell
         

@@ -31,8 +31,6 @@ import UIKit
         addSubview(headerView)
         
         sendSubview(toBack: headerView)
-        
-        print("LAYOUT Subviews")
     }
     
 }

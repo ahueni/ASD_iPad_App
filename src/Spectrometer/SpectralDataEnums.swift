@@ -99,7 +99,6 @@ enum ShutterStatus: Int {
     case Error = 99
     
     init(fromRawValue: Int){
-        
         if (fromRawValue > 1) { print("ShutterStatus: " + fromRawValue.description) }        
         self = ShutterStatus(rawValue: fromRawValue) ?? .Error
     }
@@ -109,17 +108,38 @@ enum ShutterStatus: Int {
 enum DarkSubtracted: Int {
     case No = 0
     case Yes = 1
+    case Error = 99
+    
+    init(fromRawValue: Int){
+        if (fromRawValue > 1) { print("DarkSubtracted: " + fromRawValue.description) }
+        self = DarkSubtracted(rawValue: fromRawValue) ?? .Error
+    }
+    
 }
 
 enum TecStatus: Int {
     case NoAlarm = 0
     case Alarm1 = 1
     case Alarm2 = 2
+    case Error = 99
+    
+    init(fromRawValue: Int){
+        if (fromRawValue > 2) { print("TecStatus: " + fromRawValue.description) }
+        self = TecStatus(rawValue: fromRawValue) ?? .Error
+    }
+    
 }
 
 enum Trigger: Int {
     case Off = 0
     case On = 1
+    case Error = 99
+    
+    init(fromRawValue: Int){
+        if (fromRawValue > 1) { print("Trigger: " + fromRawValue.description) }
+        self = Trigger(rawValue: fromRawValue) ?? .Error
+    }
+    
 }
 
 struct IntegrationTimeMapper {

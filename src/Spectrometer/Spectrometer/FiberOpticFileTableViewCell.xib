@@ -47,13 +47,13 @@
                         <rect key="frame" x="42" y="0.0" width="393" height="41"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ForeopticName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1N7-Ld-XTK">
-                                <rect key="frame" x="8" y="2" width="286" height="20.5"/>
+                                <rect key="frame" x="8" y="2" width="286" height="17.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FileName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="of6-FS-hnq">
-                                <rect key="frame" x="8" y="22.5" width="286" height="14"/>
+                                <rect key="frame" x="8" y="19.5" width="286" height="12"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="10"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>

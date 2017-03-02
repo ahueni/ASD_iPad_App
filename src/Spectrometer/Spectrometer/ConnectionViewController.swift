@@ -127,23 +127,30 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let darkPastellGreen = UIColor(red:0.09, green:0.76, blue:0.28, alpha:1.00)
+        
         let config = configs[indexPath.row]
         let cell = deviceTableView.dequeueReusableCell(withIdentifier: "Cell") as! SpectrometerConfigTableViewCell
         
         cell.name.text = config.name
-        cell.ipAndPort.text = "Ip: " + config.ipAdress! + " / Port: " + config.port.description
+        
+        cell.ipAdress.text = config.ipAdress!.description
+        cell.port.text = config.port.description
+        
         cell.connectButton.tag = indexPath.row
         cell.connectButton.addTarget(self, action: #selector(self.connectDevice(sender:)), for: .touchUpInside)
         
         PlainPing.ping(config.ipAdress!, withTimeout: 1.0, completionBlock: { (timeElapsed:Double?, error:Error?) in
             
             if timeElapsed != nil {
-                cell.name.textColor = .blue
+                cell.name.textColor = darkPastellGreen
+                cell.connectButton.background = darkPastellGreen
                 let pulsator = Pulsator()
                 pulsator.numPulse = 4
                 pulsator.radius = 45
                 pulsator.position = cell.spectrometerImageView.center
-                cell.contentView.layer.insertSublayer(pulsator, at: 0)
+                cell.borderView.layer.insertSublayer(pulsator, at: 0)
                 pulsator.start()
             }
             

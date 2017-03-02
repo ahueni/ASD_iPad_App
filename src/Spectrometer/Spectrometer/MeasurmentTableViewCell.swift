@@ -24,12 +24,9 @@ class MeasurmentTableViewCell : UITableViewCell {
         }
     }
     
-    var selectedFile: DiskFile? = nil
-    var viewController: UIViewController? = nil
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
+    // store file and viewcontroller to present export popover
+    var selectedFile: DiskFile!
+    var viewController: UIViewController!
     
     @IBAction func export(_ sender: UIButton) {
         
@@ -54,9 +51,7 @@ class MeasurmentTableViewCell : UITableViewCell {
                 if (exportItem.file.isDirectory && success) {
                     do {
                         try FileManager.default.removeItem(at: exportItem.exportUrl)
-                        print("-- DELETED TEMP FILE --")
                     } catch {
-                        print("-- TEMP FILE COULD NOT BE DELETED --")
                     }
                 }
                 
@@ -66,17 +61,6 @@ class MeasurmentTableViewCell : UITableViewCell {
         }
         
         
-    }
-    
-    // initialize table view cell with data
-    func setInfo(selectedFile : DiskFile, viewController: UIViewController){
-        titelLabel.text = selectedFile.displayName
-        let pathComponents = selectedFile.filePath.pathComponents
-        // show the last 3 path components
-        pathLabel.text = pathComponents[pathComponents.count-3...pathComponents.count-1].joined(separator: "/")
-        myImageView.image = selectedFile.image()
-        self.viewController = viewController
-        self.selectedFile = selectedFile
     }
     
 }

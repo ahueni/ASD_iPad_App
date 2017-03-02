@@ -6,6 +6,7 @@
 //  Copyright © 2017 YARX GmbH. All rights reserved.
 //
 
+import FontAwesome_swift
 import Foundation
 import UIKit
 
@@ -13,7 +14,7 @@ class BaseFileBrowserTableViewController : UITableViewController {
     
     var diskFiles = [DiskFile]()
     let fileManager = FileManager.default
-    let measurementPath:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Measurements", isDirectory: true)
+    let measurementPath:URL = InstrumentSettingsCache.sharedInstance.measurementsRoot
     
     var currentPath:URL
     
@@ -80,16 +81,27 @@ class BaseFileBrowserTableViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cellIdentifier = "FileCell"
         var cell = UITableViewCell(style: .default, reuseIdentifier: cellIdentifier)
         if let reuseCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) {
             cell = reuseCell
         }
+        
         cell.selectionStyle = .blue
         let selectedFile = getFileForIndexPath(indexPath: indexPath)
-        cell.textLabel?.font = UIFont(name: "Open Sans", size: 18)
+        cell.textLabel?.font = UIFont.defaultFontRegular(size: 16)
         cell.textLabel?.text = selectedFile.displayName
-        cell.imageView?.image = selectedFile.image()
+        
+        // take cell heigt to calculate image size
+        if let imageView = cell.imageView {
+            
+            let imageSize = CGSize(width: 24, height: 24)
+            let ceruleanColor = UIColor(red:0.00, green:0.61, blue:0.92, alpha:1.00)
+            imageView.image = selectedFile.image(size: imageSize, color: ceruleanColor)
+            
+        }
+        
         return cell
     }
     
@@ -211,17 +223,20 @@ class DiskFile{
         case Default = "file"
     }
     
-    public func image() -> UIImage? {
-        let bundle =  Bundle.main
-        var fileName = String()
+    public func image(size: CGSize, color: UIColor) -> UIImage {
+        
         switch fileType {
-        case .Directory: fileName = "folder@2x.png"
-        case .JPG, .PNG, .GIF: fileName = "image@2x.png"
-        case .PDF: fileName = "pdf@2x.png"
-        case .ZIP: fileName = "zip@2x.png"
-        default: fileName = "file@2x.png"
+        case .Directory:
+            return UIImage.fontAwesomeIcon(name: .folderO, textColor: color, size: size)
+        case .JPG, .PNG, .GIF:
+            return UIImage.fontAwesomeIcon(name: .fileImageO, textColor: color, size: size)
+        case .PDF:
+            return UIImage.fontAwesomeIcon(name: .filePdfO, textColor: color, size: size)
+        case .ZIP:
+            return UIImage.fontAwesomeIcon(name: .fileZipO, textColor: color, size: size)
+        default:
+            return UIImage.fontAwesomeIcon(name: .fileO, textColor: color, size: size)
         }
-        let file = UIImage(named: fileName, in: bundle, compatibleWith: nil)
-        return file
+        
     }
 }
