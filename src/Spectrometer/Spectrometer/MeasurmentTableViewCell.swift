@@ -58,7 +58,9 @@ class MeasurmentTableViewCell : UITableViewCell {
     // initialize table view cell with data
     func setInfo(selectedFile : DiskFile, viewController: UIViewController){
         titelLabel.text = selectedFile.displayName
-        pathLabel.text = selectedFile.filePath.relativePath
+        let pathComponents = selectedFile.filePath.pathComponents
+        // show the last 3 path components
+        pathLabel.text = pathComponents[pathComponents.count-3...pathComponents.count-1].joined(separator: "/")
         myImageView.image = selectedFile.image()
         self.viewController = viewController
         self.selectedFile = selectedFile
