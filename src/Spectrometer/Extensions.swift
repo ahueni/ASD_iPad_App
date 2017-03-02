@@ -10,12 +10,18 @@ import Foundation
 import Charts
 
 extension FloatingPoint {
-    
     init?(_ bytes: [UInt8]) {
         guard bytes.count == MemoryLayout<Self>.size else { return nil }
         self = bytes.withUnsafeBytes {
             return $0.load(fromByteOffset: 0, as: Self.self)
         }
+    }
+}
+
+extension FileManager{
+    // measurements root folder
+    func getMeasurmentRoot() -> URL{
+        return self.urls(for: .libraryDirectory, in: .userDomainMask)[0] as URL
     }
 }
 
@@ -35,7 +41,6 @@ extension UIColor {
 }
 
 extension Array where Element : FloatingPoint {
-    
     func getChartData(lineColor: UIColor = UIColor.black, lineWidth: CGFloat = 2) -> LineChartDataSet {
         
         var values: [ChartDataEntry] = []

@@ -160,10 +160,8 @@ class BaseSelectInput: UIView, BaseValidationControl {
     func updateFilePathLabel()
     {
         if isValid {
-            let documentsPath = InstrumentSettingsCache.sharedInstance.documentsRoot
-            let displayPath = self.selectedPath!.pathComponents[documentsPath.pathComponents.count...(selectedPath!.pathComponents.count)-1].joined(separator: "/")
-            pathLabel.text = displayPath
-            
+            let rootPath = InstrumentSettingsCache.sharedInstance.measurementsRoot
+            pathLabel.text = self.selectedPath!.getDisplayPathFromRoot(rootPath: rootPath)
         }
     }
     

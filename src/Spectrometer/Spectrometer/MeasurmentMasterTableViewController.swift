@@ -58,9 +58,7 @@ class MeasurmentMasterTableViewController: BaseFileBrowserTableViewController {
         
         cell.titelLabel.text = selectedFile.displayName
         
-        // show the last 3 path components
-        let pathComponents = selectedFile.filePath.pathComponents
-        cell.pathLabel.text = pathComponents[pathComponents.count-3...pathComponents.count-1].joined(separator: "/")
+        cell.pathLabel.text = selectedFile.filePath.getDisplayPathFromRoot(rootPath: InstrumentSettingsCache.sharedInstance.measurementsRoot)
 
         let newImageSize = CGSize(width: 40, height: 40)
         let ceruleanColor = UIColor(red:0.00, green:0.61, blue:0.92, alpha:1.00)

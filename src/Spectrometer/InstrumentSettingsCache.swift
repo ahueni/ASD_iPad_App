@@ -17,9 +17,10 @@ class InstrumentSettingsCache {
     var cancelMeasurment = true
     
     // measurements root folder
-    let documentsRoot: URL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as URL)
-    // measurements root folder
-    let measurementsRoot: URL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as URL).appendingPathComponent("Measurements", isDirectory: true)
+    let measurementsRoot: URL = FileManager.default.getMeasurmentRoot().appendingPathComponent("Measurements", isDirectory: true)
+    
+    // Inbox root folder
+    let inboxRoot: URL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as URL).appendingPathComponent("Inbox", isDirectory: true)
     
     // instrument configuration file all informations like ip, port, base-file, lamp-file and foreoptics
     var instrumentConfiguration: SpectrometerConfig!

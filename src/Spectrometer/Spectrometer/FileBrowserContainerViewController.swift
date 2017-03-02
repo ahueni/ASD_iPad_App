@@ -11,19 +11,15 @@ import UIKit
 
 class FileBrowserContainerViewController : UIViewController {
     
-    let inboxPath:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Inbox", isDirectory: true)
-    
     // this vc is embeded with a container view
     var containerViewController: FileBrowserTableViewController?
     let containerFileSegueName = "FileBrowserTableViewControllerSegue"
     let containerDirectorrySegueName = "DirectoryBrowserTableViewControllerSegue"
-    
-    let fileManager = FileManager.default
-    
+        
     var selectedPath:URL
     
     required init?(coder aDecoder: NSCoder) {
-        selectedPath = inboxPath
+        selectedPath = InstrumentSettingsCache.sharedInstance.inboxRoot
         super.init(coder: aDecoder)
     }
     

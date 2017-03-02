@@ -22,4 +22,8 @@ extension URL {
         return false
     }
     
+    func getDisplayPathFromRoot(rootPath: URL) -> String {
+        return self.pathComponents[rootPath.pathComponents.count-1...(self.pathComponents.count)-1].joined(separator: "/")
+    }
+    
 }
