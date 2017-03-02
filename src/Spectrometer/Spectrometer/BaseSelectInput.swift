@@ -111,6 +111,7 @@ class BaseSelectInput: UIView, BaseValidationControl {
         pathLabel.text = placeHolderText
         pathLabel.textColor = textColor.withAlphaComponent(0.75)
         pathLabel.font = UIFont.defaultFontRegular(size: textSize)
+        pathLabel.lineBreakMode = .byTruncatingHead
         
         self.addSubview(leftBackgroundView)
         self.addSubview(pathLabel)
@@ -157,7 +158,7 @@ class BaseSelectInput: UIView, BaseValidationControl {
     func validate() {
         
         if isValid {
-            pathLabel.text = self.selectedPath?.lastPathComponent
+            pathLabel.text = self.selectedPath?.absoluteString
             pathLabel.textColor = textColor
         } else {
             pathLabel.textColor = UIColor.red

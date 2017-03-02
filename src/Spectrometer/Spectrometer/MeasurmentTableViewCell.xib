@@ -36,7 +36,7 @@
                             <constraint firstAttribute="width" constant="39" id="dcc-AC-rre"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Path" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1i-bt-1CM">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Path" lineBreakMode="headTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1i-bt-1CM">
                         <rect key="frame" x="59" y="32" width="406" height="19"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="19" id="nRS-mc-NG1"/>

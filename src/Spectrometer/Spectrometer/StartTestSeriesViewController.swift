@@ -54,6 +54,7 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
             
             // not working - recreate a url from NSUserDefaults is not possible
             //selectPathInput.update(diskFile: measurementSettings.path)
+            selectPathInput.update(selectedPath: measurementSettings.path)
             
             switch measurementSettings.measurmentMode {
             case .Raw:
@@ -83,10 +84,8 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
         
         present(navigationController, animated: true, completion: nil)
         
-        
         // initialize path if already exists
         if let existingPath = path {
-            //directoryBrowserContainerViewController.selectedPath = existingPath
             directoryBrowserContainerViewController.jumpToPath(targetPath: existingPath)
         }
     }

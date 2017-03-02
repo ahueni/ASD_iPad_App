@@ -11,13 +11,25 @@ import UIKit
 
 class MeasurmentTableViewCell : UITableViewCell {
     
+    let ceruleanColor = UIColor(red:0.00, green:0.61, blue:0.92, alpha:1.00)
+    
     @IBOutlet var titelLabel: UILabel!
     @IBOutlet var myImageView: UIImageView!
     @IBOutlet var pathLabel: UILabel!
-    @IBOutlet var exportButton: UIButton!
+    @IBOutlet var exportButton: UIButton! {
+        didSet {
+            let exportImage = UIImage.fontAwesomeIcon(name: .shareAlt, textColor: ceruleanColor, size: CGSize(width: 25, height: 25))
+            exportButton.setImage(exportImage, for: .normal)
+            exportButton.imageView?.center = exportButton.center
+        }
+    }
     
     var selectedFile: DiskFile? = nil
     var viewController: UIViewController? = nil
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
     @IBAction func export(_ sender: UIButton) {
         
@@ -38,7 +50,8 @@ class MeasurmentTableViewCell : UITableViewCell {
             // delete temp file if it was a directory
             activityVC.completionWithItemsHandler = { acivity, success, items, err in
                 
-                if (exportItem.file.isDirectory) {
+                // when file was exportet, delete it when created a zip from directory
+                if (exportItem.file.isDirectory && success) {
                     do {
                         try FileManager.default.removeItem(at: exportItem.exportUrl)
                         print("-- DELETED TEMP FILE --")

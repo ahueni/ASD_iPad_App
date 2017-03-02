@@ -20,7 +20,17 @@ class MeasurmentSettings : NSObject, NSCoding {
         self.measurmentMode = MeasurementMode(rawValue: decoder.decodeDouble(forKey: "measurmentMode"))!
         
         let pathString = decoder.decodeObject(forKey: "pathString") as! String
-        self.path = URL(string: pathString)!
+        
+        // create url string
+        let urlStr = pathString.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
+        
+        // create url if its possible
+        if let urlStr = urlStr {
+            self.path = URL(fileURLWithPath: urlStr, isDirectory: true)
+        } else {
+            self.path = InstrumentSettingsCache.sharedInstance.measurementsRoot
+        }
+        
     }
     
     public func encode(with aCoder: NSCoder) {

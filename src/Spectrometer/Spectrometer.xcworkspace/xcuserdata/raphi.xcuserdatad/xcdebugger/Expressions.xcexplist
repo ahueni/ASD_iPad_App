@@ -3,6 +3,28 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "static SpectrumCalculator.calculateDarkCurrentCorrection(spectrum : FullRangeInterpolatedSpectrum) -&gt; FullRangeInterpolatedSpectrum:SpectrumCalculator.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "spectrum.spectrumBuffer[i]">
+            </PersistentString>
+            <PersistentString
+               value = "darkCurrent.spectrumBuffer[i]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "FileBrowserContainerViewController.jumpToPath(targetPath : URL) -&gt; ():FileBrowserContainerViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "selectedPath.relativeString">
+            </PersistentString>
+            <PersistentString
+               value = "targetPath.relativeString">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "FullRangeInterpolatedSpectrumParser.parse() -&gt; FullRangeInterpolatedSpectrum:FullRangeInterpolatedSpectrumParser.swift">
          <PersistentStrings>
             <PersistentString
@@ -11,20 +33,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "IndicoWriter.innerWriteBasic(spectrum : FullRangeInterpolatedSpectrum, whiteRefrenceSpectrum : FullRangeInterpolatedSpectrum?) -&gt; ():IndicoWriter.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "spectrum.spectrumHeader.vinirHeader.integrationTime">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "URL.isDirectory() -&gt; Bool:URL.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "test">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "MeasurmentTableViewCell.(export(UIButton) -&gt; ()).(closure #1):MeasurmentTableViewCell.swift">
       </ContextState>
       <ContextState
          contextName = "CommandManager.getWaveLengthts() -&gt; ():CommandManager.swift">
@@ -41,6 +50,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "IndicoWriter.innerWriteBasic(spectrum : FullRangeInterpolatedSpectrum, whiteRefrenceSpectrum : FullRangeInterpolatedSpectrum?) -&gt; ():IndicoWriter.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "spectrum.spectrumHeader.vinirHeader.integrationTime">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "RadioButton.changeButtonBackground() -&gt; ():RadioButton.swift">
          <PersistentStrings>
             <PersistentString
@@ -49,13 +66,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "static SpectrumCalculator.calculateDarkCurrentCorrection(spectrum : FullRangeInterpolatedSpectrum) -&gt; FullRangeInterpolatedSpectrum:SpectrumCalculator.swift">
+         contextName = "URL.isDirectory() -&gt; Bool:URL.swift">
          <PersistentStrings>
             <PersistentString
-               value = "spectrum.spectrumBuffer[i]">
-            </PersistentString>
-            <PersistentString
-               value = "darkCurrent.spectrumBuffer[i]">
+               value = "test">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

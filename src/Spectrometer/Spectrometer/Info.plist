@@ -35,7 +35,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>6</string>
+	<string>7</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIAppFonts</key>
@@ -71,10 +71,10 @@
 			<string>public.raw</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
-				<key>public.mime-type</key>
-				<string>application/spectrometer</string>
 				<key>public.filename-extension</key>
 				<string>raw</string>
+				<key>public.mime-type</key>
+				<string>application/spectrometer</string>
 			</dict>
 		</dict>
 		<dict>
@@ -88,10 +88,10 @@
 			<string>public.asd</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
-				<key>public.mime-type</key>
-				<string>application/spectrometer</string>
 				<key>public.filename-extension</key>
 				<string>asd</string>
+				<key>public.mime-type</key>
+				<string>application/spectrometer</string>
 			</dict>
 		</dict>
 		<dict>
