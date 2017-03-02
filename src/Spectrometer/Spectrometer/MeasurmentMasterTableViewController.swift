@@ -21,7 +21,7 @@ class MeasurmentMasterTableViewController: BaseFileBrowserTableViewController {
         
         // initialize start folder
         print("-- INSTANTIATE MEASUREMENT TABLE VIEW CONTROLLER --")
-        let initFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Messungen", isDirectory: true)
+        let initFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Measurements", isDirectory: true)
         self.initializeTableData(startFolder: initFolder)
         
     }
@@ -60,14 +60,14 @@ class MeasurmentMasterTableViewController: BaseFileBrowserTableViewController {
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        let deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Löschen", handler:{action, indexpath in
+        let deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Delete", handler:{action, indexpath in
             
             let file:DiskFile = self.getFileForIndexPath(indexPath: indexPath)
             
             do {
                 try FileManager.default.removeItem(at: file.filePath)
             } catch {
-                self.showWarningMessage(title: "Fehler", message: file.displayName + " konnte nicht gelöscht werden.")
+                self.showWarningMessage(title: "Error", message: file.displayName + " could not be deleted.")
             }
             
             // update table data and then delete the row
@@ -84,9 +84,9 @@ class MeasurmentMasterTableViewController: BaseFileBrowserTableViewController {
     @IBAction func toggleEditingItem(_ sender: UIBarButtonItem) {
         self.setEditing(!self.isEditing, animated: true)
         if self.isEditing {
-            sender.title = "Fertig"
+            sender.title = "Finish"
         } else {
-            sender.title = "Bearbeiten"
+            sender.title = "Edit"
         }
         
     }

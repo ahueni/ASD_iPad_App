@@ -35,6 +35,11 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         view.addGestureRecognizer(tapGesture)
         
+        // deactivate radiance if no foreoptic available
+        if (InstrumentSettingsCache.sharedInstance.selectedForeOptic == nil) {
+            radianceRadioButton.isEnabled = false
+        }
+        
         // initialize last setting values and update it on the view
         loadSettingsIfExist()
     }

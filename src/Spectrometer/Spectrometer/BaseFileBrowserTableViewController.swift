@@ -13,7 +13,7 @@ class BaseFileBrowserTableViewController : UITableViewController {
     
     var diskFiles = [DiskFile]()
     let fileManager = FileManager.default
-    let measurementPath:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Messungen", isDirectory: true)
+    let measurementPath:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Measurements", isDirectory: true)
     
     var currentPath:URL
     
@@ -118,15 +118,15 @@ class BaseFileBrowserTableViewController : UITableViewController {
     
     internal func createFolder() {
         
-        let alert = UIAlertController(title: "Neuer Ordner", message: "Geben Sie einen Namen für diesen Ordner ein.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "New Folder", message: "Please enter a foldername.", preferredStyle: .alert)
         
         alert.addTextField { (textField) in
-            textField.placeholder = "Ordnername"
+            textField.placeholder = "Foldername"
             textField.clearButtonMode = .whileEditing
             textField.addTarget(self, action: #selector(self.validateFolderPath(_:)), for: .editingChanged)
         }
         
-        createFolderAction = UIAlertAction(title: "Erstellen", style: .default, handler: { [weak alert] (_) in
+        createFolderAction = UIAlertAction(title: "Create", style: .default, handler: { [weak alert] (_) in
             
             let newFolderString:String = (alert?.textFields![0].text)! // Force unwrapping because we know it exists.
             
@@ -137,14 +137,14 @@ class BaseFileBrowserTableViewController : UITableViewController {
             }
             catch _
             {
-                let error = UIAlertController(title: "Fehler", message: "Der Ordner konnte nicht erstellt werden", preferredStyle: .alert)
+                let error = UIAlertController(title: "Error", message: "The folder could not be created", preferredStyle: .alert)
                 error.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                 self.present(error, animated: true, completion: nil)
             }
             
         })
         
-        alert.addAction(UIAlertAction(title: "Abbrechen", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
         createFolderAction?.isEnabled = false
         alert.addAction(createFolderAction!)
         

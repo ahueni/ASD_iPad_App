@@ -22,13 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         appearance.setTitleTextAttributes(attributes, for: .normal)
         
-        UISearchBar.appearance().placeholder = "Suchen"
+        UISearchBar.appearance().placeholder = "Search"
         
         let asdfasd = UILabel.appearance(whenContainedInInstancesOf: [UISearchBar.self])
         asdfasd.font = UIFont(name: "Open Sans", size: 13)
         
         let cancelButtonText = UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self])
-        cancelButtonText.title = "Schliessen"
+        cancelButtonText.title = "Close"
         
         UIBarButtonItem.appearance().setTitleTextAttributes(attributes, for: UIControlState.normal)
         UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).setTitleTextAttributes(attributesTabBarButton, for: .normal)
@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // create Measurement folder if not exists
         let fileManager:FileManager = FileManager.default
         let documentsPath:URL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0] as URL
-        let measurementPath:URL = documentsPath.appendingPathComponent("Messungen", isDirectory: true)
+        let measurementPath:URL = documentsPath.appendingPathComponent("Measurements", isDirectory: true)
         
         print("Documents Folder: " + documentsPath.absoluteString)
         
@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             rootViewController = next
         }
         
-        let alert = UIAlertController(title: "Datei importiert", message: "Die Datei wurde erfolgreich Importiert. Sie können die INI-Datei nun einem Spektrometer zuweisen.", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "File loaded", message: "The INI file is successfuly loaded. You can set it to a spectrometer.", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
         
         rootViewController?.present(alert, animated: true, completion: nil)

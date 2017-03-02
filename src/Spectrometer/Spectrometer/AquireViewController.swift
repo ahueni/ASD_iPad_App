@@ -133,7 +133,7 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
         CommandManager.sharedInstance.darkCurrent(sampleCount: darkCurrentSampleCount)
         
         // take white reference and calculate dark current correction
-        let whiteRefSampleCount = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent
+        let whiteRefSampleCount = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCountWhiteRefrence
         let whiteRefWithoutDarkCurrent = CommandManager.sharedInstance.aquire(samples: whiteRefSampleCount)
         whiteReferenceSpectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: whiteRefWithoutDarkCurrent)
         

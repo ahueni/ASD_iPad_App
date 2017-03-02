@@ -22,7 +22,7 @@ class BackgroundFileWriteManager{
             for spectrum in spectrums
             {
                 let index = getHighestIndex(filePath: settings.path) + 1
-                let fileName = String(format: "%03d_", index) + settings.fileName + fileSuffix + ".asd"
+                let fileName = String(format: "%05d_", index) + settings.fileName + fileSuffix + ".asd"
                 print(fileName + " queued")
                 let relativeFilePath = settings.path.appendingPathComponent(fileName).relativePath
                 let fileWriter = IndicoWriter(path: relativeFilePath)

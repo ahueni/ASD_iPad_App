@@ -12,58 +12,69 @@ import Charts
 
 class MeasurmentDetailViewController: UIViewController {
     
-    @IBOutlet weak var reflectanceButton: UIButton!
     
-    @IBOutlet weak var radianceButton: UIButton!
+    @IBOutlet var rawButton: RadioButton!
+    @IBOutlet var reflectanceButton: RadioButton!
+    @IBOutlet var radianceButton: RadioButton!
     
     @IBOutlet var MeasurementLineChart: SpectrumLineChartView!
+    
     var url : URL? = nil
     var spectralFile : SpectralFileV8!
     
     @IBAction func rawButtonClicked(_ sender: UIButton) {
+        self.MeasurementLineChart.setAxisValues(min: 0, max: MeasurementMode.Raw.rawValue)
+        let chartDataSet = spectralFile.spectrum.getChartData()
+        self.MeasurementLineChart.data = LineChartData(dataSet: chartDataSet)
     }
     
     @IBAction func reflectanceButtonClicked(_ sender: UIButton) {
-        let calculatedSpectrum = SpectrumCalculator.calculateReflectanceFromFile(spectrumFile: spectralFile)
-        self.MeasurementLineChart.setAxisValues(min: 0, max: MeasurementMode.Reflectance.rawValue)
         
-        var values: [ChartDataEntry] = []
-        for i in 0...calculatedSpectrum.count-1 {
-            //print(spectrumBuffer[i])
-            values.append(ChartDataEntry(x: Double(i+350), y: Double(calculatedSpectrum[i])))
-        }
-        self.MeasurementLineChart.data = LineChartData(dataSet: SpectrumLineChartDataSet(values: values, label: "-"))
+        self.MeasurementLineChart.setAxisValues(min: 0, max: MeasurementMode.Reflectance.rawValue)
+        let calculatedSpectrum = SpectrumCalculator.calculateReflectanceFromFile(spectrumFile: spectralFile)
+        let chartDataSet = calculatedSpectrum.getChartData(lineWidth: 1)
+        self.MeasurementLineChart.data = LineChartData(dataSet: chartDataSet)
     }
     
     @IBAction func radianceButtonClicked(_ sender: UIButton) {
-        let calculatedSpectrum = SpectrumCalculator.calculateRadianceFromFile(spectralFile: spectralFile)
-        self.MeasurementLineChart.setAxisValues(min: 0, max: MeasurementMode.Radiance.rawValue)
         
-        var values: [ChartDataEntry] = []
-        for i in 0...calculatedSpectrum.count-1 {
-            //print(spectrumBuffer[i])
-            values.append(ChartDataEntry(x: Double(i+350), y: Double(calculatedSpectrum[i])))
-        }
-        self.MeasurementLineChart.data = LineChartData(dataSet: SpectrumLineChartDataSet(values: values, label: "-"))
+        self.MeasurementLineChart.setAxisValues(min: 0, max: MeasurementMode.Radiance.rawValue)
+        let calculatedSpectrum = SpectrumCalculator.calculateRadianceFromFile(spectralFile: spectralFile)
+        let chartDataSet = calculatedSpectrum.getChartData()
+        self.MeasurementLineChart.data = LineChartData(dataSet: chartDataSet)
         
     }
     
-    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
-        reflectanceButton.isEnabled = true
-        radianceButton.isEnabled = true
+        // init radio buttons
+        rawButton.alternateButton = [reflectanceButton, radianceButton]
+        reflectanceButton.alternateButton = [rawButton, radianceButton]
+        radianceButton.alternateButton = [rawButton, reflectanceButton]
 
-        if(url == nil)
-        {
-            return
+        if let url = url {
+            
+            spectralFile = parseSpectralFile(filePath: url.relativePath) as! SpectralFileV8!
+            
+            switch spectralFile.dataType {
+            case .RefType:
+                reflectanceButton.isEnabled = true
+            case .RadType:
+                radianceButton.isEnabled = true
+            default:
+                break
+            }
+            
+            rawButton.isEnabled = true
+            rawButton.unselectAlternateButtons()
+            self.rawButtonClicked(rawButton)
+            
         }
-        spectralFile = parseSpectralFile(filePath: (url?.relativePath)!) as! SpectralFileV8!
         
-        self.MeasurementLineChart.noDataText = "Es wurden noch keine Datei ausgewählt um im Diagramm dargestellt zu werden. Wählen Sie in der Ordnerstruktur eine Datei aus um diese als Diagramm anzuzeigen."
-        self.MeasurementLineChart.setAxisValues(min: 0, max: 65000)
-        self.MeasurementLineChart.data = spectralFile?.getChartData()
+        self.MeasurementLineChart.noDataText = "Please select a file..."
+        
     }
     
     private func parseSpectralFile(filePath: String) -> SpectralFileBase? {

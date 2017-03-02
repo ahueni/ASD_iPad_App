@@ -60,15 +60,6 @@ class SpectralFileBase {
     // MARK: Spectral Data
     var spectrum: [Double] = [] // size of channels
     
-    func getChartData() -> LineChartData {
-        var values: [ChartDataEntry] = []
-        for i in 0...self.spectrum.count-1 {
-            //print(spectrumBuffer[i])
-            values.append(ChartDataEntry(x: Double(i+350), y: Double(spectrum[i])))
-        }
-        let lineChartDataSet = SpectrumLineChartDataSet(values: values, label: "-")
-        return LineChartData(dataSet: lineChartDataSet)
-    }
 }
 
 class SpectralFileV8 : SpectralFileBase {

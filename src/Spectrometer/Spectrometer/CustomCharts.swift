@@ -17,7 +17,7 @@ class SpectrumLineChartView : LineChartView {
         let font: UIFont = UIFont(name: "Open Sans", size: 12)!
         
         noDataFont = font
-        noDataText = "Es wurden noch keine Daten empfangen um im Diagramm dargestellt zu werden";
+        noDataText = "There is no data to display. Please select an action to perform an aquire routine.";
         
         borderColor = UIColor.lightGray
         
@@ -73,41 +73,20 @@ class SpectrumLineChartDataSet: LineChartDataSet {
     
     let openSansFont = UIFont(name: "Open Sans", size: 14)!
     
-    init(values: [ChartDataEntry]?, label: String?, color: UIColor, drawCircles: Bool) {
-        super.init(values: values, label: label)
+    init(values: [ChartDataEntry]?, color: UIColor, lineWidth: CGFloat) {
+        super.init(values: values, label: "")
         
         valueFont = openSansFont
-        drawCirclesEnabled = drawCircles
-        lineWidth = 2
-        //highlightLineWidth = 1
+        drawCirclesEnabled = false
+        self.lineWidth = lineWidth
         lineCapType = CGLineCap.round
         colors = [color]
         drawValuesEnabled = false
         
     }
     
-    override init(values: [ChartDataEntry]?, label: String?) {
-        super.init(values: values, label: label)
-        valueFont = openSansFont
-        drawCirclesEnabled = false
-        lineWidth = 2
-        //highlightLineWidth = 1
-        lineCapType = CGLineCap.round
-        colors = [UIColor.black]
-        drawValuesEnabled = false
-        
-    }
-    
     required init() {
         super.init()
-        valueFont = openSansFont
-        drawCirclesEnabled = false
-        lineWidth = 2
-        highlightLineWidth = 1
-        lineCapType = CGLineCap.round
-        colors = [UIColor.black]
-        drawValuesEnabled = false
-        
     }
     
 }

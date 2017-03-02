@@ -52,7 +52,7 @@ class FileBrowserContainerViewController : UIViewController {
     
     override func viewDidLoad() {
         // Add dismiss button
-        let dismissButton = UIBarButtonItem(title: "Abbrechen", style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelClicked(sender:)))
+        let dismissButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelClicked(sender:)))
         self.navigationItem.rightBarButtonItem = dismissButton
     }
     

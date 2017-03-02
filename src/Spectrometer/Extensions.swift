@@ -36,10 +36,12 @@ extension UIColor {
 
 extension Array where Element : FloatingPoint {
     
-    func getChartData(lineColor: UIColor = UIColor.black) -> LineChartDataSet {
+    func getChartData(lineColor: UIColor = UIColor.black, lineWidth: CGFloat = 2) -> LineChartDataSet {
         
         var values: [ChartDataEntry] = []
-        let startingWaveLength = InstrumentSettingsCache.sharedInstance.startingWaveLength!
+        
+        // is there a way to have this from file or spectrometer
+        let startingWaveLength = 350
         
         for i in 0...self.count-1 {
             
@@ -55,7 +57,7 @@ extension Array where Element : FloatingPoint {
             }
         }
         
-        return SpectrumLineChartDataSet(values: values, label: "", color: lineColor, drawCircles: false)
+        return SpectrumLineChartDataSet(values: values, color: lineColor, lineWidth: lineWidth)
         
     }}
  

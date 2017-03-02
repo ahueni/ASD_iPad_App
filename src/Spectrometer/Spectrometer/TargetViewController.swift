@@ -81,7 +81,7 @@ class TargetViewController : BaseMeasurementModal
                 //calculate for display and show
                 let caluclatedSpectrumBuffer = self.calculateSpectrum(spectrum: spectrum)
                 self.pageContainer.spectrumList.append(spectrum)
-                self.lineChartDataContainer.currentLineChart = caluclatedSpectrumBuffer.getChartData()
+                self.lineChartDataContainer.currentLineChart = caluclatedSpectrumBuffer.getChartData(lineWidth: 1)
                 self.updateLineChart()
                 
                 // update progress & wait delay

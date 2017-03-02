@@ -12,8 +12,10 @@ import UIKit
 class RadianceSettingsViewController : BaseSettingsViewController, SelectFiberopticDelegate {
     
     // DarkCurrent
-    @IBOutlet var darkCurrentSwitch: UISwitch!
     @IBOutlet var darkCurrentContentHeight: NSLayoutConstraint!
+    
+    // foreoptic button
+    @IBOutlet var foreopticButton: UIColorButton!
     
     // White Reference Before
     @IBOutlet var whiteReferenceBeforeSwitch: UISwitch!
@@ -45,10 +47,13 @@ class RadianceSettingsViewController : BaseSettingsViewController, SelectFiberop
     override func viewDidLoad() {
         super.viewDidLoad()
         nextButton.isEnabled = InstrumentSettingsCache.sharedInstance.darkCurrent != nil
+        let title = InstrumentSettingsCache.sharedInstance.selectedForeOptic?.name
+        foreopticButton.setTitle(title, for: .normal)
     }
     
     internal func didSelectFiberoptic(fiberoptic: CalibrationFile) {
         InstrumentSettingsCache.sharedInstance.selectedForeOptic = fiberoptic
+        foreopticButton.setTitle(fiberoptic.name, for: .normal)
     }
     
     override func loadSettings(){

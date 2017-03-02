@@ -167,7 +167,7 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
             
         });
         
-        editRowAction.backgroundColor = UIColor.green
+        editRowAction.backgroundColor = UIColor(red:0.09, green:0.76, blue:0.28, alpha:1.00)
         
         let deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Löschen", handler:{action, indexpath in
             let config: SpectrometerConfig = self.configs[indexpath.row]

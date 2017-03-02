@@ -43,7 +43,7 @@ class BaseWhiteReferenceViewController : BaseMeasurementModal {
         //Additional Calculations for example convert dn to radiance
         additionalCalculationOnCurrentSpectrum()
         
-        lineChartDataContainer.currentLineChart = currentSpectrum!.spectrumBuffer.getChartData()
+        lineChartDataContainer.currentLineChart = currentSpectrum!.spectrumBuffer.getChartData(lineWidth: 1)
         //update Chart
         self.updateLineChart()
     }
@@ -69,7 +69,8 @@ class BaseWhiteReferenceViewController : BaseMeasurementModal {
                 self.updateProgressBar(measurmentCount: i, statusText: "Measure...")
                 let sampleCount = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCount
                 let spectrum = CommandManager.sharedInstance.aquire(samples: sampleCount)
-                self.setSpectrum(whiteReferenceSpectrum: spectrum)
+                let darkCorrectedSpectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: spectrum)
+                self.setSpectrum(whiteReferenceSpectrum: darkCorrectedSpectrum)
                 
                 //update progress and wait delay
                 self.updateProgressBar(measurmentCount: i+1, statusText: "Waiting...")
