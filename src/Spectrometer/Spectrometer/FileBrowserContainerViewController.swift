@@ -34,6 +34,33 @@ class FileBrowserContainerViewController : UIViewController {
         }
     }
     
+    func jumpToPath(targetPath : URL){
+        
+        //Breaking the recursiv call when targetpath is reached
+        if(targetPath.absoluteString == selectedPath.absoluteString){
+            return
+        }
+        
+        let directoryBrowserContainerViewController = self.storyboard?.instantiateViewController(withIdentifier: "DirectoryBrowserContainerViewController") as! DirectoryBrowserContainerViewController
+        
+        // Get the next folder in chain to target
+        let targetPathComponents = targetPath.pathComponents
+        let currentPathComponents = selectedPath.pathComponents
+        var nextJump : URL = selectedPath
+        let nextFolder = targetPathComponents[currentPathComponents.count]
+        nextJump.appendPathComponent(nextFolder)
+        
+        
+        // set next folder as selectedpath and display next browserview
+        directoryBrowserContainerViewController.selectedPath = nextJump
+        directoryBrowserContainerViewController.didSelectFile = didSelectFile
+        navigationController!.pushViewController(directoryBrowserContainerViewController, animated: false)
+        
+        // recursive call to perform the next jump
+        directoryBrowserContainerViewController.jumpToPath(targetPath: targetPath)
+        
+    }
+    
     // prepare is called before viewDidLoad => set the embeded vc variable
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == containerFileSegueName {

@@ -65,7 +65,6 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
             }
             
             validateInputFields()
-            
         }
     }
     
@@ -73,10 +72,6 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
         
         let directoryBrowserContainerViewController = self.storyboard!.instantiateViewController(withIdentifier: "DirectoryBrowserContainerViewController") as! DirectoryBrowserContainerViewController
         
-        // initialize path if already exists
-        if let existingPath = path {
-            directoryBrowserContainerViewController.selectedPath = existingPath
-        }
         
         let navigationController = UINavigationController(rootViewController: directoryBrowserContainerViewController)
         navigationController.modalPresentationStyle = .formSheet
@@ -87,6 +82,13 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
         }
         
         present(navigationController, animated: true, completion: nil)
+        
+        
+        // initialize path if already exists
+        if let existingPath = path {
+            //directoryBrowserContainerViewController.selectedPath = existingPath
+            directoryBrowserContainerViewController.jumpToPath(targetPath: existingPath)
+        }
     }
     
     func didSelectPath() {
@@ -121,7 +123,6 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
     }
     
     override func goToNextPage(){
-        
         // first save settings to userDefaults
         let measurementMode = rawRadioButton.isSelected ? MeasurementMode.Raw : reflectanceRadioButton.isSelected ? MeasurementMode.Reflectance : radianceRadioButton.isSelected ? MeasurementMode.Radiance : nil
         pageContainer!.measurmentMode = measurementMode
@@ -147,6 +148,4 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
         // got to next page
         pageContainer?.goToNextPage()
     }
-
-    
 }
