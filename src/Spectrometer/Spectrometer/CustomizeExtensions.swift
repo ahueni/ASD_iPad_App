@@ -48,4 +48,10 @@ extension UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    func returnWarningMessage(title: String, message: String) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        return alert
+    }
+    
 }

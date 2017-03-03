@@ -132,10 +132,6 @@
 		E18DAE9D1E375D46005F6753 /* MeasurmentMasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18DAE9C1E375D46005F6753 /* MeasurmentMasterTableViewController.swift */; };
 		E18DAE9F1E375E43005F6753 /* MeasurmentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18DAE9E1E375E43005F6753 /* MeasurmentDetailViewController.swift */; };
 		E1A40C001E3F9B800019F467 /* BaseFileBrowserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A40BFF1E3F9B800019F467 /* BaseFileBrowserTableViewController.swift */; };
-		E1A40C1D1E4076BF0019F467 /* documents@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1A40C1A1E4076BF0019F467 /* documents@2x.png */; };
-		E1A40C1E1E4076BF0019F467 /* file@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1A40C1B1E4076BF0019F467 /* file@2x.png */; };
-		E1A40C1F1E4076BF0019F467 /* folder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1A40C1C1E4076BF0019F467 /* folder@2x.png */; };
-		E1A40C211E4076C80019F467 /* zip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1A40C201E4076C80019F467 /* zip@2x.png */; };
 		E1A40C231E4077660019F467 /* FileBrowserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A40C221E4077660019F467 /* FileBrowserTableViewController.swift */; };
 		E1A40C251E40797E0019F467 /* FileBrowserContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A40C241E40797E0019F467 /* FileBrowserContainerViewController.swift */; };
 		E1A40C2B1E409C8E0019F467 /* DirectoryBrowserContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A40C2A1E409C8E0019F467 /* DirectoryBrowserContainerViewController.swift */; };
@@ -295,10 +291,6 @@
 		E18DAE9C1E375D46005F6753 /* MeasurmentMasterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurmentMasterTableViewController.swift; sourceTree = "<group>"; };
 		E18DAE9E1E375E43005F6753 /* MeasurmentDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurmentDetailViewController.swift; sourceTree = "<group>"; };
 		E1A40BFF1E3F9B800019F467 /* BaseFileBrowserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFileBrowserTableViewController.swift; sourceTree = "<group>"; };
-		E1A40C1A1E4076BF0019F467 /* documents@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "documents@2x.png"; sourceTree = "<group>"; };
-		E1A40C1B1E4076BF0019F467 /* file@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "file@2x.png"; sourceTree = "<group>"; };
-		E1A40C1C1E4076BF0019F467 /* folder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "folder@2x.png"; sourceTree = "<group>"; };
-		E1A40C201E4076C80019F467 /* zip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zip@2x.png"; sourceTree = "<group>"; };
 		E1A40C221E4077660019F467 /* FileBrowserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileBrowserTableViewController.swift; sourceTree = "<group>"; };
 		E1A40C241E40797E0019F467 /* FileBrowserContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileBrowserContainerViewController.swift; sourceTree = "<group>"; };
 		E1A40C2A1E409C8E0019F467 /* DirectoryBrowserContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryBrowserContainerViewController.swift; sourceTree = "<group>"; };
@@ -423,7 +415,6 @@
 			children = (
 				E1C936B31E41D60000EF51BB /* Validation */,
 				E1A40C2C1E409D860019F467 /* FileBrowser */,
-				E1A40C191E4076960019F467 /* Resources */,
 				E18DAE981E375CDB005F6753 /* Measurement */,
 				E14EC2291E2E187B006EBD2F /* Settings */,
 				2EB823261DE0D3ED00DF732C /* ViewComponents */,
@@ -871,17 +862,6 @@
 			name = Measurement;
 			sourceTree = "<group>";
 		};
-		E1A40C191E4076960019F467 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				E1A40C201E4076C80019F467 /* zip@2x.png */,
-				E1A40C1A1E4076BF0019F467 /* documents@2x.png */,
-				E1A40C1B1E4076BF0019F467 /* file@2x.png */,
-				E1A40C1C1E4076BF0019F467 /* folder@2x.png */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
 		E1A40C2C1E409D860019F467 /* FileBrowser */ = {
 			isa = PBXGroup;
 			children = (
@@ -1053,12 +1033,8 @@
 				2EB823041DE0A2D100DF732C /* OpenSans-Regular.ttf in Resources */,
 				2EB823011DE0A2D100DF732C /* OpenSans-Italic.ttf in Resources */,
 				2EB823001DE0A2D100DF732C /* OpenSans-ExtraBoldItalic.ttf in Resources */,
-				E1A40C1F1E4076BF0019F467 /* folder@2x.png in Resources */,
 				2ECE10C21E5DCB1100B45372 /* FiberOpticFileTableViewCell.xib in Resources */,
-				E1A40C211E4076C80019F467 /* zip@2x.png in Resources */,
 				2E91F2B01DDB5B76003E277F /* Assets.xcassets in Resources */,
-				E1A40C1E1E4076BF0019F467 /* file@2x.png in Resources */,
-				E1A40C1D1E4076BF0019F467 /* documents@2x.png in Resources */,
 				2EB823031DE0A2D100DF732C /* OpenSans-LightItalic.ttf in Resources */,
 				2EB822FD1DE0A2D100DF732C /* OpenSans-Bold.ttf in Resources */,
 				2E91F2AB1DDB5B76003E277F /* Main.storyboard in Resources */,

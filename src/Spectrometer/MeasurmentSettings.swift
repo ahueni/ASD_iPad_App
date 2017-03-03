@@ -21,7 +21,7 @@ class MeasurmentSettings : NSObject, NSCoding {
         let pathString = decoder.decodeObject(forKey: "pathString") as! String
         
         // create url if its possible
-        self.path = URL(fileURLWithPath: pathString, isDirectory: true)
+        self.path = URL(fileURLWithPath: pathString, isDirectory: true).resolvingSymlinksInPath()
     }
     
     public func encode(with aCoder: NSCoder) {

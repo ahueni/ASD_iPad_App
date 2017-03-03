@@ -17,6 +17,7 @@ class LoadingButton: UIColorButton {
     
     func showLoading() {
         oldString = (titleLabel?.text)!
+        self.titleLabel?.layer.opacity = 0
         self.setTitle("", for: .normal)
         if (activityIndicator == nil) {
             activityIndicator = createActivityIndicator()
@@ -27,6 +28,7 @@ class LoadingButton: UIColorButton {
     func hideLoading() {
         activityIndicator.stopAnimating()
         self.setTitle(oldString, for: .normal)
+        self.titleLabel?.layer.opacity = 1
     }
     
     private func createActivityIndicator() -> UIActivityIndicatorView {

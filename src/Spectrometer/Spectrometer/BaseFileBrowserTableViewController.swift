@@ -144,7 +144,7 @@ class BaseFileBrowserTableViewController : UITableViewController {
             
             do{
                 let createFolderPath = self.currentPath.appendingPathComponent(newFolderString)
-                try self.fileManager.createDirectory(atPath: createFolderPath.relativePath, withIntermediateDirectories: false, attributes: nil)
+                try self.fileManager.createDirectory(atPath: createFolderPath.path, withIntermediateDirectories: false, attributes: nil)
                 self.insertDiskFile(url: createFolderPath)
             }
             catch _
@@ -199,7 +199,7 @@ class DiskFile{
         FileManager.default.fileExists(atPath: url.path, isDirectory: &isDir)
         isDirectory = isDir.boolValue
         fileType = isDir.boolValue ? .Directory : .Default
-        filePath = url
+        filePath = url.resolvingSymlinksInPath()
     }
     
     enum DiskFileType: String {

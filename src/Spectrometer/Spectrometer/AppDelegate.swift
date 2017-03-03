@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 try FileManager.default.createDirectory(at: measurementRoot, withIntermediateDirectories: false, attributes: nil)
             } catch { /* do nothing */ }
         }
-        print("Measurement folder: " + measurementRoot.absoluteString)
+        print("Measurement folder: " + measurementRoot.path)
         
         
         // Override point for customization after application launch.

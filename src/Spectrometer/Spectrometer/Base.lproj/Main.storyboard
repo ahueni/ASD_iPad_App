@@ -527,7 +527,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZuH-AQ-NxF">
-                                <rect key="frame" x="20" y="117" width="728" height="38.5"/>
+                                <rect key="frame" x="20" y="117" width="728" height="39"/>
                                 <string key="text">In the following section, you can add or remove connections to your spectromter devices. You can also establish a connection to one of your devices.</string>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                 <nil key="textColor"/>
@@ -545,7 +545,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eqG-6H-HNG">
-                                <rect key="frame" x="20" y="165.5" width="728" height="725.5"/>
+                                <rect key="frame" x="20" y="166" width="728" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -585,20 +585,20 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8080" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aF7-2C-20b">
-                                                            <rect key="frame" x="448" y="44.5" width="120" height="16.5"/>
+                                                            <rect key="frame" x="448" y="41.5" width="120" height="19.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="120" id="LpE-lH-EBv"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
+                                                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="255.255.255.255" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JEi-Ts-f6u">
-                                                            <rect key="frame" x="447" y="23" width="120" height="16.5"/>
+                                                            <rect key="frame" x="447" y="23" width="120" height="19.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="120" id="ED0-L8-sw7"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
+                                                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -706,11 +706,11 @@
                                         <rect key="frame" x="0.0" y="35" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aOc-vK-DdF" id="9XQ-3y-ChR">
-                                            <rect key="frame" x="0.0" y="0.0" width="696" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="696" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="BareFiber" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CMU-FZ-zZx">
-                                                    <rect key="frame" x="48" y="0.0" width="648" height="43.5"/>
+                                                    <rect key="frame" x="48" y="0.0" width="648" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -723,11 +723,11 @@
                                         <rect key="frame" x="0.0" y="79" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wce-xj-iHC" id="PJZ-gZ-LKj">
-                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="3°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wh2-pe-cYr">
-                                                    <rect key="frame" x="48" y="0.0" width="672" height="43.5"/>
+                                                    <rect key="frame" x="48" y="0.0" width="672" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -764,11 +764,11 @@
                                         <rect key="frame" x="0.0" y="35" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bd0-qf-VNO" id="PHM-XQ-hlJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Instrument Configuration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zws-RY-5Mo">
-                                                    <rect key="frame" x="15" y="0.0" width="270" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -788,11 +788,11 @@
                                         <rect key="frame" x="0.0" y="115" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xxk-m8-0yG" id="p9r-o4-IPv">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Instrument Control" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qC2-kt-db7">
-                                                    <rect key="frame" x="15" y="0.0" width="270" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -812,11 +812,11 @@
                                         <rect key="frame" x="0.0" y="195" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LzP-Pa-bqn" id="UAK-D7-mJB">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="General" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xns-Tg-vju">
-                                                    <rect key="frame" x="15" y="0.0" width="270" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -888,10 +888,10 @@
                             <tableViewSection headerTitle="Number of samples" id="zB7-kd-fH0">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NumOfSampSpectrum" id="kQD-fm-Jrd">
-                                        <rect key="frame" x="0.0" y="55.5" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kQD-fm-Jrd" id="P78-Le-zBx">
-                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="2" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="L6E-km-Vpk">
@@ -933,10 +933,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NumOfSamplesDarkCurrent" id="OgF-6q-77f">
-                                        <rect key="frame" x="0.0" y="99.5" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="100" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OgF-6q-77f" id="8vc-iq-aNF">
-                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="2" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="jtO-Ht-u4q">
@@ -978,10 +978,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NumOfSamplesWhiteReference" id="8f1-wh-CjP">
-                                        <rect key="frame" x="0.0" y="143.5" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="144" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8f1-wh-CjP" id="hUV-KQ-DwI">
-                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="2" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="49O-RP-RZe">
@@ -1571,14 +1571,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alle Messungen wurden erfolgreich durchgeführt und werden nun abgespeichert." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7M-uM-Rys">
-                                <rect key="frame" x="20" y="80" width="500" height="16.5"/>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Die Messungen werden gespeichert ..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSU-MD-mc2">
-                                <rect key="frame" x="20" y="275.5" width="500" height="16.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please wait until all measurements are completely saved..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSU-MD-mc2">
+                                <rect key="frame" x="20" y="275.5" width="500" height="17"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1600,50 +1594,38 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="m7w-Jk-qTc">
                                 <rect key="frame" x="260" y="300" width="20" height="20"/>
                             </activityIndicatorView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="done" translatesAutoresizingMaskIntoConstraints="NO" id="2j8-qv-aTX">
-                                <rect key="frame" x="130" y="170" width="280" height="280"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f2q-gJ-P5r">
+                                <rect key="frame" x="160" y="200" width="220" height="220"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="280" id="9Sw-7o-e7s"/>
-                                    <constraint firstAttribute="height" constant="280" id="fL8-5Q-gG6"/>
+                                    <constraint firstAttribute="width" constant="220" id="IH0-3j-Cmc"/>
+                                    <constraint firstAttribute="width" secondItem="f2q-gJ-P5r" secondAttribute="height" multiplier="1:1" id="t1l-Bo-kvh"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Die Messungen wurden erfolgreich abgespeichert. Sie können alle Messungen im Tab &quot;Messungen&quot; einsehen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPK-w9-25L">
-                                <rect key="frame" x="40" y="458" width="460" height="33"/>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="2j8-qv-aTX" firstAttribute="centerX" secondItem="GI4-vx-Acv" secondAttribute="centerX" id="0MG-Mh-zmM"/>
                             <constraint firstItem="N3r-Wt-Fwg" firstAttribute="top" secondItem="coN-Hk-epy" secondAttribute="bottom" constant="20" id="4YR-tX-HOV"/>
-                            <constraint firstItem="p7M-uM-Rys" firstAttribute="top" secondItem="war-x9-xc7" secondAttribute="bottom" constant="10" id="6WC-wH-FNO"/>
                             <constraint firstAttribute="leadingMargin" secondItem="coN-Hk-epy" secondAttribute="leading" id="74F-XX-dBg"/>
-                            <constraint firstItem="dPK-w9-25L" firstAttribute="leading" secondItem="GI4-vx-Acv" secondAttribute="leadingMargin" constant="20" id="BVy-Lu-eWn"/>
-                            <constraint firstItem="dPK-w9-25L" firstAttribute="top" secondItem="2j8-qv-aTX" secondAttribute="bottom" constant="8" id="DfE-RC-r4e"/>
+                            <constraint firstItem="coN-Hk-epy" firstAttribute="top" secondItem="f2q-gJ-P5r" secondAttribute="bottom" constant="130" id="BN1-uw-3yJ"/>
                             <constraint firstItem="m7w-Jk-qTc" firstAttribute="top" secondItem="ZSU-MD-mc2" secondAttribute="bottom" constant="8" id="EVJ-op-2hC"/>
                             <constraint firstAttribute="leadingMargin" secondItem="ZSU-MD-mc2" secondAttribute="leading" id="Gh8-Hd-Fwt"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="p7M-uM-Rys" secondAttribute="trailing" id="Ia6-lG-Es1"/>
+                            <constraint firstItem="f2q-gJ-P5r" firstAttribute="top" secondItem="war-x9-xc7" secondAttribute="bottom" constant="130" id="OWl-mq-uWs"/>
                             <constraint firstAttribute="leadingMargin" secondItem="war-x9-xc7" secondAttribute="leading" id="Pv3-rn-MKK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ZSU-MD-mc2" secondAttribute="trailing" id="STr-zg-t4v"/>
-                            <constraint firstItem="2j8-qv-aTX" firstAttribute="centerY" secondItem="GI4-vx-Acv" secondAttribute="centerY" id="Sb1-Q6-BIH"/>
                             <constraint firstItem="m7w-Jk-qTc" firstAttribute="centerY" secondItem="GI4-vx-Acv" secondAttribute="centerY" id="ao2-5c-0iX"/>
                             <constraint firstItem="war-x9-xc7" firstAttribute="top" secondItem="1Cc-yX-Fd7" secondAttribute="bottom" constant="20" id="dO5-ZP-QzZ"/>
+                            <constraint firstItem="f2q-gJ-P5r" firstAttribute="centerX" secondItem="GI4-vx-Acv" secondAttribute="centerX" id="djl-6E-gjS"/>
                             <constraint firstAttribute="trailingMargin" secondItem="war-x9-xc7" secondAttribute="trailing" id="eRb-rx-ESp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="coN-Hk-epy" secondAttribute="trailing" id="kYT-yB-xP1"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="dPK-w9-25L" secondAttribute="trailing" constant="20" id="mzJ-Ot-FXD"/>
                             <constraint firstItem="m7w-Jk-qTc" firstAttribute="centerX" secondItem="GI4-vx-Acv" secondAttribute="centerX" id="o1k-t1-o57"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="p7M-uM-Rys" secondAttribute="leading" id="t0A-ot-DT4"/>
                         </constraints>
                     </view>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="checkMarkImage" destination="2j8-qv-aTX" id="llj-9o-6Ag"/>
+                        <outlet property="checkMarkImage" destination="f2q-gJ-P5r" id="Z1d-ZV-QkQ"/>
                         <outlet property="finishButton" destination="coN-Hk-epy" id="ivR-cz-U3p"/>
                         <outlet property="savingLabel" destination="ZSU-MD-mc2" id="Ssw-Rx-qZZ"/>
                         <outlet property="savingSpinner" destination="m7w-Jk-qTc" id="x3U-bh-e3L"/>
-                        <outlet property="successSavingLabel" destination="dPK-w9-25L" id="EaE-u1-Gjr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qbU-OH-p3X" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2268,7 +2250,7 @@ Dark Current</string>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ZN-3r-kSL" customClass="BaseSelectInput" customModule="Spectrometer" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ZN-3r-kSL" customClass="PathSelectInput" customModule="Spectrometer" customModuleProvider="target">
                                                 <rect key="frame" x="25" y="244" width="490" height="50"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -3019,7 +3001,7 @@ Dark Current</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qjB-tb-CIb" customClass="SpectrumLineChartView" customModule="Spectrometer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="211" width="540" height="320"/>
+                                <rect key="frame" x="0.0" y="178" width="540" height="353"/>
                                 <color key="backgroundColor" white="0.98066645409999997" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9el-CP-v9Y" customClass="UILightGrayButton" customModule="Spectrometer" customModuleProvider="target">
@@ -3057,7 +3039,7 @@ Dark Current</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXi-9e-5Qi" customClass="LoadingButton" customModule="Spectrometer" customModuleProvider="target">
-                                <rect key="frame" x="20" y="127" width="500" height="45"/>
+                                <rect key="frame" x="20" y="94" width="500" height="45"/>
                                 <color key="backgroundColor" red="0.12549019610000001" green="0.75686274509999996" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="zVL-1N-yxA"/>
@@ -3082,15 +3064,14 @@ Dark Current</string>
                                     <action selector="takeWhiteRefrence:" destination="S5w-Ls-E9g" eventType="touchUpInside" id="JpR-GJ-WzD"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGU-Ws-u3M">
-                                <rect key="frame" x="20" y="68" width="500" height="49.5"/>
-                                <string key="text">Erfassen Sie eine White Reference diese wird jeweils vor- und/oder nach einer Messreihe durchgeführt. Sie können erst weiterfahren wenn die White Reference erfolgreich erfasst wurde.</string>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take one or more White References before/after Radiance measurement." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGU-Ws-u3M">
+                                <rect key="frame" x="20" y="68" width="500" height="17"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HEu-MW-o2L" customClass="CustomProgressBar" customModule="Spectrometer" customModuleProvider="target">
-                                <rect key="frame" x="20" y="182" width="500" height="21"/>
+                                <rect key="frame" x="20" y="149" width="500" height="21"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="RVb-Oe-5St"/>
@@ -3120,7 +3101,6 @@ Dark Current</string>
                             <constraint firstAttribute="trailingMargin" secondItem="MGU-Ws-u3M" secondAttribute="trailing" id="Anh-sW-Bz4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="HEu-MW-o2L" secondAttribute="trailing" id="JSh-c3-f4K"/>
                             <constraint firstAttribute="trailing" secondItem="qjB-tb-CIb" secondAttribute="trailing" id="Ky8-qB-kz0"/>
-                            <constraint firstItem="qjB-tb-CIb" firstAttribute="top" secondItem="pUG-Ie-nmr" secondAttribute="top" constant="211" id="LDh-IP-Psg"/>
                             <constraint firstAttribute="trailingMargin" secondItem="cgG-lc-ZjX" secondAttribute="trailing" id="Owe-4a-mWg"/>
                             <constraint firstItem="qjB-tb-CIb" firstAttribute="top" secondItem="HEu-MW-o2L" secondAttribute="bottom" constant="8" id="Pv1-eh-OYh"/>
                             <constraint firstItem="eDL-vJ-yyC" firstAttribute="top" secondItem="9el-CP-v9Y" secondAttribute="bottom" constant="20" id="SKx-f2-Go3"/>
@@ -3193,7 +3173,7 @@ Dark Current</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMF-am-tU8" customClass="SpectrumLineChartView" customModule="Spectrometer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="198.5" width="540" height="331.5"/>
+                                <rect key="frame" x="0.0" y="182" width="540" height="348"/>
                                 <color key="backgroundColor" white="0.98066645408163267" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yzv-tf-mbY" customClass="UILightGrayButton" customModule="Spectrometer" customModuleProvider="target">
@@ -3217,7 +3197,7 @@ Dark Current</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cVE-O2-fAY" customClass="LoadingButton" customModule="Spectrometer" customModuleProvider="target">
-                                <rect key="frame" x="20" y="141.5" width="500" height="45"/>
+                                <rect key="frame" x="20" y="125" width="500" height="45"/>
                                 <color key="backgroundColor" red="0.12549019607843137" green="0.75686274509803919" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="8Iz-hh-x1Z"/>
@@ -3242,9 +3222,8 @@ Dark Current</string>
                                     <action selector="takeWhiteRefrence:" destination="TmL-uw-0eO" eventType="touchUpInside" id="jBv-mA-p15"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJP-XB-O95">
-                                <rect key="frame" x="20" y="80" width="500" height="49.5"/>
-                                <string key="text">Erfassen Sie eine White Reference diese wird jeweils vor- und/oder nach einer Messreihe durchgeführt. Sie können erst weiterfahren wenn die White Reference erfolgreich erfasst wurde.</string>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take a white reference the view will update continous so you can even retake a new white reference." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJP-XB-O95">
+                                <rect key="frame" x="20" y="80" width="500" height="33"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -3311,7 +3290,7 @@ Dark Current</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTb-PZ-aD5" customClass="LoadingButton" customModule="Spectrometer" customModuleProvider="target">
-                                <rect key="frame" x="20" y="125" width="500" height="45"/>
+                                <rect key="frame" x="20" y="108.5" width="500" height="45"/>
                                 <color key="backgroundColor" red="0.086274509803921567" green="0.78570890426635742" blue="0.31985777616500854" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="HZf-5x-klg"/>
@@ -3354,14 +3333,14 @@ Dark Current</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Die Messungen werden nach dem Start automatisch durchgeführt. Im Diagramm sehen Sie jeweils die zuletzt durchgeführt Messung." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvR-YA-oXR">
-                                <rect key="frame" x="20" y="80" width="500" height="33"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take all target measurements." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvR-YA-oXR">
+                                <rect key="frame" x="20" y="80" width="500" height="17"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Lb-bi-oeI" customClass="SpectrumLineChartView" customModule="Spectrometer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="207" width="540" height="323"/>
+                                <rect key="frame" x="0.0" y="190.5" width="540" height="339.5"/>
                                 <color key="backgroundColor" white="0.97997555272108849" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xvn-iL-Iih" customClass="UIBlueButton" customModule="Spectrometer" customModuleProvider="target">
@@ -3379,7 +3358,7 @@ Dark Current</string>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wSH-nx-sFK" customClass="CustomProgressBar" customModule="Spectrometer" customModuleProvider="target">
-                                <rect key="frame" x="20" y="178" width="500" height="21"/>
+                                <rect key="frame" x="20" y="161.5" width="500" height="21"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="62R-Ng-3WP"/>
@@ -3484,7 +3463,7 @@ Dark Current</string>
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="768" height="1024"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oEq-7H-IhW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="oEq-7H-IhW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3828,9 +3807,6 @@ DarkCurrent</string>
             <point key="canvasLocation" x="3723" y="-2670"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="done" width="448" height="455"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="RjI-9a-Ldm"/>
         <segue reference="t41-HF-zAw"/>

@@ -21,7 +21,8 @@ extension FloatingPoint {
 extension FileManager{
     // measurements root folder
     func getMeasurmentRoot() -> URL{
-        return self.urls(for: .libraryDirectory, in: .userDomainMask)[0] as URL
+        let url = self.urls(for: .libraryDirectory, in: .userDomainMask)[0] as URL
+        return url.resolvingSymlinksInPath()
     }
 }
 

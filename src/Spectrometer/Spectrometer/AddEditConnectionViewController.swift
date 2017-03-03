@@ -298,7 +298,8 @@ class AddEditConnectionViewController: UIViewController, UITextFieldDelegate, Ba
                 
                 // validate 
                 if calibrationFile.dataType != .RawType {
-                    self.showWarningMessage(title: "Error", message: "Please select a RawType file")
+                    let alert = fileBrowserContainerViewController.returnWarningMessage(title: "Error", message: "Please select a RawType file")
+                    navigationController.present(alert, animated: true, completion: nil)
                     return
                 }
                 
@@ -312,9 +313,9 @@ class AddEditConnectionViewController: UIViewController, UITextFieldDelegate, Ba
                 self.addFiberOpticFile(file: calibrationFile, filename: file.filePath.lastPathComponent, name: fileName)
                 
             } catch let error as ParsingError {
-                self.showWarningMessage(title: "Error", message: error.message)
+                fileBrowserContainerViewController.showWarningMessage(title: "Error", message: error.message)
             } catch {
-                self.showWarningMessage(title: "Error", message: file.filePath.lastPathComponent + " could not be parsed please select a valid ForeOptic file")
+                fileBrowserContainerViewController.showWarningMessage(title: "Error", message: file.filePath.lastPathComponent + " could not be parsed please select a valid ForeOptic file")
             }
             
         }

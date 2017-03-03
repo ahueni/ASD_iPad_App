@@ -29,4 +29,12 @@ class PathSelectInput: BaseSelectInput {
         super.init(coder: aDecoder)
     }
     
+    override func updateFilePathLabel()
+    {
+        if isValid {
+            let rootPath = InstrumentSettingsCache.sharedInstance.measurementsRoot
+            pathLabel.text = self.selectedPath!.getDisplayPathFromRoot(rootPath: rootPath)
+        }
+    }
+    
 }

@@ -24,6 +24,7 @@ class MeasurmentDetailViewController: UIViewController {
         self.MeasurementLineChart.setAxisValues(min: 0, max: MeasurementMode.Raw.rawValue)
         let chartDataSet = spectralFile.spectrum.getChartData()
         self.MeasurementLineChart.data = LineChartData(dataSet: chartDataSet)
+        InstrumentSettingsCache.sharedInstance.lastViewMode = .Raw
     }
     
     @IBAction func reflectanceButtonClicked(_ sender: UIButton) {
@@ -31,6 +32,7 @@ class MeasurmentDetailViewController: UIViewController {
         let calculatedSpectrum = SpectrumCalculator.calculateReflectanceFromFile(spectrumFile: spectralFile)
         let chartDataSet = calculatedSpectrum.getChartData(lineWidth: 1)
         self.MeasurementLineChart.data = LineChartData(dataSet: chartDataSet)
+        InstrumentSettingsCache.sharedInstance.lastViewMode = .Reflectance
     }
     
     @IBAction func radianceButtonClicked(_ sender: UIButton) {
@@ -38,6 +40,7 @@ class MeasurmentDetailViewController: UIViewController {
         let calculatedSpectrum = SpectrumCalculator.calculateRadianceFromFile(spectralFile: spectralFile)
         let chartDataSet = calculatedSpectrum.getChartData()
         self.MeasurementLineChart.data = LineChartData(dataSet: chartDataSet)
+        InstrumentSettingsCache.sharedInstance.lastViewMode = .Radiance
     }
     
     override func viewDidLoad() {
@@ -62,8 +65,24 @@ class MeasurmentDetailViewController: UIViewController {
             }
             
             rawButton.isEnabled = true
-            rawButton.unselectAlternateButtons()
-            self.rawButtonClicked(rawButton)
+            
+            // choose last state if possible otherwise switch to raw
+            switch InstrumentSettingsCache.sharedInstance.lastViewMode {
+            case .Raw:
+                rawButton.unselectAlternateButtons()
+                self.rawButtonClicked(rawButton)
+            case .Reflectance:
+                if spectralFile.dataType == .RefType {
+                    reflectanceButton.unselectAlternateButtons()
+                    self.reflectanceButtonClicked(reflectanceButton)
+                }
+            case .Radiance:
+                if spectralFile.dataType == .RadType {
+                    radianceButton.unselectAlternateButtons()
+                    self.radianceButtonClicked(radianceButton)
+                }
+            }
+            
             
         }
         self.MeasurementLineChart.noDataText = "Please select a file..."

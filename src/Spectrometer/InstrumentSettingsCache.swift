@@ -25,6 +25,9 @@ class InstrumentSettingsCache {
     // instrument configuration file all informations like ip, port, base-file, lamp-file and foreoptics
     var instrumentConfiguration: SpectrometerConfig!
     
+    // last selected mode in file view
+    var lastViewMode: MeasurementMode = .Raw
+    
     // all wavelength values of FS3 and FS4 devices
     // they will be read and set at startup (initialize)
     var startingWaveLength: Int!

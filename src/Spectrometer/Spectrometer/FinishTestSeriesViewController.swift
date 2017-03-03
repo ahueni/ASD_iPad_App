@@ -11,8 +11,13 @@ import UIKit
 
 class FinishTestSeriesViewController : BaseMeasurementModal {
     
-    @IBOutlet var checkMarkImage: UIImageView!
-    @IBOutlet var successSavingLabel: UILabel!
+    @IBOutlet var checkMarkImage: UIImageView! {
+        didSet {
+            let darkPastelGreen = UIColor(red:0.09, green:0.76, blue:0.28, alpha:1.00)
+            let imageSize = checkMarkImage.frame.size
+            checkMarkImage.image = UIImage.fontAwesomeIcon(name: .checkCircleO, textColor: darkPastelGreen, size: imageSize)
+        }
+    }
     
     @IBOutlet var finishButton: UIBlueButton!
     
@@ -23,7 +28,6 @@ class FinishTestSeriesViewController : BaseMeasurementModal {
     override func viewDidLoad() {
         super.viewDidLoad()
         checkMarkImage.alpha = 0
-        successSavingLabel.alpha = 0
         InstrumentSettingsCache.sharedInstance.cancelMeasurment = true
     }
     
@@ -44,7 +48,6 @@ class FinishTestSeriesViewController : BaseMeasurementModal {
             UIView.transition(with: self.checkMarkImage, duration: 1.0, options: UIViewAnimationOptions.transitionFlipFromTop, animations: {
                 
                 self.checkMarkImage.alpha = 1
-                self.successSavingLabel.alpha = 1
                 
             }, completion: nil)
             

@@ -3,13 +3,34 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "static SpectrumCalculator.calculateDarkCurrentCorrection(spectrum : FullRangeInterpolatedSpectrum) -&gt; FullRangeInterpolatedSpectrum:SpectrumCalculator.swift">
+         contextName = "BaseSelectInput.update(selectedPath : URL) -&gt; ():BaseSelectInput.swift">
          <PersistentStrings>
             <PersistentString
-               value = "spectrum.spectrumBuffer[i]">
+               value = "selectedPath.path">
             </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "URL.isDirectory() -&gt; Bool:URL.swift">
+         <PersistentStrings>
             <PersistentString
-               value = "darkCurrent.spectrumBuffer[i]">
+               value = "test">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RadioButton.changeButtonBackground() -&gt; ():RadioButton.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "state">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "DirectoryBrowserTableViewController.tableView(UITableView, didSelectRowAt : IndexPath) -&gt; ():DirectoryBrowserTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "selectedFile.filePath.path">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -17,23 +38,12 @@
          contextName = "FileBrowserContainerViewController.jumpToPath(targetPath : URL) -&gt; ():FileBrowserContainerViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "selectedPath.relativeString">
+               value = "selectedPath.path">
             </PersistentString>
             <PersistentString
-               value = "targetPath.relativeString">
+               value = "targetPath.path">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "FullRangeInterpolatedSpectrumParser.parse() -&gt; FullRangeInterpolatedSpectrum:FullRangeInterpolatedSpectrumParser.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "getNextInt()">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MeasurmentTableViewCell.(export(UIButton) -&gt; ()).(closure #1):MeasurmentTableViewCell.swift">
       </ContextState>
       <ContextState
          contextName = "CommandManager.getWaveLengthts() -&gt; ():CommandManager.swift">
@@ -50,6 +60,36 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "FullRangeInterpolatedSpectrumParser.parse() -&gt; FullRangeInterpolatedSpectrum:FullRangeInterpolatedSpectrumParser.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "getNextInt()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static SpectrumCalculator.calculateDarkCurrentCorrection(spectrum : FullRangeInterpolatedSpectrum) -&gt; FullRangeInterpolatedSpectrum:SpectrumCalculator.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "spectrum.spectrumBuffer[i]">
+            </PersistentString>
+            <PersistentString
+               value = "darkCurrent.spectrumBuffer[i]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MeasurmentSettings.encode(with : NSCoder) -&gt; ():MeasurmentSettings.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.path.path">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MeasurmentTableViewCell.(export(UIButton) -&gt; ()).(closure #1):MeasurmentTableViewCell.swift">
+      </ContextState>
+      <ContextState
          contextName = "IndicoWriter.innerWriteBasic(spectrum : FullRangeInterpolatedSpectrum, whiteRefrenceSpectrum : FullRangeInterpolatedSpectrum?) -&gt; ():IndicoWriter.swift">
          <PersistentStrings>
             <PersistentString
@@ -58,18 +98,37 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "RadioButton.changeButtonBackground() -&gt; ():RadioButton.swift">
+         contextName = "DirectoryBrowserContainerViewController.init(coder : NSCoder) -&gt; DirectoryBrowserContainerViewController?:DirectoryBrowserContainerViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "state">
+               value = "measurementPath.path">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "URL.isDirectory() -&gt; Bool:URL.swift">
+         contextName = "MeasurmentSettings.init(coder : NSCoder) -&gt; MeasurmentSettings:MeasurmentSettings.swift">
          <PersistentStrings>
             <PersistentString
-               value = "test">
+               value = "self.path.path">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BaseSelectInput.selectPath(sender : UITapGestureRecognizer) -&gt; ():BaseSelectInput.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "selectedPath.path">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BaseCalibrationFileSelectInput.update(selectedPath : URL) -&gt; ():BaseCalibrationSelectInput.swift">
+      </ContextState>
+      <ContextState
+         contextName = "StartTestSeriesViewController.loadSettingsIfExist() -&gt; ():StartTestSeriesViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "measurementSettings.path.path">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

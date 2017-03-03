@@ -33,7 +33,7 @@ class FileBrowserContainerViewController : UIViewController {
     func jumpToPath(targetPath : URL){
         
         // Breaking the recursiv call when targetpath not exists OR is reached
-        if(!targetPath.exists() || targetPath.absoluteString == selectedPath.absoluteString){
+        if(!targetPath.exists() || targetPath.path == selectedPath.path){
             return
         }
         
@@ -43,7 +43,7 @@ class FileBrowserContainerViewController : UIViewController {
         let targetPathComponents = targetPath.pathComponents
         let currentPathComponents = selectedPath.pathComponents
         
-        var nextJump : URL = selectedPath
+        var nextJump: URL = selectedPath
         let nextFolder = targetPathComponents[currentPathComponents.count]
         
         nextJump.appendPathComponent(nextFolder)
