@@ -53,8 +53,6 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        CommandManager.sharedInstance.instrumentControl()
-        
         // init radio buttons
         rawRadioButton.alternateButton = [reflectanceRadioButton, radianceRadioButton]
         reflectanceRadioButton.alternateButton = [rawRadioButton, radianceRadioButton]

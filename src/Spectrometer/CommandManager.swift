@@ -109,12 +109,25 @@ class CommandManager {
         }
     }
     
-    func setVinirIntegrationTime(index: Int) -> Void {
-        
+    func setInstrumentControl(instrumentControlValues : ICValues){
         serialQueue.sync {
-            let command:Command = Command(commandParam: CommandEnum.InstrumentControl, params: "2,0," + index.description)
-            _ = tcpManager.sendCommand(command: command)
+            // set integration Time
+            internalInstrumentControl(params: "2," + instrumentControlValues.integrationTime.description)
+            //set swir1Gain
+            internalInstrumentControl(params: "0,1," + instrumentControlValues.swir1Gain.description)
+            //set swir1Offset
+            internalInstrumentControl(params: "0,2," + instrumentControlValues.swir1Offset.description)
+            //set swir2Gain
+            internalInstrumentControl(params: "1,1," + instrumentControlValues.swir2Gain.description)
+            //set swir2Offset
+            internalInstrumentControl(params: "1,2," + instrumentControlValues.swir2Offset.description)
         }
+    }
+    
+    internal func internalInstrumentControl(params : String)
+    {
+        let icCommand : Command = Command(commandParam: CommandEnum.InstrumentControl, params: params)
+        _ = tcpManager.sendCommand(command: icCommand)
     }
     
     func addCancelCallback(callBack: () -> Void) {
@@ -131,13 +144,11 @@ class CommandManager {
     }
     
     internal func closeShutter() -> Void {
-        let closeShutterIC:Command = Command(commandParam: CommandEnum.InstrumentControl, params: "2,3,1")
-        _ = tcpManager.sendCommand(command: closeShutterIC)
+        internalInstrumentControl(params: "2,3,1")
     }
     
     internal func openShutter() -> Void {
-        let openShutterIC:Command = Command(commandParam: CommandEnum.InstrumentControl, params: "2,3,0")
-        _ = tcpManager.sendCommand(command: openShutterIC)
+        internalInstrumentControl(params: "2,3,0")
     }
     
     internal func internOptimize() -> Void {

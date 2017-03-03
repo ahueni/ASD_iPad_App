@@ -19,6 +19,19 @@ class InstrumentControlViewController : UIViewController{
     @IBOutlet var swir2GainTextField: NumberTextField!
     @IBOutlet var swir2OffsetTextField: NumberTextField!
     
+    override func viewDidLoad() {
+        loadInstrumentControlValues()
+        updateFields()
+    }
+    
+    func updateFields(){
+        integrationTimeTextField.text = instrumentControlValues.integrationTime.description
+        swir1GainTextField.text = instrumentControlValues.swir1Gain.description
+        swir1OffsetTextField.text = instrumentControlValues.swir1Offset.description
+        swir2GainTextField.text = instrumentControlValues.swir2Gain.description
+        swir2OffsetTextField.text = instrumentControlValues.swir2Offset.description
+    }
+    
     func loadInstrumentControlValues(){
         let spectrum = CommandManager.sharedInstance.aquire(samples: 1)
         let integrationTime = spectrum.spectrumHeader.vinirHeader.integrationTime
@@ -35,12 +48,13 @@ class InstrumentControlViewController : UIViewController{
         instrumentControlValues.swir1Offset = swir1OffsetTextField.number
         instrumentControlValues.swir2Gain = swir2GainTextField.number
         instrumentControlValues.swir2Offset = swir2OffsetTextField.number
-        //CommandManager.setInstrumentControl(instrumentControlValues)
+        CommandManager.sharedInstance.setInstrumentControl(instrumentControlValues: instrumentControlValues)
     }
     
-    func performOptimize(){
+    @IBAction func performOptimize(_ sender: UIButton){
         CommandManager.sharedInstance.optimize()
         loadInstrumentControlValues()
+        updateFields()
     }
 }
 
