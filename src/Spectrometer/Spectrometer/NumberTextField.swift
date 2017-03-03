@@ -12,10 +12,20 @@ import UIKit
 @IBDesignable
 class NumberTextField : BaseTextField {
     
+    var number : Int {
+        get{
+            if let number = Int(text!)
+            {
+                return number
+            }
+            return  0
+        }
+    }
+    
     override var isValid: Bool {
         get {
-            let port = Int(text!)
-            return port != nil
+            let number = Int(text!)
+            return number != nil
         }
     }
     

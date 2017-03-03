@@ -66,7 +66,6 @@ class CommandManager {
     }
     
     func initialize() -> Void {
-        
         serialQueue.sync {
             // initialize values from spectrometer
             let startingWavelength = initialize(valueName: "StartingWavelength")
@@ -91,7 +90,6 @@ class CommandManager {
             
             InstrumentSettingsCache.sharedInstance.vinirDarkCurrentCorrection = vinirDarkCurrentCorrection.value
         }
-        
     }
     
     func restore() -> Void {
@@ -114,12 +112,9 @@ class CommandManager {
     func setVinirIntegrationTime(index: Int) -> Void {
         
         serialQueue.sync {
-            
             let command:Command = Command(commandParam: CommandEnum.InstrumentControl, params: "2,0," + index.description)
             _ = tcpManager.sendCommand(command: command)
-            
         }
-        
     }
     
     func addCancelCallback(callBack: () -> Void) {

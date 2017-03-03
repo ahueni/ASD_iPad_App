@@ -131,6 +131,7 @@
 		E18970A01E2914B300722E9C /* BaseWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E189709F1E2914B300722E9C /* BaseWriter.swift */; };
 		E18DAE9D1E375D46005F6753 /* MeasurmentMasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18DAE9C1E375D46005F6753 /* MeasurmentMasterTableViewController.swift */; };
 		E18DAE9F1E375E43005F6753 /* MeasurmentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18DAE9E1E375E43005F6753 /* MeasurmentDetailViewController.swift */; };
+		E18F2EF41E696CBF00DFBD7C /* InstrumentControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18F2EF31E696CBF00DFBD7C /* InstrumentControlViewController.swift */; };
 		E1A40C001E3F9B800019F467 /* BaseFileBrowserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A40BFF1E3F9B800019F467 /* BaseFileBrowserTableViewController.swift */; };
 		E1A40C231E4077660019F467 /* FileBrowserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A40C221E4077660019F467 /* FileBrowserTableViewController.swift */; };
 		E1A40C251E40797E0019F467 /* FileBrowserContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A40C241E40797E0019F467 /* FileBrowserContainerViewController.swift */; };
@@ -290,6 +291,7 @@
 		E189709F1E2914B300722E9C /* BaseWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWriter.swift; sourceTree = "<group>"; };
 		E18DAE9C1E375D46005F6753 /* MeasurmentMasterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurmentMasterTableViewController.swift; sourceTree = "<group>"; };
 		E18DAE9E1E375E43005F6753 /* MeasurmentDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurmentDetailViewController.swift; sourceTree = "<group>"; };
+		E18F2EF31E696CBF00DFBD7C /* InstrumentControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentControlViewController.swift; sourceTree = "<group>"; };
 		E1A40BFF1E3F9B800019F467 /* BaseFileBrowserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFileBrowserTableViewController.swift; sourceTree = "<group>"; };
 		E1A40C221E4077660019F467 /* FileBrowserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileBrowserTableViewController.swift; sourceTree = "<group>"; };
 		E1A40C241E40797E0019F467 /* FileBrowserContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileBrowserContainerViewController.swift; sourceTree = "<group>"; };
@@ -825,6 +827,7 @@
 			children = (
 				E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */,
 				2EB9463E1E5B59CD006C71C8 /* GeneralSettingsViewController.swift */,
+				E18F2EF31E696CBF00DFBD7C /* InstrumentControlViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -1204,6 +1207,7 @@
 				2EB3629C1DF1D91C00E74E39 /* GpsData.swift in Sources */,
 				2EB822E71DE06C0300DF732C /* Extensions.swift in Sources */,
 				E1C936BC1E42165F00EF51BB /* IPNumberTextField.swift in Sources */,
+				E18F2EF41E696CBF00DFBD7C /* InstrumentControlViewController.swift in Sources */,
 				E13176671E532179002F0958 /* RadianceSettingsViewController.swift in Sources */,
 				E108F2141E3B8B670097B7EE /* BaseMeasurementModal.swift in Sources */,
 				2EC6D8161E5C86970022F70E /* BaseCalibrationSelectInput.swift in Sources */,

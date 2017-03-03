@@ -13,12 +13,12 @@ class SettingsViewController : UITableViewController{
     
     var appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    @IBOutlet weak var SampleCountSpectrumValueLabel: UILabel!
-    @IBOutlet weak var SampleCountSpectrumSlider: UISlider!
-    @IBOutlet weak var SampleCountDarkCurrentValueLabel: UILabel!
-    @IBOutlet weak var SampleCountWhiteRefrenceValueLabel: UILabel!
-    @IBOutlet weak var SampleCountDarkCurrentSlider: UISlider!
-    @IBOutlet weak var SampleCountWhiteRefrenceSlider: UISlider!
+    @IBOutlet var SampleCountSpectrumValueLabel: UILabel!
+    @IBOutlet var SampleCountSpectrumSlider: UISlider!
+    @IBOutlet var SampleCountDarkCurrentValueLabel: UILabel!
+    @IBOutlet var SampleCountWhiteRefrenceValueLabel: UILabel!
+    @IBOutlet var SampleCountDarkCurrentSlider: UISlider!
+    @IBOutlet var SampleCountWhiteRefrenceSlider: UISlider!
     
     @IBAction func SampleCountSliderValueChanged(_ sender: UISlider) {
         SampleCountSpectrumValueLabel.text = Int(SampleCountSpectrumSlider.value).description
