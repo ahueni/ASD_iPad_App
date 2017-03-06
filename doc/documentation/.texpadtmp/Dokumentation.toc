@@ -35,14 +35,14 @@
 \contentsline {subsection}{\numberline {3.6.1}Instrument Store}{5}{subsection.3.6.1}
 \contentsline {subsection}{\numberline {3.6.2}Command Manager}{5}{subsection.3.6.2}
 \contentsline {subsection}{\numberline {3.6.3}File Write Manager}{5}{subsection.3.6.3}
-\contentsline {section}{\numberline {3.7}iOS App}{5}{section.3.7}
-\contentsline {subsection}{\numberline {3.7.1}App Delegate}{5}{subsection.3.7.1}
-\contentsline {subsection}{\numberline {3.7.2}Core Data}{5}{subsection.3.7.2}
-\contentsline {subsection}{\numberline {3.7.3}Views}{5}{subsection.3.7.3}
-\contentsline {subsection}{\numberline {3.7.4}Controllers}{5}{subsection.3.7.4}
-\contentsline {subsubsection}{\nonumberline Settings}{5}{section*.6}
+\contentsline {section}{\numberline {3.7}iOS App}{6}{section.3.7}
+\contentsline {subsection}{\numberline {3.7.1}App Delegate}{6}{subsection.3.7.1}
+\contentsline {subsection}{\numberline {3.7.2}Core Data}{6}{subsection.3.7.2}
+\contentsline {subsection}{\numberline {3.7.3}Views}{6}{subsection.3.7.3}
+\contentsline {subsection}{\numberline {3.7.4}Controllers}{6}{subsection.3.7.4}
+\contentsline {subsubsection}{\nonumberline Settings}{6}{section*.6}
 \contentsline {subsection}{\numberline {3.7.5}Components}{6}{subsection.3.7.5}
 \contentsline {subsection}{\numberline {3.7.6}View Store}{6}{subsection.3.7.6}
-\contentsline {subsection}{\numberline {3.7.7}Service}{6}{subsection.3.7.7}
-\contentsline {subsubsection}{\nonumberline Validation}{6}{section*.7}
-\contentsline {subsubsection}{\nonumberline File Browser}{6}{section*.8}
+\contentsline {subsection}{\numberline {3.7.7}Service}{7}{subsection.3.7.7}
+\contentsline {subsubsection}{\nonumberline Validation}{7}{section*.7}
+\contentsline {subsubsection}{\nonumberline File Browser}{7}{section*.8}

@@ -46,22 +46,31 @@ Der TCP Manager ist für die Anfragen des Gerätes verantwortlich. Es ist die einz
 \subsection{Input/Output}
 In diesem Kapitel, werden alle Klassen beschrieben, welche direkt Daten einlesen oder Ausgeben.
 \subsubsection{File Writer}
-Die Output Klassen, dienen dazu ein Indico File zu schreiben. Die Base Klasse kapselt dafür alle Schreibvorgänge. Von der Klasse File Writer, wird auf diese Methoden zugegriffen und stösst so das Schreiben in der Richtigen Reihenfolge an.
+Die Output Klassen, dienen dazu ein Indico File zu schreiben. Die Base Klasse kapselt dafür alle Schreibvorgänge. Von der Klasse File Writer, wird auf diese Methoden zugegriffen und stösst so das Schreiben in der Richtigen Reihenfolge an. Von aussen kann lediglich gewählt werden, welche der 3 Messmethoden geschrieben werden soll: Raw, Reflectance oder Radiance.
 \subsubsection{File Reader}
+
 \subsubsection{Spectrometer Parser}
 
 \subsection{Calculations}
+Der Ordner Calculations enthält lediglich die Klasse SpectrumCalculator welche nur statische Funktionen enthält. Diese dienen der Berechnung der Reflektanz sowie der Radianz. Ausserdem beinhaltet die Klasse noch eine Methode um eine Dark Correction auf einem übergebenen Spetrum durchzuführen.
 \subsection{Error Handling}
 
 \section{Service}
 
 \subsection{Instrument Store}
+Im Instrument Store, werden alle Objekte gespeichert, auf welche global zugegriffen werden muss und nichts mit dem Userinterface zu tun haben. Um zu garantieren, dass die Variablen nur einmal existieren, ist die Klasse als Singleton umgesetzt.
 \subsection{Command Manager}
+Der Command Manager übernimmt die Funktion alle Kommandos in der korrekten Reihenfolge abzuarbeiten. Der Command Manager bietet Methoden für alle gängigen Spektrometer Kommandos an. Wird eine dieser Methoden aufgerufen, übergibt der Command Manager die Anfrage an eine synchrone Queue welche nach dem First-In-First-Out Prinzip die Anfragen abarbeitet. So ist sichergestellt, dass ein Kommando erst an das Spektrometer gesendet wird, wenn alle vorherigen abgearbeitet sind.
 \subsection{File Write Manager}
+Der Write Manager funktioniert ähnlich wie der Command Manager. Er übergibt write Anfragen ebenfalls einer synchronen Warteschlange und arbeitet diese ab. Dazu kümmert sich der FileWriteManager auch um die korrekte Benennung der ASD Files. Dies geschieht, indem er den höchsten geschriebenen prefix eines Files im Pfad findet und diesen dan entsprechend erhöht.
 
 \section{iOS App}
 \subsection{App Delegate}
+Das App Delegate ist das eigentliche Einstiegsfile jeder iOS Applikation. Darin wird beschrieben, wie der Prozess aus verschiednen Zuständen abläuft (Stopped, Paused, Notified). Im AppDelegate werden auch Applikationsweite Designsänderungen vorgenommen, so wird beispielsweise die Schriftart für die gesamte Applikation gesetzt.
+\newline
+AppDelegate wird ebenfalls aufgerufen, wenn ein File erfolgreich importiert wurde. Das importieren selbst, wird vom Betriebsystem übernommen. In diesem Projekt wird auf der aktuellen View eine Meldung angezeigt, dass ein File erfolgreich importiert wurde.
 \subsection{Core Data}
+Core Data ist ein System, um Daten auf dem Gerät zu speichern, es dient nicht als Datenbank ersatz, kann aber für einfache Speicherungen genutzt werden. Durch die Integration in XCode, lassen sich Speicherklassen einfach modellieren und einsetzen. Core Data Einstellungen können in xcdatamodeld Klassen vorgenommen werden. Dabei können Datentypen sowie die Relationen der einzelnen Records definiert werden.
 \subsection{Views}
 
 Alle ViewController sind in der Datei Main.storyboard enthalten. Dies war eine bewusste Entscheidung, um Entwicklern einen guten Überblick über den gesamten UI Ablauf zu ermöglichen. Einzig das Design für eine Zelle der Messübersichtstabelle wurde in eine eigne XIB-Datei ausgelagert.
@@ -69,6 +78,7 @@ Alle ViewController sind in der Datei Main.storyboard enthalten. Dies war eine b
 Die Anordnung der Controls wurde im Storyboard gelöst. Kleinere Merkmale wurden jeweils im Code angepasst, indem von bestehenden Controls abgeleitet wurde.
 
 \subsection{Controllers}
+\lstset{language=[Objective]C, breakindent=40pt, breaklines}
 
 \subsubsection{Settings}
 
@@ -76,9 +86,9 @@ Einstellungen, welche pro Applikation verfügbar sein müssen, werden in den sogen
 
 \subsection{Components}
 \subsection{View Store}
+Der ViewStore dient wie der InstrumentStore zum speichern weiter benötigter Variablen. Er ist ebenfalls als Singleton implementiert. Im Gegensatz zum InstrumentStore enthält der ViewStore aber nur Elemente, welche UI relevant sind. Darin wird beispielsweise gespeichert, ob gerade eine Aquire-Schleife läuft.
 \subsection{Service}
 \subsubsection{Validation}
-
 Für die Validierung wurde von jedem benutzen Control eine Ableitung erstellt und und das BaseValidationControl Protokoll implementiert. Dieses Protokoll enthält ein Property isValid welches den Gültikeitszustand des Objektes enthält.
 
 In jedem ViewController, muss nun nur noch der ValidationManager aufgerufen werden und die Hauptview übergeben werden. Dieser ValidationManager prüft nun alle Subviews, welchedas Protokoll implementieren.
@@ -90,3 +100,9 @@ Um die Validation für einen neuen ViewController hinzuzufügen, kann folgendermas
 
 
 \subsubsection{File Browser}
+Der FileBrowser, ist eine Abwandlung von einer externen Swift Komponente, welche unter folgendem Link zu finden ist:
+\newline
+https://github.com/marmelroy/FileBrowser
+\newline
+Diese Komponente wurde auf die eignen Bedürfnisse angepasst.
+Der FileBrowser besteht aus einer Basisklasse und jeweils 2 Klassen für die Datei sowie die Ordnerauswahl.
