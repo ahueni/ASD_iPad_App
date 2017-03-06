@@ -677,7 +677,7 @@
                             <constraint firstItem="ZuH-AQ-NxF" firstAttribute="top" secondItem="H6r-xf-8BW" secondAttribute="bottom" constant="10" id="zqu-YT-S5H"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Configuration" id="ZjH-oZ-xgc" customClass="SpectrometerTabBarItem" customModule="Spectrometer" customModuleProvider="target">
+                    <tabBarItem key="tabBarItem" title="Connections" id="ZjH-oZ-xgc" customClass="SpectrometerTabBarItem" customModule="Spectrometer" customModuleProvider="target">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="icon" value="fa-hdd-o"/>
@@ -1217,7 +1217,7 @@
         <!--AquireScreen-->
         <scene sceneID="k7g-xj-CbX">
             <objects>
-                <viewController title="AquireScreen" id="CAT-Jv-66J" customClass="AquireViewController" customModule="Spectrometer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="AquireScreen" id="CAT-Jv-66J" customClass="SpectrometerViewController" customModule="Spectrometer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="q68-V6-2I0"/>
                         <viewControllerLayoutGuide type="bottom" id="SKD-6G-TQ8"/>
@@ -1638,7 +1638,7 @@
                             <constraint firstItem="Ntg-6e-Vsi" firstAttribute="top" secondItem="q68-V6-2I0" secondAttribute="bottom" id="z8n-Wi-Whu"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Spektrometer" id="j7u-3J-zL2" customClass="SpectrometerTabBarItem" customModule="Spectrometer" customModuleProvider="target">
+                    <tabBarItem key="tabBarItem" title="Spectrometer" id="j7u-3J-zL2" customClass="SpectrometerTabBarItem" customModule="Spectrometer" customModuleProvider="target">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="icon" value="fa-hdd-o"/>
                         </userDefinedRuntimeAttributes>

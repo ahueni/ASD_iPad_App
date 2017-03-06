@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RawSettings : BaseModeSettings
+class RawSettings : BaseMeasurementModeSettings
 {
     required init(coder decoder: NSCoder) {
     self.takeDarkCurrent = decoder.decodeBool(forKey: "takeDarkCurrent")

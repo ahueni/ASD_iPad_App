@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Charts
 
-class AquireViewController: UIViewController, SelectFiberopticDelegate {
+class SpectrometerViewController: UIViewController, SelectFiberopticDelegate {
     
     // colors
     let greenButtonColor = UIColor(red:0.09, green:0.76, blue:0.28, alpha:1.00)
@@ -107,7 +107,7 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
         ViewStore.sharedInstance.aquireLoop = false
         
         // take dark current
-        let darkCurrentSampleCount = InstrumentStore.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent
+        let darkCurrentSampleCount = ViewStore.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent
         CommandManager.sharedInstance.darkCurrent(sampleCount: darkCurrentSampleCount)
         
         // update chart data
@@ -128,11 +128,11 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
         ViewStore.sharedInstance.aquireLoop = false
         
         // first take a new dark current
-        let darkCurrentSampleCount = InstrumentStore.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent
+        let darkCurrentSampleCount = ViewStore.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent
         CommandManager.sharedInstance.darkCurrent(sampleCount: darkCurrentSampleCount)
         
         // take white reference and calculate dark current correction
-        let whiteRefSampleCount = InstrumentStore.sharedInstance.instrumentConfiguration.sampleCountWhiteRefrence
+        let whiteRefSampleCount = ViewStore.sharedInstance.instrumentConfiguration.sampleCountWhiteRefrence
         let whiteRefWithoutDarkCurrent = CommandManager.sharedInstance.aquire(samples: whiteRefSampleCount)
         whiteReferenceSpectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: whiteRefWithoutDarkCurrent)
         
@@ -193,7 +193,7 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
             while(ViewStore.sharedInstance.aquireLoop){
                 
                 // collect spectrum
-                let sampleCount = InstrumentStore.sharedInstance.instrumentConfiguration.sampleCount
+                let sampleCount = ViewStore.sharedInstance.instrumentConfiguration.sampleCount
                 var spectrum = CommandManager.sharedInstance.aquire(samples: sampleCount)
                 
                 // calculate dark current if selected on view

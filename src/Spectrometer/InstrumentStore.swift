@@ -19,10 +19,7 @@ class InstrumentStore {
     let measurementsRoot: URL = FileManager.default.getMeasurmentRoot().appendingPathComponent("Measurements", isDirectory: true)
     
     // Inbox root folder
-    let inboxRoot: URL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as URL).appendingPathComponent("Inbox", isDirectory: true)
-    
-    // instrument configuration file all informations like ip, port, base-file, lamp-file and foreoptics
-    var instrumentConfiguration: SpectrometerConfig!
+    let inboxRoot: URL = FileManager.default.getDocumentsRoot().appendingPathComponent("Inbox", isDirectory: true)
     
     // all wavelength values of FS3 and FS4 devices
     // they will be read and set at startup (initialize)

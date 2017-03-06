@@ -81,11 +81,11 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
                     CommandManager.sharedInstance.initialize()
                     
                     // set spectrometer config applicationwide
-                    InstrumentStore.sharedInstance.instrumentConfiguration = config
+                    ViewStore.sharedInstance.instrumentConfiguration = config
                     
                     // after initialization set default foreoptic file - it will pre-calculate radiance values
                     // first check if bareFiber is available otherwise take the first of all files
-                    let allForeOpticFiles = InstrumentStore.sharedInstance.instrumentConfiguration.fiberOpticCalibrations?.allObjects as! [CalibrationFile]
+                    let allForeOpticFiles = ViewStore.sharedInstance.instrumentConfiguration.fiberOpticCalibrations?.allObjects as! [CalibrationFile]
                     if let bareFiberFile = allForeOpticFiles.first(where: { $0.fo == 0 }) {
                         InstrumentStore.sharedInstance.selectedForeOptic = bareFiberFile
                     } else {

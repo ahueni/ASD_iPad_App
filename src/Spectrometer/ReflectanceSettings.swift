@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ReflectanceSettings : BaseModeSettings{
+class ReflectanceSettings : BaseMeasurementModeSettings{
     
     required init(coder decoder: NSCoder) {
         self.takeWhiteRefrenceBefore = decoder.decodeBool(forKey: "takeWhiteRefrenceBefore")

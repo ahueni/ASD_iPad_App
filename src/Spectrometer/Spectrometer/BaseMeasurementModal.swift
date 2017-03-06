@@ -62,8 +62,8 @@ class BaseMeasurementModal : UIViewController
     
     func writeRadianceFilesAsync(spectrums : [FullRangeInterpolatedSpectrum], dataType: DataType, isWhiteReference: Bool){
         DispatchQueue.global().async {
-            let base = InstrumentStore.sharedInstance.instrumentConfiguration.base!
-            let lamp = InstrumentStore.sharedInstance.instrumentConfiguration.lamp!
+            let base = ViewStore.sharedInstance.instrumentConfiguration.base!
+            let lamp = ViewStore.sharedInstance.instrumentConfiguration.lamp!
             let fiberOptic = InstrumentStore.sharedInstance.selectedForeOptic!
             let radianceCalibrationFiles = RadianceCalibrationFiles(baseFile: base, lampFile: lamp, fiberOptic: fiberOptic)
             

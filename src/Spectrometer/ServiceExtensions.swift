@@ -11,8 +11,14 @@ import CoreGraphics
 
 extension FileManager {
     // measurements root folder
-    func getMeasurmentRoot() -> URL{
+    func getMeasurmentRoot() -> URL {
         let url = self.urls(for: .libraryDirectory, in: .userDomainMask)[0] as URL
+        return url.resolvingSymlinksInPath()
+    }
+    
+    // documents root folder
+    func getDocumentsRoot() -> URL{
+        let url = self.urls(for: .documentDirectory, in: .userDomainMask)[0] as URL
         return url.resolvingSymlinksInPath()
     }
 }

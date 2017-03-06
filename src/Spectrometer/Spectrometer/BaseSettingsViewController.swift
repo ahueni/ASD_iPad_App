@@ -62,7 +62,7 @@ class BaseSettingsViewController : BaseMeasurementModal {
         
         DispatchQueue.global().async {
             
-            let darkCurrentSampleCount = InstrumentStore.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent
+            let darkCurrentSampleCount = ViewStore.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent
             CommandManager.sharedInstance.darkCurrent(sampleCount: darkCurrentSampleCount)
             
             

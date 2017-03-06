@@ -35,7 +35,7 @@ class BaseWhiteReferenceViewController : BaseMeasurementModal {
     
     func aquire() {
         //Aquire
-        let sampleCount = InstrumentStore.sharedInstance.instrumentConfiguration.sampleCount
+        let sampleCount = ViewStore.sharedInstance.instrumentConfiguration.sampleCount
         let aquiredSpectrum = CommandManager.sharedInstance.aquire(samples: sampleCount)
         
         // DC Correction
@@ -67,7 +67,7 @@ class BaseWhiteReferenceViewController : BaseMeasurementModal {
                 
                 //Aquire spectrum
                 self.updateProgressBar(measurmentCount: i, statusText: "Measure...")
-                let sampleCount = InstrumentStore.sharedInstance.instrumentConfiguration.sampleCount
+                let sampleCount = ViewStore.sharedInstance.instrumentConfiguration.sampleCount
                 let spectrum = CommandManager.sharedInstance.aquire(samples: sampleCount)
                 let darkCorrectedSpectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: spectrum)
                 self.setSpectrum(whiteReferenceSpectrum: darkCorrectedSpectrum)

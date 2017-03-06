@@ -118,8 +118,8 @@ class SpectrumCalculator{
         let swir1Gain:Float = Float(2048) / Float(spectrum.spectrumHeader.swir1Header.gain)
         let swir2Gain:Float = Float(2048) / Float(spectrum.spectrumHeader.swir2Header.gain)
         
-        let baseSpectrum = InstrumentStore.sharedInstance.instrumentConfiguration.base!.spectrum
-        let lampSpectrum = InstrumentStore.sharedInstance.instrumentConfiguration.lamp!.spectrum
+        let baseSpectrum = ViewStore.sharedInstance.instrumentConfiguration.base!.spectrum
+        let lampSpectrum = ViewStore.sharedInstance.instrumentConfiguration.lamp!.spectrum
         let foreOpticSpectrum = InstrumentStore.sharedInstance.selectedForeOptic!.spectrum
         
         let foreOpticIntegrationTime = InstrumentStore.sharedInstance.selectedForeOptic!.integrationTime

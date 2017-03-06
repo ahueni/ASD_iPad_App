@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class ViewStore {
     
@@ -21,6 +22,14 @@ class ViewStore {
     
     // last selected mode in file view
     var lastViewMode: MeasurementMode = .Raw
+    
+    // instrument configuration file all informations like ip, port, base-file, lamp-file and foreoptics
+    var instrumentConfiguration: SpectrometerConfig! {
+        didSet {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.saveContext()
+        }
+    }
     
     // timer objects for dark current and white reference
     private var darkCurrentTimer:Timer?

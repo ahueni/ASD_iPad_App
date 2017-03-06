@@ -82,7 +82,7 @@
 		2EB823051DE0A2D100DF732C /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EB822FB1DE0A2D100DF732C /* OpenSans-Semibold.ttf */; };
 		2EB823061DE0A2D100DF732C /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EB822FC1DE0A2D100DF732C /* OpenSans-SemiboldItalic.ttf */; };
 		2EB823091DE0AD1900DF732C /* AddEditConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB823081DE0AD1900DF732C /* AddEditConnectionViewController.swift */; };
-		2EB823251DE0CC2900DF732C /* AquireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB823241DE0CC2900DF732C /* AquireViewController.swift */; };
+		2EB823251DE0CC2900DF732C /* SpectrometerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB823241DE0CC2900DF732C /* SpectrometerViewController.swift */; };
 		2EB823281DE0D40F00DF732C /* SpectrometerTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB823271DE0D40F00DF732C /* SpectrometerTabBar.swift */; };
 		2EB8233C1DE113DA00DF732C /* CustomCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB8233B1DE113DA00DF732C /* CustomCharts.swift */; };
 		2EB9463A1E579E15006C71C8 /* CornerRadiusExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB946391E579E15006C71C8 /* CornerRadiusExtension.swift */; };
@@ -93,6 +93,7 @@
 		2EC505571E6D624900E1DCFB /* ServiceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC505561E6D624900E1DCFB /* ServiceExtensions.swift */; };
 		2EC5055A1E6D634B00E1DCFB /* AppExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC505591E6D634B00E1DCFB /* AppExtensions.swift */; };
 		2EC505621E6D672100E1DCFB /* ViewStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC505611E6D672100E1DCFB /* ViewStore.swift */; };
+		2EC5056B1E6D6CAF00E1DCFB /* AppEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC5056A1E6D6CAF00E1DCFB /* AppEnums.swift */; };
 		2EC6D8111E5C7F570022F70E /* PathSelectInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6D8101E5C7F570022F70E /* PathSelectInput.swift */; };
 		2EC6D8141E5C80A80022F70E /* AbsoluteReflectanceFileSelectInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6D8131E5C80A80022F70E /* AbsoluteReflectanceFileSelectInput.swift */; };
 		2EC6D8161E5C86970022F70E /* BaseCalibrationSelectInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6D8151E5C86970022F70E /* BaseCalibrationSelectInput.swift */; };
@@ -116,7 +117,7 @@
 		E13176631E53129B002F0958 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13176621E53129B002F0958 /* RadioButton.swift */; };
 		E13176671E532179002F0958 /* RadianceSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13176661E532179002F0958 /* RadianceSettingsViewController.swift */; };
 		E13567891E61BB260049DCA7 /* SpectrumCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13567881E61BB260049DCA7 /* SpectrumCalculator.swift */; };
-		E13AC12E1E65693000FE3048 /* BaseModeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13AC12D1E65693000FE3048 /* BaseModeSettings.swift */; };
+		E13AC12E1E65693000FE3048 /* BaseMeasurementModeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13AC12D1E65693000FE3048 /* BaseMeasurementModeSettings.swift */; };
 		E13AC1301E656BC900FE3048 /* BaseSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13AC12F1E656BC900FE3048 /* BaseSettingsViewController.swift */; };
 		E1446F031E56DD6100840AF2 /* RawSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1446F021E56DD6100840AF2 /* RawSettingsViewController.swift */; };
 		E14EC22E1E2E1889006EBD2F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */; };
@@ -184,7 +185,7 @@
 		2E91F2A71DDB5B76003E277F /* ConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionViewController.swift; sourceTree = "<group>"; };
 		2E91F2AA1DDB5B76003E277F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2E91F2AD1DDB5B76003E277F /* Spectrometer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spectrometer.xcdatamodel; sourceTree = "<group>"; };
-		2E91F2AF1DDB5B76003E277F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2E91F2AF1DDB5B76003E277F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Spectrometer/Assets.xcassets; sourceTree = "<group>"; };
 		2E91F2B21DDB5B76003E277F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2E91F2B41DDB5B76003E277F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E91F2B91DDB5B76003E277F /* SpectrometerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpectrometerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -242,7 +243,7 @@
 		2EB822FB1DE0A2D100DF732C /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		2EB822FC1DE0A2D100DF732C /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		2EB823081DE0AD1900DF732C /* AddEditConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditConnectionViewController.swift; sourceTree = "<group>"; };
-		2EB823241DE0CC2900DF732C /* AquireViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AquireViewController.swift; sourceTree = "<group>"; };
+		2EB823241DE0CC2900DF732C /* SpectrometerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrometerViewController.swift; sourceTree = "<group>"; };
 		2EB823271DE0D40F00DF732C /* SpectrometerTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrometerTabBar.swift; sourceTree = "<group>"; };
 		2EB8233B1DE113DA00DF732C /* CustomCharts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCharts.swift; sourceTree = "<group>"; };
 		2EB946391E579E15006C71C8 /* CornerRadiusExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornerRadiusExtension.swift; sourceTree = "<group>"; };
@@ -253,6 +254,7 @@
 		2EC505561E6D624900E1DCFB /* ServiceExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceExtensions.swift; sourceTree = "<group>"; };
 		2EC505591E6D634B00E1DCFB /* AppExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppExtensions.swift; sourceTree = "<group>"; };
 		2EC505611E6D672100E1DCFB /* ViewStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewStore.swift; sourceTree = "<group>"; };
+		2EC5056A1E6D6CAF00E1DCFB /* AppEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppEnums.swift; sourceTree = "<group>"; };
 		2EC6D8101E5C7F570022F70E /* PathSelectInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathSelectInput.swift; sourceTree = "<group>"; };
 		2EC6D8131E5C80A80022F70E /* AbsoluteReflectanceFileSelectInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbsoluteReflectanceFileSelectInput.swift; sourceTree = "<group>"; };
 		2EC6D8151E5C86970022F70E /* BaseCalibrationSelectInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCalibrationSelectInput.swift; sourceTree = "<group>"; };
@@ -271,12 +273,12 @@
 		E12547D61E5382050004B2A8 /* ReflectanceSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflectanceSettings.swift; sourceTree = "<group>"; };
 		E12547D81E5382750004B2A8 /* RawSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawSettings.swift; sourceTree = "<group>"; };
 		E12547DA1E5382C40004B2A8 /* RadianceSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadianceSettings.swift; sourceTree = "<group>"; };
-		E12B760A1E54A44A00A4B105 /* MeasurmentSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurmentSettings.swift; sourceTree = "<group>"; };
+		E12B760A1E54A44A00A4B105 /* MeasurmentSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MeasurmentSettings.swift; path = ../MeasurmentSettings.swift; sourceTree = "<group>"; };
 		E12F66D31E4C54DB00B71AA0 /* IndicoAsdFileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicoAsdFileReader.swift; sourceTree = "<group>"; };
 		E13176621E53129B002F0958 /* RadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		E13176661E532179002F0958 /* RadianceSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadianceSettingsViewController.swift; sourceTree = "<group>"; };
 		E13567881E61BB260049DCA7 /* SpectrumCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumCalculator.swift; sourceTree = "<group>"; };
-		E13AC12D1E65693000FE3048 /* BaseModeSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModeSettings.swift; sourceTree = "<group>"; };
+		E13AC12D1E65693000FE3048 /* BaseMeasurementModeSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMeasurementModeSettings.swift; sourceTree = "<group>"; };
 		E13AC12F1E656BC900FE3048 /* BaseSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSettingsViewController.swift; sourceTree = "<group>"; };
 		E1446F021E56DD6100840AF2 /* RawSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawSettingsViewController.swift; sourceTree = "<group>"; };
 		E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -407,25 +409,15 @@
 		2E91F2A41DDB5B76003E277F /* Spectrometer */ = {
 			isa = PBXGroup;
 			children = (
+				2EC505641E6D6B6100E1DCFB /* Models */,
+				2EC505651E6D6B6600E1DCFB /* Views */,
+				2EC505631E6D6B5900E1DCFB /* Controllers */,
 				2EC505601E6D66F700E1DCFB /* ViewStore */,
+				2EC5056C1E6D6D9000E1DCFB /* Service */,
 				2EC505581E6D633B00E1DCFB /* Extensions */,
-				E12547D51E5381D30004B2A8 /* SettingsModels */,
 				2EB822ED1DE0A19000DF732C /* Ressources */,
-				E1C936B31E41D60000EF51BB /* Validation */,
-				E1A40C2C1E409D860019F467 /* FileBrowser */,
-				E18DAE981E375CDB005F6753 /* Measurement */,
-				E14EC2291E2E187B006EBD2F /* Settings */,
-				2EB823261DE0D3ED00DF732C /* ViewComponents */,
-				2EB823231DE0CC0600DF732C /* Aquire */,
-				2EB823071DE0ACD400DF732C /* Connection */,
 				2E91F2A51DDB5B76003E277F /* AppDelegate.swift */,
-				2E91F2A91DDB5B76003E277F /* Main.storyboard */,
-				2E91F2AF1DDB5B76003E277F /* Assets.xcassets */,
-				2E91F2B11DDB5B76003E277F /* LaunchScreen.storyboard */,
 				2E91F2B41DDB5B76003E277F /* Info.plist */,
-				2E91F2AC1DDB5B76003E277F /* Spectrometer.xcdatamodeld */,
-				2E77537E1E432A860081249C /* MeasurmentTableViewCell.xib */,
-				2ECE10C11E5DCB1100B45372 /* FiberOpticFileTableViewCell.xib */,
 			);
 			path = Spectrometer;
 			sourceTree = "<group>";
@@ -578,6 +570,7 @@
 		2EB822ED1DE0A19000DF732C /* Ressources */ = {
 			isa = PBXGroup;
 			children = (
+				2E91F2AF1DDB5B76003E277F /* Assets.xcassets */,
 				2EB822F01DE0A1BC00DF732C /* Fonts */,
 			);
 			name = Ressources;
@@ -609,26 +602,26 @@
 			name = OpenSans;
 			sourceTree = "<group>";
 		};
-		2EB823071DE0ACD400DF732C /* Connection */ = {
+		2EB823071DE0ACD400DF732C /* Connections */ = {
 			isa = PBXGroup;
 			children = (
 				2EB823081DE0AD1900DF732C /* AddEditConnectionViewController.swift */,
 				2E91F2A71DDB5B76003E277F /* ConnectionViewController.swift */,
 				E1F052AC1E49C3AD0084CFBC /* SpectrometerConfigTableViewCell.swift */,
 			);
-			name = Connection;
+			name = Connections;
 			sourceTree = "<group>";
 		};
-		2EB823231DE0CC0600DF732C /* Aquire */ = {
+		2EB823231DE0CC0600DF732C /* Spectrometer */ = {
 			isa = PBXGroup;
 			children = (
-				E1807E621E2F617900BB205F /* Modals */,
-				2EB823241DE0CC2900DF732C /* AquireViewController.swift */,
+				E1807E621E2F617900BB205F /* MeasurementSeries */,
+				2EB823241DE0CC2900DF732C /* SpectrometerViewController.swift */,
 			);
-			name = Aquire;
+			name = Spectrometer;
 			sourceTree = "<group>";
 		};
-		2EB823261DE0D3ED00DF732C /* ViewComponents */ = {
+		2EB823261DE0D3ED00DF732C /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				2E924EE81E66CC4600B9BB42 /* TabBarItems */,
@@ -647,7 +640,7 @@
 				2ECC63471E543B4500C3AACB /* SettingsBox.swift */,
 				2E54E9AA1E620A5B0047565E /* SelectFiberopticViewController.swift */,
 			);
-			name = ViewComponents;
+			name = Components;
 			sourceTree = "<group>";
 		};
 		2EB9463B1E579E4B006C71C8 /* ViewExtensions */ = {
@@ -807,6 +800,81 @@
 			name = ViewStore;
 			sourceTree = "<group>";
 		};
+		2EC505631E6D6B5900E1DCFB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2EB823071DE0ACD400DF732C /* Connections */,
+				2EB823231DE0CC0600DF732C /* Spectrometer */,
+				E18DAE981E375CDB005F6753 /* Measurements */,
+				E14EC2291E2E187B006EBD2F /* Settings */,
+				2EB823261DE0D3ED00DF732C /* Components */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		2EC505641E6D6B6100E1DCFB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2EC505691E6D6C8E00E1DCFB /* Enums */,
+				2EC505671E6D6BC200E1DCFB /* Settings */,
+				2EC505661E6D6BAA00E1DCFB /* CoreData */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		2EC505651E6D6B6600E1DCFB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2E91F2A91DDB5B76003E277F /* Main.storyboard */,
+				2E91F2B11DDB5B76003E277F /* LaunchScreen.storyboard */,
+				2E77537E1E432A860081249C /* MeasurmentTableViewCell.xib */,
+				2ECE10C11E5DCB1100B45372 /* FiberOpticFileTableViewCell.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		2EC505661E6D6BAA00E1DCFB /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				2E91F2AC1DDB5B76003E277F /* Spectrometer.xcdatamodeld */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+		2EC505671E6D6BC200E1DCFB /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E13AC1321E65739C00FE3048 /* MeasurementModeSettings */,
+				E12B760A1E54A44A00A4B105 /* MeasurmentSettings.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		2EC505681E6D6BEF00E1DCFB /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				E13AC12D1E65693000FE3048 /* BaseMeasurementModeSettings.swift */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		2EC505691E6D6C8E00E1DCFB /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				2EC5056A1E6D6CAF00E1DCFB /* AppEnums.swift */,
+			);
+			name = Enums;
+			sourceTree = "<group>";
+		};
+		2EC5056C1E6D6D9000E1DCFB /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				E1C936B31E41D60000EF51BB /* Validation */,
+				E1A40C2C1E409D860019F467 /* FileBrowser */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
 		2EC6D80E1E5C7E4B0022F70E /* Selects */ = {
 			isa = PBXGroup;
 			children = (
@@ -853,16 +921,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E12547D51E5381D30004B2A8 /* SettingsModels */ = {
-			isa = PBXGroup;
-			children = (
-				E13AC1321E65739C00FE3048 /* ModeSettings */,
-				E12B760A1E54A44A00A4B105 /* MeasurmentSettings.swift */,
-			);
-			name = SettingsModels;
-			path = ..;
-			sourceTree = "<group>";
-		};
 		E12F66D11E4C544B00B71AA0 /* SpectrometerParser */ = {
 			isa = PBXGroup;
 			children = (
@@ -882,7 +940,7 @@
 			name = FileReader;
 			sourceTree = "<group>";
 		};
-		E13AC1311E656CC600FE3048 /* SettingsViews */ = {
+		E13AC1311E656CC600FE3048 /* MeasurementSettings */ = {
 			isa = PBXGroup;
 			children = (
 				E13AC12F1E656BC900FE3048 /* BaseSettingsViewController.swift */,
@@ -890,18 +948,19 @@
 				E13176661E532179002F0958 /* RadianceSettingsViewController.swift */,
 				E1446F021E56DD6100840AF2 /* RawSettingsViewController.swift */,
 			);
-			name = SettingsViews;
+			name = MeasurementSettings;
 			sourceTree = "<group>";
 		};
-		E13AC1321E65739C00FE3048 /* ModeSettings */ = {
+		E13AC1321E65739C00FE3048 /* MeasurementModeSettings */ = {
 			isa = PBXGroup;
 			children = (
+				2EC505681E6D6BEF00E1DCFB /* Base */,
 				E12547DA1E5382C40004B2A8 /* RadianceSettings.swift */,
 				E12547D81E5382750004B2A8 /* RawSettings.swift */,
 				E12547D61E5382050004B2A8 /* ReflectanceSettings.swift */,
-				E13AC12D1E65693000FE3048 /* BaseModeSettings.swift */,
 			);
-			name = ModeSettings;
+			name = MeasurementModeSettings;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		E14EC2291E2E187B006EBD2F /* Settings */ = {
@@ -923,20 +982,20 @@
 			name = TestResources;
 			sourceTree = "<group>";
 		};
-		E1807E621E2F617900BB205F /* Modals */ = {
+		E1807E621E2F617900BB205F /* MeasurementSeries */ = {
 			isa = PBXGroup;
 			children = (
-				E13AC1311E656CC600FE3048 /* SettingsViews */,
-				E1BD75ED1E60703100AB92CD /* MesurmentViews */,
-				E1807E631E2F619B00BB205F /* StartTestSeriesViewController.swift */,
+				E13AC1311E656CC600FE3048 /* MeasurementSettings */,
+				E1BD75ED1E60703100AB92CD /* MesurmentAquire */,
 				E1807E671E2F7B2F00BB205F /* ParentViewController.swift */,
-				E1129D321E2FBDC700331A02 /* FinishTestSeriesViewController.swift */,
 				E108F2131E3B8B670097B7EE /* BaseMeasurementModal.swift */,
+				E1807E631E2F619B00BB205F /* StartTestSeriesViewController.swift */,
+				E1129D321E2FBDC700331A02 /* FinishTestSeriesViewController.swift */,
 			);
-			name = Modals;
+			name = MeasurementSeries;
 			sourceTree = "<group>";
 		};
-		E18DAE981E375CDB005F6753 /* Measurement */ = {
+		E18DAE981E375CDB005F6753 /* Measurements */ = {
 			isa = PBXGroup;
 			children = (
 				2E77537C1E4329530081249C /* MeasurmentTableViewCell.swift */,
@@ -944,7 +1003,7 @@
 				E18DAE9E1E375E43005F6753 /* MeasurmentDetailViewController.swift */,
 				2E30A84F1E44A075001236C5 /* DiskFileActivityItem.swift */,
 			);
-			name = Measurement;
+			name = Measurements;
 			sourceTree = "<group>";
 		};
 		E1A40C2C1E409D860019F467 /* FileBrowser */ = {
@@ -978,7 +1037,7 @@
 			name = FileWriter;
 			sourceTree = "<group>";
 		};
-		E1BD75ED1E60703100AB92CD /* MesurmentViews */ = {
+		E1BD75ED1E60703100AB92CD /* MesurmentAquire */ = {
 			isa = PBXGroup;
 			children = (
 				E165E1F61E34B5A20077A5EB /* TargetViewController.swift */,
@@ -986,7 +1045,7 @@
 				E108F21A1E3F367C0097B7EE /* ReflectanceWhiteRefrenceViewController.swift */,
 				E1BD75EE1E60705100AB92CD /* BaseWhiteReferenceViewController.swift */,
 			);
-			name = MesurmentViews;
+			name = MesurmentAquire;
 			sourceTree = "<group>";
 		};
 		E1C936B31E41D60000EF51BB /* Validation */ = {
@@ -1282,7 +1341,7 @@
 				2EB822EC1DE0811D00DF732C /* FullRangeInterpolatedSpectrumParser.swift in Sources */,
 				2E54E9AD1E62316B0047565E /* UIRoundBorderedView.swift in Sources */,
 				2E91F30F1DDB82C7003E277F /* Parameter.swift in Sources */,
-				E13AC12E1E65693000FE3048 /* BaseModeSettings.swift in Sources */,
+				E13AC12E1E65693000FE3048 /* BaseMeasurementModeSettings.swift in Sources */,
 				2E708A231DE61A19008EC78A /* CustomizeExtensions.swift in Sources */,
 				2E3552061E56E5A5001F7EE1 /* TitleSection.swift in Sources */,
 				2EB362961DF1BD4F00E74E39 /* IndicoFile7.swift in Sources */,
@@ -1341,10 +1400,11 @@
 				2EB362A51DF23DDB00E74E39 /* IndicoIniFileReader.swift in Sources */,
 				2E91F2F01DDB5B9F003E277F /* TCPSocket.swift in Sources */,
 				E1F052AD1E49C3AD0084CFBC /* SpectrometerConfigTableViewCell.swift in Sources */,
+				2EC5056B1E6D6CAF00E1DCFB /* AppEnums.swift in Sources */,
 				2E3552091E56FAE4001F7EE1 /* BaseUITextField.swift in Sources */,
 				E1A40C001E3F9B800019F467 /* BaseFileBrowserTableViewController.swift in Sources */,
 				2E91F2ED1DDB5B9F003E277F /* Socket.swift in Sources */,
-				2EB823251DE0CC2900DF732C /* AquireViewController.swift in Sources */,
+				2EB823251DE0CC2900DF732C /* SpectrometerViewController.swift in Sources */,
 				2E91F2E71DDB5B9F003E277F /* Conversions.swift in Sources */,
 				2E91F3001DDB745D003E277F /* SwirHeader.swift in Sources */,
 				2EC505571E6D624900E1DCFB /* ServiceExtensions.swift in Sources */,

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BaseModeSettings : NSObject, NSCoding
+class BaseMeasurementModeSettings : NSObject, NSCoding
 {
     required init(coder decoder: NSCoder) {
         self.targetCount = Int(decoder.decodeInt32(forKey: "targetCount"))

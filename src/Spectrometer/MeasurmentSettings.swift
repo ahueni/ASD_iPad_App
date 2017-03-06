@@ -38,9 +38,3 @@ class MeasurmentSettings : NSObject, NSCoding {
         self.path = path
     }
 }
-
-enum MeasurementMode : Double{
-    case Raw = 65535
-    case Reflectance = 1.25
-    case Radiance = 1
-}

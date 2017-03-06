@@ -9,9 +9,7 @@
 import Foundation
 import UIKit
 
-class SettingsViewController : UITableViewController{
-    
-    var appDelegate = UIApplication.shared.delegate as! AppDelegate
+class InstrumentSettingsViewController : UITableViewController {
     
     @IBOutlet var SampleCountSpectrumValueLabel: UILabel!
     @IBOutlet var SampleCountSpectrumSlider: UISlider!
@@ -27,15 +25,14 @@ class SettingsViewController : UITableViewController{
     }
     
     override func viewDidLoad() {
-        SampleCountSpectrumValueLabel.text = InstrumentStore.sharedInstance.instrumentConfiguration.sampleCount.description
-        SampleCountDarkCurrentValueLabel.text = InstrumentStore.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent.description
-        SampleCountWhiteRefrenceValueLabel.text = InstrumentStore.sharedInstance.instrumentConfiguration.sampleCountWhiteRefrence.description
+        SampleCountSpectrumValueLabel.text = ViewStore.sharedInstance.instrumentConfiguration.sampleCount.description
+        SampleCountDarkCurrentValueLabel.text = ViewStore.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent.description
+        SampleCountWhiteRefrenceValueLabel.text = ViewStore.sharedInstance.instrumentConfiguration.sampleCountWhiteRefrence.description
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        InstrumentStore.sharedInstance.instrumentConfiguration.sampleCount = Int32(SampleCountSpectrumSlider.value)
-        InstrumentStore.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent = Int32(SampleCountDarkCurrentSlider.value)
-        InstrumentStore.sharedInstance.instrumentConfiguration.sampleCountWhiteRefrence = Int32(SampleCountWhiteRefrenceSlider.value)
-        appDelegate.saveContext()
+        ViewStore.sharedInstance.instrumentConfiguration.sampleCount = Int32(SampleCountSpectrumSlider.value)
+        ViewStore.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent = Int32(SampleCountDarkCurrentSlider.value)
+        ViewStore.sharedInstance.instrumentConfiguration.sampleCountWhiteRefrence = Int32(SampleCountWhiteRefrenceSlider.value)
     }
 }

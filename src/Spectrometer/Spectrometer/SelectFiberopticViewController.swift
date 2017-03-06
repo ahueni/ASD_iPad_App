@@ -15,7 +15,7 @@ protocol SelectFiberopticDelegate {
 
 class SelectFiberOpticTableViewController: UITableViewController {
     
-    let foreoptics = InstrumentStore.sharedInstance.instrumentConfiguration.fiberOpticCalibrations?.allObjects as! [CalibrationFile]
+    let foreoptics = ViewStore.sharedInstance.instrumentConfiguration.fiberOpticCalibrations?.allObjects as! [CalibrationFile]
     
     var delegate: SelectFiberopticDelegate!
     

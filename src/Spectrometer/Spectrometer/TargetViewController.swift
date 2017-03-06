@@ -58,7 +58,7 @@ class TargetViewController : BaseMeasurementModal
                 self.updateProgressBar(measurmentCount: i, statusText: "Measure...", totalCount: self.targetPage.targetCount)
                 
                 // Measure
-                let sampleCount = InstrumentStore.sharedInstance.instrumentConfiguration.sampleCount
+                let sampleCount = ViewStore.sharedInstance.instrumentConfiguration.sampleCount
                 var spectrum = CommandManager.sharedInstance.aquire(samples: sampleCount)
                 //DC Correction
                 if(self.targetPage.takeDarkCurrent)
