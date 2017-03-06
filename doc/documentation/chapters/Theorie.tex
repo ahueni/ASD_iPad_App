@@ -1,15 +1,39 @@
-\chapter{Theoretischer Teil}
+\chapter{Theoretischer Teil} \label{theorie}
 
-\section{Einleitung}
+\section{Einleitung} \label{theorieeinleitung}
 
-\section{Messverfahren}
 
-\section{Berechnungsablauf}
+\section{Messverfahren} \label{messverfahren}
+Das Spektrometer misst die Werte immer im gleichen Verfahren. Als Rückgabe vom Gerät wird immer die gleiche Datenstruktur verarbeitet. Diese ist unter genauer beschrieben. Damit später die drei Verfahren angewendet und in Dateien abgespeichert werden können müssen einige Referenz-Werte vorgängig vorhanden sein. Diese Werden zum Teil ebenfalls direkt mit dem Spektrometer erfasst, wie eine White Reference oder Dark Current. Referenz-Werte für die Radiance-Berechnung sprich die Base, Lamp und FiberOptic Datei werden beim Konfigurieren des Spektrometers in die App importiert und abgespeichert.
 
-\section{Berechnungen}
+\subsection{Abspeichern vs. Anzeigen}
+Die berechneten Daten der Reflectance und Radiance werden in der App nur angezeigt aber niemals in eine Datei geschrieben. Die Daten die in den Messdateien abgespeichert werden sind immer Raw Daten. In den Messdateien sind somit alle Daten vorhanden um später wieder eine Reflectance oder Radiance Berechnung durchzuführen.
 
-\subsection{Dark Current}
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[scale=0.35]{images/IndicoFileFormats} 
+	\caption{Berechnungen für Raw, Reflectance und Radiance}
+	\label{fig:MeasurementFiles}
+	\end{center}
+\end{figure}
 
-\subsection{White Reference}
 
-\subsection{Radiance}
+
+\section{Berechnungsablauf} \label{berechnungsablauf}
+Der Berechnungsablauf der drei im App einstellbaren Messverfahren wird am besten in einem Diagramm ersichtlich.
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[scale=0.6]{images/Calculations} 
+	\caption{Berechnungen für Raw, Reflectance und Radiance}
+	\label{fig:Calculations}
+	\end{center}
+\end{figure}
+
+\section{Berechnungen} \label{berechnungen}
+
+\subsection{Dark Current} \label{darkcurrent}
+
+\subsection{White Reference} \label{whitereference}
+
+\subsection{Radiance} \label{radiance}

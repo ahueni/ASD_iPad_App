@@ -2,3 +2,15 @@
 *.xcuserstate
 
 *.xcuserstate
+
+*.aux
+
+*.lof
+
+*.log
+
+*.out
+
+*.gz
+
+*.toc

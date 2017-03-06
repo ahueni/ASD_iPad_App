@@ -49,11 +49,7 @@
 \author{\autorA  \and \AutorB}
 \date{\datum}
 
-\pagestyle{fancy}
-
-\fancyhf{}
-
-\fancypagestyle{plain}{
+\fancypagestyle{main}{
 	
 	\fancyhf{}
 	
@@ -64,24 +60,45 @@
 	\fancyfoot[R]{\titel}
 	
 	\renewcommand{\footrulewidth}{0.5pt}	% Trennlinie Fusszeile
-	\renewcommand{\headrulewidth}{0.5pt} 	% obere Trennlinie
+	\renewcommand{\headrulewidth}{0.5pt} 	% Trennlinie Kopfzeile
+	\renewcommand{\headwidth}{17cm} 		% Breite der Kopf- und Fusszeile
 	
-	\renewcommand{\headwidth}{17cm} 		% Breite der Kopf- und Fusszeile (21cm-2*2cm)
 }
+
+\fancypagestyle{front}{
+	
+	\fancyhf{}
+	
+	\fancyfoot[C]{\thepage}
+	
+	\renewcommand{\headrulewidth}{0pt} % entferne Trennlinie in Kopfzeile
+}
+
+\makeatletter
+  \newcommand\frontpagestyle{\cleardoublepage\pagestyle{front}\let\ps@plain\ps@front}
+  \newcommand\mainpagestyle{\cleardoublepage\pagestyle{main}\let\ps@plain\ps@main}
+\makeatother
+
+\parindent 0pt							% kein Einzug bei 1. Zeile eines paragraphs
+\parskip 10pt							% 10pt Abstand zwischen den einzelnen Absätzen
 
 \begin{document}
 
-\input{layout_oneside}						% Seitenränder, Kopf-/Fusszeilen, usw.
+\frontpagestyle
+\pagenumbering{Roman}
 
 % Titelseite
 \input{chapters/Titelseite}
 
-% Inhaltsverzeichnis
-\tableofcontents
-\listoffigures 								% Abbildungsverzeichnis
+% Inhalts- und Abbildungsverzeichnis
+\input{chapters/Inhalt}
 
 % Abstract
 \input{chapters/Abstract}
+
+\clearpage
+\setcounter{page}{1}
+\mainpagestyle
 \pagenumbering{arabic}
 
 % Ausgangslage und Problemstellung
