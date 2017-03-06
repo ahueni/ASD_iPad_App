@@ -49,14 +49,14 @@ class BaseMeasurementModal : UIViewController
     func writeRawFileAsync(spectrum : FullRangeInterpolatedSpectrum, dataType: DataType)
     {
         DispatchQueue.global().async {
-            FileWriteManager.sharedInstance.addToQueue(spectrums: [spectrum], settings: self.pageContainer!.measurmentSettings, dataType: dataType)
+            FileWriteManager.sharedInstance.addToQueueRaw(spectrums: [spectrum], settings: self.pageContainer!.measurmentSettings)
         }
     }
     
     func writeReflectanceFileAsync(spectrum : FullRangeInterpolatedSpectrum, whiteRefrenceSpectrum: FullRangeInterpolatedSpectrum, dataType: DataType)
     {
         DispatchQueue.global().async {
-            FileWriteManager.sharedInstance.addToQueue(spectrums: [spectrum], whiteRefrenceSpectrum: whiteRefrenceSpectrum, settings: self.pageContainer!.measurmentSettings, dataType: dataType)
+            FileWriteManager.sharedInstance.addToQueueReflectance(spectrums: [spectrum], whiteRefrenceSpectrum: whiteRefrenceSpectrum, settings: self.pageContainer!.measurmentSettings)
         }
     }
     
@@ -70,7 +70,7 @@ class BaseMeasurementModal : UIViewController
             let fileSuffix = isWhiteReference ? "_WR" : ""
             
             DispatchQueue.global().async {
-                FileWriteManager.sharedInstance.addToQueue(spectrums: spectrums, settings: self.pageContainer!.measurmentSettings, dataType: dataType, radianceCalibrationFiles: radianceCalibrationFiles, fileSuffix: fileSuffix)
+                FileWriteManager.sharedInstance.addToQueueRadiance(spectrums: spectrums, radianceCalibrationFiles: radianceCalibrationFiles, settings: self.pageContainer!.measurmentSettings, fileSuffix: fileSuffix)
             }
         }
     }

@@ -5,28 +5,48 @@ Die Nachfolgenden Abschnitte werden Schrittweise detaillierter und beschreiben d
 \section{Einleitung}
 \section{Anforderungen}
 \section{Technologien}
+In diesem Abschnitt wird beschrieben, welche Technologien und Tools eingesetzt wurden, um die iOS Applikation umzusetzen. Es wurde darauf geachtet, dass bewährte und von den Herstellern vorgesehene Technologien verwendet wurden.
 \subsection{Entwicklungsumgebung}
+Das Projekt wurde mit XCode 8.2.1 umgesetzt. Grundsätzlich, kann jede IDE verwendet werden, welche mit Swift kompatibel ist. Um das Projekt builden zu können wird zwingend ein Apple Rechner benötigt.
 \subsection{Programmiersprache}
 Das Projekt wurde in der Programmiersprache Swift 3 umgesetzt und ist mit iOS 10 und höher kompatibel. Es wurde darauf geachtet, dass alle Abhängigkeiten ebenfalls in Swift umgesetzt sind. Dies erleichtert die Weiterentwicklung da kein, für ungeübte Entwickler, meist schwer lesbarer Objective C Code zum Einsatz kommt.
 \subsection{Abhängigkeiten}
+Externe Ressourcen, wurden vorwiegend mit CocoaPods eingebunden. CocoaPods ist ein Packet Manager, mit welchem man Packete in ein bestehendes Projekt einbinden kann. Dies geschieht über ein sogenanntes Podfile, welches zum Projektumfang gehört. Dieses File beschreibt die externen Abhängigkeiten, sowie welche Version benötigt wird.
 
+Folgende Pods wurden für das Projekt verwendet:
+\begin{itemize}
+\item	 pod 'Charts/Realm'
+\item    pod 'Zip'
+\item    pod 'PlainPing'
+\item    pod 'Pulsator'
+\item    pod 'FontAwesome.swift'
+\end{itemize}
+    
+Einzig die TCP Kommunikation wurde mit externem Code gelöst, welcher nicht als Pod verfügbar ist.
 \section{Architektur}
 
 \subsection{Grobarchitektur}
-
-Um weite Teile des Sourcecodes erneut nutzen zu können, wurde das Projekt in zwei Teile aufgeteilt. Der Core beinhaltet den gesamten Code, welcher Systemunabhängig ist.
-
-Der restliche Code befindet sich im Ordner Spektrometer. Dieser ist iOS spezifisch und kann nicht einfach auf andere Plattformen portiert werden.
+Um weite Teile des Sourcecodes erneut nutzen zu können, wurde das Projekt in drei Teile aufgeteilt. Diese 3 Teile werden in den folgenden Abschnitten beschrieben.
 
 \subsection{Core}
+Der Core Ordner fasst den gesamten Code zusammen, welcher Platformunabhängig ist. Dieser Code kann auch in anderen Projekten mit ähnlicher Anwendung benutzt werden.
 \subsection{Service}
+Der Service Layer, kapselt einige Anfragen des App Layers an den Core Teil. Dieser Layer wird oft dazwischen gelegt, um beispielsweise Parallelität zu vermeiden. So wird im Layer beispielsweise ein Synchronized Queue benötigt, um nur ein Request nach dem Anderen an ein Spektrometer zu senden.
 \subsection{iOS App}
+Dieser Layer beinhaltet die eigentliche iOS App mit all Ihren typischen Eigenschaften, wie das AppDelegate und die Storyboards. In diesem Ordner werden alle Views sowie deren Controller gespeichert.
 
 \section{Core}
 \subsection{Connection}
-\subsection{Input/Output}
+In diesem Ordner, befindet sich die TCPManager Klasse sowie die externen Socks Dateien. Das Socks Framework kümmert sich um die Kommunikation auf TCP Ebene. Eine ausführliche Dokumentation ist unter folgendem Link zu finden: 
+\newline
+https://github.com/vapor/socks
+\newline
+Der TCP Manager ist für die Anfragen des Gerätes verantwortlich. Es ist die einzige Klasse, welche direkt mit dem Spektrometer kommuniziert. Er ist deshalb auch als Singleton umgesetzt. Mit der connect Funktion, kann eine Verbindung zum ASD Gerät hergestellt werden, danach können beliebig viele Kommandos mit sendCommand gesendet werden. Um die Verbindung zu schliessen, muss lediglich die disconnect Methode aufgerufen werden.
 
+\subsection{Input/Output}
+In diesem Kapitel, werden alle Klassen beschrieben, welche direkt Daten einlesen oder Ausgeben.
 \subsubsection{File Writer}
+Die Output Klassen, dienen dazu ein Indico File zu schreiben. Die Base Klasse kapselt dafür alle Schreibvorgänge. Von der Klasse File Writer, wird auf diese Methoden zugegriffen und stösst so das Schreiben in der Richtigen Reihenfolge an.
 \subsubsection{File Reader}
 \subsubsection{Spectrometer Parser}
 

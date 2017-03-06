@@ -1354,11 +1354,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IndicoWriter.swift"
-            timestampString = "510075855.643689"
+            timestampString = "510506207.015866"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
             landmarkName = "innerWriteBasic(spectrum:dataType:whiteRefrenceSpectrum:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1471,14 +1471,14 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"
             endingLineNumber = "54"
-            landmarkName = "writeFileAsync(spectrums:isWhiteReference:)"
+            landmarkName = "writeRawFileAsync(spectrum:dataType:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Spectrometer/MeasurmentDetailViewController.swift"

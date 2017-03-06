@@ -42,7 +42,7 @@ class TcpManager {
         
     }
     
-    func close() -> Void {
+    func disconnect() -> Void {
         connectState = false
         do {
             try client?.close()

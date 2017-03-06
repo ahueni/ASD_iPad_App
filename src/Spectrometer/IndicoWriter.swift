@@ -22,25 +22,33 @@ class RadianceCalibrationFiles{
 
 class IndicoWriter : BaseWriter {
     
-    // write basic file without calibration (Raw and Ref only)
-    func write(spectrum : FullRangeInterpolatedSpectrum, dataType : DataType, whiteRefrenceSpectrum : FullRangeInterpolatedSpectrum?, radianceCalibrationFiles : RadianceCalibrationFiles?){
-        
+    func writeRaw(spectrum : FullRangeInterpolatedSpectrum){
         // write all basic file values
-        innerWriteBasic(spectrum : spectrum, dataType: dataType, whiteRefrenceSpectrum : whiteRefrenceSpectrum)
-        
-        // decide if spectrum is in radiance mode
-        if(radianceCalibrationFiles == nil)
-        {
-            // Calibration Header Count
-            writeByte(number: 0)
-        }
-        else
-        {
-            innerWriteCalibration(radianceCalibrationFiles: radianceCalibrationFiles!)
-            fileHandle.closeFile()
-        }
+        innerWriteBasic(spectrum: spectrum, dataType: DataType.RawType)
+
+        // Calibration Header Count
+        writeByte(number: 0)
         fileHandle.closeFile()
     }
+    
+    func writeReflectance(spectrum : FullRangeInterpolatedSpectrum, whiteRefrenceSpectrum : FullRangeInterpolatedSpectrum?){
+        // write all basic file values with WhiteReference
+        innerWriteBasic(spectrum: spectrum, dataType: DataType.RefType, whiteRefrenceSpectrum: whiteRefrenceSpectrum)
+        
+        // Calibration Header Count
+        writeByte(number: 0)
+        fileHandle.closeFile()
+    }
+    
+    func writeRadiance(spectrum : FullRangeInterpolatedSpectrum, radianceCalibrationFiles : RadianceCalibrationFiles?){
+        // write all basic file values
+        innerWriteBasic(spectrum: spectrum, dataType: DataType.RadType)
+        
+        // write calibration files
+        innerWriteCalibration(radianceCalibrationFiles: radianceCalibrationFiles!)
+        fileHandle.closeFile()
+    }
+
     
     internal func innerWriteBasic(spectrum : FullRangeInterpolatedSpectrum, dataType : DataType, whiteRefrenceSpectrum : FullRangeInterpolatedSpectrum? = nil){
         

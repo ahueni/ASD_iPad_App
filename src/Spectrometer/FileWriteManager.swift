@@ -16,19 +16,48 @@ class FileWriteManager{
     static let sharedInstance = FileWriteManager()
     private init() { }
     
-    func addToQueue(spectrums : [FullRangeInterpolatedSpectrum], whiteRefrenceSpectrum: FullRangeInterpolatedSpectrum? = nil, settings: MeasurmentSettings, dataType : DataType, radianceCalibrationFiles: RadianceCalibrationFiles? = nil, fileSuffix :String = "")
+    func addToQueueRaw(spectrums : [FullRangeInterpolatedSpectrum], settings: MeasurmentSettings)
     {
         serialQueue.sync {
             for spectrum in spectrums
             {
-                let index = getHighestIndex(filePath: settings.path) + 1
-                let fileName = String(format: "%05d_", index) + settings.fileName + fileSuffix + ".asd"
-                print(fileName + " queued")
-                let relativeFilePath = settings.path.appendingPathComponent(fileName).relativePath
+                let relativeFilePath = createNewFilePath(settings: settings)
                 let fileWriter = IndicoWriter(path: relativeFilePath)
-                fileWriter.write(spectrum: spectrum, dataType: dataType, whiteRefrenceSpectrum: whiteRefrenceSpectrum, radianceCalibrationFiles: radianceCalibrationFiles)
+                fileWriter.writeRaw(spectrum: spectrum)
             }
         }
+    }
+    
+    func addToQueueReflectance(spectrums : [FullRangeInterpolatedSpectrum], whiteRefrenceSpectrum: FullRangeInterpolatedSpectrum, settings: MeasurmentSettings)
+    {
+        serialQueue.sync {
+            for spectrum in spectrums
+            {
+                let relativeFilePath = createNewFilePath(settings: settings)
+                let fileWriter = IndicoWriter(path: relativeFilePath)
+                fileWriter.writeReflectance(spectrum: spectrum, whiteRefrenceSpectrum: whiteRefrenceSpectrum)
+            }
+        }
+    }
+    
+    func addToQueueRadiance(spectrums : [FullRangeInterpolatedSpectrum], radianceCalibrationFiles: RadianceCalibrationFiles? = nil, settings: MeasurmentSettings, fileSuffix :String = "")
+    {
+        serialQueue.sync {
+            for spectrum in spectrums
+            {
+                let relativeFilePath = createNewFilePath(settings: settings, fileSuffix: fileSuffix)
+                let fileWriter = IndicoWriter(path: relativeFilePath)
+                fileWriter.writeRadiance(spectrum: spectrum, radianceCalibrationFiles: radianceCalibrationFiles)
+            }
+        }
+    }
+    
+    func createNewFilePath(settings: MeasurmentSettings, fileSuffix :String = "") -> String{
+        let index = getHighestIndex(filePath: settings.path) + 1
+        let fileName = String(format: "%05d_", index) + settings.fileName + fileSuffix + ".asd"
+        print(fileName + " queued")
+        let relativeFilePath = settings.path.appendingPathComponent(fileName).relativePath
+        return relativeFilePath
     }
     
     func addFinishWritingCallBack(callBack: ()->Void){

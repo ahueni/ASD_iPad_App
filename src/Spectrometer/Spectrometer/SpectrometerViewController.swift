@@ -237,7 +237,7 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate {
             if (self.disconnectWhenFinished) {
                 
                 // close connection
-                TcpManager.sharedInstance.close()
+                TcpManager.sharedInstance.disconnect()
                 
                 // redirect to SpectrometerConfig view
                 let initialViewController = self.storyboard?.instantiateViewController(withIdentifier: "SpectrometerConfig") as! UITabBarController
