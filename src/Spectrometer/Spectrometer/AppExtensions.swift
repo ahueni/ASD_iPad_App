@@ -21,14 +21,12 @@ extension UIColor {
 
 extension Array where Element : FloatingPoint {
     func getChartData(lineColor: UIColor = UIColor.black, lineWidth: CGFloat = 2) -> LineChartDataSet {
-        
         var values: [ChartDataEntry] = []
         
         // is there a way to have this from file or spectrometer
         let startingWaveLength = 350
         
         for i in 0...self.count-1 {
-            
             // read starting wavelength and count it to actual index of x-chart entry
             if let value = self[i] as? Float {
                 let chartEntry = ChartDataEntry(x: Double(i + startingWaveLength), y: Double(value))
@@ -40,7 +38,12 @@ extension Array where Element : FloatingPoint {
                 values.append(chartEntry)
             }
         }
-        
         return SpectrumLineChartDataSet(values: values, color: lineColor, lineWidth: lineWidth)
-        
-    }}
+    }
+}
+
+extension URL {
+    func getDisplayPathFromRoot(rootPath: URL) -> String {
+        return self.pathComponents[rootPath.pathComponents.count-1...(self.pathComponents.count)-1].joined(separator: "/")
+    }
+}

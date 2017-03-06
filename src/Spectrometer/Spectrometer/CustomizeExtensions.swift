@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 extension UIFont {
-    
     class func defaultFontRegular(size : CGFloat) -> UIFont {
         return UIFont(name: "Open Sans", size: size)!
     }
@@ -18,30 +17,9 @@ extension UIFont {
     class func defaultFontBold(size : CGFloat) -> UIFont {
         return UIFont(name: "OpenSans-Bold", size: size)!
     }
-    
 }
-
-class MyUITextView : UITextView {
-    
-    override func becomeFirstResponder() -> Bool {
-        
-        print("Test")
-        return true
-        
-    }
-    
-    
-}
-
-extension Notification.Name {
-    static let reloadSpectrometerConfig = Notification.Name("reloadSpectrometerConfig")
-    static let darkCurrentTimer = Notification.Name("darkCurrentTimer")
-    static let whiteReferenceTimer = Notification.Name("whiteReferenceTimer")
-}
-
 
 extension UIViewController {
-    
     func showWarningMessage(title: String, message: String) -> Void {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
@@ -53,5 +31,31 @@ extension UIViewController {
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
         return alert
     }
-    
+}
+
+extension CALayer {
+    func addBorder(edge: UIRectEdge, color: UIColor, thickness: CGFloat) {
+        let border = CALayer()
+        
+        switch edge {
+        case UIRectEdge.top:
+            border.frame = CGRect.init(x: 0, y: 0, width: frame.width, height: thickness)
+            break
+        case UIRectEdge.bottom:
+            border.frame = CGRect.init(x: 0, y: frame.height - thickness, width: frame.width, height: thickness)
+            break
+        case UIRectEdge.left:
+            border.frame = CGRect.init(x: 0, y: 0, width: thickness, height: frame.height)
+            break
+        case UIRectEdge.right:
+            border.frame = CGRect.init(x: frame.width - thickness, y: 0, width: thickness, height: frame.height)
+            break
+        default:
+            break
+        }
+        
+        border.backgroundColor = color.cgColor;
+        
+        self.addSublayer(border)
+    }
 }

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.20)  6 MAR 2017 09:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.20)  6 MAR 2017 13:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -473,7 +473,7 @@ LaTeX Info: Redefining \nameref on input line 72.
 \openout3 = `Dokumentation.out'.
 
 \c@lstlisting=\count120
- (./layout_oneside.tex) (./chapters/Titelseite.tex <images/fhnw_logo.pdf, id=160, 184.69pt x 29.10875pt>
+ (./layout_oneside.tex) (./chapters/Titelseite.tex <images/fhnw_logo.pdf, id=172, 184.69pt x 29.10875pt>
 File: images/fhnw_logo.pdf Graphic file (type pdf)
  <use images/fhnw_logo.pdf>
 Package pdftex.def Info: images/fhnw_logo.pdf used on input line 17.
@@ -493,19 +493,19 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 2.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 2.
-)
+ [2
+
+])
 \tf@toc=\write4
 \openout4 = `Dokumentation.toc'.
 
- [2
-
-] (/Daten/Spektrometer/portableSpectrometer/doc/documentation/.texpadtmp/Dokumentation.lof)
+ [3] (/Daten/Spektrometer/portableSpectrometer/doc/documentation/.texpadtmp/Dokumentation.lof)
 \tf@lof=\write5
 \openout5 = `Dokumentation.lof'.
 
- (./chapters/Abstract.tex [3
+ (./chapters/Abstract.tex [4
 
-] [4
+] [5
 
 
 ]) (./chapters/Ausgangslage.tex
@@ -525,7 +525,7 @@ Class scrreprt Warning: \float@addtolists detected!
 (scrreprt)              a package that still implements the
 (scrreprt)              deprecated \float@addtolist interface .
 
-) (./chapters/Benutzung.texpdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+) (./chapters/Theorie.texpdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.1 \chapter
@@ -544,38 +544,42 @@ chapter 3.
 pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.38 
+l.48 
       [3
 
 ]pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.54 \section
-             {Gespeicherte Daten} [4]) 
+l.57 \subsection
+                {Components} [4]) (./chapters/Testing.tex) (./chapters/Fazit.tex) (./chapters/Ehrlichkeitserklaerung.tex) (./chapters/Glossar.tex) (./chapters/Quellen.tex) 
 AED: lastpage setting LastPage
-[5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 96.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 96.
+pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.106 \end{document}
+                     [5]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 106.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 106.
  (/Daten/Spektrometer/portableSpectrometer/doc/documentation/.texpadtmp/Dokumentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 96.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 96.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 106.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 106.
 Package rerunfilecheck Info: File `Dokumentation.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 96.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 106.
  ) 
 Here is how much of TeX's memory you used:
- 10327 strings out of 493014
- 162734 string characters out of 6133350
- 352096 words of memory out of 5000000
- 13637 multiletter control sequences out of 15000+600000
+ 10368 strings out of 493014
+ 163594 string characters out of 6133350
+ 353098 words of memory out of 5000000
+ 13655 multiletter control sequences out of 15000+600000
  33777 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,11n,66p,8492b,434s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,11n,66p,8492b,490s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb>
-Output written on /Daten/Spektrometer/portableSpectrometer/doc/documentation/.texpadtmp/Dokumentation.pdf (9 pages, 86924 bytes).
+Output written on /Daten/Spektrometer/portableSpectrometer/doc/documentation/.texpadtmp/Dokumentation.pdf (10 pages, 86980 bytes).
 PDF statistics:
- 279 PDF objects out of 1000 (max. 8388607)
- 260 compressed objects within 3 object streams
- 48 named destinations out of 1000 (max. 500000)
- 318 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 304 PDF objects out of 1000 (max. 8388607)
+ 284 compressed objects within 3 object streams
+ 56 named destinations out of 1000 (max. 500000)
+ 342 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -15,39 +15,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        // get regular font
+        let regularFontAttributes = [NSFontAttributeName:UIFont.defaultFontRegular(size: 15)]
         
-        let appearance = UITabBarItem.appearance()
-        let attributes = [NSFontAttributeName:UIFont(name: "OpenSans", size: 15)!]
-        let attributesTabBarButton = [NSFontAttributeName:UIFont(name: "OpenSans", size: 15)!]
-        
-        appearance.setTitleTextAttributes(attributes, for: .normal)
-        
-        UISearchBar.appearance().placeholder = "Search"
-        
-        let asdfasd = UILabel.appearance(whenContainedInInstancesOf: [UISearchBar.self])
-        asdfasd.font = UIFont(name: "Open Sans", size: 13)
-        
-        let cancelButtonText = UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self])
-        cancelButtonText.title = "Close"
-        
-        UIBarButtonItem.appearance().setTitleTextAttributes(attributes, for: UIControlState.normal)
-        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).setTitleTextAttributes(attributesTabBarButton, for: .normal)
-        
-        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UIToolbar.self]).setTitleTextAttributes(attributesTabBarButton, for: UIControlState.normal)
-        
-        let blubb = UINavigationBar.appearance()
-        blubb.titleTextAttributes = attributes
-        
+        // customize ui tab and navigationbars with custom font
+        UITabBarItem.appearance().setTitleTextAttributes(regularFontAttributes, for: .normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes(regularFontAttributes, for: UIControlState.normal)
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).setTitleTextAttributes(regularFontAttributes, for: .normal)
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UIToolbar.self]).setTitleTextAttributes(regularFontAttributes, for: UIControlState.normal)
+        UINavigationBar.appearance().titleTextAttributes = regularFontAttributes
         
         // check if Measurements root folder is available otherwise create it
         let measurementRoot = InstrumentStore.sharedInstance.measurementsRoot
         if (!measurementRoot.isDirectory()) {
             do {
                 try FileManager.default.createDirectory(at: measurementRoot, withIntermediateDirectories: false, attributes: nil)
-            } catch { /* do nothing */ }
+            } catch {
+                fatalError("could not create measurement root")
+            }
         }
         print("Measurement folder: " + measurementRoot.path)
-        
         
         // Override point for customization after application launch.
         return true

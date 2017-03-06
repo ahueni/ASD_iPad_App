@@ -26,8 +26,6 @@ class BaseSelectInput: UIView, BaseValidationControl {
     var isValid: Bool {
         get {
             if let path = selectedPath {
-                print("Validate: " + path.absoluteString)
-                print("Result: " + path.exists().description)
                 return path.exists()
             }
             return false
@@ -129,11 +127,11 @@ class BaseSelectInput: UIView, BaseValidationControl {
         layer.borderWidth = borderWidth
         layer.borderColor = borderColor.cgColor
         layer.cornerRadius = cornerRadius
+        layer.masksToBounds = true
         
         // style LeftBackgroundView
         leftBackgroundView.frame = CGRect(x: 0, y: 0, width: self.frame.height, height: self.frame.height)
         leftBackgroundView.backgroundColor = iconBackgroundColor
-        leftBackgroundView.round(corners: [.topLeft, .bottomLeft], radius: cornerRadius)
         leftBackgroundView.bringSubview(toFront: leftImageView)
         
         // style ImageView

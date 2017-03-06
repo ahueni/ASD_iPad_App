@@ -10,19 +10,6 @@ import Foundation
 
 class Regex {
     
-    static func matches(for regex: String, in text: String) -> Bool {
-        
-        do {
-            let regex = try NSRegularExpression(pattern: regex)
-            let nsString = text as NSString
-            let results = regex.matches(in: text, range: NSRange(location: 0, length: nsString.length))
-            return results.count == 1
-        } catch let error {
-            print("invalid regex: \(error.localizedDescription)")
-            return false
-        }
-    }
-    
     static func valideIp(ip: String?) -> Bool {
         if (ip == nil) { return false }
         do {
