@@ -1,7 +1,7 @@
 %Hauptdokumentation der Lösung
 \NeedsTeXFormat{LaTeX2e}
 
-\documentclass[a4paper,oneside,abstract]{scrreprt}
+\documentclass[a4paper,oneside,abstract,listof=numbered]{scrreprt}
 
 \usepackage[left=2cm,right=2cm,top=1cm,bottom=2cm,includeheadfoot]{geometry}
 
@@ -17,10 +17,12 @@
 \usepackage{array}					% f\"ur Tabellen (tabular Umgebung)
 \usepackage{listings}				% Quellcodeausgabe
 \usepackage{supertabular}			% f\"ur Tabellen \"uber mehrere Seiten
+\usepackage{mathtools}				% Matematische Formeln
 \usepackage{verbatim}	
 \usepackage[applemac]{inputenc}
 \usepackage{cite}
 \usepackage{color}					% für Farben
+\usepackage[nonumberlist,toc,numberedsection]{glossaries}
 
 % definition für Farben
 \definecolor{LinkColor}{rgb}{0,0,0.5}
@@ -79,8 +81,14 @@
   \newcommand\mainpagestyle{\cleardoublepage\pagestyle{main}\let\ps@plain\ps@main}
 \makeatother
 
-\parindent 0pt							% kein Einzug bei 1. Zeile eines paragraphs
-\parskip 10pt							% 10pt Abstand zwischen den einzelnen Absätzen
+\makeglossaries
+\loadglsentries{chapters/Glossar}
+
+\parindent 0pt			% kein Einzug bei 1. Zeile eines paragraphs
+\parskip 10pt			% 10pt Abstand zwischen den einzelnen Absätzen
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
 
 \begin{document}
 
@@ -110,14 +118,23 @@
 % Umsetzung
 \input{chapters/Umsetzung}
 
+% Testing
 \input{chapters/Testing}
 
+% Fazit
 \input{chapters/Fazit}
 
+% Ehrlichkeitserklärung
 \input{chapters/Ehrlichkeitserklaerung}
 
-\input{chapters/Glossar}
+% Abbildungsverzeichnis
+\listoffigures
 
+% Glossar
+\printglossaries
+\glsaddall
+
+% Quellenverzeichnis
 \input{chapters/Quellen}
 
 \end{document}

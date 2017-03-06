@@ -1,26 +1,24 @@
 \chapter{Theoretischer Teil} \label{theorie}
 
 \section{Einleitung} \label{theorieeinleitung}
-
+Ein Spektrum besteht aus 2051 Zahlenwerten. Im Fall der FieldSpec 3 und 4 Spektrometer wird dieses Spektrum noch in drei Teile unterteilt. \gls{vnir}, \gls{swir1} und \gls{swir2}.
 
 \section{Messverfahren} \label{messverfahren}
 Das Spektrometer misst die Werte immer im gleichen Verfahren. Als Rückgabe vom Gerät wird immer die gleiche Datenstruktur verarbeitet. Diese ist unter genauer beschrieben. Damit später die drei Verfahren angewendet und in Dateien abgespeichert werden können müssen einige Referenz-Werte vorgängig vorhanden sein. Diese Werden zum Teil ebenfalls direkt mit dem Spektrometer erfasst, wie eine White Reference oder Dark Current. Referenz-Werte für die Radiance-Berechnung sprich die Base, Lamp und FiberOptic Datei werden beim Konfigurieren des Spektrometers in die App importiert und abgespeichert.
 
 \subsection{Abspeichern vs. Anzeigen}
-Die berechneten Daten der Reflectance und Radiance werden in der App nur angezeigt aber niemals in eine Datei geschrieben. Die Daten die in den Messdateien abgespeichert werden sind immer Raw Daten. In den Messdateien sind somit alle Daten vorhanden um später wieder eine Reflectance oder Radiance Berechnung durchzuführen.
+Die berechneten Daten der Reflectance und Radiance werden in der App \textbf{nur} angezeigt aber niemals in eine Datei geschrieben. Die Daten die in den Messdateien abgespeichert werden sind immer Raw Daten. In den Messdateien sind somit alle Daten vorhanden um später wieder eine Reflectance oder Radiance Berechnung durchzuführen.
 
 \begin{figure}[h]
 	\begin{center}
 		\includegraphics[scale=0.35]{images/IndicoFileFormats} 
-	\caption{Berechnungen für Raw, Reflectance und Radiance}
+	\caption{Inhalt der Messdateien}
 	\label{fig:MeasurementFiles}
 	\end{center}
 \end{figure}
 
-
-
 \section{Berechnungsablauf} \label{berechnungsablauf}
-Der Berechnungsablauf der drei im App einstellbaren Messverfahren wird am besten in einem Diagramm ersichtlich.
+Im unterstehenden Diagramm wird der Messablauf grafisch dargestellt. An der blauen Linie ist zu erkennen, dass wiederum nur \gls{dndccorr} und \gls{dnwrdccorr} in die Messdateien geschrieben wird. Die berechneten Werte von Reflectance und Radiance werden nur für die Diagramm-Anzeige im App verwendet. Auf die genauen Berechnungen wird im nächsten Kapitel genauer hingewiesen.
 
 \begin{figure}[h]
 	\begin{center}
@@ -33,6 +31,19 @@ Der Berechnungsablauf der drei im App einstellbaren Messverfahren wird am besten
 \section{Berechnungen} \label{berechnungen}
 
 \subsection{Dark Current} \label{darkcurrent}
+Als Dark Current wird das Spektrum bezeichnet, das gemessen wurde, nachdem dem Spektrometer komplett das Licht genommen wurde. Dies erreicht man auf unterschiedliche Weise. Eine Möglichkeit ist das Kappen der Faser oder das schliessen des mechanischen Shutter. Es gibt bei neueren Geräten eine weitere Möglichkeit die Dark Correction mit einer im voraus geladenen Konfigurationsdatei auszuführen. Im aktuellen Projekt wird nur die Variante mit dem mechanischen Shutter unterstützt.
+
+Die Berechnung wird nur auf den \gls{vnir} Bereich des Spektrums angewendet.
+
+$\forall i \in \{ 0, ... , n \} DC\textsubscript{s}(i) = Ts(i) - Ds(i) + (V\textsubscript{DarkCurrentCorrection} + (T\textsubscript{drift} - D\textsubscript{drift}))$
+
+$n=$ size of the VNIR spectrum \newline
+$DCs=$ dark corrected spectrum \newline
+$Ts=$ current measured spectrum \newline
+$Ds=$ dark measured spectrum \newline
+$VDarkCurrentCorrection=$ dark current correction constant\footnote[1]{Dieser Wert wird beim Verbindungsaufbau mit dem Spektrometer ausgelesen und im App zwischengespeichert.} \newline
+$Tdrift=$ current measured drift value \newline
+$Ddrift=$ dark measured drift value \newline
 
 \subsection{White Reference} \label{whitereference}
 
