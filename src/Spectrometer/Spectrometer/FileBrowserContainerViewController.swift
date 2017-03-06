@@ -19,7 +19,7 @@ class FileBrowserContainerViewController : UIViewController {
     var selectedPath:URL
     
     required init?(coder aDecoder: NSCoder) {
-        selectedPath = InstrumentSettingsCache.sharedInstance.inboxRoot
+        selectedPath = InstrumentStore.sharedInstance.inboxRoot
         super.init(coder: aDecoder)
     }
     

@@ -15,17 +15,9 @@ protocol ISpectrumParser {
     
 }
 
-extension Sequence {
+class BaseSpectrumInput {
     
-    func get(index: Int) {
-        
-    }
-    
-}
-
-class BaseSpectrumParser {
-    
-    var spectralFile : SpectralFileBase
+    var spectralFile : IndicoFileBase
     
     internal let data: [UInt8]
     internal var parseIndex: Int
@@ -33,7 +25,7 @@ class BaseSpectrumParser {
     init(data: [UInt8]) {
         self.data = data
         parseIndex = 0
-        spectralFile = SpectralFileBase()
+        spectralFile = IndicoFileBase()
     }
     
     internal func getNextBool() -> Bool {

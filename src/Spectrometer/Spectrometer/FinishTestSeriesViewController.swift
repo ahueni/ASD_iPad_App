@@ -28,12 +28,12 @@ class FinishTestSeriesViewController : BaseMeasurementModal {
     override func viewDidLoad() {
         super.viewDidLoad()
         checkMarkImage.alpha = 0
-        InstrumentSettingsCache.sharedInstance.cancelMeasurment = true
+        ViewStore.sharedInstance.cancelMeasurment = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        BackgroundFileWriteManager.sharedInstance.addFinishWritingCallBack(callBack: finishedSaving)
+        FileWriteManager.sharedInstance.addFinishWritingCallBack(callBack: finishedSaving)
     }
     
     func finishedSaving() -> Void {

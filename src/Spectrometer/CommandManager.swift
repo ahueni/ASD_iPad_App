@@ -59,7 +59,7 @@ class CommandManager {
             // optimize is not needed here
             //internOptimize()
             closeShutter()
-            InstrumentSettingsCache.sharedInstance.darkCurrent = internalAquire(samples: sampleCount)
+            InstrumentStore.sharedInstance.darkCurrent = internalAquire(samples: sampleCount)
             openShutter()
         }
         
@@ -79,16 +79,16 @@ class CommandManager {
             
             let vinirDarkCurrentCorrection = initialize(valueName: "VDarkCurrentCorrection")
             
-            InstrumentSettingsCache.sharedInstance.startingWaveLength = Int(startingWavelength.value)
-            InstrumentSettingsCache.sharedInstance.endingWaveLength = Int(endingWavelength.value)
-            InstrumentSettingsCache.sharedInstance.vinirStartingWavelength = Int(vinirStartingWavelength.value)
-            InstrumentSettingsCache.sharedInstance.vinirEndingWavelength = Int(vinirEndingWavelength.value)
-            InstrumentSettingsCache.sharedInstance.s1StartingWavelength = Int(s1StartingWavelength.value)
-            InstrumentSettingsCache.sharedInstance.s1EndingWavelength = Int(s1EndingWavelength.value)
-            InstrumentSettingsCache.sharedInstance.s2StartingWavelength = Int(s2StartingWavelength.value)
-            InstrumentSettingsCache.sharedInstance.s2EndingWavelength = Int(s2EndingWavelength.value)
+            InstrumentStore.sharedInstance.startingWaveLength = Int(startingWavelength.value)
+            InstrumentStore.sharedInstance.endingWaveLength = Int(endingWavelength.value)
+            InstrumentStore.sharedInstance.vinirStartingWavelength = Int(vinirStartingWavelength.value)
+            InstrumentStore.sharedInstance.vinirEndingWavelength = Int(vinirEndingWavelength.value)
+            InstrumentStore.sharedInstance.s1StartingWavelength = Int(s1StartingWavelength.value)
+            InstrumentStore.sharedInstance.s1EndingWavelength = Int(s1EndingWavelength.value)
+            InstrumentStore.sharedInstance.s2StartingWavelength = Int(s2StartingWavelength.value)
+            InstrumentStore.sharedInstance.s2EndingWavelength = Int(s2EndingWavelength.value)
             
-            InstrumentSettingsCache.sharedInstance.vinirDarkCurrentCorrection = vinirDarkCurrentCorrection.value
+            InstrumentStore.sharedInstance.vinirDarkCurrentCorrection = vinirDarkCurrentCorrection.value
         }
     }
     

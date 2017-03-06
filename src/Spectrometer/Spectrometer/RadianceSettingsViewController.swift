@@ -46,13 +46,13 @@ class RadianceSettingsViewController : BaseSettingsViewController, SelectFiberop
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nextButton.isEnabled = InstrumentSettingsCache.sharedInstance.darkCurrent != nil
-        let title = InstrumentSettingsCache.sharedInstance.selectedForeOptic?.name
+        nextButton.isEnabled = InstrumentStore.sharedInstance.darkCurrent != nil
+        let title = InstrumentStore.sharedInstance.selectedForeOptic?.name
         foreopticButton.setTitle(title, for: .normal)
     }
     
     internal func didSelectFiberoptic(fiberoptic: CalibrationFile) {
-        InstrumentSettingsCache.sharedInstance.selectedForeOptic = fiberoptic
+        InstrumentStore.sharedInstance.selectedForeOptic = fiberoptic
         foreopticButton.setTitle(fiberoptic.name, for: .normal)
     }
     

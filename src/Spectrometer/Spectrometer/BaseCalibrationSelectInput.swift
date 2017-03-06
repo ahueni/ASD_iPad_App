@@ -25,7 +25,7 @@ class BaseCalibrationFileSelectInput: BaseSelectInput {
     // in edit mode it's not nescessary to select a file only if the user wants to override it
     var isInEditMode: Bool = false
     
-    var calibrationFile: SpectralFileBase?
+    var calibrationFile: IndicoFileBase?
     
     override func layoutSubviews() {
         super.layoutSubviews()

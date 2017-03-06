@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         // check if Measurements root folder is available otherwise create it
-        let measurementRoot = InstrumentSettingsCache.sharedInstance.measurementsRoot
+        let measurementRoot = InstrumentStore.sharedInstance.measurementsRoot
         if (!measurementRoot.isDirectory()) {
             do {
                 try FileManager.default.createDirectory(at: measurementRoot, withIntermediateDirectories: false, attributes: nil)

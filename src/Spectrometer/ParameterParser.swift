@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ParameterParser: BaseSpectrumParser {
+class ParameterParser: BaseSpectrumInput {
     
     func parse() -> Parameter {
         

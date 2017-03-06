@@ -7,7 +7,3 @@
 //
 
 import Foundation
-
-enum SpectrometerErrors : Error{
-    case noDarkCurrentFound
-}

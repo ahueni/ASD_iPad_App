@@ -21,7 +21,7 @@ class MeasurmentMasterTableViewController: BaseFileBrowserTableViewController {
         
         // initialize start folder
         print("-- INSTANTIATE MEASUREMENT TABLE VIEW CONTROLLER --")
-        let initFolder = InstrumentSettingsCache.sharedInstance.measurementsRoot
+        let initFolder = InstrumentStore.sharedInstance.measurementsRoot
         self.initializeTableData(startFolder: initFolder)
         
     }
@@ -58,7 +58,7 @@ class MeasurmentMasterTableViewController: BaseFileBrowserTableViewController {
         
         cell.titelLabel.text = selectedFile.displayName
         
-        cell.pathLabel.text = selectedFile.filePath.getDisplayPathFromRoot(rootPath: InstrumentSettingsCache.sharedInstance.measurementsRoot)
+        cell.pathLabel.text = selectedFile.filePath.getDisplayPathFromRoot(rootPath: InstrumentStore.sharedInstance.measurementsRoot)
 
         let newImageSize = CGSize(width: 40, height: 40)
         let ceruleanColor = UIColor(red:0.00, green:0.61, blue:0.92, alpha:1.00)

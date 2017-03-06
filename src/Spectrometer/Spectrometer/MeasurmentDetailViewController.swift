@@ -18,13 +18,13 @@ class MeasurmentDetailViewController: UIViewController {
     @IBOutlet var MeasurementLineChart: SpectrumLineChartView!
     
     var url : URL? = nil
-    var spectralFile : SpectralFileV8!
+    var spectralFile : IndicoFile7!
     
     @IBAction func rawButtonClicked(_ sender: UIButton) {
         self.MeasurementLineChart.setAxisValues(min: 0, max: MeasurementMode.Raw.rawValue)
         let chartDataSet = spectralFile.spectrum.getChartData()
         self.MeasurementLineChart.data = LineChartData(dataSet: chartDataSet)
-        InstrumentSettingsCache.sharedInstance.lastViewMode = .Raw
+        ViewStore.sharedInstance.lastViewMode = .Raw
     }
     
     @IBAction func reflectanceButtonClicked(_ sender: UIButton) {
@@ -32,7 +32,7 @@ class MeasurmentDetailViewController: UIViewController {
         let calculatedSpectrum = SpectrumCalculator.calculateReflectanceFromFile(spectrumFile: spectralFile)
         let chartDataSet = calculatedSpectrum.getChartData(lineWidth: 1)
         self.MeasurementLineChart.data = LineChartData(dataSet: chartDataSet)
-        InstrumentSettingsCache.sharedInstance.lastViewMode = .Reflectance
+        ViewStore.sharedInstance.lastViewMode = .Reflectance
     }
     
     @IBAction func radianceButtonClicked(_ sender: UIButton) {
@@ -40,7 +40,7 @@ class MeasurmentDetailViewController: UIViewController {
         let calculatedSpectrum = SpectrumCalculator.calculateRadianceFromFile(spectralFile: spectralFile)
         let chartDataSet = calculatedSpectrum.getChartData()
         self.MeasurementLineChart.data = LineChartData(dataSet: chartDataSet)
-        InstrumentSettingsCache.sharedInstance.lastViewMode = .Radiance
+        ViewStore.sharedInstance.lastViewMode = .Radiance
     }
     
     override func viewDidLoad() {
@@ -53,7 +53,7 @@ class MeasurmentDetailViewController: UIViewController {
 
         if let url = url {
             
-            spectralFile = parseSpectralFile(filePath: url.relativePath) as! SpectralFileV8!
+            spectralFile = parseSpectralFile(filePath: url.relativePath) as! IndicoFile7!
             
             switch spectralFile.dataType {
             case .RefType:
@@ -67,7 +67,7 @@ class MeasurmentDetailViewController: UIViewController {
             rawButton.isEnabled = true
             
             // choose last state if possible otherwise switch to raw
-            switch InstrumentSettingsCache.sharedInstance.lastViewMode {
+            switch ViewStore.sharedInstance.lastViewMode {
             case .Raw:
                 rawButton.unselectAlternateButtons()
                 self.rawButtonClicked(rawButton)
@@ -88,12 +88,12 @@ class MeasurmentDetailViewController: UIViewController {
         self.MeasurementLineChart.noDataText = "Please select a file..."
     }
     
-    private func parseSpectralFile(filePath: String) -> SpectralFileBase? {
+    private func parseSpectralFile(filePath: String) -> IndicoFileBase? {
         let fileManager = FileManager()
         let dataBuffer = [UInt8](fileManager.contents(atPath: filePath)!)
         let fileParser = IndicoAsdFileReader(data: dataBuffer)
         
-        var file: SpectralFileBase
+        var file: IndicoFileBase
         
         do {
             file = try fileParser.parse()

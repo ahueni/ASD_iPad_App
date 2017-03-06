@@ -1,36 +1,14 @@
 //
-//  Extensions.swift
+//  AppExtensions.swift
 //  Spectrometer
 //
-//  Created by raphi on 19.11.16.
-//  Copyright © 2016 YARX GmbH. All rights reserved.
+//  Created by raphi on 06.03.17.
+//  Copyright © 2017 YARX GmbH. All rights reserved.
 //
 
 import Foundation
+import UIKit
 import Charts
-
-extension FloatingPoint {
-    init?(_ bytes: [UInt8]) {
-        guard bytes.count == MemoryLayout<Self>.size else { return nil }
-        self = bytes.withUnsafeBytes {
-            return $0.load(fromByteOffset: 0, as: Self.self)
-        }
-    }
-}
-
-extension FileManager{
-    // measurements root folder
-    func getMeasurmentRoot() -> URL{
-        let url = self.urls(for: .libraryDirectory, in: .userDomainMask)[0] as URL
-        return url.resolvingSymlinksInPath()
-    }
-}
-
-extension CGFloat {
-    static func random() -> CGFloat {
-        return CGFloat(arc4random()) / CGFloat(UInt32.max)
-    }
-}
 
 extension UIColor {
     static func randomColor() -> UIColor {
@@ -66,4 +44,3 @@ extension Array where Element : FloatingPoint {
         return SpectrumLineChartDataSet(values: values, color: lineColor, lineWidth: lineWidth)
         
     }}
- 

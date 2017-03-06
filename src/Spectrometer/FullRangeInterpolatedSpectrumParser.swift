@@ -8,7 +8,7 @@
 
 import Foundation
 
-class FullRangeInterpolatedSpectrumParser: BaseSpectrumParser, ISpectrumParser {
+class FullRangeInterpolatedSpectrumParser: BaseSpectrumInput, ISpectrumParser {
         
     func parse() -> FullRangeInterpolatedSpectrum {
         

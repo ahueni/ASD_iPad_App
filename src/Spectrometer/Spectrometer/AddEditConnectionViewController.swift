@@ -325,7 +325,7 @@ class AddEditConnectionViewController: UIViewController, UITextFieldDelegate, Ba
     }
     
     
-    internal func addFiberOpticFile(file: SpectralFileBase, filename: String, name: String) -> Void {
+    internal func addFiberOpticFile(file: IndicoFileBase, filename: String, name: String) -> Void {
         
         let newCaliFile = CalibrationFile(context: self.dataViewContext)
         newCaliFile.filename = filename

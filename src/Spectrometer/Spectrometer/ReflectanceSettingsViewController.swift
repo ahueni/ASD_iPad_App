@@ -15,7 +15,7 @@ class ReflectanceSettingsViewController : BaseSettingsViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        nextButton.isEnabled = InstrumentSettingsCache.sharedInstance.darkCurrent != nil
+        nextButton.isEnabled = InstrumentStore.sharedInstance.darkCurrent != nil
     }
     
     override func loadSettings() {

@@ -11,7 +11,7 @@ import UIKit
 
 class DirectoryBrowserContainerViewController : FileBrowserContainerViewController
 {
-    let measurementPath:URL = InstrumentSettingsCache.sharedInstance.measurementsRoot
+    let measurementPath:URL = InstrumentStore.sharedInstance.measurementsRoot
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

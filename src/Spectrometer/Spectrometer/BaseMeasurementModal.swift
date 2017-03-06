@@ -32,7 +32,7 @@ class BaseMeasurementModal : UIViewController
     }
     
     @IBAction func CancelButtonClicked(_ sender: UIButton) {
-        InstrumentSettingsCache.sharedInstance.cancelMeasurment = true
+        ViewStore.sharedInstance.cancelMeasurment = true
         dismiss(animated: true, completion: nil)
     }
     
@@ -49,28 +49,28 @@ class BaseMeasurementModal : UIViewController
     func writeRawFileAsync(spectrum : FullRangeInterpolatedSpectrum, dataType: DataType)
     {
         DispatchQueue.global().async {
-            BackgroundFileWriteManager.sharedInstance.addToQueue(spectrums: [spectrum], settings: self.pageContainer!.measurmentSettings, dataType: dataType)
+            FileWriteManager.sharedInstance.addToQueue(spectrums: [spectrum], settings: self.pageContainer!.measurmentSettings, dataType: dataType)
         }
     }
     
     func writeReflectanceFileAsync(spectrum : FullRangeInterpolatedSpectrum, whiteRefrenceSpectrum: FullRangeInterpolatedSpectrum, dataType: DataType)
     {
         DispatchQueue.global().async {
-            BackgroundFileWriteManager.sharedInstance.addToQueue(spectrums: [spectrum], whiteRefrenceSpectrum: whiteRefrenceSpectrum, settings: self.pageContainer!.measurmentSettings, dataType: dataType)
+            FileWriteManager.sharedInstance.addToQueue(spectrums: [spectrum], whiteRefrenceSpectrum: whiteRefrenceSpectrum, settings: self.pageContainer!.measurmentSettings, dataType: dataType)
         }
     }
     
     func writeRadianceFilesAsync(spectrums : [FullRangeInterpolatedSpectrum], dataType: DataType, isWhiteReference: Bool){
         DispatchQueue.global().async {
-            let base = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.base!
-            let lamp = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.lamp!
-            let fiberOptic = InstrumentSettingsCache.sharedInstance.selectedForeOptic!
+            let base = InstrumentStore.sharedInstance.instrumentConfiguration.base!
+            let lamp = InstrumentStore.sharedInstance.instrumentConfiguration.lamp!
+            let fiberOptic = InstrumentStore.sharedInstance.selectedForeOptic!
             let radianceCalibrationFiles = RadianceCalibrationFiles(baseFile: base, lampFile: lamp, fiberOptic: fiberOptic)
             
             let fileSuffix = isWhiteReference ? "_WR" : ""
             
             DispatchQueue.global().async {
-                BackgroundFileWriteManager.sharedInstance.addToQueue(spectrums: spectrums, settings: self.pageContainer!.measurmentSettings, dataType: dataType, radianceCalibrationFiles: radianceCalibrationFiles, fileSuffix: fileSuffix)
+                FileWriteManager.sharedInstance.addToQueue(spectrums: spectrums, settings: self.pageContainer!.measurmentSettings, dataType: dataType, radianceCalibrationFiles: radianceCalibrationFiles, fileSuffix: fileSuffix)
             }
         }
     }

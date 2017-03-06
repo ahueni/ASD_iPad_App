@@ -66,16 +66,16 @@ class SpectrumCalculator{
     class func calculateDarkCurrentCorrection(spectrum : FullRangeInterpolatedSpectrum) -> FullRangeInterpolatedSpectrum
     {
         // if dc exists -> do darkcorrection
-        if let darkCurrent = InstrumentSettingsCache.sharedInstance.darkCurrent {
+        if let darkCurrent = InstrumentStore.sharedInstance.darkCurrent {
             
             // Redeclaration for easier access in the calculation
-            let vinirDarkCurrentCorrection: Float = Float(InstrumentSettingsCache.sharedInstance.vinirDarkCurrentCorrection)
+            let vinirDarkCurrentCorrection: Float = Float(InstrumentStore.sharedInstance.vinirDarkCurrentCorrection)
             let currentDrift: Float = Float(spectrum.spectrumHeader.vinirHeader.drift)
             let darkDrift: Float = Float(darkCurrent.spectrumHeader.vinirHeader.drift)
             let drift: Float = vinirDarkCurrentCorrection + (currentDrift - darkDrift)
             
-            let vinirEndingWaveLength = InstrumentSettingsCache.sharedInstance.vinirEndingWavelength!
-            let vinirStartingWaveLength = InstrumentSettingsCache.sharedInstance.startingWaveLength!
+            let vinirEndingWaveLength = InstrumentStore.sharedInstance.vinirEndingWavelength!
+            let vinirStartingWaveLength = InstrumentStore.sharedInstance.startingWaveLength!
             
             let darkCorrectionRange = vinirEndingWaveLength - vinirStartingWaveLength
             
@@ -108,34 +108,34 @@ class SpectrumCalculator{
     
     class func calculateRadiance(spectrum: FullRangeInterpolatedSpectrum) -> [Float] {
         
-        let vinirEnd: Int = InstrumentSettingsCache.sharedInstance.vinirEndingWavelength - InstrumentSettingsCache.sharedInstance.startingWaveLength
-        let swir1Start: Int = InstrumentSettingsCache.sharedInstance.s1StartingWavelength - InstrumentSettingsCache.sharedInstance.startingWaveLength
-        let swir1End: Int = InstrumentSettingsCache.sharedInstance.s1EndingWavelength - InstrumentSettingsCache.sharedInstance.startingWaveLength
-        let swir2Start: Int = InstrumentSettingsCache.sharedInstance.s2StartingWavelength - InstrumentSettingsCache.sharedInstance.startingWaveLength
-        let swir2End: Int = InstrumentSettingsCache.sharedInstance.s2EndingWavelength - InstrumentSettingsCache.sharedInstance.startingWaveLength
+        let vinirEnd: Int = InstrumentStore.sharedInstance.vinirEndingWavelength - InstrumentStore.sharedInstance.startingWaveLength
+        let swir1Start: Int = InstrumentStore.sharedInstance.s1StartingWavelength - InstrumentStore.sharedInstance.startingWaveLength
+        let swir1End: Int = InstrumentStore.sharedInstance.s1EndingWavelength - InstrumentStore.sharedInstance.startingWaveLength
+        let swir2Start: Int = InstrumentStore.sharedInstance.s2StartingWavelength - InstrumentStore.sharedInstance.startingWaveLength
+        let swir2End: Int = InstrumentStore.sharedInstance.s2EndingWavelength - InstrumentStore.sharedInstance.startingWaveLength
         
         let vinirIntegrationTime:Float = IntegrationTimeMapper.mapIndex(index: spectrum.spectrumHeader.vinirHeader.integrationTime).1
         let swir1Gain:Float = Float(2048) / Float(spectrum.spectrumHeader.swir1Header.gain)
         let swir2Gain:Float = Float(2048) / Float(spectrum.spectrumHeader.swir2Header.gain)
         
-        let baseSpectrum = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.base!.spectrum
-        let lampSpectrum = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.lamp!.spectrum
-        let foreOpticSpectrum = InstrumentSettingsCache.sharedInstance.selectedForeOptic!.spectrum
+        let baseSpectrum = InstrumentStore.sharedInstance.instrumentConfiguration.base!.spectrum
+        let lampSpectrum = InstrumentStore.sharedInstance.instrumentConfiguration.lamp!.spectrum
+        let foreOpticSpectrum = InstrumentStore.sharedInstance.selectedForeOptic!.spectrum
         
-        let foreOpticIntegrationTime = InstrumentSettingsCache.sharedInstance.selectedForeOptic!.integrationTime
-        let foreOpticSwir1Gain = InstrumentSettingsCache.sharedInstance.selectedForeOptic!.swir1Gain
-        let foreOpticSwir2Gain = InstrumentSettingsCache.sharedInstance.selectedForeOptic!.swir2Gain
+        let foreOpticIntegrationTime = InstrumentStore.sharedInstance.selectedForeOptic!.integrationTime
+        let foreOpticSwir1Gain = InstrumentStore.sharedInstance.selectedForeOptic!.swir1Gain
+        let foreOpticSwir2Gain = InstrumentStore.sharedInstance.selectedForeOptic!.swir2Gain
         
         let resultBuffer = calculateRadiance(spectrumBuffer: spectrum.spectrumBuffer, vinirEnd: vinirEnd, swir1Start: swir1Start, swir1End: swir1End, swir2Start: swir2Start, swir2End: swir2End, vinirIntegrationTime:vinirIntegrationTime, swir1Gain:swir1Gain, swir2Gain:swir2Gain, baseSpectrum : baseSpectrum!, lampSpectrum : lampSpectrum!, foreOpticSpectrum : foreOpticSpectrum!, foIntegrationTime : Double(foreOpticIntegrationTime), foSwir1Gain : Double(foreOpticSwir1Gain), foSwir2Gain : Double(foreOpticSwir2Gain))
         
         return resultBuffer
     }
     
-    class  func calculateReflectanceFromFile(spectrumFile : SpectralFileV8) -> [Double]{
+    class  func calculateReflectanceFromFile(spectrumFile : IndicoFile7) -> [Double]{
         return calculateReflectance(spectrumBuffer: spectrumFile.spectrum, whiteReferenceBuffer: spectrumFile.reference)
     }
     
-    class func calculateRadianceFromFile(spectralFile : SpectralFileV8) -> [Float]{
+    class func calculateRadianceFromFile(spectralFile : IndicoFile7) -> [Float]{
         let vinirEnd: Int = 650 //Int(spectralFile.channels) - Int(spectralFile.splice2WaveLength) - Int(spectralFile.splice1WaveLength) - 1
         let swir1Start: Int = 651//Int(spectralFile.channels) - Int(spectralFile.splice2WaveLength) - Int(spectralFile.splice1WaveLength)
         let swir1End: Int = 1450//Int(spectralFile.channels) - Int(spectralFile.splice2WaveLength) - 1

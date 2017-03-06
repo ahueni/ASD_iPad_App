@@ -8,12 +8,12 @@
 
 import Foundation
 
-class BackgroundFileWriteManager{
+class FileWriteManager{
     
     var isWorking : Bool = false
     let serialQueue = DispatchQueue(label: "fileWriteQueue")
     
-    static let sharedInstance = BackgroundFileWriteManager()
+    static let sharedInstance = FileWriteManager()
     private init() { }
     
     func addToQueue(spectrums : [FullRangeInterpolatedSpectrum], whiteRefrenceSpectrum: FullRangeInterpolatedSpectrum? = nil, settings: MeasurmentSettings, dataType : DataType, radianceCalibrationFiles: RadianceCalibrationFiles? = nil, fileSuffix :String = "")

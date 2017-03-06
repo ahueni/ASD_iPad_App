@@ -12,12 +12,12 @@ class IndicoAsdFileReader : IndicoIniFileReader  {
     
     override init(data: [UInt8]) {
         super.init(data: data)
-        spectralFile = SpectralFileV8()
+        spectralFile = IndicoFile7()
     }
     
-    override func parse() throws -> SpectralFileV8 {
+    override func parse() throws -> IndicoFile7 {
         
-        let spectralFileV8 : SpectralFileV8 = try super.parse() as! SpectralFileV8
+        let spectralFileV8 : IndicoFile7 = try super.parse() as! IndicoFile7
         
         spectralFileV8.ReferenceFlag = getNextBoolFrom2Bytes()
         

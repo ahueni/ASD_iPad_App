@@ -1,14 +1,39 @@
-\BOOKMARK [0][-]{chapter.1}{Ausgangslage und Problemstellung}{}% 1
-\BOOKMARK [1][-]{section.1.1}{Ausgangslage}{chapter.1}% 2
-\BOOKMARK [1][-]{section.1.2}{Problemstellung}{chapter.1}% 3
-\BOOKMARK [0][-]{chapter.2}{Umsetzung}{}% 4
-\BOOKMARK [1][-]{section.2.1}{Voraussetzungen}{chapter.2}% 5
-\BOOKMARK [1][-]{section.2.2}{Architektur}{chapter.2}% 6
-\BOOKMARK [1][-]{section.2.3}{UI}{chapter.2}% 7
-\BOOKMARK [1][-]{section.2.4}{Validierung}{chapter.2}% 8
-\BOOKMARK [1][-]{section.2.5}{Einstellungen}{chapter.2}% 9
-\BOOKMARK [1][-]{section.2.6}{Gespeicherte Daten}{chapter.2}% 10
-\BOOKMARK [1][-]{section.2.7}{Indico Format}{chapter.2}% 11
-\BOOKMARK [1][-]{section.2.8}{Raw}{chapter.2}% 12
-\BOOKMARK [1][-]{section.2.9}{Reflectance}{chapter.2}% 13
-\BOOKMARK [1][-]{section.2.10}{Radiance}{chapter.2}% 14
+\BOOKMARK [0][-]{chapter.1}{Einleitung}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Ziel der Arbeit}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Hilfestellungen}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{Erreichtes}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.4}{Leserf\374hrung}{chapter.1}% 5
+\BOOKMARK [0][-]{chapter.2}{Theoretischer Teil}{}% 6
+\BOOKMARK [1][-]{section.2.1}{Einleitung}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.2}{Datenhaltung}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.3}{Berechnungen}{chapter.2}% 9
+\BOOKMARK [2][-]{subsection.2.3.1}{Dark Current}{section.2.3}% 10
+\BOOKMARK [2][-]{subsection.2.3.2}{White Reference}{section.2.3}% 11
+\BOOKMARK [2][-]{subsection.2.3.3}{Radiance}{section.2.3}% 12
+\BOOKMARK [0][-]{chapter.3}{Umsetzung}{}% 13
+\BOOKMARK [1][-]{section.3.1}{Einleitung}{chapter.3}% 14
+\BOOKMARK [1][-]{section.3.2}{Anforderungen}{chapter.3}% 15
+\BOOKMARK [1][-]{section.3.3}{Technologien}{chapter.3}% 16
+\BOOKMARK [2][-]{subsection.3.3.1}{Entwicklungsumgebung}{section.3.3}% 17
+\BOOKMARK [2][-]{subsection.3.3.2}{Programmiersprache}{section.3.3}% 18
+\BOOKMARK [2][-]{subsection.3.3.3}{Abh\344ngigkeiten}{section.3.3}% 19
+\BOOKMARK [1][-]{section.3.4}{Architektur}{chapter.3}% 20
+\BOOKMARK [2][-]{subsection.3.4.1}{Grobarchitektur}{section.3.4}% 21
+\BOOKMARK [2][-]{subsection.3.4.2}{Core}{section.3.4}% 22
+\BOOKMARK [2][-]{subsection.3.4.3}{iOS App}{section.3.4}% 23
+\BOOKMARK [1][-]{section.3.5}{Verbindung zum Spektrometer}{chapter.3}% 24
+\BOOKMARK [2][-]{subsection.3.5.1}{TCP Manager}{section.3.5}% 25
+\BOOKMARK [2][-]{subsection.3.5.2}{Command Manager}{section.3.5}% 26
+\BOOKMARK [1][-]{section.3.6}{Datenverarbeitung}{chapter.3}% 27
+\BOOKMARK [2][-]{subsection.3.6.1}{Spectrum Parser}{section.3.6}% 28
+\BOOKMARK [2][-]{subsection.3.6.2}{Indico File Reader}{section.3.6}% 29
+\BOOKMARK [2][-]{subsection.3.6.3}{Indico File Writer}{section.3.6}% 30
+\BOOKMARK [2][-]{subsection.3.6.4}{File Write Manager}{section.3.6}% 31
+\BOOKMARK [1][-]{section.3.8}{UI}{chapter.3}% 32
+\BOOKMARK [1][-]{section.3.9}{Validierung}{chapter.3}% 33
+\BOOKMARK [1][-]{section.3.10}{Einstellungen}{chapter.3}% 34
+\BOOKMARK [1][-]{section.3.11}{Gespeicherte Daten}{chapter.3}% 35
+\BOOKMARK [1][-]{section.3.12}{Indico Format}{chapter.3}% 36
+\BOOKMARK [1][-]{section.3.13}{Raw}{chapter.3}% 37
+\BOOKMARK [1][-]{section.3.14}{Reflectance}{chapter.3}% 38
+\BOOKMARK [1][-]{section.3.15}{Radiance}{chapter.3}% 39

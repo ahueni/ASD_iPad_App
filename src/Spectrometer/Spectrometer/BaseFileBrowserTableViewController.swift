@@ -14,7 +14,7 @@ class BaseFileBrowserTableViewController : UITableViewController {
     
     var diskFiles = [DiskFile]()
     let fileManager = FileManager.default
-    let measurementPath:URL = InstrumentSettingsCache.sharedInstance.measurementsRoot
+    let measurementPath:URL = InstrumentStore.sharedInstance.measurementsRoot
     
     var currentPath:URL
     

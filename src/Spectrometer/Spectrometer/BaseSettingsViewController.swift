@@ -62,13 +62,13 @@ class BaseSettingsViewController : BaseMeasurementModal {
         
         DispatchQueue.global().async {
             
-            let darkCurrentSampleCount = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent
+            let darkCurrentSampleCount = InstrumentStore.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent
             CommandManager.sharedInstance.darkCurrent(sampleCount: darkCurrentSampleCount)
             
             
             DispatchQueue.main.async {
                 
-                InstrumentSettingsCache.sharedInstance.restartDarkCurrentTimer()
+                ViewStore.sharedInstance.restartDarkCurrentTimer()
                 self.nextButton.isEnabled = true
                 sender.hideLoading()
                 
@@ -86,7 +86,7 @@ class BaseSettingsViewController : BaseMeasurementModal {
     
     internal func updateDarkCurrentTimerLabel() {
         
-        if let darkCurrentStartTime = InstrumentSettingsCache.sharedInstance.darkCurrentStartTime {
+        if let darkCurrentStartTime = ViewStore.sharedInstance.darkCurrentStartTime {
             let elapsedTime = NSDate.timeIntervalSinceReferenceDate - darkCurrentStartTime
             darkCurrentTimerLabel.text = Int(elapsedTime).description
         }

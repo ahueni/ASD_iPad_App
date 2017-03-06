@@ -8,7 +8,7 @@
 
 import Foundation
 
-class VersionParser: BaseSpectrumParser, ISpectrumParser {
+class VersionParser: BaseSpectrumInput, ISpectrumParser {
     
     typealias T = Version
     

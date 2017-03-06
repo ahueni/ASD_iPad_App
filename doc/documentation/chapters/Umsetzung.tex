@@ -2,12 +2,36 @@
 Dieses Kapitel beschreibt die Umsetzung des Produktes.
 Die Nachfolgenden Abschnitte werden Schrittweise detaillierter und beschreiben den Aufbau sowie die Designentscheidungen des Softwarecodes.
 
-\section{Voraussetzungen}
-Das Projekt wurde in der Programmiersprache Swift 3 umgesetzt und ist mit iOS 10 und höher kompatibel. Es wurde darauf geachtet, dass alle Abhängigkeiten ebenfalls in Swift umgesetzt sind.
+\section{Einleitung}
+\section{Anforderungen}
+\section{Technologien}
+\subsection{Entwicklungsumgebung}
+\subsection{Programmiersprache}
+Das Projekt wurde in der Programmiersprache Swift 3 umgesetzt und ist mit iOS 10 und höher kompatibel. Es wurde darauf geachtet, dass alle Abhängigkeiten ebenfalls in Swift umgesetzt sind. Dies erleichtert die Weiterentwicklung da kein, für ungeübte Entwickler, meist schwer lesbarer Objective C Code zum Einsatz kommt.
+\subsection{Abhängigkeiten}
 
 \section{Architektur}
+\subsection{Grobarchitektur}
 
-Um weite Teile des Quellcodes erneut nutzen zu können, wurde das Projekt in 2 Teile aufgeteilt. Der Core-Teil beinhaltet den gesamten Code, welcher Systemunabhängig ist. Der restliche Code befindet sich im Ordner Spektrometer. Dieser ist iOS spezifisch und kann nicht einfach auf andere Plattformen portiert werden.
+Um weite Teile des Sourcecodes erneut nutzen zu können, wurde das Projekt in zwei Teile aufgeteilt. Der Core beinhaltet den gesamten Code, welcher Systemunabhängig ist.
+
+Der restliche Code befindet sich im Ordner Spektrometer. Dieser ist iOS spezifisch und kann nicht einfach auf andere Plattformen portiert werden.
+
+\subsection{Core}
+
+\subsection{iOS App}
+
+\section{Verbindung zum Spektrometer}
+\subsection{TCP Manager}
+\subsection{Command Manager}
+
+\section{Datenverarbeitung}
+\subsection{Spectrum Parser}
+\subsection{Indico File Reader}
+\subsection{Indico File Writer}
+\subsection{File Write Manager}
+
+\section{}
 
 \section{UI}
 Alle ViewController sind in der Datei Main.storyboard enthalten. Dies war eine bewusste Entscheidung, um Entwicklern einen guten Überblick über den gesamten UI Ablauf zu ermöglichen. Einzig das Design für eine Zelle der Messübersichtstabelle wurde in eine eigne XIB-Datei ausgelagert.

@@ -73,7 +73,7 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        InstrumentSettingsCache.sharedInstance.aquireLoop = false
+        ViewStore.sharedInstance.aquireLoop = false
     }
     
     @IBAction func startAquire(_ sender: UIButton) {
@@ -83,7 +83,7 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     @IBAction func changeAquireMode(_ sender: RadioButton) {
         
         // stop actual aquire mode
-        InstrumentSettingsCache.sharedInstance.aquireLoop = false
+        ViewStore.sharedInstance.aquireLoop = false
         
         // set new mode
         switch sender.tag {
@@ -104,19 +104,19 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     
     
     @IBAction func darkCurrent(_ sender: Any) {
-        InstrumentSettingsCache.sharedInstance.aquireLoop = false
+        ViewStore.sharedInstance.aquireLoop = false
         
         // take dark current
-        let darkCurrentSampleCount = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent
+        let darkCurrentSampleCount = InstrumentStore.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent
         CommandManager.sharedInstance.darkCurrent(sampleCount: darkCurrentSampleCount)
         
         // update chart data
-        let chartDataSet = InstrumentSettingsCache.sharedInstance.darkCurrent!.spectrumBuffer.getChartData()
+        let chartDataSet = InstrumentStore.sharedInstance.darkCurrent!.spectrumBuffer.getChartData()
         let lineChartData = LineChartData(dataSet: chartDataSet)
         self.updateChart(chartData: lineChartData, measurementMode: .Raw)
         
         // restart darkCurrent timer
-        InstrumentSettingsCache.sharedInstance.restartDarkCurrentTimer()
+        ViewStore.sharedInstance.restartDarkCurrentTimer()
         
         // after a dark current evaluate measurement modes
         activateRadianceMode()
@@ -125,14 +125,14 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     
     @IBAction func whiteReference(_ sender: UIButton) {
         // stopp aquire loop
-        InstrumentSettingsCache.sharedInstance.aquireLoop = false
+        ViewStore.sharedInstance.aquireLoop = false
         
         // first take a new dark current
-        let darkCurrentSampleCount = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent
+        let darkCurrentSampleCount = InstrumentStore.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent
         CommandManager.sharedInstance.darkCurrent(sampleCount: darkCurrentSampleCount)
         
         // take white reference and calculate dark current correction
-        let whiteRefSampleCount = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCountWhiteRefrence
+        let whiteRefSampleCount = InstrumentStore.sharedInstance.instrumentConfiguration.sampleCountWhiteRefrence
         let whiteRefWithoutDarkCurrent = CommandManager.sharedInstance.aquire(samples: whiteRefSampleCount)
         whiteReferenceSpectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: whiteRefWithoutDarkCurrent)
         
@@ -142,7 +142,7 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
         self.updateChart(chartData: lineChartDataSet, measurementMode: .Raw)
         
         // restart whiteReference timer
-        InstrumentSettingsCache.sharedInstance.restartWhiteReferenceTimer()
+        ViewStore.sharedInstance.restartWhiteReferenceTimer()
         
         // activate reflectance mode
         activateReflectanceMode()
@@ -161,21 +161,21 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     
     @IBAction func disconnectSpectrometer(_ sender: UIColorButton) {
         // if no loop is active -> disconnect otherwise wait until loop has ended
-        if (!InstrumentSettingsCache.sharedInstance.aquireLoop) {
+        if (!ViewStore.sharedInstance.aquireLoop) {
             finishedAquireLoopHandler()
         }
         
         // stopp aquire loop and set disconnect indicator
-        InstrumentSettingsCache.sharedInstance.aquireLoop = false
+        ViewStore.sharedInstance.aquireLoop = false
         self.disconnectWhenFinished = true
     }
     
     internal func startAquire() {
-        InstrumentSettingsCache.sharedInstance.aquireLoop = !InstrumentSettingsCache.sharedInstance.aquireLoop
+        ViewStore.sharedInstance.aquireLoop = !ViewStore.sharedInstance.aquireLoop
         
         DispatchQueue.main.async {
             // change button title
-            if InstrumentSettingsCache.sharedInstance.aquireLoop {
+            if ViewStore.sharedInstance.aquireLoop {
                 self.aquireButton.setTitle("Stop Aquire", for: .normal)
                 self.aquireButton.background = UIColor.red
             } else {
@@ -186,14 +186,14 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
         
         // don't start a new aquire queue when its false -> the button is pressed to stopp it
         // without this check a second aquireQueue will be started only to end immediately
-        if !InstrumentSettingsCache.sharedInstance.aquireLoop { return }
+        if !ViewStore.sharedInstance.aquireLoop { return }
         
         DispatchQueue(label: "aquireQueue").async {
             print("AquireLoop started...")
-            while(InstrumentSettingsCache.sharedInstance.aquireLoop){
+            while(ViewStore.sharedInstance.aquireLoop){
                 
                 // collect spectrum
-                let sampleCount = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCount
+                let sampleCount = InstrumentStore.sharedInstance.instrumentConfiguration.sampleCount
                 var spectrum = CommandManager.sharedInstance.aquire(samples: sampleCount)
                 
                 // calculate dark current if selected on view
@@ -222,7 +222,7 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "StartTestSeriesSegue"{
-            InstrumentSettingsCache.sharedInstance.aquireLoop = false
+            ViewStore.sharedInstance.aquireLoop = false
         }
     }
     
@@ -273,7 +273,7 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     
     internal func activateReflectanceMode() {
         // check if white reference and dark current available
-        if whiteReferenceSpectrum != nil && InstrumentSettingsCache.sharedInstance.darkCurrent != nil {
+        if whiteReferenceSpectrum != nil && InstrumentStore.sharedInstance.darkCurrent != nil {
             reflectanceRadioButton.isEnabled = true
         } else {
             reflectanceRadioButton.isEnabled = false
@@ -282,11 +282,11 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     
     internal func activateRadianceMode() {
         // check if a foreoptic is slected
-        if let selectedForeOptic = InstrumentSettingsCache.sharedInstance.selectedForeOptic {
+        if let selectedForeOptic = InstrumentStore.sharedInstance.selectedForeOptic {
             foreOpticLabel.text = selectedForeOptic.name
             
             // check if darkCurrent is taken before activate radiance mode
-            if InstrumentSettingsCache.sharedInstance.darkCurrent != nil {
+            if InstrumentStore.sharedInstance.darkCurrent != nil {
                 radianceRadioButton.isEnabled = true
             }
         } else {
@@ -296,19 +296,19 @@ class AquireViewController: UIViewController, SelectFiberopticDelegate {
     }
     
     internal func didSelectFiberoptic(fiberoptic: CalibrationFile) {
-        InstrumentSettingsCache.sharedInstance.selectedForeOptic = fiberoptic
+        InstrumentStore.sharedInstance.selectedForeOptic = fiberoptic
         activateRadianceMode()
     }
     
     internal func updateDarkCurrentTimerLabel() {
-        if let darkCurrentStartTime = InstrumentSettingsCache.sharedInstance.darkCurrentStartTime {
+        if let darkCurrentStartTime = ViewStore.sharedInstance.darkCurrentStartTime {
             let elapsedTime = NSDate.timeIntervalSinceReferenceDate - darkCurrentStartTime
             darkCurrentTimerLabel.text = Int(elapsedTime).description
         }
     }
     
     internal func updateWhiteReferenceTimerLabel() {
-        if let whiteReferenceStartTime = InstrumentSettingsCache.sharedInstance.whiteReferenceStartTime {
+        if let whiteReferenceStartTime = ViewStore.sharedInstance.whiteReferenceStartTime {
             let elapsedTime = NSDate.timeIntervalSinceReferenceDate - whiteReferenceStartTime
             whiteReferenceTimerLabel.text = Int(elapsedTime).description
         }

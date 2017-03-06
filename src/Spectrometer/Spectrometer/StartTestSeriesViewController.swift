@@ -35,7 +35,7 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
         view.addGestureRecognizer(tapGesture)
         
         // deactivate radiance if no foreoptic available
-        if (InstrumentSettingsCache.sharedInstance.selectedForeOptic == nil) {
+        if (InstrumentStore.sharedInstance.selectedForeOptic == nil) {
             radianceRadioButton.isEnabled = false
         }
         

@@ -27,15 +27,15 @@ class SettingsViewController : UITableViewController{
     }
     
     override func viewDidLoad() {
-        SampleCountSpectrumValueLabel.text = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCount.description
-        SampleCountDarkCurrentValueLabel.text = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent.description
-        SampleCountWhiteRefrenceValueLabel.text = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCountWhiteRefrence.description
+        SampleCountSpectrumValueLabel.text = InstrumentStore.sharedInstance.instrumentConfiguration.sampleCount.description
+        SampleCountDarkCurrentValueLabel.text = InstrumentStore.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent.description
+        SampleCountWhiteRefrenceValueLabel.text = InstrumentStore.sharedInstance.instrumentConfiguration.sampleCountWhiteRefrence.description
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCount = Int32(SampleCountSpectrumSlider.value)
-        InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent = Int32(SampleCountDarkCurrentSlider.value)
-        InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCountWhiteRefrence = Int32(SampleCountWhiteRefrenceSlider.value)
+        InstrumentStore.sharedInstance.instrumentConfiguration.sampleCount = Int32(SampleCountSpectrumSlider.value)
+        InstrumentStore.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent = Int32(SampleCountDarkCurrentSlider.value)
+        InstrumentStore.sharedInstance.instrumentConfiguration.sampleCountWhiteRefrence = Int32(SampleCountWhiteRefrenceSlider.value)
         appDelegate.saveContext()
     }
 }

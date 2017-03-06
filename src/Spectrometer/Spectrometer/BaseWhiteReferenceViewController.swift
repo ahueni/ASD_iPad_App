@@ -25,9 +25,9 @@ class BaseWhiteReferenceViewController : BaseMeasurementModal {
         progressBar?.initialize(total: whiteRefrencePage.whiteReferenceCount)
         
         // start aquire data
-        InstrumentSettingsCache.sharedInstance.cancelMeasurment = false
+        ViewStore.sharedInstance.cancelMeasurment = false
         DispatchQueue.global().async {
-            while(!InstrumentSettingsCache.sharedInstance.cancelMeasurment){
+            while(!ViewStore.sharedInstance.cancelMeasurment){
                 self.aquire()
             }
         }
@@ -35,7 +35,7 @@ class BaseWhiteReferenceViewController : BaseMeasurementModal {
     
     func aquire() {
         //Aquire
-        let sampleCount = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCount
+        let sampleCount = InstrumentStore.sharedInstance.instrumentConfiguration.sampleCount
         let aquiredSpectrum = CommandManager.sharedInstance.aquire(samples: sampleCount)
         
         // DC Correction
@@ -55,19 +55,19 @@ class BaseWhiteReferenceViewController : BaseMeasurementModal {
     @IBAction func takeWhiteRefrence(_ sender: UIButton) {
         startWhiteRefrenceButton.showLoading()
         nextButton.isEnabled = false
-        InstrumentSettingsCache.sharedInstance.cancelMeasurment = false
+        ViewStore.sharedInstance.cancelMeasurment = false
         
         DispatchQueue.global().async {
             for i in 0...self.whiteRefrencePage.whiteReferenceCount-1
             {
-                if(InstrumentSettingsCache.sharedInstance.cancelMeasurment)
+                if(ViewStore.sharedInstance.cancelMeasurment)
                 {
                     return
                 }
                 
                 //Aquire spectrum
                 self.updateProgressBar(measurmentCount: i, statusText: "Measure...")
-                let sampleCount = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCount
+                let sampleCount = InstrumentStore.sharedInstance.instrumentConfiguration.sampleCount
                 let spectrum = CommandManager.sharedInstance.aquire(samples: sampleCount)
                 let darkCorrectedSpectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: spectrum)
                 self.setSpectrum(whiteReferenceSpectrum: darkCorrectedSpectrum)

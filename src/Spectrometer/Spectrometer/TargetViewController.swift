@@ -29,7 +29,7 @@ class TargetViewController : BaseMeasurementModal
     }
     
     @IBAction func StartMeasurmentsButtonClicked(_ sender: UIButton) {
-        InstrumentSettingsCache.sharedInstance.cancelMeasurment = false
+        ViewStore.sharedInstance.cancelMeasurment = false
         startMeasureLoop()
     }
     
@@ -49,7 +49,7 @@ class TargetViewController : BaseMeasurementModal
         DispatchQueue.global().async {
             for i in 0...self.targetPage.targetCount-1
             {
-                if(InstrumentSettingsCache.sharedInstance.cancelMeasurment)
+                if(ViewStore.sharedInstance.cancelMeasurment)
                 {
                     return
                 }
@@ -58,7 +58,7 @@ class TargetViewController : BaseMeasurementModal
                 self.updateProgressBar(measurmentCount: i, statusText: "Measure...", totalCount: self.targetPage.targetCount)
                 
                 // Measure
-                let sampleCount = InstrumentSettingsCache.sharedInstance.instrumentConfiguration.sampleCount
+                let sampleCount = InstrumentStore.sharedInstance.instrumentConfiguration.sampleCount
                 var spectrum = CommandManager.sharedInstance.aquire(samples: sampleCount)
                 //DC Correction
                 if(self.targetPage.takeDarkCurrent)
