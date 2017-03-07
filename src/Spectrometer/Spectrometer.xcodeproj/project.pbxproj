@@ -116,6 +116,8 @@
 		E13567891E61BB260049DCA7 /* SpectrumCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13567881E61BB260049DCA7 /* SpectrumCalculator.swift */; };
 		E13AC12E1E65693000FE3048 /* BaseMeasurementModeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13AC12D1E65693000FE3048 /* BaseMeasurementModeSettings.swift */; };
 		E13AC1301E656BC900FE3048 /* BaseSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13AC12F1E656BC900FE3048 /* BaseSettingsViewController.swift */; };
+		E13BEF651E6E9AA60002804A /* DiskFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEF641E6E9AA60002804A /* DiskFile.swift */; };
+		E13BEF681E6E9B370002804A /* Pages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEF671E6E9B370002804A /* Pages.swift */; };
 		E1446F031E56DD6100840AF2 /* RawSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1446F021E56DD6100840AF2 /* RawSettingsViewController.swift */; };
 		E14EC22E1E2E1889006EBD2F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */; };
 		E15995C91E661D8C00254FAE /* FileWriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15995C81E661D8C00254FAE /* FileWriteManager.swift */; };
@@ -272,6 +274,8 @@
 		E13567881E61BB260049DCA7 /* SpectrumCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumCalculator.swift; sourceTree = "<group>"; };
 		E13AC12D1E65693000FE3048 /* BaseMeasurementModeSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMeasurementModeSettings.swift; sourceTree = "<group>"; };
 		E13AC12F1E656BC900FE3048 /* BaseSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSettingsViewController.swift; sourceTree = "<group>"; };
+		E13BEF641E6E9AA60002804A /* DiskFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskFile.swift; sourceTree = "<group>"; };
+		E13BEF671E6E9B370002804A /* Pages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pages.swift; sourceTree = "<group>"; };
 		E1446F021E56DD6100840AF2 /* RawSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawSettingsViewController.swift; sourceTree = "<group>"; };
 		E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E15995C81E661D8C00254FAE /* FileWriteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWriteManager.swift; sourceTree = "<group>"; };
@@ -941,6 +945,14 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		E13BEF661E6E9B2C0002804A /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				E13BEF671E6E9B370002804A /* Pages.swift */,
+			);
+			name = Pages;
+			sourceTree = "<group>";
+		};
 		E14EC2291E2E187B006EBD2F /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -963,6 +975,7 @@
 		E1807E621E2F617900BB205F /* MeasurementSeries */ = {
 			isa = PBXGroup;
 			children = (
+				E13BEF661E6E9B2C0002804A /* Pages */,
 				E13AC1311E656CC600FE3048 /* MeasurementSettings */,
 				E1BD75ED1E60703100AB92CD /* MesurmentAquire */,
 				E1807E671E2F7B2F00BB205F /* ParentViewController.swift */,
@@ -992,6 +1005,7 @@
 				E1A40C241E40797E0019F467 /* FileBrowserContainerViewController.swift */,
 				E1A40C2A1E409C8E0019F467 /* DirectoryBrowserContainerViewController.swift */,
 				E1A40C2D1E40A2D60019F467 /* DirectoryBrowserTableViewController.swift */,
+				E13BEF641E6E9AA60002804A /* DiskFile.swift */,
 			);
 			name = FileBrowser;
 			sourceTree = "<group>";
@@ -1368,6 +1382,7 @@
 				2EC5056B1E6D6CAF00E1DCFB /* AppEnums.swift in Sources */,
 				2E3552091E56FAE4001F7EE1 /* BaseUITextField.swift in Sources */,
 				E1A40C001E3F9B800019F467 /* BaseFileBrowserTableViewController.swift in Sources */,
+				E13BEF681E6E9B370002804A /* Pages.swift in Sources */,
 				2E91F2ED1DDB5B9F003E277F /* Socket.swift in Sources */,
 				2EB823251DE0CC2900DF732C /* SpectrometerViewController.swift in Sources */,
 				2E91F2E71DDB5B9F003E277F /* Conversions.swift in Sources */,
@@ -1379,6 +1394,7 @@
 				E1C936B71E41D64A00EF51BB /* NumberTextField.swift in Sources */,
 				2EC6D8111E5C7F570022F70E /* PathSelectInput.swift in Sources */,
 				2E91F2A61DDB5B76003E277F /* AppDelegate.swift in Sources */,
+				E13BEF651E6E9AA60002804A /* DiskFile.swift in Sources */,
 				E1C936B91E41D8B700EF51BB /* PortTextField.swift in Sources */,
 				2E35520B1E56FB07001F7EE1 /* BaseSelectInput.swift in Sources */,
 				2E8F76731E460CB800D54ABF /* CustomProgressBar.swift in Sources */,

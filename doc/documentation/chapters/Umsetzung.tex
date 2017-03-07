@@ -31,7 +31,7 @@ Um weite Teile des Sourcecodes erneut nutzen zu können, wurde das Projekt in dre
 \subsection{Core}
 Der Core Ordner fasst den gesamten Code zusammen, welcher Platformunabhängig ist. Dieser Code kann auch in anderen Projekten mit ähnlicher Anwendung benutzt werden.
 \subsection{Service}
-Der Service Layer, kapselt einige Anfragen des App Layers an den Core Teil. Dieser Layer wird oft dazwischen gelegt, um beispielsweise Parallelität zu vermeiden. So wird im Layer beispielsweise ein Synchronized Queue benötigt, um nur ein Request nach dem Anderen an ein Spektrometer zu senden.
+Der Service Layer, kapselt einige Anfragen des App Layers an den Core Teil. Dieser Layer wird oft dazwischen gelegt, um beispielsweise Parallelität zu vermeiden. So wird im Layer beispielsweise ein Synchronized Queue benötigt, um nur ein Request nach dem Anderen an ein \gls{spectrometer} zu senden.
 \subsection{iOS App}
 Dieser Layer beinhaltet die eigentliche iOS App mit all Ihren typischen Eigenschaften, wie das AppDelegate und die Storyboards. In diesem Ordner werden alle Views sowie deren Controller gespeichert.
 
@@ -41,7 +41,7 @@ In diesem Ordner, befindet sich die TCPManager Klasse sowie die externen Socks D
 \newline
 https://github.com/vapor/socks
 \newline
-Der TCP Manager ist für die Anfragen des Gerätes verantwortlich. Es ist die einzige Klasse, welche direkt mit dem Spektrometer kommuniziert. Er ist deshalb auch als Singleton umgesetzt. Mit der connect Funktion, kann eine Verbindung zum ASD Gerät hergestellt werden, danach können beliebig viele Kommandos mit sendCommand gesendet werden. Um die Verbindung zu schliessen, muss lediglich die disconnect Methode aufgerufen werden.
+Der TCP Manager ist für die Anfragen des Gerätes verantwortlich. Es ist die einzige Klasse, welche direkt mit dem \gls{spectrometer} kommuniziert. Er ist deshalb auch als Singleton umgesetzt. Mit der connect Funktion, kann eine Verbindung zum ASD Gerät hergestellt werden, danach können beliebig viele Kommandos mit sendCommand gesendet werden. Um die Verbindung zu schliessen, muss lediglich die disconnect Methode aufgerufen werden.
 
 \subsection{Input/Output}
 In diesem Kapitel, werden alle Klassen beschrieben, welche direkt Daten einlesen oder Ausgeben.
@@ -60,7 +60,7 @@ Der Ordner Calculations enthält lediglich die Klasse SpectrumCalculator welche n
 \subsection{Instrument Store}
 Im Instrument Store, werden alle Objekte gespeichert, auf welche global zugegriffen werden muss und nichts mit dem Userinterface zu tun haben. Um zu garantieren, dass die Variablen nur einmal existieren, ist die Klasse als Singleton umgesetzt.
 \subsection{Command Manager}
-Der Command Manager übernimmt die Funktion alle Kommandos in der korrekten Reihenfolge abzuarbeiten. Der Command Manager bietet Methoden für alle gängigen Spektrometer Kommandos an. Wird eine dieser Methoden aufgerufen, übergibt der Command Manager die Anfrage an eine synchrone Queue welche nach dem First-In-First-Out Prinzip die Anfragen abarbeitet. So ist sichergestellt, dass ein Kommando erst an das Spektrometer gesendet wird, wenn alle vorherigen abgearbeitet sind.
+Der Command Manager übernimmt die Funktion alle Kommandos in der korrekten Reihenfolge abzuarbeiten. Der Command Manager bietet Methoden für alle gängigen \gls{spectrometer} Kommandos an. Wird eine dieser Methoden aufgerufen, übergibt der Command Manager die Anfrage an eine synchrone Queue welche nach dem First-In-First-Out Prinzip die Anfragen abarbeitet. So ist sichergestellt, dass ein Kommando erst an das \gls{spectrometer} gesendet wird, wenn alle vorherigen abgearbeitet sind.
 \subsection{File Write Manager}
 Der Write Manager funktioniert ähnlich wie der Command Manager. Er übergibt write Anfragen ebenfalls einer synchronen Warteschlange und arbeitet diese ab. Dazu kümmert sich der FileWriteManager auch um die korrekte Benennung der ASD Files. Dies geschieht, indem er den höchsten geschriebenen prefix eines Files im Pfad findet und diesen dan entsprechend erhöht.
 
