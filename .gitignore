@@ -21,3 +21,5 @@ doc/documentation/*.pdf
 *.glo
 
 *.gls
+
+*.ist
