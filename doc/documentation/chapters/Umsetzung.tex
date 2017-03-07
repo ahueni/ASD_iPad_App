@@ -22,7 +22,7 @@ Folgende Pods wurden fŸr das Projekt verwendet:
 \item    pod 'FontAwesome.swift'
 \end{itemize}
     
-Einzig die TCP Kommunikation wurde mit externem Code gelšst, welcher nicht als Pod verfŸgbar ist.
+Einzig die TCP Kommunikation wurde mit externem Code gelšst, welcher nicht als Pod verfŸgbar ist. Mehr dazu unter dem Abschnitt \hyperref[sec:Connection]{Connection}.
 \section{Architektur}
 
 \subsection{Grobarchitektur}
@@ -37,6 +37,7 @@ Dieser Layer beinhaltet die eigentliche iOS App mit all Ihren typischen Eigensch
 
 \section{Core}
 \subsection{Connection}
+\label{sec:Connection}
 In diesem Ordner, befindet sich die TCPManager Klasse sowie die externen Socks Dateien. Das Socks Framework kŸmmert sich um die Kommunikation auf TCP Ebene. Eine ausfŸhrliche Dokumentation ist unter folgendem Link zu finden: 
 \newline
 https://github.com/vapor/socks
@@ -47,6 +48,8 @@ Der TCP Manager ist fŸr die Anfragen des GerŠtes verantwortlich. Es ist die einz
 In diesem Kapitel, werden alle Klassen beschrieben, welche direkt Daten einlesen oder Ausgeben.
 \subsubsection{File Writer}
 Die Output Klassen, dienen dazu ein Indico File zu schreiben. Die Base Klasse kapselt dafŸr alle SchreibvorgŠnge. Von der Klasse File Writer, wird auf diese Methoden zugegriffen und stšsst so das Schreiben in der Richtigen Reihenfolge an. Von aussen kann lediglich gewŠhlt werden, welche der 3 Messmethoden geschrieben werden soll: Raw, Reflectance oder Radiance.
+\newline
+Um die Applikation um einen neuen Writer zu erweitern, muss lediglich vom BaseWriter abgeleitet werden und eine eigene write Methode implementiert werden. Diese neue Klasse, kann die vom BaseWriter bereitgestellten Methoden nutzen oder um weitere ergŠnzen.
 \subsubsection{File Reader}
 
 \subsubsection{Spectrometer Parser}
@@ -71,6 +74,11 @@ Das App Delegate ist das eigentliche Einstiegsfile jeder iOS Applikation. Darin 
 AppDelegate wird ebenfalls aufgerufen, wenn ein File erfolgreich importiert wurde. Das importieren selbst, wird vom Betriebsystem Ÿbernommen. In diesem Projekt wird auf der aktuellen View eine Meldung angezeigt, dass ein File erfolgreich importiert wurde.
 \subsection{Core Data}
 Core Data ist ein System, um Daten auf dem GerŠt zu speichern, es dient nicht als Datenbank ersatz, kann aber fŸr einfache Speicherungen genutzt werden. Durch die Integration in XCode, lassen sich Speicherklassen einfach modellieren und einsetzen. Core Data Einstellungen kšnnen in xcdatamodeld Klassen vorgenommen werden. Dabei kšnnen Datentypen sowie die Relationen der einzelnen Records definiert werden.
+
+\begin{alertinfo}{Vorsicht}
+	Core Data Zugriffe sind vergleichsweise lansam und sollten daher nicht in Schleifen verwendet werden.
+\end{alertinfo}
+
 \subsection{Views}
 
 Alle ViewController sind in der Datei Main.storyboard enthalten. Dies war eine bewusste Entscheidung, um Entwicklern einen guten †berblick Ÿber den gesamten UI Ablauf zu ermšglichen. Einzig das Design fŸr eine Zelle der MessŸbersichtstabelle wurde in eine eigne XIB-Datei ausgelagert.
@@ -89,14 +97,39 @@ Einstellungen, welche pro Applikation verfŸgbar sein mŸssen, werden in den sogen
 Der ViewStore dient wie der InstrumentStore zum speichern weiter benštigter Variablen. Er ist ebenfalls als Singleton implementiert. Im Gegensatz zum InstrumentStore enthŠlt der ViewStore aber nur Elemente, welche UI relevant sind. Darin wird beispielsweise gespeichert, ob gerade eine Aquire-Schleife lŠuft.
 \subsection{Service}
 \subsubsection{Validation}
-FŸr die Validierung wurde von jedem benutzen Control eine Ableitung erstellt und und das BaseValidationControl Protokoll implementiert. Dieses Protokoll enthŠlt ein Property isValid welches den GŸltikeitszustand des Objektes enthŠlt.
+FŸr die Validierung wurde von jedem benutzen Control eine Ableitung erstellt und das BaseValidationControl Protokoll implementiert. Dieses Protokoll enthŠlt ein Property isValid welches den GŸltikeitszustand des Objektes enthŠlt.
+\newline\newline
+Das Protokoll sieht wie folgt aus:
 
-In jedem ViewController, muss nun nur noch der ValidationManager aufgerufen werden und die Hauptview Ÿbergeben werden. Dieser ValidationManager prŸft nun alle Subviews, welchedas Protokoll implementieren.
+\begin{lstlisting}
+protocol BaseValidationControl 
+{
+    var isValid : Bool {get}
+    func validate()
+}
+\end{lstlisting}
 
-Um die Validation fŸr einen neuen ViewController hinzuzufŸgen, kann folgendermassen vorgangen werden:
-1. Erstellen Sie einen neuen ViewController
-2. FŸgen Sie ein Control hinzu und leiten sie von einem bestehenden ValidationControl ab. Oder erstellen Sie eine neue Ableitung eines Controls und implementieren Sie das BaseValidationControl Protokoll.
-3. Rufen Sie die validateSubViews Methode des ValidationMangers auf.
+Ein Beispiel fŸr die Implementierung des Protkolls ist das PortTextField:
+
+\begin{lstlisting}
+class PortTextField : BaseTextField 
+{
+    //Init Code
+    
+    override var isValid: Bool {
+        get {
+            let port = Int(text!)
+            return port != nil && port! >= 0 && port! <= 65535
+        }
+    }
+}
+\end{lstlisting}
+
+In jedem ViewController, muss nun nur noch der ValidationManager aufgerufen werden und die Hauptview Ÿbergeben werden. Dieser ValidationManager prŸft nun alle Subviews, welche das BaseValidationControl Protokoll implementieren.
+Dieser Aufruf sieht folgendermassen fŸr die Validierung der gesamten View aus:
+\begin{lstlisting}
+ValidationManager.sharedInstance.validateSubViews(view: self.view)
+\end{lstlisting}
 
 
 \subsubsection{File Browser}
@@ -105,4 +138,37 @@ Der FileBrowser, ist eine Abwandlung von einer externen Swift Komponente, welche
 https://github.com/marmelroy/FileBrowser
 \newline
 Diese Komponente wurde auf die eignen BedŸrfnisse angepasst.
-Der FileBrowser besteht aus einer Basisklasse und jeweils 2 Klassen fŸr die Datei sowie die Ordnerauswahl.
+Der Filebrowser, besteht jeweils aus einem Container sowie einem embedded TableViewController. Zusammen bilden Sie ein einfaches System, in welchem der User ein File selektieren kann.
+\newline
+Der FileBrowser, kann einfach erweitert werden, indem ein neuer Container erstellt wird. Dieser Container muss von FileBrowserContainerViewController ableiten und kann diesen um neue Controls ergŠnzen. Um das Verhalten der inneren Tabelle zu Šndern, kann eine Klasse erstellt werden, welche von BaseFileBrowserTableViewController ableitet. Dies wird im Projekt bereits genutzt, um den Container mit der FunktionalitŠt der Ordnerwahl sowie der Ordnererstellung zu erweitern.
+
+Folgend ein Beispiel, fŸr die Ordnerauswahl Ÿberschrieben wurde:
+
+\begin{lstlisting}
+
+class DirectoryBrowserContainerViewController : FileBrowserContainerViewController
+{
+    //Init
+    
+    @IBAction func ChooseDirectoryButtonClicked(_ sender: UIBarButtonItem) {
+        didSelectFile!(DiskFile(url: selectedPath))
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+class DirectoryBrowserTableViewController: FileBrowserTableViewController 
+{
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedFile = getFileForIndexPath(indexPath: indexPath)
+        if(selectedFile.isDirectory)
+        {
+            // open folder
+        }
+        else
+        {
+            // deselect row
+        }
+    }
+}
+\end{lstlisting}
+

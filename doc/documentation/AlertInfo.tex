@@ -1,0 +1,37 @@
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+\definecolor{infobackground}{RGB}{217,237,247}
+\definecolor{infoforeground}{RGB}{58,135,173}
+\definecolor{infoborder}{RGB}{188,232,241}
+
+\usepackage{environ}
+\usepackage{tikz}
+\usetikzlibrary{fit,backgrounds,calc}
+
+\NewEnviron{alertinfo}[1]
+{
+    \begin{tikzpicture}
+    \node[inner sep=0pt,
+          draw=infoborder,
+          line width=1.2pt,
+          fill=infobackground] (box) {\parbox[t]{.95\textwidth}
+        {%
+            \begin{minipage}{.15\textwidth}
+                \centering\tikz[scale=3]
+                \node[scale=1]
+                {
+                    \includegraphics[scale=0.8]{images/warning}
+                };
+            \end{minipage}%
+           \begin{minipage}{.75\textwidth}
+                \vskip 10pt
+                \textbf{\textcolor{infoforeground}{#1}}\par\smallskip
+                \textcolor{infoforeground}{\BODY}
+                \par\smallskip
+            \end{minipage}\hfill
+        }%
+    };
+
+    \end{tikzpicture}
+}
