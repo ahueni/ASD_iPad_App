@@ -31,20 +31,29 @@ Im unterstehenden Diagramm wird der Messablauf grafisch dargestellt. An der blau
 \section{Berechnungen} \label{berechnungen}
 
 \subsection{Dark Current} \label{darkcurrent}
-Als Dark Current wird das Spektrum bezeichnet, das gemessen wurde, nachdem dem Spektrometer komplett das Licht genommen wurde. Dies erreicht man auf unterschiedliche Weise. Eine Möglichkeit ist das Kappen der Faser oder das schliessen des mechanischen Shutter. Es gibt bei neueren Geräten eine weitere Möglichkeit die Dark Correction mit einer im voraus geladenen Konfigurationsdatei auszuführen. Im aktuellen Projekt wird nur die Variante mit dem mechanischen Shutter unterstützt.
+Als Dark Current wird das Spektrum bezeichnet, das gemessen wurde, nachdem dem Spektrometer komplett das Licht genommen wurde. Dies erreicht man auf unterschiedliche Weise. Eine Möglichkeit ist das Kappen der \gls{faser} oder das schliessen des mechanischen Shutter. Es gibt bei neueren Geräten eine weitere Möglichkeit die Dark Correction mit einer im voraus geladenen Konfigurationsdatei auszuführen. Im aktuellen Projekt wird nur die Variante mit dem mechanischen Shutter unterstützt.
 
 Die Berechnung wird nur auf den \gls{vnir} Bereich des Spektrums angewendet.
 
 $\forall i \in \{ 0, ... , n \} DC\textsubscript{s}(i) = Ts(i) - Ds(i) + (V\textsubscript{DarkCurrentCorrection} + (T\textsubscript{drift} - D\textsubscript{drift}))$
 
 $n=$ size of the VNIR spectrum \newline
-$DCs=$ dark corrected spectrum \newline
-$Ts=$ current measured spectrum \newline
-$Ds=$ dark measured spectrum \newline
-$VDarkCurrentCorrection=$ dark current correction constant\footnote[1]{Dieser Wert wird beim Verbindungsaufbau mit dem Spektrometer ausgelesen und im App zwischengespeichert.} \newline
-$Tdrift=$ current measured drift value \newline
-$Ddrift=$ dark measured drift value \newline
+$DC\textsubscript{s}=$ dark corrected spectrum \newline
+$T\textsubscript{s}=$ current measured spectrum \newline
+$D\textsubscript{s}=$ dark measured spectrum \newline
+$V\textsubscript{DarkCurrentCorrection}=$ dark current correction constant\footnote[1]{Dieser Wert wird beim Verbindungsaufbau mit dem Spektrometer ausgelesen und im App zwischengespeichert.} \newline
+$T\textsubscript{drift}=$ current measured drift value \newline
+$D\textsubscript{drift}=$ dark measured drift value \newline
 
 \subsection{White Reference} \label{whitereference}
+Als White Reference wird das Spektrum bezeichnet, dass aus der Division eines normalen durch eines über einer Weissreferenzplatte erfassten Spektrums entsteht. Die Berechnung wird bei der White Reference auf das gesamte Spektrum angewendet.
+
+$\forall i \in \{i,...,n\} DWR\textsubscript{s}(i) = \dfrac{T\textsubscript{s}(i)}{W\textsubscript{s}(i)}$
+
+$n=$ size of the complete spectrum \newline
+$DWR\textsubscript{s}=$ calculated white reference spectrum \newline
+$T\textsubscript{s}=$ current measured spectrum \newline
+$W\textsubscript{s}=$ reference measured spectrum \newline
 
 \subsection{Radiance} \label{radiance}
+Für die Berechnung der Radiance sind nebst dem aktuellen Spektrum auch die Referenzwerte aus den Base, Lamp und ForeOptic Dateien notwendig. Diese werden direkt beim Konfigurieren eines Spektrometers angehängt. Ein Spektrometer kann auch ohne ForeOptic Dateien konfiguriert werden, eine Radiance Berechnung ist in diesem Falle dann aber nicht möglich. 
