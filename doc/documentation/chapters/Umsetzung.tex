@@ -19,7 +19,7 @@ Folgende Pods wurden für das Projekt verwendet:
 \item    pod 'Zip'
 \item    pod 'PlainPing'
 \item    pod 'Pulsator'
-\item    pod 'FontAwesome.swift'
+\item    pod 'FontAwesome.swift'di
 \end{itemize}
     
 Einzig die TCP Kommunikation wurde mit externem Code gelöst, welcher nicht als Pod verfügbar ist. Mehr dazu unter dem Abschnitt \hyperref[sec:Connection]{Connection}.
@@ -27,6 +27,8 @@ Einzig die TCP Kommunikation wurde mit externem Code gelöst, welcher nicht als P
 
 \subsection{Grobarchitektur}
 Um weite Teile des Sourcecodes erneut nutzen zu können, wurde das Projekt in drei Teile aufgeteilt. Diese 3 Teile werden in den folgenden Abschnitten beschrieben.
+
+\includegraphics[scale=0.41]{images/SA_BigPicture}
 
 \subsection{Core}
 Der Core Ordner fasst den gesamten Code zusammen, welcher Platformunabhängig ist. Dieser Code kann auch in anderen Projekten mit ähnlicher Anwendung benutzt werden.
@@ -73,10 +75,10 @@ Das App Delegate ist das eigentliche Einstiegsfile jeder iOS Applikation. Darin 
 \newline
 AppDelegate wird ebenfalls aufgerufen, wenn ein File erfolgreich importiert wurde. Das importieren selbst, wird vom Betriebsystem übernommen. In diesem Projekt wird auf der aktuellen View eine Meldung angezeigt, dass ein File erfolgreich importiert wurde.
 \subsection{Core Data}
-Core Data ist ein System, um Daten auf dem Gerät zu speichern, es dient nicht als Datenbank ersatz, kann aber für einfache Speicherungen genutzt werden. Durch die Integration in XCode, lassen sich Speicherklassen einfach modellieren und einsetzen. Core Data Einstellungen können in xcdatamodeld Klassen vorgenommen werden. Dabei können Datentypen sowie die Relationen der einzelnen Records definiert werden.
+Core Data ist ein System, um Daten auf dem Gerät zu speichern, es dient nicht als Datenbank ersatz, kann aber für einfache Speicherungen genutzt werden. Durch die Integration in XCode, lassen sich Speicherklassen einfach modellieren und einsetzen. Core Data Einstellungen können in xcdatamodeld Klassen vorgenommen werden. Dabei können Datentypen sowie die Relationen der einzelnen Records definiert werden. Weitere Informationen finden sich auf der offiziellen Entwicklerseite von Apple: https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CoreData/index.html
 
 \begin{alertinfo}{Vorsicht}
-	Core Data Zugriffe sind vergleichsweise lansam und sollten daher nicht in Schleifen verwendet werden.
+	Core Data Zugriffe sind vergleichsweise langsam und sollten daher nicht in Schleifen verwendet werden.
 \end{alertinfo}
 
 \subsection{Views}
@@ -109,7 +111,7 @@ protocol BaseValidationControl
 }
 \end{lstlisting}
 
-Ein Beispiel für die Implementierung des Protkolls ist das PortTextField:
+Ein Beispiel für die Implementierung des Protokolls ist das PortTextField:
 
 \begin{lstlisting}
 class PortTextField : BaseTextField 
