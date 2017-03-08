@@ -8,10 +8,13 @@
 
 import Foundation
 
-class IndicoIniFileReader: BaseSpectrumInput {
+class IndicoIniFileReader: BaseSpectrumInput, ISpectrumParser {
     
+    typealias T = IndicoFileBase
     
-    func parse() throws -> IndicoFileBase {
+    func parse() throws -> T {
+        
+        let spectralFile = T()
         
         spectralFile.fileVersion = getNextString(size: 3)
         spectralFile.comments = getNextString(size: 157)

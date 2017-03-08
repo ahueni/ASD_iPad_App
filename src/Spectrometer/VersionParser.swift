@@ -12,10 +12,10 @@ class VersionParser: BaseSpectrumInput, ISpectrumParser {
     
     typealias T = Version
     
-    func parse() -> Version {
+    func parse() throws -> T {
         
-        if self.data.count < Version.SIZE {
-            fatalError("return data ist too small, parsing not possible")
+        if self.data.count < T.SIZE {
+            throw ParsingError(message: "Response is too short, could not parse version.")
         }
         
         let header: Int = getNextInt()

@@ -9,11 +9,13 @@
 import Foundation
 
 class FullRangeInterpolatedSpectrumParser: BaseSpectrumInput, ISpectrumParser {
+    
+    typealias T = FullRangeInterpolatedSpectrum
+    
+    func parse() throws -> T {
         
-    func parse() -> FullRangeInterpolatedSpectrum {
-        
-        if self.data.count < FullRangeInterpolatedSpectrum.SIZE {
-            fatalError("return data is too small, parsing not possible")
+        if self.data.count < T.SIZE {
+            throw ParsingError(message: "Response is too short, could not parse spectrum.")
         }
         
         // first parse spectrum header values

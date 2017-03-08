@@ -9,15 +9,11 @@
 import Foundation
 
 protocol ISpectrumParser {
-    
     associatedtype T
-    func parse() -> T
-    
+    func parse() throws -> T
 }
 
 class BaseSpectrumInput {
-    
-    var spectralFile : IndicoFileBase
     
     internal let data: [UInt8]
     internal var parseIndex: Int
@@ -25,9 +21,8 @@ class BaseSpectrumInput {
     init(data: [UInt8]) {
         self.data = data
         parseIndex = 0
-        spectralFile = IndicoFileBase()
     }
-    
+ 
     internal func getNextBool() -> Bool {
         let byte: UInt8 = self.data[parseIndex]
         parseIndex += 1

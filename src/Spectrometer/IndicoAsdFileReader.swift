@@ -10,66 +10,61 @@ import Foundation
 
 class IndicoAsdFileReader : IndicoIniFileReader  {
     
-    override init(data: [UInt8]) {
-        super.init(data: data)
-        spectralFile = IndicoFile7()
-    }
-    
-    override func parse() throws -> IndicoFile7 {
+    override func parse() throws -> T {
         
-        let spectralFileV8 : IndicoFile7 = try super.parse() as! IndicoFile7
+        let spectralFile7 = try super.parse() as! IndicoFile7
         
-        spectralFileV8.ReferenceFlag = getNextBoolFrom2Bytes()
+        spectralFile7.ReferenceFlag = getNextBoolFrom2Bytes()
         
         parseIndex += 8 //spectralFile.ReferenceTime = Date()
         parseIndex += 8 //spectralFile.SpectrumTime = Date()
         
         // take spectralFile comment as prefixedString
-        spectralFileV8.SpectrumDescription = getNextPrefixedString()
+        spectralFile7.SpectrumDescription = getNextPrefixedString()
         
         // parse reference data
-        switch spectralFile.spectrumDataFormat {
+        switch spectralFile7.spectrumDataFormat {
         case .DoubleFormat:
-            spectralFileV8.reference = parseDoubleSpectralData(channelCount: Int(spectralFileV8.channels))
+            spectralFile7.reference = parseDoubleSpectralData(channelCount: Int(spectralFile7.channels))
             break
         case .FloatFormat:
-            spectralFileV8.reference = parseFloatSpectralData(channelCount: Int(spectralFileV8.channels))
+            spectralFile7.reference = parseFloatSpectralData(channelCount: Int(spectralFile7.channels))
             break
         case .IntegerFormat:
-            spectralFileV8.reference = parseIntegerSpectralData(channelCount: Int(spectralFileV8.channels))
+            spectralFile7.reference = parseIntegerSpectralData(channelCount: Int(spectralFile7.channels))
             break
         default:
             throw ParsingError(message: "Unbekanntes Datenformat der Referenzdaten.")
         }
         
         // MARK: Classifier Data
-        spectralFileV8.yCode = ClassifierType(rawValue: getNextByte())!
-        spectralFileV8.yModelType = getNextByte()
+        spectralFile7.yCode = ClassifierType(rawValue: getNextByte())!
+        spectralFile7.yModelType = getNextByte()
         
-        spectralFileV8.sTitle = getNextPrefixedString()
-        spectralFileV8.sSubTitle = getNextPrefixedString()
-        spectralFileV8.sProductName = getNextPrefixedString()
-        spectralFileV8.sVendor = getNextPrefixedString()
-        spectralFileV8.sLotNumber = getNextPrefixedString()
-        spectralFileV8.sSample = getNextPrefixedString()
-        spectralFileV8.sModelName = getNextPrefixedString()
-        spectralFileV8.sOperator = getNextPrefixedString()
-        spectralFileV8.sDateTime = getNextPrefixedString()
-        spectralFileV8.sInstrument = getNextPrefixedString()
-        spectralFileV8.sSerialNumber = getNextPrefixedString()
-        spectralFileV8.sDisplayMode = getNextPrefixedString()
-        spectralFileV8.sComments = getNextPrefixedString()
-        spectralFileV8.sUnits = getNextPrefixedString()
-        spectralFileV8.sFilename = getNextPrefixedString()
-        spectralFileV8.sUserName = getNextPrefixedString()
-        spectralFileV8.sReserved1 = getNextPrefixedString()
-        spectralFileV8.sReserved2 = getNextPrefixedString()
-        spectralFileV8.sReserved3 = getNextPrefixedString()
-        spectralFileV8.sReserved4 = getNextPrefixedString()
+        spectralFile7.sTitle = getNextPrefixedString()
+        spectralFile7.sSubTitle = getNextPrefixedString()
+        spectralFile7.sProductName = getNextPrefixedString()
+        spectralFile7.sVendor = getNextPrefixedString()
+        spectralFile7.sLotNumber = getNextPrefixedString()
+        spectralFile7.sSample = getNextPrefixedString()
+        spectralFile7.sModelName = getNextPrefixedString()
+        spectralFile7.sOperator = getNextPrefixedString()
+        spectralFile7.sDateTime = getNextPrefixedString()
+        spectralFile7.sInstrument = getNextPrefixedString()
+        spectralFile7.sSerialNumber = getNextPrefixedString()
+        spectralFile7.sDisplayMode = getNextPrefixedString()
+        spectralFile7.sComments = getNextPrefixedString()
+        spectralFile7.sUnits = getNextPrefixedString()
+        spectralFile7.sFilename = getNextPrefixedString()
+        spectralFile7.sUserName = getNextPrefixedString()
+        spectralFile7.sReserved1 = getNextPrefixedString()
+        spectralFile7.sReserved2 = getNextPrefixedString()
+        spectralFile7.sReserved3 = getNextPrefixedString()
+        spectralFile7.sReserved4 = getNextPrefixedString()
         
-        spectralFileV8.constituentCount = getNextUInt16()
+        spectralFile7.constituentCount = getNextUInt16()
         
-        for _ in 0..<spectralFileV8.constituentCount {
+        for _ in 0..<spectralFile7.constituentCount {
             let const:ConstituentType = ConstituentType()
             const.Name = getNextString()
             const.PassFail = getNextString()
@@ -83,44 +78,44 @@ class IndicoAsdFileReader : IndicoIniFileReader  {
             const.Scores = getNextDouble()
             const.ScoresLimit = getNextDouble()
             const.ModelType = Int32(getNextInt())
-            spectralFileV8.actConstituent.append(const)
+            spectralFile7.actConstituent.append(const)
             // jump over reserved bytes
             parseIndex += 16
         }
         
         // MARK: Dependent Variables
-        spectralFileV8.SaveDependentVariables = getNextBool()
-        spectralFileV8.DependentVariableCount = getNextUInt16()
+        spectralFile7.SaveDependentVariables = getNextBool()
+        spectralFile7.DependentVariableCount = getNextUInt16()
         parseIndex += 1 // random, educated skip
-        spectralFileV8.DependentVariableLabels = getNextPrefixedString()
-        spectralFileV8.DependentVariables = getNextFloat()
+        spectralFile7.DependentVariableLabels = getNextPrefixedString()
+        spectralFile7.DependentVariables = getNextFloat()
         
         // MARK: Calibration Header
-        spectralFileV8.calibrationCount = getNextByte()
+        spectralFile7.calibrationCount = getNextByte()
         
-        for _ in 0..<spectralFileV8.calibrationCount {
+        for _ in 0..<spectralFile7.calibrationCount {
             let calibrationBuffer = CalibrationBuffer()
             calibrationBuffer.calibrationType = CalibrationType(rawValue: getNextByte())!
             calibrationBuffer.fileName = getNextString(size: 20)
             calibrationBuffer.integrationTime = getNextUInt32()
             calibrationBuffer.swir1Gain = getNextUInt16()
             calibrationBuffer.swir2Gain = getNextUInt16()
-            spectralFileV8.calibrationBuffer.append(calibrationBuffer)
+            spectralFile7.calibrationBuffer.append(calibrationBuffer)
         }
         
-        if (spectralFileV8.calibrationCount != 0) {
+        if (spectralFile7.calibrationCount != 0) {
             
             // MARK: Base Calibration Data
-            spectralFileV8.baseCalibrationData = parseDoubleSpectralData(channelCount: Int(spectralFileV8.channels))
+            spectralFile7.baseCalibrationData = parseDoubleSpectralData(channelCount: Int(spectralFile7.channels))
             
             // MARK: Lamp Calibration Data
-            spectralFileV8.lampCalibrationData = parseDoubleSpectralData(channelCount: Int(spectralFileV8.channels))
+            spectralFile7.lampCalibrationData = parseDoubleSpectralData(channelCount: Int(spectralFile7.channels))
             
             // MARK: Fiber Optic Data
-            spectralFileV8.fiberOpticData = parseDoubleSpectralData(channelCount: Int(spectralFileV8.channels))
+            spectralFile7.fiberOpticData = parseDoubleSpectralData(channelCount: Int(spectralFile7.channels))
             
         }
         
-        return spectralFileV8
+        return spectralFile7
     }
 }

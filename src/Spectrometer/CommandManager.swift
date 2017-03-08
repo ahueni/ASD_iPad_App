@@ -23,7 +23,6 @@ class CommandManager {
     func aquire(samples: Int32) -> FullRangeInterpolatedSpectrum {
         
         var spectrum: FullRangeInterpolatedSpectrum!
-        
         serialQueue.sync {
             spectrum = internalAquire(samples: samples)
         }
@@ -31,33 +30,9 @@ class CommandManager {
         return spectrum
     }
     
-    func aquireCollect(samples: Int32) -> FullRangeInterpolatedSpectrum {
-        
-        var spectrums = [FullRangeInterpolatedSpectrum]()
-        for _ in 1...samples{
-            serialQueue.sync {
-                spectrums.append(internalAquire(samples: 1))
-            }
-        }
-        
-        var resultSpectrumBuffer = [Float](repeating: 0, count: spectrums.first!.spectrumBuffer.count)
-        for i in 0...spectrums.first!.spectrumBuffer.count - 1{
-            for spectrum in spectrums{
-                resultSpectrumBuffer[i] += spectrum.spectrumBuffer[i]
-            }
-            resultSpectrumBuffer[i] = resultSpectrumBuffer[i] / Float(samples)
-        }
-        let spectrum = spectrums.first!
-        spectrum.spectrumBuffer = resultSpectrumBuffer
-        return spectrum
-        
-    }
-    
     func darkCurrent(sampleCount: Int32) -> Void {
         
         serialQueue.sync {
-            // optimize is not needed here
-            //internOptimize()
             closeShutter()
             InstrumentStore.sharedInstance.darkCurrent = internalAquire(samples: sampleCount)
             openShutter()
@@ -144,7 +119,17 @@ class CommandManager {
         let command:Command = Command(commandParam: CommandEnum.Aquire, params: "1," + samples.description)
         let data = tcpManager.sendCommand(command: command)
         let spectrumParser = FullRangeInterpolatedSpectrumParser(data: data)
-        return spectrumParser.parse()
+        
+        do {
+            let spectrum = try spectrumParser.parse()
+            return spectrum
+        } catch {
+            print("Could not parse FullRangeInterpolatedSpectrum")
+        }
+        
+        let TODO_errorWeiterleiten = ""
+        fatalError("Erro handling verbessern, an dieser Stelle muss etwas geschehen.")
+        
     }
     
     internal func closeShutter() -> Void {
@@ -165,6 +150,16 @@ class CommandManager {
         let command:Command = Command(commandParam: CommandEnum.Initialize, params: "0,"+valueName)
         let data = tcpManager.sendCommand(command: command)
         let parameterParser = ParameterParser(data: data)
-        return parameterParser.parse()
+        
+        do {
+            let parameter = try parameterParser.parse()
+            return parameter
+        } catch {
+            print("Could not parse Parameter")
+        }
+        
+        let TODO_errorWeiterleiten = ""
+        fatalError("Erro handling verbessern, an dieser Stelle muss etwas geschehen.")
+        
     }
 }

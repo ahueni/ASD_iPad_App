@@ -8,12 +8,14 @@
 
 import Foundation
 
-class ParameterParser: BaseSpectrumInput {
+class ParameterParser: BaseSpectrumInput, ISpectrumParser {
     
-    func parse() -> Parameter {
+    typealias T = Parameter
+    
+    func parse() throws -> T {
         
-        if self.data.count < Parameter.SIZE {
-            fatalError("return data ist too small, parsing not possible")
+        if self.data.count < T.SIZE {
+            throw ParsingError(message: "Response too small, parameter can not parse")
         }
         
         let header: Int = getNextInt() // 4
