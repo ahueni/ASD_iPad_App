@@ -22,7 +22,7 @@ class FileWriteManager{
             for spectrum in spectrums
             {
                 let relativeFilePath = createNewFilePath(settings: settings)
-                let fileWriter = IndicoWriter(path: relativeFilePath)
+                let fileWriter = IndicoWriter(path: relativeFilePath, settings: settings)
                 fileWriter.writeRaw(spectrum: spectrum)
             }
         }
@@ -34,7 +34,7 @@ class FileWriteManager{
             for spectrum in spectrums
             {
                 let relativeFilePath = createNewFilePath(settings: settings)
-                let fileWriter = IndicoWriter(path: relativeFilePath)
+                let fileWriter = IndicoWriter(path: relativeFilePath, settings: settings)
                 fileWriter.writeReflectance(spectrum: spectrum, whiteRefrenceSpectrum: whiteRefrenceSpectrum)
             }
         }
@@ -46,7 +46,7 @@ class FileWriteManager{
             for spectrum in spectrums
             {
                 let relativeFilePath = createNewFilePath(settings: settings, fileSuffix: fileSuffix)
-                let fileWriter = IndicoWriter(path: relativeFilePath)
+                let fileWriter = IndicoWriter(path: relativeFilePath, settings: settings)
                 fileWriter.writeRadiance(spectrum: spectrum, radianceCalibrationFiles: radianceCalibrationFiles)
             }
         }

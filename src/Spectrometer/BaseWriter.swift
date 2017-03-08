@@ -9,8 +9,8 @@
 import Foundation
 
 class BaseWriter{
-    internal let fileHandle: FileHandle
-    
+    internal let fileHandle: FileHandle!
+    internal let settings: MeasurmentSettings!
     
     func toByteArray<T>(_ value: T) -> [UInt8] {
         var value = value
@@ -21,7 +21,7 @@ class BaseWriter{
         }
     }
     
-    init(path : String) {
+    init(path : String, settings : MeasurmentSettings) {
         
         let fileManager = FileManager.default
         //  check if the folder already exists
@@ -41,7 +41,7 @@ class BaseWriter{
             print("File not created, use relativepath instead of absolut")
         }
         fileHandle = FileHandle(forWritingAtPath: path)!
-        
+        self.settings = settings
     }
     
     enum FileError : Error {

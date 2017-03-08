@@ -129,6 +129,7 @@
 		E1807E681E2F7B2F00BB205F /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E671E2F7B2F00BB205F /* ParentViewController.swift */; };
 		E186B9481E364DDF00FE43F3 /* CommandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E186B9471E364DDF00FE43F3 /* CommandManager.swift */; };
 		E18970A01E2914B300722E9C /* BaseWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E189709F1E2914B300722E9C /* BaseWriter.swift */; };
+		E18AD5621E7056EB008DB02B /* CommentTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AD5611E7056EB008DB02B /* CommentTextField.swift */; };
 		E18DAE9D1E375D46005F6753 /* MeasurmentMasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18DAE9C1E375D46005F6753 /* MeasurmentMasterTableViewController.swift */; };
 		E18DAE9F1E375E43005F6753 /* MeasurmentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18DAE9E1E375E43005F6753 /* MeasurmentDetailViewController.swift */; };
 		E18F2EF41E696CBF00DFBD7C /* InstrumentControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18F2EF31E696CBF00DFBD7C /* InstrumentControlViewController.swift */; };
@@ -287,6 +288,7 @@
 		E1807E671E2F7B2F00BB205F /* ParentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
 		E186B9471E364DDF00FE43F3 /* CommandManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandManager.swift; sourceTree = "<group>"; };
 		E189709F1E2914B300722E9C /* BaseWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWriter.swift; sourceTree = "<group>"; };
+		E18AD5611E7056EB008DB02B /* CommentTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTextField.swift; sourceTree = "<group>"; };
 		E18DAE9C1E375D46005F6753 /* MeasurmentMasterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurmentMasterTableViewController.swift; sourceTree = "<group>"; };
 		E18DAE9E1E375E43005F6753 /* MeasurmentDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurmentDetailViewController.swift; sourceTree = "<group>"; };
 		E18F2EF31E696CBF00DFBD7C /* InstrumentControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentControlViewController.swift; sourceTree = "<group>"; };
@@ -1058,6 +1060,7 @@
 				E1C936BB1E42165F00EF51BB /* IPNumberTextField.swift */,
 				E1C936BF1E421AEB00EF51BB /* RequiredTextField.swift */,
 				2E924EEB1E66CCFD00B9BB42 /* UIOptionalTextField.swift */,
+				E18AD5611E7056EB008DB02B /* CommentTextField.swift */,
 			);
 			name = TextFields;
 			sourceTree = "<group>";
@@ -1293,6 +1296,7 @@
 				2ECC63481E543B4500C3AACB /* SettingsBox.swift in Sources */,
 				E18DAE9D1E375D46005F6753 /* MeasurmentMasterTableViewController.swift in Sources */,
 				E1807E5E1E2E576400BB205F /* SpectrometerErrors.swift in Sources */,
+				E18AD5621E7056EB008DB02B /* CommentTextField.swift in Sources */,
 				E12B760B1E54A44A00A4B105 /* MeasurmentSettings.swift in Sources */,
 				2E30A8501E44A075001236C5 /* DiskFileActivityItem.swift in Sources */,
 				2E91F2E21DDB5B9F003E277F /* TCPClient.swift in Sources */,

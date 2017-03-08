@@ -9,8 +9,6 @@
 import Foundation
 
 protocol BaseValidationControl {
-    
     var isValid : Bool {get}
     func validate()
-    
 }

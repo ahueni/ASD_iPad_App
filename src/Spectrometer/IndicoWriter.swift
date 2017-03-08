@@ -58,9 +58,8 @@ class IndicoWriter : BaseWriter {
         writeString(text: "as7")
         
         //comments
-        for _ in 1...157{
-            writeByte(number: UInt8(0))
-        }
+        //max 157 characters
+        writeStringWithFixedLength(text: settings.comment!, length: 157)
         
         //date
         let data = "123456789012345678".data(using: String.Encoding.utf8)

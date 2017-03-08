@@ -122,6 +122,9 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "IndicoIniFileReader.parse() throws -&gt; IndicoFileBase:IndicoIniFileReader.swift">
+      </ContextState>
+      <ContextState
          contextName = "TargetViewController.(startMeasureLoop() -&gt; ()).(closure #1):TargetViewController.swift">
          <PersistentStrings>
             <PersistentString

@@ -2475,7 +2475,7 @@ Dark Current</string>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Comment" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yKu-Z6-NNf" customClass="OptionalTextField" customModule="Spectrometer" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Comment" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yKu-Z6-NNf" customClass="CommentTextField" customModule="Spectrometer" customModuleProvider="target">
                                                 <rect key="frame" x="25" y="146" width="490" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Use-lN-l7n"/>
