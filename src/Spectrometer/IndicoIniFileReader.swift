@@ -12,9 +12,9 @@ class IndicoIniFileReader: BaseSpectrumInput, ISpectrumParser {
     
     typealias T = IndicoFileBase
     
+    var spectralFile = T()
+    
     func parse() throws -> T {
-        
-        let spectralFile = T()
         
         spectralFile.fileVersion = getNextString(size: 3)
         spectralFile.comments = getNextString(size: 157)

@@ -10,6 +10,11 @@ import Foundation
 
 class IndicoAsdFileReader : IndicoIniFileReader  {
     
+    override init(data: [UInt8]) {
+        super.init(data: data)
+        spectralFile = IndicoFile7()
+    }
+    
     override func parse() throws -> T {
         
         let spectralFile7 = try super.parse() as! IndicoFile7

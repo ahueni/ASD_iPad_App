@@ -1,20 +1,14 @@
 PODS:
+  - Charts (3.0.1):
+    - Charts/Core (= 3.0.1)
   - Charts/Core (3.0.1)
-  - Charts/Realm (3.0.1):
-    - Charts/Core
-    - RealmSwift (~> 1.1)
   - FontAwesome.swift (1.0.0)
   - PlainPing (0.3.1)
   - Pulsator (0.3.0)
-  - Realm (1.1.0):
-    - Realm/Headers (= 1.1.0)
-  - Realm/Headers (1.1.0)
-  - RealmSwift (1.1.0):
-    - Realm (= 1.1.0)
   - Zip (0.6.0)
 
 DEPENDENCIES:
-  - Charts/Realm
+  - Charts
   - FontAwesome.swift
   - PlainPing
   - Pulsator
@@ -25,10 +19,8 @@ SPEC CHECKSUMS:
   FontAwesome.swift: 2d32a3d62195343c2004b7c9043294ed2948553a
   PlainPing: 3b740d74bc694f4593045b5c5b17ea1275d1920f
   Pulsator: 0191f14f7ab82d6dbde6fdbde42036f07a4450e3
-  Realm: ceecf1a4540c4ce9efe196fe73fa9855bce05bd8
-  RealmSwift: 838058b2db95b12cb86bd0cf209df642c33fb60a
   Zip: 805fc2fa9d2f05bbb7762d982d7a42ccdcc51f42
 
-PODFILE CHECKSUM: 03ad375b542850e7f27cde88af9989d32a6bdd75
+PODFILE CHECKSUM: 6e092fa73c423247684ff6a4cf5b717f7582793c
 
 COCOAPODS: 1.2.0

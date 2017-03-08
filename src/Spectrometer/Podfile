@@ -9,7 +9,7 @@ target 'Spectrometer' do
   platform :ios, '8.0'
 
   # Pods for Spectrometer
-    pod 'Charts/Realm'
+    pod 'Charts'
     pod 'Zip'
     pod 'PlainPing'
     pod 'Pulsator'
