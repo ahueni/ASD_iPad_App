@@ -467,11 +467,11 @@
 			isa = PBXGroup;
 			children = (
 				2EC5054C1E6D5C9800E1DCFB /* Models */,
-				2E91F3031DDB77FC003E277F /* IO */,
 				2EC505521E6D609000E1DCFB /* Connection */,
+				2E91F3031DDB77FC003E277F /* IO */,
 				2EC505531E6D60ED00E1DCFB /* Calculations */,
-				2E91F2F81DDB6137003E277F /* Extensions */,
 				2EC5055B1E6D646900E1DCFB /* Errors */,
+				2E91F2F81DDB6137003E277F /* Extensions */,
 			);
 			name = Core;
 			sourceTree = "<group>";

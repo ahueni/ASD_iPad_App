@@ -12,9 +12,7 @@ class TcpManager {
     
     static let sharedInstance = TcpManager()
     
-    private init() {
-        
-    }
+    private init() { }
     
     internal var client: TCPClient!
     internal var connectState: Bool = false
