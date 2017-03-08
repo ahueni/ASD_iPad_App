@@ -68,6 +68,8 @@ class CommandManager {
     func initialize() -> Void {
         serialQueue.sync {
             // initialize values from spectrometer
+            let serialNumber = initialize(valueName: "SerialNumber")
+            
             let startingWavelength = initialize(valueName: "StartingWavelength")
             let endingWavelength = initialize(valueName: "EndingWavelength")
             let vinirStartingWavelength = initialize(valueName: "VStartingWavelength")
@@ -78,6 +80,8 @@ class CommandManager {
             let s2EndingWavelength = initialize(valueName: "S2EndingWavelength")
             
             let vinirDarkCurrentCorrection = initialize(valueName: "VDarkCurrentCorrection")
+            
+            InstrumentStore.sharedInstance.serialNumber = Int(serialNumber.value)
             
             InstrumentStore.sharedInstance.startingWaveLength = Int(startingWavelength.value)
             InstrumentStore.sharedInstance.endingWaveLength = Int(endingWavelength.value)

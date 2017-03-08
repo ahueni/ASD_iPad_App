@@ -53,6 +53,9 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set the serialnumber in the tabbar item title
+        self.title = "Spectrometer (" + InstrumentStore.sharedInstance.serialNumber.description + ")"
+        
         // init radio buttons
         rawRadioButton.alternateButton = [reflectanceRadioButton, radianceRadioButton]
         reflectanceRadioButton.alternateButton = [rawRadioButton, radianceRadioButton]

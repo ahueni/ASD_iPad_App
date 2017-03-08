@@ -21,6 +21,8 @@ class InstrumentStore {
     // Inbox root folder
     let inboxRoot: URL = FileManager.default.getDocumentsRoot().appendingPathComponent("Inbox", isDirectory: true)
     
+    var serialNumber : Int!
+    
     // all wavelength values of FS3 and FS4 devices
     // they will be read and set at startup (initialize)
     var startingWaveLength: Int!
