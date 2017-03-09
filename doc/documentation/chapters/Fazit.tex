@@ -1,1 +1,18 @@
 \chapter{Fazit}
+\section{Zusammenfassung}
+Das Projektteam hatte anfangs Schwierigkeiten, mithilfe der ASD-Dokumentation eine Verbindung zum Gerät aufzubauen und korrekte Daten zu empfangen. Nach dieser Hürde, konnten die Anforderungen gut umgesetzt werden. Die Aufteilung in die einzelnen Layer, machte die Entwicklung einfacher und half die Übersicht über den grösser werdenden Projektumfang zu bewahren. 
+\section{Potentielle Erweiterungen}
+\subsection{Neues ASD Gerät}
+Die wohl wahrscheinlichste Erweiterung in Zukunft, ist das erweitern der Applikation um die Kompatibilität mit neueren ASD Geräten herzustellen. Eine solche Erweiterung wurde bereits während der Entwicklungszeit in Betracht gezogen. Der bestehende Code kann erweitert werden, ohne dessen Funktionalität anpassen zu müssen.
+\subsection{Absolut Reflectance}
+Diese Erweiterung wurde als Priorität 4 aufgenommen, konnte allerdings im Projektrahmen nicht mehr umgesetzt werden. Jedoch wird bereits das auswählen und speichern eines Absolut-Reflectance-Files in der Applikation angeboten. Dieses muss nur noch in die Berechnung der Anzeige einfliessen.
+
+\subsection{GPS Daten und Fotos zu Messungen hinzufügen}
+Diese Erweiterung wurde ebenfalls als Requirement mit geringer Priorität aufgenommen und ist nicht umgesetzt worden. Das Indico File Format bietet für die GPS Daten bereits einen entsprechenden Abschnitt. Dieser ist in der FileWriter Klasse auch beschrieben und wird momentan übersprungen. Für die Speicherung von Bildern, müsste das Indico Protokoll erweitert werden. Auf die GPS Daten und die Kamera des Gerätes kann einfach über die von Apple vorgesehenen Schnittstellen zugegriffen werden.
+\section{Erkenntnisse}
+Trotz der vorhandenen Dokumentation, war das Projekt nicht einfach zu realisieren. Insbesondere die Verbindungsherstellung und die Eigenheiten des ASD Geräts, gestalteten den Einstieg in das Projekt schwieriger als Erwartet. Auch die Abläufe der Messungen fühlen sich anfangs teilweise widersprüchlich an. Ist die Abfolge allerdings geklärt und die Verbindung korrekt umgesetzt, ist die Implementierung der Anforderungen relativ zügig machbar.
+\newline
+\newline
+%ghört zur umsetzung
+Auch Sprachbedingt, mussten einige Anpassungen vorgenommen werden, welche bei anderen Sprachen nicht benötigt worden wären. So können in Swift keine Fatal Errors, beispielsweise bei einem Array out of Index Fehler, abgefangen werden. Dies macht Sinn, wenn ein Produkt aus einer Hand entwickelt wird. Bei unserer Abhängigkeit zur Rückgabe des Spektrometers, kann es passieren, dass die Grösse oder Typen der Rückgabe nicht stimmen. Diese Fehler müssen speziell abgefangen werden und können nicht einfach generell behandelt werden.
+Weiter können in Swift keine abstrakten Klassen definiert werden, so können externe Entwickler versehentlich vergessen Methoden zu überschreiben. Dies wurde gelöst, indem in den Basismethoden welche abgeleitet werden müssen ein Fatal Error geworfen wird.
