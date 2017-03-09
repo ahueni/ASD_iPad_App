@@ -1,60 +1,99 @@
 \chapter{Umsetzung}
-Dieses Kapitel beschreibt die Umsetzung des Produktes.
-Die Nachfolgenden Abschnitte werden Schrittweise detaillierter und beschreiben den Aufbau sowie die Designentscheidungen des Softwarecodes.
-
 \section{Einleitung}
-\section{Anforderungen}
+Dieses Kapitel beschreibt die Umsetzung des Produktes. Die nachfolgenden Abschnitte werden Schrittweise detaillierter und beschreiben den Aufbau sowie die Designentscheidungen des Softwarecodes. Es soll eine mögliche Weiterentwicklung der Software ermöglichen und für den Entwickler vereinfachen.
+
 \section{Technologien}
-In diesem Abschnitt wird beschrieben, welche Technologien und Tools eingesetzt wurden, um die iOS Applikation umzusetzen. Es wurde darauf geachtet, dass bewährte und von den Herstellern vorgesehene Technologien verwendet wurden.
+In diesem Abschnitt wird beschrieben, welche Technologien und Tools eingesetzt wurden, um die iOS Applikation umzusetzen. Es wurde darauf geachtet, dass bewährte und von Apple vorgesehene Technologien verwendet werden. Die Applikation sowie der Code entsprechen der von Apple vorgegebenen Richtlinien. Weitere Informationen für die Entwicklung von Applikationen für die iOS Betriebssysteme sind direkt im \href{https://developer.apple.com/develop/}{Apple Entwicklungsbereich} zu finden.
+
 \subsection{Entwicklungsumgebung}
-Das Projekt wurde mit XCode 8.2.1 umgesetzt. Grundsätzlich, kann jede IDE verwendet werden, welche mit Swift kompatibel ist. Um das Projekt builden zu können wird zwingend ein Apple Rechner benötigt.
+Das Projekt wurde mit XCode 8.2.1 umgesetzt. Grundsätzlich, kann jede \gls{ide} verwendet werden, welche mit Swift kompatibel ist. Die einzige Voraussetzung um die Applikation erfolgreich zu Kompilieren ist ein Computer mit macOS Betriebssystem.
+
+Es können später weitere Voraussetzungen dazukommen, je nachdem wie die Applikation an die tatsächlichen Benutzer ausgeliefert werden soll.
+
 \subsection{Programmiersprache}
 Das Projekt wurde in der Programmiersprache Swift 3 umgesetzt und ist mit iOS 10 und höher kompatibel. Es wurde darauf geachtet, dass alle Abhängigkeiten ebenfalls in Swift umgesetzt sind. Dies erleichtert die Weiterentwicklung da kein, für ungeübte Entwickler, meist schwer lesbarer Objective C Code zum Einsatz kommt.
-\subsection{Abhängigkeiten}
-Externe Ressourcen, wurden vorwiegend mit CocoaPods eingebunden. CocoaPods ist ein Packet Manager, mit welchem man Packete in ein bestehendes Projekt einbinden kann. Dies geschieht über ein sogenanntes Podfile, welches zum Projektumfang gehört. Dieses File beschreibt die externen Abhängigkeiten, sowie welche Version benötigt wird.
 
-Folgende Pods wurden für das Projekt verwendet:
-\begin{itemize}
-\item	 pod 'Charts/Realm'
-\item    pod 'Zip'
-\item    pod 'PlainPing'
-\item    pod 'Pulsator'
-\item    pod 'FontAwesome.swift'di
+\subsection{Abhängigkeiten}
+Externe Ressourcen und Frameworks, wurden vorwiegend mit CocoaPods eingebunden. CocoaPods ist ein Paket Manager, mit welchem man Pakete in ein bestehendes Projekt einbinden kann. Dies geschieht über ein sogenanntes Podfile, welches zum Projektumfang gehört. Dieses File beschreibt die externen Abhängigkeiten, sowie welche Version benötigt wird. CocoaPods ist kein Produkt von Apple und wird durch die Community weiterentwickelt und bereitgestellt. Sollten Updates zu Frameworks bereitstehen können diese einfach ins Projekt integriert werden.
+
+Folgende Frameworks wurden mit CocoaPods in das Projekt eingebunden und verwendet:
+\begin{itemize}[noitemsep]
+\item Charts: \href{https://github.com/danielgindi/Charts}{https://github.com/danielgindi/Charts}
+\item Zip: \href{https://github.com/marmelroy/Zip}{https://github.com/marmelroy/Zip}
+\item PlainPing: \href{https://github.com/naptics/PlainPing}{https://github.com/naptics/PlainPing}
+\item Pulsator: \href{https://github.com/shu223/Pulsator}{https://github.com/shu223/Pulsator}
+\item FontAwesome.swift: \href{https://github.com/thii/FontAwesome.swift}{https://github.com/thii/FontAwesome.swift}
 \end{itemize}
-    
-Einzig die TCP Kommunikation wurde mit externem Code gelöst, welcher nicht als Pod verfügbar ist. Mehr dazu unter dem Abschnitt \hyperref[sec:Connection]{Connection}.
+
+Folgende Frameworks wurden direkt als Klassendateien ins Projekt eingebunden und verwendet, da sie nicht als Paket verfügbar sind.
+\begin{itemize}[noitemsep]
+\item Socks: \href{https://github.com/vapor/socks}{https://github.com/vapor/socks}
+\end{itemize}
+
+\subsection{Deployment}
+Die Applikation wurde während der Entwicklung mit dem von Apple zur verfügung gestellten Service \gls{testflight} ausgeliefert. Somit konnten die Prototypen und die Vorabversion auf einfache Art und Weise dem Kunden zur verfügung gestellt werden.
+
+\gls{testflight} ermöglicht es Prototypen und Vorversionen über einen gesonderten AppStore auf registrierten iOS Geräten von bis zu 200 Testpersonen als App-Download anzubieten. Um diesen Dienst zu Nutzen ist ein Apple Developer Account notwendig, mit der Integration und Konfiguration von zusätzlichen Zertifikaten.
+
+Für eine zukünftige Weiterentwicklung und vor allem Auslieferung an externe Benutzer kann die Applikation ebenfalls in den AppStore aufgenommen werden oder als B2B\footnote{Develop Custom Apps for Business: \href{https://developer.apple.com/programs/volume/b2b/}{https://developer.apple.com/programs/volume/b2b/}} Applikation vertrieben werden. In beiden Fällen benötigt der Entwickler aber einen gültigen Apple Developer Account.
+
+\newpage
+
 \section{Architektur}
 
 \subsection{Grobarchitektur}
-Um weite Teile des Sourcecodes erneut nutzen zu können, wurde das Projekt in drei Teile aufgeteilt. Diese 3 Teile werden in den folgenden Abschnitten beschrieben.
+Um weite Teile des Quellcodes erneut nutzen zu können, wurde das Projekt in die drei Teile Core, Service und iOS App aufgeteilt. Die Layer wurden nach bestimmten Kriterien aufgetrennt, diese werden in den nachfolgenden Kapiteln genau beschrieben.
 
-\includegraphics[scale=0.41]{images/SA_BigPicture}
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[scale=0.3]{images/SA_BigPicture} 
+	\caption{Layeraufteilung der Grobarchitektur}
+	\label{fig:SALayers}
+	\end{center}
+\end{figure}
 
 \subsection{Core}
-Der Core Ordner fasst den gesamten Code zusammen, welcher Platformunabhängig ist. Dieser Code kann auch in anderen Projekten mit ähnlicher Anwendung benutzt werden.
+Der Core fasst den gesamten Code zusammen welcher Platform unabhängig ist. Dieser Code könnten in weiteren Projekten eingesetzt werden die auf der Programmiersprache Swift aufbauen. Klassen im Core-Layer verwenden nur Grundkomponenten von Swift und könnte so auch auf einem anderen Betriebssystem eingesetzt werden das Swift unterstützt.
+
 \subsection{Service}
-Der Service Layer, kapselt einige Anfragen des App Layers an den Core Teil. Dieser Layer wird oft dazwischen gelegt, um beispielsweise Parallelität zu vermeiden. So wird im Layer beispielsweise ein Synchronized Queue benötigt, um nur ein Request nach dem Anderen an ein \gls{spectrometer} zu senden.
+Der Service-Layer kapselt Anfragen des iOS-Layers an den Core. Dieser Layer wurde verwendet um Parallelität zu vermeiden. Der Service-Layer beinhaltet Manager-Klassen die Aufrufe an den Core mit einer Synchronized-Queue bearbeiten und weiterleiten. Somit ist garantiert, dass niemals zwei Befehle gleichzeitig oder überlappend an das \gls{spectrometer} gesendet werden. Auch das Schreiben von nummerierten Messdateien ins Dateisystem kann durch ein FileManager so gekapselt werden.
+
+Klassen im Service-Layer unterscheiden sich durch ein weiteres Kriterium vom Core. Sie können nur auf Plattformen von Apple eingesetzt werden, da sie gewisse Importe benötigen die nicht in der Swift Basis enthalten sind. Der Service-Layer könnte im gesamten Programmierumfeld von Apple (macOS, iOS, watchOS, tvOS) eingesetzt werden, nicht aber ausserhalb.
+
 \subsection{iOS App}
-Dieser Layer beinhaltet die eigentliche iOS App mit all Ihren typischen Eigenschaften, wie das AppDelegate und die Storyboards. In diesem Ordner werden alle Views sowie deren Controller gespeichert.
+Dieser Layer beinhaltet die eigentliche iOS App mit all ihren typischen Eigenschaften, wie das AppDelegate, die Storyboards und die ViewController. Zusätzlich wurden noch eigene ViewComponents erstellt die ebenfalls in diesem Layer enthalten sind.
 
 \section{Core}
-\subsection{Connection}
-\label{sec:Connection}
-In diesem Ordner, befindet sich die TCPManager Klasse sowie die externen Socks Dateien. Das Socks Framework kümmert sich um die Kommunikation auf TCP Ebene. Eine ausführliche Dokumentation ist unter folgendem Link zu finden: 
-\newline
-https://github.com/vapor/socks
-\newline
-Der TCP Manager ist für die Anfragen des Gerätes verantwortlich. Es ist die einzige Klasse, welche direkt mit dem \gls{spectrometer} kommuniziert. Er ist deshalb auch als Singleton umgesetzt. Mit der connect Funktion, kann eine Verbindung zum ASD Gerät hergestellt werden, danach können beliebig viele Kommandos mit sendCommand gesendet werden. Um die Verbindung zu schliessen, muss lediglich die disconnect Methode aufgerufen werden.
+
+\subsection{Models}
+In diesem Ordner werden sämtliche Datenstrukturen definiert die in Verbindung mit dem Spektrometer, den INI-Dateien oder Indico Dateien verwendet werden. Es wurde darauf geachtet diese möglichst erweiterbar zu gestalten. Es gibt wenn möglich eine Basis-Klasse die, die immer gleichen Grundstrukturen bei Spektraldaten oder Indico Dateien implementiert. Die Ableitungen spezialisieren dann die effektiven Datentypen.
+Diese Aufteilung ermöglicht es einem Entwickler, einfach einen neuen Indico-Standart oder ein Rückgabetyp eines zusätzlichen Spektrometers zu erstellen.
+
+\subsubsection{Command}
+Der Command wird verwendet um genormte Anfragen ans Spektrometer zu senden. Für jeden Command wurde eine Grösse definiert die vom erwarteten Datentyp abhängt. Somit kann der TCP Manager jeweils entscheiden wann alle Daten empfangen wurden.
+
+\subsubsection{SpectralData}
+In diesem Ordner wurden alle Datentypen definiert die vom Spektrometer empfangen werden können. Die genauen Grössen und vorhandenen Felder wurden dem ASD Developer Guide entnommen. Dieser ist im \color{red} Anhang \color{black} angehängt. Die meisten Befehle haben ihren bestimmten Rückgabetyp einige verwandte Befehle verwenden jedoch auch den gleichen Rückgabetyp.
+
+\subsubsection{IndicoFile}
+In diesem Ordner wurde der Datentyp für das Indico Dateiformat definiert. Die Basisklasse \verb=IndicoFileBase= repräsentiert genau eine INI-Datei die für die Spektrometer-Konfiguration verwendet wird. Die Ableitung \verb=IndicoFile7= repräsentiert die vollständige Datei mit allen Spektraldaten. Der Inhalt der Dateien wird in der Abbildung \ref{fig:MeasurementFiles} genau dargestellt.
+
+\subsection{Connections} \label{sec:connection}
+In diesem Ordner, befindet sich die TCP-Manager Klasse sowie die externen Socks Dateien. Das Socks Framework kümmert sich um die Kommunikation auf TCP Ebene. Für die Integration wurde nicht CocoaPods verwendet deshalb wurden die Klassen direkt in den Ordner kopiert.
+
+Der TCP-Manager ist für die Anfragen an das Spektrometer verantwortlich. Es ist die einzige Klasse, welche direkt mit dem \gls{spectrometer} kommuniziert und ist deshalb als Singleton umgesetzt. Mit der Methode \verb=connect(internetAdress: InternetAddress)= kann eine Verbindung zum \gls{spectrometer} hergestellt werden, danach können beliebig viele Kommandos mit \verb=sendCommand(command: Command)= gesendet werden. Um die Verbindung zu schliessen, muss lediglich die \verb=disconnect()= Methode aufgerufen werden.
 
 \subsection{Input/Output}
-In diesem Kapitel, werden alle Klassen beschrieben, welche direkt Daten einlesen oder Ausgeben.
+In diesem Kapitel werden alle Klassen beschrieben, welche direkt Dateien einlesen, Daten empfangen oder Dateien schreiben.
+
 \subsubsection{File Writer}
 Die Output Klassen, dienen dazu ein Indico File zu schreiben. Die Base Klasse kapselt dafür alle Schreibvorgänge. Von der Klasse File Writer, wird auf diese Methoden zugegriffen und stösst so das Schreiben in der Richtigen Reihenfolge an. Von aussen kann lediglich gewählt werden, welche der 3 Messmethoden geschrieben werden soll: Raw, Reflectance oder Radiance.
 \newline
 Um die Applikation um einen neuen Writer zu erweitern, muss lediglich vom BaseWriter abgeleitet werden und eine eigene write Methode implementiert werden. Diese neue Klasse, kann die vom BaseWriter bereitgestellten Methoden nutzen oder um weitere ergänzen.
-\subsubsection{File Reader}
+\subsubsection{File Reader und Spectrometer Parser}
+Die Reader- und Parserklassen bauen alle auf der selben Basis auf. In der \verb=BaseSpectrumInput= Klasse sind alle Funktionen realisiert um aus Byte Werten die entsprechenden Datentypen zu parsen. In den konkreten Implementierungen müssen diese dann nur in der richtigen Rheienfolge aufgerufen und den entsprechenden Feldern zugewiesen werden.
 
-\subsubsection{Spectrometer Parser}
+Durch die inkonsistente Impelmentierung von der Firma ASD gibt es immer wieder verwirrende stellen die gesondert implementiert werden müssen. Als Beispiele sind hier Strings zu nennen die zum Teil als prefixed, null-terminiert oder aber mit fixer Länge in der gleichen Datei implementiert wurden. Teilweise werden Float- oder Doublewerte in der selben Antwort vom Gerät einmal im littleendian und dann wieder im bigendian Format codiert.
 
 \subsection{Calculations}
 Der Ordner Calculations enthält lediglich die Klasse SpectrumCalculator welche nur statische Funktionen enthält. Diese dienen der Berechnung der Reflektanz sowie der Radianz. Ausserdem beinhaltet die Klasse noch eine Methode um eine Dark Correction auf einem übergebenen Spetrum durchzuführen.
@@ -88,7 +127,26 @@ Alle ViewController sind in der Datei Main.storyboard enthalten. Dies war eine b
 Die Anordnung der Controls wurde im Storyboard gelöst. Kleinere Merkmale wurden jeweils im Code angepasst, indem von bestehenden Controls abgeleitet wurde.
 
 \subsection{Controllers}
-\lstset{language=[Objective]C, breakindent=40pt, breaklines}
+
+\subsubsection{Connections}
+Die zwei ViewControllers \verb=AddEditConnectionViewController= und \verb=ConnectionViewController= dienen beim Start der Applikation dazu neue Spektrometer hinzuzufügen oder bestehende zu bearbeiten. Diese ViewController interagieren direkt mit dem Storyboard und den dazugehörigen Views. Die Klasse \verb=SpectrometerConfigTableViewCell= dient als Hilfsklasse um die Tabelleneiträge der Spektrometertabelle zu gestalten und mit dem Code zu verknüpfen.
+
+\subsubsection{Spectrometer}
+
+Der Ordner Spectrometer enthält Klassen für zwei wichtige Teile der Applikation. In der Klasse \verb=SpectrometerViewController= sind alle Funktionen und Verknüpfungen für die Hauptansicht umgesetzt. Diese ist in der Lage, wenn alle Voraussetzungen Erfüllt sind, zwischen Raw, Reflectance und Radiance zu wechseln und die berechneten Daten direkt im Liniendiagramm darzustellen. Die kontinuierliche Aquisitation neuer Messwerte wird durch eine Endlosschlaufe immer weitergeführt bis die Abbruchbedingung eintritt. Weiter ist die Klasse für folgende Aktionen und Darstellungen zuständig:
+
+\begin{itemize}[noitemsep]
+\item Dark Current oder White Reference per Button auslösen.
+\item Die entsprechenden Timer wieder zurücksetzen und aktualisieren.
+\item Messung initiieren, sprich die anzeige der PopUp View für den Messablauf.
+\item Verbindung zum Spektrometer trennen.
+\end{itemize}
+
+Im einem Unterordnern befindet sich zugleich die gesamte Logik um Messungen in vorgegebenen Messprotokollen auszuführen. Die Klassen sind zudem Verantwortlich die eingegebenen Messdaten zwischenzuspeichern und bei einer erneuten Messung bereits vorausgewählt in den verschiedenen Komponenten (TextField, PathSelect, Switches, etc.) einzustellen.
+
+
+
+\subsubsection{Measurements}
 
 \subsubsection{Settings}
 
