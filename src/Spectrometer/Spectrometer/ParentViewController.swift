@@ -66,8 +66,3 @@ class ParentViewController : UIPageViewController {
         return true
     }
 }
-
-enum WhiteReferenceEnum{
-    case Before
-    case After
-}

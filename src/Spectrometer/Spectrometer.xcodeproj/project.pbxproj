@@ -91,6 +91,7 @@
 		2EC505621E6D672100E1DCFB /* ViewStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC505611E6D672100E1DCFB /* ViewStore.swift */; };
 		2EC5056B1E6D6CAF00E1DCFB /* AppEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC5056A1E6D6CAF00E1DCFB /* AppEnums.swift */; };
 		2EC5056E1E6D792200E1DCFB /* NotificationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC5056D1E6D792200E1DCFB /* NotificationExtensions.swift */; };
+		2EC505701E715CC200E1DCFB /* BaseMeasurementAquire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC5056F1E715CC200E1DCFB /* BaseMeasurementAquire.swift */; };
 		2EC6D8111E5C7F570022F70E /* PathSelectInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6D8101E5C7F570022F70E /* PathSelectInput.swift */; };
 		2EC6D8141E5C80A80022F70E /* AbsoluteReflectanceFileSelectInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6D8131E5C80A80022F70E /* AbsoluteReflectanceFileSelectInput.swift */; };
 		2EC6D8161E5C86970022F70E /* BaseCalibrationSelectInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6D8151E5C86970022F70E /* BaseCalibrationSelectInput.swift */; };
@@ -139,7 +140,6 @@
 		E1A40C2B1E409C8E0019F467 /* DirectoryBrowserContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A40C2A1E409C8E0019F467 /* DirectoryBrowserContainerViewController.swift */; };
 		E1A40C2E1E40A2D60019F467 /* DirectoryBrowserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A40C2D1E40A2D60019F467 /* DirectoryBrowserTableViewController.swift */; };
 		E1AC382B1E266ACD004CCBEF /* IndicoWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC382A1E266ACD004CCBEF /* IndicoWriter.swift */; };
-		E1BD75EF1E60705100AB92CD /* BaseWhiteReferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD75EE1E60705100AB92CD /* BaseWhiteReferenceViewController.swift */; };
 		E1C936B51E41D61800EF51BB /* BaseValidationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C936B41E41D61800EF51BB /* BaseValidationControl.swift */; };
 		E1C936B71E41D64A00EF51BB /* NumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C936B61E41D64A00EF51BB /* NumberTextField.swift */; };
 		E1C936B91E41D8B700EF51BB /* PortTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C936B81E41D8B700EF51BB /* PortTextField.swift */; };
@@ -250,6 +250,7 @@
 		2EC505611E6D672100E1DCFB /* ViewStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewStore.swift; sourceTree = "<group>"; };
 		2EC5056A1E6D6CAF00E1DCFB /* AppEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppEnums.swift; sourceTree = "<group>"; };
 		2EC5056D1E6D792200E1DCFB /* NotificationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationExtensions.swift; sourceTree = "<group>"; };
+		2EC5056F1E715CC200E1DCFB /* BaseMeasurementAquire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMeasurementAquire.swift; sourceTree = "<group>"; };
 		2EC6D8101E5C7F570022F70E /* PathSelectInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathSelectInput.swift; sourceTree = "<group>"; };
 		2EC6D8131E5C80A80022F70E /* AbsoluteReflectanceFileSelectInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbsoluteReflectanceFileSelectInput.swift; sourceTree = "<group>"; };
 		2EC6D8151E5C86970022F70E /* BaseCalibrationSelectInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCalibrationSelectInput.swift; sourceTree = "<group>"; };
@@ -298,7 +299,6 @@
 		E1A40C2A1E409C8E0019F467 /* DirectoryBrowserContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryBrowserContainerViewController.swift; sourceTree = "<group>"; };
 		E1A40C2D1E40A2D60019F467 /* DirectoryBrowserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryBrowserTableViewController.swift; sourceTree = "<group>"; };
 		E1AC382A1E266ACD004CCBEF /* IndicoWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicoWriter.swift; sourceTree = "<group>"; };
-		E1BD75EE1E60705100AB92CD /* BaseWhiteReferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWhiteReferenceViewController.swift; sourceTree = "<group>"; };
 		E1C936B41E41D61800EF51BB /* BaseValidationControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseValidationControl.swift; sourceTree = "<group>"; };
 		E1C936B61E41D64A00EF51BB /* NumberTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberTextField.swift; sourceTree = "<group>"; };
 		E1C936B81E41D8B700EF51BB /* PortTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortTextField.swift; sourceTree = "<group>"; };
@@ -613,7 +613,6 @@
 		2EB823231DE0CC0600DF732C /* Spectrometer */ = {
 			isa = PBXGroup;
 			children = (
-				E1807E621E2F617900BB205F /* MeasurementSeries */,
 				2EB823241DE0CC2900DF732C /* SpectrometerViewController.swift */,
 			);
 			name = Spectrometer;
@@ -790,6 +789,7 @@
 			children = (
 				2EB823071DE0ACD400DF732C /* Connections */,
 				2EB823231DE0CC0600DF732C /* Spectrometer */,
+				E1807E621E2F617900BB205F /* MeasurementSeries */,
 				E18DAE981E375CDB005F6753 /* Measurements */,
 				E14EC2291E2E187B006EBD2F /* Settings */,
 			);
@@ -857,6 +857,14 @@
 				E1A40C2C1E409D860019F467 /* FileBrowser */,
 			);
 			name = Service;
+			sourceTree = "<group>";
+		};
+		2EC505731E715E0D00E1DCFB /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				2EC5056F1E715CC200E1DCFB /* BaseMeasurementAquire.swift */,
+			);
+			name = Base;
 			sourceTree = "<group>";
 		};
 		2EC6D80E1E5C7E4B0022F70E /* Selects */ = {
@@ -1034,10 +1042,10 @@
 		E1BD75ED1E60703100AB92CD /* MesurmentAquire */ = {
 			isa = PBXGroup;
 			children = (
-				E165E1F61E34B5A20077A5EB /* TargetViewController.swift */,
+				2EC505731E715E0D00E1DCFB /* Base */,
 				E118A4C91E51C77600F13053 /* RadianceWhiteRefrenceViewController.swift */,
 				E108F21A1E3F367C0097B7EE /* ReflectanceWhiteRefrenceViewController.swift */,
-				E1BD75EE1E60705100AB92CD /* BaseWhiteReferenceViewController.swift */,
+				E165E1F61E34B5A20077A5EB /* TargetViewController.swift */,
 			);
 			name = MesurmentAquire;
 			sourceTree = "<group>";
@@ -1285,7 +1293,6 @@
 			files = (
 				E15995C91E661D8C00254FAE /* FileWriteManager.swift in Sources */,
 				2E91F2EE1DDB5B9F003E277F /* SocketOptions+Deprecated.swift in Sources */,
-				E1BD75EF1E60705100AB92CD /* BaseWhiteReferenceViewController.swift in Sources */,
 				2EC6D8141E5C80A80022F70E /* AbsoluteReflectanceFileSelectInput.swift in Sources */,
 				E1C936C01E421AEB00EF51BB /* RequiredTextField.swift in Sources */,
 				E1C936B51E41D61800EF51BB /* BaseValidationControl.swift in Sources */,
@@ -1389,6 +1396,7 @@
 				E13BEF681E6E9B370002804A /* Pages.swift in Sources */,
 				2E91F2ED1DDB5B9F003E277F /* Socket.swift in Sources */,
 				2EB823251DE0CC2900DF732C /* SpectrometerViewController.swift in Sources */,
+				2EC505701E715CC200E1DCFB /* BaseMeasurementAquire.swift in Sources */,
 				2E91F2E71DDB5B9F003E277F /* Conversions.swift in Sources */,
 				2E91F3001DDB745D003E277F /* SwirHeader.swift in Sources */,
 				2EC505571E6D624900E1DCFB /* ServiceExtensions.swift in Sources */,

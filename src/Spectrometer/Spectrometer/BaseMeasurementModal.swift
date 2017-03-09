@@ -19,9 +19,8 @@ class BaseMeasurementModal : UIViewController
 {
     var appDelegate = UIApplication.shared.delegate as! AppDelegate
     var pageContainer : ParentViewController!
-    var lineChartDataContainer : LineChartDataContainer! = LineChartDataContainer()
     
-    @IBOutlet var MeasurementLineChart: SpectrumLineChartView!
+    @IBOutlet var nextButton: UIButton!
     
     func goToNextPage() {
         pageContainer.goToNextPage()
@@ -36,42 +35,4 @@ class BaseMeasurementModal : UIViewController
         dismiss(animated: true, completion: nil)
     }
     
-    func updateLineChart(){
-        DispatchQueue.main.async {
-            //update ui
-            self.MeasurementLineChart.setAxisValues(min: 0, max: self.pageContainer.measurmentMode.rawValue)
-            
-            let lineChartDataSets = [self.lineChartDataContainer.currentLineChart] + self.lineChartDataContainer.lineChartPool
-            self.MeasurementLineChart.data = LineChartData(dataSets: lineChartDataSets)
-        }
-    }
-    
-    func writeRawFileAsync(spectrum : FullRangeInterpolatedSpectrum, dataType: DataType)
-    {
-        DispatchQueue.global().async {
-            FileWriteManager.sharedInstance.addToQueueRaw(spectrums: [spectrum], settings: self.pageContainer!.measurmentSettings)
-        }
-    }
-    
-    func writeReflectanceFileAsync(spectrum : FullRangeInterpolatedSpectrum, whiteRefrenceSpectrum: FullRangeInterpolatedSpectrum, dataType: DataType)
-    {
-        DispatchQueue.global().async {
-            FileWriteManager.sharedInstance.addToQueueReflectance(spectrums: [spectrum], whiteRefrenceSpectrum: whiteRefrenceSpectrum, settings: self.pageContainer!.measurmentSettings)
-        }
-    }
-    
-    func writeRadianceFilesAsync(spectrums : [FullRangeInterpolatedSpectrum], dataType: DataType, isWhiteReference: Bool){
-        DispatchQueue.global().async {
-            let base = ViewStore.sharedInstance.instrumentConfiguration.base!
-            let lamp = ViewStore.sharedInstance.instrumentConfiguration.lamp!
-            let fiberOptic = InstrumentStore.sharedInstance.selectedForeOptic!
-            let radianceCalibrationFiles = RadianceCalibrationFiles(baseFile: base, lampFile: lamp, fiberOptic: fiberOptic)
-            
-            let fileSuffix = isWhiteReference ? "_WR" : ""
-            
-            DispatchQueue.global().async {
-                FileWriteManager.sharedInstance.addToQueueRadiance(spectrums: spectrums, radianceCalibrationFiles: radianceCalibrationFiles, settings: self.pageContainer!.measurmentSettings, fileSuffix: fileSuffix)
-            }
-        }
-    }
 }

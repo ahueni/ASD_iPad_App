@@ -13,7 +13,6 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
     
     @IBOutlet var fileNameTextField: UITextField!
     @IBOutlet var selectPathInput: BaseSelectInput!
-    @IBOutlet var nextButton: UIColorButton!
     @IBOutlet var commentTextField: OptionalTextField!
     
     @IBOutlet var rawRadioButton: RadioButton!
@@ -131,13 +130,13 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
         // append the next page
         switch measurementMode! {
         case MeasurementMode.Raw:
-            pageContainer!.pages.append(RawPage())
+            pageContainer!.pages.append(RawSettingsPage())
             break
         case MeasurementMode.Radiance:
-            pageContainer!.pages.append(RadiancePage())
+            pageContainer!.pages.append(RadianceSettingsPage())
             break
         case MeasurementMode.Reflectance:
-            pageContainer!.pages.append(ReflectancePage())
+            pageContainer!.pages.append(ReflectanceSettingsPage())
             break
         }
         

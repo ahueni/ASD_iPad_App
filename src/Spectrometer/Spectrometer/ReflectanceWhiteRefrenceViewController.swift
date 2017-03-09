@@ -10,26 +10,23 @@ import Foundation
 import UIKit
 import Charts
 
-class ReflectanceWhiteRefrenceViewController : BaseWhiteReferenceViewController {
+class ReflectanceWhiteRefrenceViewController : MeasurementAquireBase {
     
-    override func setSpectrum(whiteReferenceSpectrum : FullRangeInterpolatedSpectrum){
-        self.pageContainer!.reflectanceWhiteReference = whiteReferenceSpectrum
+    override func handleRawSpectrum(currentSpectrum: FullRangeInterpolatedSpectrum) {
+        self.pageContainer!.reflectanceWhiteReference = currentSpectrum
     }
     
-    override func updateLineChart() {
-        super.updateLineChart()
-        if(pageContainer!.reflectanceWhiteReference == nil){
-            DispatchQueue.main.async {
-                self.MeasurementLineChart.setAxisValues(min: 0, max: MeasurementMode.Raw.rawValue)
-            }
+    // only show calculations
+    override func additionalCalculationOnCurrentSpectrum(currentSpectrum: FullRangeInterpolatedSpectrum) -> [Float] {
+        if let whiteReference = pageContainer.reflectanceWhiteReference {
+            return SpectrumCalculator.calculateReflectance(spectrumBuffer: currentSpectrum.spectrumBuffer, whiteReferenceBuffer: whiteReference.spectrumBuffer)
         }
+        return currentSpectrum.spectrumBuffer
     }
     
-    // Calculate Reflectance if wr is taken
-    override func additionalCalculationOnCurrentSpectrum(){
-        if(pageContainer!.reflectanceWhiteReference != nil){
-            currentSpectrum = SpectrumCalculator.calculateReflectance(currentSpectrum: self.currentSpectrum!, whiteReferenceSpectrum: self.pageContainer!.reflectanceWhiteReference!)
-        }
+    override func handleChartData(chartData: [Float]) {
+        lineChartDataContainer.lineChartPool.removeAll()
+        lineChartDataContainer.lineChartPool.append(chartData.getChartData(lineColor: UIColor.blue, lineWidth: 1))
     }
     
 }

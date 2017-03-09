@@ -135,7 +135,7 @@ class RadianceSettingsViewController : BaseSettingsViewController, SelectFiberop
         // add before whiteReferencePage if switch is on
         if(whiteReferenceBeforeSwitch.isOn)
         {
-            pageContainer!.pages.append(WhiteReferenceRadiancePage(whiteReferenceCount: Int(whiteReferenceBeforeCountStepper.value), whiteReferenceDelay: Int(whiteReferenceBeforeIntervalStepper.value), whiteRefrenceEnum: .Before))
+            pageContainer!.pages.append(WhiteReferenceRadiancePage(aquireCount: Int(whiteReferenceBeforeCountStepper.value), aquireDelay: Int(whiteReferenceBeforeIntervalStepper.value)))
         }
         // target is not optional => include it anyway
         pageContainer!.pages.append(TargetPage(targetCount: Int(targetCountStepper.value), targetDelay: Int(targetDelayStepper.value), dataType: DataType.RadType))
@@ -143,7 +143,7 @@ class RadianceSettingsViewController : BaseSettingsViewController, SelectFiberop
         // add after whiteReferencePage if switch is on
         if(whiteRefrenceAfterSwitch.isOn)
         {
-            pageContainer!.pages.append(WhiteReferenceRadiancePage(whiteReferenceCount: Int(whiteRefrenceAfterCountStepper.value), whiteReferenceDelay: Int(whiteReferenceAfterIntervalStepper.value), whiteRefrenceEnum: .After))
+            pageContainer!.pages.append(WhiteReferenceRadiancePage(aquireCount: Int(whiteRefrenceAfterCountStepper.value), aquireDelay: Int(whiteReferenceAfterIntervalStepper.value)))
         }
     }
     

@@ -18,8 +18,6 @@ class BaseSettingsViewController : BaseMeasurementModal {
     
     @IBOutlet var darkCurrentTimerLabel: UILabel!
     
-    @IBOutlet weak var nextButton: UIButton!
-    
     override func viewDidLoad() {
         
         // register labels for timer updateStepperLabels

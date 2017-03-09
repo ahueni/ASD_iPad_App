@@ -16,67 +16,62 @@ class ModalPage {
     }
 }
 
-class RawPage : ModalPage{
+class AquireMeasurmentPage : ModalPage{
+    let aquireCount : Int
+    let aquireDelay : Int
+    
+    init(aquireCount : Int, aquireDelay : Int)
+    {
+        self.aquireCount = aquireCount
+        self.aquireDelay = aquireDelay
+        super.init()
+        pageIdentifier = "do not instanciate"
+    }
+}
+
+class RawSettingsPage : ModalPage{
     override init(){
         super.init()
         pageIdentifier = "RawSettingsViewController"
     }
 }
 
-class ReflectancePage : ModalPage{
+class ReflectanceSettingsPage : ModalPage{
     override init(){
         super.init()
         pageIdentifier = "ReflectanceSettingsViewController"
     }
 }
 
-class RadiancePage : ModalPage{
+class RadianceSettingsPage : ModalPage{
     override init(){
         super.init()
         pageIdentifier = "RadianceSettingsViewController"
     }
 }
 
-class WhiteReferencePage : ModalPage{
-    var whiteReferenceCount : Int
-    var whiteReferenceDelay : Int
-    var whiteRefrenceEnum : WhiteReferenceEnum
-    
-    init(whiteReferenceCount : Int, whiteReferenceDelay : Int, whiteRefrenceEnum : WhiteReferenceEnum){
-        self.whiteReferenceCount = whiteReferenceCount
-        self.whiteReferenceDelay = whiteReferenceDelay
-        self.whiteRefrenceEnum = whiteRefrenceEnum
-        super.init()
-        self.pageIdentifier = "WhiteRefrenceViewController"
-    }
-}
-
-class WhiteReferenceReflectancePage : WhiteReferencePage{
+class WhiteReferenceReflectancePage : AquireMeasurmentPage{
     init(){
-        super.init(whiteReferenceCount: 1, whiteReferenceDelay: 0, whiteRefrenceEnum: .Before)
+        super.init(aquireCount: 1, aquireDelay: 0)
         self.pageIdentifier = "ReflectanceWhiteRefrenceViewController"
     }
 }
 
-class WhiteReferenceRadiancePage : WhiteReferencePage{
-    override init(whiteReferenceCount : Int, whiteReferenceDelay : Int, whiteRefrenceEnum : WhiteReferenceEnum){
-        super.init(whiteReferenceCount: whiteReferenceCount, whiteReferenceDelay: whiteReferenceDelay, whiteRefrenceEnum : whiteRefrenceEnum)
+class WhiteReferenceRadiancePage : AquireMeasurmentPage{
+    override init(aquireCount : Int, aquireDelay : Int){
+        super.init(aquireCount: aquireCount, aquireDelay: aquireDelay)
         self.pageIdentifier = "RadianceWhiteRefrenceViewController"
     }
 }
 
-class TargetPage : ModalPage{
-    let targetCount : Int
-    let targetDelay : Int
+class TargetPage : AquireMeasurmentPage{
     let takeDarkCurrent : Bool
     let dataType : DataType
     
     init(targetCount : Int, targetDelay : Int, takeDarkCurrent : Bool = true, dataType : DataType){
-        self.targetCount = targetCount
-        self.targetDelay = targetDelay
         self.takeDarkCurrent = takeDarkCurrent
         self.dataType = dataType
-        super.init()
+        super.init(aquireCount: targetCount, aquireDelay: targetDelay)
         self.pageIdentifier = "TargetViewController"
     }
 }

@@ -2120,7 +2120,7 @@ Dark Current</string>
                                                                 </connections>
                                                             </stepper>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interval between saves" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obs-Pd-ZRS">
-                                                                <rect key="frame" x="18" y="46" width="296" height="19.5"/>
+                                                                <rect key="frame" x="18" y="45.5" width="296" height="19.5"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -2151,7 +2151,7 @@ Dark Current</string>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="White Reference count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cu4-L7-xQy">
-                                                                <rect key="frame" x="18" y="13" width="305" height="20"/>
+                                                                <rect key="frame" x="18" y="13" width="305" height="19.5"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -2580,7 +2580,7 @@ Dark Current</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="nextButtonClicked:" destination="OPw-4n-PqG" eventType="touchUpInside" id="Pli-6o-qhA"/>
+                                    <action selector="nextButtonClicked:" destination="OPw-4n-PqG" eventType="touchUpInside" id="Iak-a5-jgy"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2605,7 +2605,7 @@ Dark Current</string>
                     <connections>
                         <outlet property="commentTextField" destination="yKu-Z6-NNf" id="MuX-kf-5io"/>
                         <outlet property="fileNameTextField" destination="soy-lZ-5Aa" id="L4c-rF-bFb"/>
-                        <outlet property="nextButton" destination="gMq-0S-Gwj" id="dbP-Kk-s8p"/>
+                        <outlet property="nextButton" destination="gMq-0S-Gwj" id="KNO-xQ-6HA"/>
                         <outlet property="radianceRadioButton" destination="gyH-ra-0Vu" id="aAE-sH-N9i"/>
                         <outlet property="rawRadioButton" destination="NO2-BG-TwH" id="gTA-ML-nLb"/>
                         <outlet property="reflectanceRadioButton" destination="FEy-1h-8Ea" id="yqD-TP-k1j"/>
@@ -3174,7 +3174,7 @@ Dark Current</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="takeWhiteRefrence:" destination="S5w-Ls-E9g" eventType="touchUpInside" id="JpR-GJ-WzD"/>
+                                    <action selector="startMeasurement:" destination="S5w-Ls-E9g" eventType="touchUpInside" id="XMx-Vo-icr"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take one or more White References before/after Radiance measurement." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGU-Ws-u3M">
@@ -3235,8 +3235,8 @@ Dark Current</string>
                     <connections>
                         <outlet property="MeasurementLineChart" destination="qjB-tb-CIb" id="WPh-c4-Gj4"/>
                         <outlet property="nextButton" destination="zN5-yr-898" id="kW5-a7-tia"/>
-                        <outlet property="progressBar" destination="HEu-MW-o2L" id="3nn-4c-DRD"/>
-                        <outlet property="startWhiteRefrenceButton" destination="eXi-9e-5Qi" id="aLi-md-Wte"/>
+                        <outlet property="progressBar" destination="HEu-MW-o2L" id="1ch-Yc-rHI"/>
+                        <outlet property="startMeasurement" destination="eXi-9e-5Qi" id="x2J-1g-HlD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tBn-5O-2Th" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3332,7 +3332,7 @@ Dark Current</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="takeWhiteRefrence:" destination="TmL-uw-0eO" eventType="touchUpInside" id="jBv-mA-p15"/>
+                                    <action selector="startMeasurement:" destination="TmL-uw-0eO" eventType="touchUpInside" id="Fdb-0f-2uN"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take a white reference the view will update continous so you can even retake a new white reference." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJP-XB-O95">
@@ -3383,7 +3383,7 @@ Dark Current</string>
                     <connections>
                         <outlet property="MeasurementLineChart" destination="fMF-am-tU8" id="SxX-md-V3M"/>
                         <outlet property="nextButton" destination="KH7-uB-s4N" id="C7l-R7-Rep"/>
-                        <outlet property="startWhiteRefrenceButton" destination="cVE-O2-fAY" id="Os9-1R-WYT"/>
+                        <outlet property="startMeasurement" destination="cVE-O2-fAY" id="0Pb-Wh-Ctw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="04e-qK-J2q" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3423,7 +3423,7 @@ Dark Current</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="StartMeasurmentsButtonClicked:" destination="rIH-yb-C7q" eventType="touchUpInside" id="Ekd-bn-cGy"/>
+                                    <action selector="startMeasurement:" destination="rIH-yb-C7q" eventType="touchUpInside" id="nyJ-Mq-VNv"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sSo-WX-azE" customClass="UILightGrayButton" customModule="Spectrometer" customModuleProvider="target">
@@ -3523,7 +3523,7 @@ Dark Current</string>
                         <outlet property="MeasurementLineChart" destination="5Lb-bi-oeI" id="rPh-A1-rjn"/>
                         <outlet property="nextButton" destination="xvn-iL-Iih" id="cgk-tZ-P0T"/>
                         <outlet property="progressBar" destination="wSH-nx-sFK" id="Vdv-1v-nix"/>
-                        <outlet property="startMeasurementButton" destination="OTb-PZ-aD5" id="ePt-FY-L7A"/>
+                        <outlet property="startMeasurement" destination="OTb-PZ-aD5" id="7O3-FU-gS5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jif-e2-JCH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3576,7 +3576,7 @@ Dark Current</string>
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="768" height="1024"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="oEq-7H-IhW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oEq-7H-IhW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3600,7 +3600,7 @@ Dark Current</string>
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="768" height="1024"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="BtY-te-dYt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BtY-te-dYt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
