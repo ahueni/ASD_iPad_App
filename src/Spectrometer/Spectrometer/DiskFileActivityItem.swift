@@ -21,10 +21,12 @@ class DiskFileActivityItem: UIActivityItemProvider {
     }
     
     // this mehtod is only used to check the export file type it should be the same as the exported file
+    // will be called when first open the export popup
     override func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
         return exportUrl
     }
     
+    // will only be called when a export provider is selected by user
     override func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivityType) -> Any? {
         
         // if url is directory create a zip to export
@@ -35,7 +37,7 @@ class DiskFileActivityItem: UIActivityItemProvider {
                 try Zip.zipFiles(paths: [file.filePath], zipFilePath: tempDirecotry, password: nil, progress: nil)
                 exportUrl = tempDirecotry
             }
-            catch { /* export file without zip when zipping not working */ }
+            catch { /* export file without zip when zipping not working -> this is a default behavior no more action is needed here */ }
             
         }
         

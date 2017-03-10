@@ -37,8 +37,9 @@ class InstrumentStore {
     // its needed to calculate dark current -> set at initialization
     var vinirDarkCurrentCorrection: Double!
     
-    // if darkCurrent is taken its saved here applicationwide
+    // if darkCurrent or whiteReference is taken its saved here applicationwide
     var darkCurrent: FullRangeInterpolatedSpectrum?
+    var whiteReferenceSpectrum: FullRangeInterpolatedSpectrum?
     
     // the actual selected foreoptic file, is there a new one all the radiance pre-calculated values
     // have to be recalculated

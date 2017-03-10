@@ -20,8 +20,17 @@ class RadianceWhiteRefrenceViewController : MeasurementAquireBase {
         whiteRefrences.removeAll()
     }
     
+    override func finishedMeasurement() {
+        super.finishedMeasurement()
+        DispatchQueue.main.async {
+            self.startMeasurement.isEnabled = true
+            self.startMeasurement.setTitle("Retake White Reference", for: .normal)
+        }
+    }
+    
     // only show calculations
-    override func additionalCalculationOnCurrentSpectrum(currentSpectrum: FullRangeInterpolatedSpectrum) -> [Float]{
+    override func viewCalculationsOnCurrentSpectrum(currentSpectrum: FullRangeInterpolatedSpectrum) -> [Float]{
+        chartDisplayMode = .Radiance
         return SpectrumCalculator.calculateRadiance(spectrum: currentSpectrum)
     }
     

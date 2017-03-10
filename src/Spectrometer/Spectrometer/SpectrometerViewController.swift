@@ -39,11 +39,12 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate {
     @IBOutlet var navigationElements: [UIStackView]!
     
     var measurementMode: MeasurementMode = MeasurementMode.Raw
-    var whiteReferenceSpectrum: FullRangeInterpolatedSpectrum?
     
     // disconnect indicator
     var disconnectWhenFinished: Bool = false
     
+    // create blur effect for overlay when opening a modal
+    let blurEffect = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.light))
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
@@ -72,6 +73,10 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setViewOrientation()
+    }
+    
+    override func unwind(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -137,10 +142,10 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate {
         // take white reference and calculate dark current correction
         let whiteRefSampleCount = ViewStore.sharedInstance.instrumentConfiguration.sampleCountWhiteRefrence
         let whiteRefWithoutDarkCurrent = CommandManager.sharedInstance.aquire(samples: whiteRefSampleCount)
-        whiteReferenceSpectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: whiteRefWithoutDarkCurrent)
+        InstrumentStore.sharedInstance.whiteReferenceSpectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: whiteRefWithoutDarkCurrent)
         
         // update chart data
-        let chartDataSet = whiteReferenceSpectrum!.spectrumBuffer.getChartData()
+        let chartDataSet = InstrumentStore.sharedInstance.whiteReferenceSpectrum!.spectrumBuffer.getChartData()
         let lineChartDataSet = LineChartData(dataSet: chartDataSet)
         self.updateChart(chartData: lineChartDataSet, measurementMode: .Raw)
         
@@ -206,7 +211,8 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate {
                 switch self.measurementMode {
                 case .Raw: break
                 case .Reflectance:
-                    spectrum = SpectrumCalculator.calculateReflectance(currentSpectrum: spectrum, whiteReferenceSpectrum: self.whiteReferenceSpectrum!)
+                    let whiteReference = InstrumentStore.sharedInstance.whiteReferenceSpectrum!
+                    spectrum = SpectrumCalculator.calculateReflectance(currentSpectrum: spectrum, whiteReferenceSpectrum: whiteReference)
                 case .Radiance:
                     spectrum.spectrumBuffer = SpectrumCalculator.calculateRadiance(spectrum: spectrum)
                 }
@@ -224,7 +230,7 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "StartTestSeriesSegue"{
+        if segue.identifier == "StartTestSeriesSegue" {
             ViewStore.sharedInstance.aquireLoop = false
         }
     }
@@ -276,7 +282,7 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate {
     
     internal func activateReflectanceMode() {
         // check if white reference and dark current available
-        if whiteReferenceSpectrum != nil && InstrumentStore.sharedInstance.darkCurrent != nil {
+        if InstrumentStore.sharedInstance.whiteReferenceSpectrum != nil && InstrumentStore.sharedInstance.darkCurrent != nil {
             reflectanceRadioButton.isEnabled = true
         } else {
             reflectanceRadioButton.isEnabled = false

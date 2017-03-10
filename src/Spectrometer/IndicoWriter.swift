@@ -391,8 +391,6 @@ class IndicoWriter : BaseWriter {
         writeFloat(number: 0)
         
         // ------ End Dependent Variable Data ------
-        
-        print("Basic File updated")
     }
     
     
@@ -455,7 +453,5 @@ class IndicoWriter : BaseWriter {
         }
         
         // ------ End Fiber Optic Data ------
-        
-        print("Calibration updated!")
     }
 }

@@ -51,7 +51,7 @@ class FullRangeInterpolatedSpectrumParser: BaseSpectrumInput, ISpectrumParser {
         let vinirHeader = VnirHeader(integrationTime: integrationTime, scans: scans, maxChannel: maxChannel, minChannel: minChannel, saturation: saturation, shutter: shutter, drift: drift, darkSubtracted: darkSubtracted)
         
         // parse Swir1 Header
-        let s1tecStatus: TecStatus = TecStatus(rawValue: getNextInt())!
+        let s1tecStatus: TecStatus = TecStatus(fromRawValue: getNextInt())
         let s1tecCurrent: Int = getNextInt()
         let s1maxChannel: Int = getNextInt()
         let s1minChannel: Int = getNextInt()

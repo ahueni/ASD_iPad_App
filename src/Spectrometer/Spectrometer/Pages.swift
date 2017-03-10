@@ -16,7 +16,7 @@ class ModalPage {
     }
 }
 
-class AquireMeasurmentPage : ModalPage{
+class AquireMeasurmentPage : ModalPage {
     let aquireCount : Int
     let aquireDelay : Int
     

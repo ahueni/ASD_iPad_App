@@ -11,25 +11,35 @@ import UIKit
 
 class TargetViewController : MeasurementAquireBase
 {
+    
+    override func finishedMeasurement() {
+        super.finishedMeasurement()
+        DispatchQueue.main.async {
+            self.lineChartDataContainer.lineChartPool.removeAll()
+        }
+    }
+    
     override func handleRawSpectrum(currentSpectrum: FullRangeInterpolatedSpectrum) {
         
         switch self.pageContainer.measurmentMode! {
         case .Raw:
             self.writeRawFileAsync(spectrum: currentSpectrum, dataType: .RawType)
         case MeasurementMode.Reflectance:
-            self.writeReflectanceFileAsync(spectrum: currentSpectrum, whiteRefrenceSpectrum: self.pageContainer.reflectanceWhiteReference, dataType: .RefType)
+            self.writeReflectanceFileAsync(spectrum: currentSpectrum, whiteRefrenceSpectrum: InstrumentStore.sharedInstance.whiteReferenceSpectrum!, dataType: .RefType)
         case MeasurementMode.Radiance:
             self.writeRadianceFilesAsync(spectrums: [currentSpectrum], dataType: .RadType, isWhiteReference: false)
         }
         
     }
     
-    override func additionalCalculationOnCurrentSpectrum(currentSpectrum: FullRangeInterpolatedSpectrum) -> [Float] {
+    override func viewCalculationsOnCurrentSpectrum(currentSpectrum: FullRangeInterpolatedSpectrum) -> [Float] {
         
         if(self.pageContainer.measurmentMode == MeasurementMode.Radiance)
         {
+            chartDisplayMode = .Radiance
             return SpectrumCalculator.calculateRadiance(spectrum: currentSpectrum)
         }
+        chartDisplayMode = .Raw
         return currentSpectrum.spectrumBuffer
         
     }

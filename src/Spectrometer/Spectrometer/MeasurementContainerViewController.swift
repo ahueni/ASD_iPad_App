@@ -11,25 +11,28 @@ import UIKit
 
 class ParentViewController : UIPageViewController {
     
-    var spectrumList = [FullRangeInterpolatedSpectrum]()
-    var reflectanceWhiteReference : FullRangeInterpolatedSpectrum! // stores the wr from the Reflectance
-    
+    // store selectedForeOptic for radiance calculation
     var selectedForeOptic : CalibrationFile? // only used in radiance
     
+    // indicator to save measurement mode
     var measurmentMode : MeasurementMode!
-    var pages = [ModalPage]()
+    
+    // in this list all pages are stored (start, settings, whiteref, target and finish)
+    var pages: [ModalPage] = []
+    
+    // set initial index to -1
     var currentIndex = -1
     
-    var currentPage : ModalPage{
-        get{
+    // return current page
+    var currentPage : ModalPage {
+        get {
             return pages[currentIndex]
         }
     }
     
+    // load initial measurement settings for start page
     var measurmentSettings : MeasurmentSettings{
-        get
-        {
-            // todo: save this in parent vc and get it from there
+        get {
             let measurmentSettings = UserDefaults.standard.data(forKey: "MeasurmentSettings")
             let loadedSettings = NSKeyedUnarchiver.unarchiveObject(with: measurmentSettings!) as! MeasurmentSettings
             return loadedSettings
@@ -39,30 +42,28 @@ class ParentViewController : UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // create initial page
         pages.append(ModalPage())
         goToNextPage()
     }
     
     func goToNextPage()
     {
+        // move to next page if available otherwise show finish page
         currentIndex += 1
-        if(currentIndex >= pages.count)
-        {
+        if(currentIndex >= pages.count) {
             showViewControllerWithIdentifier(page: FinishPage())
         }
-        else
-        {
+        else {
             showViewControllerWithIdentifier(page: currentPage)
         }
     }
     
-    func showViewControllerWithIdentifier(page: ModalPage){
+    func showViewControllerWithIdentifier(page: ModalPage) {
+        // instantiate next page and move to next page
         let nextModal = self.storyboard!.instantiateViewController(withIdentifier: page.pageIdentifier) as! BaseMeasurementModal
+        // set container from next page to the actual container
         nextModal.pageContainer = self
         setViewControllers([nextModal], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
-    }
-    
-    func measurmentFinished() -> Bool{
-        return true
     }
 }

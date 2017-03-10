@@ -105,7 +105,7 @@
 		58EF26FA8A188D74341FE34B /* Pods_SpectrometerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F91CDAE87D559C5A7FFD5EB6 /* Pods_SpectrometerTests.framework */; };
 		E108F2141E3B8B670097B7EE /* BaseMeasurementModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E108F2131E3B8B670097B7EE /* BaseMeasurementModal.swift */; };
 		E108F21B1E3F367C0097B7EE /* ReflectanceWhiteRefrenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E108F21A1E3F367C0097B7EE /* ReflectanceWhiteRefrenceViewController.swift */; };
-		E1129D331E2FBDC700331A02 /* FinishTestSeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1129D321E2FBDC700331A02 /* FinishTestSeriesViewController.swift */; };
+		E1129D331E2FBDC700331A02 /* FinishMeasurementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1129D321E2FBDC700331A02 /* FinishMeasurementViewController.swift */; };
 		E118A4CA1E51C77600F13053 /* RadianceWhiteRefrenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E118A4C91E51C77600F13053 /* RadianceWhiteRefrenceViewController.swift */; };
 		E12547D71E5382050004B2A8 /* ReflectanceSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12547D61E5382050004B2A8 /* ReflectanceSettings.swift */; };
 		E12547D91E5382750004B2A8 /* RawSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12547D81E5382750004B2A8 /* RawSettings.swift */; };
@@ -120,14 +120,14 @@
 		E13BEF651E6E9AA60002804A /* DiskFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEF641E6E9AA60002804A /* DiskFile.swift */; };
 		E13BEF681E6E9B370002804A /* Pages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEF671E6E9B370002804A /* Pages.swift */; };
 		E1446F031E56DD6100840AF2 /* RawSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1446F021E56DD6100840AF2 /* RawSettingsViewController.swift */; };
-		E14EC22E1E2E1889006EBD2F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */; };
+		E14EC22E1E2E1889006EBD2F /* InstrumentSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14EC22D1E2E1889006EBD2F /* InstrumentSettingsViewController.swift */; };
 		E15995C91E661D8C00254FAE /* FileWriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15995C81E661D8C00254FAE /* FileWriteManager.swift */; };
 		E15C06AA1E4C66E300965868 /* spectrum.test in Resources */ = {isa = PBXBuildFile; fileRef = E15C06A81E4C66E300965868 /* spectrum.test */; };
 		E15C06AB1E4C66E300965868 /* whiteRefrence.test in Resources */ = {isa = PBXBuildFile; fileRef = E15C06A91E4C66E300965868 /* whiteRefrence.test */; };
 		E165E1F71E34B5A20077A5EB /* TargetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E165E1F61E34B5A20077A5EB /* TargetViewController.swift */; };
 		E1807E5E1E2E576400BB205F /* SpectrometerErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E5D1E2E576400BB205F /* SpectrometerErrors.swift */; };
-		E1807E641E2F619B00BB205F /* StartTestSeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E631E2F619B00BB205F /* StartTestSeriesViewController.swift */; };
-		E1807E681E2F7B2F00BB205F /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E671E2F7B2F00BB205F /* ParentViewController.swift */; };
+		E1807E641E2F619B00BB205F /* StartMeasurementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E631E2F619B00BB205F /* StartMeasurementViewController.swift */; };
+		E1807E681E2F7B2F00BB205F /* MeasurementContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E671E2F7B2F00BB205F /* MeasurementContainerViewController.swift */; };
 		E186B9481E364DDF00FE43F3 /* CommandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E186B9471E364DDF00FE43F3 /* CommandManager.swift */; };
 		E18970A01E2914B300722E9C /* BaseWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E189709F1E2914B300722E9C /* BaseWriter.swift */; };
 		E18AD5621E7056EB008DB02B /* CommentTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AD5611E7056EB008DB02B /* CommentTextField.swift */; };
@@ -264,7 +264,7 @@
 		4D2A88B32C5C94ADBC30F188 /* Pods-Spectrometer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spectrometer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Spectrometer/Pods-Spectrometer.release.xcconfig"; sourceTree = "<group>"; };
 		E108F2131E3B8B670097B7EE /* BaseMeasurementModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMeasurementModal.swift; sourceTree = "<group>"; };
 		E108F21A1E3F367C0097B7EE /* ReflectanceWhiteRefrenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflectanceWhiteRefrenceViewController.swift; sourceTree = "<group>"; };
-		E1129D321E2FBDC700331A02 /* FinishTestSeriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishTestSeriesViewController.swift; sourceTree = "<group>"; };
+		E1129D321E2FBDC700331A02 /* FinishMeasurementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishMeasurementViewController.swift; sourceTree = "<group>"; };
 		E118A4C91E51C77600F13053 /* RadianceWhiteRefrenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadianceWhiteRefrenceViewController.swift; sourceTree = "<group>"; };
 		E12547D61E5382050004B2A8 /* ReflectanceSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflectanceSettings.swift; sourceTree = "<group>"; };
 		E12547D81E5382750004B2A8 /* RawSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawSettings.swift; sourceTree = "<group>"; };
@@ -279,14 +279,14 @@
 		E13BEF641E6E9AA60002804A /* DiskFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskFile.swift; sourceTree = "<group>"; };
 		E13BEF671E6E9B370002804A /* Pages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pages.swift; sourceTree = "<group>"; };
 		E1446F021E56DD6100840AF2 /* RawSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawSettingsViewController.swift; sourceTree = "<group>"; };
-		E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E14EC22D1E2E1889006EBD2F /* InstrumentSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentSettingsViewController.swift; sourceTree = "<group>"; };
 		E15995C81E661D8C00254FAE /* FileWriteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWriteManager.swift; sourceTree = "<group>"; };
 		E15C06A81E4C66E300965868 /* spectrum.test */ = {isa = PBXFileReference; lastKnownFileType = file; path = spectrum.test; sourceTree = "<group>"; };
 		E15C06A91E4C66E300965868 /* whiteRefrence.test */ = {isa = PBXFileReference; lastKnownFileType = file; path = whiteRefrence.test; sourceTree = "<group>"; };
 		E165E1F61E34B5A20077A5EB /* TargetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetViewController.swift; sourceTree = "<group>"; };
 		E1807E5D1E2E576400BB205F /* SpectrometerErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrometerErrors.swift; sourceTree = "<group>"; };
-		E1807E631E2F619B00BB205F /* StartTestSeriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartTestSeriesViewController.swift; sourceTree = "<group>"; };
-		E1807E671E2F7B2F00BB205F /* ParentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
+		E1807E631E2F619B00BB205F /* StartMeasurementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartMeasurementViewController.swift; sourceTree = "<group>"; };
+		E1807E671E2F7B2F00BB205F /* MeasurementContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurementContainerViewController.swift; sourceTree = "<group>"; };
 		E186B9471E364DDF00FE43F3 /* CommandManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandManager.swift; sourceTree = "<group>"; };
 		E189709F1E2914B300722E9C /* BaseWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWriter.swift; sourceTree = "<group>"; };
 		E18AD5611E7056EB008DB02B /* CommentTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTextField.swift; sourceTree = "<group>"; };
@@ -867,6 +867,30 @@
 			name = Base;
 			sourceTree = "<group>";
 		};
+		2EC505741E71CA0D00E1DCFB /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				E1807E671E2F7B2F00BB205F /* MeasurementContainerViewController.swift */,
+			);
+			name = Container;
+			sourceTree = "<group>";
+		};
+		2EC505751E71CA1E00E1DCFB /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				E108F2131E3B8B670097B7EE /* BaseMeasurementModal.swift */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		2EC505761E71CA5700E1DCFB /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				E13AC12F1E656BC900FE3048 /* BaseSettingsViewController.swift */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
 		2EC6D80E1E5C7E4B0022F70E /* Selects */ = {
 			isa = PBXGroup;
 			children = (
@@ -932,15 +956,15 @@
 			name = FileReader;
 			sourceTree = "<group>";
 		};
-		E13AC1311E656CC600FE3048 /* MeasurementSettings */ = {
+		E13AC1311E656CC600FE3048 /* MeasurementSettingModals */ = {
 			isa = PBXGroup;
 			children = (
-				E13AC12F1E656BC900FE3048 /* BaseSettingsViewController.swift */,
+				2EC505761E71CA5700E1DCFB /* Base */,
+				E1446F021E56DD6100840AF2 /* RawSettingsViewController.swift */,
 				2ECC63431E5337B600C3AACB /* ReflectanceSettingsViewController.swift */,
 				E13176661E532179002F0958 /* RadianceSettingsViewController.swift */,
-				E1446F021E56DD6100840AF2 /* RawSettingsViewController.swift */,
 			);
-			name = MeasurementSettings;
+			name = MeasurementSettingModals;
 			sourceTree = "<group>";
 		};
 		E13AC1321E65739C00FE3048 /* MeasurementModeSettings */ = {
@@ -966,9 +990,9 @@
 		E14EC2291E2E187B006EBD2F /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				E14EC22D1E2E1889006EBD2F /* SettingsViewController.swift */,
-				2EB9463E1E5B59CD006C71C8 /* GeneralSettingsViewController.swift */,
+				E14EC22D1E2E1889006EBD2F /* InstrumentSettingsViewController.swift */,
 				E18F2EF31E696CBF00DFBD7C /* InstrumentControlViewController.swift */,
+				2EB9463E1E5B59CD006C71C8 /* GeneralSettingsViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -985,13 +1009,13 @@
 		E1807E621E2F617900BB205F /* MeasurementSeries */ = {
 			isa = PBXGroup;
 			children = (
+				2EC505741E71CA0D00E1DCFB /* Container */,
 				E13BEF661E6E9B2C0002804A /* Pages */,
-				E13AC1311E656CC600FE3048 /* MeasurementSettings */,
-				E1BD75ED1E60703100AB92CD /* MesurmentAquire */,
-				E1807E671E2F7B2F00BB205F /* ParentViewController.swift */,
-				E108F2131E3B8B670097B7EE /* BaseMeasurementModal.swift */,
-				E1807E631E2F619B00BB205F /* StartTestSeriesViewController.swift */,
-				E1129D321E2FBDC700331A02 /* FinishTestSeriesViewController.swift */,
+				2EC505751E71CA1E00E1DCFB /* Base */,
+				E13AC1311E656CC600FE3048 /* MeasurementSettingModals */,
+				E1BD75ED1E60703100AB92CD /* MesurmentAquireModals */,
+				E1807E631E2F619B00BB205F /* StartMeasurementViewController.swift */,
+				E1129D321E2FBDC700331A02 /* FinishMeasurementViewController.swift */,
 			);
 			name = MeasurementSeries;
 			sourceTree = "<group>";
@@ -1039,7 +1063,7 @@
 			name = FileWriter;
 			sourceTree = "<group>";
 		};
-		E1BD75ED1E60703100AB92CD /* MesurmentAquire */ = {
+		E1BD75ED1E60703100AB92CD /* MesurmentAquireModals */ = {
 			isa = PBXGroup;
 			children = (
 				2EC505731E715E0D00E1DCFB /* Base */,
@@ -1047,7 +1071,7 @@
 				E108F21A1E3F367C0097B7EE /* ReflectanceWhiteRefrenceViewController.swift */,
 				E165E1F61E34B5A20077A5EB /* TargetViewController.swift */,
 			);
-			name = MesurmentAquire;
+			name = MesurmentAquireModals;
 			sourceTree = "<group>";
 		};
 		E1C936B31E41D60000EF51BB /* Validation */ = {
@@ -1309,7 +1333,7 @@
 				2E91F2E21DDB5B9F003E277F /* TCPClient.swift in Sources */,
 				E1446F031E56DD6100840AF2 /* RawSettingsViewController.swift in Sources */,
 				2EB9463F1E5B59CD006C71C8 /* GeneralSettingsViewController.swift in Sources */,
-				E14EC22E1E2E1889006EBD2F /* SettingsViewController.swift in Sources */,
+				E14EC22E1E2E1889006EBD2F /* InstrumentSettingsViewController.swift in Sources */,
 				E12547D91E5382750004B2A8 /* RawSettings.swift in Sources */,
 				2EC505621E6D672100E1DCFB /* ViewStore.swift in Sources */,
 				2E54E9AB1E620A5B0047565E /* SelectFiberopticViewController.swift in Sources */,
@@ -1380,12 +1404,12 @@
 				E13176631E53129B002F0958 /* UIColorRadioButton.swift in Sources */,
 				2E91F2E91DDB5B9F003E277F /* FDSet.swift in Sources */,
 				2E91F3131DDB842A003E277F /* InstrumentControl.swift in Sources */,
-				E1807E641E2F619B00BB205F /* StartTestSeriesViewController.swift in Sources */,
+				E1807E641E2F619B00BB205F /* StartMeasurementViewController.swift in Sources */,
 				2ECC63441E5337B600C3AACB /* ReflectanceSettingsViewController.swift in Sources */,
 				2E708A5C1DE714F0008EC78A /* Regex.swift in Sources */,
-				E1807E681E2F7B2F00BB205F /* ParentViewController.swift in Sources */,
+				E1807E681E2F7B2F00BB205F /* MeasurementContainerViewController.swift in Sources */,
 				2E8F767D1E4754ED00D54ABF /* UILightGrayButton.swift in Sources */,
-				E1129D331E2FBDC700331A02 /* FinishTestSeriesViewController.swift in Sources */,
+				E1129D331E2FBDC700331A02 /* FinishMeasurementViewController.swift in Sources */,
 				2E0324271E05600B00C52D58 /* ParameterParser.swift in Sources */,
 				2EB362A51DF23DDB00E74E39 /* IndicoIniFileReader.swift in Sources */,
 				2E91F2F01DDB5B9F003E277F /* TCPSocket.swift in Sources */,
