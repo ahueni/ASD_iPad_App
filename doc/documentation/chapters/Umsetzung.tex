@@ -133,7 +133,7 @@ Die zwei ViewControllers \verb=AddEditConnectionViewController= und \verb=Connec
 
 \subsubsection{Spectrometer}
 
-Der Ordner Spectrometer enthält Klassen für zwei wichtige Teile der Applikation. In der Klasse \verb=SpectrometerViewController= sind alle Funktionen und Verknüpfungen für die Hauptansicht umgesetzt. Diese ist in der Lage, wenn alle Voraussetzungen Erfüllt sind, zwischen Raw, Reflectance und Radiance zu wechseln und die berechneten Daten direkt im Liniendiagramm darzustellen. Die kontinuierliche Aquisitation neuer Messwerte wird durch eine Endlosschlaufe immer weitergeführt bis die Abbruchbedingung eintritt. Weiter ist die Klasse für folgende Aktionen und Darstellungen zuständig:
+In der Klasse \verb=SpectrometerViewController= sind alle Funktionen und Verknüpfungen für die Hauptansicht umgesetzt. Diese ist in der Lage, wenn alle Voraussetzungen Erfüllt sind, zwischen Raw, Reflectance und Radiance zu wechseln und die berechneten Daten direkt im Liniendiagramm darzustellen. Die kontinuierliche Aquisitation neuer Messwerte wird durch eine Endlosschlaufe immer weitergeführt bis die Abbruchbedingung eintritt. Weiter ist die Klasse für folgende Aktionen und Darstellungen zuständig:
 
 \begin{itemize}[noitemsep]
 \item Dark Current oder White Reference per Button auslösen.
@@ -142,17 +142,111 @@ Der Ordner Spectrometer enthält Klassen für zwei wichtige Teile der Applikation.
 \item Verbindung zum Spektrometer trennen.
 \end{itemize}
 
-Im einem Unterordnern befindet sich zugleich die gesamte Logik um Messungen in vorgegebenen Messprotokollen auszuführen. Die Klassen sind zudem Verantwortlich die eingegebenen Messdaten zwischenzuspeichern und bei einer erneuten Messung bereits vorausgewählt in den verschiedenen Komponenten (TextField, PathSelect, Switches, etc.) einzustellen.
+\subsubsection{MeasurementSeries}
 
+In dieser Gruppe befindet sich die gesamte Logik um Messungen in fest vorgegebenen Messprotokollen auszuführen. In der nachfolgenden Tabelle sind die drei Messprotokolle detailliert beschrieben.
 
+\begin{center}
+
+	\bgroup
+	\def\arraystretch{1.7}
+	\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+	\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+	\renewcommand\cellgape{\Gape[4pt]}
+	
+    \begin{tabular}{ c | M{4cm} | M{4cm} | M{4cm} }
+    
+    \textbf{Modus} & \textbf{Schritt 1} & \textbf{Schritt 2} & \textbf{Schritt 3} \\ \hline
+    
+    \textbf{Raw} & \makecell{Target \\ $[1-n] (0-x) \{DC\}$ } &  &  \\ \hline
+    \textbf{Reflectance} & \makecell{White Reference (Ref) \\ $[1] (0-x)$ } & \makecell{Target \\ $[1-n] (0-x)$ } &  \\ \hline
+    \textbf{Radiance} & \makecell{White Reference (Rad) \\ $[0-n] (0-x) \{FO\}$ } & \makecell{Target \\ $[1-n] (0-x) \{FO\}$ } & \makecell{White Reference \\ $[0-n] (0-x) \{FO\}$ } \\
+    
+    \end{tabular}
+    \egroup
+    
+\end{center}
+
+Erläuterungen zur Tabelle: 
+\begin{itemize}[noitemsep]
+\item $[n]=$ Anzahl Messungen die durchgeführt werden.
+\item $(x)=$ Verzögerungen zwischen den Messungen.
+\item $\{DC\}=$ Dark Current Correction nicht durchführen
+\item $\{FO\}=$ Fore Optic einstellbar
+\end{itemize}
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[scale=1.0]{images/MeasurementSeriesArcitecture} 
+	\caption{Feinarchitektur der Messreihen}
+	\label{fig:MeasurementSeriesArcitecture}
+	\end{center}
+\end{figure}
+
+Die Schritte 1-3 im Messprotokoll werden immer nacheinander durchgeführt. Ist beim Messprotokoll kein weiterer Schritt mehr vorhanden führt dies automatisch zum Abschluss der Messung.
+
+In der Abbildung \ref{fig:MeasurementSeriesArcitecture} wird das ganze Zusammenspiel der Klassen dargestellt. Aus dieser Darstellung ist auch ersichtlich das für die White Reference Messung in den zwei Protokollen Reflectance und Radiance eine andere Klasse zum Tragen kommt. Dies hat vor allem einen Grund, da die Views unterschiedliche Komponenten anbieten (ProgressBar), müssen Sie getrennt verwaltet werden.
+
+Um ein zusätzliches Messprotokoll umzusetzen, kann nun auf bestehende Komponenten zurückgegriffen werden oder für neue eine zusätzliche Klasse mit View erstellt werden. Zu beachten ist, dass bei einem zusätzlichen Messprotokoll auch eine neue Einstellungs-Klasse nötig wird.
+
+Die Klassen Start, Settings und Finish werden hier nicht genauer erläutert, diese haben keinen grossen funktionellen Anteil und verwalten vor allem Einstellungen. Der genaue Ablauf in den MeasurementModals ist etwas komplizierter folgt aber immer der Implementierung in der Base-Klasse. Die Grundidee ist, ein Liniendiagramm darzustellen, das fortlaufend immer aktuelle Messwerte beim Spektrometer anfordert. Entscheidet sich der Benutzer nun Messungen durchzuführen werden die Messwerte zusätzlich Abgefangen und entsprechend Verarbeitet. Für die Darstellung werden die Messwerte entsprechend Berechnet in die effektiven Messdaten (Indico Dateien) werden aber nur die gemessenen Raw-Daten geschrieben. Die wichtigsten Komponenten der Klasse \verb=BaseMeasurementAquire= werden nachfolgend genauer beschrieben.
+
+Die Funktion \verb=startAquire()= wird direkt nach der Instanzierung der jeweiligen Klasse in der Methode \verb=viewDidLoad()= aufgerufen. Mit diesem Aufruf beginnt das kontinuierliche Anfordern der Messdaten auf dem Spektrometer. Die Daten werden dann anhand der nachfolgenden beschriebenen Implementierung verarbeitet und angezeigt.
+
+\begin{lstlisting}
+func startMesurement()
+\end{lstlisting}
+Diese Methode übernimmt alle Funktionalität sobald der Benutzer die Messwerte auch wirklich abspeichern möchte. In dieser Methode werden dann auch die entsprechenden UI Komponenten initialisiert, aktiviert oder deaktiviert.
+
+\begin{lstlisting}
+func finishedMeasurement()
+\end{lstlisting}
+Sobald die Anzahl Messungen erreicht sind wird diese Methode aufgerufen. Das weitere Abspeichern und Abzweigen von Messdaten wird automatisch gestoppt. Diese Methode kann überschrieben werden sollten zum Messungsende weitere Schritte notwendig sein.
+
+\begin{lstlisting}
+func handleRawSpectrum(currentSpectrum: FullRangeInterpolatedSpectrum)
+\end{lstlisting}
+Diese Methode \textbf{muss} von einer konkreten Implementierung überschrieben werden. Sie verarbeitet die Raw-Messdaten, dies bedeutet die Daten werden entweder zwischengespeichert oder direkt in eine Datei geschrieben. Dies ist je nach Messprotokoll unterschiedlich.
+
+\begin{lstlisting}
+func viewCalculationsOnCurrentSpectrum(currentSpectrum: FullRangeInte...)
+\end{lstlisting}
+Für die Diagrammanzeige müssen jeweils noch Berechnungen am Spektrum durchgeführt werden. Diese Methode \textbf{muss} ebenfalls zwingend überschrieben werden und die gewünschte Funktionalität zu garantieren.
+
+\begin{lstlisting}
+func handleChartData(chartData: [Float])
+\end{lstlisting}
+Diese Methode \textbf{muss} ebenfalls zwingend überschreiben werden. Je nach Messprotokoll sollen Messdaten der vorherigen Messung noch bestehen bleiben oder gelöscht werden. Dieses Verhalten wird dadurch gesteuert. Die Methode verwaltet das \verb=LineChartDataContainer= in diesem werden die Chart-Daten entsprechend zwischengespeichert die nach jedem Anfordern der Messdaten neu aktualisiert werden.
 
 \subsubsection{Measurements}
+
+Der \verb=MeasurementTableViewControllerViewController= und \verb=MeasurementDetailViewController= implementieren die Funktionalität die durchgeführten Messungen in einer Ordnerstruktur anzusehen. Die Table View ist von den erstellen Basiskomponenten \=FileBrowser= abgeleitet und implementiert eine spezielle \verb=MeasurementTableViewCell= diese bietet zusätzlich zur Navigation noch einen Export an.
+
+Will der Benutzer einen Ordner oder eine Datei exportieren wird ein \=DiskFileAcitivtyItem= erstellt und das Popup mit den Exportmöglichkeiten eingeblendet. Sobald der sein Exportziel ausgewählt hat wird die Methode \verb=activityViewController()= aufgerufen. Um einen gesamten Ordner zu exportieren wird zuerst eine temporäre ZIP Datei erstellt die nach erfolgreichem Export direkt wieder gelöscht wird. Eine ASD Datei kann direkt exportiert werden.
 
 \subsubsection{Settings}
 
 Einstellungen, welche pro Applikation verfügbar sein müssen, werden in den sogenannten UserDefaults gespeichert. Dieser Speicher, kann sämtliche serialisierbaren Objekte speichern.
 
 \subsection{Components}
+
+Die Erstellung von eigenen View Components, also Ableitungen von bestehenden Komponenten, hat in einem iOS Projekt den Vorteil, dass diese dann direkt im Storyboard verwendet und angezeigt werden können. So erhält man bereits bei der Entwicklung einen Eindruck über Anordnung, Farben und Grössenverhältnisse. Die Komponenten können mit eigenen Feldern ergänzt werden die dann bequem im Storyboard eingestellt werden können.
+
+Folgende Komponenten für das UI wurden selbst erstellt.
+\begin{itemize}[noitemsep]
+\item SpectrometerTabBarItem: Das Icon kann direkt im Storyboard definiert werden.
+\item UIRoundBorderdView: Einen ViewContainer mit einstellbaren abgerundeten Ecken.
+\item File- und Pathselects: Diese Komponenten rufen selbständig den Filebrowser auf und bieten ebenfalls Validierung an. Weiter gibt es eine Methode um mit dem selektierten File oder Path umzugehen.
+\item TextFields: Verschiedene Varianten wie Required, Optional, IP oder Port, die zusätzlich noch mit einem Icon versehen werden können.
+\item TitleSection: Wird in allen Modals im Titel Bereich verwendet.
+\item Buttons: RoundedColorButton, RadioButon oder LoadingButton die ebenfalls direkt im Storyboard abgeändert werden können.
+\item CustomChart: Anpassung der Chart View an die projektspezifischen Bedürfnisse.
+\item CustomProgressBar: Eine spezielle ProgressBar die bei den Messungen zum Einsatz kommt.
+\item SettingsBox: Wird in den Messprotokoll-Einstellungen verwendet und stellt eine graphische Box dar.
+\item SelectFiberOptic: Ermöglicht alle verfügbaren FiberOptics einzublenden und anschliessend eine zu selektieren.
+\end{itemize}
+
+
 \subsection{View Store}
 Der ViewStore dient wie der InstrumentStore zum speichern weiter benötigter Variablen. Er ist ebenfalls als Singleton implementiert. Im Gegensatz zum InstrumentStore enthält der ViewStore aber nur Elemente, welche UI relevant sind. Darin wird beispielsweise gespeichert, ob gerade eine Aquire-Schleife läuft.
 \subsection{Service}
@@ -162,8 +256,7 @@ Für die Validierung wurde von jedem benutzen Control eine Ableitung erstellt und
 Das Protokoll sieht wie folgt aus:
 
 \begin{lstlisting}
-protocol BaseValidationControl 
-{
+protocol BaseValidationControl {
     var isValid : Bool {get}
     func validate()
 }
@@ -172,10 +265,8 @@ protocol BaseValidationControl
 Ein Beispiel für die Implementierung des Protokolls ist das PortTextField:
 
 \begin{lstlisting}
-class PortTextField : BaseTextField 
-{
+class PortTextField : BaseTextField {
     //Init Code
-    
     override var isValid: Bool {
         get {
             let port = Int(text!)
