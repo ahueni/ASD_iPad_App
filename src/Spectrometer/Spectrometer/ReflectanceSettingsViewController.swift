@@ -27,7 +27,7 @@ class ReflectanceSettingsViewController : BaseSettingsViewController {
             targetCountLabel.text = loadedSettings.targetCount.description
             
             targetDelayStepper.value = Double(loadedSettings.targetDelay)
-            targetIntervallLabel.text = loadedSettings.targetDelay.description
+            targetIntervallLabel.text = loadedSettings.targetDelay.description + " [s]"
         }
     }
     

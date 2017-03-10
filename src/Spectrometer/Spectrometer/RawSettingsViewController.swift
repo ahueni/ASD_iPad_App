@@ -40,7 +40,7 @@ class RawSettingsViewController: BaseSettingsViewController {
             targetCountLabel.text = Int(targetCountStepper.value).description
             
             targetDelayStepper.value = Double(loadedSettings.targetDelay)
-            targetIntervallLabel.text = Int(targetDelayStepper.value).description
+            targetIntervallLabel.text = Int(targetDelayStepper.value).description + " [s]"
         }
 
     }

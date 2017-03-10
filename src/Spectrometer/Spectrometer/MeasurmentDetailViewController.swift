@@ -50,7 +50,7 @@ class MeasurmentDetailViewController: UIViewController {
         rawButton.alternateButton = [reflectanceButton, radianceButton]
         reflectanceButton.alternateButton = [rawButton, radianceButton]
         radianceButton.alternateButton = [rawButton, reflectanceButton]
-
+        
         if let url = url {
             
             spectralFile = parseSpectralFile(filePath: url.relativePath) as! IndicoFile7!
@@ -58,10 +58,13 @@ class MeasurmentDetailViewController: UIViewController {
             switch spectralFile.dataType {
             case .RefType:
                 reflectanceButton.isEnabled = true
+                radianceButton.isEnabled = false
             case .RadType:
                 radianceButton.isEnabled = true
+                reflectanceButton.isEnabled = false
             default:
-                break
+                reflectanceButton.isEnabled = false
+                radianceButton.isEnabled = false
             }
             
             rawButton.isEnabled = true
@@ -75,17 +78,24 @@ class MeasurmentDetailViewController: UIViewController {
                 if spectralFile.dataType == .RefType {
                     reflectanceButton.unselectAlternateButtons()
                     self.reflectanceButtonClicked(reflectanceButton)
+                } else {
+                    rawButton.unselectAlternateButtons()
+                    self.rawButtonClicked(rawButton)
                 }
             case .Radiance:
                 if spectralFile.dataType == .RadType {
                     radianceButton.unselectAlternateButtons()
                     self.radianceButtonClicked(radianceButton)
+                } else {
+                    rawButton.unselectAlternateButtons()
+                    self.rawButtonClicked(rawButton)
                 }
             }
             
             
+        } else {
+            self.MeasurementLineChart.noDataText = "Please select a file..."
         }
-        self.MeasurementLineChart.noDataText = "Please select a file..."
     }
     
     private func parseSpectralFile(filePath: String) -> IndicoFileBase? {

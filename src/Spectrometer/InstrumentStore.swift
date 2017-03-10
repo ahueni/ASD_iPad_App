@@ -11,9 +11,16 @@ import Foundation
 class InstrumentStore {
     
     // prevent other instances of this class -> singelton
-    private init() { }
+    private static var instance: InstrumentStore?
     
-    static let sharedInstance = InstrumentStore()
+    class var sharedInstance: InstrumentStore {
+        if InstrumentStore.instance == nil {
+            InstrumentStore.instance = InstrumentStore()
+            print("creaded singleton instance")
+        }
+        
+        return InstrumentStore.instance!
+    }
     
     // measurements root folder
     let measurementsRoot: URL = FileManager.default.getMeasurmentRoot().appendingPathComponent("Measurements", isDirectory: true)
@@ -44,6 +51,10 @@ class InstrumentStore {
     // the actual selected foreoptic file, is there a new one all the radiance pre-calculated values
     // have to be recalculated
     var selectedForeOptic: CalibrationFile?
-
+    
+    func dispose() {
+        InstrumentStore.instance = nil
+        print("disposed singleton instance")
+    }
 
 }

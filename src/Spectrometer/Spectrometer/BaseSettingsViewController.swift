@@ -52,7 +52,7 @@ class BaseSettingsViewController : BaseMeasurementModal {
     func updateStepperLabels()
     {
         targetCountLabel.text = Int(targetCountStepper.value).description
-        targetIntervallLabel.text = Int(targetDelayStepper.value).description
+        targetIntervallLabel.text = Int(targetDelayStepper.value).description + " [s]"
     }
     
     @IBAction func takeDarkCurrentPressed(_ sender: LoadingButton) {
@@ -86,7 +86,7 @@ class BaseSettingsViewController : BaseMeasurementModal {
         
         if let darkCurrentStartTime = ViewStore.sharedInstance.darkCurrentStartTime {
             let elapsedTime = NSDate.timeIntervalSinceReferenceDate - darkCurrentStartTime
-            darkCurrentTimerLabel.text = Int(elapsedTime).description
+            darkCurrentTimerLabel.text = elapsedTime.getHHMMSS()
         }
         
     }

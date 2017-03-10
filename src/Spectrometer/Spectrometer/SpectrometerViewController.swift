@@ -54,6 +54,8 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.darkCurrent(self)
+        
         // set the serialnumber in the tabbar item title
         self.title = "Spectrometer (" + InstrumentStore.sharedInstance.serialNumber.description + ")"
         
@@ -118,17 +120,13 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate {
         let darkCurrentSampleCount = ViewStore.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent
         CommandManager.sharedInstance.darkCurrent(sampleCount: darkCurrentSampleCount)
         
-        // update chart data
-        let chartDataSet = InstrumentStore.sharedInstance.darkCurrent!.spectrumBuffer.getChartData()
-        let lineChartData = LineChartData(dataSet: chartDataSet)
-        self.updateChart(chartData: lineChartData, measurementMode: .Raw)
-        
         // restart darkCurrent timer
         ViewStore.sharedInstance.restartDarkCurrentTimer()
         
         // after a dark current evaluate measurement modes
         activateRadianceMode()
         activateReflectanceMode()
+        startAquire()
     }
     
     @IBAction func whiteReference(_ sender: UIButton) {
@@ -144,16 +142,16 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate {
         let whiteRefWithoutDarkCurrent = CommandManager.sharedInstance.aquire(samples: whiteRefSampleCount)
         InstrumentStore.sharedInstance.whiteReferenceSpectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: whiteRefWithoutDarkCurrent)
         
-        // update chart data
-        let chartDataSet = InstrumentStore.sharedInstance.whiteReferenceSpectrum!.spectrumBuffer.getChartData()
-        let lineChartDataSet = LineChartData(dataSet: chartDataSet)
-        self.updateChart(chartData: lineChartDataSet, measurementMode: .Raw)
-        
         // restart whiteReference timer
         ViewStore.sharedInstance.restartWhiteReferenceTimer()
         
         // activate reflectance mode
         activateReflectanceMode()
+        
+        // after white reference start reflectance mode
+        measurementMode = .Reflectance
+        reflectanceRadioButton.unselectAlternateButtons()
+        startAquire()
     }
     
     @IBAction func selectFiberOptic(_ sender: UIColorButton) {
@@ -254,6 +252,11 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate {
                 appDelegate.window?.rootViewController = initialViewController
                 appDelegate.window?.makeKeyAndVisible()
                 
+                // remove application wide settings when disconnect they will be recreate on connection
+                InstrumentStore.sharedInstance.dispose()
+                ViewStore.sharedInstance.resetTimers()
+                
+                
             }
             
             
@@ -312,14 +315,14 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate {
     internal func updateDarkCurrentTimerLabel() {
         if let darkCurrentStartTime = ViewStore.sharedInstance.darkCurrentStartTime {
             let elapsedTime = NSDate.timeIntervalSinceReferenceDate - darkCurrentStartTime
-            darkCurrentTimerLabel.text = Int(elapsedTime).description
+            darkCurrentTimerLabel.text = elapsedTime.getHHMMSS()
         }
     }
     
     internal func updateWhiteReferenceTimerLabel() {
         if let whiteReferenceStartTime = ViewStore.sharedInstance.whiteReferenceStartTime {
             let elapsedTime = NSDate.timeIntervalSinceReferenceDate - whiteReferenceStartTime
-            whiteReferenceTimerLabel.text = Int(elapsedTime).description
+            whiteReferenceTimerLabel.text = elapsedTime.getHHMMSS()
         }
     }
     

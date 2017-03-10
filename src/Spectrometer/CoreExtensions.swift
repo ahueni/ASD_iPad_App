@@ -34,4 +34,15 @@ extension URL {
     }
     
 }
+
+extension TimeInterval {
+    
+    // converts an int value to a 00:00:00 string
+    func getHHMMSS() -> String {
+        let intValue = Int(self)
+        let t = (intValue / 3600, (intValue % 3600) / 60, (intValue % 3600) % 60)
+        return String(format: "%02i:%02i:%02i", t.0, t.1, t.2)
+    }
+    
+}
  

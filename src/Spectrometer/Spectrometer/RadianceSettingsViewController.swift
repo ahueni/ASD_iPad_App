@@ -123,11 +123,11 @@ class RadianceSettingsViewController : BaseSettingsViewController, SelectFiberop
     override func updateStepperLabels()
     {
         whiteReferenceBeforeCountLabel.text = Int(whiteReferenceBeforeCountStepper.value).description
-        whiteReferenceBeforeIntervalLabel.text = Int(whiteReferenceBeforeIntervalStepper.value).description
+        whiteReferenceBeforeIntervalLabel.text = Int(whiteReferenceBeforeIntervalStepper.value).description + " [s]"
         targetCountLabel.text = Int(targetCountStepper.value).description
-        targetIntervallLabel.text = Int(targetDelayStepper.value).description
+        targetIntervallLabel.text = Int(targetDelayStepper.value).description + " [s]"
         whiteRefrenceAfterCountLabel.text = Int(whiteRefrenceAfterCountStepper.value).description
-        whiteReferenceAfterIntervalLabel.text = Int(whiteReferenceAfterIntervalStepper.value).description
+        whiteReferenceAfterIntervalLabel.text = Int(whiteReferenceAfterIntervalStepper.value).description + " [s]"
         super.updateStepperLabels()
     }
     
