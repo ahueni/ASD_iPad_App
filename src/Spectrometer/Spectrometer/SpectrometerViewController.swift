@@ -154,6 +154,34 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate {
         startAquire()
     }
     
+    @IBAction func optimizeInstrument(_ sender: UIColorButton) {
+        
+        // stopp aquire loop
+        ViewStore.sharedInstance.aquireLoop = false
+        
+        // optimizeInstrument
+        CommandManager.sharedInstance.optimize()
+        
+        // reset all resetTimers
+        ViewStore.sharedInstance.resetTimers()
+        
+        // remove white reference and handle buttons
+        InstrumentStore.sharedInstance.whiteReferenceSpectrum = nil
+        if measurementMode == .Reflectance {
+            measurementMode = .Raw
+            rawRadioButton.unselectAlternateButtons()
+        }
+        reflectanceRadioButton.isEnabled = false
+        whiteReferenceTimerLabel.text = "Never taken"
+        
+        // retake dark current
+        let darkCurrentSampleCount = ViewStore.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent
+        CommandManager.sharedInstance.darkCurrent(sampleCount: darkCurrentSampleCount)
+        
+        // after optimization start agian with aquire
+        startAquire()
+    }
+    
     @IBAction func selectFiberOptic(_ sender: UIColorButton) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "SelectFiberOpticTableViewController") as! SelectFiberOpticTableViewController
         vc.delegate = self

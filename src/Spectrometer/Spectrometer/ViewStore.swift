@@ -66,7 +66,9 @@ class ViewStore {
     
     func resetTimers() -> Void {
         darkCurrentTimer = nil
+        darkCurrentStartTime = nil
         whiteReferenceTimer = nil
+        whiteReferenceStartTime = nil
     }
 
     

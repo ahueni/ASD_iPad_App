@@ -24,15 +24,18 @@ class InstrumentSettingsViewController : UITableViewController {
         SampleCountWhiteRefrenceValueLabel.text = Int(SampleCountWhiteRefrenceSlider.value).description
     }
     
-    override func viewDidLoad() {
-        SampleCountSpectrumValueLabel.text = ViewStore.sharedInstance.instrumentConfiguration.sampleCount.description
-        SampleCountDarkCurrentValueLabel.text = ViewStore.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent.description
-        SampleCountWhiteRefrenceValueLabel.text = ViewStore.sharedInstance.instrumentConfiguration.sampleCountWhiteRefrence.description
+    override func viewWillAppear(_ animated: Bool) {
+        SampleCountSpectrumSlider.value = Float(ViewStore.sharedInstance.instrumentConfiguration.sampleCount)
+        SampleCountDarkCurrentSlider.value = Float(ViewStore.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent)
+        SampleCountWhiteRefrenceSlider.value = Float(ViewStore.sharedInstance.instrumentConfiguration.sampleCountWhiteRefrence)
+        self.SampleCountSliderValueChanged(SampleCountSpectrumSlider)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         ViewStore.sharedInstance.instrumentConfiguration.sampleCount = Int32(SampleCountSpectrumSlider.value)
         ViewStore.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent = Int32(SampleCountDarkCurrentSlider.value)
         ViewStore.sharedInstance.instrumentConfiguration.sampleCountWhiteRefrence = Int32(SampleCountWhiteRefrenceSlider.value)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.saveContext()
     }
 }

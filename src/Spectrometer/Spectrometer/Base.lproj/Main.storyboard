@@ -527,7 +527,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZuH-AQ-NxF">
-                                <rect key="frame" x="20" y="117" width="728" height="39"/>
+                                <rect key="frame" x="20" y="117" width="728" height="38.5"/>
                                 <string key="text">In the following section, you can add or remove connections to your spectromter devices. You can also establish a connection to one of your devices.</string>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                 <nil key="textColor"/>
@@ -545,7 +545,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eqG-6H-HNG">
-                                <rect key="frame" x="20" y="166" width="728" height="725"/>
+                                <rect key="frame" x="20" y="165.5" width="728" height="725.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -691,77 +691,39 @@
             </objects>
             <point key="canvasLocation" x="1155.46875" y="745.8984375"/>
         </scene>
-        <!--Foreoptic-->
-        <scene sceneID="JxE-pG-99D">
-            <objects>
-                <tableViewController title="Foreoptic" extendedLayoutIncludesOpaqueBars="YES" id="bJi-VT-2Pr" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="baI-Bh-2Un">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <sections>
-                            <tableViewSection footerTitle="Die Auswahlmöglichkeiten der Foreoptic hängen vom jeweiligen Gerät ab. Sie müssen diese über ein INI-File konfigurieren." id="bRw-Jy-Ctu">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" textLabel="CMU-FZ-zZx" style="IBUITableViewCellStyleDefault" id="aOc-vK-DdF">
-                                        <rect key="frame" x="0.0" y="35" width="768" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aOc-vK-DdF" id="9XQ-3y-ChR">
-                                            <rect key="frame" x="0.0" y="0.0" width="696" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="BareFiber" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CMU-FZ-zZx">
-                                                    <rect key="frame" x="48" y="0.0" width="648" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="wh2-pe-cYr" style="IBUITableViewCellStyleDefault" id="Wce-xj-iHC">
-                                        <rect key="frame" x="0.0" y="79" width="768" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wce-xj-iHC" id="PJZ-gZ-LKj">
-                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="3°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wh2-pe-cYr">
-                                                    <rect key="frame" x="48" y="0.0" width="672" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="bJi-VT-2Pr" id="YWd-NX-VOV"/>
-                            <outlet property="delegate" destination="bJi-VT-2Pr" id="YGI-iD-7p7"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZXv-ei-gym" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6255" y="1615"/>
-        </scene>
         <!--Settings-->
         <scene sceneID="Ist-8D-Lff">
             <objects>
-                <tableViewController title="Settings" extendedLayoutIncludesOpaqueBars="YES" id="ajz-N2-Q3L" sceneMemberID="viewController">
+                <tableViewController title="Settings" extendedLayoutIncludesOpaqueBars="YES" id="ajz-N2-Q3L" customClass="SettingsTableViewController" customModule="Spectrometer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Ogh-BX-UgG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection id="5St-WJ-pjP">
+                            <tableViewSection footerTitle="Instrument Configuration and Instrument Control are only available when connected with a spectrometer" id="ExH-ga-eiJ" userLabel="Settings">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="InstrumentConfigurationCell" textLabel="Zws-RY-5Mo" style="IBUITableViewCellStyleDefault" id="Bd0-qf-VNO">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GeneralCell" textLabel="Xns-Tg-vju" style="IBUITableViewCellStyleDefault" id="LzP-Pa-bqn" userLabel="General">
                                         <rect key="frame" x="0.0" y="35" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LzP-Pa-bqn" id="UAK-D7-mJB">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="General" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xns-Tg-vju">
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="5do-Kj-fTb" kind="showDetail" id="9lI-gS-lSk"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="InstrumentConfigurationCell" textLabel="Zws-RY-5Mo" style="IBUITableViewCellStyleDefault" id="Bd0-qf-VNO" userLabel="InstrumentConfiguration">
+                                        <rect key="frame" x="0.0" y="79" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bd0-qf-VNO" id="PHM-XQ-hlJ">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -770,22 +732,18 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Instrument Configuration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zws-RY-5Mo">
                                                     <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="VHF-2Q-iXW" kind="showDetail" id="Rnf-3V-6Sk"/>
+                                            <segue destination="WfF-qG-YA2" kind="showDetail" id="Wi2-eR-hog"/>
                                         </connections>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection id="OkG-n9-xqK">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="InstrumentControlCell" textLabel="qC2-kt-db7" style="IBUITableViewCellStyleDefault" id="Xxk-m8-0yG">
-                                        <rect key="frame" x="0.0" y="115" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="InstrumentControlCell" textLabel="qC2-kt-db7" style="IBUITableViewCellStyleDefault" id="Xxk-m8-0yG" userLabel="InstrumentControl">
+                                        <rect key="frame" x="0.0" y="123" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xxk-m8-0yG" id="p9r-o4-IPv">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -794,7 +752,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Instrument Control" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qC2-kt-db7">
                                                     <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -804,28 +762,24 @@
                                             <segue destination="qd2-7S-Lyn" kind="showDetail" id="AQK-ng-W0E"/>
                                         </connections>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection id="ExH-ga-eiJ">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GeneralCell" textLabel="Xns-Tg-vju" style="IBUITableViewCellStyleDefault" id="LzP-Pa-bqn">
-                                        <rect key="frame" x="0.0" y="195" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="InstrumentControlCell" textLabel="I4u-G9-994" style="IBUITableViewCellStyleDefault" id="BLf-Xh-Klt" userLabel="About">
+                                        <rect key="frame" x="0.0" y="167" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LzP-Pa-bqn" id="UAK-D7-mJB">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BLf-Xh-Klt" id="hU8-uQ-M65">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="General" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xns-Tg-vju">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="I4u-G9-994">
                                                     <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="5do-Kj-fTb" kind="showDetail" id="7vv-t1-2wE"/>
+                                            <segue destination="tmT-Lj-m9E" kind="showDetail" id="7Pr-vl-8ey"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -839,10 +793,71 @@
                     <navigationItem key="navigationItem" title="Settings" id="5Rx-1P-9pt">
                         <barButtonItem key="backBarButtonItem" title="Settings" id="jbF-oN-tem"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="about" destination="BLf-Xh-Klt" id="BUz-VO-Ddl"/>
+                        <outlet property="general" destination="LzP-Pa-bqn" id="OB1-ND-Soe"/>
+                        <outlet property="instrumentConfiguration" destination="Bd0-qf-VNO" id="kPR-7P-dbM"/>
+                        <outlet property="instrumentControl" destination="Xxk-m8-0yG" id="7px-o3-9Uc"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tfc-Rk-cz0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3822" y="1903"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="UGM-bi-FsS">
+            <objects>
+                <viewController id="tmT-Lj-m9E" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pFc-qc-wTn"/>
+                        <viewControllerLayoutGuide type="bottom" id="sOK-Ox-ytZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rcE-Iq-rib">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jk8-zN-aEB" customClass="TitleSection" customModule="Spectrometer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="PLL-ae-8bG"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="About"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoFhnw" translatesAutoresizingMaskIntoConstraints="NO" id="16c-wU-j5p">
+                                <rect key="frame" x="40" y="100" width="324" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="DhS-5c-I86"/>
+                                    <constraint firstAttribute="width" secondItem="16c-wU-j5p" secondAttribute="height" multiplier="81:40" id="FeR-tC-hvt"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoUzh" translatesAutoresizingMaskIntoConstraints="NO" id="fcZ-Oh-bL0">
+                                <rect key="frame" x="404" y="100" width="324" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="fcZ-Oh-bL0" secondAttribute="height" multiplier="81:40" id="6j6-Od-Znn"/>
+                                    <constraint firstAttribute="height" constant="160" id="L1b-Sd-tgc"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fcZ-Oh-bL0" firstAttribute="top" secondItem="jk8-zN-aEB" secondAttribute="bottom" constant="40" id="1q1-A8-5hi"/>
+                            <constraint firstItem="fcZ-Oh-bL0" firstAttribute="leading" secondItem="16c-wU-j5p" secondAttribute="trailing" constant="40" id="2MR-Wu-cGs"/>
+                            <constraint firstItem="jk8-zN-aEB" firstAttribute="leading" secondItem="rcE-Iq-rib" secondAttribute="leadingMargin" constant="-20" id="IRv-xY-IIS"/>
+                            <constraint firstItem="16c-wU-j5p" firstAttribute="top" secondItem="jk8-zN-aEB" secondAttribute="bottom" constant="40" id="Tn7-9R-byc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fcZ-Oh-bL0" secondAttribute="trailing" constant="20" id="UTw-H7-X65"/>
+                            <constraint firstItem="16c-wU-j5p" firstAttribute="width" secondItem="fcZ-Oh-bL0" secondAttribute="width" id="azi-12-c1F"/>
+                            <constraint firstItem="jk8-zN-aEB" firstAttribute="top" secondItem="pFc-qc-wTn" secondAttribute="bottom" constant="-20" id="ez0-OP-Iwl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jk8-zN-aEB" secondAttribute="trailing" constant="-20" id="kvo-1X-1GV"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="16c-wU-j5p" secondAttribute="leading" constant="-20" id="s8u-ky-WTE"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sko-1L-0bI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4115.625" y="2909.765625"/>
         </scene>
         <!--General Settings View Controller-->
         <scene sceneID="abU-kJ-nbp">
@@ -856,10 +871,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vaJ-lD-pUO">
-                                <rect key="frame" x="234" y="492" width="301" height="40"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rdg-uw-HVJ" customClass="TitleSection" customModule="Spectrometer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="jxh-lb-6Ls"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="General App Settings"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can delete all your measurement settings. They will be set to default values." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1M-CM-bhC">
+                                <rect key="frame" x="20" y="80" width="728" height="22"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vaJ-lD-pUO" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
+                                <rect key="frame" x="20" y="122" width="728" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Ciu-LI-n6s"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
                                 <state key="normal" title="Delete all measurement settings"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="background">
+                                        <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="deleteAllUserSettingsPressed:" destination="5do-Kj-fTb" eventType="touchUpInside" id="j5D-Yo-ELc"/>
                                 </connections>
@@ -867,14 +912,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="vaJ-lD-pUO" firstAttribute="centerY" secondItem="PaJ-0i-dIK" secondAttribute="centerY" id="feV-xN-Wiz"/>
-                            <constraint firstItem="vaJ-lD-pUO" firstAttribute="centerX" secondItem="PaJ-0i-dIK" secondAttribute="centerX" id="uxB-pB-i4G"/>
+                            <constraint firstItem="j1M-CM-bhC" firstAttribute="top" secondItem="Rdg-uw-HVJ" secondAttribute="bottom" constant="20" id="8fG-hP-fXe"/>
+                            <constraint firstItem="Rdg-uw-HVJ" firstAttribute="leading" secondItem="PaJ-0i-dIK" secondAttribute="leadingMargin" constant="-20" id="Icq-n7-ULd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Rdg-uw-HVJ" secondAttribute="trailing" constant="-20" id="Jjd-YF-VWw"/>
+                            <constraint firstItem="Rdg-uw-HVJ" firstAttribute="top" secondItem="YUu-On-01Z" secondAttribute="bottom" constant="-20" id="h46-up-bpf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vaJ-lD-pUO" secondAttribute="trailing" id="hDp-Qi-GMD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="j1M-CM-bhC" secondAttribute="trailing" id="lEx-qd-8vW"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="j1M-CM-bhC" secondAttribute="leading" id="mnN-aY-32B"/>
+                            <constraint firstItem="vaJ-lD-pUO" firstAttribute="top" secondItem="j1M-CM-bhC" secondAttribute="bottom" constant="20" id="nOo-PN-Ycq"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="vaJ-lD-pUO" secondAttribute="leading" id="ug6-dB-zQ7"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fP1-Hv-2R8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4040.625" y="2722.8515625"/>
+            <point key="canvasLocation" x="4983.59375" y="1249.8046875"/>
         </scene>
         <!--Instrument Configuration-->
         <scene sceneID="x4q-Ez-rfz">
@@ -885,7 +937,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Number of samples" id="zB7-kd-fH0">
+                            <tableViewSection headerTitle="Internal number of averages" id="zB7-kd-fH0">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NumOfSampSpectrum" id="kQD-fm-Jrd">
                                         <rect key="frame" x="0.0" y="56" width="768" height="44"/>
@@ -1042,26 +1094,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NS4-O3-qD5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5425.78125" y="1970.5078124999998"/>
-        </scene>
-        <!--Table View Controller-->
-        <scene sceneID="bdL-Pz-13D">
-            <objects>
-                <tableViewController extendedLayoutIncludesOpaqueBars="YES" id="hFv-PL-vk4" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="E4x-uz-ddh">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <connections>
-                            <outlet property="dataSource" destination="hFv-PL-vk4" id="xEC-90-Lfe"/>
-                            <outlet property="delegate" destination="hFv-PL-vk4" id="YZW-T0-6Xa"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="kfa-eI-Sjg"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="t7X-3P-SZJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5664" y="2689"/>
+            <point key="canvasLocation" x="4984" y="2088"/>
         </scene>
         <!--Instrument Control View Controller-->
         <scene sceneID="RNs-KO-0BE">
@@ -1075,94 +1108,283 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Instrument Control:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="unR-qJ-sde">
-                                <rect key="frame" x="46" y="122" width="148" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Integration Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="unR-qJ-sde">
+                                <rect key="frame" x="20" y="80" width="728" height="22"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bfA-5K-2aP" customClass="NumberTextField" customModule="Spectrometer" customModuleProvider="target">
-                                <rect key="frame" x="46" y="151" width="148" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bfA-5K-2aP" customClass="NumberTextField" customModule="Spectrometer" customModuleProvider="target">
+                                <rect key="frame" x="20" y="112" width="728" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="7xi-ra-lOR"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="iconBackgroundColor">
+                                        <color key="value" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftTextSpace">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="icon" value="fa-clock-o"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="iconSize">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Swir 1 Gain" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AlH-wP-wDq">
-                                <rect key="frame" x="46" y="189" width="85" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swir 1 Gain" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AlH-wP-wDq">
+                                <rect key="frame" x="20" y="167" width="354" height="22"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oGV-8M-ZLU" customClass="NumberTextField" customModule="Spectrometer" customModuleProvider="target">
-                                <rect key="frame" x="46" y="218" width="148" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oGV-8M-ZLU" customClass="NumberTextField" customModule="Spectrometer" customModuleProvider="target">
+                                <rect key="frame" x="20" y="199" width="354" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="6a8-fJ-CB9"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="iconBackgroundColor">
+                                        <color key="value" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftTextSpace">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="icon" value="fa-superscript"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="iconSize">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Swir 1 Offset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ou3-ki-Yab">
-                                <rect key="frame" x="46" y="256" width="97" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swir 1 Offset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ou3-ki-Yab">
+                                <rect key="frame" x="394" y="167" width="354" height="22"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3DK-GP-w6m" customClass="NumberTextField" customModule="Spectrometer" customModuleProvider="target">
-                                <rect key="frame" x="46" y="285" width="148" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3DK-GP-w6m" customClass="NumberTextField" customModule="Spectrometer" customModuleProvider="target">
+                                <rect key="frame" x="394" y="199" width="354" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="c0w-Sn-rvb"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="iconBackgroundColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="icon" value="fa-superscript"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftTextSpace">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="iconSize">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Swir 2 Gain" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ysi-q0-oUv">
-                                <rect key="frame" x="46" y="323" width="87" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swir 2 Gain" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ysi-q0-oUv">
+                                <rect key="frame" x="20" y="254" width="354" height="22"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1nk-Dh-XgX" customClass="NumberTextField" customModule="Spectrometer" customModuleProvider="target">
-                                <rect key="frame" x="46" y="352" width="148" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1nk-Dh-XgX" customClass="NumberTextField" customModule="Spectrometer" customModuleProvider="target">
+                                <rect key="frame" x="20" y="286" width="354" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="rtp-Cv-woT"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="icon" value="fa-superscript"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="iconSize">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="iconBackgroundColor">
+                                        <color key="value" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftTextSpace">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Swir 2 Offset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6m-w8-ziZ">
-                                <rect key="frame" x="46" y="390" width="100" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swir 2 Offset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6m-w8-ziZ">
+                                <rect key="frame" x="394" y="254" width="354" height="22"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sAS-9M-1OP" customClass="NumberTextField" customModule="Spectrometer" customModuleProvider="target">
-                                <rect key="frame" x="46" y="419" width="148" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sAS-9M-1OP" customClass="NumberTextField" customModule="Spectrometer" customModuleProvider="target">
+                                <rect key="frame" x="394" y="286" width="354" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="LB7-R6-1OD"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="icon" value="fa-superscript"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="iconSize">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftTextSpace">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="iconBackgroundColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ojo-qf-PWJ">
-                                <rect key="frame" x="46" y="467" width="51" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ojo-qf-PWJ" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
+                                <rect key="frame" x="20" y="341" width="354" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="8dK-js-S9G"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
                                 <state key="normal" title="Update"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="background">
+                                        <color key="value" red="0.0" green="0.64705882349999999" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="Update:" destination="qd2-7S-Lyn" eventType="touchUpInside" id="fn0-zd-5ja"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HTx-bO-ZvA">
-                                <rect key="frame" x="154" y="467" width="62" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oj0-vh-GbF" customClass="TitleSection" customModule="Spectrometer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="5DR-4n-aEc"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Instrument Control"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HTx-bO-ZvA" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
+                                <rect key="frame" x="394" y="341" width="354" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="mmH-af-xGp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                 <state key="normal" title="Optimize"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="background">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="performOptimize:" destination="qd2-7S-Lyn" eventType="touchUpInside" id="iAL-7O-qu4"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ojo-qf-PWJ" firstAttribute="width" secondItem="HTx-bO-ZvA" secondAttribute="width" id="1Yc-cU-wLv"/>
+                            <constraint firstItem="3DK-GP-w6m" firstAttribute="width" secondItem="oGV-8M-ZLU" secondAttribute="width" id="63a-5E-Uim"/>
+                            <constraint firstItem="1nk-Dh-XgX" firstAttribute="top" secondItem="ysi-q0-oUv" secondAttribute="bottom" constant="10" id="6zh-7c-QJd"/>
+                            <constraint firstItem="AlH-wP-wDq" firstAttribute="top" secondItem="bfA-5K-2aP" secondAttribute="bottom" constant="20" id="78t-ze-YDv"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="bfA-5K-2aP" secondAttribute="leading" id="8Gz-ZS-7gW"/>
+                            <constraint firstItem="r6m-w8-ziZ" firstAttribute="leading" secondItem="ysi-q0-oUv" secondAttribute="trailing" constant="20" id="923-KN-XJO"/>
+                            <constraint firstItem="sAS-9M-1OP" firstAttribute="top" secondItem="r6m-w8-ziZ" secondAttribute="bottom" constant="10" id="AMQ-Jx-4P5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="unR-qJ-sde" secondAttribute="trailing" id="BvH-Dv-vOz"/>
+                            <constraint firstItem="Ou3-ki-Yab" firstAttribute="top" secondItem="bfA-5K-2aP" secondAttribute="bottom" constant="20" id="CyR-UT-vaC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sAS-9M-1OP" secondAttribute="trailing" id="DTh-9R-6e9"/>
+                            <constraint firstItem="sAS-9M-1OP" firstAttribute="width" secondItem="1nk-Dh-XgX" secondAttribute="width" id="EGa-Tw-hyS"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Ojo-qf-PWJ" secondAttribute="leading" id="EPS-id-CcA"/>
+                            <constraint firstItem="r6m-w8-ziZ" firstAttribute="width" secondItem="ysi-q0-oUv" secondAttribute="width" id="EvI-K5-iJ3"/>
+                            <constraint firstItem="bfA-5K-2aP" firstAttribute="top" secondItem="unR-qJ-sde" secondAttribute="bottom" constant="10" id="F0t-sY-BVY"/>
+                            <constraint firstItem="Ou3-ki-Yab" firstAttribute="leading" secondItem="AlH-wP-wDq" secondAttribute="trailing" constant="20" id="FLl-Vt-CmB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ou3-ki-Yab" secondAttribute="trailing" id="FsC-R4-G38"/>
+                            <constraint firstItem="r6m-w8-ziZ" firstAttribute="top" secondItem="3DK-GP-w6m" secondAttribute="bottom" constant="20" id="IEW-K5-9eH"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="ysi-q0-oUv" secondAttribute="leading" id="M3h-X5-I0z"/>
+                            <constraint firstItem="Ojo-qf-PWJ" firstAttribute="top" secondItem="1nk-Dh-XgX" secondAttribute="bottom" constant="20" id="OQ2-VA-QQk"/>
+                            <constraint firstItem="unR-qJ-sde" firstAttribute="top" secondItem="oj0-vh-GbF" secondAttribute="bottom" constant="20" id="V2N-d5-DwU"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="unR-qJ-sde" secondAttribute="leading" id="Xwi-tf-yuN"/>
+                            <constraint firstItem="AlH-wP-wDq" firstAttribute="leading" secondItem="L0T-Fi-ZFL" secondAttribute="leadingMargin" id="Z9b-Vl-5Q0"/>
+                            <constraint firstItem="Ou3-ki-Yab" firstAttribute="width" secondItem="AlH-wP-wDq" secondAttribute="width" id="aNU-Sy-zwm"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="1nk-Dh-XgX" secondAttribute="leading" id="cvo-TQ-1Gf"/>
+                            <constraint firstItem="3DK-GP-w6m" firstAttribute="leading" secondItem="oGV-8M-ZLU" secondAttribute="trailing" constant="20" id="dg5-Vn-OZ0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3DK-GP-w6m" secondAttribute="trailing" id="dlm-S3-sbP"/>
+                            <constraint firstItem="3DK-GP-w6m" firstAttribute="top" secondItem="Ou3-ki-Yab" secondAttribute="bottom" constant="10" id="fHr-eV-rQu"/>
+                            <constraint firstItem="oj0-vh-GbF" firstAttribute="leading" secondItem="L0T-Fi-ZFL" secondAttribute="leadingMargin" constant="-20" id="fK8-ql-FDW"/>
+                            <constraint firstItem="HTx-bO-ZvA" firstAttribute="top" secondItem="sAS-9M-1OP" secondAttribute="bottom" constant="20" id="gAY-GK-c41"/>
+                            <constraint firstItem="oGV-8M-ZLU" firstAttribute="leading" secondItem="L0T-Fi-ZFL" secondAttribute="leadingMargin" id="hWK-zw-U0I"/>
+                            <constraint firstItem="oGV-8M-ZLU" firstAttribute="top" secondItem="AlH-wP-wDq" secondAttribute="bottom" constant="10" id="mGP-lC-K7t"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HTx-bO-ZvA" secondAttribute="trailing" id="oCY-8A-ylR"/>
+                            <constraint firstItem="HTx-bO-ZvA" firstAttribute="leading" secondItem="Ojo-qf-PWJ" secondAttribute="trailing" constant="20" id="piw-Ii-XSl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oj0-vh-GbF" secondAttribute="trailing" constant="-20" id="pju-YB-jAH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="r6m-w8-ziZ" secondAttribute="trailing" id="q1k-36-unt"/>
+                            <constraint firstItem="oj0-vh-GbF" firstAttribute="top" secondItem="QSb-qk-JcI" secondAttribute="bottom" constant="-20" id="sa8-LF-O5P"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bfA-5K-2aP" secondAttribute="trailing" id="uEz-1x-gvp"/>
+                            <constraint firstItem="ysi-q0-oUv" firstAttribute="top" secondItem="oGV-8M-ZLU" secondAttribute="bottom" constant="20" id="ybO-ky-1Jw"/>
+                            <constraint firstItem="sAS-9M-1OP" firstAttribute="leading" secondItem="1nk-Dh-XgX" secondAttribute="trailing" constant="20" id="zQL-Xj-kdb"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="integrationTimeTextField" destination="bfA-5K-2aP" id="uOb-b9-wPP"/>
@@ -1174,13 +1396,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tO1-CZ-KSH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5662.5" y="3383.7890625"/>
+            <point key="canvasLocation" x="4983.59375" y="2832.421875"/>
         </scene>
-        <!--Einstellungen-->
+        <!--Settings-->
         <scene sceneID="azu-yt-ko0">
             <objects>
-                <navigationController title="Einstellungen" extendedLayoutIncludesOpaqueBars="YES" id="6Pc-k0-7qU" sceneMemberID="viewController">
-                    <nil key="simulatedBottomBarMetrics"/>
+                <navigationController title="Settings" extendedLayoutIncludesOpaqueBars="YES" id="6Pc-k0-7qU" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fgJ-uq-VaN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1195,7 +1416,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CTo-da-2cJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3295" y="465"/>
+            <point key="canvasLocation" x="3822" y="1201"/>
         </scene>
         <!--Settings-->
         <scene sceneID="UPU-OB-DjX">
@@ -1327,7 +1548,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ahg-0a-FrH" userLabel="Foreoptic">
-                                                        <rect key="frame" x="0.0" y="197.5" width="196" height="92"/>
+                                                        <rect key="frame" x="0.0" y="189" width="196" height="92"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mDJ-Ac-fjy" userLabel="ForeopticContainerView" customClass="UIRoundBorderedView" customModule="Spectrometer" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="196" height="92"/>
@@ -1398,7 +1619,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sGQ-TP-CW2" userLabel="WhiteRefrence">
-                                                        <rect key="frame" x="0.0" y="382" width="196" height="99"/>
+                                                        <rect key="frame" x="0.0" y="364.5" width="196" height="99"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mEn-Yi-yHa" userLabel="WhiteReferenceContentView" customClass="UIRoundBorderedView" customModule="Spectrometer" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="196" height="99"/>
@@ -1478,7 +1699,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="c9D-wN-nhA" userLabel="DarkCurrent">
-                                                        <rect key="frame" x="0.0" y="573.5" width="196" height="99"/>
+                                                        <rect key="frame" x="0.0" y="547.5" width="196" height="99"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CZY-AM-DPF" userLabel="DarkCurrentContainerView" customClass="UIRoundBorderedView" customModule="Spectrometer" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="196" height="99"/>
@@ -1554,11 +1775,30 @@
                                                             </view>
                                                         </subviews>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8wv-rR-oJW" userLabel="MeasurementControl">
-                                                        <rect key="frame" x="0.0" y="765" width="196" height="140"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8wv-rR-oJW" userLabel="MeasurementControl">
+                                                        <rect key="frame" x="0.0" y="730" width="196" height="175"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QIW-iu-CZ9" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4uC-ON-imV" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="196" height="40"/>
+                                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
+                                                                <state key="normal" title="Optimize"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="background">
+                                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="4"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="optimizeInstrument:" destination="CAT-Jv-66J" eventType="touchUpInside" id="qGd-H6-Smv"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QIW-iu-CZ9" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="45" width="196" height="40"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="NF7-zn-BzF"/>
                                                                 </constraints>
@@ -1580,7 +1820,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wEU-oK-YU2" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="50" width="196" height="40"/>
+                                                                <rect key="frame" x="0.0" y="90" width="196" height="40"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="Ajp-69-87U"/>
                                                                 </constraints>
@@ -1602,8 +1842,19 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ew-Nk-ccm" customClass="UIColorButton" customModule="Spectrometer" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="100" width="196" height="40"/>
-                                                                <state key="normal" title="Disconnect"/>
+                                                                <rect key="frame" x="0.0" y="135" width="196" height="40"/>
+                                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
+                                                                <state key="normal" title="Disconnect">
+                                                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                </state>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="background">
+                                                                        <color key="value" white="0.92000000000000004" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="4"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <action selector="disconnectSpectrometer:" destination="CAT-Jv-66J" eventType="touchUpInside" id="BfY-3t-Lio"/>
                                                                 </connections>
@@ -2797,7 +3048,7 @@ Dark Current</string>
                                                             <constraint firstItem="87E-4o-Qs7" firstAttribute="top" secondItem="Df1-wb-cck" secondAttribute="top" constant="14" id="xSc-wD-RIu"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Target" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53v-b1-ybt">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53v-b1-ybt">
                                                         <rect key="frame" x="16" y="11" width="419" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
@@ -3569,50 +3820,6 @@ Dark Current</string>
             </objects>
             <point key="canvasLocation" x="1156" y="-16"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="3vn-At-D9V">
-            <objects>
-                <navigationController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="VHF-2Q-iXW" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="768" height="1024"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="oEq-7H-IhW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="0rx-sg-hZ1">
-                        <rect key="frame" x="0.0" y="980" width="768" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
-                    <connections>
-                        <segue destination="WfF-qG-YA2" kind="relationship" relationship="rootViewController" id="C85-Le-4tE"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zhR-c2-lcL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4766" y="1240"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Eeu-eY-zVY">
-            <objects>
-                <navigationController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="Kb8-rZ-0mW" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="768" height="1024"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="BtY-te-dYt">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="qd2-7S-Lyn" kind="show" id="1OK-R2-zvy"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tDn-aG-B8d" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4881" y="2724"/>
-        </scene>
         <!--Raw Settings View Controller-->
         <scene sceneID="xeW-lR-7SA">
             <objects>
@@ -3803,7 +4010,7 @@ DarkCurrent</string>
                                                             <constraint firstItem="b8i-K4-qOR" firstAttribute="top" secondItem="ctD-2p-th1" secondAttribute="top" constant="14" id="zSP-dR-ayJ"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Target" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7by-1d-urt">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7by-1d-urt">
                                                         <rect key="frame" x="16" y="11" width="419" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
@@ -3920,8 +4127,11 @@ DarkCurrent</string>
             <point key="canvasLocation" x="3723" y="-2670"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logoFhnw" width="516" height="50"/>
+        <image name="logoUzh" width="512" height="160"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AQK-ng-W0E"/>
         <segue reference="RjI-9a-Ldm"/>
         <segue reference="t41-HF-zAw"/>
         <segue reference="gLK-2g-HZO"/>

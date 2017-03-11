@@ -133,7 +133,7 @@ class IndicoWriter : BaseWriter {
         }
         
         //integrationTime -> Decimals will be cut. This is the same behaviour as the rs3 software
-        let integrationTime = IntegrationTimeMapper.mapIndex(index: spectrum.spectrumHeader.vinirHeader.integrationTime).1
+        let integrationTime = IntegrationTime.getIntegrationTime(index: spectrum.spectrumHeader.vinirHeader.integrationTime)
         writeLong(number: UInt32(integrationTime))
         
         //fo

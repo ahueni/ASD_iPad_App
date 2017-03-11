@@ -91,7 +91,7 @@ class CommandManager {
     func setInstrumentControl(instrumentControlValues : ICValues){
         serialQueue.sync {
             // set integration Time
-            internalInstrumentControl(params: "2," + instrumentControlValues.integrationTime.description)
+            internalInstrumentControl(params: "2,0," + instrumentControlValues.integrationTime.description)
             //set swir1Gain
             internalInstrumentControl(params: "0,1," + instrumentControlValues.swir1Gain.description)
             //set swir1Offset
@@ -101,6 +101,14 @@ class CommandManager {
             //set swir2Offset
             internalInstrumentControl(params: "1,2," + instrumentControlValues.swir2Offset.description)
         }
+    }
+    
+    func abort() -> Void {
+        
+        // put this command not in a serial queue that its possible to abor a very long aquire command!
+        let abortCommand = Command(commandParam: .Abort, params: "")
+        _ = tcpManager.sendCommand(command: abortCommand)
+        
     }
     
     internal func internalInstrumentControl(params : String)
@@ -115,7 +123,7 @@ class CommandManager {
         }
     }
     
-    internal func internalAquire(samples: Int32) -> FullRangeInterpolatedSpectrum {
+    private func internalAquire(samples: Int32) -> FullRangeInterpolatedSpectrum {
         let command:Command = Command(commandParam: CommandEnum.Aquire, params: "1," + samples.description)
         let data = tcpManager.sendCommand(command: command)
         let spectrumParser = FullRangeInterpolatedSpectrumParser(data: data)
@@ -132,21 +140,21 @@ class CommandManager {
         
     }
     
-    internal func closeShutter() -> Void {
+    private func closeShutter() -> Void {
         internalInstrumentControl(params: "2,3,1")
     }
     
-    internal func openShutter() -> Void {
+    private func openShutter() -> Void {
         internalInstrumentControl(params: "2,3,0")
     }
     
-    internal func internOptimize() -> Void {
+    private func internOptimize() -> Void {
         let command:Command = Command(commandParam: CommandEnum.Optimize, params: "7")
         _ = tcpManager.sendCommand(command: command)
     }
 
     
-    internal func initialize(valueName: String) -> Parameter {
+    private func initialize(valueName: String) -> Parameter {
         let command:Command = Command(commandParam: CommandEnum.Initialize, params: "0,"+valueName)
         let data = tcpManager.sendCommand(command: command)
         let parameterParser = ParameterParser(data: data)

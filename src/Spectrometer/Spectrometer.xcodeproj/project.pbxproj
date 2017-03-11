@@ -92,6 +92,7 @@
 		2EC5056B1E6D6CAF00E1DCFB /* AppEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC5056A1E6D6CAF00E1DCFB /* AppEnums.swift */; };
 		2EC5056E1E6D792200E1DCFB /* NotificationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC5056D1E6D792200E1DCFB /* NotificationExtensions.swift */; };
 		2EC505701E715CC200E1DCFB /* BaseMeasurementAquire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC5056F1E715CC200E1DCFB /* BaseMeasurementAquire.swift */; };
+		2EC505781E7301A100E1DCFB /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC505771E7301A100E1DCFB /* SettingsTableViewController.swift */; };
 		2EC6D8111E5C7F570022F70E /* PathSelectInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6D8101E5C7F570022F70E /* PathSelectInput.swift */; };
 		2EC6D8141E5C80A80022F70E /* AbsoluteReflectanceFileSelectInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6D8131E5C80A80022F70E /* AbsoluteReflectanceFileSelectInput.swift */; };
 		2EC6D8161E5C86970022F70E /* BaseCalibrationSelectInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6D8151E5C86970022F70E /* BaseCalibrationSelectInput.swift */; };
@@ -251,6 +252,7 @@
 		2EC5056A1E6D6CAF00E1DCFB /* AppEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppEnums.swift; sourceTree = "<group>"; };
 		2EC5056D1E6D792200E1DCFB /* NotificationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationExtensions.swift; sourceTree = "<group>"; };
 		2EC5056F1E715CC200E1DCFB /* BaseMeasurementAquire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMeasurementAquire.swift; sourceTree = "<group>"; };
+		2EC505771E7301A100E1DCFB /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		2EC6D8101E5C7F570022F70E /* PathSelectInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathSelectInput.swift; sourceTree = "<group>"; };
 		2EC6D8131E5C80A80022F70E /* AbsoluteReflectanceFileSelectInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbsoluteReflectanceFileSelectInput.swift; sourceTree = "<group>"; };
 		2EC6D8151E5C86970022F70E /* BaseCalibrationSelectInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCalibrationSelectInput.swift; sourceTree = "<group>"; };
@@ -993,6 +995,7 @@
 				E14EC22D1E2E1889006EBD2F /* InstrumentSettingsViewController.swift */,
 				E18F2EF31E696CBF00DFBD7C /* InstrumentControlViewController.swift */,
 				2EB9463E1E5B59CD006C71C8 /* GeneralSettingsViewController.swift */,
+				2EC505771E7301A100E1DCFB /* SettingsTableViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -1339,6 +1342,7 @@
 				2E54E9AB1E620A5B0047565E /* SelectFiberopticViewController.swift in Sources */,
 				2E91F2EF1DDB5B9F003E277F /* SocketOptions.swift in Sources */,
 				2E91F2A81DDB5B76003E277F /* ConnectionViewController.swift in Sources */,
+				2EC505781E7301A100E1DCFB /* SettingsTableViewController.swift in Sources */,
 				E108F21B1E3F367C0097B7EE /* ReflectanceWhiteRefrenceViewController.swift in Sources */,
 				2E91F3081DDB78D8003E277F /* SpectrumDataBase.swift in Sources */,
 				2EB362941DF1BCF900E74E39 /* IndicoFileEnums.swift in Sources */,

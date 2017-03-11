@@ -114,7 +114,7 @@ class SpectrumCalculator{
         let swir2Start: Int = InstrumentStore.sharedInstance.s2StartingWavelength - InstrumentStore.sharedInstance.startingWaveLength
         let swir2End: Int = InstrumentStore.sharedInstance.s2EndingWavelength - InstrumentStore.sharedInstance.startingWaveLength
         
-        let vinirIntegrationTime:Float = IntegrationTimeMapper.mapIndex(index: spectrum.spectrumHeader.vinirHeader.integrationTime).1
+        let vinirIntegrationTime:Float =  IntegrationTime.getIntegrationTime(index: spectrum.spectrumHeader.vinirHeader.integrationTime)
         let swir1Gain:Float = Float(2048) / Float(spectrum.spectrumHeader.swir1Header.gain)
         let swir2Gain:Float = Float(2048) / Float(spectrum.spectrumHeader.swir2Header.gain)
         

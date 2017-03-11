@@ -45,4 +45,26 @@ extension TimeInterval {
     }
     
 }
+
+extension Float {
+    
+    func readableMilis() -> String {
+        
+        let ms = Int(self)
+        
+        if (ms < 1000) {
+            return "\(ms) ms"
+        } else if (ms < 60000) {
+            let s = Float(ms) / Float(1000)
+            return "\(s) sec"
+        } else if (ms < 3600000) {
+            let m = Float(ms) / Float(60000)
+            return "\(m) min"
+        } else {
+            let h = Float(ms) / Float(3600000)
+            return "\(h) h"
+        }
+    }
+    
+}
  

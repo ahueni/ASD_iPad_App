@@ -142,49 +142,24 @@ enum Trigger: Int {
     
 }
 
-struct IntegrationTimeMapper {
+struct IntegrationTime {
     
-    static func mapIndex(index : Int) -> (Int, Float){
-        
-        switch(index) {
-        case -1:
-            return (index, 8.5)
-        case 0:
-            return (index, 17)
-        case 1:
-            return (index, 34)
-        case 2:
-            return (index, 68)
-        case 3:
-            return (index, 136)
-        case 4:
-            return (index, 272)
-        case 5:
-            return (index, 544)
-        case 6:
-            return (index, 1090)
-        case 7:
-            return (index, 2180)
-        case 8:
-            return (index, 4350)
-        case 9:
-            return (index, 8700)
-        case 10:
-            return (index, 17410)
-        case 11:
-            return (index, 34820)
-        case 12:
-            return (index, 69600)
-        case 13:
-            return (index, 139200)
-        case 14:
-            return (index, 278400)
-        case 15:
-            return (index, 556800)
-        default:
-            return (-1, 8.5)
+    static let integrationTimes:[(Int, Float)] =  [(-1, 8.5),(0, 17),(1, 34),(2, 68),(3, 136),(4, 272),(5, 544),(6, 1090),(7, 2180),(8, 4350),(9, 8700),(10, 17410),(11, 34820),(12, 69600),(13, 139200),(14, 278400),(15, 556800)]
+    
+    static func getIntegrationTime(index: Int) -> Float {
+        if let first = integrationTimes.first(where: { $0.0 == index }) {
+            return first.1
         }
-        
+        return 8.5
     }
     
+    static func getIndex(integrationTime: Float) -> Int {
+        if let first = integrationTimes.first(where: { $0.1 >= integrationTime }) {
+            return first.0
+        }
+        return -1
+    }
+    
+    
 }
+

@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-class InstrumentControlViewController : UIViewController{
-    
+class InstrumentControlViewController : UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+
     var instrumentControlValues : ICValues!
     
     @IBOutlet var integrationTimeTextField: NumberTextField!
@@ -19,35 +19,70 @@ class InstrumentControlViewController : UIViewController{
     @IBOutlet var swir2GainTextField: NumberTextField!
     @IBOutlet var swir2OffsetTextField: NumberTextField!
     
-    override func viewDidLoad() {
-        loadInstrumentControlValues()
-        updateFields()
-    }
+    let alert = UIAlertController(title: nil, message: "Loading...", preferredStyle: .alert)
     
-    func updateFields(){
-        integrationTimeTextField.text = instrumentControlValues.integrationTime.description
-        swir1GainTextField.text = instrumentControlValues.swir1Gain.description
-        swir1OffsetTextField.text = instrumentControlValues.swir1Offset.description
-        swir2GainTextField.text = instrumentControlValues.swir2Gain.description
-        swir2OffsetTextField.text = instrumentControlValues.swir2Offset.description
+    override func viewDidLoad() {
+        
+        
+        let acitivty = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        
+        alert.view.tintColor = UIColor.black
+        let loadingIndicator: UIActivityIndicatorView = acitivty
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.startAnimating();
+        alert.view.addSubview(loadingIndicator)
+        
+        self.present(alert, animated: true, completion: nil)
+        
+        DispatchQueue.global().async {
+            
+            self.loadInstrumentControlValues()
+            self.updateFields()
+            
+        }
+        
+        
+        let pickerView = UIPickerView()
+        pickerView.showsSelectionIndicator = true
+        pickerView.delegate = self
+        integrationTimeTextField.inputView = pickerView
     }
     
     func loadInstrumentControlValues(){
+        
         let spectrum = CommandManager.sharedInstance.aquire(samples: 1)
+        
         let integrationTime = spectrum.spectrumHeader.vinirHeader.integrationTime
         let swir1Gain = spectrum.spectrumHeader.swir1Header.gain
         let swir1Offset = spectrum.spectrumHeader.swir1Header.offset
         let swir2Gain = spectrum.spectrumHeader.swir2Header.gain
         let swir2Offset = spectrum.spectrumHeader.swir2Header.offset
+        
         instrumentControlValues = ICValues(integrationTime: integrationTime, swir1Gain: swir1Gain, swir1Offset: swir1Offset, swir2Gain: swir2Gain, swir2Offset: swir2Offset)
     }
     
+    func updateFields() {
+        
+        DispatchQueue.main.async {
+            self.integrationTimeTextField.text = IntegrationTime.getIntegrationTime(index: self.instrumentControlValues.integrationTime).readableMilis()
+            self.swir1GainTextField.text = self.instrumentControlValues.swir1Gain.description
+            self.swir1OffsetTextField.text = self.instrumentControlValues.swir1Offset.description
+            self.swir2GainTextField.text = self.instrumentControlValues.swir2Gain.description
+            self.swir2OffsetTextField.text = self.instrumentControlValues.swir2Offset.description
+            
+            self.alert.dismiss(animated: true, completion: nil)
+        }
+        
+    }
+    
     @IBAction func Update(_ sender: UIButton) {
-        instrumentControlValues.integrationTime = integrationTimeTextField.number
+        
         instrumentControlValues.swir1Gain = swir1GainTextField.number
         instrumentControlValues.swir1Offset = swir1OffsetTextField.number
         instrumentControlValues.swir2Gain = swir2GainTextField.number
         instrumentControlValues.swir2Offset = swir2OffsetTextField.number
+        
         CommandManager.sharedInstance.setInstrumentControl(instrumentControlValues: instrumentControlValues)
     }
     
@@ -56,9 +91,36 @@ class InstrumentControlViewController : UIViewController{
         loadInstrumentControlValues()
         updateFields()
     }
+    
+    // picker view configuration
+    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return IntegrationTime.integrationTimes.count
+    }
+    
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return IntegrationTime.integrationTimes[row].1.readableMilis()
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        // selected integration time
+        let integrationTime = IntegrationTime.integrationTimes[row]
+        
+        // update text field
+        integrationTimeTextField.text = integrationTime.1.readableMilis()
+        instrumentControlValues.integrationTime = integrationTime.0
+        
+    }
+    
+    
 }
 
-struct ICValues{
+struct ICValues {
+    
     var integrationTime : Int!
     var swir1Gain : Int!
     var swir1Offset : Int!
