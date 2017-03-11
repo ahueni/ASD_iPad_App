@@ -2,6 +2,38 @@
 \section{Vorgehen}
 Das Projekt wurde in den Grundsätzen an den RUP\footnote[1]{Rational Unified Process: \href{https://de.wikipedia.org/wiki/Rational\_Unified\_Process}{https://de.wikipedia.org/wiki/Rational\_Unified\_Process}} Prozess angelegt. Als wichtigstes Merkmal wurden die Projektphasen Inception, Elaboration, Construction 1, Construction 2, Construction 3 und Transition definiert.
 \section{Risiken}
+Während des Projektes, wurde festgestellt, dass die ASD Implementierung Eigenheiten besitzt, welche am Anfang unterschätzt wurden. Deshalb wurde eine Riskoanalyse vorgenommen und die Risiken des Projektes abgeschätzt. Im folgenden Kapitel sind die Hauptrisiken aufgelistet.
+
+\subsection{ASD Dokumentation stimmt nicht mit Realität überein}
+Das Hauptrisiko welches wir feststellen musste, ist dass die ASD Dokumentation nicht korrekt ist oder schwierig interpretierbar ist. Dieses Risiko ist eingetroffen. Als Massnahme, wurde Code externer Entwickler in Anspruch genommen, um die Daten besser interpretieren zu können.
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[scale=1]{images/Risk1} 
+	\caption{Riskoverlauf}
+	\label{fig:Risk1History}
+	\end{center}
+\end{figure}
+
+\subsection{Zu wenig Zeit um alle Anforderungen zu erfüllen}
+Dieses Risiko wurde von Anfang an bewusst angegangen. So wurden bereits während der Anforderungserhebung eine Priorisierungen der einzelnen Punkte vorgenommen. Dieser Prozess erfolgte in Zusammenarbeit mit dem Kunden. Dadurch konnte dieses Risiko minimiert werden.
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[scale=1]{images/Risk2} 
+	\caption{Riskoverlauf}
+	\label{fig:Risk1History}
+	\end{center}
+\end{figure}
+
+\subsection{Daten vom iOS Gerät importieren und exportieren}
+Dieses Risiko bestand, da im Gegensatz zu vielen etablierten Apps einige Dateien zwingend für das funktionieren der Applikation bereits zu beginn bereitgestellt werden müssen. Die Sorge war, keine einfache Methode anbieten zu können um einfach und intuitiv Daten auf das Gerät zu kopieren. Dieses Risiko konnte ausgeräumt werden, indem Nachforschungen zu bekannten Apps welche diese Problemstellung gelöst hatten intensiviert wurde. Es wurde festgestellt, das iOS bereits eine eigene elegante Lösung für diesen Prozess bietet, welcher nun auch verwendet wird. Das Importieren , wird im Punkt \ref{sec:iosApp} beschrieben.
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[scale=1]{images/Risk3} 
+	\caption{Riskoverlauf}
+	\label{fig:Risk1History}
+	\end{center}
+\end{figure}
+
 \section{Meilensteine}
 Die Meilensteine wurden ebenfalls an den RUP Prozess angelegt und sind so meist bei den Übergängen in die nächste Phase definiert. In der nachfolgenden Tabelle sind die definierten Meilensteine des Projektes nach Datum geordnet:
 
