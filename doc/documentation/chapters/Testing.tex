@@ -7,11 +7,19 @@ XCode und das iOS Framework stellen ein gutes UnitTest Framework zur verfügung. 
 Das gesamte Parsen, Lesen und Schreiben von Spektraldaten lässt sich optimal mit UnitTest testen. In der Klasse \verb=SpectrometerIOTests= werden alle relevanten Funktionen dazu getestet. Nachfolgend werden die einzelnen Test Cases jeweils einzeln kurz beschreiben.
 
 \begin{itemize}[noitemsep]
-\item \verb=testParsedSpectralData()= \newline Mit diesem Test wird das Parsen des \verb=FullRangeInterpoladedSpectrum= getestet. Es wird überprüft ob die Werte richtig von den Rohdaten in die entsprechenden Datentypen konvertiert werden.
-\item \verb=testReadCalibrationFile= \newline Ermittelt das korrekte einlesen der INI-Dateien aus einer Datei.
-\item \verb=testReadIndico7RawFile= \newline Ermittelt das korrekte einlesen einer ASD Messdatei im Raw Format
-\item 
+\item \verb=testParseSpectralData()= \newline Überprüft das korrekte parsen eines \verb=FullRangeInterpolatedSpectrum= wie es vom Spektrometer gesendet wird.
+\item \verb=testReadCalibrationFile()= \newline Überprüft das korrekte einlesen einer INI-Datei.
+\item \verb=testReadIndico7RawFile()= \newline Überprüft das korrekte einlesen einer ASD-Messdatei im Raw Format
+\item \verb=testReadIndico7ReflectanceFile()= \newline Überprüft das korrekte einlesen einer ASD-Messdatei im Reflectance Format.
+\item \verb=testReadIndico7RadianceFile()= \newline Überprüft das korrekte einlesen einer ASD-Messdatei im Radiance Format.
+\item \verb=testWriteRawData()= \newline Schreibt eine Messdatei im Raw Format und überprüft anschliessend ob diese korrekt wieder eingelesen werden kann.
+\item \verb=testWriteReflectanceData()= \newline  Schreibt eine Messdatei im Reflectance Format und überprüft anschliessend ob diese korrekt wieder eingelesen werden kann.
+\item \verb=testWriteRadianceData()= \newline  Schreibt eine Messdatei im Radiance Format und überprüft anschliessend ob diese korrekt wieder eingelesen werden kann.
 \end{itemize}
+
+\subsection{Berechnungen}
+
+Die Berechnungen von Dark Current Reflectanz und Radianz lassen sich ebenfalls einfach mit Unit Tests überprüfen. Die Testdaten werden auch in diesem Test zuerst aus Testdateien eingelesen.
 
 \section{Integration Tests}
 Alle Anforderungen wurden mit einem Testprotokoll getestet. Somit ist sichergestellt, dass alle Anforderungen den vorgaben entsprechen und Richtig funktionieren. Das Testprotokoll ist im Anhang zu finden.
