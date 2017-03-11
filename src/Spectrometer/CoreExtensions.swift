@@ -25,8 +25,28 @@ extension FloatingPoint {
     
 }
 
+extension Sequence where Iterator.Element == Float  {
+    func getDoubles() -> [Double] {
+        var doubles: [Double] = []
+        for (_,f) in self.enumerated() {
+            doubles.append(Double(f))
+        }
+        return doubles
+    }
+}
+
+extension Sequence where Iterator.Element == Double {
+    func getFloats() -> [Float] {
+        
+        var floats: [Float] = []
+        for (_,d) in self.enumerated() {
+            floats.append(Float(d))
+        }
+        return floats
+    }
+}
+
 extension URL {
-    
     func exists() -> Bool {
         return FileManager.default.fileExists(atPath: self.path)
     }
@@ -42,7 +62,6 @@ extension URL {
 }
 
 extension TimeInterval {
-    
     // converts an int value to a 00:00:00 string
     func getHHMMSS() -> String {
         let intValue = Int(self)
@@ -53,7 +72,6 @@ extension TimeInterval {
 }
 
 extension Float {
-    
     func readableMilis() -> String {
         
         let ms = Int(self)

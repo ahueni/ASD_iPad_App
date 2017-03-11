@@ -125,15 +125,15 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "MeasurementAquireBase.aquire() -&gt; ():BaseMeasurementAquire.swift">
+      </ContextState>
+      <ContextState
          contextName = "RadioButton.changeButtonBackground() -&gt; ():RadioButton.swift">
          <PersistentStrings>
             <PersistentString
                value = "state">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MeasurementAquireBase.aquire() -&gt; ():BaseMeasurementAquire.swift">
       </ContextState>
       <ContextState
          contextName = "CommandManager.getWaveLengthts() -&gt; ():CommandManager.swift">
@@ -146,6 +146,26 @@
             </PersistentString>
             <PersistentString
                value = "InstrumentSettingsCache.sharedInstance.vinirStartingWavelength">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SpectrometerTests.testParsedSpectralData() -&gt; ():SpectrometerIOTests.swift">
+      </ContextState>
+      <ContextState
+         contextName = "SpectrometerTests.testWriteRawData() -&gt; ():SpectrometerIOTests.swift">
+      </ContextState>
+      <ContextState
+         contextName = "SpectrometerIOTests.getResourceFilePath(name : String) -&gt; String:SpectrometerIOTests.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "fileNameComponents.last">
+            </PersistentString>
+            <PersistentString
+               value = "path">
+            </PersistentString>
+            <PersistentString
+               value = "fileNameComponents.first">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

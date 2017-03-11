@@ -40,12 +40,12 @@ class IndicoWriter : BaseWriter {
         fileHandle.closeFile()
     }
     
-    func writeRadiance(spectrum : FullRangeInterpolatedSpectrum, radianceCalibrationFiles : RadianceCalibrationFiles?){
+    func writeRadiance(spectrum : FullRangeInterpolatedSpectrum, radianceCalibrationFiles : RadianceCalibrationFiles){
         // write all basic file values
         innerWriteBasic(spectrum: spectrum, dataType: DataType.RadType)
         
         // write calibration files
-        innerWriteCalibration(radianceCalibrationFiles: radianceCalibrationFiles!)
+        innerWriteCalibration(radianceCalibrationFiles: radianceCalibrationFiles)
         fileHandle.closeFile()
     }
 

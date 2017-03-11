@@ -45,9 +45,12 @@ enum DataFormat: UInt8 {
 }
 
 enum AxisMode: UInt8 {
-    
     case Unknown = 0
+    case Error = 99
     
+    init(fromRawValue: UInt8){
+        self = AxisMode(rawValue: fromRawValue) ?? .Error
+    }
 }
 
 enum ClassifierType: UInt8 {

@@ -52,7 +52,7 @@ class IndicoIniFileReader: BaseSpectrumInput, ISpectrumParser {
         
         spectralFile.instrumentRange = getNextUInt16()
         
-        print("AxisMode: "+getNextByte().description)//spectralFile.axisMode
+        spectralFile.axisMode = AxisMode(fromRawValue: getNextByte())
         
         spectralFile.flags.append(getNextByte())
         spectralFile.flags.append(getNextByte())

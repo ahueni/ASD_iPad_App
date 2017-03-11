@@ -40,7 +40,7 @@ class FileWriteManager{
         }
     }
     
-    func addToQueueRadiance(spectrums : [FullRangeInterpolatedSpectrum], radianceCalibrationFiles: RadianceCalibrationFiles? = nil, settings: MeasurmentSettings, fileSuffix :String = "")
+    func addToQueueRadiance(spectrums : [FullRangeInterpolatedSpectrum], radianceCalibrationFiles: RadianceCalibrationFiles, settings: MeasurmentSettings, fileSuffix :String = "")
     {
         serialQueue.sync {
             for spectrum in spectrums

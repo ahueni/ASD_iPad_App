@@ -94,6 +94,10 @@
 		2EC505701E715CC200E1DCFB /* BaseMeasurementAquire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC5056F1E715CC200E1DCFB /* BaseMeasurementAquire.swift */; };
 		2EC505781E7301A100E1DCFB /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC505771E7301A100E1DCFB /* SettingsTableViewController.swift */; };
 		2EC5057A1E7417B900E1DCFB /* SpectrometerCalculationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC505791E7417B900E1DCFB /* SpectrometerCalculationTests.swift */; };
+		2EC5057C1E74373800E1DCFB /* calibration.raw in Resources */ = {isa = PBXBuildFile; fileRef = 2EC5057B1E74302800E1DCFB /* calibration.raw */; };
+		2EC505801E74590500E1DCFB /* rad.asd in Resources */ = {isa = PBXBuildFile; fileRef = 2EC5057D1E74590500E1DCFB /* rad.asd */; };
+		2EC505811E74590500E1DCFB /* raw.asd in Resources */ = {isa = PBXBuildFile; fileRef = 2EC5057E1E74590500E1DCFB /* raw.asd */; };
+		2EC505821E74590500E1DCFB /* ref.asd in Resources */ = {isa = PBXBuildFile; fileRef = 2EC5057F1E74590500E1DCFB /* ref.asd */; };
 		2EC6D8111E5C7F570022F70E /* PathSelectInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6D8101E5C7F570022F70E /* PathSelectInput.swift */; };
 		2EC6D8141E5C80A80022F70E /* AbsoluteReflectanceFileSelectInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6D8131E5C80A80022F70E /* AbsoluteReflectanceFileSelectInput.swift */; };
 		2EC6D8161E5C86970022F70E /* BaseCalibrationSelectInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6D8151E5C86970022F70E /* BaseCalibrationSelectInput.swift */; };
@@ -124,8 +128,8 @@
 		E1446F031E56DD6100840AF2 /* RawSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1446F021E56DD6100840AF2 /* RawSettingsViewController.swift */; };
 		E14EC22E1E2E1889006EBD2F /* InstrumentSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14EC22D1E2E1889006EBD2F /* InstrumentSettingsViewController.swift */; };
 		E15995C91E661D8C00254FAE /* FileWriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15995C81E661D8C00254FAE /* FileWriteManager.swift */; };
-		E15C06AA1E4C66E300965868 /* spectrum.test in Resources */ = {isa = PBXBuildFile; fileRef = E15C06A81E4C66E300965868 /* spectrum.test */; };
-		E15C06AB1E4C66E300965868 /* whiteRefrence.test in Resources */ = {isa = PBXBuildFile; fileRef = E15C06A91E4C66E300965868 /* whiteRefrence.test */; };
+		E15C06AA1E4C66E300965868 /* spectrum.data in Resources */ = {isa = PBXBuildFile; fileRef = E15C06A81E4C66E300965868 /* spectrum.data */; };
+		E15C06AB1E4C66E300965868 /* whiteReference.data in Resources */ = {isa = PBXBuildFile; fileRef = E15C06A91E4C66E300965868 /* whiteReference.data */; };
 		E165E1F71E34B5A20077A5EB /* TargetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E165E1F61E34B5A20077A5EB /* TargetViewController.swift */; };
 		E1807E5E1E2E576400BB205F /* SpectrometerErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E5D1E2E576400BB205F /* SpectrometerErrors.swift */; };
 		E1807E641E2F619B00BB205F /* StartMeasurementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1807E631E2F619B00BB205F /* StartMeasurementViewController.swift */; };
@@ -255,6 +259,10 @@
 		2EC5056F1E715CC200E1DCFB /* BaseMeasurementAquire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMeasurementAquire.swift; sourceTree = "<group>"; };
 		2EC505771E7301A100E1DCFB /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		2EC505791E7417B900E1DCFB /* SpectrometerCalculationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrometerCalculationTests.swift; sourceTree = "<group>"; };
+		2EC5057B1E74302800E1DCFB /* calibration.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = calibration.raw; sourceTree = "<group>"; };
+		2EC5057D1E74590500E1DCFB /* rad.asd */ = {isa = PBXFileReference; lastKnownFileType = file; path = rad.asd; sourceTree = "<group>"; };
+		2EC5057E1E74590500E1DCFB /* raw.asd */ = {isa = PBXFileReference; lastKnownFileType = file; path = raw.asd; sourceTree = "<group>"; };
+		2EC5057F1E74590500E1DCFB /* ref.asd */ = {isa = PBXFileReference; lastKnownFileType = file; path = ref.asd; sourceTree = "<group>"; };
 		2EC6D8101E5C7F570022F70E /* PathSelectInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathSelectInput.swift; sourceTree = "<group>"; };
 		2EC6D8131E5C80A80022F70E /* AbsoluteReflectanceFileSelectInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbsoluteReflectanceFileSelectInput.swift; sourceTree = "<group>"; };
 		2EC6D8151E5C86970022F70E /* BaseCalibrationSelectInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCalibrationSelectInput.swift; sourceTree = "<group>"; };
@@ -285,8 +293,8 @@
 		E1446F021E56DD6100840AF2 /* RawSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawSettingsViewController.swift; sourceTree = "<group>"; };
 		E14EC22D1E2E1889006EBD2F /* InstrumentSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentSettingsViewController.swift; sourceTree = "<group>"; };
 		E15995C81E661D8C00254FAE /* FileWriteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWriteManager.swift; sourceTree = "<group>"; };
-		E15C06A81E4C66E300965868 /* spectrum.test */ = {isa = PBXFileReference; lastKnownFileType = file; path = spectrum.test; sourceTree = "<group>"; };
-		E15C06A91E4C66E300965868 /* whiteRefrence.test */ = {isa = PBXFileReference; lastKnownFileType = file; path = whiteRefrence.test; sourceTree = "<group>"; };
+		E15C06A81E4C66E300965868 /* spectrum.data */ = {isa = PBXFileReference; lastKnownFileType = file; path = spectrum.data; sourceTree = "<group>"; };
+		E15C06A91E4C66E300965868 /* whiteReference.data */ = {isa = PBXFileReference; lastKnownFileType = file; path = whiteReference.data; sourceTree = "<group>"; };
 		E165E1F61E34B5A20077A5EB /* TargetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetViewController.swift; sourceTree = "<group>"; };
 		E1807E5D1E2E576400BB205F /* SpectrometerErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrometerErrors.swift; sourceTree = "<group>"; };
 		E1807E631E2F619B00BB205F /* StartMeasurementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartMeasurementViewController.swift; sourceTree = "<group>"; };
@@ -1006,8 +1014,12 @@
 		E15C06A71E4C66D300965868 /* TestResources */ = {
 			isa = PBXGroup;
 			children = (
-				E15C06A81E4C66E300965868 /* spectrum.test */,
-				E15C06A91E4C66E300965868 /* whiteRefrence.test */,
+				2EC5057D1E74590500E1DCFB /* rad.asd */,
+				2EC5057E1E74590500E1DCFB /* raw.asd */,
+				2EC5057F1E74590500E1DCFB /* ref.asd */,
+				2EC5057B1E74302800E1DCFB /* calibration.raw */,
+				E15C06A81E4C66E300965868 /* spectrum.data */,
+				E15C06A91E4C66E300965868 /* whiteReference.data */,
 			);
 			name = TestResources;
 			sourceTree = "<group>";
@@ -1216,8 +1228,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E15C06AA1E4C66E300965868 /* spectrum.test in Resources */,
-				E15C06AB1E4C66E300965868 /* whiteRefrence.test in Resources */,
+				2EC505821E74590500E1DCFB /* ref.asd in Resources */,
+				2EC505811E74590500E1DCFB /* raw.asd in Resources */,
+				2EC505801E74590500E1DCFB /* rad.asd in Resources */,
+				E15C06AA1E4C66E300965868 /* spectrum.data in Resources */,
+				E15C06AB1E4C66E300965868 /* whiteReference.data in Resources */,
+				2EC5057C1E74373800E1DCFB /* calibration.raw in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
