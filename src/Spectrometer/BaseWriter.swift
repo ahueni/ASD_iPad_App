@@ -88,7 +88,6 @@ class BaseWriter{
     {
         writeInt(number: UInt16(text.characters.count))
         writeString(text: text)
-
     }
     
     func writeString(text:String){
@@ -122,5 +121,29 @@ class BaseWriter{
         print(programVersion)
         let data = Data(buffer: UnsafeBufferPointer(start: &programVersion, count: 1))
         fileHandle.write(data)
+    }
+    
+    func writeActualDateTime()
+    {
+        let date = Date()
+        writeInt(number: Int16(date.second()))
+        writeInt(number: Int16(date.minute()))
+        writeInt(number: Int16(date.hour()))
+        writeInt(number: Int16(date.day()))
+        writeInt(number: Int16(date.monthOfYearIndico()))
+        writeInt(number: Int16(date.yearsSince1900()))
+        writeInt(number: Int16(date.dayOfWeekIndico()))
+        writeInt(number: Int16(date.dayOfYear()))
+        writeInt(number: Int16(Int(date.isDayLightSavingTime())))
+        
+        print("Second: " + date.second().description)
+        print("Minute: " + date.minute().description)
+        print("Hour: " + date.hour().description)
+        print("Day: " + date.day().description)
+        print("Month of Year: " + date.monthOfYearIndico().description)
+        print("Years since 1900: " + date.yearsSince1900().description)
+        print("Day of Week: " + date.dayOfWeekIndico().description)
+        print("Day of Year: " + date.dayOfYear().description)
+        print("Is Daylight saving time: " + date.isDayLightSavingTime().description)
     }
 }

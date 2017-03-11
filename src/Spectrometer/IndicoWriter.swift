@@ -62,8 +62,7 @@ class IndicoWriter : BaseWriter {
         writeStringWithFixedLength(text: settings.comment!, length: 157)
         
         //date
-        let data = "123456789012345678".data(using: String.Encoding.utf8)
-        fileHandle.write(data!)
+        writeActualDateTime()
         
         //ProgramVersion
         //???
