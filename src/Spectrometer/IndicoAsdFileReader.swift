@@ -15,7 +15,7 @@ class IndicoAsdFileReader : IndicoIniFileReader  {
         spectralFile = IndicoFile7()
     }
     
-    override func parse() throws -> T {
+    override func parse() throws -> IndicoFile7 {
         
         let spectralFile7 = try super.parse() as! IndicoFile7
         

@@ -29,7 +29,7 @@
 		2E91F2AE1DDB5B76003E277F /* Spectrometer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2AC1DDB5B76003E277F /* Spectrometer.xcdatamodeld */; };
 		2E91F2B01DDB5B76003E277F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E91F2AF1DDB5B76003E277F /* Assets.xcassets */; };
 		2E91F2B31DDB5B76003E277F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E91F2B11DDB5B76003E277F /* LaunchScreen.storyboard */; };
-		2E91F2BE1DDB5B76003E277F /* SpectrometerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2BD1DDB5B76003E277F /* SpectrometerTests.swift */; };
+		2E91F2BE1DDB5B76003E277F /* SpectrometerIOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2BD1DDB5B76003E277F /* SpectrometerIOTests.swift */; };
 		2E91F2E01DDB5B9F003E277F /* SynchronousTCPServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2CB1DDB5B9F003E277F /* SynchronousTCPServer.swift */; };
 		2E91F2E11DDB5B9F003E277F /* SynchronousUDPServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2CC1DDB5B9F003E277F /* SynchronousUDPServer.swift */; };
 		2E91F2E21DDB5B9F003E277F /* TCPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91F2CD1DDB5B9F003E277F /* TCPClient.swift */; };
@@ -93,6 +93,7 @@
 		2EC5056E1E6D792200E1DCFB /* NotificationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC5056D1E6D792200E1DCFB /* NotificationExtensions.swift */; };
 		2EC505701E715CC200E1DCFB /* BaseMeasurementAquire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC5056F1E715CC200E1DCFB /* BaseMeasurementAquire.swift */; };
 		2EC505781E7301A100E1DCFB /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC505771E7301A100E1DCFB /* SettingsTableViewController.swift */; };
+		2EC5057A1E7417B900E1DCFB /* SpectrometerCalculationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC505791E7417B900E1DCFB /* SpectrometerCalculationTests.swift */; };
 		2EC6D8111E5C7F570022F70E /* PathSelectInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6D8101E5C7F570022F70E /* PathSelectInput.swift */; };
 		2EC6D8141E5C80A80022F70E /* AbsoluteReflectanceFileSelectInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6D8131E5C80A80022F70E /* AbsoluteReflectanceFileSelectInput.swift */; };
 		2EC6D8161E5C86970022F70E /* BaseCalibrationSelectInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6D8151E5C86970022F70E /* BaseCalibrationSelectInput.swift */; };
@@ -188,7 +189,7 @@
 		2E91F2B21DDB5B76003E277F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2E91F2B41DDB5B76003E277F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E91F2B91DDB5B76003E277F /* SpectrometerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpectrometerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2E91F2BD1DDB5B76003E277F /* SpectrometerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectrometerTests.swift; sourceTree = "<group>"; };
+		2E91F2BD1DDB5B76003E277F /* SpectrometerIOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectrometerIOTests.swift; sourceTree = "<group>"; };
 		2E91F2BF1DDB5B76003E277F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E91F2CB1DDB5B9F003E277F /* SynchronousTCPServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronousTCPServer.swift; sourceTree = "<group>"; };
 		2E91F2CC1DDB5B9F003E277F /* SynchronousUDPServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronousUDPServer.swift; sourceTree = "<group>"; };
@@ -253,6 +254,7 @@
 		2EC5056D1E6D792200E1DCFB /* NotificationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationExtensions.swift; sourceTree = "<group>"; };
 		2EC5056F1E715CC200E1DCFB /* BaseMeasurementAquire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMeasurementAquire.swift; sourceTree = "<group>"; };
 		2EC505771E7301A100E1DCFB /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		2EC505791E7417B900E1DCFB /* SpectrometerCalculationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrometerCalculationTests.swift; sourceTree = "<group>"; };
 		2EC6D8101E5C7F570022F70E /* PathSelectInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathSelectInput.swift; sourceTree = "<group>"; };
 		2EC6D8131E5C80A80022F70E /* AbsoluteReflectanceFileSelectInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbsoluteReflectanceFileSelectInput.swift; sourceTree = "<group>"; };
 		2EC6D8151E5C86970022F70E /* BaseCalibrationSelectInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCalibrationSelectInput.swift; sourceTree = "<group>"; };
@@ -426,7 +428,8 @@
 			isa = PBXGroup;
 			children = (
 				E15C06A71E4C66D300965868 /* TestResources */,
-				2E91F2BD1DDB5B76003E277F /* SpectrometerTests.swift */,
+				2E91F2BD1DDB5B76003E277F /* SpectrometerIOTests.swift */,
+				2EC505791E7417B900E1DCFB /* SpectrometerCalculationTests.swift */,
 				2E91F2BF1DDB5B76003E277F /* Info.plist */,
 			);
 			path = SpectrometerTests;
@@ -1447,7 +1450,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E91F2BE1DDB5B76003E277F /* SpectrometerTests.swift in Sources */,
+				2EC5057A1E7417B900E1DCFB /* SpectrometerCalculationTests.swift in Sources */,
+				2E91F2BE1DDB5B76003E277F /* SpectrometerIOTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

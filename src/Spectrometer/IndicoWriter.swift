@@ -50,7 +50,7 @@ class IndicoWriter : BaseWriter {
     }
 
     
-    internal func innerWriteBasic(spectrum : FullRangeInterpolatedSpectrum, dataType : DataType, whiteRefrenceSpectrum : FullRangeInterpolatedSpectrum? = nil){
+    private func innerWriteBasic(spectrum : FullRangeInterpolatedSpectrum, dataType : DataType, whiteRefrenceSpectrum : FullRangeInterpolatedSpectrum? = nil){
         
         // ------ Start Header ------
         
@@ -395,7 +395,7 @@ class IndicoWriter : BaseWriter {
     
     
     
-    internal func innerWriteCalibration(radianceCalibrationFiles : RadianceCalibrationFiles){
+    private func innerWriteCalibration(radianceCalibrationFiles : RadianceCalibrationFiles){
         // ------ Start Calibration Header ------
         
         // Count => In this project the calibration count is always 3 if measurment is radiance. 1x Base, 1x Lamp & 1x Foreoptic

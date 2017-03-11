@@ -48,7 +48,7 @@ class BaseWriter{
         case fileNotCreatedError(message : String)
     }
     
-    func writeByte(number:UInt8){
+    func writeByte(number: UInt8){
         var mutableNumber = number
         let data = Data(buffer: UnsafeBufferPointer(start: &mutableNumber, count: 1))
         fileHandle.write(data)
@@ -66,13 +66,13 @@ class BaseWriter{
         fileHandle.write(data)
     }
     
-    func writeLong(number:UInt32){
+    func writeLong(number: UInt32){
         var mutableNumber = number
         let data = Data(buffer: UnsafeBufferPointer(start: &mutableNumber, count: 1))
         fileHandle.write(data)
     }
     
-    func writeLong(number:Int32){
+    func writeLong(number: Int32){
         var mutableNumber = number
         let data = Data(buffer: UnsafeBufferPointer(start: &mutableNumber, count: 1))
         fileHandle.write(data)
