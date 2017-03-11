@@ -1,17 +1,17 @@
 \chapter{Umsetzung}
 \section{Einleitung}
-Dieses Kapitel beschreibt die Umsetzung des Produktes. Die nachfolgenden Abschnitte werden Schrittweise detaillierter und beschreiben den Aufbau sowie die Designentscheidungen des Softwarecodes. Es soll eine mögliche Weiterentwicklung der Software ermöglichen und für den Entwickler vereinfachen.
+Dieses Kapitel beschreibt die Umsetzung des Produktes. Die nachfolgenden Abschnitte werden schrittweise detaillierter und beschreiben den Aufbau sowie die Designentscheidungen des Softwarecodes. Es soll eine zukünftige Weiterentwicklung der Software ermöglichen und für den Entwickler vereinfachen.
 
 \section{Technologien}
 In diesem Abschnitt wird beschrieben, welche Technologien und Tools eingesetzt wurden, um die iOS Applikation umzusetzen. Es wurde darauf geachtet, dass bewährte und von Apple vorgesehene Technologien verwendet werden. Die Applikation sowie der Code entsprechen der von Apple vorgegebenen Richtlinien. Weitere Informationen für die Entwicklung von Applikationen für die iOS Betriebssysteme sind direkt im \href{https://developer.apple.com/develop/}{Apple Entwicklungsbereich} zu finden.
 
 \subsection{Entwicklungsumgebung}
-Das Projekt wurde mit XCode 8.2.1 umgesetzt. Grundsätzlich, kann jede \gls{ide} verwendet werden, welche mit Swift kompatibel ist. Die einzige Voraussetzung um die Applikation erfolgreich zu Kompilieren ist ein Computer mit macOS Betriebssystem.
+Das Projekt wurde mit XCode 8.2.1 umgesetzt. Grundsätzlich, kann jede \gls{ide} verwendet werden, welche mit XCode-Projektdateien kompatibel ist. Die einzige Voraussetzung um die Applikation erfolgreich zu kompilieren ist ein Computer mit macOS Betriebssystem.
 
 Es können später weitere Voraussetzungen dazukommen, je nachdem wie die Applikation an die tatsächlichen Benutzer ausgeliefert werden soll.
 
 \subsection{Programmiersprache}
-Das Projekt wurde in der Programmiersprache Swift 3 umgesetzt und ist mit iOS 10 und höher kompatibel. Es wurde darauf geachtet, dass alle Abhängigkeiten ebenfalls in Swift umgesetzt sind. Dies erleichtert die Weiterentwicklung da kein, für ungeübte Entwickler, meist schwer lesbarer Objective C Code zum Einsatz kommt.
+Das Projekt wurde in der Programmiersprache Swift 3 umgesetzt und ist mit iOS 10.0 und höher kompatibel. Es wurde darauf geachtet, dass alle Abhängigkeiten ebenfalls in Swift umgesetzt sind. Dies erleichtert die Weiterentwicklung da kein, für ungeübte Entwickler, meist schwer lesbarer Objective-C Code zum Einsatz kommt.
 
 \subsection{Abhängigkeiten}
 Externe Ressourcen und Frameworks, wurden vorwiegend mit CocoaPods eingebunden. CocoaPods ist ein Paket Manager, mit welchem man Pakete in ein bestehendes Projekt einbinden kann. Dies geschieht über ein sogenanntes Podfile, welches zum Projektumfang gehört. Dieses File beschreibt die externen Abhängigkeiten, sowie welche Version benötigt wird. CocoaPods ist kein Produkt von Apple und wird durch die Community weiterentwickelt und bereitgestellt. Sollten Updates zu Frameworks bereitstehen können diese einfach ins Projekt integriert werden.
@@ -35,7 +35,7 @@ Die Applikation wurde während der Entwicklung mit dem von Apple zur verfügung ge
 
 \gls{testflight} ermöglicht es Prototypen und Vorversionen über einen gesonderten AppStore auf registrierten iOS Geräten von bis zu 200 Testpersonen als App-Download anzubieten. Um diesen Dienst zu Nutzen ist ein Apple Developer Account notwendig, mit der Integration und Konfiguration von zusätzlichen Zertifikaten.
 
-Für eine zukünftige Weiterentwicklung und vor allem Auslieferung an externe Benutzer kann die Applikation ebenfalls in den AppStore aufgenommen werden oder als B2B\footnote{Develop Custom Apps for Business: \href{https://developer.apple.com/programs/volume/b2b/}{https://developer.apple.com/programs/volume/b2b/}} Applikation vertrieben werden. In beiden Fällen benötigt der Entwickler aber einen gültigen Apple Developer Account.
+Für eine zukünftige Weiterentwicklung und vor allem Auslieferung an externe Benutzer, kann die Applikation ebenfalls in den AppStore aufgenommen werden oder als B2B\footnote{Develop Custom Apps for Business: \href{https://developer.apple.com/programs/volume/b2b/}{https://developer.apple.com/programs/volume/b2b/}} Applikation vertrieben werden. In beiden Fällen benötigt der Entwickler aber einen gültigen Apple Developer Account.
 
 \newpage
 
@@ -53,20 +53,24 @@ Um weite Teile des Quellcodes erneut nutzen zu können, wurde das Projekt in die 
 \end{figure}
 
 \subsection{Core}
-Der Core fasst den gesamten Code zusammen welcher Platform unabhängig ist. Dieser Code könnten in weiteren Projekten eingesetzt werden die auf der Programmiersprache Swift aufbauen. Klassen im Core-Layer verwenden nur Grundkomponenten von Swift und könnte so auch auf einem anderen Betriebssystem eingesetzt werden das Swift unterstützt.
+Der Core fasst den gesamten Code zusammen welcher Plattform unabhängig ist. Dieser Code könnten in weiteren Projekten eingesetzt werden die auf der Programmiersprache Swift aufbauen. Klassen im Core-Layer verwenden nur grundkomponenten von Swift und könnte so auch auf einem anderen Betriebssystem eingesetzt werden das Swift unterstützt.
 
 \subsection{Service}
-Der Service-Layer kapselt Anfragen des iOS-Layers an den Core. Dieser Layer wurde verwendet um Parallelität zu vermeiden. Der Service-Layer beinhaltet Manager-Klassen die Aufrufe an den Core mit einer Synchronized-Queue bearbeiten und weiterleiten. Somit ist garantiert, dass niemals zwei Befehle gleichzeitig oder überlappend an das \gls{spectrometer} gesendet werden. Auch das Schreiben von nummerierten Messdateien ins Dateisystem kann durch ein FileManager so gekapselt werden.
+Der Service-Layer kapselt Anfragen des iOS-Layers an den Core. Dieser Layer wurde verwendet um parallelität zu vermeiden. Der Service-Layer beinhaltet Manager-Klassen die Aufrufe an den Core mit einer Synchronized-Queue bearbeiten und weiterleiten. Somit ist garantiert, dass niemals zwei Befehle gleichzeitig oder überlappend an das \gls{spectrometer} gesendet werden. Auch das Schreiben von nummerierten Messdateien ins Dateisystem kann durch ein FileManager so gekapselt werden.
 
 Klassen im Service-Layer unterscheiden sich durch ein weiteres Kriterium vom Core. Sie können nur auf Plattformen von Apple eingesetzt werden, da sie gewisse Importe benötigen die nicht in der Swift Basis enthalten sind. Der Service-Layer könnte im gesamten Programmierumfeld von Apple (macOS, iOS, watchOS, tvOS) eingesetzt werden, nicht aber ausserhalb.
 
 \subsection{iOS App}
 Dieser Layer beinhaltet die eigentliche iOS App mit all ihren typischen Eigenschaften, wie das AppDelegate, die Storyboards und die ViewController. Zusätzlich wurden noch eigene ViewComponents erstellt die ebenfalls in diesem Layer enthalten sind.
 
+\color{red}
+TODO: Im XCode heisst der Ordner noch Spectrometer, umbennen oder hier beschreiben
+\color{black}
+
 \section{Core}
 
 \subsection{Models}
-In diesem Ordner werden sämtliche Datenstrukturen definiert die in Verbindung mit dem Spektrometer, den INI-Dateien oder Indico Dateien verwendet werden. Es wurde darauf geachtet diese möglichst erweiterbar zu gestalten. Es gibt wenn möglich eine Basis-Klasse die, die immer gleichen Grundstrukturen bei Spektraldaten oder Indico Dateien implementiert. Die Ableitungen spezialisieren dann die effektiven Datentypen.
+In diesem Ordner werden sämtliche Datenstrukturen definiert die in verbindung mit dem Spektrometer, den INI-Dateien oder Indico Dateien verwendet werden. Es wurde darauf geachtet diese möglichst erweiterbar zu gestalten. Es gibt wenn möglich eine Basis-Klasse die, die immer gleichen Grundstrukturen bei Spektraldaten oder Indico Dateien implementiert. Die Ableitungen spezialisieren dann die effektiven Datentypen.
 Diese Aufteilung ermöglicht es einem Entwickler, einfach einen neuen Indico-Standart oder ein Rückgabetyp eines zusätzlichen Spektrometers zu erstellen.
 
 \subsubsection{Command}
@@ -87,34 +91,42 @@ Der TCP-Manager ist für die Anfragen an das Spektrometer verantwortlich. Es ist 
 In diesem Kapitel werden alle Klassen beschrieben, welche direkt Dateien einlesen, Daten empfangen oder Dateien schreiben.
 
 \subsubsection{File Writer}
-Die Output Klassen, dienen dazu ein Indico File zu schreiben. Die Base Klasse kapselt dafür alle Schreibvorgänge. Von der Klasse File Writer, wird auf diese Methoden zugegriffen und stösst so das Schreiben in der Richtigen Reihenfolge an. Von aussen kann lediglich gewählt werden, welche der 3 Messmethoden geschrieben werden soll: Raw, Reflectance oder Radiance.
-\newline
-Um die Applikation um einen neuen Writer zu erweitern, muss lediglich vom BaseWriter abgeleitet werden und eine eigene write Methode implementiert werden. Diese neue Klasse, kann die vom BaseWriter bereitgestellten Methoden nutzen oder um weitere ergänzen.
-\subsubsection{File Reader und Spectrometer Parser}
-Die Reader- und Parserklassen bauen alle auf der selben Basis auf. In der \verb=BaseSpectrumInput= Klasse sind alle Funktionen realisiert um aus Byte Werten die entsprechenden Datentypen zu parsen. In den konkreten Implementierungen müssen diese dann nur in der richtigen Rheienfolge aufgerufen und den entsprechenden Feldern zugewiesen werden.
+Die Output Klassen, dienen dazu ein Indico File zu schreiben. Die Basis Klasse kapselt dafür alle Schreibvorgänge. Von der Klasse \verb=FileWriter=, wird auf diese Methoden zugegriffen und stösst so das Schreiben in der richtigen Reihenfolge an. Von aussen kann lediglich gewählt werden, welche der drei Messmethoden geschrieben werden soll: Raw, Reflectance oder Radiance.
+Um die Applikation um einen neuen Writer zu erweitern, muss lediglich vom \verb=BaseWriter= abgeleitet werden und eine eigene \verb=write()= Methode implementiert werden. Diese neue Klasse, kann die vom der Basis bereitgestellten Methoden nutzen oder um weitere ergänzen.
+\subsubsection{File Reader und Spectrometer Parser} \label{sec:raderandparser}
+Die Reader- und Parserklassen bauen alle auf der selben Basis auf. In der \verb=BaseSpectrumInput= Klasse sind alle Funktionen realisiert um aus Byte-Werten die entsprechenden Datentypen zu parsen. In den konkreten Implementierungen müssen diese dann nur in der richtigen Reihenfolge aufgerufen und den entsprechenden Feldern zugewiesen werden.
 
-Durch die inkonsistente Impelmentierung von der Firma ASD gibt es immer wieder verwirrende stellen die gesondert implementiert werden müssen. Als Beispiele sind hier Strings zu nennen die zum Teil als prefixed, null-terminiert oder aber mit fixer Länge in der gleichen Datei implementiert wurden. Teilweise werden Float- oder Doublewerte in der selben Antwort vom Gerät einmal im littleendian und dann wieder im bigendian Format codiert.
+Durch die inkonsistente Implementierung von der Firma ASD gibt es immer wieder verwirrende stellen die gesondert implementiert werden müssen. Als Beispiele sind hier Strings zu nennen die zum Teil als prefixed, null-terminiert oder aber mit fixer Länge in der gleichen Datei implementiert wurden. Teilweise werden Float- oder Doublewerte in der selben Antwort vom Gerät einmal im "Little-Endian" und dann wieder im "Big-Endian" Format codiert.
 
 \subsection{Calculations}
-Der Ordner Calculations enthält lediglich die Klasse SpectrumCalculator welche nur statische Funktionen enthält. Diese dienen der Berechnung der Reflektanz sowie der Radianz. Ausserdem beinhaltet die Klasse noch eine Methode um eine Dark Correction auf einem übergebenen Spetrum durchzuführen.
+Der Ordner Calculations enthält lediglich die Klasse \verb=SpectrumCalculator= welche nur statische Funktionen enthält. Diese dienen der Berechnung der Reflektanz sowie der Radianz. Ausserdem beinhaltet die Klasse noch eine Methode um eine Dark Correction auf einem übergebenen Spektrum durchzuführen.
 \subsection{Error Handling}
+
+\color{red}
+TODO: Error Handling noch beschreiben
+\color{black}
 
 \section{Service}
 
 \subsection{Instrument Store}
-Im Instrument Store, werden alle Objekte gespeichert, auf welche global zugegriffen werden muss und nichts mit dem Userinterface zu tun haben. Um zu garantieren, dass die Variablen nur einmal existieren, ist die Klasse als Singleton umgesetzt.
+Im \verb=InstrumentStore=, werden alle Objekte gespeichert, auf welche global zugegriffen werden muss und die nichts mit der Benutzeroberfläche zu tun haben. Um zu garantieren, dass die Variablen nur einmal existieren, ist die Klasse als Singleton umgesetzt.
 \subsection{Command Manager}
-Der Command Manager übernimmt die Funktion alle Kommandos in der korrekten Reihenfolge abzuarbeiten. Der Command Manager bietet Methoden für alle gängigen \gls{spectrometer} Kommandos an. Wird eine dieser Methoden aufgerufen, übergibt der Command Manager die Anfrage an eine synchrone Queue welche nach dem First-In-First-Out Prinzip die Anfragen abarbeitet. So ist sichergestellt, dass ein Kommando erst an das \gls{spectrometer} gesendet wird, wenn alle vorherigen abgearbeitet sind.
+Der \verb=CommandManager= übernimmt die Funktion alle Kommandos in der korrekten Reihenfolge abzuarbeiten. Der \verb=CommandManager= bietet Methoden für alle gängigen \gls{spectrometer} Kommandos an. Wird eine dieser Methoden aufgerufen, wird die Anfrage an eine synchrone Queue übergeben welche nach dem First-In-First-Out Prinzip die Anfragen abarbeitet. So ist sichergestellt, dass ein Kommando erst an das \gls{spectrometer} gesendet wird, wenn alle vorherigen abgearbeitet sind.
 \subsection{File Write Manager}
-Der Write Manager funktioniert ähnlich wie der Command Manager. Er übergibt write Anfragen ebenfalls einer synchronen Warteschlange und arbeitet diese ab. Dazu kümmert sich der FileWriteManager auch um die korrekte Benennung der ASD Files. Dies geschieht, indem er den höchsten geschriebenen prefix eines Files im Pfad findet und diesen dan entsprechend erhöht.
+Der \verb=FileWriteManager= funktioniert ähnlich wie der \verb=CommandManager=. Er übergibt write Anfragen ebenfalls einer synchronen Warteschlange und arbeitet diese ab. Dazu kümmert sich der \verb=FileWriteManager= auch um die korrekte Benennung der ASD Files. Dies geschieht, indem er den höchsten geschriebenen prefix eines Files im Pfad findet und diesen dann entsprechend erhöht.
+
+\color{red}
+TODO: Müsste angepasst werden wenn noch umprogrammiert
+\color{black}
 
 \section{iOS App}
+
 \subsection{App Delegate}
-Das App Delegate ist das eigentliche Einstiegsfile jeder iOS Applikation. Darin wird beschrieben, wie der Prozess aus verschiednen Zuständen abläuft (Stopped, Paused, Notified). Im AppDelegate werden auch Applikationsweite Designsänderungen vorgenommen, so wird beispielsweise die Schriftart für die gesamte Applikation gesetzt.
-\newline
-AppDelegate wird ebenfalls aufgerufen, wenn ein File erfolgreich importiert wurde. Das importieren selbst, wird vom Betriebsystem übernommen. In diesem Projekt wird auf der aktuellen View eine Meldung angezeigt, dass ein File erfolgreich importiert wurde.
+Das \verb=AppDelegate= ist der Einstiegspunkt jeder iOS Applikation. Darin wird beschrieben, wie der Prozess aus verschiednen Zuständen abläuft (Stopped, Paused, Notified). Im \verb=AppDelegate= können auch applikationsweite Designanpassungen vorgenommen werden. So kann eine Schriftart für \verb=TabBarItems= oder für die \verb=NavigationBar= definiert werden.
+
+Das \verb=AppDelegate= wird ebenfalls aufgerufen, wenn eine externe Datei erfolgreich importiert wurde. Das importieren selbst, wird vom Betriebsystem übernommen. In diesem Projekt wird auf der aktuellen View eine Meldung angezeigt, dass eine Datei erfolgreich importiert wurde.
 \subsection{Core Data}
-Core Data ist ein System, um Daten auf dem Gerät zu speichern, es dient nicht als Datenbank ersatz, kann aber für einfache Speicherungen genutzt werden. Durch die Integration in XCode, lassen sich Speicherklassen einfach modellieren und einsetzen. Core Data Einstellungen können in xcdatamodeld Klassen vorgenommen werden. Dabei können Datentypen sowie die Relationen der einzelnen Records definiert werden. Weitere Informationen finden sich auf der offiziellen Entwicklerseite von Apple: https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CoreData/index.html
+Core Data ist ein System, um Daten auf dem Gerät zu speichern, es dient nicht als Datenbank ersatz, kann aber für einfache Speicherungen genutzt werden. Durch die Integration in XCode, lassen sich Speicherklassen einfach modellieren und einsetzen. Core Data Einstellungen können in \verb=xcdatamodeld= Klassen vorgenommen werden. Dabei können Datentypen sowie die Relationen der einzelnen Records definiert werden. Weitere Informationen befinden sich auf der offiziellen Entwicklerseite von Apple im \href{https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CoreData}{Core Data Programming Guide}
 
 \begin{alertinfo}{Vorsicht}
 	Core Data Zugriffe sind vergleichsweise langsam und sollten daher nicht in Schleifen verwendet werden.
@@ -122,9 +134,11 @@ Core Data ist ein System, um Daten auf dem Gerät zu speichern, es dient nicht al
 
 \subsection{Views}
 
-Alle ViewController sind in der Datei Main.storyboard enthalten. Dies war eine bewusste Entscheidung, um Entwicklern einen guten Überblick über den gesamten UI Ablauf zu ermöglichen. Einzig das Design für eine Zelle der Messübersichtstabelle wurde in eine eigne XIB-Datei ausgelagert.
+Alle ViewController sind in der Datei \verb=Main.storyboard= enthalten. Einzig das Design für zwei TableView-Zellen wurde in separate XIB-Dateien ausgelagert. Dies war eine bewusste Entscheidung, um Entwicklern einen guten Überblick über den gesamten Ablauf in der Benutzeroberfläche zu ermöglichen. Ein ViewController wird von iOS eigenhändig instanziiert sobald er von einer anderen View aufgerufen wird. Dies ermöglicht es verlinkungen der Views direkt im Storyboard umzusetzen.
 
-Die Anordnung der Controls wurde im Storyboard gelöst. Kleinere Merkmale wurden jeweils im Code angepasst, indem von bestehenden Controls abgeleitet wurde.
+Die Anordnung der Controls wurde im Storyboard gelöst. Kleinere Merkmale wurden jeweils im Code angepasst, indem diese direkt beim Laden eines ViewControllers vorgenommen wurden.
+
+Die gesamte Ausrichtung und Anpassung auf unterschiedliche Bildschrimgrössen wurde ebenfalls im Storyboard mit \gls{autolayout} gelöst. Einzige Ausnahme ist der \verb=SpectrometerViewController=. \gls{autolayout} ermöglicht keine Unterscheidung des Portrait oder Landscape Modus bei iPads. Diese Unterscheidung und das Verhalten wurden direkt im Code umgesetzt.
 
 \subsection{Controllers}
 
@@ -133,12 +147,13 @@ Die zwei ViewControllers \verb=AddEditConnectionViewController= und \verb=Connec
 
 \subsubsection{Spectrometer}
 
-In der Klasse \verb=SpectrometerViewController= sind alle Funktionen und Verknüpfungen für die Hauptansicht umgesetzt. Diese ist in der Lage, wenn alle Voraussetzungen Erfüllt sind, zwischen Raw, Reflectance und Radiance zu wechseln und die berechneten Daten direkt im Liniendiagramm darzustellen. Die kontinuierliche Aquisitation neuer Messwerte wird durch eine Endlosschlaufe immer weitergeführt bis die Abbruchbedingung eintritt. Weiter ist die Klasse für folgende Aktionen und Darstellungen zuständig:
+In der Klasse \verb=SpectrometerViewController= sind alle Funktionen und Verknüpfungen für die Hauptansicht umgesetzt. Diese ist in der Lage, wenn alle Voraussetzungen erfüllt sind, zwischen Raw, Reflectance und Radiance zu wechseln und die berechneten Daten direkt im Liniendiagramm darzustellen. Das kontinuierliche akquirieren neuer Messwerte wird durch eine Endlosschleife immer weitergeführt bis die Abbruchbedingung eintritt. Weiter ist die Klasse für folgende Aktionen und Darstellungen zuständig:
 
 \begin{itemize}[noitemsep]
 \item Dark Current oder White Reference per Button auslösen.
 \item Die entsprechenden Timer wieder zurücksetzen und aktualisieren.
-\item Messung initiieren, sprich die anzeige der PopUp View für den Messablauf.
+\item Eine optimierung des Spekrometers durchführen.
+\item Messung initiieren, sprich die Anzeige der PopUp View für den Messablauf.
 \item Verbindung zum Spektrometer trennen.
 \end{itemize}
 
@@ -185,23 +200,23 @@ Erläuterungen zur Tabelle:
 
 Die Schritte 1-3 im Messprotokoll werden immer nacheinander durchgeführt. Ist beim Messprotokoll kein weiterer Schritt mehr vorhanden führt dies automatisch zum Abschluss der Messung.
 
-In der Abbildung \ref{fig:MeasurementSeriesArcitecture} wird das ganze Zusammenspiel der Klassen dargestellt. Aus dieser Darstellung ist auch ersichtlich das für die White Reference Messung in den zwei Protokollen Reflectance und Radiance eine andere Klasse zum Tragen kommt. Dies hat vor allem einen Grund, da die Views unterschiedliche Komponenten anbieten (ProgressBar), müssen Sie getrennt verwaltet werden.
+In der Abbildung \ref{fig:MeasurementSeriesArcitecture} wird das ganze Zusammenspiel der Klassen dargestellt. Aus dieser Darstellung ist auch ersichtlich das für die White Reference Messung in den zwei Protokollen Reflectance und Radiance eine andere Klasse zur Ausführung kommt. Dies hat vor allem einen Grund, da die Views unterschiedliche Komponenten anbieten (ProgressBar), müssen sie getrennt verwaltet werden.
 
 Um ein zusätzliches Messprotokoll umzusetzen, kann nun auf bestehende Komponenten zurückgegriffen werden oder für neue eine zusätzliche Klasse mit View erstellt werden. Zu beachten ist, dass bei einem zusätzlichen Messprotokoll auch eine neue Einstellungs-Klasse nötig wird.
 
-Die Klassen Start, Settings und Finish werden hier nicht genauer erläutert, diese haben keinen grossen funktionellen Anteil und verwalten vor allem Einstellungen. Der genaue Ablauf in den MeasurementModals ist etwas komplizierter folgt aber immer der Implementierung in der Base-Klasse. Die Grundidee ist, ein Liniendiagramm darzustellen, das fortlaufend immer aktuelle Messwerte beim Spektrometer anfordert. Entscheidet sich der Benutzer nun Messungen durchzuführen werden die Messwerte zusätzlich Abgefangen und entsprechend Verarbeitet. Für die Darstellung werden die Messwerte entsprechend Berechnet in die effektiven Messdaten (Indico Dateien) werden aber nur die gemessenen Raw-Daten geschrieben. Die wichtigsten Komponenten der Klasse \verb=BaseMeasurementAquire= werden nachfolgend genauer beschrieben.
+Die Klassen Start, Settings und Finish werden hier nicht genauer erläutert, diese haben keinen grossen funktionellen Anteil und verwalten vor allem Einstellungen. Der genaue Ablauf in den MeasurementModals ist etwas komplizierter folgt aber immer der Implementierung in der Basis Klasse. Die Grundidee ist, ein Liniendiagramm darzustellen, das fortlaufend immer aktuelle Messwerte beim Spektrometer anfordert. Entscheidet sich der Benutzer nun Messungen durchzuführen werden die Messwerte zusätzlich Abgefangen und entsprechend verarbeitet. Für die Darstellung werden die Messwerte entsprechend berechnet. In die effektiven Messdaten (Indico Dateien) werden aber nur die gemessenen Raw-Daten geschrieben. Die wichtigsten Komponenten der Klasse \verb=BaseMeasurementAquire= werden nachfolgend genauer beschrieben.
 
-Die Funktion \verb=startAquire()= wird direkt nach der Instanzierung der jeweiligen Klasse in der Methode \verb=viewDidLoad()= aufgerufen. Mit diesem Aufruf beginnt das kontinuierliche Anfordern der Messdaten auf dem Spektrometer. Die Daten werden dann anhand der nachfolgenden beschriebenen Implementierung verarbeitet und angezeigt.
+Die Funktion \verb=startAquire()= wird direkt nach der Instanziierung der jeweiligen Klasse in der Methode \verb=viewDidLoad()= aufgerufen. Mit diesem Aufruf beginnt das kontinuierliche Anfordern der Messdaten auf dem Spektrometer. Die Daten werden dann anhand der nachfolgenden beschriebenen Implementierung verarbeitet und angezeigt.
 
 \begin{lstlisting}
 func startMesurement()
 \end{lstlisting}
-Diese Methode übernimmt alle Funktionalität sobald der Benutzer die Messwerte auch wirklich abspeichern möchte. In dieser Methode werden dann auch die entsprechenden UI Komponenten initialisiert, aktiviert oder deaktiviert.
+Diese Methode übernimmt alle Funktionalitäten sobald der Benutzer die Messwerte auch wirklich abspeichern möchte. In dieser Methode werden dann auch die entsprechenden UI Komponenten initialisiert, aktiviert oder deaktiviert.
 
 \begin{lstlisting}
 func finishedMeasurement()
 \end{lstlisting}
-Sobald die Anzahl Messungen erreicht sind wird diese Methode aufgerufen. Das weitere Abspeichern und Abzweigen von Messdaten wird automatisch gestoppt. Diese Methode kann überschrieben werden sollten zum Messungsende weitere Schritte notwendig sein.
+Sobald die eingestellte Anzahl an Messungen erreicht ist, wird diese Methode aufgerufen. Das weitere abspeichern und abzweigen von Messdaten wird automatisch gestoppt. Diese Methode kann überschrieben werden sollten zum Messungsende weitere Schritte notwendig sein.
 
 \begin{lstlisting}
 func handleRawSpectrum(currentSpectrum: FullRangeInterpolatedSpectrum)
@@ -211,7 +226,7 @@ Diese Methode \textbf{muss} von einer konkreten Implementierung überschrieben we
 \begin{lstlisting}
 func viewCalculationsOnCurrentSpectrum(currentSpectrum: FullRangeInte...)
 \end{lstlisting}
-Für die Diagrammanzeige müssen jeweils noch Berechnungen am Spektrum durchgeführt werden. Diese Methode \textbf{muss} ebenfalls zwingend überschrieben werden und die gewünschte Funktionalität zu garantieren.
+Für die Diagrammanzeige müssen jeweils noch Berechnungen am Spektrum durchgeführt werden. Diese Methode \textbf{muss} ebenfalls zwingend überschrieben werden um die gewünschte Funktionalität zu garantieren.
 
 \begin{lstlisting}
 func handleChartData(chartData: [Float])
@@ -248,7 +263,7 @@ Folgende Komponenten für das UI wurden selbst erstellt.
 
 
 \subsection{View Store}
-Der ViewStore dient wie der InstrumentStore zum speichern weiter benötigter Variablen. Er ist ebenfalls als Singleton implementiert. Im Gegensatz zum InstrumentStore enthält der ViewStore aber nur Elemente, welche UI relevant sind. Darin wird beispielsweise gespeichert, ob gerade eine Aquire-Schleife läuft.
+Der \verb=ViewStore= dient wie der \verb=InstrumentStore= zum speichern weiter benötigter Variablen. Er ist ebenfalls als Singleton implementiert. Im Gegensatz zum InstrumentStore enthält der ViewStore aber nur Elemente, welche UI relevant sind. Darin wird beispielsweise gespeichert, ob gerade eine Aquire-Schleife läuft.
 \subsection{Service}
 \subsubsection{Validation}
 Für die Validierung wurde von jedem benutzen Control eine Ableitung erstellt und das BaseValidationControl Protokoll implementiert. Dieses Protokoll enthält ein Property isValid welches den Gültikeitszustand des Objektes enthält.

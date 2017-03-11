@@ -4,10 +4,10 @@
 Ein Spektrum besteht aus 2051 Zahlenwerten. Im Fall der FieldSpec 3 und 4 Spektrometer wird dieses Spektrum noch in drei Teile unterteilt. \gls{vnir}, \gls{swir1} und \gls{swir2}.
 
 \section{Messverfahren} \label{messverfahren}
-Das Spektrometer misst die Werte immer im gleichen Verfahren. Als RŸckgabe vom GerŠt wird immer die gleiche Datenstruktur verarbeitet. Diese ist unter genauer beschrieben. Damit spŠter die drei Verfahren angewendet und in Dateien abgespeichert werden kšnnen mŸssen einige Referenz-Werte vorgŠngig vorhanden sein. Diese Werden zum Teil ebenfalls direkt mit dem Spektrometer erfasst, wie eine White Reference oder Dark Current. Referenz-Werte fŸr die Radiance-Berechnung sprich die Base, Lamp und FiberOptic Datei werden beim Konfigurieren des Spektrometers in die App importiert und abgespeichert.
+Das Spektrometer misst die Werte immer im gleichen Verfahren. Als RŸckgabe vom GerŠt wird immer die gleiche Datenstruktur verarbeitet. Diese ist unter dem Abschnitt \ref{sec:raderandparser} genauer beschrieben. Damit spŠter die Berechnungen angewendet und die Messwerte in Dateien abgespeichert werden kšnnen, mŸssen einige Referenz-Werte vorgŠngig vorhanden sein. Diese werden zum Teil ebenfalls direkt mit dem Spektrometer erfasst, wie eine White Reference oder Dark Current. Referenz-Werte fŸr die Radiance-Berechnung sprich die Base, Lamp und FiberOptic Datei werden beim Konfigurieren des Spektrometers in die App importiert und abgespeichert.
 
 \subsection{Abspeichern vs. Anzeigen}
-Die berechneten Daten der Reflectance und Radiance werden in der App \textbf{nur} angezeigt aber niemals in eine Datei geschrieben. Die Daten die in den Messdateien abgespeichert werden sind immer Raw Daten. In den Messdateien sind somit alle Daten vorhanden um spŠter wieder eine Reflectance oder Radiance Berechnung durchzufŸhren.
+Die berechneten Daten der Reflectance und Radiance werden in der App \textbf{nur} angezeigt aber niemals in eine Datei geschrieben. Die Daten die in den Messdateien abgespeichert werden sind immer Raw-Daten. In den Messdateien sind somit alle Daten vorhanden um spŠter wieder eine Reflectance oder Radiance Berechnung durchzufŸhren.
 
 \begin{figure}[h]
 	\begin{center}
@@ -59,3 +59,7 @@ $W\textsubscript{s}=$ reference measured spectrum \newline
 FŸr die Berechnung der Radiance sind nebst dem aktuellen Spektrum auch die Referenzwerte aus den Base, Lamp und ForeOptic Dateien notwendig. Diese werden direkt beim Konfigurieren eines Spektrometers angehŠngt. Ein Spektrometer kann auch ohne ForeOptic Dateien konfiguriert werden, eine Radiance Berechnung ist in diesem Falle dann aber nicht mšglich.
 
 In einer ersten Berechnung werden die Spektraldaten aus Base und Lamp mit PI verrechnet.
+
+\color{red}
+TODO: Formel noch bei A. Hueni nachfragen.
+\color{black}
