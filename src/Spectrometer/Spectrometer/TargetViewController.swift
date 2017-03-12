@@ -11,6 +11,11 @@ import UIKit
 
 class TargetViewController : MeasurementAquireBase
 {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let targetPage = aquireMeasurmentPage as! TargetPage
+        self.takeDarkCurrent = targetPage.takeDarkCurrent
+    }
     
     override func finishedMeasurement() {
         super.finishedMeasurement()
@@ -29,11 +34,9 @@ class TargetViewController : MeasurementAquireBase
         case MeasurementMode.Radiance:
             self.writeRadianceFilesAsync(spectrums: [currentSpectrum], dataType: .RadType, isWhiteReference: false)
         }
-        
     }
     
     override func viewCalculationsOnCurrentSpectrum(currentSpectrum: FullRangeInterpolatedSpectrum) -> [Float] {
-        
         if(self.pageContainer.measurmentMode == MeasurementMode.Radiance)
         {
             chartDisplayMode = .Radiance
@@ -41,7 +44,6 @@ class TargetViewController : MeasurementAquireBase
         }
         chartDisplayMode = .Raw
         return currentSpectrum.spectrumBuffer
-        
     }
     
     override func handleChartData(chartData: [Float]) {

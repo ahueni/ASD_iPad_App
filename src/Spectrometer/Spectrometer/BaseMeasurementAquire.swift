@@ -17,6 +17,9 @@ class MeasurementAquireBase: BaseMeasurementModal {
     @IBOutlet var progressBar: CustomProgressBar!
     @IBOutlet var MeasurementLineChart: SpectrumLineChartView!
     
+    // default is true only raw mode can disable dc
+    var takeDarkCurrent = true
+    
     // indicator to stop aquire loop - on cancel - on view disappear
     var stopAquire = false
     
@@ -73,17 +76,20 @@ class MeasurementAquireBase: BaseMeasurementModal {
                 
                 // aquire new spectrum
                 let sampleCount = ViewStore.sharedInstance.instrumentConfiguration.sampleCount
-                let aquiredSpectrum = CommandManager.sharedInstance.aquire(samples: sampleCount)
+                var aquiredSpectrum = CommandManager.sharedInstance.aquire(samples: sampleCount)
                 
                 // DC correction
-                let currentSpectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: aquiredSpectrum)
+                if(self.takeDarkCurrent)
+                {
+                    aquiredSpectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: aquiredSpectrum)
+                }
                 
                 // additional calculations only for chart
-                let chartData = self.viewCalculationsOnCurrentSpectrum(currentSpectrum: currentSpectrum)
+                let chartData = self.viewCalculationsOnCurrentSpectrum(currentSpectrum: aquiredSpectrum)
                 
                 // handle rawData and chartView only when taking measurements is active 
                 if self.isTakeingMeasurements {
-                    self.handleRawSpectrum(currentSpectrum: currentSpectrum)
+                    self.handleRawSpectrum(currentSpectrum: aquiredSpectrum)
                     self.handleChartData(chartData: chartData)
                     self.takenMeasurements += 1
                     self.updateProgress(state: "Measured...")
