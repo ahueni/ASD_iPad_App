@@ -136,11 +136,11 @@ class SpectrumCalculator{
     }
     
     class func calculateRadianceFromFile(spectralFile : IndicoFile7) -> [Float]{
-        let vinirEnd: Int = 650 //Int(spectralFile.channels) - Int(spectralFile.splice2WaveLength) - Int(spectralFile.splice1WaveLength) - 1
-        let swir1Start: Int = 651//Int(spectralFile.channels) - Int(spectralFile.splice2WaveLength) - Int(spectralFile.splice1WaveLength)
-        let swir1End: Int = 1450//Int(spectralFile.channels) - Int(spectralFile.splice2WaveLength) - 1
-        let swir2Start: Int = 1451//Int(spectralFile.channels) - Int(spectralFile.splice2WaveLength)
-        let swir2End: Int = 2150//Int(spectralFile.channels)
+        let vinirEnd: Int = Int(spectralFile.splice1WaveLength) - Int(spectralFile.startingWaveLength)
+        let swir1Start: Int = vinirEnd + 1
+        let swir1End: Int = Int(spectralFile.splice2WaveLength) - Int(spectralFile.startingWaveLength)
+        let swir2Start : Int = swir1End + 1
+        let swir2End: Int = Int(spectralFile.channels) - 1
         
         let foreOptic = spectralFile.calibrationBuffer.filter({$0.calibrationType == CalibrationType.FiberOpticFile}).first!
         

@@ -224,7 +224,7 @@ class IndicoWriter : BaseWriter {
         
         //splice2_wavelength
         // beetween which swir1 and swir 2
-        writeFloat(number: 1850)
+        writeFloat(number: 1800)
         
         //SmartDetectorType
         // ???
