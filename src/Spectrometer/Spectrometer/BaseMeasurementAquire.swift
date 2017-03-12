@@ -99,6 +99,12 @@ class MeasurementAquireBase: BaseMeasurementModal {
                 // put current line to chart and then update
                 self.lineChartDataContainer.currentLineChart = chartData.getChartData(lineWidth: 1)
                 self.updateLineChart()
+                
+                // delay if its taking measurments
+                if(self.isTakeingMeasurements)
+                {
+                    sleep(UInt32(self.aquireMeasurmentPage.aquireDelay))
+                }
             }
         }
     }
