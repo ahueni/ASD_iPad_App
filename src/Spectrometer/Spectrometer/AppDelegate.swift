@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             rootViewController = next
         }
         
-        let alert = UIAlertController(title: "File loaded", message: "The INI file is successfuly loaded. You can set it to a spectrometer.", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "File loaded", message: "Calibration file has been successfully loaded. You may use it to configure a spectrometer.", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
         
         rootViewController?.present(alert, animated: true, completion: nil)
