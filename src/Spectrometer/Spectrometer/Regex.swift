@@ -10,6 +10,10 @@ import Foundation
 
 class Regex {
     
+    static func test() -> Void {
+        print("test")
+    }
+    
     static func valideIp(ip: String?) -> Bool {
         if (ip == nil) { return false }
         do {
