@@ -11,21 +11,27 @@ import Charts
 
 class SpectrumLineChartView : LineChartView {
     
+    let xAxisLabel = UILabel()
+    let yAxisLabel = UILabel()
+    
+    override init(frame : CGRect){
+        super.init(frame: frame)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        let font: UIFont = UIFont(name: "Open Sans", size: 12)!
+        let font: UIFont = UIFont.defaultFontRegular(size: 12.0)
+        let fontBold: UIFont = UIFont.defaultFontBold(size: 12)
         
         noDataFont = font
         noDataText = "There is no data to display. Please select an action to perform an aquire routine.";
         
         borderColor = UIColor.lightGray
         
-        self.setExtraOffsets(left: 20, top: 20, right: 20, bottom: 20)
+        self.setExtraOffsets(left: 20, top: 20, right: 30, bottom: 30)
         
         xAxis.axisLineWidth = 1
-        xAxis.labelPosition = XAxis.LabelPosition.bothSided
-        
         xAxis.labelFont = font
         xAxis.drawLabelsEnabled = true
         
@@ -33,6 +39,11 @@ class SpectrumLineChartView : LineChartView {
         
         xAxis.gridColor = borderColor
         xAxis.axisLineColor = borderColor
+        drawBordersEnabled = true
+        
+        xAxis.labelPosition = XAxis.LabelPosition.bottom
+        
+        leftAxis.drawLabelsEnabled = false
         
         leftAxis.spaceBottom = 0
         rightAxis.spaceBottom = 0
@@ -58,25 +69,48 @@ class SpectrumLineChartView : LineChartView {
         
         chartDescription?.enabled = false
         
+        //set axis description labels
+        yAxisLabel.text = "DN"
+        yAxisLabel.font = fontBold
+        // rotate 90 degrees
+        yAxisLabel.transform = CGAffineTransform.init(rotationAngle: CGFloat.pi / 2)
+        yAxisLabel.textAlignment = NSTextAlignment.center
+        addSubview(yAxisLabel)
+        
+        xAxisLabel.font = fontBold
+        xAxisLabel.text = "Wavelength [nm]"
+        xAxisLabel.textAlignment = NSTextAlignment.center
+        addSubview(xAxisLabel)
     }
     
-    func setAxisValues(min: Double, max: Double) -> Void {
-        self.rightAxis.axisMinimum = min
-        self.rightAxis.axisMaximum = max
-        self.leftAxis.axisMinimum = min
-        self.leftAxis.axisMaximum = max
+    override func layoutSubviews() {
+        xAxisLabel.frame =  CGRect(x: 0, y: frame.height-30, width: frame.width, height: 30)
+        yAxisLabel.frame = CGRect(x: frame.width-30, y: 0, width: 30, height: frame.height)
     }
     
+    func setAxisValues(mode : MeasurementMode) -> Void {
+        switch mode {
+        case .Raw:
+            yAxisLabel.text = "DN"
+        case .Radiance:
+            yAxisLabel.text = "Radiance [Wm⁻²sr⁻¹nm⁻¹]"
+        case .Reflectance:
+            yAxisLabel.text = "Reflectance Factor"
+        }
+        
+        self.rightAxis.axisMinimum = 0
+        self.rightAxis.axisMaximum = mode.rawValue
+        self.leftAxis.axisMinimum = 0
+        self.leftAxis.axisMaximum = mode.rawValue
+    }
 }
 
 class SpectrumLineChartDataSet: LineChartDataSet {
     
-    let openSansFont = UIFont(name: "Open Sans", size: 14)!
-    
     init(values: [ChartDataEntry]?, color: UIColor, lineWidth: CGFloat) {
         super.init(values: values, label: "")
         
-        valueFont = openSansFont
+        valueFont = UIFont.defaultFontRegular(size: 14.0)
         drawCirclesEnabled = false
         self.lineWidth = lineWidth
         lineCapType = CGLineCap.round

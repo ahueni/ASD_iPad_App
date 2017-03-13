@@ -21,14 +21,14 @@ class MeasurmentDetailViewController: UIViewController {
     var spectralFile : IndicoFile7!
     
     @IBAction func rawButtonClicked(_ sender: UIButton) {
-        self.MeasurementLineChart.setAxisValues(min: 0, max: MeasurementMode.Raw.rawValue)
+        self.MeasurementLineChart.setAxisValues(mode: MeasurementMode.Raw)
         let chartDataSet = spectralFile.spectrum.getChartData()
         self.MeasurementLineChart.data = LineChartData(dataSet: chartDataSet)
         ViewStore.sharedInstance.lastViewMode = .Raw
     }
     
     @IBAction func reflectanceButtonClicked(_ sender: UIButton) {
-        self.MeasurementLineChart.setAxisValues(min: 0, max: MeasurementMode.Reflectance.rawValue)
+        self.MeasurementLineChart.setAxisValues(mode: MeasurementMode.Reflectance)
         let calculatedSpectrum = SpectrumCalculator.calculateReflectanceFromFile(spectrumFile: spectralFile)
         let chartDataSet = calculatedSpectrum.getChartData(lineWidth: 1)
         self.MeasurementLineChart.data = LineChartData(dataSet: chartDataSet)
@@ -36,7 +36,7 @@ class MeasurmentDetailViewController: UIViewController {
     }
     
     @IBAction func radianceButtonClicked(_ sender: UIButton) {
-        self.MeasurementLineChart.setAxisValues(min: 0, max: MeasurementMode.Radiance.rawValue)
+        self.MeasurementLineChart.setAxisValues(mode: MeasurementMode.Radiance)
         let calculatedSpectrum = SpectrumCalculator.calculateRadianceFromFile(spectralFile: spectralFile)
         let chartDataSet = calculatedSpectrum.getChartData()
         self.MeasurementLineChart.data = LineChartData(dataSet: chartDataSet)

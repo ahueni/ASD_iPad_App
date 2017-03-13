@@ -297,14 +297,7 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate {
         DispatchQueue.main.async {
             
             // set chart axis
-            switch measurementMode {
-            case .Raw:
-                self.lineChart.setAxisValues(min: 0, max: measurementMode.rawValue)
-            case .Reflectance:
-                self.lineChart.setAxisValues(min: 0, max: measurementMode.rawValue)
-            case .Radiance:
-                self.lineChart.setAxisValues(min: 0, max: measurementMode.rawValue)
-            }
+            self.lineChart.setAxisValues(mode: measurementMode)
             
             // update chart data
             self.lineChart.data = chartData

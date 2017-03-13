@@ -92,7 +92,7 @@ class MeasurementAquireBase: BaseMeasurementModal {
                     self.handleRawSpectrum(currentSpectrum: aquiredSpectrum)
                     self.handleChartData(chartData: chartData)
                     self.takenMeasurements += 1
-                    self.updateProgress(state: "Measured...")
+                    self.updateProgress(state: "Measure...")
                     print("took measurement " + self.takenMeasurements.description + " of " + self.aquireMeasurmentPage.aquireCount.description)
                 }
                 
@@ -103,6 +103,7 @@ class MeasurementAquireBase: BaseMeasurementModal {
                 // delay if its taking measurments
                 if(self.isTakeingMeasurements)
                 {
+                    self.updateProgress(state: "Waiting...")
                     sleep(UInt32(self.aquireMeasurmentPage.aquireDelay))
                 }
             }
@@ -122,7 +123,7 @@ class MeasurementAquireBase: BaseMeasurementModal {
         DispatchQueue.main.async {
             self.startMeasurement.hideLoading()
             self.nextButton.isEnabled = true
-            self.updateProgress(state: "Finished...")
+            self.updateProgress(state: "Finished")
         }
     }
     
@@ -148,7 +149,7 @@ class MeasurementAquireBase: BaseMeasurementModal {
     private func updateLineChart(){
         // switch to ui thread to update line chart
         DispatchQueue.main.async {
-            self.MeasurementLineChart.setAxisValues(min: 0, max: self.chartDisplayMode.rawValue)
+            self.MeasurementLineChart.setAxisValues(mode: self.chartDisplayMode)
             let lineChartDataSets = [self.lineChartDataContainer.currentLineChart] + self.lineChartDataContainer.lineChartPool
             self.MeasurementLineChart.data = LineChartData(dataSets: lineChartDataSets)
         }
