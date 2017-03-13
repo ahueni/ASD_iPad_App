@@ -24,4 +24,8 @@ class Regex {
         }
     }
     
+    static func test2(){
+        print ("this is a test")
+    }
+    
 }
