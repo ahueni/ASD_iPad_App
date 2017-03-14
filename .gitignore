@@ -11,3 +11,4 @@
 *.gls
 *.glo
 doc/documentation/*.pdf
+src/Spectrometer/Spectrometer.xcworkspace/xcuserdata/
