@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import CoreData
 
 @testable import Spectrometer
 
@@ -213,12 +214,34 @@ class SpectrometerIOTests: XCTestCase {
     
     private func getCalibrationFile(name: String) -> CalibrationFile {
         let file = readIniFile(filePath: getResourceFilePath(name: name))
-        let cali = CalibrationFile()
-        cali.spectrum = file.spectrum
-        cali.integrationTime = Int32(file.integrationTime)
-        cali.swir1Gain = Int16(file.swir1Gain)
-        cali.swir2Gain = Int16(file.swir2Gain)
-        return cali
+        
+        let context = setUpInMemoryManagedObjectContext()
+        let calibration = CalibrationFile(context: context)
+        
+        calibration.name = "test"
+        calibration.filename = name
+        calibration.spectrum = file.spectrum
+        
+        try! context.save()
+        
+        return calibration
+    }
+    
+    private func setUpInMemoryManagedObjectContext() -> NSManagedObjectContext {
+        let managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle.main])!
+        
+        let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
+        
+        do {
+            try persistentStoreCoordinator.addPersistentStore(ofType: NSInMemoryStoreType, configurationName: nil, at: nil, options: nil)
+        } catch {
+            print("Adding in-memory persistent store failed")
+        }
+        
+        let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator
+        
+        return managedObjectContext
     }
     
     
