@@ -19,6 +19,7 @@ class FinishTestSeriesViewController : BaseMeasurementModal {
         }
     }
     
+    @IBOutlet var measurmentFinishedLabel: UILabel!
     @IBOutlet var finishButton: UIBlueButton!
     
     @IBOutlet var savingLabel: UILabel!
@@ -44,6 +45,7 @@ class FinishTestSeriesViewController : BaseMeasurementModal {
             self.savingLabel.isHidden = true
             self.savingSpinner.stopAnimating()
             self.savingSpinner.isHidden = true
+            self.measurmentFinishedLabel.isHidden = false
             
             UIView.transition(with: self.checkMarkImage, duration: 1.0, options: UIViewAnimationOptions.transitionFlipFromTop, animations: {
                 
