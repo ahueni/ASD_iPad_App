@@ -140,7 +140,7 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate {
         // take white reference and calculate dark current correction
         let whiteRefSampleCount = ViewStore.sharedInstance.instrumentConfiguration.sampleCountWhiteRefrence
         let whiteRefWithoutDarkCurrent = CommandManager.sharedInstance.aquire(samples: whiteRefSampleCount)
-        InstrumentStore.sharedInstance.whiteReferenceSpectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: whiteRefWithoutDarkCurrent)
+        InstrumentStore.sharedInstance.whiteReferenceSpectrum = SpectrumCalculatorService.calculateDarkCurrentCorrection(spectrum: whiteRefWithoutDarkCurrent)
         
         // restart whiteReference timer
         ViewStore.sharedInstance.restartWhiteReferenceTimer()
@@ -231,7 +231,7 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate {
                 var spectrum = CommandManager.sharedInstance.aquire(samples: sampleCount)
                 
                 // calculate dark current if selected on view
-                spectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: spectrum)
+                spectrum = SpectrumCalculatorService.calculateDarkCurrentCorrection(spectrum: spectrum)
                 
                 // calculate reflectance or radiance and change axis of line chart
                 switch self.measurementMode {
@@ -240,7 +240,7 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate {
                     let whiteReference = InstrumentStore.sharedInstance.whiteReferenceSpectrum!
                     spectrum = SpectrumCalculator.calculateReflectance(currentSpectrum: spectrum, whiteReferenceSpectrum: whiteReference)
                 case .Radiance:
-                    spectrum.spectrumBuffer = SpectrumCalculator.calculateRadiance(spectrum: spectrum)
+                    spectrum.spectrumBuffer = SpectrumCalculatorService.calculateRadiance(spectrum: spectrum)
                 }
                 
                 // update chart data

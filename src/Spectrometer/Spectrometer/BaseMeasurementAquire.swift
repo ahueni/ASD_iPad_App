@@ -81,7 +81,7 @@ class MeasurementAquireBase: BaseMeasurementModal {
                 // DC correction
                 if(self.takeDarkCurrent)
                 {
-                    aquiredSpectrum = SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: aquiredSpectrum)
+                    aquiredSpectrum = SpectrumCalculatorService.calculateDarkCurrentCorrection(spectrum: aquiredSpectrum)
                 }
                 
                 // additional calculations only for chart

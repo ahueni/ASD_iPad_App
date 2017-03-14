@@ -31,7 +31,7 @@ class IndicoWriter : BaseWriter {
         fileHandle.closeFile()
     }
     
-    func writeReflectance(spectrum : FullRangeInterpolatedSpectrum, whiteRefrenceSpectrum : FullRangeInterpolatedSpectrum?){
+    func writeReflectance(spectrum : FullRangeInterpolatedSpectrum, whiteRefrenceSpectrum : FullRangeInterpolatedSpectrum){
         // write all basic file values with WhiteReference
         innerWriteBasic(spectrum: spectrum, dataType: DataType.RefType, whiteRefrenceSpectrum: whiteRefrenceSpectrum)
         

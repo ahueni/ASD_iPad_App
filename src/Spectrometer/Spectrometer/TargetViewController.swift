@@ -40,7 +40,7 @@ class TargetViewController : MeasurementAquireBase
         if(self.pageContainer.measurmentMode == MeasurementMode.Radiance)
         {
             chartDisplayMode = .Radiance
-            return SpectrumCalculator.calculateRadiance(spectrum: currentSpectrum)
+            return SpectrumCalculatorService.calculateRadiance(spectrum: currentSpectrum)
         }
         chartDisplayMode = .Raw
         return currentSpectrum.spectrumBuffer

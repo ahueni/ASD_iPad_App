@@ -127,6 +127,7 @@
 		E13BEF681E6E9B370002804A /* Pages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEF671E6E9B370002804A /* Pages.swift */; };
 		E1446F031E56DD6100840AF2 /* RawSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1446F021E56DD6100840AF2 /* RawSettingsViewController.swift */; };
 		E14EC22E1E2E1889006EBD2F /* InstrumentSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14EC22D1E2E1889006EBD2F /* InstrumentSettingsViewController.swift */; };
+		E14ED0B31E77E1A8001DC81A /* SpectrumCalculatorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14ED0B21E77E1A8001DC81A /* SpectrumCalculatorService.swift */; };
 		E15995C91E661D8C00254FAE /* FileWriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15995C81E661D8C00254FAE /* FileWriteManager.swift */; };
 		E15C06AA1E4C66E300965868 /* spectrum.data in Resources */ = {isa = PBXBuildFile; fileRef = E15C06A81E4C66E300965868 /* spectrum.data */; };
 		E15C06AB1E4C66E300965868 /* whiteReference.data in Resources */ = {isa = PBXBuildFile; fileRef = E15C06A91E4C66E300965868 /* whiteReference.data */; };
@@ -292,6 +293,7 @@
 		E13BEF671E6E9B370002804A /* Pages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pages.swift; sourceTree = "<group>"; };
 		E1446F021E56DD6100840AF2 /* RawSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawSettingsViewController.swift; sourceTree = "<group>"; };
 		E14EC22D1E2E1889006EBD2F /* InstrumentSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentSettingsViewController.swift; sourceTree = "<group>"; };
+		E14ED0B21E77E1A8001DC81A /* SpectrumCalculatorService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumCalculatorService.swift; sourceTree = "<group>"; };
 		E15995C81E661D8C00254FAE /* FileWriteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWriteManager.swift; sourceTree = "<group>"; };
 		E15C06A81E4C66E300965868 /* spectrum.data */ = {isa = PBXFileReference; lastKnownFileType = file; path = spectrum.data; sourceTree = "<group>"; };
 		E15C06A91E4C66E300965868 /* whiteReference.data */ = {isa = PBXFileReference; lastKnownFileType = file; path = whiteReference.data; sourceTree = "<group>"; };
@@ -723,6 +725,7 @@
 		2EC505541E6D616C00E1DCFB /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				E14ED0B11E77E195001DC81A /* SpectrumCalculatorService */,
 				2EC5055F1E6D65E400E1DCFB /* InstrumentStore */,
 				2EC5055D1E6D65B000E1DCFB /* CommandManager */,
 				2EC5055C1E6D65A300E1DCFB /* FileWriteManager */,
@@ -1009,6 +1012,14 @@
 				2EC505771E7301A100E1DCFB /* SettingsTableViewController.swift */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		E14ED0B11E77E195001DC81A /* SpectrumCalculatorService */ = {
+			isa = PBXGroup;
+			children = (
+				E14ED0B21E77E1A8001DC81A /* SpectrumCalculatorService.swift */,
+			);
+			name = SpectrumCalculatorService;
 			sourceTree = "<group>";
 		};
 		E15C06A71E4C66D300965868 /* TestResources */ = {
@@ -1367,6 +1378,7 @@
 				2EB362941DF1BCF900E74E39 /* IndicoFileEnums.swift in Sources */,
 				E1A40C2E1E40A2D60019F467 /* DirectoryBrowserTableViewController.swift in Sources */,
 				E12547D71E5382050004B2A8 /* ReflectanceSettings.swift in Sources */,
+				E14ED0B31E77E1A8001DC81A /* SpectrumCalculatorService.swift in Sources */,
 				E12F66D41E4C54DB00B71AA0 /* IndicoAsdFileReader.swift in Sources */,
 				2E924EEA1E66CCE300B9BB42 /* SpectrometerTabBarItem.swift in Sources */,
 				2EC5055A1E6D634B00E1DCFB /* AppExtensions.swift in Sources */,

@@ -37,7 +37,7 @@ class MeasurmentDetailViewController: UIViewController {
     
     @IBAction func radianceButtonClicked(_ sender: UIButton) {
         self.MeasurementLineChart.setAxisValues(mode: MeasurementMode.Radiance)
-        let calculatedSpectrum = SpectrumCalculator.calculateRadianceFromFile(spectralFile: spectralFile)
+        let calculatedSpectrum = SpectrumCalculatorService.calculateRadianceFromFile(spectralFile: spectralFile)
         let chartDataSet = calculatedSpectrum.getChartData()
         self.MeasurementLineChart.data = LineChartData(dataSet: chartDataSet)
         ViewStore.sharedInstance.lastViewMode = .Radiance

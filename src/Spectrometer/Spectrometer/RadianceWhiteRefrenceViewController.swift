@@ -31,7 +31,7 @@ class RadianceWhiteRefrenceViewController : MeasurementAquireBase {
     // only show calculations
     override func viewCalculationsOnCurrentSpectrum(currentSpectrum: FullRangeInterpolatedSpectrum) -> [Float]{
         chartDisplayMode = .Radiance
-        return SpectrumCalculator.calculateRadiance(spectrum: currentSpectrum)
+        return SpectrumCalculatorService.calculateRadiance(spectrum: currentSpectrum)
     }
     
     override func handleRawSpectrum(currentSpectrum: FullRangeInterpolatedSpectrum) {
