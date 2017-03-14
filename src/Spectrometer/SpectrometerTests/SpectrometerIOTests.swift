@@ -136,10 +136,8 @@ class SpectrometerIOTests: XCTestCase {
     }
     
     func testWriteRadianceData() {
-        let baseFile = CalibrationFile()
-        let lampFile = CalibrationFile()
-        let fiberOpticFile = CalibrationFile()
-        let radianceCalibrationFiles = RadianceCalibrationFiles(baseFile: baseFile, lampFile: lampFile, fiberOptic: fiberOpticFile)
+        let calibrationFile = getCalibrationFile(name: "calibration.raw")
+        let radianceCalibrationFiles = RadianceCalibrationFiles(baseFile: calibrationFile, lampFile: calibrationFile, fiberOptic: calibrationFile)
         
         // temp output path for testing file
         let outputFilePath = URL(fileURLWithPath: tempPath).appendingPathComponent("radAsdFile.asd")
@@ -211,6 +209,16 @@ class SpectrometerIOTests: XCTestCase {
             return [UInt8](data)
         }
         fatalError("could not load data from file")
+    }
+    
+    private func getCalibrationFile(name: String) -> CalibrationFile {
+        let file = readIniFile(filePath: getResourceFilePath(name: name))
+        let cali = CalibrationFile()
+        cali.spectrum = file.spectrum
+        cali.integrationTime = Int32(file.integrationTime)
+        cali.swir1Gain = Int16(file.swir1Gain)
+        cali.swir2Gain = Int16(file.swir2Gain)
+        return cali
     }
     
     

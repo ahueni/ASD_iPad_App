@@ -31,6 +31,7 @@ class SelectFiberOpticTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "FiberOpticFileTableViewCell", for: indexPath) as! FiberOpticFileTableViewCell
+        
         cell.name.text = foreoptics[indexPath.row].name
         cell.fileName.text = foreoptics[indexPath.row].filename
         cell.iconBackView.backgroundColor = cell.backView.backgroundColor
@@ -39,7 +40,17 @@ class SelectFiberOpticTableViewController: UITableViewController {
             cell.iconBackView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
             cell.backView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
         }
+        
         cell.iconImage.image = UIImage.fontAwesomeIcon(name: .squareO, textColor: .lightGray, size: CGSize(width: 22, height: 22))
+        if let actualForeoptic = InstrumentStore.sharedInstance.selectedForeOptic {
+            if foreoptics[indexPath.row].objectID.isEqual(actualForeoptic.objectID) {
+                cell.iconImage.image = UIImage.fontAwesomeIcon(name: .checkSquareO, textColor: .green, size: CGSize(width: 22, height: 22))
+                cell.fileName.textColor = UIColor.green
+                cell.name.textColor = UIColor.green
+            }
+        }
+        
+        
         cell.removeButton.isHidden = true
         return cell
         
