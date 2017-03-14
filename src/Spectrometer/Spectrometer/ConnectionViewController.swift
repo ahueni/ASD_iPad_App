@@ -99,7 +99,7 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
                 
                 } else {
                     alert.dismiss(animated: true, completion: {
-                        self.showWarningMessage(title: "Connection failed", message: "Es konnte keine Verbindung mit dem Spektrometer hergestellt werden. Überprüfen sie die Einstellungen und ob das Gerät mit dem Netzwerk des Spektrometers verbunden ist.")
+                        self.showWarningMessage(title: "Connection failed", message: "The connection to the spectrometer could not be established. Please check your device settings and make sure you are connected to the same network as the spectrometer device.")
                     })
                 }
                 
@@ -163,7 +163,7 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let editRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Bearbeiten", handler:{action, indexpath in
+        let editRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Edit", handler:{action, indexpath in
             let config: SpectrometerConfig = self.configs[indexpath.row]
             //print(config.illSpectrum as! [Double])
             
@@ -176,7 +176,7 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
         
         editRowAction.backgroundColor = UIColor(red:0.09, green:0.76, blue:0.28, alpha:1.00)
         
-        let deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Löschen", handler:{action, indexpath in
+        let deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Delete", handler:{action, indexpath in
             let config: SpectrometerConfig = self.configs[indexpath.row]
             self.dataViewContext.delete(config)
             
