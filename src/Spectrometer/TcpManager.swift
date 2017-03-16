@@ -14,62 +14,52 @@ class TcpManager {
     
     private init() { }
     
-    internal var client: TCPClient!
-    internal var connectState: Bool = false
+    private var client: TCPClient!
+    var isConnected: Bool {
+        get {
+            return client != nil
+        }
+    }
     
     func connect(internetAdress: InternetAddress) -> Bool {
-        
-        let initByteSize:Int = 60
-        
+        // conntect to spectrometer
         do {
             client = try TCPClient(address: internetAdress, connectionTimeout: 8)
-            var recData = 0
-            while recData < initByteSize {
-                let recPart = try client?.receiveAll()
-                recData += (recPart?.count)!
-                print(try recPart?.toString() ?? "recieved no printable data")
+            var recievedBytes:Int = 0
+            while recievedBytes < 60 {
+                let part = try client?.receiveAll()
+                recievedBytes += (part?.count)!
+                print(try part?.toString() ?? "recieved no printable data")
             }
         } catch {
-            print("Error \(error)")
-            connectState = false
             return false
         }
-        
-        connectState = true
         return true
-        
     }
     
     func disconnect() -> Void {
-        connectState = false
         do {
             try client?.close()
+            client = nil
         } catch {
             print("Error \(error)")
+            client = nil
         }
     }
     
-    func sendCommand(command: Command) -> [UInt8] {
-        
+    func sendCommand(command: Command) throws -> [UInt8] {
         print("CommandSent: '" + command.getCommandString() + "'")
-        var array:[UInt8] = []
+        var data:[UInt8] = []
         
-        do {
-            try client.send(bytes: command.getCommandString().toBytes())
-            
-            var recData = 0
-            while recData < command.size {
-                let recPart: [UInt8]? = try client.receiveAll()
-                array += recPart!
-                recData += recPart!.count
-            }
-            
-        } catch {
-            print("Error \(error)")
+        // send command
+        try client.send(bytes: command.getCommandString().toBytes())
+        
+        // wait until all bytes are recieved
+        while data.count < command.size {
+            let part: [UInt8]? = try client.receive(maxBytes: 50)
+            data += part!
         }
-        
-        return array
-        
+        return data
     }
     
 }

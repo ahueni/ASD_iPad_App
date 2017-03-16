@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class InstrumentControlViewController : UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-
+    
     var instrumentControlValues : ICValues!
     
     @IBOutlet var integrationTimeTextField: NumberTextField!
@@ -36,22 +36,15 @@ class InstrumentControlViewController : UIViewController, UIPickerViewDataSource
         self.present(alert, animated: true, completion: nil)
         
         DispatchQueue.global().async {
-            
             self.loadInstrumentControlValues()
-            self.updateFields()
-            
         }
-        
-        
-        let pickerView = UIPickerView()
-        pickerView.showsSelectionIndicator = true
-        pickerView.delegate = self
-        integrationTimeTextField.inputView = pickerView
     }
     
     func loadInstrumentControlValues(){
-        
-        let spectrum = CommandManager.sharedInstance.aquire(samples: 1)
+        CommandManager.sharedInstance.aquire(samples: 2, successCallBack: self.acquireSuccess, errorCallBack: self.acquireError)
+    }
+    
+    func acquireSuccess(spectrum: FullRangeInterpolatedSpectrum) -> Void {
         
         let integrationTime = spectrum.spectrumHeader.vinirHeader.integrationTime
         let swir1Gain = spectrum.spectrumHeader.swir1Header.gain
@@ -60,6 +53,18 @@ class InstrumentControlViewController : UIViewController, UIPickerViewDataSource
         let swir2Offset = spectrum.spectrumHeader.swir2Header.offset
         
         instrumentControlValues = ICValues(integrationTime: integrationTime, swir1Gain: swir1Gain, swir1Offset: swir1Offset, swir2Gain: swir2Gain, swir2Offset: swir2Offset)
+        
+        let pickerView = UIPickerView()
+        pickerView.showsSelectionIndicator = true
+        pickerView.delegate = self
+        integrationTimeTextField.inputView = pickerView
+        
+        self.updateFields()
+        
+    }
+    
+    func acquireError(error: Error) {
+        fatalError("handle acquire Error")
     }
     
     func updateFields() {
@@ -83,11 +88,12 @@ class InstrumentControlViewController : UIViewController, UIPickerViewDataSource
         instrumentControlValues.swir2Gain = swir2GainTextField.number
         instrumentControlValues.swir2Offset = swir2OffsetTextField.number
         
-        CommandManager.sharedInstance.setInstrumentControl(instrumentControlValues: instrumentControlValues)
+        CommandManager.sharedInstance.setInstrumentControl(instrumentControlValues: instrumentControlValues, errorCallBack: self.updateError)
     }
     
     @IBAction func performOptimize(_ sender: UIButton){
-        CommandManager.sharedInstance.optimize()
+        CommandManager.sharedInstance.optimize(errorCallBack: self.optimizeError)
+        fatalError("we need success callback on each methode not only on acquire")
         loadInstrumentControlValues()
         updateFields()
     }
@@ -114,6 +120,14 @@ class InstrumentControlViewController : UIViewController, UIPickerViewDataSource
         integrationTimeTextField.text = integrationTime.1.readableMilis()
         instrumentControlValues.integrationTime = integrationTime.0
         
+    }
+    
+    private func optimizeError(error: Error) {
+        self.showWarningMessage(title: "Error", message: "Could not perform optimize command")
+    }
+    
+    private func updateError(error: Error) {
+        self.showWarningMessage(title: "Error", message: "Could not perform update instrument")
     }
     
     

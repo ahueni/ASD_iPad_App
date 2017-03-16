@@ -73,14 +73,3 @@ enum CalibrationType: UInt8 {
     case UnknownFile = 9
     
 }
-
-struct ParsingError: Error {
-    
-    let message: String
-    
-    init(message: String) {
-        self.message = message
-    }
-    
-    
-}

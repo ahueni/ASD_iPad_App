@@ -73,34 +73,11 @@ class MeasurementAquireBase: BaseMeasurementModal {
         ViewStore.sharedInstance.cancelMeasurment = false
         DispatchQueue.global().async {
             while(!ViewStore.sharedInstance.cancelMeasurment && !self.stopAquire){
-                
                 // aquire new spectrum
                 let sampleCount = ViewStore.sharedInstance.instrumentConfiguration.sampleCount
-                var aquiredSpectrum = CommandManager.sharedInstance.aquire(samples: sampleCount)
+                CommandManager.sharedInstance.aquire(samples: sampleCount, successCallBack: self.acquiredSpectrum, errorCallBack: self.acquireError)
                 
-                // DC correction
-                if(self.takeDarkCurrent)
-                {
-                    aquiredSpectrum = SpectrumCalculatorService.calculateDarkCurrentCorrection(spectrum: aquiredSpectrum)
-                }
-                
-                // additional calculations only for chart
-                let chartData = self.viewCalculationsOnCurrentSpectrum(currentSpectrum: aquiredSpectrum)
-                
-                // handle rawData and chartView only when taking measurements is active 
-                if self.isTakeingMeasurements {
-                    self.handleRawSpectrum(currentSpectrum: aquiredSpectrum)
-                    self.handleChartData(chartData: chartData)
-                    self.takenMeasurements += 1
-                    self.updateProgress(state: "Measure...")
-                    print("took measurement " + self.takenMeasurements.description + " of " + self.aquireMeasurmentPage.aquireCount.description)
-                }
-                
-                // put current line to chart and then update
-                self.lineChartDataContainer.currentLineChart = chartData.getChartData(lineWidth: 1)
-                self.updateLineChart()
-                
-                // delay if its taking measurments
+                // delay after measurement if its taking measurments
                 if(self.isTakeingMeasurements)
                 {
                     self.updateProgress(state: "Waiting...")
@@ -108,6 +85,31 @@ class MeasurementAquireBase: BaseMeasurementModal {
                 }
             }
         }
+    }
+    
+    func acquiredSpectrum(spectrum: FullRangeInterpolatedSpectrum) -> Void {
+        
+        var acquiredSpectrum = spectrum
+        // DC correction
+        if(self.takeDarkCurrent) {
+            acquiredSpectrum = SpectrumCalculatorService.calculateDarkCurrentCorrection(spectrum: acquiredSpectrum)
+        }
+        
+        // additional calculations only for chart
+        let chartData = self.viewCalculationsOnCurrentSpectrum(currentSpectrum: acquiredSpectrum)
+        
+        // handle rawData and chartView only when taking measurements is active
+        if self.isTakeingMeasurements {
+            self.handleRawSpectrum(currentSpectrum: acquiredSpectrum)
+            self.handleChartData(chartData: chartData)
+            self.takenMeasurements += 1
+            self.updateProgress(state: "Measure...")
+            print("took measurement " + self.takenMeasurements.description + " of " + self.aquireMeasurmentPage.aquireCount.description)
+        }
+        
+        // put current line to chart and then update
+        self.lineChartDataContainer.currentLineChart = chartData.getChartData(lineWidth: 1)
+        self.updateLineChart()
     }
     
     func startMesurement() {

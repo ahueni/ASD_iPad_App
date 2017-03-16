@@ -19,7 +19,7 @@ class SettingsTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         
         // hide instrument settings when not connected
-        let spectrometerIsConnected = TcpManager.sharedInstance.connectState
+        let spectrometerIsConnected = TcpManager.sharedInstance.isConnected
         
         instrumentConfiguration.isUserInteractionEnabled = spectrometerIsConnected
         instrumentConfiguration.alpha = spectrometerIsConnected ? 1.0 : 0.4

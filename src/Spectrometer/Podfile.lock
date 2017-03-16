@@ -5,7 +5,7 @@ PODS:
   - FontAwesome.swift (1.0.0)
   - PlainPing (0.3.1)
   - Pulsator (0.3.0)
-  - Zip (0.6.0)
+  - Zip (0.7.0)
 
 DEPENDENCIES:
   - Charts
@@ -19,7 +19,7 @@ SPEC CHECKSUMS:
   FontAwesome.swift: 2d32a3d62195343c2004b7c9043294ed2948553a
   PlainPing: 3b740d74bc694f4593045b5c5b17ea1275d1920f
   Pulsator: 0191f14f7ab82d6dbde6fdbde42036f07a4450e3
-  Zip: 805fc2fa9d2f05bbb7762d982d7a42ccdcc51f42
+  Zip: e34513299ac38c0686d5b24504da7ce343799ab9
 
 PODFILE CHECKSUM: 6e092fa73c423247684ff6a4cf5b717f7582793c
 

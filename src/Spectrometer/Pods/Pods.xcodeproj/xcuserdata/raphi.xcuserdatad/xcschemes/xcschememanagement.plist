@@ -59,6 +59,11 @@
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
+		<key>SwiftSocket.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
 		<key>Zip.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -68,6 +73,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>023BB51B67E79B809B507D24455C2C05</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0BE405DA4D9F08691E180498B24DC34F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -98,6 +108,16 @@
 			<true/>
 		</dict>
 		<key>699364E9658D24FF319736159FDC959C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6C708ABA29A842783B8B3AEDB51241C0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7126684B1B5426AAC026708D89F1ED34</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -138,6 +158,11 @@
 			<true/>
 		</dict>
 		<key>F08A0E089EFE3A28D6A2751D6A2D5628</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F0E31051999816062E11ED279BC605AF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
