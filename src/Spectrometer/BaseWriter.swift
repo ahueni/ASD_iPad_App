@@ -135,15 +135,5 @@ class BaseWriter{
         writeInt(number: Int16(date.dayOfWeekIndico()))
         writeInt(number: Int16(date.dayOfYear()))
         writeInt(number: Int16(Int(date.isDayLightSavingTime())))
-        
-        print("Second: " + date.second().description)
-        print("Minute: " + date.minute().description)
-        print("Hour: " + date.hour().description)
-        print("Day: " + date.day().description)
-        print("Month of Year: " + date.monthOfYearIndico().description)
-        print("Years since 1900: " + date.yearsSince1900().description)
-        print("Day of Week: " + date.dayOfWeekIndico().description)
-        print("Day of Year: " + date.dayOfYear().description)
-        print("Is Daylight saving time: " + date.isDayLightSavingTime().description)
     }
 }

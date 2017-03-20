@@ -32,7 +32,7 @@ class IndicoFileBase {
     var channels: UInt16 = 0
     /*var appData: AppData
      var gpsData: GpsData */
-    var integrationTime: UInt32 = 0
+    var integrationTime: Float = 0
     var fo: Int16 = 0
     var darkCurrentCorrection: Int16 = 0
     var calibrationSeries: UInt16 = 0

@@ -68,12 +68,7 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
                     
                     // first send a RESTORE command to initilaize spectrometer
                     CommandManager.sharedInstance.restore()
-                    
-                    DispatchQueue.main.async {
-                        alert.message = "Optimize..."
-                    }
-                    CommandManager.sharedInstance.optimize()
-                    
+                                        
                     DispatchQueue.main.async {
                         alert.message = "Initialize..."
                     }

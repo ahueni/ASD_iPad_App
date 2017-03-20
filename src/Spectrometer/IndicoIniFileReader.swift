@@ -38,8 +38,8 @@ class IndicoIniFileReader: BaseSpectrumInput, ISpectrumParser {
         
         parseIndex += 128 // skip APP_DATA
         parseIndex += 56 // skip GPS_DATA
-        
-        spectralFile.integrationTime = getNextUInt32()
+        let integrationTime = getNextUInt32()
+        spectralFile.integrationTime = integrationTime == 8 ? 8.5 : Float(integrationTime) // if it is 8 it should be 8.5 ms. But the indico fileformat has only a int field for it.
         spectralFile.fo = Int16(getNextUInt16())
         spectralFile.darkCurrentCorrection = Int16(getNextUInt16())
         spectralFile.calibrationSeries = getNextUInt16()
