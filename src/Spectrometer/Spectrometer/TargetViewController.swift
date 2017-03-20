@@ -17,13 +17,6 @@ class TargetViewController : MeasurementAquireBase
         self.takeDarkCurrent = targetPage.takeDarkCurrent
     }
     
-    override func finishedMeasurement() {
-        super.finishedMeasurement()
-        DispatchQueue.main.async {
-            self.lineChartDataContainer.lineChartPool.removeAll()
-        }
-    }
-    
     override func handleRawSpectrum(currentSpectrum: FullRangeInterpolatedSpectrum) {
         
         switch self.pageContainer.measurmentMode! {
@@ -47,8 +40,7 @@ class TargetViewController : MeasurementAquireBase
     }
     
     override func handleChartData(chartData: [Float]) {
-        lineChartDataContainer.lineChartPool.removeAll()
-        lineChartDataContainer.lineChartPool.append(chartData.getChartData(lineColor: UIColor.blue, lineWidth: 1))
+        lineChartDataContainer.lineChartPool.append(chartData.getChartData(lineColor: UIColor.randomColor(), lineWidth: 1))
     }
     
 }
