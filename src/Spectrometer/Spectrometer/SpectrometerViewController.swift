@@ -10,7 +10,14 @@ import Foundation
 import UIKit
 import Charts
 
-class SpectrometerViewController: UIViewController, SelectFiberopticDelegate {
+protocol PopOverDismissedDelegate {
+    func didDismiss()
+}
+
+class SpectrometerViewController: UIViewController, SelectFiberopticDelegate, PopOverDismissedDelegate {
+    
+    //blurView
+    var blurView : UIVisualEffectView? = nil
     
     // colors
     let greenButtonColor = UIColor(red:0.09, green:0.76, blue:0.28, alpha:1.00)
@@ -77,13 +84,14 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate {
         setViewOrientation()
     }
     
-    override func unwind(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
-        
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         ViewStore.sharedInstance.aquireLoop = false
+    }
+    
+    func didDismiss(){
+        print("Dismissed")
+        blurView?.removeFromSuperview()
     }
     
     @IBAction func startAquire(_ sender: UIButton) {
@@ -257,7 +265,18 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "StartTestSeriesSegue" {
+            //stop aquireLoop
             ViewStore.sharedInstance.aquireLoop = false
+            
+            //register dismiss delegate
+            let startTestSeriesSegue = segue.destination as! ParentViewController
+            startTestSeriesSegue.popOverDismissedDelegate = self
+            
+            //Add Blur effect
+            let blur = UIBlurEffect(style: UIBlurEffectStyle.extraLight)
+            blurView = UIVisualEffectView(effect: blur)
+            blurView!.frame = view.bounds
+            view.addSubview(blurView!)
         }
     }
     

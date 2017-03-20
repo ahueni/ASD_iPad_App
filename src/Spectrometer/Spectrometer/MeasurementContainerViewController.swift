@@ -11,6 +11,8 @@ import UIKit
 
 class ParentViewController : UIPageViewController {
     
+    var popOverDismissedDelegate: PopOverDismissedDelegate!
+    
     // store selectedForeOptic for radiance calculation
     var selectedForeOptic : CalibrationFile? // only used in radiance
     
@@ -45,6 +47,10 @@ class ParentViewController : UIPageViewController {
         // create initial page
         pages.append(ModalPage())
         goToNextPage()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        popOverDismissedDelegate.didDismiss()
     }
     
     func goToNextPage()
