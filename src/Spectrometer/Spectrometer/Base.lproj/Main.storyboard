@@ -827,14 +827,27 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoFhnw" translatesAutoresizingMaskIntoConstraints="NO" id="16c-wU-j5p">
-                                <rect key="frame" x="40" y="100" width="324" height="160"/>
+                                <rect key="frame" x="40" y="126" width="324" height="160"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="DhS-5c-I86"/>
                                     <constraint firstAttribute="width" secondItem="16c-wU-j5p" secondAttribute="height" multiplier="81:40" id="FeR-tC-hvt"/>
                                 </constraints>
                             </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8zn-Pt-zMZ">
+                                <rect key="frame" x="40" y="294" width="688" height="710"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">This project is made by the university of applied sciences northwestern switzerland in collaboration with the university of zurich. This is not an official software from asd and does not guarantee the correctness of the displayed data.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spectrometer App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JNk-9V-cKu">
+                                <rect key="frame" x="20" y="82" width="708" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoUzh" translatesAutoresizingMaskIntoConstraints="NO" id="fcZ-Oh-bL0">
-                                <rect key="frame" x="404" y="100" width="324" height="160"/>
+                                <rect key="frame" x="404" y="126" width="324" height="160"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="fcZ-Oh-bL0" secondAttribute="height" multiplier="81:40" id="6j6-Od-Znn"/>
                                     <constraint firstAttribute="height" constant="160" id="L1b-Sd-tgc"/>
@@ -843,15 +856,22 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fcZ-Oh-bL0" firstAttribute="top" secondItem="jk8-zN-aEB" secondAttribute="bottom" constant="40" id="1q1-A8-5hi"/>
                             <constraint firstItem="fcZ-Oh-bL0" firstAttribute="leading" secondItem="16c-wU-j5p" secondAttribute="trailing" constant="40" id="2MR-Wu-cGs"/>
                             <constraint firstItem="jk8-zN-aEB" firstAttribute="leading" secondItem="rcE-Iq-rib" secondAttribute="leadingMargin" constant="-20" id="IRv-xY-IIS"/>
-                            <constraint firstItem="16c-wU-j5p" firstAttribute="top" secondItem="jk8-zN-aEB" secondAttribute="bottom" constant="40" id="Tn7-9R-byc"/>
+                            <constraint firstItem="sOK-Ox-ytZ" firstAttribute="top" secondItem="8zn-Pt-zMZ" secondAttribute="bottom" constant="20" id="LXM-7K-UVT"/>
+                            <constraint firstItem="8zn-Pt-zMZ" firstAttribute="top" secondItem="16c-wU-j5p" secondAttribute="bottom" constant="8" id="MCS-gc-fWs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fcZ-Oh-bL0" secondAttribute="trailing" constant="20" id="UTw-H7-X65"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JNk-9V-cKu" secondAttribute="trailing" constant="20" id="W0H-In-tef"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8zn-Pt-zMZ" secondAttribute="trailing" constant="20" id="aNO-4M-gN9"/>
                             <constraint firstItem="16c-wU-j5p" firstAttribute="width" secondItem="fcZ-Oh-bL0" secondAttribute="width" id="azi-12-c1F"/>
                             <constraint firstItem="jk8-zN-aEB" firstAttribute="top" secondItem="pFc-qc-wTn" secondAttribute="bottom" constant="-20" id="ez0-OP-Iwl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jk8-zN-aEB" secondAttribute="trailing" constant="-20" id="kvo-1X-1GV"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="JNk-9V-cKu" secondAttribute="leading" id="lAY-dq-0EK"/>
+                            <constraint firstItem="8zn-Pt-zMZ" firstAttribute="leading" secondItem="rcE-Iq-rib" secondAttribute="leadingMargin" constant="20" id="qEG-Ud-9lT"/>
                             <constraint firstAttribute="leadingMargin" secondItem="16c-wU-j5p" secondAttribute="leading" constant="-20" id="s8u-ky-WTE"/>
+                            <constraint firstItem="fcZ-Oh-bL0" firstAttribute="top" secondItem="JNk-9V-cKu" secondAttribute="bottom" constant="8" id="vDU-fV-pw6"/>
+                            <constraint firstItem="16c-wU-j5p" firstAttribute="top" secondItem="JNk-9V-cKu" secondAttribute="bottom" constant="8" id="xEg-aG-ArY"/>
+                            <constraint firstItem="JNk-9V-cKu" firstAttribute="top" secondItem="jk8-zN-aEB" secondAttribute="bottom" constant="22" id="yWf-ny-NpH"/>
                         </constraints>
                     </view>
                 </viewController>
