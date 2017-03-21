@@ -29,6 +29,8 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate, Po
     @IBOutlet var reflectanceRadioButton: RadioButton!
     @IBOutlet var radianceRadioButton: RadioButton!
     
+    @IBOutlet var optimizeButton: UIOptimizeButton!
+    
     // foreoptic
     @IBOutlet var foreOpticButton: UIColorButton!
     @IBOutlet var foreOpticLabel: UILabel!
@@ -266,6 +268,12 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate, Po
                     let chartDataSet = darkCorrectedSpectrum.spectrumBuffer.getChartData()
                     let lineChartDataSet = LineChartData(dataSet: chartDataSet)
                     self.updateChart(chartData: lineChartDataSet, measurementMode: self.measurementMode)
+                    
+                    // update optimize button
+                    self.optimizeButton.integrationTime = spectrum.spectrumHeader.vinirHeader.integrationTime
+                    self.optimizeButton.swir1Gain = spectrum.spectrumHeader.swir1Header.gain
+                    self.optimizeButton.swir2Gain = spectrum.spectrumHeader.swir2Header.gain
+                    
                     
                 }, errorCallBack: self.acquireError)
             }

@@ -12,6 +12,7 @@
 		2E3552061E56E5A5001F7EE1 /* TitleSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3552051E56E5A5001F7EE1 /* TitleSection.swift */; };
 		2E3552091E56FAE4001F7EE1 /* BaseUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3552081E56FAE4001F7EE1 /* BaseUITextField.swift */; };
 		2E35520B1E56FB07001F7EE1 /* BaseSelectInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35520A1E56FB07001F7EE1 /* BaseSelectInput.swift */; };
+		2E4BC4A31E81773E00C9F04F /* UIOptimizeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4BC4A21E81773E00C9F04F /* UIOptimizeButton.swift */; };
 		2E54E9AB1E620A5B0047565E /* SelectFiberopticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E54E9AA1E620A5B0047565E /* SelectFiberopticViewController.swift */; };
 		2E54E9AD1E62316B0047565E /* UIRoundBorderedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E54E9AC1E62316B0047565E /* UIRoundBorderedView.swift */; };
 		2E708A231DE61A19008EC78A /* CustomizeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E708A221DE61A19008EC78A /* CustomizeExtensions.swift */; };
@@ -172,6 +173,7 @@
 		2E3552051E56E5A5001F7EE1 /* TitleSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleSection.swift; sourceTree = "<group>"; };
 		2E3552081E56FAE4001F7EE1 /* BaseUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseUITextField.swift; sourceTree = "<group>"; };
 		2E35520A1E56FB07001F7EE1 /* BaseSelectInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSelectInput.swift; sourceTree = "<group>"; };
+		2E4BC4A21E81773E00C9F04F /* UIOptimizeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIOptimizeButton.swift; sourceTree = "<group>"; };
 		2E54E9AA1E620A5B0047565E /* SelectFiberopticViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectFiberopticViewController.swift; sourceTree = "<group>"; };
 		2E54E9AC1E62316B0047565E /* UIRoundBorderedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIRoundBorderedView.swift; sourceTree = "<group>"; };
 		2E708A221DE61A19008EC78A /* CustomizeExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizeExtensions.swift; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 				2ECC63451E54325300C3AACB /* UIColorButton.swift */,
 				E13176621E53129B002F0958 /* UIColorRadioButton.swift */,
 				2E8F76701E45F63F00D54ABF /* UIColorLoadingButton.swift */,
+				2E4BC4A21E81773E00C9F04F /* UIOptimizeButton.swift */,
 			);
 			name = Buttons;
 			sourceTree = "<group>";
@@ -1342,6 +1345,7 @@
 				2E91F3111DDB8408003E277F /* Init.swift in Sources */,
 				E165E1F71E34B5A20077A5EB /* TargetViewController.swift in Sources */,
 				2EE94C461E7930220025742B /* Conversions.swift in Sources */,
+				2E4BC4A31E81773E00C9F04F /* UIOptimizeButton.swift in Sources */,
 				E1D7BD601E61D0CB00E1EF2E /* InstrumentStore.swift in Sources */,
 				2ECC63481E543B4500C3AACB /* SettingsBox.swift in Sources */,
 				E18DAE9D1E375D46005F6753 /* MeasurmentMasterTableViewController.swift in Sources */,
