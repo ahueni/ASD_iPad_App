@@ -101,9 +101,6 @@
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="icon" value="fa-hdd-o"/>
                                                 </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="nameDidValueChanged:" destination="A3h-GE-KAx" eventType="valueChanged" id="UQ6-3D-vtm"/>
-                                                </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="IP Adress" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iis-RT-SBS" userLabel="IPAdress" customClass="IPNumberTextField" customModule="Spectrometer" customModuleProvider="target">
                                                 <rect key="frame" x="25" y="119.5" width="490" height="40"/>
@@ -129,11 +126,8 @@
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="icon" value="fa-globe"/>
                                                 </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="ipAdressDidValueChanged:" destination="A3h-GE-KAx" eventType="valueChanged" id="c4o-wh-n1Q"/>
-                                                </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Port" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZcT-7T-Vra" customClass="PortTextField" customModule="Spectrometer" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="8080" placeholder="Port" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZcT-7T-Vra" customClass="PortTextField" customModule="Spectrometer" customModuleProvider="target">
                                                 <rect key="frame" x="25" y="169.5" width="490" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -157,9 +151,6 @@
                                                         <real key="value" value="4"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="portDidValueChanged:" destination="A3h-GE-KAx" eventType="valueChanged" id="NqG-sq-ODg"/>
-                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calibration files" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="haN-Ml-83i" userLabel="CalibrationFilesTitle">
                                                 <rect key="frame" x="25" y="234.5" width="490" height="16.5"/>

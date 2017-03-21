@@ -24,6 +24,9 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
         fileNameTextField.delegate = self
         selectPathInput.delegate = self
         
+        // add textField selector to detect text changes
+        fileNameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
         // initialize measurement mode buttons
         rawRadioButton.alternateButton = [radianceRadioButton, reflectanceRadioButton]
         radianceRadioButton.alternateButton = [rawRadioButton, reflectanceRadioButton]
@@ -94,8 +97,8 @@ class StartTestSeriesViewController : BaseMeasurementModal, UITextFieldDelegate,
         validateInputFields()
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        nextButton.isEnabled = false
+    func textFieldDidChange(_ textField: UITextField) {
+        validateInputFields()
     }
     
     // Hides the keyboard when the return button is clicked

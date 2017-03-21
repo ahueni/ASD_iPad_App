@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class AddEditConnectionViewController: UIViewController, UITextFieldDelegate, BaseSelectInputDelegate, UITableViewDelegate, UITableViewDataSource {
+class AddEditConnectionViewController: UIViewController, BaseSelectInputDelegate, UITableViewDelegate, UITableViewDataSource {
 
     let fileManager:FileManager = FileManager.default
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -37,10 +37,10 @@ class AddEditConnectionViewController: UIViewController, UITextFieldDelegate, Ba
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // set delegates
-        name.delegate = self
-        ipAdress.delegate = self
-        port.delegate = self
+        // add textField selector to detect text changes
+        name.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        ipAdress.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        port.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
         absoluteReflectanceSelect.delegate = self
         baseFileSelect.delegate = self
@@ -221,12 +221,7 @@ class AddEditConnectionViewController: UIViewController, UITextFieldDelegate, Ba
     }
     
     // handle all text field and select delegates
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.saveButton.isEnabled = false
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    func textFieldDidChange(_ textField: UITextField) {
         validateControls()
     }
     
