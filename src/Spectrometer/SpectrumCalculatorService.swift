@@ -26,7 +26,7 @@ class SpectrumCalculatorService{
             let vinirStartingWaveLength = InstrumentStore.sharedInstance.startingWaveLength!
             
             let darkCorrectionRange = vinirEndingWaveLength - vinirStartingWaveLength
-            
+            //call core function which correctes the dark current. dark correction has no return value cause it will correct spectrum (refrence type)
             SpectrumCalculator.calculateDarkCurrentCorrection(spectrum: spectrum, darkCurrent: darkCurrent, drift: drift, darkCorrectionRange: darkCorrectionRange)
         }
         return spectrum
@@ -52,7 +52,7 @@ class SpectrumCalculatorService{
         let foreOpticSwir1Gain = InstrumentStore.sharedInstance.selectedForeOptic!.swir1Gain
         let foreOpticSwir2Gain = InstrumentStore.sharedInstance.selectedForeOptic!.swir2Gain
         
-        //call core function wich calculates the radiance
+        //call core function which calculates the radiance
         return SpectrumCalculator.calculateRadiance(spectrumBuffer: spectrum.spectrumBuffer, vinirEnd: vinirEnd, swir1Start: swir1Start, swir1End: swir1End, swir2Start: swir2Start, swir2End: swir2End, vinirIntegrationTime:vinirIntegrationTime, swir1Gain:swir1Gain, swir2Gain:swir2Gain, baseSpectrum : baseSpectrum!, lampSpectrum : lampSpectrum!, foreOpticSpectrum : foreOpticSpectrum!, foIntegrationTime : Double(foreOpticIntegrationTime), foSwir1Gain : Double(foreOpticSwir1Gain), foSwir2Gain : Double(foreOpticSwir2Gain))
     }
     
@@ -72,7 +72,7 @@ class SpectrumCalculatorService{
             spectrumAsFloatArray.append(Float(i))
         }
         
-        //call core function wich calculates the radiance
+        //call core function which calculates the radiance
         return SpectrumCalculator.calculateRadiance(spectrumBuffer: spectrumAsFloatArray, vinirEnd: vinirEnd, swir1Start: swir1Start, swir1End: swir1End, swir2Start: swir2Start, swir2End: swir2End, vinirIntegrationTime:Float(spectralFile.integrationTime), swir1Gain:Float(spectralFile.swir1Gain), swir2Gain:Float(spectralFile.swir2Gain), baseSpectrum : spectralFile.baseCalibrationData, lampSpectrum : spectralFile.lampCalibrationData, foreOpticSpectrum : spectralFile.fiberOpticData, foIntegrationTime : Double(foreOptic.integrationTime), foSwir1Gain : Double(foreOptic.swir1Gain), foSwir2Gain : Double(foreOptic.swir2Gain))
     }
 

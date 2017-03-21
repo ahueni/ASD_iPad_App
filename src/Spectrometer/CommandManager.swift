@@ -59,7 +59,6 @@ class CommandManager {
             try serialQueue.sync {
                 // initialize values from spectrometer
                 let serialNumber = try initialize(valueName: "SerialNumber")
-                
                 let startingWavelength = try initialize(valueName: "StartingWavelength")
                 let endingWavelength = try initialize(valueName: "EndingWavelength")
                 let vinirStartingWavelength = try initialize(valueName: "VStartingWavelength")
@@ -68,11 +67,9 @@ class CommandManager {
                 let s1EndingWavelength = try initialize(valueName: "S1EndingWavelength")
                 let s2StartingWavelength = try initialize(valueName: "S2StartingWavelength")
                 let s2EndingWavelength = try initialize(valueName: "S2EndingWavelength")
-                
                 let vinirDarkCurrentCorrection = try initialize(valueName: "VDarkCurrentCorrection")
-                
+                // set values to cache (InstrumentStore)
                 InstrumentStore.sharedInstance.serialNumber = Int(serialNumber.value)
-                
                 InstrumentStore.sharedInstance.startingWaveLength = Int(startingWavelength.value)
                 InstrumentStore.sharedInstance.endingWaveLength = Int(endingWavelength.value)
                 InstrumentStore.sharedInstance.vinirStartingWavelength = Int(vinirStartingWavelength.value)
@@ -81,7 +78,6 @@ class CommandManager {
                 InstrumentStore.sharedInstance.s1EndingWavelength = Int(s1EndingWavelength.value)
                 InstrumentStore.sharedInstance.s2StartingWavelength = Int(s2StartingWavelength.value)
                 InstrumentStore.sharedInstance.s2EndingWavelength = Int(s2EndingWavelength.value)
-                
                 InstrumentStore.sharedInstance.vinirDarkCurrentCorrection = vinirDarkCurrentCorrection.value
             }
         } catch let error {
@@ -172,6 +168,9 @@ class CommandManager {
         }
     }
     
+    // function queues the callback and calls when it's processed.
+    // this is usefull after stop queueing commands to know when last command is processed -> callback will be last in queue
+    // callback will be called when all items are processed
     func addCancelCallback(callBack: () -> Void) {
         serialQueue.sync {
             callBack()

@@ -9,10 +9,9 @@
 import Foundation
 
 class FileWriteManager{
-    
-    var isWorking : Bool = false
+    // serial Queue to only queue one file at once
     let serialQueue = DispatchQueue(label: "fileWriteQueue")
-    
+    // Singleton instance
     static let sharedInstance = FileWriteManager()
     private init() { }
     
@@ -53,9 +52,9 @@ class FileWriteManager{
     }
     
     func createNewFilePath(settings: MeasurmentSettings, fileSuffix :String = "") -> String{
-        let index = getHighestIndex(filePath: settings.path) + 1
-        let fileName = String(format: "%05d_", index) + settings.fileName + fileSuffix + ".asd"
-        print(fileName + " queued")
+        let index = getHighestIndex(filePath: settings.path, fileName: settings.fileName) + 1
+        // padd the index to 5 with zeros -> Example: test_00001.asd
+        let fileName = settings.fileName + fileSuffix + String(format: "_%05d", index) + ".asd"
         let relativeFilePath = settings.path.appendingPathComponent(fileName).relativePath
         return relativeFilePath
     }
@@ -66,15 +65,23 @@ class FileWriteManager{
         }
     }
     
-    internal func getHighestIndex(filePath : URL)-> Int{
+    internal func getHighestIndex(filePath : URL, fileName: String)-> Int{
         var index = 0
         do{
+            // read all files and filter by asd extension
             let directoryContents = try FileManager.default.contentsOfDirectory(at: filePath, includingPropertiesForKeys: nil, options: [])
             let asdFiles = directoryContents.filter{ $0.pathExtension == "asd" }
             for asdFile in asdFiles{
-                print(asdFile.lastPathComponent)
-                let asdFileNameComponents = asdFile.lastPathComponent.characters.split{$0 == "_"}.map(String.init)
-                index = Int(asdFileNameComponents.first!)! > index ? Int(asdFileNameComponents.first!)! : index
+                // remove extension
+                let fileNameWithoutExtension = asdFile.deletingPathExtension()
+                // split by _
+                let asdFileNameComponents = fileNameWithoutExtension.lastPathComponent.characters.split{$0 == "_"}.map(String.init)
+                if(asdFileNameComponents.first == fileName){
+                    // get index
+                    let fileIndex = Int(asdFileNameComponents.last!)!
+                    //compare with currentIndex and take higher
+                    index = fileIndex > index ? fileIndex : index
+                }
             }
         }catch{
             print("Error in IO")
