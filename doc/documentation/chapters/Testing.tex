@@ -1,6 +1,6 @@
 \chapter{Testing}
 \section{Unit Tests}
-XCode und das iOS Framework stellen ein gutes UnitTest Framework zur verfügung. Für das Spektrometer App wurden verschiedene Funktionen damit getestet. Die gesamten UniTests sind im Ordner \verb=SpectrometerTests= zu finden.
+Xcode und das iOS Framework stellen ein gutes UnitTest Framework zur Verfügung. Für das Spektrometer App wurden verschiedene Funktionen damit getestet. Die gesamten UniTests sind im Ordner \verb=SpectrometerTests= zu finden.
 
 \subsection{IO Tests}
 
@@ -8,10 +8,10 @@ Das gesamte Parsen, Lesen und Schreiben von Spektraldaten lässt sich optimal mit
 
 \begin{itemize}[noitemsep]
 \item \verb=testParseSpectralData()= \newline Überprüft das korrekte parsen eines \verb=FullRangeInterpolatedSpectrum= wie es vom Spektrometer gesendet wird.
-\item \verb=testReadCalibrationFile()= \newline Überprüft das korrekte einlesen einer INI-Datei.
-\item \verb=testReadIndico7RawFile()= \newline Überprüft das korrekte einlesen einer ASD-Messdatei im Raw Format
-\item \verb=testReadIndico7ReflectanceFile()= \newline Überprüft das korrekte einlesen einer ASD-Messdatei im Reflectance Format.
-\item \verb=testReadIndico7RadianceFile()= \newline Überprüft das korrekte einlesen einer ASD-Messdatei im Radiance Format.
+\item \verb=testReadCalibrationFile()= \newline Überprüft das korrekte Einlesen einer INI-Datei.
+\item \verb=testReadIndico7RawFile()= \newline Überprüft das korrekte Einlesen einer ASD-Messdatei im Raw Format
+\item \verb=testReadIndico7ReflectanceFile()= \newline Überprüft das korrekte Einlesen einer ASD-Messdatei im Reflectance Format.
+\item \verb=testReadIndico7RadianceFile()= \newline Überprüft das korrekte Einlesen einer ASD-Messdatei im Radiance Format.
 \item \verb=testWriteRawData()= \newline Schreibt eine Messdatei im Raw Format und überprüft anschliessend ob diese korrekt wieder eingelesen werden kann.
 \item \verb=testWriteReflectanceData()= \newline  Schreibt eine Messdatei im Reflectance Format und überprüft anschliessend ob diese korrekt wieder eingelesen werden kann.
 \item \verb=testWriteRadianceData()= \newline  Schreibt eine Messdatei im Radiance Format und überprüft anschliessend ob diese korrekt wieder eingelesen werden kann.
