@@ -62,12 +62,14 @@ enum InstrumentTypes: Int {
     case VinirSwir2 = 9
     case Swir1Swir2 = 12
     case VinirSwir1Swir2 = 13
-    case UnknownInstrument = 99
     
-    init(fromRawValue: Int){
-        self = InstrumentTypes(rawValue: fromRawValue) ?? .UnknownInstrument
+    init(fromRawValue: Int) throws {
+        if let value = InstrumentTypes(rawValue: fromRawValue) {
+            self = value
+        } else {
+            throw SpectrometerError(message: "Could not parse instrument type of spectrum.", kind: .parsingError)
+        }
     }
-    
 }
 
 enum InstrumentControlValues: Int {
@@ -76,10 +78,13 @@ enum InstrumentControlValues: Int {
     case Offset = 2
     case Shutter = 3
     case Trigger = 4
-    case UnknownError = 99
     
-    init(fromRawValue: Int){
-        self = InstrumentControlValues(rawValue: fromRawValue) ?? .UnknownError
+    init(fromRawValue: Int) throws {
+        if let value = InstrumentControlValues(rawValue: fromRawValue) {
+            self = value
+        } else {
+            throw SpectrometerError(message: "Could not parse instrument control of spectrum.", kind: .parsingError)
+        }
     }
 }
 
@@ -87,59 +92,66 @@ enum Saturation: Int {
     case NoSaturation = 0
     case Saturated = 1
     
-    init(fromRawValue: Int){
-        self = Saturation(rawValue: fromRawValue) ?? .Saturated
+    init(fromRawValue: Int) throws {
+        if let value = Saturation(rawValue: fromRawValue) {
+            self = value
+        } else {
+            throw SpectrometerError(message: "Could not parse saturation of spectrum.", kind: .parsingError)
+        }
     }
-    
 }
 
 enum ShutterStatus: Int {
     case Open = 0
     case Closed = 1
-    case Error = 99
     
-    init(fromRawValue: Int){
-        if (fromRawValue > 1) { print("ShutterStatus: " + fromRawValue.description) }        
-        self = ShutterStatus(rawValue: fromRawValue) ?? .Error
+    init(fromRawValue: Int) throws {
+        if let value = ShutterStatus(rawValue: fromRawValue) {
+            self = value
+        } else {
+            throw SpectrometerError(message: "Could not parse shutter status of spectrum.", kind: .parsingError)
+        }
     }
-    
 }
 
 enum DarkSubtracted: Int {
     case No = 0
     case Yes = 1
-    case Error = 99
     
-    init(fromRawValue: Int){
-        if (fromRawValue > 1) { print("DarkSubtracted: " + fromRawValue.description) }
-        self = DarkSubtracted(rawValue: fromRawValue) ?? .Error
+    init(fromRawValue: Int) throws {
+        if let value = DarkSubtracted(rawValue: fromRawValue) {
+            self = value
+        } else {
+            throw SpectrometerError(message: "Could not parse dark subtracted of spectrum.", kind: .parsingError)
+        }
     }
-    
 }
 
 enum TecStatus: Int {
     case NoAlarm = 0
     case Alarm1 = 1
     case Alarm2 = 2
-    case Error = 99
     
-    init(fromRawValue: Int){
-        if (fromRawValue > 2) { print("TecStatus: " + fromRawValue.description) }
-        self = TecStatus(rawValue: fromRawValue) ?? .Error
+    init(fromRawValue: Int) throws {
+        if let value = TecStatus(rawValue: fromRawValue) {
+            self = value
+        } else {
+            throw SpectrometerError(message: "Could not parse tec status of spectrum.", kind: .parsingError)
+        }
     }
-    
 }
 
 enum Trigger: Int {
     case Off = 0
     case On = 1
-    case Error = 99
     
-    init(fromRawValue: Int){
-        if (fromRawValue > 1) { print("Trigger: " + fromRawValue.description) }
-        self = Trigger(rawValue: fromRawValue) ?? .Error
+    init(fromRawValue: Int) throws {
+        if let value = Trigger(rawValue: fromRawValue) {
+            self = value
+        } else {
+            throw SpectrometerError(message: "Could not parse trigger of spectrum.", kind: .parsingError)
+        }
     }
-    
 }
 
 struct IntegrationTime {

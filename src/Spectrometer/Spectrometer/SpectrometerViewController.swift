@@ -126,15 +126,20 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate, Po
         
         // take dark current
         let darkCurrentSampleCount = ViewStore.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent
-        CommandManager.sharedInstance.darkCurrent(sampleCount: darkCurrentSampleCount)
-        
-        // restart darkCurrent timer
-        ViewStore.sharedInstance.restartDarkCurrentTimer()
-        
-        // after a dark current evaluate measurement modes
-        activateRadianceMode()
-        activateReflectanceMode()
-        startAquire()
+        CommandManager.sharedInstance.darkCurrent(sampleCount: darkCurrentSampleCount,
+        successCallBack: {
+            
+            // restart darkCurrent timer
+            ViewStore.sharedInstance.restartDarkCurrentTimer()
+            
+            // after a dark current evaluate measurement modes
+            self.activateRadianceMode()
+            self.activateReflectanceMode()
+            self.startAquire()
+            
+        }, errorCallBack: { error in
+            // -> Error handling
+        })
     }
     
     @IBAction func whiteReference(_ sender: UIButton) {
@@ -143,23 +148,27 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate, Po
         
         // first take a new dark current
         let darkCurrentSampleCount = ViewStore.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent
-        CommandManager.sharedInstance.darkCurrent(sampleCount: darkCurrentSampleCount)
-        
-        // take white reference and calculate dark current correction
-        let whiteRefSampleCount = ViewStore.sharedInstance.instrumentConfiguration.sampleCountWhiteRefrence
-        let whiteRefWithoutDarkCurrent = CommandManager.sharedInstance.aquire(samples: whiteRefSampleCount)
-        InstrumentStore.sharedInstance.whiteReferenceSpectrum = SpectrumCalculatorService.calculateDarkCurrentCorrection(spectrum: whiteRefWithoutDarkCurrent)
-        
-        // restart whiteReference timer
-        ViewStore.sharedInstance.restartWhiteReferenceTimer()
-        
-        // activate reflectance mode
-        activateReflectanceMode()
-        
-        // after white reference start reflectance mode
-        measurementMode = .Reflectance
-        reflectanceRadioButton.unselectAlternateButtons()
-        startAquire()
+        CommandManager.sharedInstance.darkCurrent(sampleCount: darkCurrentSampleCount, successCallBack: {
+            
+            // take white reference and calculate dark current correction
+            let whiteRefSampleCount = ViewStore.sharedInstance.instrumentConfiguration.sampleCountWhiteRefrence
+            CommandManager.sharedInstance.aquire(samples: whiteRefSampleCount, successCallBack: { whiteReference in
+                
+                InstrumentStore.sharedInstance.whiteReferenceSpectrum = SpectrumCalculatorService.calculateDarkCurrentCorrection(spectrum: whiteReference)
+                
+                // restart whiteReference timer
+                ViewStore.sharedInstance.restartWhiteReferenceTimer()
+                
+                // activate reflectance mode
+                self.activateReflectanceMode()
+                
+                // after white reference start reflectance mode
+                self.measurementMode = .Reflectance
+                self.reflectanceRadioButton.unselectAlternateButtons()
+                self.startAquire()
+                
+            }, errorCallBack: self.acquireError)
+        }, errorCallBack: self.acquireError)
     }
     
     @IBAction func optimizeInstrument(_ sender: UIColorButton) {
@@ -168,26 +177,28 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate, Po
         ViewStore.sharedInstance.aquireLoop = false
         
         // optimizeInstrument
-        CommandManager.sharedInstance.optimize()
-        
-        // reset all resetTimers
-        ViewStore.sharedInstance.resetTimers()
-        
-        // remove white reference and handle buttons
-        InstrumentStore.sharedInstance.whiteReferenceSpectrum = nil
-        if measurementMode == .Reflectance {
-            measurementMode = .Raw
-            rawRadioButton.unselectAlternateButtons()
-        }
-        reflectanceRadioButton.isEnabled = false
-        whiteReferenceTimerLabel.text = "Never taken"
-        
-        // retake dark current
-        let darkCurrentSampleCount = ViewStore.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent
-        CommandManager.sharedInstance.darkCurrent(sampleCount: darkCurrentSampleCount)
-        
-        // after optimization start agian with aquire
-        startAquire()
+        CommandManager.sharedInstance.optimize(successCallBack: {
+            
+            // reset all resetTimers
+            ViewStore.sharedInstance.resetTimers()
+            
+            // remove white reference and handle buttons
+            InstrumentStore.sharedInstance.whiteReferenceSpectrum = nil
+            if self.measurementMode == .Reflectance {
+                self.measurementMode = .Raw
+                self.rawRadioButton.unselectAlternateButtons()
+            }
+            self.reflectanceRadioButton.isEnabled = false
+            self.whiteReferenceTimerLabel.text = "Never taken"
+            
+            // retake dark current
+            let darkCurrentSampleCount = ViewStore.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent
+            CommandManager.sharedInstance.darkCurrent(sampleCount: darkCurrentSampleCount, successCallBack: nil, errorCallBack: self.acquireError)
+            
+            // after optimization start agian with acquire
+            self.startAquire()
+            
+        }, errorCallBack: self.acquireError)
     }
     
     @IBAction func selectFiberOptic(_ sender: UIColorButton) {
@@ -236,27 +247,29 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate, Po
                 
                 // collect spectrum
                 let sampleCount = ViewStore.sharedInstance.instrumentConfiguration.sampleCount
-                var spectrum = CommandManager.sharedInstance.aquire(samples: sampleCount)
-                
-                // calculate dark current if selected on view
-                spectrum = SpectrumCalculatorService.calculateDarkCurrentCorrection(spectrum: spectrum)
-                
-                // calculate reflectance or radiance and change axis of line chart
-                switch self.measurementMode {
-                case .Raw: break
-                case .Reflectance:
-                    let whiteReference = InstrumentStore.sharedInstance.whiteReferenceSpectrum!
-                    spectrum = SpectrumCalculator.calculateReflectance(currentSpectrum: spectrum, whiteReferenceSpectrum: whiteReference)
-                case .Radiance:
-                    spectrum.spectrumBuffer = SpectrumCalculatorService.calculateRadiance(spectrum: spectrum)
-                }
-                
-                // update chart data
-                let chartDataSet = spectrum.spectrumBuffer.getChartData()
-                let lineChartDataSet = LineChartData(dataSet: chartDataSet)
-                self.updateChart(chartData: lineChartDataSet, measurementMode: self.measurementMode)
-                
+                CommandManager.sharedInstance.aquire(samples: sampleCount, successCallBack: { spectrum in
+                    
+                    // calculate dark current if selected on view
+                    var darkCorrectedSpectrum = SpectrumCalculatorService.calculateDarkCurrentCorrection(spectrum: spectrum)
+                    
+                    // calculate reflectance or radiance and change axis of line chart
+                    switch self.measurementMode {
+                    case .Raw: break
+                    case .Reflectance:
+                        let whiteReference = InstrumentStore.sharedInstance.whiteReferenceSpectrum!
+                        darkCorrectedSpectrum = SpectrumCalculator.calculateReflectance(currentSpectrum: darkCorrectedSpectrum, whiteReferenceSpectrum: whiteReference)
+                    case .Radiance:
+                        darkCorrectedSpectrum.spectrumBuffer = SpectrumCalculatorService.calculateRadiance(spectrum: darkCorrectedSpectrum)
+                    }
+                    
+                    // update chart data
+                    let chartDataSet = darkCorrectedSpectrum.spectrumBuffer.getChartData()
+                    let lineChartDataSet = LineChartData(dataSet: chartDataSet)
+                    self.updateChart(chartData: lineChartDataSet, measurementMode: self.measurementMode)
+                    
+                }, errorCallBack: self.acquireError)
             }
+            // add a cancel call back to have a return point after the while loop, to be shure its the last action after the loop
             CommandManager.sharedInstance.addCancelCallback(callBack: self.finishedAquireLoopHandler)
             print("AquireLoop stopped...")
         }
@@ -390,5 +403,20 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate, Po
             }
         }
         self.view.layoutSubviews()
+    }
+    
+    internal func acquireError(error: Error) {
+        // stopp aquire loop and show warning message
+        ViewStore.sharedInstance.aquireLoop = false
+        var message = "Error on collecting spectrum. Please disconnect spectrometer and connect again."
+        if error is SocksError {
+            let err = error as! SocksError
+            message = err.getReason()
+        } else if error is SpectrometerError {
+            let err = error as! SpectrometerError
+            message = err.message
+        }
+        
+        self.showWarningMessage(title: "Error", message: message)
     }
 }

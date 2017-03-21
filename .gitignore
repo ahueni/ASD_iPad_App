@@ -12,3 +12,4 @@
 *.glo
 doc/documentation/*.pdf
 src/Spectrometer/Spectrometer.xcworkspace/xcuserdata/
+src/Spectrometer/Pods/Pods.xcodeproj/xcuserdata

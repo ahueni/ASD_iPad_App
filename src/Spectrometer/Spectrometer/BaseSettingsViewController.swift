@@ -59,19 +59,14 @@ class BaseSettingsViewController : BaseMeasurementModal {
         sender.showLoading()
         
         DispatchQueue.global().async {
-            
             let darkCurrentSampleCount = ViewStore.sharedInstance.instrumentConfiguration.sampleCountDarkCurrent
-            CommandManager.sharedInstance.darkCurrent(sampleCount: darkCurrentSampleCount)
-            
+            CommandManager.sharedInstance.darkCurrent(sampleCount: darkCurrentSampleCount, errorCallBack: self.acquireError)
             
             DispatchQueue.main.async {
-                
                 ViewStore.sharedInstance.restartDarkCurrentTimer()
                 self.nextButton.isEnabled = true
                 sender.hideLoading()
-                
             }
-            
         }
         
     }

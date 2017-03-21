@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 
 class CommandManager {
     
@@ -20,101 +19,157 @@ class CommandManager {
     // used to queue requests to spectrometer. It is essential that only one request at a time is processing
     let serialQueue = DispatchQueue(label: "spectrometerQueue")
     
-    func aquire(samples: Int32) -> FullRangeInterpolatedSpectrum {
+    func aquire(samples: Int32, successCallBack:(_ spectrum: FullRangeInterpolatedSpectrum) -> Void, errorCallBack:(_ error: Error) -> Void) -> Void {
         
         var spectrum: FullRangeInterpolatedSpectrum!
-        serialQueue.sync {
-            spectrum = internalAquire(samples: samples)
+        do {
+            try serialQueue.sync {
+                spectrum = try internalAquire(samples: samples)
+            }
+        } catch let error {
+            errorCallBack(error)
+            return
         }
-        
-        return spectrum
+        successCallBack(spectrum)
     }
     
-    func darkCurrent(sampleCount: Int32) -> Void {
+    func darkCurrent(sampleCount: Int32, successCallBack:(() -> Void)? = nil, errorCallBack:(_ error: Error) -> Void) -> Void {
         
-        serialQueue.sync {
-            closeShutter()
-            InstrumentStore.sharedInstance.darkCurrent = internalAquire(samples: sampleCount)
-            openShutter()
+        do {
+            try serialQueue.sync {
+                try closeShutter()
+                InstrumentStore.sharedInstance.darkCurrent = try internalAquire(samples: sampleCount)
+                try openShutter()
+            }
+        } catch let error {
+            errorCallBack(error)
+            return
         }
         
-    }
-    
-    func initialize() -> Void {
-        serialQueue.sync {
-            // initialize values from spectrometer
-            let serialNumber = initialize(valueName: "SerialNumber")
-            
-            let startingWavelength = initialize(valueName: "StartingWavelength")
-            let endingWavelength = initialize(valueName: "EndingWavelength")
-            let vinirStartingWavelength = initialize(valueName: "VStartingWavelength")
-            let vinirEndingWavelength = initialize(valueName: "VEndingWavelength")
-            let s1StartingWavelength = initialize(valueName: "S1StartingWavelength")
-            let s1EndingWavelength = initialize(valueName: "S1EndingWavelength")
-            let s2StartingWavelength = initialize(valueName: "S2StartingWavelength")
-            let s2EndingWavelength = initialize(valueName: "S2EndingWavelength")
-            
-            let vinirDarkCurrentCorrection = initialize(valueName: "VDarkCurrentCorrection")
-            
-            InstrumentStore.sharedInstance.serialNumber = Int(serialNumber.value)
-            
-            InstrumentStore.sharedInstance.startingWaveLength = Int(startingWavelength.value)
-            InstrumentStore.sharedInstance.endingWaveLength = Int(endingWavelength.value)
-            InstrumentStore.sharedInstance.vinirStartingWavelength = Int(vinirStartingWavelength.value)
-            InstrumentStore.sharedInstance.vinirEndingWavelength = Int(vinirEndingWavelength.value)
-            InstrumentStore.sharedInstance.s1StartingWavelength = Int(s1StartingWavelength.value)
-            InstrumentStore.sharedInstance.s1EndingWavelength = Int(s1EndingWavelength.value)
-            InstrumentStore.sharedInstance.s2StartingWavelength = Int(s2StartingWavelength.value)
-            InstrumentStore.sharedInstance.s2EndingWavelength = Int(s2EndingWavelength.value)
-            
-            InstrumentStore.sharedInstance.vinirDarkCurrentCorrection = vinirDarkCurrentCorrection.value
+        // call success callback
+        if let success = successCallBack {
+            success()
         }
+
     }
     
-    func restore() -> Void {
+    func initialize(successCallBack:(() -> Void)?, errorCallBack:(_ error: Error) -> Void) -> Void {
         
-        serialQueue.sync {
-            
-            let restoreCommand = Command(commandParam: CommandEnum.Restore, params: "1")
-            _ = tcpManager.sendCommand(command: restoreCommand)
-            
+        do {
+            try serialQueue.sync {
+                // initialize values from spectrometer
+                let serialNumber = try initialize(valueName: "SerialNumber")
+                
+                let startingWavelength = try initialize(valueName: "StartingWavelength")
+                let endingWavelength = try initialize(valueName: "EndingWavelength")
+                let vinirStartingWavelength = try initialize(valueName: "VStartingWavelength")
+                let vinirEndingWavelength = try initialize(valueName: "VEndingWavelength")
+                let s1StartingWavelength = try initialize(valueName: "S1StartingWavelength")
+                let s1EndingWavelength = try initialize(valueName: "S1EndingWavelength")
+                let s2StartingWavelength = try initialize(valueName: "S2StartingWavelength")
+                let s2EndingWavelength = try initialize(valueName: "S2EndingWavelength")
+                
+                let vinirDarkCurrentCorrection = try initialize(valueName: "VDarkCurrentCorrection")
+                
+                InstrumentStore.sharedInstance.serialNumber = Int(serialNumber.value)
+                
+                InstrumentStore.sharedInstance.startingWaveLength = Int(startingWavelength.value)
+                InstrumentStore.sharedInstance.endingWaveLength = Int(endingWavelength.value)
+                InstrumentStore.sharedInstance.vinirStartingWavelength = Int(vinirStartingWavelength.value)
+                InstrumentStore.sharedInstance.vinirEndingWavelength = Int(vinirEndingWavelength.value)
+                InstrumentStore.sharedInstance.s1StartingWavelength = Int(s1StartingWavelength.value)
+                InstrumentStore.sharedInstance.s1EndingWavelength = Int(s1EndingWavelength.value)
+                InstrumentStore.sharedInstance.s2StartingWavelength = Int(s2StartingWavelength.value)
+                InstrumentStore.sharedInstance.s2EndingWavelength = Int(s2EndingWavelength.value)
+                
+                InstrumentStore.sharedInstance.vinirDarkCurrentCorrection = vinirDarkCurrentCorrection.value
+            }
+        } catch let error {
+            errorCallBack(error)
+            return
         }
         
-    }
-    
-    func optimize() -> Void {
-        serialQueue.sync {
-            internOptimize()
-        }
-    }
-    
-    func setInstrumentControl(instrumentControlValues : ICValues){
-        serialQueue.sync {
-            // set integration Time
-            internalInstrumentControl(params: "2,0," + instrumentControlValues.integrationTime.description)
-            //set swir1Gain
-            internalInstrumentControl(params: "0,1," + instrumentControlValues.swir1Gain.description)
-            //set swir1Offset
-            internalInstrumentControl(params: "0,2," + instrumentControlValues.swir1Offset.description)
-            //set swir2Gain
-            internalInstrumentControl(params: "1,1," + instrumentControlValues.swir2Gain.description)
-            //set swir2Offset
-            internalInstrumentControl(params: "1,2," + instrumentControlValues.swir2Offset.description)
+        // call sucess callback at the end
+        if let success = successCallBack {
+            success()
         }
     }
     
-    func abort() -> Void {
+    func restore(successCallBack: (() -> Void)? = nil, errorCallBack:(_ error: Error) -> Void) -> Void {
+        let restoreCommand = Command(commandParam: CommandEnum.Restore, params: "1")
+        // serial queue with restore command
+        do {
+            try serialQueue.sync {
+                _ = try tcpManager.sendCommand(command: restoreCommand)
+            }
+        } catch let error {
+            errorCallBack(error)
+            return
+        }
         
-        // put this command not in a serial queue that its possible to abor a very long aquire command!
+        // call sucess callback at the end
+        if let success = successCallBack {
+            success()
+        }
+    }
+    
+    func optimize(successCallBack: (() -> Void)? = nil, errorCallBack:(_ error: Error) -> Void) -> Void {
+        do {
+            try serialQueue.sync {
+                try internOptimize()
+            }
+        } catch let error {
+            errorCallBack(error)
+            return
+        }
+        
+        // call sucess callback at the end
+        if let success = successCallBack {
+            success()
+        }
+    }
+    
+    func setInstrumentControl(successCallBack: (() -> Void)? = nil, instrumentControlValues: ICValues, errorCallBack:(_ error: Error) -> Void) {
+        
+        do {
+            try serialQueue.sync {
+                // set integration Time
+                try internalInstrumentControl(params: "2,0," + instrumentControlValues.integrationTime.description)
+                //set swir1Gain
+                try internalInstrumentControl(params: "0,1," + instrumentControlValues.swir1Gain.description)
+                //set swir1Offset
+                try internalInstrumentControl(params: "0,2," + instrumentControlValues.swir1Offset.description)
+                //set swir2Gain
+                try internalInstrumentControl(params: "1,1," + instrumentControlValues.swir2Gain.description)
+                //set swir2Offset
+                try internalInstrumentControl(params: "1,2," + instrumentControlValues.swir2Offset.description)
+            }
+        } catch let error {
+            errorCallBack(error)
+            return
+        }
+        
+        // call sucess callback at the end
+        if let success = successCallBack {
+            success()
+        }
+    }
+    
+    func abort(successCallBack: (() -> Void)? = nil, errorCallBack:(_ error: Error) -> Void) -> Void {
+        // put this command not in a serial queue that its possible to abort a very long aquire command!
         let abortCommand = Command(commandParam: .Abort, params: "")
-        _ = tcpManager.sendCommand(command: abortCommand)
         
-    }
-    
-    internal func internalInstrumentControl(params : String)
-    {
-        let icCommand : Command = Command(commandParam: CommandEnum.InstrumentControl, params: params)
-        _ = tcpManager.sendCommand(command: icCommand)
+        do {
+            _ = try tcpManager.sendCommand(command: abortCommand)
+        } catch let error {
+            errorCallBack(error)
+            return
+        }
+        
+        // call sucess callback
+        if let success = successCallBack {
+            success()
+        }
     }
     
     func addCancelCallback(callBack: () -> Void) {
@@ -123,51 +178,35 @@ class CommandManager {
         }
     }
     
-    private func internalAquire(samples: Int32) -> FullRangeInterpolatedSpectrum {
+    private func internalAquire(samples: Int32) throws -> FullRangeInterpolatedSpectrum {
         let command:Command = Command(commandParam: CommandEnum.Aquire, params: "1," + samples.description)
-        let data = tcpManager.sendCommand(command: command)
+        let data = try tcpManager.sendCommand(command: command)
         let spectrumParser = FullRangeInterpolatedSpectrumParser(data: data)
-        
-        do {
-            let spectrum = try spectrumParser.parse()
-            return spectrum
-        } catch {
-            print("Could not parse FullRangeInterpolatedSpectrum")
-        }
-        
-        let TODO_errorWeiterleiten = ""
-        fatalError("Erro handling verbessern, an dieser Stelle muss etwas geschehen.")
-        
+        return try spectrumParser.parse()
     }
     
-    private func closeShutter() -> Void {
-        internalInstrumentControl(params: "2,3,1")
-    }
-    
-    private func openShutter() -> Void {
-        internalInstrumentControl(params: "2,3,0")
-    }
-    
-    private func internOptimize() -> Void {
-        let command:Command = Command(commandParam: CommandEnum.Optimize, params: "7")
-        _ = tcpManager.sendCommand(command: command)
-    }
-
-    
-    private func initialize(valueName: String) -> Parameter {
+    private func initialize(valueName: String) throws -> Parameter {
         let command:Command = Command(commandParam: CommandEnum.Initialize, params: "0,"+valueName)
-        let data = tcpManager.sendCommand(command: command)
+        let data = try tcpManager.sendCommand(command: command)
         let parameterParser = ParameterParser(data: data)
-        
-        do {
-            let parameter = try parameterParser.parse()
-            return parameter
-        } catch {
-            print("Could not parse Parameter")
-        }
-        
-        let TODO_errorWeiterleiten = ""
-        fatalError("Erro handling verbessern, an dieser Stelle muss etwas geschehen.")
-        
+        return try parameterParser.parse()
+    }
+    
+    private func internOptimize() throws -> Void {
+        let command:Command = Command(commandParam: CommandEnum.Optimize, params: "7")
+        _ = try tcpManager.sendCommand(command: command)
+    }
+    
+    private func internalInstrumentControl(params : String) throws -> Void {
+        let icCommand : Command = Command(commandParam: CommandEnum.InstrumentControl, params: params)
+        _ = try tcpManager.sendCommand(command: icCommand)
+    }
+    
+    private func closeShutter() throws -> Void {
+        try internalInstrumentControl(params: "2,3,1")
+    }
+    
+    private func openShutter() throws -> Void {
+        try internalInstrumentControl(params: "2,3,0")
     }
 }

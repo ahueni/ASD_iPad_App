@@ -35,4 +35,15 @@ class BaseMeasurementModal : UIViewController
         dismiss(animated: true, completion: nil)
     }
     
+    func acquireError(error: Error) -> Void {
+        ViewStore.sharedInstance.cancelMeasurment = true
+        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
+        let closeAction = UIAlertAction(title: "Ok", style: .default, handler: {
+            alert in self.dismiss(animated: true, completion: nil)
+        })
+        alert.addAction(closeAction)
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
 }

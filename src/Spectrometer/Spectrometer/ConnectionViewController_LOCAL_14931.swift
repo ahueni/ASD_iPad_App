@@ -52,7 +52,7 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
         alert.view.addSubview(loadingIndicator)
         
         let config = self.configs[sender.tag]
-        let address = InternetAddress(hostname: config.ipAdress!, port: Port(config.port) )
+        let adress = InternetAddress(hostname: config.ipAdress!, port: Port(Int(config.port)))
         
         present(alert, animated: false, completion: {
         
@@ -60,44 +60,38 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
             DispatchQueue.global(qos: .userInitiated).async {
                 
                 // if connection successful display main page otherwise show warning message
-                if (TcpManager.sharedInstance.connect(internetAdress: address)) {
+                if (TcpManager.sharedInstance.connect(internetAdress: adress)) {
                     
                     DispatchQueue.main.async {
                         alert.message = "Restore..."
                     }
                     
                     // first send a RESTORE command to initilaize spectrometer
-                    CommandManager.sharedInstance.restore(successCallBack: {
+                    CommandManager.sharedInstance.restore()
+                                        
+                    DispatchQueue.main.async {
+                        alert.message = "Initialize..."
+                    }
+                    // initialize app with defualt spectrometer values
+                    CommandManager.sharedInstance.initialize()
+                    
+                    // set spectrometer config applicationwide
+                    ViewStore.sharedInstance.instrumentConfiguration = config
+                    
+                    // after initialization set default foreoptic file - it will pre-calculate radiance values
+                    // first check if bareFiber is available otherwise take the first of all files
+                    let allForeOpticFiles = ViewStore.sharedInstance.instrumentConfiguration.fiberOpticCalibrations?.allObjects as! [CalibrationFile]
+                    if let bareFiberFile = allForeOpticFiles.first(where: { $0.fo == 0 }) {
+                        InstrumentStore.sharedInstance.selectedForeOptic = bareFiberFile
+                    } else {
+                        InstrumentStore.sharedInstance.selectedForeOptic = allForeOpticFiles.first
+                    }
                         
-                        // then INITIALIZE app with instrument values
-                        DispatchQueue.main.async {
-                            alert.message = "Initialize..."
-                        }
-                        CommandManager.sharedInstance.initialize(successCallBack: {
-                            
-                            // set spectrometer config applicationwide
-                            ViewStore.sharedInstance.instrumentConfiguration = config
-                            
-                            // after initialization set default foreoptic file - it will pre-calculate radiance values
-                            // first check if bareFiber is available otherwise take the first of all files
-                            let allForeOpticFiles = ViewStore.sharedInstance.instrumentConfiguration.fiberOpticCalibrations?.allObjects as! [CalibrationFile]
-                            if let bareFiberFile = allForeOpticFiles.first(where: { $0.fo == 0 }) {
-                                InstrumentStore.sharedInstance.selectedForeOptic = bareFiberFile
-                            } else {
-                                InstrumentStore.sharedInstance.selectedForeOptic = allForeOpticFiles.first
-                            }
-                            
-                            // close connecting alert and redirect to main page
-                            alert.dismiss(animated: true, completion: nil)
-                            self.displayMainPage()
-                            
-                        }, errorCallBack: { error in
-                            self.cancelInitialization(error: error, alert: alert)
-                        })
-                        
-                    }, errorCallBack: { error in
-                        self.cancelInitialization(error: error, alert: alert)
-                    })
+                    
+                    // close connecting alert and redirect to main page
+                    alert.dismiss(animated: true, completion: nil)
+                    self.displayMainPage()
+                
                 } else {
                     alert.dismiss(animated: true, completion: {
                         self.showWarningMessage(title: "Connection failed", message: "The connection to the spectrometer could not be established. Please check your device settings and make sure you are connected to the same network as the spectrometer device.")
@@ -108,21 +102,6 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
         
         })
         
-    }
-    
-    func cancelInitialization(error: Error, alert: UIAlertController) {
-        
-        var errorMessage = "The connection to the spectrometer could not be established. Please check your device settings and make sure you are connected to the same network as the spectrometer device."
-        if let error = error as? SpectrometerError {
-            errorMessage = error.message
-        }
-        
-        
-        DispatchQueue.main.async {
-            alert.dismiss(animated: true, completion: {
-                self.showWarningMessage(title: "Error", message: errorMessage)
-            })
-        }
     }
     
     func displayMainPage() -> Void {

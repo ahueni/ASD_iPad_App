@@ -67,29 +67,62 @@ class ConnectionViewController: UIViewController, UITableViewDataSource, UITable
                     }
                     
                     // first send a RESTORE command to initilaize spectrometer
+<<<<<<< HEAD
+                    CommandManager.sharedInstance.restore()
+                                        
+                    DispatchQueue.main.async {
+                        alert.message = "Initialize..."
+                    }
+                    // initialize app with defualt spectrometer values
+                    CommandManager.sharedInstance.initialize()
+                    
+                    // set spectrometer config applicationwide
+                    ViewStore.sharedInstance.instrumentConfiguration = config
+                    
+                    // after initialization set default foreoptic file - it will pre-calculate radiance values
+                    // first check if bareFiber is available otherwise take the first of all files
+                    let allForeOpticFiles = ViewStore.sharedInstance.instrumentConfiguration.fiberOpticCalibrations?.allObjects as! [CalibrationFile]
+                    if let bareFiberFile = allForeOpticFiles.first(where: { $0.fo == 0 }) {
+                        InstrumentStore.sharedInstance.selectedForeOptic = bareFiberFile
+                    } else {
+                        InstrumentStore.sharedInstance.selectedForeOptic = allForeOpticFiles.first
+                    }
+=======
                     CommandManager.sharedInstance.restore(successCallBack: {
+>>>>>>> 035477dec0a997778a8a05d3a3b5f280a836ff65
                         
-                        // then INITIALIZE app with instrument values
+                        // second send a OPTIMIZE command
                         DispatchQueue.main.async {
-                            alert.message = "Initialize..."
+                            alert.message = "Optimize..."
                         }
-                        CommandManager.sharedInstance.initialize(successCallBack: {
+                        CommandManager.sharedInstance.optimize(successCallBack: {
                             
-                            // set spectrometer config applicationwide
-                            ViewStore.sharedInstance.instrumentConfiguration = config
-                            
-                            // after initialization set default foreoptic file - it will pre-calculate radiance values
-                            // first check if bareFiber is available otherwise take the first of all files
-                            let allForeOpticFiles = ViewStore.sharedInstance.instrumentConfiguration.fiberOpticCalibrations?.allObjects as! [CalibrationFile]
-                            if let bareFiberFile = allForeOpticFiles.first(where: { $0.fo == 0 }) {
-                                InstrumentStore.sharedInstance.selectedForeOptic = bareFiberFile
-                            } else {
-                                InstrumentStore.sharedInstance.selectedForeOptic = allForeOpticFiles.first
+                            // then INITIALIZE app with instrument values
+                            DispatchQueue.main.async {
+                                alert.message = "Initialize..."
                             }
-                            
-                            // close connecting alert and redirect to main page
-                            alert.dismiss(animated: true, completion: nil)
-                            self.displayMainPage()
+                            CommandManager.sharedInstance.initialize(successCallBack: {
+                                
+                                // set spectrometer config applicationwide
+                                ViewStore.sharedInstance.instrumentConfiguration = config
+                                
+                                // after initialization set default foreoptic file - it will pre-calculate radiance values
+                                // first check if bareFiber is available otherwise take the first of all files
+                                let allForeOpticFiles = ViewStore.sharedInstance.instrumentConfiguration.fiberOpticCalibrations?.allObjects as! [CalibrationFile]
+                                if let bareFiberFile = allForeOpticFiles.first(where: { $0.fo == 0 }) {
+                                    InstrumentStore.sharedInstance.selectedForeOptic = bareFiberFile
+                                } else {
+                                    InstrumentStore.sharedInstance.selectedForeOptic = allForeOpticFiles.first
+                                }
+                                
+                                
+                                // close connecting alert and redirect to main page
+                                alert.dismiss(animated: true, completion: nil)
+                                self.displayMainPage()
+                                
+                            }, errorCallBack: { error in
+                                self.cancelInitialization(error: error, alert: alert)
+                            })
                             
                         }, errorCallBack: { error in
                             self.cancelInitialization(error: error, alert: alert)
