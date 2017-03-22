@@ -537,10 +537,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Kq-9o-fLD" userLabel="BorderView" customClass="UIRoundBorderedView" customModule="Spectrometer" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="8" width="712" height="83.5"/>
+                                                    <rect key="frame" x="8" y="8" width="712" height="84"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IrZ-k0-RPb">
-                                                            <rect key="frame" x="6" y="6" width="71.5" height="71.5"/>
+                                                            <rect key="frame" x="6" y="6" width="72" height="72"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="IrZ-k0-RPb" secondAttribute="height" multiplier="1:1" id="FTE-rV-sN3"/>
                                                             </constraints>
@@ -565,7 +565,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8080" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aF7-2C-20b">
-                                                            <rect key="frame" x="448" y="41.5" width="120" height="19.5"/>
+                                                            <rect key="frame" x="448" y="41" width="120" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="120" id="LpE-lH-EBv"/>
                                                             </constraints>
@@ -574,7 +574,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="255.255.255.255" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JEi-Ts-f6u">
-                                                            <rect key="frame" x="447" y="23" width="120" height="19.5"/>
+                                                            <rect key="frame" x="447" y="23" width="120" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="120" id="ED0-L8-sw7"/>
                                                             </constraints>
@@ -583,7 +583,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spectrometer Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ec6-mm-Psg">
-                                                            <rect key="frame" x="101" y="12" width="334" height="60"/>
+                                                            <rect key="frame" x="102" y="12" width="333" height="60"/>
                                                             <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="22"/>
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -1967,7 +1967,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please wait until all measurements are completely saved..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSU-MD-mc2">
-                                <rect key="frame" x="20" y="275" width="500" height="17"/>
+                                <rect key="frame" x="20" y="275.5" width="500" height="16.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2080,7 +2080,7 @@
                                                         <rect key="frame" x="0.0" y="46" width="500" height="60"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Dark Current taken:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cks-am-1N0">
-                                                                <rect key="frame" x="16" y="12" width="333" height="17"/>
+                                                                <rect key="frame" x="16" y="12" width="333" height="16.5"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -2119,7 +2119,7 @@ Dark Current</string>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Never taken" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mdl-n3-ptl">
-                                                                <rect key="frame" x="16" y="31" width="338" height="17"/>
+                                                                <rect key="frame" x="16" y="30.5" width="338" height="16.5"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -2217,13 +2217,13 @@ Dark Current</string>
                                                         <rect key="frame" x="0.0" y="46" width="500" height="78"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Intervall between saves" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDw-9U-Yz2">
-                                                                <rect key="frame" x="16" y="47" width="153" height="20"/>
+                                                                <rect key="frame" x="16" y="46.5" width="153" height="19.5"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AlZ-UM-P7h">
-                                                                <rect key="frame" x="322" y="13" width="60" height="20"/>
+                                                                <rect key="frame" x="322" y="13" width="60" height="19.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="60" id="j7c-K1-alu"/>
                                                                 </constraints>
@@ -2246,7 +2246,7 @@ Dark Current</string>
                                                                 </connections>
                                                             </stepper>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xrg-8M-R8f">
-                                                                <rect key="frame" x="322" y="47" width="60" height="20"/>
+                                                                <rect key="frame" x="322" y="46.5" width="60" height="19.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="60" id="eEa-Oc-X6I"/>
                                                                 </constraints>
@@ -2255,7 +2255,7 @@ Dark Current</string>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WhiteReference count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Q3-DZ-aZl">
-                                                                <rect key="frame" x="16" y="13" width="145" height="20"/>
+                                                                <rect key="frame" x="16" y="13" width="144.5" height="19.5"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -2296,7 +2296,7 @@ Dark Current</string>
                                                 <rect key="frame" x="0.0" y="360" width="500" height="124"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbU-lb-Bzo" userLabel="TitelLabel">
-                                                        <rect key="frame" x="16" y="0.0" width="47" height="46"/>
+                                                        <rect key="frame" x="16" y="0.0" width="46.5" height="46"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="46" id="7Cz-xZ-QGB"/>
                                                         </constraints>
@@ -2308,13 +2308,13 @@ Dark Current</string>
                                                         <rect key="frame" x="0.0" y="46" width="500" height="78"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5LY-70-QSC">
-                                                                <rect key="frame" x="18" y="12" width="296" height="20"/>
+                                                                <rect key="frame" x="18" y="12" width="296" height="19.5"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IIL-jH-mSS">
-                                                                <rect key="frame" x="322" y="13" width="60" height="20"/>
+                                                                <rect key="frame" x="322" y="13" width="60" height="19.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="60" id="xOg-yC-lvH"/>
                                                                 </constraints>
@@ -2330,7 +2330,7 @@ Dark Current</string>
                                                                 </connections>
                                                             </stepper>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interval between saves" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EVg-3H-Vo9">
-                                                                <rect key="frame" x="18" y="46" width="301" height="20"/>
+                                                                <rect key="frame" x="18" y="45.5" width="301" height="19.5"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -2343,7 +2343,7 @@ Dark Current</string>
                                                                 </connections>
                                                             </stepper>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0qQ-1A-76P">
-                                                                <rect key="frame" x="322" y="46" width="60" height="20"/>
+                                                                <rect key="frame" x="322" y="45.5" width="60" height="19.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="60" id="oaC-hj-XGY"/>
                                                                 </constraints>
@@ -2411,7 +2411,7 @@ Dark Current</string>
                                                                 </connections>
                                                             </stepper>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interval between saves" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obs-Pd-ZRS">
-                                                                <rect key="frame" x="18" y="46" width="296" height="20"/>
+                                                                <rect key="frame" x="18" y="45.5" width="296" height="19.5"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -2424,7 +2424,7 @@ Dark Current</string>
                                                                 </connections>
                                                             </stepper>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gfu-Fe-hHS">
-                                                                <rect key="frame" x="322" y="13" width="60" height="20"/>
+                                                                <rect key="frame" x="322" y="13" width="60" height="19.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="60" id="B7I-HB-qu3"/>
                                                                 </constraints>
@@ -2433,7 +2433,7 @@ Dark Current</string>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1zq-Ro-crP">
-                                                                <rect key="frame" x="322" y="47" width="60" height="20"/>
+                                                                <rect key="frame" x="322" y="46.5" width="60" height="19.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="60" id="egi-92-SiF"/>
                                                                 </constraints>
@@ -2442,7 +2442,7 @@ Dark Current</string>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="White Reference count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cu4-L7-xQy">
-                                                                <rect key="frame" x="18" y="13" width="305" height="20"/>
+                                                                <rect key="frame" x="18" y="13" width="305" height="19.5"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -3694,7 +3694,7 @@ Dark Current</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTb-PZ-aD5" customClass="LoadingButton" customModule="Spectrometer" customModuleProvider="target">
-                                <rect key="frame" x="20" y="109" width="500" height="45"/>
+                                <rect key="frame" x="20" y="108.5" width="500" height="45"/>
                                 <color key="backgroundColor" red="0.086274509803921567" green="0.78570890426635742" blue="0.31985777616500854" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="HZf-5x-klg"/>
@@ -3738,13 +3738,13 @@ Dark Current</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take all target measurements." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvR-YA-oXR">
-                                <rect key="frame" x="20" y="80" width="500" height="17"/>
+                                <rect key="frame" x="20" y="80" width="500" height="16.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Lb-bi-oeI" customClass="SpectrumLineChartView" customModule="Spectrometer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="191" width="540" height="339"/>
+                                <rect key="frame" x="0.0" y="190.5" width="540" height="339.5"/>
                                 <color key="backgroundColor" white="0.97997555272108849" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xvn-iL-Iih" customClass="UIBlueButton" customModule="Spectrometer" customModuleProvider="target">
@@ -3762,7 +3762,7 @@ Dark Current</string>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wSH-nx-sFK" customClass="CustomProgressBar" customModule="Spectrometer" customModuleProvider="target">
-                                <rect key="frame" x="20" y="162" width="500" height="21"/>
+                                <rect key="frame" x="20" y="161.5" width="500" height="21"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="62R-Ng-3WP"/>

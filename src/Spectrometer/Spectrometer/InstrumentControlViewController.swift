@@ -92,10 +92,10 @@ class InstrumentControlViewController : UIViewController, UIPickerViewDataSource
     }
     
     @IBAction func performOptimize(_ sender: UIButton){
-        CommandManager.sharedInstance.optimize(errorCallBack: self.optimizeError)
-        fatalError("we need success callback on each methode not only on acquire")
-        loadInstrumentControlValues()
-        updateFields()
+        CommandManager.sharedInstance.optimize(successCallBack: {
+            self.loadInstrumentControlValues()
+            self.updateFields()
+        }, errorCallBack: self.optimizeError)
     }
     
     // picker view configuration
