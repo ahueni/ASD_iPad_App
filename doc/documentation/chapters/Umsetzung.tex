@@ -13,6 +13,15 @@ Es können später weitere Voraussetzungen dazukommen, je nachdem wie die Applikat
 \subsection{Programmiersprache}
 Das Projekt wurde in der Programmiersprache Swift 3 umgesetzt und ist mit iOS 10.0 und höher kompatibel. Es wurde darauf geachtet, dass alle Abhängigkeiten ebenfalls in Swift umgesetzt sind. Dies erleichtert die Weiterentwicklung, da kein, für ungeübte Entwickler, meist schwer lesbarer Objective-C Code zum Einsatz kommt.
 
+\subsection{Systemgrenzen}
+Da das Projekt für die iOS Platform entwickelt wird, werden einige Funktionen bereits vom System übernommen. Folgende Funktionen werden ganz oder teilweise vom System bereitgestellt:
+\begin{itemize}[noitemsep]
+\item Import / Export Die Import sowie die Export Funktionen werden zu einem Grossteil vom System übernommen.
+\item Core Data Objekte werden vom System verwaltet
+\end{itemize}
+Alle anderen Komponenten, wurden im Projekt entwickelt oder ins Projekt inkludiert.
+\includegraphics[scale=0.8]{images/Systemgrenze}
+
 \subsection{Abhängigkeiten}
 Externe Ressourcen und Frameworks, wurden vorwiegend mit CocoaPods eingebunden. CocoaPods ist ein Paket Manager, mit welchem man Pakete in ein bestehendes Projekt einbinden kann. Dies geschieht über ein sogenanntes Podfile, welches zum Projektumfang gehört. Dieses File beschreibt die externen Abhängigkeiten, sowie welche Version benötigt wird. CocoaPods ist kein Produkt von Apple und wird durch die Community weiterentwickelt und bereitgestellt. Sollten Updates zu Frameworks bereitstehen, können diese einfach ins Projekt integriert werden.
 
