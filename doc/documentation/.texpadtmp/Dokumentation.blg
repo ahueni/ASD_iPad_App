@@ -1,11 +1,11 @@
 This is BibTeX, Version 0.99d (TeX Live 2016)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
-The top-level auxiliary file: /Users/Andreas/Projects/Bachelorthesis/portableSpectrometer/doc/documentation/.texpadtmp/Dokumentation.aux
+The top-level auxiliary file: /Daten/Spektrometer/portableSpectrometer/doc/documentation/.texpadtmp/Dokumentation.aux
 The style file: unsrt.bst
 Database file #1: ../quellen.bib.bib
 You've used 7 entries,
             1791 wiz_defined-function locations,
-            473 strings with 4667 characters,
+            473 strings with 4629 characters,
 and the built_in function-call counts, 958 in all, are:
 = -- 84
 > -- 28
