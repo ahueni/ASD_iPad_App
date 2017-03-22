@@ -20,7 +20,13 @@ Da das Projekt für die iOS Platform entwickelt wird, werden einige Funktionen be
 \item Core Data Objekte werden vom System verwaltet
 \end{itemize}
 Alle anderen Komponenten, wurden im Projekt entwickelt oder ins Projekt inkludiert.
-\includegraphics[scale=0.8]{images/Systemgrenze}
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[scale=0.8]{images/Systemgrenze}
+	\caption{Systemgrenzen}
+	\label{fig:SystemBounds}
+	\end{center}
+\end{figure}
 
 \subsection{Abhängigkeiten}
 Externe Ressourcen und Frameworks, wurden vorwiegend mit CocoaPods eingebunden. CocoaPods ist ein Paket Manager, mit welchem man Pakete in ein bestehendes Projekt einbinden kann. Dies geschieht über ein sogenanntes Podfile, welches zum Projektumfang gehört. Dieses File beschreibt die externen Abhängigkeiten, sowie welche Version benötigt wird. CocoaPods ist kein Produkt von Apple und wird durch die Community weiterentwickelt und bereitgestellt. Sollten Updates zu Frameworks bereitstehen, können diese einfach ins Projekt integriert werden.
