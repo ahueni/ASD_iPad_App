@@ -17,8 +17,6 @@ Diese Erweiterung wurde ebenfalls als Requirement mit geringer Priorität aufgeno
 \section{Erkenntnisse}
 Trotz der vorhandenen Dokumentation, war das Projekt nicht einfach zu realisieren. Insbesondere die Verbindungsherstellung und die Eigenheiten des ASD Geräts, gestalteten den Einstieg in das Projekt schwieriger als erwartet. Auch die Abläufe der Messungen fühlen sich anfangs teilweise widersprüchlich an. Ist die Abfolge allerdings geklärt und die Verbindung korrekt umgesetzt, ist die Implementierung der Anforderungen relativ zügig machbar.
 
-%gehört zur umsetzung
-\color{red}
+
 Auch sprachbedingt mussten einige Anpassungen vorgenommen werden, welche bei anderen Sprachen nicht benötigt worden wären. So können in Swift keine Fatal Errors, beispielsweise bei einem Array out of Index Fehler, abgefangen werden. Dies macht Sinn, wenn ein Produkt aus einer Hand entwickelt wird. Bei unserer Abhängigkeit zur Rückgabe des Spektrometers, kann es passieren, dass die Grösse oder Typen der Rückgabe nicht stimmen. Diese Fehler müssen speziell abgefangen werden und können nicht einfach generell behandelt werden.
 Weiter können in Swift keine abstrakten Klassen definiert werden. Somit können externe Entwickler versehentlich vergessen Methoden zu überschreiben. Dies wurde gelöst, indem in den Basismethoden welche abgeleitet werden müssen ein Fatal Error geworfen wird.
-\color{black}
