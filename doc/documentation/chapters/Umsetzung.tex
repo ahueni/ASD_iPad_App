@@ -104,6 +104,61 @@ Durch die inkonsistente Implementierung von der Firma ASD gibt es immer wieder v
 \subsection{Calculations}
 Der Ordner Calculations enthält lediglich die Klasse \verb=SpectrumCalculator= welche nur statische Funktionen enthält. Diese dienen der Berechnung der Reflektanz sowie der Radianz. Ausserdem beinhaltet die Klasse noch eine Methode um eine Dark Correction auf einem übergebenen Spektrum durchzuführen.
 \subsection{Error Handling}
+Fehler werden nur abgefangen wenn sie erwartet werden. Dies bedeutet es gibt kein allgemeine Fehlerbehandlung, da dies die Applikation in einen inkonsistenten Zustand bringen würde. Das ErrorHandling wurde nur eingebaut bei der Kommunikation mit externen Ressourcen, sprich dem ASD Gerät oder bei Input/Output Operationen. Bei der Entwicklung, wurde festgestellt, dass die Daten des Spektrometers nicht zwingend korrekt sein müssen. In diesem Fall, wird beim Parsen ein \verb=SpektrometerError= geworfen. Hier am Beispiel, des Saturation Enums:
+
+\begin{lstlisting}
+enum Saturation: Int
+{
+    case NoSaturation = 0
+    case Saturated = 1
+    
+    init(fromRawValue: Int) throws
+    {
+        if let value = Saturation(rawValue: fromRawValue) {
+            self = value
+        } else {
+            throw SpectrometerError(message: "Could not parse saturation
+            of spectrum.", kind: .parsingError)
+        }
+    }
+}
+\end{lstlisting}
+
+Das \verb=SpectrometerError= Objekt sieht wie folgt aus:
+
+\begin{lstlisting}
+struct SpectrometerError: Error 
+{
+    enum ErrorKind
+    {
+        case connectionError
+        case readError
+        case parsingError
+    }
+    
+    let message: String
+    let kind: ErrorKind
+}
+\end{lstlisting}
+
+Der \verb=CommandManager= ist zuständig diese Errors korrekt zu behandeln. Dies geschieht, indem er sie bei privaten Methoden weitergibt und bei öffentlichen Funktionen abfängt. Jede öffentliche Methode des \verb=CommandManager= besitzt zwei Callback Parameter. Jeweils ein Callback für den erfolgreichen durchlauf der Methode und ein Fehler Callback. Wird ein Fehler abgefangen, wird der Fehler Callback aufgerufen, ansonsten der success Callback. Folgend die aquire Methode als Beispiel:
+
+\begin{lstlisting}
+func aquire(samples, successCallBack:(spectrum), errorCallBack:(error)
+{
+	var spectrum: FullRangeInterpolatedSpectrum!
+		do {
+			try serialQueue.sync {
+				spectrum = try internalAquire(samples: samples)
+		}
+	successCallBack(spectrum)
+	} catch let error {
+	errorCallBack(error)
+	}
+}
+\end{lstlisting}
+
+Nun kann der Aufrufer entscheiden, was er bei einem Fehler oder einem korrekten Aufruf machen möchte. Dies geschieht in der Regel in der ViewController Methode. Falls beim Parsen ein Fehler auftritt, wechselt die Applikation auf die Verbindungsview und trennt die TCP Verbindung zum Spektrometer. So ist sichergestellt, das keine falschen Daten verarbeitet oder angezeigt werden.
 
 \color{red}
 TODO: Error Handling noch beschreiben

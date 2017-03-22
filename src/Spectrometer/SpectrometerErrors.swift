@@ -20,7 +20,6 @@ struct ParsingError: Error {
 }
 
 struct SpectrometerError: Error {
-    
     enum ErrorKind {
         case connectionError
         case readError
@@ -29,5 +28,4 @@ struct SpectrometerError: Error {
     
     let message: String
     let kind: ErrorKind
-    
 }
