@@ -1,7 +1,7 @@
 %Hauptdokumentation der Lšsung
 \NeedsTeXFormat{LaTeX2e}
 
-\documentclass[a4paper,oneside,abstract,listof=numbered]{scrreprt}
+\documentclass[a4paper,oneside,abstract,listof=numbered,bibliography=totocnumbered]{scrreprt}
 
 \usepackage[left=2cm,right=2cm,top=1cm,bottom=2cm,includeheadfoot]{geometry}
 
@@ -147,7 +147,9 @@
 \glsaddall
 
 % Quellenverzeichnis
-\input{chapters/Quellen}
+\bibliographystyle{unsrt}
+\bibliography{quellen.bib}
+\nocite{*}
 
 % Anhang
 \input{chapters/Anhang}
