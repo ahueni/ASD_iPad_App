@@ -11,6 +11,7 @@
 *.gls
 *.glo
 doc/documentation/*.pdf
+doc/documentation/.texpadtmp
 src/Spectrometer/Spectrometer.xcworkspace/xcuserdata/
 src/Spectrometer/Pods/Pods.xcodeproj/xcuserdata
 
