@@ -101,7 +101,7 @@ class BaseSelectInput: UIView, BaseValidationControl {
         addSubviews()
     }
     
-    func addSubviews() {
+    private func addSubviews() {
         leftBackgroundView = UIView()
         leftImageView = UIImageView()
         leftBackgroundView.addSubview(leftImageView)

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CoreGraphics
+import FontAwesome_swift
 
 @IBDesignable
 class UIOptimizeButton: UIColorButton {
@@ -19,19 +20,32 @@ class UIOptimizeButton: UIColorButton {
     
     var integrationTime: Int? {
         didSet {
-            integrationTimeLabel.text = "IT: " + (integrationTime?.description)!
+            if let integrationTime = integrationTime {
+                let integrationTimeInMilis = IntegrationTime.getIntegrationTime(index: integrationTime)
+                integrationTimeLabel.text = "IT: " + integrationTimeInMilis.readableMilis()
+            } else {
+                integrationTimeLabel.text = "IT: " + String.fontAwesomeIcon(name: .close)
+            }
         }
     }
     
     var swir1Gain: Int? {
         didSet {
-            swir1GainLabel.text = "S1G: " + (swir1Gain?.description)!
+            if let swir1Gain = swir1Gain {
+                swir1GainLabel.text = "S1G: " + swir1Gain.description
+            } else {
+                swir1GainLabel.text = "S1G: " + String.fontAwesomeIcon(name: .close)
+            }
         }
     }
     
     var swir2Gain: Int? {
         didSet {
-            swir2GainLabel.text = "S2G: " + (swir2Gain?.description)!
+            if let swir2Gain = swir2Gain {
+                swir2GainLabel.text = "S2G: " + swir2Gain.description
+            } else {
+                swir2GainLabel.text = "S2G: " + String.fontAwesomeIcon(name: .close)
+            }
         }
     }
     
@@ -55,24 +69,16 @@ class UIOptimizeButton: UIColorButton {
             self.titleLabel?.frame = newtitleLabelFrame
         }
         
-        // arrange sublabels
+        // arrange it and gain labels
         let width = (self.frame.width - 8) / 3
         let height:CGFloat = 14
-        
         let x1:CGFloat = 2
         let x2:CGFloat = x1 + width + 2
         let x3:CGFloat = x2 + width + 2
-        
         let y:CGFloat = self.frame.height - 16
-        
         integrationTimeLabel.frame = CGRect(x: x1, y: y, width: width, height: height)
         swir1GainLabel.frame = CGRect(x: x2, y: y, width: width, height: height)
         swir2GainLabel.frame = CGRect(x: x3, y: y, width: width, height: height)
-        
-        
-        print(integrationTimeLabel.frame.height)
-        
-        
     }
     
     func initViews() -> Void {
@@ -81,9 +87,9 @@ class UIOptimizeButton: UIColorButton {
         swir1GainLabel = UILabel()
         swir2GainLabel = UILabel()
         
-        integrationTimeLabel.font = UIFont.defaultFontRegular(size: 8)
-        swir1GainLabel.font = UIFont.defaultFontRegular(size: 8)
-        swir2GainLabel.font = UIFont.defaultFontRegular(size: 8)
+        integrationTimeLabel.font = UIFont.fontAwesome(ofSize: 8)
+        swir1GainLabel.font = UIFont.fontAwesome(ofSize: 8)
+        swir2GainLabel.font = UIFont.fontAwesome(ofSize: 8)
         
         integrationTimeLabel.textColor = UIColor.white
         swir1GainLabel.textColor = UIColor.white
@@ -93,14 +99,13 @@ class UIOptimizeButton: UIColorButton {
         swir1GainLabel.textAlignment = .center
         swir2GainLabel.textAlignment = .center
         
-        integrationTimeLabel.text = "IT: -"
-        swir1GainLabel.text = "S1G: -"
-        swir2GainLabel.text = "S2G: -"
+        integrationTimeLabel.text = "IT: " + String.fontAwesomeIcon(name: .close)
+        swir1GainLabel.text = "S1G: " + String.fontAwesomeIcon(name: .close)
+        swir2GainLabel.text = "S2G: " + String.fontAwesomeIcon(name: .close)
         
         self.addSubview(integrationTimeLabel)
         self.addSubview(swir1GainLabel)
         self.addSubview(swir2GainLabel)
-        
     }
     
 }

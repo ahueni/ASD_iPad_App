@@ -38,4 +38,12 @@ class AbsoluteReflectanceFileSelectInput: BaseCalibrationFileSelectInput {
         super.init(coder: aDecoder)
     }
     
+    override func updateFilePathLabel()
+    {
+        if isValid {
+            pathLabel.text = "Absolute Reflectance"
+            fileNameLabel.text = self.selectedPath?.lastPathComponent
+        }
+    }
+    
 }

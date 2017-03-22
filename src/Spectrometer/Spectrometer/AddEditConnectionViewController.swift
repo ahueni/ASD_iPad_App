@@ -64,13 +64,16 @@ class AddEditConnectionViewController: UIViewController, BaseSelectInputDelegate
             
             if let absoluteReflectanceConfig = config.absoluteReflectance {
                 self.absoluteReflectanceSelect.pathLabel.text = "Replace " + absoluteReflectanceConfig.name!
+                self.absoluteReflectanceSelect.fileNameLabel.text = absoluteReflectanceConfig.filename
                 self.absoluteReflectanceSelect.isInEditMode = true
             }
             
             self.baseFileSelect.pathLabel.text = "Replace " + (config.base?.name)!
+            self.baseFileSelect.fileNameLabel.text = config.base?.filename
             self.baseFileSelect.isInEditMode = true
             
             self.lampFileSelect.pathLabel.text = "Replace " + (config.lamp?.name)!
+            self.lampFileSelect.fileNameLabel.text = config.lamp?.filename
             self.lampFileSelect.isInEditMode = true
             
             validateControls()
@@ -98,7 +101,7 @@ class AddEditConnectionViewController: UIViewController, BaseSelectInputDelegate
                 
                 let absoluteReflectance = CalibrationFile(context: dataViewContext)
                 absoluteReflectance.name = "Absolute Reflectance"
-                absoluteReflectance.filename = absoluteReflectanceSelect.pathLabel.text
+                absoluteReflectance.filename = absoluteReflectanceSelect.selectedPath?.lastPathComponent
                 absoluteReflectance.type = Int16(CalibrationType.AbsoluteReflectanceFile.rawValue)
                 
                 if let caliFile = absoluteReflectanceSelect.calibrationFile {
@@ -112,6 +115,7 @@ class AddEditConnectionViewController: UIViewController, BaseSelectInputDelegate
             } else {
                 
                 config.absoluteReflectance?.name = absoluteReflectanceSelect.pathLabel.text
+                config.absoluteReflectance?.filename = absoluteReflectanceSelect.selectedPath?.lastPathComponent
                 
                 if let caliFile = absoluteReflectanceSelect.calibrationFile {
                     config.absoluteReflectance?.spectrum = caliFile.spectrum
@@ -129,7 +133,7 @@ class AddEditConnectionViewController: UIViewController, BaseSelectInputDelegate
                 
                 let base = CalibrationFile(context: dataViewContext)
                 base.name = "Base"
-                base.filename = baseFileSelect.pathLabel.text
+                base.filename = baseFileSelect.selectedPath?.lastPathComponent
                 base.type = Int16(CalibrationType.BaseFile.rawValue)
                 
                 if let caliFile = baseFileSelect.calibrationFile {
@@ -142,6 +146,7 @@ class AddEditConnectionViewController: UIViewController, BaseSelectInputDelegate
                 config.base = base
             } else {
                 config.base?.name = baseFileSelect.pathLabel.text
+                config.base?.filename = baseFileSelect.selectedPath?.lastPathComponent
                 
                 if let caliFile = baseFileSelect.calibrationFile {
                     config.base?.spectrum = caliFile.spectrum
@@ -159,7 +164,7 @@ class AddEditConnectionViewController: UIViewController, BaseSelectInputDelegate
             if config.lamp == nil {
                 let lamp = CalibrationFile(context: dataViewContext)
                 lamp.name = "Lamp"
-                lamp.filename = lampFileSelect.pathLabel.text
+                lamp.filename = lampFileSelect.selectedPath?.lastPathComponent
                 lamp.type = Int16(CalibrationType.LampFile.rawValue)
                 
                 if let caliFile = lampFileSelect.calibrationFile {
@@ -172,6 +177,7 @@ class AddEditConnectionViewController: UIViewController, BaseSelectInputDelegate
                 config.lamp = lamp
             } else {
                 config.lamp?.name = lampFileSelect.pathLabel.text
+                config.lamp?.filename = lampFileSelect.selectedPath?.lastPathComponent
                 
                 if let caliFile = lampFileSelect.calibrationFile {
                     config.lamp?.spectrum = caliFile.spectrum

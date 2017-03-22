@@ -13,11 +13,9 @@ class BaseCalibrationFileSelectInput: BaseSelectInput {
     
     override var isValid: Bool {
         get {
-            
             if isInEditMode {
                 return true
             }
-            
             return calibrationFile != nil
         }
     }
@@ -27,9 +25,35 @@ class BaseCalibrationFileSelectInput: BaseSelectInput {
     
     var calibrationFile: IndicoFileBase?
     
+    var fileNameLabel: UILabel!
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addSubviews()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        addSubviews()
+    }
+    
+    private func addSubviews() {
+        fileNameLabel = UILabel()
+        fileNameLabel.font = UIFont.defaultFontRegular(size: 10)
+        fileNameLabel.textColor = UIColor.darkGray
+        fileNameLabel.text = "Please select a file..."
+        self.addSubview(fileNameLabel)
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         leftImageView.image = UIImage.fontAwesomeIcon(name: .fileO, textColor: .white, size: CGSize(width: iconSize, height: iconSize))
+        
+        // style pathLabel
+        pathLabel.frame = CGRect(x: self.frame.height + leftTextSpace, y: 2, width: self.frame.width - self.frame.height - leftTextSpace, height: 20)
+        
+        // style fileLabel
+        fileNameLabel.frame = CGRect(x: self.frame.height + leftTextSpace, y: 24, width: self.frame.width-self.frame.height - leftTextSpace, height: 12)
     }
     
     override func update(selectedPath: URL) {

@@ -34,4 +34,12 @@ class LampFileSelectInput: BaseCalibrationFileSelectInput {
         super.init(coder: aDecoder)
     }
     
+    override func updateFilePathLabel()
+    {
+        if isValid {
+            pathLabel.text = "Lamp"
+            fileNameLabel.text = self.selectedPath?.lastPathComponent
+        }
+    }
+    
 }

@@ -92,7 +92,6 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate, Po
     }
     
     func didDismiss(){
-        print("Dismissed")
         blurView?.removeFromSuperview()
     }
     
@@ -246,11 +245,9 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate, Po
         DispatchQueue(label: "aquireQueue").async {
             print("AquireLoop started...")
             while(ViewStore.sharedInstance.aquireLoop){
-                
                 // collect spectrum
                 let sampleCount = ViewStore.sharedInstance.instrumentConfiguration.sampleCount
                 CommandManager.sharedInstance.aquire(samples: sampleCount, successCallBack: { spectrum in
-                    
                     // calculate dark current if selected on view
                     var darkCorrectedSpectrum = SpectrumCalculatorService.calculateDarkCurrentCorrection(spectrum: spectrum)
                     
@@ -270,10 +267,7 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate, Po
                     self.updateChart(chartData: lineChartDataSet, measurementMode: self.measurementMode)
                     
                     // update optimize button
-                    self.optimizeButton.integrationTime = spectrum.spectrumHeader.vinirHeader.integrationTime
-                    self.optimizeButton.swir1Gain = spectrum.spectrumHeader.swir1Header.gain
-                    self.optimizeButton.swir2Gain = spectrum.spectrumHeader.swir2Header.gain
-                    
+                    self.updateOptimizeButton(spectrum: spectrum)
                     
                 }, errorCallBack: self.acquireError)
             }
@@ -281,7 +275,6 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate, Po
             CommandManager.sharedInstance.addCancelCallback(callBack: self.finishedAquireLoopHandler)
             print("AquireLoop stopped...")
         }
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -304,13 +297,11 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate, Po
     internal func finishedAquireLoopHandler() {
         // switch back to UI thread
         DispatchQueue.main.async {
-            
             self.aquireButton.setTitle("Start Aquire", for: .normal)
             self.aquireButton.background = self.greenButtonColor
             
             // if disconnect button was pressed -> return to config view
             if (self.disconnectWhenFinished) {
-                
                 // close connection
                 TcpManager.sharedInstance.disconnect()
                 
@@ -323,13 +314,8 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate, Po
                 // remove application wide settings when disconnect they will be recreate on connection
                 InstrumentStore.sharedInstance.dispose()
                 ViewStore.sharedInstance.resetTimers()
-                
-                
             }
-            
-            
         }
-        
     }
     
     internal func updateChart(chartData: LineChartData, measurementMode: MeasurementMode) {
@@ -371,6 +357,15 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate, Po
     internal func didSelectFiberoptic(fiberoptic: CalibrationFile) {
         InstrumentStore.sharedInstance.selectedForeOptic = fiberoptic
         activateRadianceMode()
+    }
+    
+    internal func updateOptimizeButton(spectrum: FullRangeInterpolatedSpectrum) {
+        DispatchQueue.main.async {
+            // update optimize button
+            self.optimizeButton.integrationTime = spectrum.spectrumHeader.vinirHeader.integrationTime
+            self.optimizeButton.swir1Gain = spectrum.spectrumHeader.swir1Header.gain
+            self.optimizeButton.swir2Gain = spectrum.spectrumHeader.swir2Header.gain
+        }
     }
     
     internal func updateDarkCurrentTimerLabel() {
