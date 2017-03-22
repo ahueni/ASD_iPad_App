@@ -9,6 +9,10 @@
         <attribute name="swir1Gain" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="swir2Gain" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="type" attributeType="Integer 16" defaultValueString="9" usesScalarValueType="YES" customClassName="CalibrationType" syncable="YES"/>
+        <relationship name="absoluteReflectance" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SpectrometerConfig" inverseName="absoluteReflectance" inverseEntity="SpectrometerConfig" syncable="YES"/>
+        <relationship name="base" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SpectrometerConfig" inverseName="base" inverseEntity="SpectrometerConfig" syncable="YES"/>
+        <relationship name="calibration" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SpectrometerConfig" inverseName="fiberOpticCalibrations" inverseEntity="SpectrometerConfig" syncable="YES"/>
+        <relationship name="lamp" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SpectrometerConfig" inverseName="lamp" inverseEntity="SpectrometerConfig" syncable="YES"/>
     </entity>
     <entity name="SpectrometerConfig" representedClassName="SpectrometerConfig" syncable="YES" codeGenerationType="class">
         <attribute name="ipAdress" attributeType="String" syncable="YES"/>
@@ -18,13 +22,13 @@
         <attribute name="sampleCount" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="sampleCountDarkCurrent" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="sampleCountWhiteRefrence" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="absoluteReflectance" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CalibrationFile" syncable="YES"/>
-        <relationship name="base" maxCount="1" deletionRule="Cascade" destinationEntity="CalibrationFile" syncable="YES"/>
-        <relationship name="fiberOpticCalibrations" toMany="YES" deletionRule="Cascade" destinationEntity="CalibrationFile" syncable="YES"/>
-        <relationship name="lamp" maxCount="1" deletionRule="Cascade" destinationEntity="CalibrationFile" syncable="YES"/>
+        <relationship name="absoluteReflectance" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CalibrationFile" inverseName="absoluteReflectance" inverseEntity="CalibrationFile" syncable="YES"/>
+        <relationship name="base" maxCount="1" deletionRule="Cascade" destinationEntity="CalibrationFile" inverseName="base" inverseEntity="CalibrationFile" syncable="YES"/>
+        <relationship name="fiberOpticCalibrations" toMany="YES" deletionRule="Cascade" destinationEntity="CalibrationFile" inverseName="calibration" inverseEntity="CalibrationFile" syncable="YES"/>
+        <relationship name="lamp" maxCount="1" deletionRule="Cascade" destinationEntity="CalibrationFile" inverseName="lamp" inverseEntity="CalibrationFile" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CalibrationFile" positionX="-155" positionY="-27" width="128" height="165"/>
+        <element name="CalibrationFile" positionX="-155" positionY="-27" width="128" height="225"/>
         <element name="SpectrometerConfig" positionX="333" positionY="134" width="288" height="210"/>
     </elements>
 </model>

@@ -272,8 +272,7 @@ class SpectrometerViewController: UIViewController, SelectFiberopticDelegate, Po
                 }, errorCallBack: self.acquireError)
             }
             // add a cancel call back to have a return point after the while loop, to be shure its the last action after the loop
-            CommandManager.sharedInstance.addCancelCallback(callBack: self.finishedAquireLoopHandler)
-            print("AquireLoop stopped...")
+            CommandManager.sharedInstance.addCancelCallback(message: "AquireLoop stopped...", callBack: self.finishedAquireLoopHandler)
         }
     }
     

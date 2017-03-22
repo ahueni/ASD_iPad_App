@@ -26,11 +26,10 @@ class CommandManager {
             try serialQueue.sync {
                 spectrum = try internalAquire(samples: samples)
             }
+            successCallBack(spectrum)
         } catch let error {
             errorCallBack(error)
-            return
         }
-        successCallBack(spectrum)
     }
     
     func darkCurrent(sampleCount: Int32, successCallBack:(() -> Void)? = nil, errorCallBack:(_ error: Error) -> Void) -> Void {
@@ -41,16 +40,13 @@ class CommandManager {
                 InstrumentStore.sharedInstance.darkCurrent = try internalAquire(samples: sampleCount)
                 try openShutter()
             }
+            // call success callback
+            if let success = successCallBack {
+                success()
+            }
         } catch let error {
             errorCallBack(error)
-            return
         }
-        
-        // call success callback
-        if let success = successCallBack {
-            success()
-        }
-
     }
     
     func initialize(successCallBack:(() -> Void)?, errorCallBack:(_ error: Error) -> Void) -> Void {
@@ -80,14 +76,12 @@ class CommandManager {
                 InstrumentStore.sharedInstance.s2EndingWavelength = Int(s2EndingWavelength.value)
                 InstrumentStore.sharedInstance.vinirDarkCurrentCorrection = vinirDarkCurrentCorrection.value
             }
+            // call sucess callback at the end
+            if let success = successCallBack {
+                success()
+            }
         } catch let error {
             errorCallBack(error)
-            return
-        }
-        
-        // call sucess callback at the end
-        if let success = successCallBack {
-            success()
         }
     }
     
@@ -98,14 +92,12 @@ class CommandManager {
             try serialQueue.sync {
                 _ = try tcpManager.sendCommand(command: restoreCommand)
             }
+            // call sucess callback at the end
+            if let success = successCallBack {
+                success()
+            }
         } catch let error {
             errorCallBack(error)
-            return
-        }
-        
-        // call sucess callback at the end
-        if let success = successCallBack {
-            success()
         }
     }
     
@@ -114,14 +106,12 @@ class CommandManager {
             try serialQueue.sync {
                 try internOptimize()
             }
+            // call sucess callback at the end
+            if let success = successCallBack {
+                success()
+            }
         } catch let error {
             errorCallBack(error)
-            return
-        }
-        
-        // call sucess callback at the end
-        if let success = successCallBack {
-            success()
         }
     }
     
@@ -140,14 +130,12 @@ class CommandManager {
                 //set swir2Offset
                 try internalInstrumentControl(params: "1,2," + instrumentControlValues.swir2Offset.description)
             }
+            // call sucess callback at the end
+            if let success = successCallBack {
+                success()
+            }
         } catch let error {
             errorCallBack(error)
-            return
-        }
-        
-        // call sucess callback at the end
-        if let success = successCallBack {
-            success()
         }
     }
     
@@ -157,22 +145,23 @@ class CommandManager {
         
         do {
             _ = try tcpManager.sendCommand(command: abortCommand)
+            // call sucess callback
+            if let success = successCallBack {
+                success()
+            }
         } catch let error {
             errorCallBack(error)
-            return
-        }
-        
-        // call sucess callback
-        if let success = successCallBack {
-            success()
         }
     }
     
     // function queues the callback and calls when it's processed.
     // this is usefull after stop queueing commands to know when last command is processed -> callback will be last in queue
     // callback will be called when all items are processed
-    func addCancelCallback(callBack: () -> Void) {
+    func addCancelCallback(message: String? = nil, callBack: () -> Void) {
         serialQueue.sync {
+            if let message = message {
+                print(message)
+            }
             callBack()
         }
     }
