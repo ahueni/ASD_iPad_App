@@ -69,10 +69,6 @@ Klassen im Service-Layer unterscheiden sich durch ein weiteres Kriterium vom Cor
 \subsection{iOS App}
 Dieser Layer (Im Xcode wird dieser Ordner als Spectrometer geführt) beinhaltet die eigentliche iOS App mit all ihren typischen Eigenschaften wie das AppDelegate, die Storyboards und die ViewController. Zusätzlich wurden noch eigene View Komponenten erstellt die ebenfalls in diesem Layer enthalten sind.
 
-\color{red}
-TODO: Im XCode heisst der Ordner noch Spectrometer, umbennen oder hier beschreiben
-\color{black}
-
 \section{Core}
 
 \subsection{Models}
@@ -83,7 +79,7 @@ Diese Aufteilung ermöglicht es einem Entwickler, einfach einen neuen Indico-Stan
 Der Command wird verwendet, um genormte Anfragen ans Spektrometer zu senden. Für jeden Command wurde eine Grösse definiert, die vom erwarteten Datentyp abhängt. Somit kann der TCP Manager jeweils entscheiden, wann alle Daten empfangen wurden.
 
 \subsubsection{SpectralData}
-In diesem Ordner wurden alle Datentypen definiert, die vom Spektrometer empfangen werden können. Die genauen Grössen und vorhandenen Felder wurden dem ASD Developer Guide entnommen. Dieser ist im \color{red} Anhang \color{black} erwähnt. Die meisten Befehle haben ihren bestimmten Rückgabetyp. Einige verwandte Befehle verwenden jedoch auch den gleichen Rückgabetyp.
+In diesem Ordner wurden alle Datentypen definiert, die vom Spektrometer empfangen werden können. Die genauen Grössen und vorhandenen Felder wurden dem ASD Developer Guide entnommen. Dieser ist im \hyperref[subsection:developersGuide]{Anhang} erwähnt. Die meisten Befehle haben ihren bestimmten Rückgabetyp. Einige verwandte Befehle verwenden jedoch auch den gleichen Rückgabetyp.
 
 \subsubsection{IndicoFile}
 In diesem Ordner wurde der Datentyp für das Indico-Dateiformat definiert. Die Basisklasse \verb=IndicoFileBase= repräsentiert genau eine INI-Datei, die für die Spektrometer-Konfiguration verwendet wird. Die Ableitung \verb=IndicoFile7= repräsentiert die vollständige Datei mit allen Spektraldaten. Der Inhalt der Dateien wird in der Abbildung \ref{fig:MeasurementFiles} genau dargestellt.
@@ -120,13 +116,23 @@ Im \verb=InstrumentStore= werden alle Objekte gespeichert, auf welche global zug
 
 \subsection{Command Manager}
 Der \verb=CommandManager= übernimmt die Funktion, alle Kommandos in der korrekten Reihenfolge abzuarbeiten. Der \verb=CommandManager= bietet Methoden für alle gängigen \gls{spectrometer} Kommandos an. Wird eine dieser Methoden aufgerufen, wird die Anfrage an eine synchrone Queue übergeben welche nach dem First-In-First-Out Prinzip die Anfragen abarbeitet. So ist sichergestellt, dass ein Kommando erst an das \gls{spectrometer} gesendet wird, wenn alle vorherigen abgearbeitet sind.
+\newline
+Der \verb=CommandManager= besitzt eine Methode, um einen Callback zu erhalten, sobald dieser an der Reihe ist. Dies wird benötigt, um nach dem beenden des AquireLoops festestellen zu können, wann der letzte Command in der Queue abgearbeitet wurde. Die Methode sieht wie folgt aus:
+
+\begin{lstlisting}
+func addCancelCallback(message: String? = nil, callBack: () -> Void)
+{
+	serialQueue.sync
+	{
+		callBack()
+	}
+}
+\end{lstlisting}
 
 \subsection{File Write Manager}
-Der \verb=FileWriteManager= funktioniert ähnlich wie der \verb=CommandManager=. Er übergibt \verb=FileWrite= Aufträge ebenfalls einer synchronen Warteschlange und arbeitet diese ab. Dazu kümmert sich der \verb=FileWriteManager= auch um die korrekte Benennung der ASD Files. Dies geschieht, indem er den höchsten geschriebenen prefix eines Files im Pfad findet und diesen dann entsprechend erhöht.
-
-\color{red}
-TODO: Müsste angepasst werden wenn noch umprogrammiert
-\color{black}
+Der \verb=FileWriteManager= funktioniert ähnlich wie der \verb=CommandManager=. Er übergibt dem \verb=FileWriter= Aufträge ebenfalls in einer synchronen Warteschlange und arbeitet diese ab. Dazu kümmert sich der \verb=FileWriteManager= auch um die korrekte Benennung der ASD Files. Dies geschieht, indem er den höchsten geschriebenen prefix eines Files im Pfad mit dem selben Basisnamen findet und diesen dann entsprechend erhöht.
+\newline
+Der \verb=FileWriteManager= verfügt wie der \verb=CommandManager= über eine Callback Methode, welche die Callback Methode aufruft, sobald das letzte File in der Queue geschrieben wurde.
 
 \section{iOS App} \label{sec:iosApp}
 

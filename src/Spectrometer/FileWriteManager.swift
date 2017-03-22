@@ -85,6 +85,7 @@ class FileWriteManager{
             }
         }catch{
             print("Error in IO")
+            //return 0 or highest found index if something went wrong
         }
         return index
     }
