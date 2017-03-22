@@ -39,7 +39,7 @@ Folgende Frameworks wurden mit CocoaPods in das Projekt eingebunden und verwende
 \item Pulsator: \href{https://github.com/shu223/Pulsator}{https://github.com/shu223/Pulsator}
 \item FontAwesome.swift: \href{https://github.com/thii/FontAwesome.swift}{https://github.com/thii/FontAwesome.swift}
 \end{itemize}
-
+\newpage
 Folgende Frameworks wurden direkt als Klassendateien ins Projekt eingebunden und verwendet, da sie nicht als Paket verfügbar sind.
 \begin{itemize}[noitemsep]
 \item Socks: \href{https://github.com/vapor/socks}{https://github.com/vapor/socks}
@@ -179,12 +179,10 @@ Der \verb=CommandManager= übernimmt die Funktion, alle Kommandos in der korrekte
 Der \verb=CommandManager= besitzt eine Methode, um einen Callback zu erhalten, sobald dieser an der Reihe ist. Dies wird benötigt, um nach dem beenden des AquireLoops festestellen zu können, wann der letzte Command in der Queue abgearbeitet wurde. Die Methode sieht wie folgt aus:
 
 \begin{lstlisting}
-func addCancelCallback(message: String? = nil, callBack: () -> Void)
-{
-	serialQueue.sync
-	{
-		callBack()
-	}
+func addCancelCallback(message: String? = nil, callBack: () -> Void) {
+    serialQueue.sync {
+        callBack()
+    }
 }
 \end{lstlisting}
 
@@ -200,7 +198,9 @@ Das \verb=AppDelegate= ist der Einstiegspunkt jeder iOS Applikation. Darin wird 
 
 Das \verb=AppDelegate= wird ebenfalls aufgerufen, wenn eine externe Datei erfolgreich importiert wurde. Das Importieren selbst wird vom Betriebssystem übernommen. In diesem Projekt wird auf der aktuellen View eine Meldung angezeigt, dass eine Datei erfolgreich importiert wurde.
 
-Die Importfunktion hat beim importieren aus 
+\begin{alertinfo}{Vorsicht}
+Die Importfunktion funktioniert beim importieren aus iCloud Drive nicht. Apple übergibt nur die URL der Datei aus dem iCloud Drive App. Das Spektrometer App hat kein Zugriff auf diese Datei.
+\end{alertinfo}
 
 \subsection{Core Data}
 Core Data ist ein System, um Daten auf dem Gerät zu speichern. Es dient nicht als Datenbankersatz, kann aber für einfache Speicherungen genutzt werden. Durch die Integration in XCode, lassen sich Speicherklassen einfach modellieren und einsetzen. Core Data Einstellungen können in \verb=xcdatamodeld= Klassen vorgenommen werden. Dabei können Datentypen sowie die Relationen der einzelnen Records definiert werden. Weitere Informationen befinden sich auf der offiziellen Entwicklerseite von Apple im \href{https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CoreData}{Core Data Programming Guide}
@@ -214,7 +214,7 @@ Core Data ist ein System, um Daten auf dem Gerät zu speichern. Es dient nicht al
 Alle ViewController sind in der Datei \verb=Main.storyboard= enthalten. Einzig das Design für zwei TableView-Zellen wurde in separate XIB-Dateien ausgelagert. Dies war eine bewusste Entscheidung, um Entwicklern einen guten Überblick über den gesamten Ablauf in der Benutzeroberfläche zu ermöglichen. Ein ViewController wird von iOS eigenhändig instanziiert, sobald er von einer anderen View aufgerufen wird. Dies ermöglicht es, Verlinkungen der Views direkt im Storyboard umzusetzen.
 
 Die Anordnung der Controls wurde im Storyboard gelöst. Kleinere Merkmale wurden jeweils im Code angepasst, indem diese direkt beim Laden eines ViewControllers vorgenommen wurden.
-
+\newpage
 Die gesamte Ausrichtung und Anpassung auf unterschiedliche Bildschirmgrössen wurde ebenfalls im Storyboard mit \gls{autolayout} gelöst. Einzige Ausnahme ist der \verb=SpectrometerViewController=. \gls{autolayout} ermöglicht keine Unterscheidung des Portrait oder Landscape Modus bei iPads. Diese Unterscheidung und das Verhalten wurden direkt im Code umgesetzt.
 
 \subsection{Controllers}
@@ -383,7 +383,7 @@ Der File Browser ist eine Abwandlung von der Komponente \textbf{iOS FileBrowser 
 Diese Komponente wurde auf die eigenen Bedürfnisse angepasst. Der File Browser, besteht jeweils aus einem Container sowie einem integrierten \verb=TableViewController=. Zusammen bilden sie ein einfaches System, in welchem der Benutzer eine Datei oder einen Pfad selektieren kann.
 
 Der File Browser kann einfach erweitert werden, indem ein neuer Container erstellt wird. Dieser Container muss von \verb=FileBrowserContainerViewController= ableiten und kann diesen um neue Controls ergänzen. Um das Verhalten der inneren Tabelle zu ändern, kann eine Klasse erstellt werden, welche von \verb=BaseFileBrowserTableViewController= ableitet. Dies wird im Projekt bereits genutzt, um den Container mit der Funktionalität der Ordnerwahl sowie der Ordnererstellung zu erweitern.
-
+\newpage
 Folgend ein Beispiel, das für die Ordnerauswahl überschrieben wurde:
 
 \begin{lstlisting}

@@ -75,7 +75,6 @@
 		2EC5056E1E6D792200E1DCFB /* NotificationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC5056D1E6D792200E1DCFB /* NotificationExtensions.swift */; };
 		2EC505701E715CC200E1DCFB /* BaseMeasurementAquire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC5056F1E715CC200E1DCFB /* BaseMeasurementAquire.swift */; };
 		2EC505781E7301A100E1DCFB /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC505771E7301A100E1DCFB /* SettingsTableViewController.swift */; };
-		2EC5057A1E7417B900E1DCFB /* SpectrometerCalculationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC505791E7417B900E1DCFB /* SpectrometerCalculationTests.swift */; };
 		2EC5057C1E74373800E1DCFB /* calibration.raw in Resources */ = {isa = PBXBuildFile; fileRef = 2EC5057B1E74302800E1DCFB /* calibration.raw */; };
 		2EC505801E74590500E1DCFB /* rad.asd in Resources */ = {isa = PBXBuildFile; fileRef = 2EC5057D1E74590500E1DCFB /* rad.asd */; };
 		2EC505811E74590500E1DCFB /* raw.asd in Resources */ = {isa = PBXBuildFile; fileRef = 2EC5057E1E74590500E1DCFB /* raw.asd */; };
@@ -240,7 +239,6 @@
 		2EC5056D1E6D792200E1DCFB /* NotificationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationExtensions.swift; sourceTree = "<group>"; };
 		2EC5056F1E715CC200E1DCFB /* BaseMeasurementAquire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMeasurementAquire.swift; sourceTree = "<group>"; };
 		2EC505771E7301A100E1DCFB /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
-		2EC505791E7417B900E1DCFB /* SpectrometerCalculationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrometerCalculationTests.swift; sourceTree = "<group>"; };
 		2EC5057B1E74302800E1DCFB /* calibration.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = calibration.raw; sourceTree = "<group>"; };
 		2EC5057D1E74590500E1DCFB /* rad.asd */ = {isa = PBXFileReference; lastKnownFileType = file; path = rad.asd; sourceTree = "<group>"; };
 		2EC5057E1E74590500E1DCFB /* raw.asd */ = {isa = PBXFileReference; lastKnownFileType = file; path = raw.asd; sourceTree = "<group>"; };
@@ -438,7 +436,6 @@
 			children = (
 				E15C06A71E4C66D300965868 /* TestResources */,
 				2E91F2BD1DDB5B76003E277F /* SpectrometerIOTests.swift */,
-				2EC505791E7417B900E1DCFB /* SpectrometerCalculationTests.swift */,
 				2E91F2BF1DDB5B76003E277F /* Info.plist */,
 			);
 			path = SpectrometerTests;
@@ -1466,7 +1463,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2EC5057A1E7417B900E1DCFB /* SpectrometerCalculationTests.swift in Sources */,
 				2E91F2BE1DDB5B76003E277F /* SpectrometerIOTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
