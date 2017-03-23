@@ -10,9 +10,9 @@
 *.glg
 *.gls
 *.glo
-doc/documentation/*.pdf
+*.blg
+*.bbl
+doc/documentation/latexfiles/*.pdf
 doc/documentation/.texpadtmp
 src/Spectrometer/Spectrometer.xcworkspace/xcuserdata/
 src/Spectrometer/Pods/Pods.xcodeproj/xcuserdata
-*.blg
-*.bbl
