@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0820"
+   LastUpgradeVersion = "0830"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "75E4A8A19E3E981997F5DF1A798677CB"
+               BlueprintIdentifier = "D12A596B2EB5C655EA305E85E82BEEEA"
                BuildableName = "Pulsator.framework"
                BlueprintName = "Pulsator"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "75E4A8A19E3E981997F5DF1A798677CB"
+            BlueprintIdentifier = "D12A596B2EB5C655EA305E85E82BEEEA"
             BuildableName = "Pulsator.framework"
             BlueprintName = "Pulsator"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -63,7 +63,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "75E4A8A19E3E981997F5DF1A798677CB"
+            BlueprintIdentifier = "D12A596B2EB5C655EA305E85E82BEEEA"
             BuildableName = "Pulsator.framework"
             BlueprintName = "Pulsator"
             ReferencedContainer = "container:Pods.xcodeproj">
