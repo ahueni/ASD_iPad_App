@@ -1,8 +1,8 @@
 PODS:
-  - Charts (3.0.1):
-    - Charts/Core (= 3.0.1)
-  - Charts/Core (3.0.1)
-  - FontAwesome.swift (1.0.0)
+  - Charts (3.0.2):
+    - Charts/Core (= 3.0.2)
+  - Charts/Core (3.0.2)
+  - FontAwesome.swift (1.1.1)
   - PlainPing (0.3.1)
   - Pulsator (0.3.0)
   - Zip (0.7.0)
@@ -15,12 +15,12 @@ DEPENDENCIES:
   - Zip
 
 SPEC CHECKSUMS:
-  Charts: 0e84f4418e87dad6a9edde221fba37ebb51d3ba7
-  FontAwesome.swift: 2d32a3d62195343c2004b7c9043294ed2948553a
+  Charts: 236d6ccdd0ce6feae151d89e829a7397381a21fd
+  FontAwesome.swift: f4ff5a9199dc3b510eba5bb377e834f159aef358
   PlainPing: 3b740d74bc694f4593045b5c5b17ea1275d1920f
   Pulsator: 0191f14f7ab82d6dbde6fdbde42036f07a4450e3
   Zip: e34513299ac38c0686d5b24504da7ce343799ab9
 
-PODFILE CHECKSUM: 6e092fa73c423247684ff6a4cf5b717f7582793c
+PODFILE CHECKSUM: 6fd4dac6f67b3ff312904a309700e1a1a733383f
 
 COCOAPODS: 1.2.0
